@@ -1,0 +1,56 @@
+---
+title: 'Workable'
+description: 'If you have been directed to StackOne to integrate with Workable, the following steps will help you understand the process and any necessary actions to configure successful integration.'
+---
+
+import IntegrationFooter from '/snippets/integration-footer.mdx';
+
+<img width="300px" noZoom src="/images/workable/workable_logo.png" />
+
+This guidance assumes you have Super Admin privileges for your Workable account.
+
+
+Introduction to the Workable API
+
+ 
+
+Step 1: Generating Workable API key & enabling permissions
+Click on your user initials in the top right menu and open Settings > Apps.
+
+![Step 1](/images/workable/image1.png) 
+
+Scroll down and click Generate API Token. Give the token these minimum permissions:
+
+Name - (The SaaS you're creating this API token for - eg: StackOne)
+
+Expires in - 1 year (make a note internally that you will have to generate a new token before that time)
+
+Scopes - Minimum scopes for ATS are r_account, r_candidates, r_jobs,  w_account, w_candidates and r_jobs. 
+
+
+![Step 1](/images/workable/image2.png) 
+ 
+
+Click  Generate token.
+
+Copy your newly generated API key to a safe place. Then close the modal. 
+
+
+![Step 1](/images/workable/image3.png) 
+ 
+
+Step 2: Getting Company Subdomain 
+In Settings > Company profile copy the Subdomain.
+
+
+![Step 1](/images/workable/image4.png) 
+ 
+
+Step 3: Connect with StackOne
+In StackOne, ensure the Workable integration is enabled.  In Accounts > Link Account > Workable. Enter the api key and subdomain copied from earlier and click the Connect.
+
+![Step 1](/images/workable/image5.png) 
+
+
+
+<IntegrationFooter />

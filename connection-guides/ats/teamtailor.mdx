@@ -1,0 +1,111 @@
+---
+title: 'Teamtailor'
+description: 'If you have been directed to StackOne to integrate with Teamtailor, the following steps will help you understand the process and any necessary actions to configure successful integration.'
+---
+
+import IntegrationFooter from '/snippets/integration-footer.mdx';
+
+<img width="300px" noZoom src="/images/teamtailor/teamtailor_logo.png" />
+
+This guidance assumes you have Admin privileges for your Teamtailor account.
+
+
+Using Teamtailor API
+
+ 
+
+Step 1: Generating API key and getting Company ID
+In your Teamtailor account, click on Settings.
+​
+![Step 1](/images/teamtailor/image1.png) 
+
+
+On the left-hand menu under the integrations header, find API keys.
+​
+
+![Step 1](/images/teamtailor/image2.png) 
+
+Click the New API Key button at the top right of the page.
+​
+
+![Step 1](/images/teamtailor/image3.png) 
+
+Enter a descriptive name, set the scope to admin and permissions, where only Read is required.
+​
+![Step 1](/images/teamtailor/image4.png) 
+
+
+Copy 📋 the API key to a safe place.
+​
+
+![Step 1](/images/teamtailor/image5.png) 
+
+Make a note of the company ID, which is part of the URL as shown below:
+
+![Step 1](/images/teamtailor/image6.png) 
+
+Step 2: Get user credentials
+You will also need to provide a user email and password. It is recommended that you set up a new account for integration purposes. 
+
+Find the employees tab and click the ➕ to create a new employee.
+​
+![Step 1](/images/teamtailor/image7.png) 
+
+
+Fill out the required fields and set the Role to Recruitment Admin. This will ensure the account has the correct permissions.
+​
+
+![Step 1](/images/teamtailor/image8.png) 
+
+Click Add employee.
+​
+
+![Step 1](/images/teamtailor/image9.png) 
+
+The email address you entered will receive an invitation.
+​
+
+![Step 1](/images/teamtailor/image10.png) 
+
+Click Create account, you may have to log out of your current account to create the password.
+​
+If you have not received an invitation, you can go to the Employees tab again as in step 2.1 and click on the user's pencil ✏️ icon to edit their profile.
+​
+
+![Step 1](/images/teamtailor/image11.png) 
+
+
+You will see a link to the invitation, and you can click through this to set up the account.
+​
+
+![Step 1](/images/teamtailor/image12.png) 
+
+You should now have the account email address and password to proceed with the Hub.
+​
+
+⚠️ If your account uses SSO, you may have to create the account differently:
+
+ Follow steps 2.1 to 2.2 inclusive to create the employee, you will then have to exclude the employee from SSO, under the heading Exclude individual users from SSO login, as detailed here: 
+
+Teamtailor Support - Using Single Sign On
+After the user has been excluded, ensure a password is set. You may have to edit the permissions of the user by accessing the Employees tab and clicking on the gear ⚙️ here:
+​
+![Step 1](/images/teamtailor/image13.png) 
+
+
+
+You will see a page similar to step 2.2, where you can set the role to Recruitment admin.
+
+Step 2.3b Accounts with Single Sign-On (SSO)
+ 
+
+Step 3: Input the collected inputs into the StackOne Hub
+Upon reaching the Link Account page, enter the gathered details and proceed by clicking the Connect button.
+​
+
+![Step 1](/images/teamtailor/image14.png) 
+
+ 
+
+
+<IntegrationFooter />

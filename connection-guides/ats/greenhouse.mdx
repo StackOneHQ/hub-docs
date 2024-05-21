@@ -1,0 +1,84 @@
+---
+title: 'Greenhouse'
+description: 'If you have been directed to StackOne to integrate with Greenhouse, the following steps will help you understand the process and any necessary actions to configure successful integration.'
+---
+
+import IntegrationFooter from '/snippets/integration-footer.mdx';
+
+<img width="300px" noZoom src="/images/greenhouse/greenhouse_logo.png" />
+
+This guidance assumes you have Admin privileges for your Greenhouse account.
+
+
+Introduction to Greenhouse Harvest API
+
+ 
+
+Step 1: Generating Harvest API key & enabling permissions
+Click on Configure gear ⚙️ and open Dev Center > API credentials.
+​
+
+![Step 1](/images/greenhouse/image1.png) 
+
+Click Create new API key. Specify the following parameters:
+
+API type – Harvest
+
+Partner – Custom
+
+Description – "Describe_your_integration"
+​
+
+![Step 2](/images/greenhouse/image2.png) 
+
+Click Manage permissions.
+
+Copy your newly generated API key to a safe place. Then click I have stored the API key.
+​
+
+![Step 3](/images/greenhouse/image3.png) 
+
+In the Manage permissions page, enable Select all and click Save.
+​
+
+![Step 4](/images/greenhouse/greenhouse_permissions.gif) 
+
+ 
+
+Step 2: Generating Job Board API key & getting User ID
+In the API credentials page, click Create new API key. Specify the following parameters:
+
+API type – Job Board
+
+Partner – Custom
+
+Description – "Describe_your_integration"
+
+
+![Step 4](/images/greenhouse/image4.png) 
+ 
+
+Click Create.
+
+Copy your Job Board API key to a safe place. Then click I have stored the API key.
+​
+
+
+![Step 5](/images/greenhouse/image5.png) 
+​ 
+
+Step 3: Retrieve a greenhouse User ID
+Per the Greenhouse documentation, you can get a user ID by going to the users page, select a user with Site Admin permission and retrieve the user ID present in the URL: 
+
+Screenshot of an example user ID
+ 
+
+![Step 6](/images/greenhouse/10577285508763.png) 
+ 
+
+Step 4: Connect with StackOne
+Enter the gathered details in the relevant inputs and proceed by clicking the Connect button.
+
+![Step 7](/images/greenhouse/F5PLzgbq4ZEu0KA2pDzz_i82EQ0cbhBzSMcna6Er9.gif) 
+ 
+<IntegrationFooter />
