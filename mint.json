@@ -15,37 +15,24 @@
       "to": "#07C983"
     }
   },
+  "redirects": [
+    {
+      "source": "/en/articles/7727335-ashby",
+      "destination": "/connection-guides/ats/ashby"
+    }
+  ],
   "topbarLinks": [
     {
       "name": "Support",
       "url": "mailto:integrations@stackone.com"
     }
   ],
-  "primaryTab": {
-    "name": "Connection Guides"
-  },
-  "tabs": [
-    {
-      "name": "Integration Guides",
-      "url": "integration-guides"
-    }
-  ],
   "navigation": [
     {
       "group": "",
       "pages": [
-        "connection-guides/introduction",
-        "connection-guides/ats/ashby",
-        "connection-guides/ats/greenhouse",
-        "connection-guides/ats/lever",
-        "connection-guides/ats/pinpoint",
-        "connection-guides/ats/recruitee",
-        "connection-guides/ats/smartrecruiters",
-        "connection-guides/ats/teamtailor",
-        "connection-guides/ats/workable",
-        "integration-guides/introduction",
-        "integration-guides/lever",
-        "integration-guides/gusto"
+        "integrations",
+        "about"
       ]
     }
   ],
