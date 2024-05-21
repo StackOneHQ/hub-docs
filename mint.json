@@ -17,9 +17,309 @@
   },
   "redirects": [
     {
+      "source": "/en/articles/7965838-adp-workforce-now",
+      "destination": "/connection-guides/hris/adpworkforce"
+    },
+    {
+      "source": "/en/articles/8242616-airship",
+      "destination": "/connection-guides/marketing/airship"
+    },
+    {
       "source": "/en/articles/7727335-ashby",
       "destination": "/connection-guides/ats/ashby"
-    }
+    },
+    {
+      "source": "/en/articles/8181874-attio",
+      "destination": "/connection-guides/crm/attio"
+    },
+    {
+      "source": "/en/articles/7727323-bamboohr",
+      "destination": "/connection-guides/hris/bamboohr"
+    },
+    {
+      "source": "/en/articles/8065027-breathe-hr",
+      "destination": "/connection-guides/hris/breathhr"
+    },
+    {
+      "source": "/en/articles/8100055-braze",
+      "destination": "/connection-guides/marketing/braze"
+    },
+    {
+      "source": "/en/articles/9243011-factorial-hr-oauth-authentication",
+      "destination": "/connection-guides/hris/factorial"
+    },
+    {
+      "source": "/en/articles/7727805-greenhouse",
+      "destination": "/connection-guides/ats/greenhouse"
+    },
+    {
+      "source": "/en/articles/8110245-gusto",
+      "destination": "/connection-guides/hris/gusto"
+    },
+    {
+      "source": "/en/articles/7727333-hailey-hr",
+      "destination": "/connection-guides/hris/haileyhr"
+    },
+    {
+      "source": "/en/articles/7727130-hibob-api-key-authentication",
+      "destination": "/connection-guides/hris/hibob"
+    },
+    {
+      "source": "/en/articles/8233374-hibob-service-user-authentication",
+      "destination": "/connection-guides/hris/hibob"
+    },
+    {
+      "source": "/en/articles/8019979-hr-cloud",
+      "destination": "/connection-guides/hris/hrcloud"
+    },
+    {
+      "source": "/en/articles/8005663-hubspot",
+      "destination": "/connection-guides/crm/hubspot"
+    },
+    {
+      "source": "/en/articles/7845765-humaans",
+      "destination": "/connection-guides/hris/humaans"
+    },
+    {
+      "source": "/en/articles/7992510-lever",
+      "destination": "/connection-guides/ats/lever"
+    },
+    {
+      "source": "/en/articles/9184304-oracle-hcm-hris",
+      "destination": "/connection-guides/hris/oraclehcm"
+    },
+    {
+      "source": "/en/articles/8003993-personio",
+      "destination": "/connection-guides/hris/personio"
+    },
+    {
+      "source": "/en/articles/9128239-personio-custom-integrations",
+      "destination": "/connection-guides/hris/personio"
+    },
+    {
+      "source": "/en/articles/8010340-pinpoint",
+      "destination": "/connection-guides/ats/pinpoint"
+    },
+    {
+      "source": "/en/articles/8061700-pipedrive",
+      "destination": "/connection-guides/crm/pipedrive"
+    },
+    {
+      "source": "/en/articles/9240078-pipedrive-oauth-authentication",
+      "destination": "/connection-guides/crm/pipedrive"
+    },
+    {
+      "source": "/en/articles/7991787-recruitee",
+      "destination": "/connection-guides/ats/recruitee"
+    },
+    {
+      "source": "/en/articles/7727134-sage-hr",
+      "destination": "/connection-guides/hris/sagehr"
+    },
+    {
+      "source": "/en/articles/8102929-salesforce",
+      "destination": "/connection-guides/crm/salesforce"
+    },
+    {
+      "source": "/en/articles/7980520-sap-successfactors",
+      "destination": "/connection-guides/ats/sapsuccessfactors"
+    },
+    {
+      "source": "/en/articles/8679764-smartrecruiters",
+      "destination": "/connection-guides/ats/smartrecruiters"
+    },
+    {
+      "source": "/en/articles/7727336-teamtailor",
+      "destination": "/connection-guides/ats/teamtailor"
+    },
+    {
+      "source": "/en/articles/7727136-ukg-pro",
+      "destination": "/connection-guides/hris/ukgpro"
+    },
+    {
+      "source": "/en/articles/7727326-ukg-ready",
+      "destination": "/connection-guides/hris/ukgready"
+    },
+    {
+      "source": "/en/articles/8911806-workable",
+      "destination": "/connection-guides/ats/workable"
+    },
+    {
+      "source": "/en/articles/7727140-workday",
+      "destination": "/connection-guides/hris/workday"
+    },
+    {
+      "source": "/en/articles/9154510-zelt",
+      "destination": "/connection-guides/hris/zelt"
+    },
+    {
+      "source": "/en/articles/9202100-ashby-iam",
+      "destination": "/connection-guides/iam/ashby"
+    },
+    {
+      "source": "/en/articles/9204301-attio-iam",
+      "destination": "/connection-guides/iam/attio"
+    },
+    {
+      "source": "/en/articles/9233387-autodesk-iam",
+      "destination": "/connection-guides/iam/autodesk"
+    },
+    {
+      "source": "/en/articles/9209134-bitwarden-iam",
+      "destination": "/connection-guides/iam/bitwarden"
+    },
+    {
+      "source": "/en/articles/9216008-canva-iam",
+      "destination": "/connection-guides/iam/canva"
+    },
+    {
+      "source": "/en/articles/9185078-contentful-iam",
+      "destination": "/connection-guides/iam/contentful"
+    },
+    {
+      "source": "/en/articles/9210132-dixa-iam",
+      "destination": "/connection-guides/iam/dixa"
+    },
+    {
+      "source": "/en/articles/9305125-domo-iam",
+      "destination": "/connection-guides/iam/domo"
+    },
+    {
+      "source": "/en/articles/9311268-duo-iam",
+      "destination": "/connection-guides/iam/duo"
+    },
+    {
+      "source": "/en/articles/9246292-elastic-iam",
+      "destination": "/connection-guides/iam/elastic"
+    },
+    {
+      "source": "/en/articles/9272199-envoy-iam",
+      "destination": "/connection-guides/iam/envoy"
+    },
+    {
+      "source": "/en/articles/9307620-fivetran-iam",
+      "destination": "/connection-guides/iam/fivetran"
+    },
+    {
+      "source": "/en/articles/9215663-freshsales-iam",
+      "destination": "/connection-guides/iam/freshsales"
+    },
+    {
+      "source": "/en/articles/9214020-greenhouse-iam",
+      "destination": "/connection-guides/iam/greenhouse"
+    },
+    {
+      "source": "/en/articles/9232867-harvest-iam",
+      "destination": "/connection-guides/iam/harvest"
+    },
+    {
+      "source": "/en/articles/9306105-intercom-iam",
+      "destination": "/connection-guides/iam/intercom"
+    },
+    {
+      "source": "/en/articles/9306297-jetbrains-iam",
+      "destination": "/connection-guides/iam/jetbrains"
+    },
+    {
+      "source": "/en/articles/9116272-klaviyo-iam",
+      "destination": "/connection-guides/iam/klaviyo"
+    },
+    {
+      "source": "/en/articles/9182159-lastpass-iam",
+      "destination": "/connection-guides/iam/lastpass"
+    },
+    {
+      "source": "/en/articles/9184670-leapsome-iam",
+      "destination": "/connection-guides/iam/leapsome"
+    },
+    {
+      "source": "/en/articles/9205476-lever-iam",
+      "destination": "/connection-guides/iam/lever"
+    },
+    {
+      "source": "/en/articles/9312093-netlify-iam",
+      "destination": "/connection-guides/iam/netlify"
+    },
+    {
+      "source": "/en/articles/9312281-onelogin-iam",
+      "destination": "/connection-guides/iam/onelogin"
+    },
+    {
+      "source": "/en/articles/8756657-oracle-hcm-iam",
+      "destination": "/connection-guides/iam/oracle-hcm"
+    },
+    {
+      "source": "/en/articles/9205667-pinpoint-iam",
+      "destination": "/connection-guides/iam/pinpoint"
+    },
+    {
+      "source": "/en/articles/9205660-pipedrive-api-token-authentication-iam",
+      "destination": "/connection-guides/iam/pipedrive-api-token-authentication"
+    },
+    {
+      "source": "/en/articles/9323665-pipedrive-oauth-authentication-iam",
+      "destination": "/connection-guides/iam/pipedrive-oauth-authentication"
+    },
+    {
+      "source": "/en/articles/9205677-pipedrive-iam",
+      "destination": "/connection-guides/iam/pipedrive"
+    },
+    {
+      "source": "/en/articles/9205657-recruitee-iam",
+      "destination": "/connection-guides/iam/recruitee"
+    },
+    {
+      "source": "/en/articles/9211915-render-iam",
+      "destination": "/connection-guides/iam/render"
+    },
+    {
+      "source": "/en/articles/9211924-salesloft-iam",
+      "destination": "/connection-guides/iam/salesloft"
+    },
+    {
+      "source": "/en/articles/9306432-scaleway-iam",
+      "destination": "/connection-guides/iam/scaleway"
+    },
+    {
+      "source": "/en/articles/9205654-smartrecruiters-iam",
+      "destination": "/connection-guides/iam/smartrecruiters"
+    },
+    {
+      "source": "/en/articles/9311488-tableau-iam",
+      "destination": "/connection-guides/iam/tableau"
+    },
+    {
+      "source": "/en/articles/9205609-teamtailor-iam",
+      "destination": "/connection-guides/iam/teamtailor"
+    },
+    {
+      "source": "/en/articles/9246417-terraform-iam",
+      "destination": "/connection-guides/iam/terraform"
+    },
+    {
+      "source": "/en/articles/9232740-toggl-iam",
+      "destination": "/connection-guides/iam/toggl"
+    },
+    {
+      "source": "/en/articles/9130695-webex-iam",
+      "destination": "/connection-guides/iam/webex"
+    },
+    {
+      "source": "/en/articles/9205615-workable-iam",
+      "destination": "/connection-guides/iam/workable"
+    },
+    {
+      "source": "/en/articles/9205516-zelt-iam",
+      "destination": "/connection-guides/iam/zelt"
+    },
+    {
+      "source": "/en/articles/9335325-egnyte-iam",
+      "destination": "/connection-guides/iam/egnyte"
+    },
+    {
+      "source": "/en/articles/9335670-dropbox-iam",
+      "destination": "/connection-guides/iam/dropbox"
+    }    
   ],
   "topbarLinks": [
     {
