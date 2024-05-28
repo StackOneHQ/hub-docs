@@ -1,84 +1,103 @@
 ---
-title: 'Greenhouse'
-description: 'If you have been directed to StackOne to integrate with Greenhouse, the following steps will help you understand the process and any necessary actions to configure successful integration.'
+title: "Greenhouse"
+description: "If you have been directed to StackOne to integrate with Greenhouse, the following steps will help you understand the process and any necessary actions to configure successful integration."
 ---
 
-import IntegrationFooter from '/snippets/integration-footer.mdx';
+import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<img width="300px" noZoom="true" src="/images/greenhouse/greenhouse_logo.png" />
-
-This guidance assumes you have Admin privileges for your Greenhouse account.
-
-
-Introduction to Greenhouse Harvest API
-
- 
-
-Step 1: Generating Harvest API key & enabling permissions
-Click on Configure gear ⚙️ and open Dev Center > API credentials.
-​
-
-![Step 1](/images/greenhouse/image1.png) 
-
-Click Create new API key. Specify the following parameters:
-
-API type – Harvest
-
-Partner – Custom
-
-Description – "Describe_your_integration"
-​
-
-![Step 2](/images/greenhouse/image2.png) 
-
-Click Manage permissions.
-
-Copy your newly generated API key to a safe place. Then click I have stored the API key.
-​
-
-![Step 3](/images/greenhouse/image3.png) 
-
-In the Manage permissions page, enable Select all and click Save.
-​
-
-![Step 4](/images/greenhouse/greenhouse_permissions.gif) 
-
- 
-
-Step 2: Generating Job Board API key & getting User ID
-In the API credentials page, click Create new API key. Specify the following parameters:
-
-API type – Job Board
-
-Partner – Custom
-
-Description – "Describe_your_integration"
+<Warning>
+  This guidance assumes you have Admin privileges for your Greenhouse account.
+</Warning>
 
 
-![Step 4](/images/greenhouse/image4.png) 
- 
+## Generating Harvest API Key
 
-Click Create.
+<Steps>
+  <Step title="Open the Configuration Page">
+    Click on Configure gear ⚙️ and open Dev Center > API credentials.
+    ​
+    <Frame>
+      ![Step 1](/images/greenhouse/image1.png)   
+    </Frame>
+  </Step>
+  <Step title="Create a New API Key">
+    Click Create new API key. Specify the following parameters:
 
-Copy your Job Board API key to a safe place. Then click I have stored the API key.
-​
+    API type – Harvest
+
+    Partner – Custom
+
+    Description – "Describe_your_integration"
+    ​
+    <Frame>
+      ![Step 2](/images/greenhouse/image2.png) 
+    </Frame>
+  </Step>
+  <Step title="Generate and Save the API Key">
+    Click Manage permissions.
+
+    Copy your newly generated API key to a safe place. Then click I have stored the API key.
+
+    <Frame>
+      ![Step 3](/images/greenhouse/image3.png)
+    </Frame>
+  </Step>
+  <Step title="Enabling Permissions">
+    In the Manage permissions page, enable Select all and click Save.
+    ​
+    <Frame>
+      ![Step 4](/images/greenhouse/greenhouse_permissions.gif)
+    </Frame>
+  </Step>
+</Steps>
+
+## Generating Job Board API Key
+<Steps> 
+  <Step title="Create Job Board API Key">
+    In the API credentials page, click Create new API key. Specify the following parameters:
+
+    API type – Job Board
+
+    Partner – Custom
+
+    Description – "Describe_your_integration"
+
+    <Frame>
+    ![Step 4](/images/greenhouse/image4.png)
+    </Frame>
+
+    Click Create.
+  </Step>
+  <Step title="Save the API Key">
+    Copy your Job Board API key to a safe place. Then click I have stored the API key.
+  
+    <Frame>
+    ![Step 5](/images/greenhouse/image5.png)
+    </Frame>
+  </Step>
+</Steps>
 
 
-![Step 5](/images/greenhouse/image5.png) 
-​ 
 
-Step 3: Retrieve a greenhouse User ID
-Per the Greenhouse documentation, you can get a user ID by going to the users page, select a user with Site Admin permission and retrieve the user ID present in the URL: 
+
+## Retrieve a greenhouse User ID
+Per the Greenhouse documentation, you can get a user ID by going to the users page, select a user with Site Admin permission and retrieve the user ID present in the URL:
 
 Screenshot of an example user ID
- 
 
-![Step 6](/images/greenhouse/10577285508763.png) 
- 
+<Frame>
+![Step 6](/images/greenhouse/10577285508763.png)
+</Frame>
 
-Step 4: Connect with StackOne
+## Connect with StackOne
 Enter the gathered details in the relevant inputs and proceed by clicking the Connect button.
 
-![Step 7](/images/greenhouse/F5PLzgbq4ZEu0KA2pDzz_i82EQ0cbhBzSMcna6Er9.gif) 
- 
+<Frame>
+![Step 7](/images/greenhouse/F5PLzgbq4ZEu0KA2pDzz_i82EQ0cbhBzSMcna6Er9.gif)
+</Frame>
+
 <IntegrationFooter />
+
+<Card title="Useful Links" icon="link" href="/content/components/card-group">
+  Greenhouse API reference: https://developers.greenhouse.io/harvest.html
+</Card>

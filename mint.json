@@ -2,18 +2,15 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "StackOne Hub Documentation",
   "logo": {
-    "dark": "/logo/stackone_logo_green_white.svg",
-    "light": "/logo/stackone_logo_green.svg"
+    "dark": "/logo/stackone-green-white-140in212.png",
+    "light": "/logo/stackone-green-140in212.png",
+    "href": "https://stackone.com"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
+    "primary": "#05C168",
     "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
-    }
+    "dark": "#0D9373"
   },
   "redirects": [
     {
