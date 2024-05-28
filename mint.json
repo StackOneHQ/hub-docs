@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "StackOne Hub Documentation",
   "logo": {
-    "dark": "/logo/stackone_green__white_logo-140in212.svg",
+    "dark": "/logo/stackone_green_white_logo-140in212.svg",
     "light": "/logo/stackone_green_logo-140in212.svg",
     "href": "https://stackone.com"
   },
