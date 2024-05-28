@@ -1,38 +1,85 @@
 ---
-title: 'Placeholder'
-description: 'If you have been directed to StackOne to integrate with PLACEHOLDER, the following steps will help you understand the process and any necessary actions to configure successful integration.'
+title: "Airship"
+description: "Follow these steps to connect Airship with StackOne Hub successfully."
 ---
 
-import IntegrationFooter from '/snippets/integration-footer.mdx';
+import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<img width="300px" noZoom="true" src="/images/placeholder/placeholder_logo.png" />
+<Warning>
+  Ensure you have Admin privileges for your Airship account.
+</Warning>
 
-<Warning>The following guidance assumes you have Admin privileges for your PLACEHOLDER account.</Warning>
+If you've been directed to StackOne to integrate with Airship, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
- 
-## Generating an API Key
+## Find your Airship region (EU or US)
 
-Sign in to your account and click the Admin ⚙️ button on the top bar.
+<Steps>
+  <Step title="Login to Airship">
+    Login to your Airship tenant.
 
-In the left menu bar, click on Integrations to expand the menu and then click on API Keys.
-​
-<img className='rounded-md' style={{ border: '1px solid #efefef' }} alt="API Keys page" src="/images/placeholder/image1.png" />
+    Check your browser's URL bar. The URL will indicate which region you are on:
+    `https://go.urbanairship.com` - US
+    `https://go.airship.eu/` - EU
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Airship Region" src="/images/airship/image1.png" />
+    </Frame>
+  </Step>
+</Steps>
 
+## Retrieve your App Key
 
-Click on the ➕ New button to create a new API Key and name it appropriately.
+<Steps>
+  <Step title="Select Project">
+    Select the project you want to connect.
 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Project" src="/images/airship/image2.png" />
+    </Frame>
+  </Step>
 
-## Use the API Key in the StackOne Hub
-Upon reaching the Link Account page, enter the generated API key and proceed by clicking the Connect button.
+  <Step title="Select Settings">
+    Select Settings.
 
-<img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="Access Token Created" src="/images/placeholder/image2.png" />
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Settings" src="/images/airship/image3.png" />
+    </Frame>
+  </Step>
 
+  <Step title="Copy App Key">
+    Within Project Details on the right side, copy the App Key.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="App Key" src="/images/airship/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Retrieve your Master Secret
+
+<Steps>
+  <Step title="Reveal Master Secret">
+    Within the Project Details panel, select "Click to reveal" next to Master Secret.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Reveal Master Secret" src="/images/airship/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Master Secret">
+    Copy the contents of Master Secret.
+  </Step>
+</Steps>
+
+## Input the collected inputs into the StackOne hub
+
+<Steps>
+  <Step title="Enter the Details">
+    On the link account page, enter the details you have collected and click the `Connect` button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/airship/image6.png" />
+    </Frame>
+  </Step>
+</Steps>
 
 <IntegrationFooter />
-
-
-<br/>
-
-<Card title="Useful Links" icon="link" href="/content/components/card-group">
-  PLACEHOLDER API reference: https://developers.ashbyhq.com/reference/introduction
-</Card>
