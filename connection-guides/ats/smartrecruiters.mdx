@@ -1,94 +1,90 @@
 ---
-title: 'SmartRecruiters'
-description: 'If you have been directed to StackOne to integrate with SmartRecruiters, the following steps will help you understand the process and any necessary actions to configure successful integration.'
+title: "SmartRecruiters"
+description: "Follow these steps to connect SmartRecruiters with StackOne Hub successfully."
 ---
 
-import IntegrationFooter from '/snippets/integration-footer.mdx';
+import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<img width="300px" noZoom="true" src="/images/smartrecruiters/smartrecruiters_logo.png" />
+<Warning>
+  Ensure you have Admin privileges for your SmartRecruiters account.
+</Warning>
 
-This guidance assumes you have Admin privileges for your SmartRecruiters account.
+If you've been directed to StackOne to integrate with SmartRecruiters, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
- 
+## Generating Client ID and Clients Secret
 
-SmartRecruiters — Counterview Capital
- 
+<Steps>
+  <Step title="Navigate to Settings">
+    On the Home page, click on your Account avatar and select Settings.
 
-Getting Started with SmartRecruiters API
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Account Avatar" src="/images/smartrecruiters/image1.png" />
+    </Frame>
+  </Step>
 
- 
+  <Step title="Go to Apps & Integrations">
+    On the Settings page, click on Apps & Integrations under the Administration section.
 
-Step 1: Generating Client ID and Clients Secret.
-1.On the Home page, click on your Account avatar and select Settings.
-​
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Apps & Integrations" src="/images/smartrecruiters/image2.png" />
+    </Frame>
+  </Step>
 
-![Step 1](/images/humaans/image1.png) 
+  <Step title="Open Credentials">
+    On the Apps & Integrations page, click on CREDENTIALS.
 
- 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Credentials" src="/images/smartrecruiters/image3.png" />
+    </Frame>
+  </Step>
 
+  <Step title="Create New Credentials">
+    On the CREDENTIALS page, click on the NEW CREDENTIALS button.
 
- 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="New Credentials" src="/images/smartrecruiters/image4.png" />
+    </Frame>
+  </Step>
 
-2.On the Settings page, click on Apps & Integrations under Administrations section.
+  <Step title="Select OAuth Client ID">
+    Under the NEW CREDENTIALS section, select OAuth client ID then click on the NEXT button.
 
- 
-![Step 2](/images/humaans/image2.png) 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="OAuth Client ID" src="/images/smartrecruiters/image5.png" />
+    </Frame>
+  </Step>
 
+  <Step title="Generate Client ID and Secret">
+    On the OAuth client ID page, fill in the required Fields and select Scope, then click on the GENERATE button at the bottom of the page.
 
- 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate Credentials" src="/images/smartrecruiters/image6.png" />
+    </Frame>
+  </Step>
 
-3. On the Apps & Integrations page, click on CREDENTIALS.
+  <Step title="Copy Client ID and Secret">
+    Copy your Client ID and Clients Secret by clicking Clipboard.
 
- 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Credentials" src="/images/smartrecruiters/image7.png" />
+    </Frame>
+  </Step>
+</Steps>
 
-![Step 3](/images/humaans/image3.png) 
+## Utilizing Client ID and Clients Secret
 
- 
+<Steps>
+  <Step title="Enter the Details">
+    Upon reaching the Link Account page, enter the gathered details and proceed by clicking the `Connect` button.
 
- 
-
-4. On the CREDENTIALS page, click on NEW CREDENTIALS button.
-
- 
-![Step 4](/images/humaans/image4.png) 
-
-
- 
-
-5. Under NEW CREDENTIALS section, select OAuth client ID then click on NEXT button.
-
- 
-
-![Step 5](/images/humaans/image5.png) 
-
- 
-
-6. On OAuth client ID page, fill the required Fields and select Scope, then click on GENERATE button at the bottom of the page.
-
- 
-![Step 6](/images/humaans/image6.png) 
-
-
- 
-
-7.Copy your Client ID and Clients Secret by clicking Clipboard.
-​
-
-![Step 7](/images/humaans/image7.png) 
-
- 
-
- 
-
-Step 2: Utilising Client ID and Clients Secret.
-Upon reaching the Link Account page, enter the gathered details and proceed by clicking the Connect button.
-
- 
-![Step 8](/images/humaans/image8.png) 
-
-
- 
-
-
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/smartrecruiters/image8.png" />
+    </Frame>
+  </Step>
+</Steps>
 
 <IntegrationFooter />
+
+<Card title="Useful Links" icon="link" href="/content/components/card-group">
+  SmartRecruiters API documentation: https://developers.smartrecruiters.com
+</Card>

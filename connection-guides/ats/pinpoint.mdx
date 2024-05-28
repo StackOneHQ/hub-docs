@@ -1,87 +1,112 @@
 ---
-title: 'Pinpoint'
-description: 'If you have been directed to StackOne to integrate with Pinpoint, the following steps will help you understand the process and any necessary actions to configure successful integration.'
+title: "Pinpoint"
+description: "Follow these steps to connect Pinpoint with StackOne Hub successfully."
 ---
 
-import IntegrationFooter from '/snippets/integration-footer.mdx';
+import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<img width="300px" noZoom="true" src="/images/pinpoint/pinpoint_logo.png" />
+<Warning>
+  Ensure you have Admin privileges for your Pinpoint account.
+</Warning>
 
 If you've been directed to StackOne to integrate with Pinpoint, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
-This guidance assumes you have Admin privileges for your Pinpoint account.
+## Getting your Subdomain
 
+<Steps>
+  <Step title="Find the Subdomain">
+    In the URL bar of your browser, you can find the subdomain by selecting the text in front of `.pinpointhq.com`.
 
-Pinpoint API introduction
-
-
-Step 1: Getting your Subdomain
-In the URL bar of your browser, you can find the subdomain by selecting the text in front of .pinpointhq.com
-​
-![Step 1](/images/pinpoint/image1.png) 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Subdomain Example" src="/images/pinpoint/image1.png" />
+    </Frame>
+  </Step>
+</Steps>
 
 In this example, the value would be: stackone
 
+## Generating API Key
 
-Step 2: Generating API Key
-In the left Sidebar, scroll down to the Settings category and select Integrations.​
+<Steps>
+  <Step title="Navigate to Integrations">
+    In the left Sidebar, scroll down to the Settings category and select Integrations.
+  </Step>
 
-Select the Apps tab and ensure that the Pinpoint API app is Added.
-​
- ![Step 2](/images/pinpoint/image2.png) 
+  <Step title="Select the Apps Tab">
+    Select the Apps tab and ensure that the Pinpoint API app is Added.
 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Integrations" src="/images/pinpoint/image2.png" />
+    </Frame>
+  </Step>
 
- 
+  <Step title="Select MyApps Tab">
+    Select the MyApps tab and select the Pinpoint API app.
 
-Select the MyApps tab and select the Pinpoint API app.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="MyApps" src="/images/pinpoint/image3.png" />
+    </Frame>
+  </Step>
 
- ![Step 3](/images/pinpoint/image3.png) 
+  <Step title="Enable the API">
+    Ensure that the slider to the right-hand side of the upper panel is set to Enabled.
+  </Step>
 
- 
+  <Step title="Create a New API Key">
+    Select the Create New button to create a new API Key.
 
-Ensure that the slider to the right-hand side of the upper panel is set to Enabled.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create API Key" src="/images/pinpoint/image4.png" />
+    </Frame>
+  </Step>
 
-Then select the Create New button to create a new API Key.
+  <Step title="Name the API Key">
+    Enter a Name for the API Key, for example: `StackOne`.
+  </Step>
 
+  <Step title="Assign Permissions">
+    Assign Read permissions based on the Integration requirements:
+    - Application
+    - Department
+    - Interview
+    - Job
+    - Location
+    - Scorecard
+    - Custom fields
+    - User
+  </Step>
 
- ![Step 4](/images/pinpoint/image4.png) 
- 
+  <Step title="Create API Key">
+    Select Create API Key.
 
-Enter a Name for the API Key, for example: StackOne
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generated API Key" src="/images/pinpoint/image5.png" />
+    </Frame>
+  </Step>
 
-Assign Read permissions for the following categories:
+  <Step title="Copy the API Key">
+    Your API Key will be generated and displayed to you. Copy the API Key to a safe place.
 
-Application
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Key" src="/images/pinpoint/image6.png" />
+    </Frame>
+  </Step>
+</Steps>
 
-Department
+## Connecting with StackOne
 
-Interview
+<Steps>
+  <Step title="Enter the Details">
+    Upon reaching the Link Account page, enter the gathered details and proceed by clicking the `Connect` button.
 
-Job
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/pinpoint/image7.png" />
+    </Frame>
+  </Step>
+</Steps>
 
-Location
-
-Scorecard
-
-Custom fields
-
-User
-
-Select Create API Key.
-​
-
- ![Step 5](/images/pinpoint/image5.png) 
-
-Your API Key will be generated and displayed to you. 📋 Copy the API Key to a safe place.
-​
-
- ![Step 6](/images/pinpoint/image6.png) 
-​
-
-Step 3: Connecting with StackOne
-Upon reaching the Link Account page, enter the gathered details and proceed by clicking the Connect button.
-​
-
- ![Step 7](/images/pinpoint/image7.png) 
-  
 <IntegrationFooter />
+
+<Card title="Useful Links" icon="link" href="/content/components/card-group">
+  Pinpoint API documentation: https://pinpointhq.com/api-documentation
+</Card>

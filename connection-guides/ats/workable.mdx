@@ -1,56 +1,69 @@
 ---
-title: 'Workable'
-description: 'If you have been directed to StackOne to integrate with Workable, the following steps will help you understand the process and any necessary actions to configure successful integration.'
+title: "Workable"
+description: "If you've been directed to StackOne to integrate with Workable, the following steps will help you understand the process and any necessary actions to configure successful integration."
 ---
 
-import IntegrationFooter from '/snippets/integration-footer.mdx';
+import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<img width="300px" noZoom="true" src="/images/workable/workable_logo.png" />
+<Warning>
+  This guidance assumes you have Super Admin privileges for your Workable account.
+</Warning>
 
-This guidance assumes you have Super Admin privileges for your Workable account.
+## Generating Workable API key & enabling permissions
 
+<Steps>
+  <Step title="Open Settings">
+    Click on your user initials in the top right menu and open <b>Settings > Apps</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings menu" src="/images/workable/image1.png" />
+    </Frame>
+  </Step>
 
-Introduction to the Workable API
+  <Step title="Generate API Token">
+    Scroll down and click <b>Generate API Token</b>. Give the token these minimum permissions:
 
- 
+    - Name - (The SaaS you're creating this API token for - eg: StackOne)
+    - Expires in - 1 year (make a note internally that you will have to generate a new token before that time)
+    - Scopes - This integration requires minimum scopes:  r_account, r_candidates, r_jobs,  w_account, w_candidates and r_jobs. 
 
-Step 1: Generating Workable API key & enabling permissions
-Click on your user initials in the top right menu and open Settings > Apps.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate API Token" src="/images/workable/image2.png" />
+    </Frame>
+  </Step>
 
-![Step 1](/images/workable/image1.png) 
+  <Step title="Generate Token">
+    Click <b>Generate token</b>.
+  </Step>
 
-Scroll down and click Generate API Token. Give the token these minimum permissions:
+  <Step title="Copy API Key">
+    Copy your newly generated API key to a safe place. Then close the modal.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API key" src="/images/workable/image3.png" />
+    </Frame>
+  </Step>
+</Steps>
 
-Name - (The SaaS you're creating this API token for - eg: StackOne)
+## Getting Company Subdomain
 
-Expires in - 1 year (make a note internally that you will have to generate a new token before that time)
+<Steps>
+  <Step title="Copy Subdomain">
+    In <b>Settings > Company profile</b>, copy the Subdomain.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company profile" src="/images/workable/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
 
-Scopes - Minimum scopes for ATS are r_account, r_candidates, r_jobs,  w_account, w_candidates and r_jobs. 
+## Connect with StackOne
 
+In StackOne, ensure the Workable integration is enabled. In <b>Accounts > Link Account > Workable</b>, enter the API key and subdomain copied from earlier and click the <b>Connect</b> button.
 
-![Step 1](/images/workable/image2.png) 
- 
-
-Click  Generate token.
-
-Copy your newly generated API key to a safe place. Then close the modal. 
-
-
-![Step 1](/images/workable/image3.png) 
- 
-
-Step 2: Getting Company Subdomain 
-In Settings > Company profile copy the Subdomain.
-
-
-![Step 1](/images/workable/image4.png) 
- 
-
-Step 3: Connect with StackOne
-In StackOne, ensure the Workable integration is enabled.  In Accounts > Link Account > Workable. Enter the api key and subdomain copied from earlier and click the Connect.
-
-![Step 1](/images/workable/image5.png) 
-
-
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect Workable" src="/images/workable/image5.png" />
+</Frame>
 
 <IntegrationFooter />
+
+<Card title="Useful Links" icon="link" href="/content/components/card-group">
+  Workable API reference: <a href="https://workable.readme.io/">https://workable.readme.io/</a>
+</Card>

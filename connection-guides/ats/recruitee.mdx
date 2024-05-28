@@ -1,47 +1,58 @@
 ---
-title: 'Recruitee'
-description: 'If you have been directed to StackOne to integrate with Recruitee, the following steps will help you understand the process and any necessary actions to configure successful integration.'
+title: "Recruitee"
+description: "Follow these steps to connect Recruitee with StackOne Hub successfully."
 ---
 
-import IntegrationFooter from '/snippets/integration-footer.mdx';
+import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<img width="300px" noZoom="true" src="/images/recruitee/recruitee_logo.png" />
+<Warning>
+  Ensure you have Admin privileges for your Recruitee account.
+</Warning>
 
-This guidance assumes you have Admin privileges for your Recruitee account.
+If you've been directed to StackOne to integrate with Recruitee, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
+## Generating API Key and getting Company ID
 
- 
+<Steps>
+  <Step title="Navigate to Personal API tokens">
+    Click on the Settings wheel ⚙️ and scroll down to the Personal API tokens section. Click New token.
 
-Getting Started with Recruitee
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Personal API Tokens" src="/images/recruitee/image1.png" />
+    </Frame>
+  </Step>
 
- 
+  <Step title="Assign a name to your token">
+    Assign a name to your token and specify the Verification Code sent to your email.
 
-Step 1: Generating API Key and getting Company ID
-Click on the Settings wheel ⚙️ and scroll down to the Personal API tokens section. Click New token.
-​
-![Step 1](/images/recruitee/image1.png) 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assign Token Name" src="/images/recruitee/image2.png" />
+    </Frame>
+  </Step>
 
+  <Step title="Copy your API token and locate your Company ID">
+    Copy your API token by clicking Clipboard and locate your Company ID.
 
-Assign a name to your token and specify the Verification Code sent to your email.
-​ 
-![Step 2](/images/recruitee/image2.png) 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Token" src="/images/recruitee/image3.png" />
+    </Frame>
+  </Step>
+</Steps>
 
+## Utilizing the API Key and Company ID
 
-Copy your API token by clicking Clipboard 📋 and locate your Company ID.
-​
+<Steps>
+  <Step title="Enter the Details">
+    Upon reaching the Link Account page, enter the gathered details and proceed by clicking the `Connect` button.
 
-![Step 3](/images/recruitee/image3.png) 
-
- 
-
-Step 2: Utilizing the API Key and Company ID
-Upon reaching the Link Account page, enter the gathered details and proceed by clicking the Connect button.
-
- 
-![Step 4](/images/recruitee/image4.png) 
-
-
- 
-
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/recruitee/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
 
 <IntegrationFooter />
+
+<Card title="Useful Links" icon="link" href="/content/components/card-group">
+  Recruitee API documentation: https://docs.recruitee.com
+</Card>

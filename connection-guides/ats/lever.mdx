@@ -1,57 +1,58 @@
 ---
-title: 'Lever'
-description: 'If you have been directed to StackOne to integrate with Lever, the following steps will help you understand the process and any necessary actions to configure successful integration.'
+title: "Lever"
+description: "Follow these steps to connect Lever with StackOne Hub successfully."
 ---
 
-import IntegrationFooter from '/snippets/integration-footer.mdx';
+import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<img className='rounded-lg' alt="API Keys page" src="/images/lever/Lever3.png" />
+<Warning>
+  Ensure you have Admin privileges for your Lever account.
+</Warning>
 
-This guidance assumes you have Admin privileges for your Lever account.
+If you've been directed to StackOne to integrate with Lever, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
+## Login to your Lever account
 
-Lever API documentation
+<Steps>
+  <Step title="Start the login process">
+    Click the Connect button to start the login process.
 
- 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect Button" src="/images/lever/image1.png" />
+    </Frame>
+  </Step>
 
-Step 1: Login to your Lever account
-Click the Connect button to start the login process.
-​
+  <Step title="Enter your credentials">
+    Enter your Lever credentials or use one of the sign-in options available that are connected to your Lever account.
 
-![Step 1](/images/lever/image1.png) 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Login Page" src="/images/lever/image2.png" />
+    </Frame>
+  </Step>
+</Steps>
 
+## Accept the Scopes required for the connection
 
-Enter your Lever credentials or use one of the sign-in options available that are connected to your Lever account.
-​
-
-![Step 2](/images/lever/image2.png) 
-
- 
-
-Step 2: Accept the Scopes required for the connection
 StackOne uses the following scopes to access data in your Lever account on behalf of the tool or platform you're integrating Lever with:
 
-View Archived-Reasons
-
-View Candidates Interviews
-
-View Candidates Notes
-
-View All Opportunities 
-
-View All Postings
-
-View All Stages
-
-View All Users
-
-View Opportunitie's Contacts
-
-Lastly, Offline Access allows us to refresh the login details so that the account doesn't have to be re-authenticated regularly.
+- `View Archived-Reasons`
+- `View Candidates Interviews`
+- `View Candidates Notes`
+- `View All Opportunities`
+- `View All Postings`
+- `View All Stages`
+- `View All Users`
+- `View Opportunitie's Contacts`
+- `Offline Access` allows us to refresh the login details so that the account doesn't have to be re-authenticated regularly.
 
 To continue, Accept the requested scopes.
 
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Scopes Page" src="/images/lever/image3.png" />
+</Frame>
 
-![Step 3](/images/lever/image3.png) 
- 
 <IntegrationFooter />
+
+<Card title="Useful Links" icon="link" href="/content/components/card-group">
+  Lever API documentation: https://hire.lever.co/developers
+</Card>

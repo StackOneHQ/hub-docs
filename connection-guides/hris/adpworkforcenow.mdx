@@ -1,0 +1,45 @@
+---
+title: "ADP Workforce Now"
+description: "Follow these steps to connect ADP Workforce Now with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your ADP Workforce Now account.
+</Warning>
+
+If you've been directed to StackOne to integrate with ADP Workforce Now, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Step 1: Getting your Client ID and Client Secret
+
+These are unique identifiers for your account. If you do not possess this information, please contact your ADP client representative.
+
+## Step 2: Generating a Certificate Signing Request (CSR)
+
+You'll need a CSR to ensure secure communication. Refer to ADP's guide for a step-by-step process.
+
+<a href="https://developers.adp.com/learn/how-to-articles/generate-a-certificate-signing-request" target="_blank" rel="noreferrer nofollow noopener" class="intercom-h2b-button">Generating a Certificate Signing Request</a>
+
+The procedures for generating a CSR for ADP may vary depending on your partnership status with them. Ensure you follow the instructions relevant to your situation in the CSR guide above.
+
+## Step 3: Connecting to StackOne
+
+1. Enter your Client ID and Client Secret from Step 1.
+2. Locate the certificate issued by ADP and your private.key files generated in Step 2.
+3. Copy the contents of these files.
+4. Paste the copied contents into the designated areas in StackOne.
+5. If you initially used a passphrase to generate the key, add the same passphrase into the `(Optional) Passphrase` input.
+6. Click the `Connect` button.
+
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="StackOne Credentials" src="/images/adpworkforcenow/stackone-credentials.png" />
+</Frame>
+
+Congratulations, you're all set! If you face any issues with the steps mentioned above, please contact us via the live chat button or by emailing integrations@stackone.com. We're always here to assist you!
+
+<IntegrationFooter />
+
+<Card title="Useful Links" icon="link" href="/content/components/card-group">
+  ADP API reference: https://developers.adp.com/articles/api/
+</Card>
