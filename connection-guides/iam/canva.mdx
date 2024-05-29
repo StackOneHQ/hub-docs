@@ -19,33 +19,33 @@ This guidance assumes that you are an Admin within Canva Teams.
   <Step title="Log in to Canva">
     Log in to your [Canva](https://www.canva.com) account and view your Account Settings.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Account Settings" src="/images/canva-iam/image1.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Account Settings" src="/images/canva/image1.png" />
     </Frame>
   </Step>
 
   <Step title="SSO & Provisioning">
     Click SSO & provisioning under your Team on the left.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="SSO & Provisioning" src="/images/canva-iam/image2.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="SSO & Provisioning" src="/images/canva/image2.png" />
     </Frame>
   </Step>
 
   <Step title="Get Info from Identity Provider">
     If you do not currently have an Identity Provider set up in Canva, enter the following information under Get info from your Identity Provider:
-    <ul>
-      <li>SAML 2.0 Endpoint (HTTP): `https://stackone.com/idp/endpoint/HttpPost`</li>
-      <li>Identity Provider Issuer: `StackOne`</li>
-      <li>x.509 Public Certificate:
+    - **SAML 2.0 Endpoint (HTTP)**: `https://stackone.com/idp/endpoint/HttpPost`
+    - **Identity Provider Issuer**: `StackOne`
+    - **x.509 Public Certificate**:
         <pre>MIICVjCCAb8CAg37MA0GCSqGSIb3DQEBBQUAMIGbMQswCQYDVQQGEwJKUDEOMAwGA1UECBMFVG9reW8xEDAOBgNVBAcTB0NodW8ta3UxETAPBgNVBAoTCEZyYW5rNEREMRgwFgYDVQQLEw9XZWJDZXJ0IFN1cHBvcnQxGDAWBgNVBAMTD0ZyYW5rNEREMlRlYlJQMTAxEzARBgNVBAMMCkZyYW5rNEREMDEwDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMYBBrx5PlP0WNI/ZdzD+6Pktmurn+F2kQYbtc7XQh8/LTBvCo+P6iZoLEmUA9e7EXLRxgU1CVqeAi7QcAn9MwBlc8ksFJHB0rtf9pmf8Oza9E0Bynlq/4/Kb1x+d+AyhL7oK9tQwB24uHOueHi1C/iVv8CSWKiYe6hzN1txYe8rAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAASPdjigJkXCqKWpnZ/Oc75EUcMi6HztaW8abUMlYXPIgkV2F7YanHOB7K4f7OOLjiz8DTPFfjC9UeuErhaA/zzWi8ewMTFZW/WshOrm3fNvcMrMLKtH534JKvcdMg6qIdjTFINIrevnAhf0cwULaebn+lMs8Pdl7y37+sfluVok=</pre>
-      </li>
-    </ul>
-    Note that this is an unused public certificate, and StackOne only performs Read operations in this connection. Click Save changes for Canva to validate the input.
+
+    <Note>
+    Note: this is an unused public certificate, and StackOne only performs Read operations in this connection. Click Save changes for Canva to validate the input.
+    </Note>
   </Step>
 
   <Step title="Enable SCIM Provisioning">
     Scroll down to Enable external user provisioning (optional), and Enable SCIM user provisioning. Copy your displayed SCIM Key (Access token) and store it safely.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="SCIM Provisioning" src="/images/canva-iam/image3.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="SCIM Provisioning" src="/images/canva/image3.png" />
     </Frame>
   </Step>
 </Steps>
@@ -56,7 +56,7 @@ This guidance assumes that you are an Admin within Canva Teams.
   <Step title="Enter SCIM Key">
     Upon reaching the Link Account page, enter the SCIM Key from the previous step.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/canva-iam/image4.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/canva/image4.png" />
     </Frame>
   </Step>
 
