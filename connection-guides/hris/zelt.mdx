@@ -1,38 +1,76 @@
 ---
-title: 'Placeholder'
-description: 'If you have been directed to StackOne to integrate with PLACEHOLDER, the following steps will help you understand the process and any necessary actions to configure successful integration.'
+title: "Zelt"
+description: "Follow these steps to connect Zelt with StackOne Hub successfully."
 ---
 
-import IntegrationFooter from '/snippets/integration-footer.mdx';
+import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<img width="300px" noZoom="true" src="/images/placeholder/placeholder_logo.png" />
+<Warning>
+  Ensure you have Admin privileges for your Zelt account.
+</Warning>
 
-<Warning>The following guidance assumes you have Admin privileges for your PLACEHOLDER account.</Warning>
+If you've been directed to StackOne to integrate with Zelt, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
- 
-## Generating an API Key
+## Generate a Zelt Client ID and Client Secret
 
-Sign in to your account and click the Admin ⚙️ button on the top bar.
+<Steps>
+  <Step title="Open Settings">
+    Within Zelt, click on Settings in the lower left corner.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings" src="/images/zelt/image1.png" />
+    </Frame>
+  </Step>
 
-In the left menu bar, click on Integrations to expand the menu and then click on API Keys.
-​
-<img className='rounded-md' style={{ border: '1px solid #efefef' }} alt="API Keys page" src="/images/placeholder/image1.png" />
+  <Step title="Navigate to Security">
+    Under Settings > Organisation, click Security.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Security" src="/images/zelt/image2.png" />
+    </Frame>
+  </Step>
 
+  <Step title="Generate Credentials">
+    Next to Developer hub, click the Generate button.
+  </Step>
 
-Click on the ➕ New button to create a new API Key and name it appropriately.
+  <Step title="Enter Details">
+    In the view that appears, enter the following:
+    <ul>
+      <li>Name: e.g. "StackOne Service Credentials"</li>
+      <li>Description: e.g. "Service authorization for StackOne integration"</li>
+      <li>Redirection URI: `https://api.stackone.com/connect/oauth2/zelt/callback`</li>
+    </ul>
+    Press the Generate button at the bottom of the view.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate Credentials" src="/images/zelt/image3.png" />
+    </Frame>
+  </Step>
 
+  <Step title="Copy Authorization Credentials">
+    A window will appear with the authorization credentials. Copy each of the generated values, and store them in a safe place:
+    <ul>
+      <li>App ID</li>
+      <li>Client ID</li>
+      <li>Client Secret</li>
+    </ul>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Authorization Credentials" src="/images/zelt/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
 
-## Use the API Key in the StackOne Hub
-Upon reaching the Link Account page, enter the generated API key and proceed by clicking the Connect button.
+## Connecting with StackOne
 
-<img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="Access Token Created" src="/images/placeholder/image2.png" />
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the Client ID and Client Secret generated in the previous step.
+  </Step>
 
+  <Step title="Connect">
+    Proceed by clicking the `Connect` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect Button" src="/images/zelt/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
 
 <IntegrationFooter />
-
-
-<br/>
-
-<Card title="Useful Links" icon="link" href="/content/components/card-group">
-  PLACEHOLDER API reference: https://developers.ashbyhq.com/reference/introduction
-</Card>
