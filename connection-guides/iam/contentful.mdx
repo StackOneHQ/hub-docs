@@ -1,38 +1,128 @@
 ---
-title: 'Placeholder'
-description: 'If you have been directed to StackOne to integrate with PLACEHOLDER, the following steps will help you understand the process and any necessary actions to configure successful integration.'
+title: "Contentful"
+description: "Follow these steps to connect Contentful via the StackOne Hub successfully."
 ---
 
-import IntegrationFooter from '/snippets/integration-footer.mdx';
+import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<img width="300px" noZoom="true" src="/images/placeholder/placeholder_logo.png" />
+<Warning>
+  Ensure you have Admin privileges within your Contentful organization.
+</Warning>
 
-<Warning>The following guidance assumes you have Admin privileges for your PLACEHOLDER account.</Warning>
+If you've been directed to StackOne to integrate with Contentful, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
- 
-## Generating an API Key
+Each connection will be associated with a single Space within a Contentful organization.
 
-Sign in to your account and click the Admin ⚙️ button on the top bar.
+## Get your Contentful Organization ID
 
-In the left menu bar, click on Integrations to expand the menu and then click on API Keys.
-​
-<img className='rounded-md' style={{ border: '1px solid #efefef' }} alt="API Keys page" src="/images/placeholder/image1.png" />
+<Steps>
+  <Step title="Log in to Contentful">
+    Log in to your [Contentful app](https://app.contentful.com)
+  </Step>
 
+  <Step title="Expand Side Panel">
+    Click the top left navigation icon to expand the side panel.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Side Panel" src="/images/contentful/image1.png" />
+    </Frame>
+  </Step>
 
-Click on the ➕ New button to create a new API Key and name it appropriately.
+  <Step title="Organization Settings">
+    At the bottom of the side panel, click Organization settings & subscriptions.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Organization Settings" src="/images/contentful/image2.png" />
+    </Frame>
+  </Step>
 
+  <Step title="Copy Organization ID">
+    The Organization ID is available in the URL: `https://app.contentful.com/account/organizations/{Organization ID}/etc_path`. Copy and store the Organization ID safely. The ID is also viewable by clicking Organization information in the top navigation.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Organization Information" src="/images/contentful/image3.png" />
+    </Frame>
+  </Step>
+</Steps>
 
-## Use the API Key in the StackOne Hub
-Upon reaching the Link Account page, enter the generated API key and proceed by clicking the Connect button.
+## Get your Contentful Space ID
 
-<img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="Access Token Created" src="/images/placeholder/image2.png" />
+<Steps>
+  <Step title="Navigate to Spaces">
+    Within Organization Settings, click Spaces in the top navigation.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Spaces" src="/images/contentful/image4.png" />
+    </Frame>
+  </Step>
 
+  <Step title="Select Space">
+    Scroll down to view the list of Spaces in your Organization, and click the Space that will be associated with this connection.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Space" src="/images/contentful/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Space ID">
+    The Space ID is visible in the URL: `https://app.contentful.com/spaces/{Space ID}/home`. Copy and store the Space ID safely.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Space ID" src="/images/contentful/image6.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Get your Contentful CMA API Token
+
+This CMA Token is required to access Contentful's Content Management API.
+
+<Steps>
+  <Step title="Account Settings">
+    Within your [Contentful app](https://app.contentful.com), click your profile icon in the top right, then click Account Settings.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Account Settings" src="/images/contentful/image7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="CMA Tokens">
+    Click CMA Tokens in the top navigation.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="CMA Tokens" src="/images/contentful/image8.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create Token">
+    Within CMA Tokens, click the Create personal access token button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Token" src="/images/contentful/image9.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Generate Token">
+    Within the window that appears, enter a Name for your new token and set the desired Expiration date. Click Generate.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate Token" src="/images/contentful/image10.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy API Token">
+    Copy the newly generated API Token and store it safely. It will only be displayed once.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Token" src="/images/contentful/image11.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    <ul>
+      <li>API Token</li>
+      <li>Organization ID</li>
+      <li>Space ID</li>
+    </ul>
+    Proceed by clicking the Connect button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/contentful/image12.png" />
+    </Frame>
+  </Step>
+</Steps>
 
 <IntegrationFooter />
-
-
-<br/>
-
-<Card title="Useful Links" icon="link" href="/content/components/card-group">
-  PLACEHOLDER API reference: https://developers.ashbyhq.com/reference/introduction
-</Card>
