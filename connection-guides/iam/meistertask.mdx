@@ -1,0 +1,67 @@
+---
+title: "MeisterTask - Access Token Authentication"
+description: "Follow these steps to connect MeisterTask via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you are an Admin in your MeisterTask account.
+</Warning>
+
+If you've been directed to StackOne to integrate with MeisterTask, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get your MeisterTask Personal Access Token
+
+<Steps>
+  <Step title="Go to the API Page">
+    Log in to your [MeisterTask account](https://accounts.meister.co). Go to the Meister [API Page](https://www.mindmeister.com/api) and click the Add button under the Personal Access Token section.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Page" src="/images/meistertask/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Scopes">
+    Select the following Scopes for this new token:
+    - userinfo.email
+    - userinfo.profile
+    - mindmeister.readonly
+    - meistertask.readonly
+    - license
+
+    Then click the Submit button to proceed.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Scopes" src="/images/meistertask/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy the Token">
+    Your new Personal Access Token is now created with the designated scopes. Copy the new displayed token and store it safely.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Token" src="/images/meistertask/image3.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Personal Access Token">
+    Upon reaching the Link Account page, enter your Personal Access Token from the previous step.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/meistertask/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect">
+    Click the Connect button to proceed.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developers.meistertask.com/reference/authentication">
+    https://developers.meistertask.com/reference/authentication
+</Card>
+

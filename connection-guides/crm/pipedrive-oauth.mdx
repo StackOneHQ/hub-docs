@@ -1,0 +1,100 @@
+---
+title: "Pipedrive - OAuth Authentication"
+description: "Follow these steps to connect Pipedrive via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your Pipedrive account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Pipedrive, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get Your Company Domain
+
+<Steps>
+  <Step title="Open Company Settings">
+    To access the Company settings, click on the Profile icon located in the top-right corner, and click Company settings in the menu that appears.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company Settings" src="/images/pipedrive-oauth/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter Company Details">
+    Under Company Settings, enter your Company name and Company domain. Copy and store your Company domain, then click the Save button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company Details" src="/images/pipedrive-oauth/image2.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Get Your Client ID and Client Secret
+
+<Steps>
+  <Step title="Access Developer Hub">
+    To access the Developer Hub, click on the Profile icon located in the top-right corner, and click Developer Hub in the menu that appears.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Developer Hub" src="/images/pipedrive-oauth/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create an App">
+    Click on the Create an App button to create a Public app.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create an App" src="/images/pipedrive-oauth/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter App Details">
+    Enter your App name and the Callback URL written below, and click on the Save button.
+
+    Callback URL: `https://api.stackone-dev.com/connect/oauth2/pipedrive/callback`
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="App Details" src="/images/pipedrive-oauth/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Access Scopes">
+    You'll be directed to the OAuth & access scopes page. Select the following Access scopes for your app:
+    - Deals - Full access
+    - Contacts - Full access
+    - Leads - Full access
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Access Scopes" src="/images/pipedrive-oauth/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Credentials">
+    Scroll down to Client ID. Copy the displayed Client ID and Client Secret and store them safely, then click the Save button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Client ID and Secret" src="/images/pipedrive-oauth/image7.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    - Client ID
+    - Client Secret
+    - Company Domain
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/pipedrive-oauth/image8.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />

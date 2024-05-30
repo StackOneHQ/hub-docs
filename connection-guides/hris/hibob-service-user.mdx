@@ -1,0 +1,202 @@
+---
+title: "Hibob - Service User"
+description: "Follow these steps to connect Hibob via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your Hibob account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Hibob, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Creating a new Service User
+
+<Steps>
+  <Step title="Navigate to Service Users">
+    Using the left menu, select Settings > Integrations, select Automation under Categories. Click Manage under the Service Users Icon.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Service Users" src="/images/hibob-service-user/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create New Service User">
+    Click on the New Service User button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="New Service User" src="/images/hibob-service-user/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Fill in Details">
+    Fill in the details with relevant information and click Next.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Fill Details" src="/images/hibob-service-user/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Service User ID and Token">
+    Copy Service User ID and Token to a safe place, since the token cannot be retrieved after this. However, the token can be reset and a new one created.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Service User ID and Token" src="/images/hibob-service-user/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Finish Creation">
+    Click Done and the Service User is created.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Service User Created" src="/images/hibob-service-user/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Access permissions for the Service User
+
+The newly created Service User account has no access permissions, so you won't be able to retrieve data. Creating Permissions Groups is an additional process that is best described by Hibob:
+
+[Creating a Custom Permissions Group](https://help.hibob.com)
+
+Once you have a permissions group for your service users, or already have a permissions group set up, you can add your new Service User to this group.
+
+The required permissions to allow access of relevant data are as follows (located in the `People's data` tab):
+
+### People
+
+- About
+  - Edit selected employees' About sections
+  - View selected employees' About sections
+- Address
+  - Edit selected employees' Address sections
+  - View selected employees' Address section histories
+  - View selected employees' Address sections
+- Basic info
+  - Edit selected employees' Basic info sections
+  - View selected employees' Basic info sections
+- EEO
+  - Edit selected employees' EEO sections
+  - View selected employees' EEO sections
+- Email
+  - Edit selected employees' email addresses
+- Emergency
+  - Edit selected employees' Emergency sections
+  - View selected employees' Emergency sections
+- Employment
+  - Edit selected employees' Employment sections
+  - View selected employees' Employment section histories
+  - View selected employees' Employment sections
+- History
+  - View selected employees' profile changes history
+- Home
+  - Edit selected employees' Home sections
+  - View selected employees' Home sections
+- Identification
+  - Edit selected employees' Identification sections
+  - View selected employees' Identification section histories
+  - View selected employees' Identification sections
+- Jobs
+  - Edit selected employees' Jobs sections
+  - View selected employees' Jobs section histories
+  - View selected employees' Jobs sections
+- Lifecycle
+  - Edit selected employees' Lifecycle sections
+  - View selected employees' Lifecycle section histories
+  - View selected employees' Lifecycle sections
+- Payroll
+  - Edit selected employees' Payroll sections
+  - View selected employees' Payroll section histories
+  - View selected employees' Payroll sections
+- People analytics
+  - View selected employees' People analytics section histories
+  - View selected employees' People analytics sections
+- Personal
+  - Edit selected employees' Personal sections
+  - View selected employees' Personal section histories
+  - View selected employees' Personal sections
+- Personal contact details
+  - Edit selected employees' Personal contact details sections
+  - View selected employees' Personal contact details sections
+- Training
+  - Edit selected employees' Training sections
+  - View selected employees' Training sections
+- User data
+  - Edit selected employees' User data sections
+  - View selected employees' User data sections
+- Work
+  - Edit selected employees' Work sections
+  - View selected employees' Work section histories
+  - View selected employees' Work sections
+- Work contact details
+  - Edit selected employees' Work contact details sections
+  - View selected employees' Work contact details sections
+- Work eligibility
+  - Edit selected employees' Work eligibility sections
+  - View selected employees' Work eligibility sections
+
+### Docs
+
+- Confidential Docs
+  - Upload selected employees’ docs in the folder
+  - View selected employees' docs in the folder
+- Shared Docs
+  - Upload selected employees’ docs in the folder
+  - View selected employees' docs in the folder
+
+### Time off
+
+- Balance
+  - Bank overtime on behalf of their employees
+  - See selected people's time off and sick leave balances
+  - View, approve or decline requests that are pending approval of others
+- See who's out today
+  - See who's out today
+
+<Steps>
+  <Step title="Navigate to Permissions Groups">
+    Go to Settings in the left menu and click Permissions Groups under the Account heading. Click on the group you have made for your Service Users.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Permissions Groups" src="/images/hibob-service-user/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Edit Permissions Group">
+    In the permissions group page, click the Group Actions dropdown and select Edit Details from the list; this will open a new modal.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Details" src="/images/hibob-service-user/image7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select People By Condition">
+    If you're updating an existing Group, you may not want to change the setting in the radio button selection. But if it is a new group, click Select People By Condition; if it is already selected, continue.
+
+    If the Group Members setting is Select People by Name, you won't be able to add the Service User to this group and should create another permissions group for your Service Users.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select People By Condition" src="/images/hibob-service-user/image8.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add Specific Employees">
+    Once the new modal has opened titled Select People By Condition, click the dropdown under Add Specific Employees. You can select all Service Users or individually as required, then click Apply and Apply again and finally Save.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Specific Employees" src="/images/hibob-service-user/image9.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Link your Hibob account with StackOne
+
+Use the Service User ID and the Service User Token generated in Step 1 to authenticate using the Service User account.
+
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/hibob-service-user/image10.png" />
+</Frame>
+
+<IntegrationFooter />
