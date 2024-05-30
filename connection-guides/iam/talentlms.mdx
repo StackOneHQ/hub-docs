@@ -1,0 +1,72 @@
+---
+title: "TalentLMS - IAM"
+description: "Follow these steps to connect TalentLMS via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you are a SuperAdmin or Account Owner in your TalentLMS account.
+</Warning>
+
+If you've been directed to StackOne to integrate with TalentLMS, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get Your TalentLMS Domain
+
+<Steps>
+  <Step title="Find Your Domain">
+    Log in to your TalentLMS account. Your domain is visible in the URL.
+    Example given the URL: `https://samplesandbox.talentlms.com/dashboard`
+    The domain is `samplesandbox`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Domain Example" src="/images/talentlms/image1.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Get Your TalentLMS API Key
+
+<Steps>
+  <Step title="Navigate to Account Settings">
+    Log in to your TalentLMS Dashboard, then click ACCOUNT & SETTINGS in the bottom right.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Account & Settings" src="/images/talentlms/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enable API">
+    Scroll down to the SECURITY section and checkmark the Enable API checkbox.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enable API" src="/images/talentlms/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy API Key">
+    Copy your displayed API Key and store it safely.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Key" src="/images/talentlms/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter API Key and Domain">
+    Upon reaching the Link Account page, enter your API Key and Domain from the previous steps.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/talentlms/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect">
+    Proceed by clicking the Connect button.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://market.talentlms.com/pages/docs/TalentLMS-API-Documentation.pdf">
+    https://market.talentlms.com/pages/docs/TalentLMS-API-Documentation.pdf
+</Card>

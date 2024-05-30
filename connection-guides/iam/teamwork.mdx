@@ -1,0 +1,77 @@
+---
+title: "Teamwork"
+description: "Follow these steps to connect Teamwork via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you are a Site Owner within your Teamwork account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Teamwork, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get Your Teamwork Site Name
+
+<Steps>
+  <Step title="Find Your Site Name">
+    Log in to your Teamwork account. Your Site Name is found in the URL.
+    Example given the URL: `https://my-site.teamwork.com/app/home/inbox`
+    The Site Name is `my-site`.
+  </Step>
+</Steps>
+
+## Get Your Teamwork API Key
+
+<Steps>
+  <Step title="Edit My Details">
+    When logged in to your Teamwork account, click your profile icon in the bottom left, then click Edit my details.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit My Details" src="/images/teamwork/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Get API Token">
+    Under the API & Mobile tab, click the Get API Token button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Get API Token" src="/images/teamwork/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enable API">
+    After reading the Terms and Conditions, check the checkbox for confirmation: "I have read and agree to the API terms and conditions". Then click the Enable API button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enable API" src="/images/teamwork/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy API Token">
+    Copy your displayed API Token and store it safely.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Token" src="/images/teamwork/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter API Key and Site Name">
+    Upon reaching the Link Account page, enter your API Key and Site Name from the previous step.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/teamwork/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect">
+    Proceed by clicking the Connect button.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://apidocs.teamwork.com/guides/teamwork/getting-started-with-the-teamwork-com-api">
+    https://apidocs.teamwork.com/guides/teamwork/getting-started-with-the-teamwork-com-api
+</Card>
+

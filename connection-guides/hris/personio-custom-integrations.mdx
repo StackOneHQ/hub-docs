@@ -1,0 +1,104 @@
+---
+title: "Personio - Custom Integrations"
+description: "Follow these steps to connect Personio with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your Personio account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Personio, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Generating your API credentials
+
+<Steps>
+  <Step title="Sign in and open Settings">
+    Sign in to the Personio website and click on the Settings tab on the left-hand side menu.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings" src="/images/personio-custom-integrations/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Open API credentials">
+    Click on the API credentials inside the integration box.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Credentials" src="/images/personio-custom-integrations/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Go to Marketplace">
+    Click on the Go to Marketplace button. It'll direct to the Marketplace page.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Marketplace" src="/images/personio-custom-integrations/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="See Connected Integrations">
+    Click on the See Connected Integrations button. It'll direct to the Connected Integration page. Here, click on the Create Custom Integration button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connected Integrations" src="/images/personio-custom-integrations/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create Custom Integration">
+    Write your company name inside the name field, and please make sure your company name is in capital letters and click on Next button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Custom Integration Name" src="/images/personio-custom-integrations/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Permissions">
+    Select at least one permission to continue; for example, to get Employees data, select Employees or to get Documents data, select Documents too.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Permissions" src="/images/personio-custom-integrations/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Choose Attributes">
+    Click on Choose attributes. Select those attributes you want to show in your data, or select all attributes.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Attributes" src="/images/personio-custom-integrations/image7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create Integration">
+    Click on the Create Integration button. Make sure your credential is generated successfully, then click on the Finish button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Integration" src="/images/personio-custom-integrations/image8.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+NOTE: Copy your API credentials – client ID and client secret to a safe place.
+
+## Connecting with StackOne Hub
+
+<Steps>
+  <Step title="Enter API Credentials">
+    Paste the API client ID, and client secret in the StackOne Hub after selecting Personio as your HRIS provider.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/personio-custom-integrations/image9.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter Company Name">
+    Copy your company name from your Personio account, then paste your company name inside the Personio app id; please make sure the name is in capital letters.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company Name" src="/images/personio-custom-integrations/image10.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />

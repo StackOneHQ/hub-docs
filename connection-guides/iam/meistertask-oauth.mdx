@@ -1,0 +1,70 @@
+---
+title: "MeisterTask - OAuth Authentication"
+description: "Follow these steps to connect MeisterTask via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you are an Admin in your MeisterTask account.
+</Warning>
+
+If you've been directed to StackOne to integrate with MeisterTask, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get Your MeisterTask OAuth 2.0 Credentials
+
+<Steps>
+  <Step title="Go to the API Page">
+    Log in to your [MeisterTask account](https://accounts.meister.co). Go to the Meister [API Page](https://www.mindmeister.com/api) and click the Add button under the OAuth 2.0 Apps section.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="OAuth 2.0 Apps" src="/images/meistertask-oauth/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter Application Details">
+    In the form that appears, enter the following:
+    - Application Name
+    - Redirect URI: `https://api.stackone.com/connect/oauth2/meistertask_iam/callback`
+    
+    Click the Submit button to proceed.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Details" src="/images/meistertask-oauth/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Credentials">
+    The OAuth application has now been created, and the credentials will be displayed. Copy the Client ID and Client Secret and store them safely.
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter OAuth Credentials">
+    Upon reaching the Link Account page, enter Client ID and Client Secret from the previous step.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/meistertask-oauth/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter Required Scopes">
+    Copy the Required Scopes listed below, and paste into the Scopes field.
+
+    Required Scopes: `userinfo.email userinfo.profile mindmeister.readonly meistertask.readonly`
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Scopes" src="/images/meistertask-oauth/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect">
+    Click the Connect button to proceed.
+  </Step>
+</Steps>
+
+Congratulations, you're all set! If you face any issues with the steps mentioned above, feel free to reach out to us via the live chat button or by sending an email to integrations@stackone.com. We're always here to assist you!
+
+<IntegrationFooter />

@@ -63,7 +63,7 @@
     },
     {
       "source": "/en/articles/8233374-hibob-service-user-authentication",
-      "destination": "/connection-guides/hris/hibob"
+      "destination": "/connection-guides/hris/hibob-service-user"
     },
     {
       "source": "/en/articles/8019979-hr-cloud",
@@ -91,7 +91,7 @@
     },
     {
       "source": "/en/articles/9128239-personio-custom-integrations",
-      "destination": "/connection-guides/hris/personio"
+      "destination": "/connection-guides/hris/personio-custom-integrations"
     },
     {
       "source": "/en/articles/8010340-pinpoint",
@@ -103,7 +103,7 @@
     },
     {
       "source": "/en/articles/9240078-pipedrive-oauth-authentication",
-      "destination": "/connection-guides/crm/pipedrive"
+      "destination": "/connection-guides/crm/pipedrive-oauth"
     },
     {
       "source": "/en/articles/7991787-recruitee",
@@ -255,7 +255,7 @@
     },
     {
       "source": "/en/articles/9323665-pipedrive-oauth-authentication-iam",
-      "destination": "/connection-guides/iam/pipedrive-oauth-authentication"
+      "destination": "/connection-guides/iam/pipedrive-oauth"
     },
     {
       "source": "/en/articles/9205677-pipedrive-iam",
@@ -316,7 +316,27 @@
     {
       "source": "/en/articles/9335670-dropbox-iam",
       "destination": "/connection-guides/iam/dropbox"
-    }    
+    },
+    {
+      "source": "/en/articles/9391822-meistertask-access-token-authentication-iam",
+      "destination": "/connection-guides/iam/meistertask"
+    },
+    {
+      "source": "/en/articles/9394391-meistertask-oauth-authentication-iam",
+      "destination": "/connection-guides/iam/meistertask-oauth"
+    },
+    {
+      "source": "/en/articles/9366900-talentlms-iam",
+      "destination": "/connection-guides/iam/talentlms"
+    },
+    {
+      "source": "/en/articles/9393530-teamwork-iam",
+      "destination": "/connection-guides/iam/teamwork"
+    },
+    {
+      "source": "/en/articles/en/articles/7727327-ashby",
+      "destination": "/connection-guides/ats/ashby"
+    }
   ],
   "topbarLinks": [
     {
