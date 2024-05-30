@@ -48,10 +48,6 @@ If you've been directed to StackOne to integrate with Hibob, the following steps
 
   <Step title="Finish Creation">
     Click Done and the Service User is created.
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Service User Created" src="/images/hibob-service-user/image5.png" />
-    </Frame>
   </Step>
 </Steps>
 
@@ -65,8 +61,7 @@ Once you have a permissions group for your service users, or already have a perm
 
 The required permissions to allow access of relevant data are as follows (located in the `People's data` tab):
 
-### People
-
+<Accordion title="People">
 - About
   - Edit selected employees' About sections
   - View selected employees' About sections
@@ -136,31 +131,36 @@ The required permissions to allow access of relevant data are as follows (locate
 - Work eligibility
   - Edit selected employees' Work eligibility sections
   - View selected employees' Work eligibility sections
+</Accordion>
 
-### Docs
-
+<Accordion title="Docs">
 - Confidential Docs
   - Upload selected employees’ docs in the folder
   - View selected employees' docs in the folder
 - Shared Docs
   - Upload selected employees’ docs in the folder
   - View selected employees' docs in the folder
+</Accordion>
 
-### Time off
-
+<Accordion title="Time off">
 - Balance
   - Bank overtime on behalf of their employees
   - See selected people's time off and sick leave balances
   - View, approve or decline requests that are pending approval of others
 - See who's out today
   - See who's out today
+</Accordion>
+
+<Warning>
+  Required permissions may be subject to change.
+</Warning>
 
 <Steps>
   <Step title="Navigate to Permissions Groups">
     Go to Settings in the left menu and click Permissions Groups under the Account heading. Click on the group you have made for your Service Users.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Permissions Groups" src="/images/hibob-service-user/image6.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Permissions Groups" src="/images/hibob-service-user/image5.png" />
     </Frame>
   </Step>
 
@@ -168,17 +168,18 @@ The required permissions to allow access of relevant data are as follows (locate
     In the permissions group page, click the Group Actions dropdown and select Edit Details from the list; this will open a new modal.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Details" src="/images/hibob-service-user/image7.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Details" src="/images/hibob-service-user/image6.png" />
     </Frame>
   </Step>
 
   <Step title="Select People By Condition">
     If you're updating an existing Group, you may not want to change the setting in the radio button selection. But if it is a new group, click Select People By Condition; if it is already selected, continue.
 
-    If the Group Members setting is Select People by Name, you won't be able to add the Service User to this group and should create another permissions group for your Service Users.
-
+    <Warning>
+      If the Group Members setting is Select People by Name, you won't be able to add the Service User to this group and should create another permissions group for your Service Users.
+    </Warning>
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select People By Condition" src="/images/hibob-service-user/image8.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select People By Condition" src="/images/hibob-service-user/image7.png" />
     </Frame>
   </Step>
 
@@ -186,7 +187,7 @@ The required permissions to allow access of relevant data are as follows (locate
     Once the new modal has opened titled Select People By Condition, click the dropdown under Add Specific Employees. You can select all Service Users or individually as required, then click Apply and Apply again and finally Save.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Specific Employees" src="/images/hibob-service-user/image9.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Specific Employees" src="/images/hibob-service-user/image8.png" />
     </Frame>
   </Step>
 </Steps>
@@ -196,7 +197,13 @@ The required permissions to allow access of relevant data are as follows (locate
 Use the Service User ID and the Service User Token generated in Step 1 to authenticate using the Service User account.
 
 <Frame>
-  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/hibob-service-user/image10.png" />
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/hibob-service-user/image9.png" />
 </Frame>
 
 <IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://apidocs.hibob.com/docs">
+    https://apidocs.hibob.com/docs
+</Card>
+
