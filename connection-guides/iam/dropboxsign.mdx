@@ -1,0 +1,57 @@
+---
+title: "Dropbox Sign"
+description: "If you have been directed to StackOne to integrate with Dropbox Sign, the following steps will help you understand the process and any necessary actions to configure successful integration."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  The following guidance assumes you have Admin privileges for your Dropbox Sign
+  account.
+</Warning>
+
+## Generating an API Key
+
+<Steps>
+  <Step title="Sign-in">
+    Sign in to <a href="https://app.hellosign.com/account/logIn">your account</a> and then In the left menu bar, click on <b>API</b>.
+
+    <Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Keys page" src="/images/dropboxsign/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Generate a new API key">
+    Click on the <b>Generate key</b> button to create a new API Key and name it appropriately.
+    <Frame>
+      <img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="API Keys dialog" src="/images/dropboxsign/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy the API key to clipboard">
+    Copy your new API Key to a safe place to be used in the next step. Click <Icon icon="clone" iconType="regular" /> <b>Copy</b> button in the API key section.
+    <Frame>
+      <img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="API Key page" src="/images/dropboxsign/image3.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Use the API Key in the StackOne Hub
+
+Upon reaching the Link Account page, enter the generated API key and proceed by clicking the <b>Connect</b> button.
+
+<Frame>
+  <img
+    className="rounded-md"
+    style={{ width: "400px", margin: "0 auto", border: "1px solid #efefef" }}
+    alt="Access Token Created"
+    src="/images/dropboxsign/image4.png"
+  />
+</Frame>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developers.hellosign.com/api/quickstart/#dropbox-sign-api-quickstart">
+    https://developers.hellosign.com/api/quickstart
+</Card>
