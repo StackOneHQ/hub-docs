@@ -1,0 +1,146 @@
+---
+title: "Workday Learning"
+description: "If you've been directed to StackOne to integrate with Workday, the following steps will help you understand the process and any necessary actions to configure successful integration."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes you have Admin privileges for your Workday account.
+</Warning>
+
+## Finding your Workday Tenant
+
+<Steps>
+  <Step title="Log into Workday">
+    Log into your Workday account. Look at the address bar at the top of the browser window where the URL is displayed. Find your tenant immediately after `workday.com/`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Workday Tenant" src="/images/workday/image1.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Finding the Web Services Endpoint
+
+<Steps>
+  <Step title="Go to Public Web Services">
+    Go to the `Public Web Services` report.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Human Resources Web Service" src="/images/workday/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Find Learning">
+    Find Learning and hover over it to be able to interact with the menu. Via the three-dots menu, go to `Web Service` and click on `View WSDL` (note that the page may take a minute to fully load).
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday/image3.png" />
+    </Frame>
+
+  </Step>
+
+  <Step title="Search for wsdl:service">
+    Search for `wsdl:service` in the file OR navigate directly to the very bottom of the page. You should see something like this:
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday/image4.png" />
+    </Frame>
+
+    Copy everything before `service` in the location attribute. In the example tenant above, this would be `https://wd2-impl-services1.workday.com/ccx` but it may be different for your tenant (e.g., `https://wd5-services1.myworkday.com/ccx`).
+  </Step>
+</Steps>
+
+## Set up an Integration System User
+
+<Steps>
+  <Step title="Search for Create Integration System User">
+    Log in to your Workday tenant in the Workday portal. In the Search field, search for "Create Integration System User".
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Integration System User" src="/images/workday/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Choose the Task">
+    Choose the "Create Integration System User" task.
+  </Step>
+
+  <Step title="Enter Account Information">
+    Enter a username and password in the Account Information section on the "Create Integration System User" page.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Account Information" src="/images/workday/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click OK">
+  </Step>
+</Steps>
+
+## Add the Integration System User to a Security Group
+
+<Steps>
+  <Step title="Search for Create Security Group">
+    In the Search field, search for "Create Security Group". Select the "Create Security Group" task.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Security Group" src="/images/workday/image7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Security Group Type">
+    On the "Create Security Group" page, select "Integration System Security Group" from the Type of Tenanted Security Group pull-down menu. Enter a name in the Name field.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Security Group Type" src="/images/workday/image8.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click OK">
+    Click OK.
+  </Step>
+
+  <Step title="Edit Integration System Security Group">
+    On the "Edit Integration System Security Group (Unconstrained)" page, enter the same name you used when creating the ISU in the first section. Click OK.
+
+  </Step>
+</Steps>
+
+## Configure Domain Security Policy Permissions
+
+<Steps>
+  <Step title="Edit Permissions">
+    Edit the Domain Security Policy Permissions in the Security Group. Add the GET and PUT/MANAGE operations for the following required permissions for the LMS API:
+
+    For integrating with the LMS functionalities of Workday
+
+    - Learning Enrollment/s
+    - Learning Digital Course
+    - Learning Topics
+
+  </Step>
+</Steps>
+
+## Approve the Security Policy Changes
+
+<Steps>
+  <Step title="Search for Activate Pending Security Policy Changes">
+    In the Search bar, search for "Activate Pending Security Policy Changes". Review the policies that need approval in the summary of the changes in the security policy. Approve the pending security policy changes to activate them.
+  </Step>
+</Steps>
+
+## Linking to StackOne
+
+You can use the Tenant and System User credentials you created in steps 1 & 2 to link Workday.
+
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/image9.png" />
+</Frame>
+
+<IntegrationFooter />
+
+<Card title="Useful Links" icon="link" href="/content/components/card-group">
+  Workday API reference: <a href="https://doc.workday.com">https://doc.workday.com</a>
+</Card>
