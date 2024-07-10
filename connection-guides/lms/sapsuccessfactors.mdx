@@ -1,0 +1,391 @@
+---
+title: "SAP SuccessFactors"
+description: "Follow these steps to connect SAP SuccessFactors with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your SAP SuccessFactors account with permission for the Manage Integration Tools > Manage OAuth2 Client Applications.
+</Warning>
+
+If you've been directed to StackOne to integrate with SAP SuccessFactors, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+# Locating Credentials
+
+## Locating API Server
+
+<Steps>
+  <Step title="Find the API Server">
+    SAP uses multiple API server addresses. You will need to look up the API server that corresponds to your tenant domain on this [table](https://help.sap.com/viewer/6b9c5cdcbf5a4b1ba2148c76303f3c08/2005/en-US/c248e8a9e6a943d0af1dc8c8e4c9d145.html) under the `API Server` column.
+
+    For example, if your domain was `https://pmsalesdemo8.successfactors.com/` you would search for `salesdemo8` in the table.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Server Example" src="/images/sapsuccessfactors/image1.png" />
+    </Frame>
+
+    Copy the value in the `API Server` column (remove the final forward-slash `/`). In this example, the value would be `https://apisalesdemo8.successfactors.com`.
+
+    Use this value as the `API Server` value when connecting SAP SuccessFactors to StackOne.
+  </Step>
+</Steps>
+
+## Getting the Learning Hub URL
+  <Steps>
+    <Step title="Find the Learning Hub Server">
+      In the same way that we need the API server address, we also need the unique address for the learning hub.
+
+      You can do this by logging on to SuccessFactors with a user with access to Learning.
+
+      Access the Learning module.
+
+      Look in the browser address bar for the URL and save the address.
+
+          <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Learning Server Example" src="/images/sapsuccessfactors/image10.png" />
+          </Frame>
+
+      In this case: https://sfcpart000906.scdemo.successfactors.com/ is the access point.
+
+    </Step>
+  </Steps>
+
+## Registering a new Client Application
+
+<Steps>
+  <Step title="Search for Manage OAuth2 Client Applications">
+    In the upper right search bar, search for Manage OAuth2 Client Applications and select the option under Actions.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Manage OAuth2 Client Applications" src="/images/sapsuccessfactors/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Register Client Application">
+    Select Register Client Application.
+  </Step>
+
+  <Step title="Enter Application Details">
+    Enter an Application Name, e.g. `StackOne`.
+
+    Enter an Application URL. Note: This can be any URL and is not used in this integration.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Register Client Application" src="/images/sapsuccessfactors/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Generating X.509 Certificate
+
+<Steps>
+  <Step title="Generate X.509 Certificate">
+    Press the Generate X.509 Certificate button.
+
+    Enter any Common Name(CN) for the certificate, e.g. `StackOne OAuth2`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate X.509 Certificate" src="/images/sapsuccessfactors/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy the Certificate">
+    Press Generate.
+
+    Copy the value inside the X.509 Certificate section.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy X.509 Certificate" src="/images/sapsuccessfactors/image7.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Downloading Private Key
+
+<Steps>
+  <Step title="Download Private Key">
+    Press the Download button.
+
+    ❗Caution: The downloaded file contains your private key. This should be handled securely, and this local file should be deleted after your StackOne account has been linked.
+  </Step>
+
+  <Step title="Copy the Private Key">
+    Select and copy the long string of characters between -----BEGIN ENCRYPTED PRIVATE KEY----- and -----END ENCRYPTED PRIVATE KEY-----
+
+    This value is your Private Key. Please keep it safe!
+  </Step>
+</Steps>
+
+## Finding API Key
+
+<Steps>
+  <Step title="Locate API Key">
+    Your API Key is displayed on the Manage OAuth2 Client Applications screen above your X.509 Certificate.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key" src="/images/sapsuccessfactors/image8.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Create a new OCN Admin Role
+
+<Steps>
+  <Step title="Add New OCN Admin Role">
+    To create an OCN admin profile in SuccessFactors, take the following steps:
+
+    Log in to the SuccessFactors Learning Administration environment and go to System Administration > Security > Role Management.
+
+    Click Add New.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add New Role" src="/images/sapsuccessfactors/add-new-role.png" />
+    </Frame>
+
+    In the Role ID field, enter "OCN_ADMIN".
+
+    Click Add.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Ocn Admin" src="/images/sapsuccessfactors/add-ocn-admin.png" />
+    </Frame>
+  </Step>
+  <Step title="Add Correct Permissions">
+
+    Select Permissions, then click the link under Add Permissions to the Role.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Permissions" src="/images/sapsuccessfactors/add-permissions.png" />
+    </Frame>
+
+    Under Add Permissions to Roles, enable Learning Activities, Search, and People Management.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Role Activities" src="/images/sapsuccessfactors/add-role-activities.png" />
+    </Frame>
+  </Step>
+  <Step title="Toggle Status Restrictions">
+    Set Status Restriction to "Active" for each activity under Permission Restrictions:
+
+    - Add Item
+    - Add Item Libraries
+    - Edit Item
+    - Edit item Libraries
+    - Edit Item Finance
+    - Edit Item Cost/Price
+    - Edit Item Custom Fields
+    - Edit Item State
+    - Open Content Network Import
+    - View Item
+    - View Item Libraries
+    - View Item Finance
+    - View Item Cost/Price
+    - View Item Custom Fields
+    - Search User
+    - Add History Record
+
+    Click Apply Changes.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Admin Role Permissions" src="/images/sapsuccessfactors/admin-role-permissions.png"/>
+    </Frame>
+
+  </Step>
+</Steps>
+
+## Create System Admin User
+
+<Steps>
+  <Step title="Add New Administrator">
+    To create a system admin user in SuccessFactors, take the following steps:
+
+    Log in to the SuccessFactors Learning Administration environment and go to System Administration > Security > Administrators.
+
+    In the upper right-hand corner of the screen, click Add New.
+
+    In the Admin ID field, enter "LILADMIN".
+
+    Enter a new password in the password fields.
+
+    Click Add.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Admin" src="/images/sapsuccessfactors/add-admin.png" />
+    </Frame>
+
+  </Step>
+  <Step title="Assign OCN Admin Role to User">
+    Select the Assigned Roles tab. If this integration is your first SuccessFactors instance, click Edit.
+
+    In the Role ID field, enter "OCN_ADMIN", then click Add.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add OCN Admin Role to User" src="/images/sapsuccessfactors/admin-user.png" />
+    </Frame>
+  </Step>
+  <Step title="Note Admin ID">
+    Take note of Admin ID as the username.
+  </Step>
+</Steps>
+
+## Finding Company ID
+
+<Steps>
+  <Step title="Show Version Information">
+    Within the same dropdown from Step 2, select the Show version information option.
+  </Step>
+
+  <Step title="Locate Company ID">
+    Within the modal that appears, you will see `Company ID`. Copy and note down this value.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company ID" src="/images/sapsuccessfactors/image3.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Configure the OCN Property File
+
+To configure the OCN property file, take the following steps:
+
+<Steps>
+  <Step title="Navigate to Property File">
+    In the SuccessFactors Learning Administration navigation menu, select System Administration > Configuration > System Configuration.
+
+    Find the Open Content Network option in the configuration file and select the Edit (pen) icon.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Register Client Application" src="/images/sapsuccessfactors/ocn-property-file.png" />
+    </Frame>
+
+  </Step>
+
+  <Step title="Copy over Provider Config">
+    Scroll to the bottom of the configuration file.
+
+    Copy and paste the values below into the configuration file:
+
+    providers[ProviderName].enabled=true
+
+    providers[ProviderName].name=ProviderName
+
+    providers[ProviderName].label=label.u.ProviderName
+
+    providers[ProviderName].baseLaunchUrl=https://www.ProviderRootUrl.com
+
+    providers[ProviderName].pricingModel=
+  </Step>
+</Steps>
+
+## Set Up OCN Content Synchronization Automatic Process
+
+To automate the OCN content sync process, take the following steps:
+
+<Steps>
+  <Step title="Schedule Synchronisation Process">
+
+  In the SuccessFactors Learning Administration navigation menu, select System Administration > Automatic Processes.
+
+  Select Open Content Network Content Synchronization.
+
+  Select the Schedule This Process check box.
+
+  Select the Daily radio button.
+
+  In the Time of Day field, specify a time outside of peak usage hours.
+
+  Click Apply Changes.
+
+  <Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Schedule Synchronisation Process" src="/images/sapsuccessfactors/auto-content-sync.png" />
+  </Frame>
+  </Step>
+</Steps>
+
+## Create a Provider label
+
+To create a LinkedIn Learning label, take the following steps:
+
+<Steps>
+  <Step title="Create New Label">
+    In the SuccessFactors Learning Administration navigation menu, select References > Manage Labels > Labels.
+
+    Click Add New.
+
+    In Label Type, enter "LABEL" and click Next.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add New Label" src="/images/sapsuccessfactors/add-new-label.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add Label Config">
+
+    In Label ID, type "ProviderLinkedInLearning".
+
+    In Description, type "LinkedIn Learning Label".
+
+    In Use By drop down, select "Both".
+
+    Select Assign to All Locales.
+
+    Click Add.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Label Config" src="/images/sapsuccessfactors/add-label-config.png" />
+    </Frame>
+    
+  </Step>
+  <Step title="Add Locales">
+
+    Select the Locales tab.
+
+    To add a locale to the LinkedIn Learning label, enter the locale (i.e., "Japanese") in the Active Locale ID field and "LinkedIn Learning" in the Label Value field, then click Add.
+
+    For each Active Locale ID, enter "LinkedIn Learning" (if the Label Value field is not already populated).
+
+    Click Apply Changes.
+
+
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Label Locales" src="/images/sapsuccessfactors/add-label-locales.png" />
+      </Frame>
+
+  </Step>
+</Steps>
+
+## Note Content Provider Name
+
+<Steps>
+  <Step title="Note Provider Name">
+    This will be used when connecting the account in the StackOne hub. Ensure this matches the provider name which has been used in the OCN property file.
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter the Details">
+    Upon reaching the Link Account page, enter the gathered details and proceed by clicking the `Connect` button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/sapsuccessfactors/credentials1.png" />
+    </Frame>
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/sapsuccessfactors/credentials2.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<Note>
+Note: The integration may take up to 15 minutes to initially authenticate once the account has been connected. In the meantime, requests will return a 401: Unauthorized response.
+</Note>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://api.sap.com/products/SAPSuccessFactors/apis/all">
+    https://api.sap.com/products/SAPSuccessFactors/apis/all
+</Card>
