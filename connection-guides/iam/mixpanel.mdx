@@ -1,0 +1,88 @@
+---
+title: "Mixpanel"
+description: "Follow these steps to connect Mixpanel with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Owner or Admin privileges for your Mixpanel account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Mixpanel, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get Your Mixpanel Domain and Organization ID
+
+<Steps>
+  <Step title="Log in to Mixpanel">
+    Log in to your [Mixpanel](https://mixpanel.com/login/). Your Domain and Organization ID is found in the URL.
+
+    Given the URL: `https://my-domain.com/project/projectId/view/organizationId/app/home`
+
+    The Domain is `my-domain` And the Organization ID is `organizationId`
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Mixpanel Log in" src="/images/mixpanel/image1.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Generating the Username and Secret
+
+<Steps>
+  <Step title="Go to Settings">
+    Click on the Settings <Icon icon="gear" iconType="regular" /> button and select Organization Settings.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Mixpanel settings" src="/images/mixpanel/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Generate the Service Accounts">
+    To Generate the Service Accounts, select Service Accounts from menu and click on the <b>Add Service Account</b> button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Service Accounts" src="/images/mixpanel/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Fill the Service Accounts Details">
+    Enter the Service Account Name, select the <b>Admin</b> from the <b>ORGANIZATION ROLE</b> dropdown and click on the <b>Create</b> button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Service Accounts Details" src="/images/mixpanel/image4.png" />
+    </Frame>
+  </Step>
+
+      <Step title="Copy the Username and Secret to clipboard">
+    Copy your new Username and Secret to a safe place to be used in the next step. Click <b>Done</b> in the bottom once complete.
+    <Frame>
+      <img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="Service Accounts dialog" src="/images/mixpanel/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter Authentication Details">
+    Upon reaching the Link Account page, enter the following authentication details from the previous steps:
+    <ul>
+      <li>Username</li>
+      <li>Secret</li>
+      <li>Domain</li>
+      <li>Organization ID</li>
+    </ul>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/mixpanel/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect">
+    Proceed by clicking the Connect button.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developer.mixpanel.com/reference/service-accounts">
+  https://developer.mixpanel.com/reference/service-accounts
+</Card>
+
