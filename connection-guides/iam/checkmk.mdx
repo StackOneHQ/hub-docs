@@ -1,0 +1,80 @@
+---
+title: "Checkmk"
+description: "Follow these steps to connect Checkmk with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Administrator privileges for your Checkmk Dashboard.
+</Warning>
+
+If you've been directed to StackOne to integrate with Checkmk, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get Your Checkmk Site URL
+
+<Steps>
+  <Step title="Log in to Checkmk Dashboard">
+    Log in to your Checkmk Dashboard. Your Site URL is consist of the host name with site name and protocall as : `{{Protocall}}://{{Host name}}/{{Site name}}`
+    
+    For example: `https://myhost/mysite/check_mk/index.py?start_url=%2Fmysite%2Fcheck_mk%2Fdashboard.py`
+
+    The Site URL is <b>https://myhost/mysite</b>.
+  </Step>
+</Steps>
+
+## Get user credentials
+
+You will need to provide a Username, Password and Site URL. It is recommended that you set up a new account for integration purposes.
+
+<Steps>
+<Step title="Log in to Checkmk">
+    Log in to your Checkmk Dashboard.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Login" src="/images/checkmk/image1.png" />
+    </Frame>
+  </Step>
+  <Step title="Go to Setup">
+    Click on the `Setup` <Icon icon="gear" iconType="regular" /> button from the left menu and then click on the `Users` under <b>Users</b> tab.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings" src="/images/checkmk/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create a New User">
+    Click the `➕ Add user` to create a new User.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="New User" src="/images/checkmk/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Fill Out Required Fields">
+    Fill out the required fields including username and password and add the Role `Administrator`. This will ensure the account has the correct permissions, and then click `Save` button at top left corner.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Role" src="/images/checkmk/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter User Details">
+    Upon reaching the Link Account page, enter the Username, Password and Site URL from the previous step. Proceed by clicking the Connect button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/checkmk/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="The Checkmk REST API" icon="link" href="https://docs.checkmk.com/latest/en/rest_api.html">
+    https://docs.checkmk.com/latest/en/rest_api.html
+</Card>
+<Card title="User management" icon="link" href="https://docs.checkmk.com/latest/en/wato_user.html">
+    https://docs.checkmk.com/latest/en/wato_user.html
+</Card>
