@@ -1,0 +1,96 @@
+---
+title: "Scoro"
+description: "Follow these steps to connect Scoro via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you are an Administrator in your Scoro account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Scoro, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+This guidance assumes that you are an Administrator within Scoro.
+
+## Get User Credentials
+
+You will need to provide a Username and Password and Company Account Id . It is recommended that you set up a new account for integration purposes.
+<Steps>
+ <Step title="Log in to Scoro">
+    Log in to your Scoro Account.  `https://{Company Account Id}.scoro.com/login`
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Login" src="/images/scoro/image1.png" />
+    </Frame>
+  </Step>
+  
+  <Step title="Go to manage users">
+      Click on the dropdown button from top right corner and then click on the `Manage users` tab.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Manage users" src="/images/scoro/image2.png" />
+    </Frame>
+  </Step>
+
+    <Step title="Create a New User">
+    Under the Users and Groups, click the `Users` tab and then click `Add User` button to create a new user.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add New User" src="/images/scoro/image3.png" />
+    </Frame>
+  </Step>
+
+    <Step title="Fill Out Required Fields">
+    Fill out the required fields, check the `Has administrator rights` and \
+    `Send an invitation e-mail` checkboxes, and select **Full access** in the `Permission set` dropdown. This will ensure the account has the correct permissions. Afterward, click `Create user`
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Fill form" src="/images/scoro/image4.png" />
+     </Frame>
+    <br />
+     <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Fill form" src="/images/scoro/image5.png" />
+    </Frame>
+    
+  </Step>
+
+    <Step title="Create Account">
+    The email address you entered will receive an invitation. Click `click here` link, you may have to log out of your current account to create the password.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Account" src="/images/scoro/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Username and Company Account Id">
+      You can find your `Company Account ID` in the Profile Dropdown at the top right corner below your name and `Username` in the Profile setting under the Profile Dropdown.\
+      `Profile Dropdown >> Profile Setting` 
+     
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Credentials" src="/images/scoro/image7.png" />
+    </Frame>
+  </Step>
+
+  </Steps>
+
+## Connecting with StackOne
+
+<Steps> 
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter your credentials from the previous step.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Integration connections" src="/images/scoro/image8.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect">
+    Click the Connect button to proceed.
+  </Step>
+</Steps>
+ 
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://api.scoro.com/api/v2#userAuthApiV2Docs">
+    https://api.scoro.com/api/v2#userAuthApiV2Docs
+</Card>
