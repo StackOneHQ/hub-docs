@@ -1,0 +1,66 @@
+---
+title: "Lattice"
+description: "Follow these steps to connect Lattice with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Super admin privileges for your Lattice account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Lattice, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Generating an API key
+
+<Steps>
+  <Step title="Sign in to Lattice">
+    Sign in to the Lattice Dashboard and click on `Switch to admin` at left bottom button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Admin Dashboard" src="/images/lattice/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Navigate to the API keys">
+    In the left menu bar, click on <b>Settings > Platform</b> to expand the menu and then click on <b>API Keys</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API keys" src="/images/lattice/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Generate API key">
+    Click on the `Generate API key` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate API key" src="/images/lattice/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy API Key">
+    Click on `Copy` and copy your new API Key to a safe place to be used in the next step.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key dialog" src="/images/lattice/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter the API Key">
+    Upon reaching the Link Account page, enter the API Key and proceed by clicking the `Connect` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/lattice/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="Authentication" icon="link" href="https://developers.lattice.com/reference/authentication">
+  https://developers.lattice.com/reference/authentication
+</Card>
+<Card title="Lattice's Public API" icon="link" href="https://help.lattice.com/hc/en-us/articles/360059449534-Lattice-s-Public-API">
+  https://help.lattice.com/hc/en-us/articles/360059449534-Lattice-s-Public-API
+</Card>
+
