@@ -1,0 +1,84 @@
+---
+title: "15Five - IAM"
+description: "Follow these steps to connect 15Five via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges within your 15Five account.
+</Warning>
+
+If you've been directed to StackOne to integrate with 15Five, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+This guidance assumes that you are an Administrator within 15Five.
+
+## Get your 15five API Key
+
+<Steps>
+  <Step title="Login to 15Five">
+    After logging in to your [15five account](https://app.15five.com/account/login/).
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="15Five Login" src="/images/15five/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Navigate to Integrations">
+    Select setting icon from top right corner and select <b>ADMIN SETTINGS > Integrations</b> from menu.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings" src="/images/15five/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Find Public API">
+    Scroll down and find `Public API` and Click Enable.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Integrations" src="/images/15five/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create new API Key">
+    Click on `Create new key` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create new API Key" src="/images/15five/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter API Key Details">
+    Enter API Key name and click `Save`
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key Details" src="/images/15five/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy API Key">
+    Your new API Key will be displayed. Copy and store it safely.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Key" src="/images/15five/image6.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter API Key">
+    Upon reaching the Link Account page, enter the API Key from the previous step.
+  </Step>
+
+  <Step title="Connect">
+    Proceed by clicking the `Connect` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/15five/image7.png" />
+    </Frame>
+  </Step>
+  
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://docs.dixa.io/docs/tutorial-create-an-api-token">
+    https://docs.dixa.io/docs/tutorial-create-an-api-token
+</Card>
+
