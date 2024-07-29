@@ -1,0 +1,78 @@
+---
+title: "Qlik - API Key Authentication"
+description: "Follow these steps to connect Qlik via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges within your Qlik Cloud.
+</Warning>
+
+If you've been directed to StackOne to integrate with Qlik, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get Your Qlik Tenant
+
+<Steps>
+  <Step title="Log in to Qlik Cloud">
+    Log in to your [Qlik Cloud](https://qlikcloud.com/). Your Tenant is found in the URL.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to the Qlik Cloud" src="/images/qlik/image1.png" />
+    </Frame>
+
+    Given the URL: `https://my-tenant.eu.qlikcloud.com/hub`
+
+    The Tenant is `my-tenant`.
+  </Step>
+</Steps>
+
+## Get your Qlik API Key
+
+<Steps>
+  <Step title="Navigate to Settings">
+    Click on profile button at top right corner and click `Profile settings`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings" src="/images/qlik/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="API keys">
+    Go to `Management > API keys` from left menu and click on `Generate new key`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API keys" src="/images/qlik/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter API Key details">
+    Enter API key description and expiry date and click on `Generate`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key Details" src="/images/qlik/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy the API key to clipboard">
+    Copy your new API Key to a safe place to be used in the next step. Click <b>Copy and close</b> in the bottom once complete.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key dialog" src="/images/qlik/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the API key and tenat name from previous steps and proceed by clicking the <b>Connect</b> button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/qlik/image6.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="Generate your first API key" icon="link" href="https://qlik.dev/authenticate/api-key/generate-your-first-api-key/">
+    https://qlik.dev/authenticate/api-key/generate-your-first-api-key/
+</Card>
+
