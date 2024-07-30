@@ -1,0 +1,107 @@
+---
+title: "Qlik - OAuth Authentication"
+description: "Follow these steps to connect Qlik via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges within your Qlik Cloud.
+</Warning>
+
+If you've been directed to StackOne to integrate with Qlik, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get Your Qlik Tenant
+
+<Steps>
+  <Step title="Log in to Qlik Cloud">
+    Log in to your [Qlik Cloud](https://qlikcloud.com/). Your Tenant is found in the URL.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to the Qlik Cloud" src="/images/qlik/image1.png" />
+    </Frame>
+
+    Given the URL: `https://my-tenant.eu.qlikcloud.com/hub`
+
+    The Tenant is `my-tenant`.
+  </Step>
+</Steps>
+
+## Get your Qlik Client ID and Secret
+
+<Steps>
+  <Step title="Navigate to Management Console">
+    Click on the Launcher menu button at the top right corner and select `Management Console`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Management Console" src="/images/qlik-oauth/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="OAuth">
+    Go to `OAuth` from the left menu and click on `Create new`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="OAuth" src="/images/qlik-oauth/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter OAuth client details">
+    Select Client type and enter the new OAuth client name and description. Then check the box next to `admin_classic` scope from scopes list.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="OAuth Details" src="/images/qlik-oauth/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Allow Machine-to-Machine">
+    Scroll down and check the box next to `Allow Machine-to-Machine (M2M)` and click on `Create` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="OAuth Details" src="/images/qlik-oauth/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Client ID and Secret">
+    Copy your Client ID and Secret to a safe place by clicking `Copy to clipboard`. These will be used in the next step. Click <b>Done</b> in the bottom once complete.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Credentials" src="/images/qlik-oauth/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Change consent method
+
+<Steps>
+  <Step title="Edit consent method">
+    Click on the edit <Icon icon="ellipsis" /> button next to your Oauth client and select `Change consent method`.
+        <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to the Qlik Cloud" src="/images/qlik-oauth/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Change consent method to Trusted">
+    Select the <Icon icon="circle-dot" iconType="solid" /> `Trusted` radio button and then click `Change consent method`.
+        <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Change consent method dialog" src="/images/qlik-oauth/image7.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the Client ID, Clients Secret and tenant name from the previous steps and proceed by clicking the <b>Connect</b> button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/qlik-oauth/image8.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="OAuth Overview" icon="link" href="https://qlik.dev/authenticate/oauth/">
+    https://qlik.dev/authenticate/oauth/
+</Card>
+<Card title="Create a new OAuth2 M2M client" icon="link" href="https://qlik.dev/authenticate/oauth/create/create-oauth-client/">
+    https://qlik.dev/authenticate/oauth/create/create-oauth-client/
+</Card>
+
