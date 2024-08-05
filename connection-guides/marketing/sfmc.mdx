@@ -1,0 +1,92 @@
+---
+title: "Salesforce Marketing Cloud"
+description: "Follow these steps to connect Salesforce Marketing Cloud via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have `Installed Package | Administer` permission. This permission is automatically applied to the Administrator and Marketing Cloud Administrator system-defined roles. Add the permission for a different role or user in the Administration area.
+</Warning>
+
+If you've been directed to StackOne to integrate with Salesforce Marketing Cloud, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Create a package (server to server integration)
+
+<Steps>
+  <Step title="Open Setup">
+    Hover over profile icon and click on the setup option.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Open Setup" src="/images/sfmc/image.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Navigate to Installed Packages">
+    Click Apps and then click Installed Packages.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Installed Packages" src="/images/sfmc/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create new Package">
+    Click on `new` button placed on top-right corner on the installed packages page. 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create new Package" src="/images/sfmc/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Fill the details">
+    Fill the name of package and description and click on `save` button.
+    <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Fill the details" src="/images/sfmc/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add Component">
+    Now it's time to add components, click on the `Add Component` button.
+    <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Component" src="/images/sfmc/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Choose your component type">
+    Select `API Integration` and click on `next` button.
+    <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Choose your component type" src="/images/sfmc/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Choose your integration type">
+    Select `Server to Server` and click on `next` button.
+    <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Choose your integration type" src="/images/sfmc/image7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Set Server-to-Server Properties">
+    Check all the Assets scope and click on save.
+    <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Server-to-Server Properties" src="/images/sfmc/image8.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Get the credentials">
+    Now the Credentials are visible on screen, use them to integrate with StackOne.
+    <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Server-to-Server Properties" src="/images/sfmc/image9.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter SCIM Key">
+    Upon reaching the Link Account page, enter the Client Id, Client Secret and Authentication Base URI and proceed by clicking the Connect button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/sfmc/image10.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
