@@ -22,7 +22,23 @@ If you've been directed to StackOne to integrate with BambooHR, the following st
   </Step>
 </Steps>
 
+
+## OpenID SSO Authentication
+
+For SSO authentication, StackOne Hub requires specifying only your Company Domain from step 1.
+
+### File Upload permission
+
+If you want to allow the connection to upload files to Employee folders, you need to enable the `Enable Employee Uploads` setting via `Account Settings > Account > General Settings`.
+
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enable Employee Uploads" src="/images/bamboohr/employee_uploads.png" />
+</Frame>
+
+
 ## Generating your API Key
+
+If the connection form requires an API Key, follow these steps to generate it:
 
 <Steps>
   <Step title="Navigate to API Keys">
@@ -70,14 +86,3 @@ If you've been directed to StackOne to integrate with BambooHR, the following st
 </Steps>
 
 <IntegrationFooter />
-
-## OpenID SSO Authentication
-
-BambooHR provides Client ID and Client Secret additional details for successful integration. Refer to [Single Sign-On (SSO) with OpenID Connect Bamboo doc](https://documentation.bamboohr.com/docs/single-sign-on-sso-with-openid-connect) for more information.
-
-For SSO authentication, StackOne Hub requires specifying only your Company Domain from step 1.
-
-## Useful Links
-<Card title="API Reference" icon="link" href="https://documentation.bamboohr.com/docs">
-    https://documentation.bamboohr.com/docs
-</Card>
