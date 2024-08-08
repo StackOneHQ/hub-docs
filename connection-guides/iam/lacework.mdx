@@ -1,0 +1,98 @@
+---
+title: "Lacework"
+description: "Follow these steps to connect Lacework with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your Lacework account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Lacework, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get Your Lacework Domain name
+
+<Steps>
+  <Step title="Log in to Lacework">
+    Log in to your Lacework Dashboard. Your Domain name is found in the URL.
+
+    Given the URL: `https://my-domain.lacework.net/ui/investigation/Dashboard`
+
+    The Domain is `my-domain`
+  </Step>
+</Steps>
+
+## Generating the API Key and Secret
+
+<Steps>
+  <Step title="Go to Settings">
+    Click on the <Icon icon="gear" iconType="regular" /> Settings from left menu and then select `CONFIGURATION > API keys`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Lacework settings" src="/images/lacework/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Generate the API Key and Secret">
+    To Generate the API Key and Secret, select `User API keys` tab and click on the <Icon icon="plus" iconType="regular" /> <b>Add New</b> button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="User API Keys" src="/images/lacework/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Fill the API Key Details">
+    Enter the API Key Name and Description and click on the <b>Save</b> button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key Details" src="/images/lacework/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Get the API Key id and Secret">
+    Your API Key will now be listed here. Via the three-dots menu in front of your API Key, click on `Download`. A JSON file with API Key id and Secret will be downloaded now. Store it to a safe place to be used in the next step.
+    <Frame>
+      <img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="User API Keys" src="/images/lacework/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter Authentication Details">
+    Upon reaching the Link Account page, enter the following authentication details from the previous steps:
+    <ul>
+      <li>Access Key Id</li>
+      <li>Secret Access Key</li>
+      <li>Domain</li>
+    </ul>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/lacework/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect">
+    Proceed by clicking the Connect button.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+<ul>
+ <li>Users</li>
+ <li>Roles</li>
+ <li>Groups</li>
+</ul>
+
+
+## Useful Links
+<Card title="Lacework API 2.0 Documentation" icon="link" href="https://docs.lacework.net/api/v2/docs">
+  https://docs.lacework.net/api/v2/docs
+</Card>
+<Card title="API Keys" icon="link" href="https://docs.lacework.net/administrator-guide/api-access-keys#api-keys">
+  https://docs.lacework.net/administrator-guide/api-access-keys#api-keys
+</Card>
+
