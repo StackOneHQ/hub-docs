@@ -1,0 +1,92 @@
+---
+title: "OpenAI"
+description: "Follow these steps to connect OpenAI via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Owner privileges within your OpenAI account.
+</Warning>
+
+If you've been directed to StackOne to integrate with OpenAI, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get Admin key
+
+<Steps>
+  <Step title="Log in to OpenAI">
+    Log in to your [OpenAI Account](https://platform.openai.com/login).
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Login" src="/images/openai/image1.png" />
+    </Frame>
+  </Step>
+  <Step title="Go to Admin keys">
+    Select `Organization overview` from the dropdown and then go to the [Admin Keys](https://platform.openai.com/organization/admin-keys) page.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Admin Keys Page" src="/images/openai/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create new Admin Key">
+      Click the `Create new Admin key` button in the top right corner.\
+      Enter the new Key Name and click the `Create admin key` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create new Admin Key" src="/images/openai/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy the Admin Key">
+      Copy the Admin Key and store it in a secure place.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy the Admin Key" src="/images/openai/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Get Project ID
+
+<Steps>
+    <Step title="Get Project ID">
+       Visit the [Projects](https://platform.openai.com/organization/projects) page to locate your Project ID.
+    <Frame>
+      <img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="Project ID" src="/images/openai/image5.png" />
+    </Frame>
+    </Step>
+</Steps>
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter Authentication Details">
+    Upon reaching the Link Account page, enter the following authentication details from the previous steps:
+    <ul>
+      <li>Admin Key</li>
+      <li>Project ID</li>
+    </ul>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/openai/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect">
+    Proceed by clicking the Connect button.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+<ul>
+ <li>Users</li>
+ <li>Roles</li>
+</ul>
+
+
+## Useful Links
+<Card title="API Documentation" icon="link" href="https://platform.openai.com/docs/api-reference/administration">
+    https://platform.openai.com/docs/api-reference/administration
+</Card>
+
