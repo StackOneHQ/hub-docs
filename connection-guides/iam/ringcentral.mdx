@@ -1,0 +1,132 @@
+---
+title: "Ringcentral - OAuth Authentication"
+description: "Follow these steps to connect Ringcentral via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that you have registered an account on [RingCentral Developers](https://developers.ringcentral.com/my-account.html) with Developer Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Ringcentral, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Log in to RingCentral Developers
+
+<Steps>
+    <Step title="Register for RingCentral Developers">
+        If you do not have a RingCentral Developers account, you can register for one here: https://developers.ringcentral.com/sign-up
+
+        Your account should have the Role "Developer Admin".
+    </Step>
+
+    <Step title="Log in to RingCentral Developers">
+        Log in to your [RingCentral Developers account](https://developers.ringcentral.com/my-account.html)
+    </Step>
+</Steps>
+
+## Create a New Ringcentral Application
+
+This connection will authenticate on behalf of a registered Application in RingCentral Developers.
+
+<Steps>
+    <Step title="View Apps">
+        In Ringcentral Developers, click the Console button, then Apps on the left.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Apps" src="/images/ringcentral/image1.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Register new App">
+        Click the Register App button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Register App Button" src="/images/ringcentral/image2.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Select App Type">
+        Under App Type, select "REST API App (most common)" and click the Next button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select App Type" src="/images/ringcentral/image3.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Enter App Properties">
+        Under App Properties (internal-use only), enter the following details:
+
+        - App Name: Enter a name for your new App
+        - App description: Enter a description for your new App
+        - Primary Contact: Enter the email address of the main support contact for this App
+        - Do you intend to promote this app in the RingCentral App Gallery?: No
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter App Properties" src="/images/ringcentral/image4.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Enter Auth Details">
+        Scroll down to the Auth section, and enter the following details:
+
+        - 3-legged OAuth flow authorization code
+        - From what type of app will you be calling the API?: Server-side web app (most common)
+        - OAuth Redirect URI: `https://api.stackone.com/connect/oauth2/ringcentral_iam/callback`
+        - Issue refresh tokens? Yes
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Auth Details" src="/images/ringcentral/image5.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Enter Security Details">
+        Under Security, select the following:
+
+        - Application Scopes: Read Accounts
+        - Who will be authorized to access your app? : This app is *private* and will only be callable using credentials from the same RingCentral account.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Security Details" src="/images/ringcentral/image6.png" />
+        </Frame>
+
+        Click the Create button to proceed. Upon seeing a success message, press the OK button. 
+    </Step>
+
+    <Step title="Copy API Credentials">
+          Your new App Client ID and Client Secret will now be available to copy. 
+          
+          Under Production Credentials, copy both your Client ID and Client Secret and store them safely to use in the following steps.
+
+          <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Credentials" src="/images/ringcentral/image7.png" />
+        </Frame>
+    </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    - Client ID
+    - Client Secret
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/ringcentral/image8.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+<ul>
+ <li>Users</li>
+ <li>Roles</li>
+ <li>Policies</li>
+</ul>
