@@ -1,0 +1,76 @@
+---
+title: "Oneflow"
+description: "Follow these steps to connect Oneflow via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Oneflow account has Administrator privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Oneflow, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get your Oneflow API Token
+
+<Steps>
+  <Step title="Login to Oneflow">
+    Log in to your [Oneflow account](https://app.oneflow.com/login).
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Oneflow Login" src="/images/oneflow/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Navigate to API tokens">
+    Select the `Marketplace` in the bottom left corner. Scroll down and click to `Automation < API tokens`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings" src="/images/oneflow/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Generate a new token">
+    Click on the `Generate a new token` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create new API Key" src="/images/oneflow/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter Token Details">
+    Enter the Token name and click `Confirm`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key Details" src="/images/oneflow/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Token">
+    Your new API token will be displayed. Copy and store it safely. Click on `Close` button once done.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Key" src="/images/oneflow/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the API token from the previous steps.
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/oneflow/image6.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+<ul>
+ <li>Users</li>
+ <li>Roles</li>
+</ul>
