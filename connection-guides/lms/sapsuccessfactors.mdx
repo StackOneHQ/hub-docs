@@ -6,132 +6,70 @@ description: "Follow these steps to connect SAP SuccessFactors with StackOne Hub
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
-  Ensure you have Admin privileges for your SAP SuccessFactors account with permission for the Manage Integration Tools > Manage OAuth2 Client Applications.
+  Ensure you have Admin privileges for your SAP SuccessFactors account.
 </Warning>
 
 If you've been directed to StackOne to integrate with SAP SuccessFactors, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
 # Locating Credentials
 
-## Locating API Server
-
-<Steps>
-  <Step title="Find the API Server">
-    SAP uses multiple API server addresses. You will need to look up the API server that corresponds to your tenant domain on this [table](https://userapps.support.sap.com/sap/support/knowledge/en/2215682) under the `API Server` column.
-
-    For example, if your domain was `https://pmsalesdemo8.successfactors.com/` you would search for `salesdemo8` in the table.
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Server Example" src="/images/sapsuccessfactors/image1.png" />
-    </Frame>
-
-    Copy the value in the `API Server` column (remove the final forward-slash `/`). In this example, the value would be `https://apisalesdemo8.successfactors.com`.
-
-    Use this value as the `API Server` value when connecting SAP SuccessFactors to StackOne.
-  </Step>
-</Steps>
-
-## Getting the Learning Hub URL
+## Finding the Learning Hub URL
   <Steps>
-    <Step title="Find the Learning Hub Server">
-      In the same way that we need the API server address, we also need the unique address for the learning hub.
-
-      You can do this by logging on to SuccessFactors with a user with access to Learning.
-
-      Access the Learning module.
-
-      Look in the browser address bar for the URL and save the address.
-
-          <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Learning Server Example" src="/images/sapsuccessfactors/image10.png" />
-          </Frame>
-
+      <Step title="Log into SAP">
+        Log into SAP SuccessFactors.
+      </Step>
+      <Step title="Access the Learning Module">
+        Type Learning Administrastion in the search bar and select the Learning Administration module.
+      </Step>
+      <Step title="Record Learning Module URL">
+        Look in the browser address bar for the URL and save the address.
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Learning Server Example" src="/images/sapsuccessfactors/image10.png" />
+        </Frame>
       In this case: https://sfcpart000906.scdemo.successfactors.com/ is the access point.
+      </Step>
+  </Steps>  
 
+  ## Finding Company ID
+
+  <Steps>
+    <Step title="Open User Modal">
+      Select your profile image in the upper right-hand corner of the screen to open the dropdown modal
+    </Step>
+
+    <Step title="Locate Company ID">
+      Within the modal that appears, you will see `Company ID`. Copy and note down this value.
+
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company ID" src="/images/sapsuccessfactors/image3.png" />
+      </Frame>
     </Step>
   </Steps>
 
-## Registering a new Client Application
+  ## Finding Username and Client Secret
+  **If you are setting up SAP for creating content via OCN, please follow the below steps to create an OCN Admin Role and User and use that username.**
+  <Steps>
+    <Step title="Navigate to Administrators Settings Page">
+      From SuccessFactors go to Learning Administration > System Administration > Security >  Administrators
+    </Step>
+    <Step title="Edit Relevant Administrator">
+      Search for the administrator for this integration and click the edit icon.
+    </Step>
+    <Step title="Note the Relevant Information">
+      Note down the AdminID for this UserActivation.
+    </Step>
+    <Step title="Generate Client Secret">
+      Click Generate Client Secret and note this down.
+    </Step>
+  </Steps>
 
-<Steps>
-  <Step title="Search for Manage OAuth2 Client Applications">
-    In the upper right search bar, search for Manage OAuth2 Client Applications and select the option under Actions.
 
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Manage OAuth2 Client Applications" src="/images/sapsuccessfactors/image4.png" />
-    </Frame>
-  </Step>
+  # Additional Configuration Required For Creating Content via Open Content Network
 
-  <Step title="Register Client Application">
-    Select Register Client Application.
-  </Step>
+  ## Create New Admin Role and User
 
-  <Step title="Enter Application Details">
-    Enter an Application Name, e.g. `StackOne`.
-
-    Enter an Application URL. Note: This can be any URL and is not used in this integration.
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Register Client Application" src="/images/sapsuccessfactors/image5.png" />
-    </Frame>
-  </Step>
-</Steps>
-
-## Generating X.509 Certificate
-
-<Steps>
-  <Step title="Generate X.509 Certificate">
-    Press the Generate X.509 Certificate button.
-
-    Enter any Common Name(CN) for the certificate, e.g. `StackOne OAuth2`.
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate X.509 Certificate" src="/images/sapsuccessfactors/image6.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Copy the Certificate">
-    Press Generate.
-
-    Copy the value inside the X.509 Certificate section.
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy X.509 Certificate" src="/images/sapsuccessfactors/image7.png" />
-    </Frame>
-  </Step>
-</Steps>
-
-## Downloading Private Key
-
-<Steps>
-  <Step title="Download Private Key">
-    Press the Download button.
-
-    ❗Caution: The downloaded file contains your private key. This should be handled securely, and this local file should be deleted after your StackOne account has been linked.
-  </Step>
-
-  <Step title="Copy the Private Key">
-    Select and copy the long string of characters between -----BEGIN ENCRYPTED PRIVATE KEY----- and -----END ENCRYPTED PRIVATE KEY-----
-
-    This value is your Private Key. Please keep it safe!
-  </Step>
-</Steps>
-
-## Finding API Key
-
-<Steps>
-  <Step title="Locate API Key">
-    Your API Key is displayed on the Manage OAuth2 Client Applications screen above your X.509 Certificate.
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key" src="/images/sapsuccessfactors/image8.png" />
-    </Frame>
-  </Step>
-</Steps>
-
-## Create a new OCN Admin Role
-
-<Steps>
+  ### Create Admin Role
+  <Steps>
   <Step title="Add New OCN Admin Role">
     To create an OCN admin profile in SuccessFactors, take the following steps:
 
@@ -194,8 +132,7 @@ If you've been directed to StackOne to integrate with SAP SuccessFactors, the fo
   </Step>
 </Steps>
 
-## Create System Admin User
-
+### Create Admin User
 <Steps>
   <Step title="Add New Administrator">
     To create a system admin user in SuccessFactors, take the following steps:
@@ -204,9 +141,11 @@ If you've been directed to StackOne to integrate with SAP SuccessFactors, the fo
 
     In the upper right-hand corner of the screen, click Add New.
 
-    In the Admin ID field, enter "LILADMIN".
+    In the Admin ID field, enter "OCNADMIN".
 
-    Enter a new password in the password fields.
+    Enter a new password in the password fields. 
+    
+    **Take note of this password and username (AdminID) as these will be used to connect the account in the StackOne hub.**  
 
     Click Add.
 
@@ -222,25 +161,6 @@ If you've been directed to StackOne to integrate with SAP SuccessFactors, the fo
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add OCN Admin Role to User" src="/images/sapsuccessfactors/admin-user.png" />
-    </Frame>
-  </Step>
-  <Step title="Note Admin ID">
-    Take note of Admin ID as the username.
-  </Step>
-</Steps>
-
-## Finding Company ID
-
-<Steps>
-  <Step title="Show Version Information">
-    Within the same dropdown from Step 2, select the Show version information option.
-  </Step>
-
-  <Step title="Locate Company ID">
-    Within the modal that appears, you will see `Company ID`. Copy and note down this value.
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company ID" src="/images/sapsuccessfactors/image3.png" />
     </Frame>
   </Step>
 </Steps>
@@ -363,7 +283,7 @@ To create a LinkedIn Learning label, take the following steps:
   </Step>
 </Steps>
 
-## Connecting with StackOne
+# Connecting with StackOne
 
 <Steps>
   <Step title="Enter the Details">
