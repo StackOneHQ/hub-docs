@@ -1,0 +1,120 @@
+---
+title: "Twilio"
+description: "Follow these steps to connect Twilio via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Twilio's underlying Organizations API is currently in private beta. To enable this feature, reach out to your Twilio account executive or [Twilio Support](https://help.twilio.com/articles/360048500694#h_01HTDZ3N3VFM4QXHRZR5MSFS6A). 
+</Warning>
+
+<Warning>
+  Ensure that your Twilio account has Organization Owner or Organization Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Twilio, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Log in to the Twilio Admin Dashboard
+
+<Steps>
+    <Step title="Log In">
+      Log in to your Organization Owner or Organization Admin account on [Twilio](https://www.twilio.com/).
+    </Step>
+
+    <Step title="Admin Dashboard">
+      This integration supports one Twilio Organization per linked account.
+
+      Click the **Admin** drop-down in the top right, then click [**Organization > Twilio Admin**](https://admin.twilio.com/) for your Organization.
+      <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/twilio/image1.png" />
+    </Frame>
+    </Step>
+</Steps>
+
+## Get your Twilio Organiztion SID
+
+<Steps>
+    <Step title="Organization SID">
+      In your Twilio Admin Dashboard, your Organization SID will be displayed on the main **Overview** page.
+
+      Store this value safely to be used in the next steps.
+      <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Organization SID" src="/images/twilio/image7.png" />
+    </Frame>
+    </Step>
+</Steps>
+
+## Create a New OAuth App
+<Steps>
+  <Step title="View OAuth Apps">
+      In the Admin Dashboard, click **Applications > OAuth Apps** on the left.
+      <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View OAuth Apps" src="/images/twilio/image2.png" />
+    </Frame>
+    </Step>
+
+    <Step title="Create a new OAuth App">
+      Click the **+ Create OAuth application** button on the right.
+      <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a new OAuth App" src="/images/twilio/image3.png" />
+    </Frame>
+    </Step>
+
+    <Step title="Select App Grant Type">
+      Under Grant Type, select the **Client credential** option.
+      <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select App Grant Type" src="/images/twilio/image4.png" />
+    </Frame>
+    </Step>
+
+    <Step title="Enter App Details">
+      Enter a name for this new App under Application name.
+
+      Select the following *Scopes & permissions*:
+      <ul>
+        <li>role-assignments: List</li>
+        <li>managed-accounts: Read, List</li>
+        <li>managed-users: Read, List</li>
+      </ul>
+
+      When complete, click the **Save** button.
+      <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select App Grant Type" src="/images/twilio/image5.png" />
+    </Frame>
+
+    </Step>
+
+    <Step title="Copy App Credentials">
+      Your new **Client ID** and **Client Secret** will be displayed. **Copy** and store these values safely to use in the next steps.
+
+      When done, select the *"Got it! ...* checkbox. Then click the **Done** button.
+      <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy App Credentials" src="/images/twilio/image6.png" />
+    </Frame>
+    </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    - Client ID
+    - Client Secret
+    - Organization SID
+
+    Proceed by clicking the Connect button.
+
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Roles</li>
+</ul>
