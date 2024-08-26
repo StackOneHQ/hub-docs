@@ -1,0 +1,85 @@
+---
+title: "Aircall"
+description: "Follow these steps to connect Aircall via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Aircall account has Admin or Owner privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Aircall, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Aircall
+
+
+    <Step title="Log in">
+        Log in to your [Aircall account](https://dashboard.aircall.io/login).
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/aircall/image1.png" />
+        </Frame>
+    </Step>
+
+
+## Create new API Credentials
+
+<Steps>
+    
+    <Step title="Navigate to API Keys">
+        In the Aircall dashboard, click **Integrations & API** on the left navigation, then click [**API Keys**](https://dashboard.aircall.io/integrations/api-keys).
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Keys" src="/images/aircall/image2.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Create New API Key">
+        Click **Generate an API Key**.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New API Key" src="/images/aircall/image3.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Copy your New API Credentials">
+        
+        In the window that appears, enter a *Key name* for your new API credentials.
+
+        Copy both the displayed **API ID** and **API Token**, and store these safely to be used in the next step.
+
+        Press the **Confirm** button once complete.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your API Key" src="/images/aircall/image4.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter your **API ID** and **API Token** from the previous step.
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/aircall/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Groups</li>
+</ul>
