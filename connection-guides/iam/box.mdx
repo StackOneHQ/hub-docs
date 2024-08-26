@@ -1,0 +1,161 @@
+---
+title: "Box"
+description: "Follow these steps to connect Box via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Box account has Admin privileges and has **2-Step Verification** enabled in your [Box Account Settings](https://app.box.com/account/developer).
+</Warning>
+
+If you've been directed to StackOne to integrate with Box, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Box
+
+<Steps>
+    <Step title="Log in">
+        Log in to your [Box account](https://account.box.com/login).
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/box/image1.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Go to the Dev Console ">
+        Click the **Dev Console** button in the bottom-left navigation to go to your [Box Dev Console](https://app.box.com/developers/console).
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/box/image2.png" />
+        </Frame>
+    </Step>
+</Steps>
+
+
+
+## Create a New OAuth Application
+
+This connection will authenticate on behalf of a registered Application in Box.
+<Steps>
+
+    
+    <Step title="Create New Application">
+        In the *My Apps* page of the Dev Console, click the **Create New App** button in the top right.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New Application" src="/images/box/image3.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Select App Type">
+        Under *Create New App*, select the **Custom App** option.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Details" src="/images/box/image4.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Enter Application Details">
+        Under *Create a Custom App: Step 1 of 2*, enter an App Name. 
+        
+        Select **Integration** under *Purpose*.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Details" src="/images/box/image5.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Enter Applicaiton Purpose Details">
+        The following details can be optionally filled as following:
+
+        - *Categories*: Security & Compliance
+        - *Which external system are you integrating with?*: Name of your Identity and Access Management service
+        - *Who is building this application?*: Partner
+        - *Please specify*: StackOne
+
+        Click the **Next** button to proceed.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Purpose Details" src="/images/box/image6.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Select Authentication Method">
+        Under *Create a Custom App: Step 2 of 2*, select **Server Authentication (Client Credentials Grant)**.
+
+        Click the **Create App** button to proceed.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Authentication Method" src="/images/box/image7.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Copy Your New Client ID">
+        Your new Application's details will now be displayed.
+
+        Scroll down to the **OAuth 2.0 Credentials** section, and copy your **Client ID** and store it safely.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Application Credentials" src="/images/box/image8.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Copy Your New Client Secret">
+        Click the **Fetch Client Secret** button. This may prompt you for your 2-Step Verification code.
+
+        Your **Client Secret** will now be displayed. Copy this and store it safely to be used in the next steps.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Application Credentials" src="/images/box/image9.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Select Application Scopes">
+        Scroll down to the *Application Scopes* section.
+
+        Select the following scopes:
+        - Read all files and folders stored in Box
+        - Manage users
+        - Manage groups
+ 
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Application Scopes" src="/images/box/image10.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Save Your Application">
+        When complete with the previous steps, click the **Save Changes** button in the top right.
+ 
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Save Your Application" src="/images/box/image11.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter your **Client ID** and **Client Secret** from the previous steps.
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/box/image12.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Roles</li>
+</ul>
