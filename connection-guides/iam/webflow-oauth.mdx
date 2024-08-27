@@ -1,0 +1,128 @@
+---
+title: "Webflow"
+description: "Follow these steps to connect Webflow via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Webflow account has Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Webflow, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Log in to Webflow
+
+    <Step title="Log in to Webflow">
+        Log in to your [Webflow app](https://webflow.com/login)
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/webflow/image1.png" />
+        </Frame>
+    </Step>
+
+## Get your Webflow Site ID
+
+<Steps>
+  <Step title="Navigate to Sites">
+    Select `All sites` from left menu and select `Settings` from the three-dots in front of your Site.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="All sites" src="/images/webflow/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Site ID">
+    Under `General` menu scroll down to `Overview`. Copy and store the Site ID safely
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Site Settings" src="/images/webflow/image3.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Create a New OAuth Application
+
+This connection will authenticate on behalf of a registered Application in Webflow.
+<Steps>
+    
+    <Step title="Navigate to App development">
+        Select `Settings > Apps & Integrations` from left menu and scroll down to `App development`.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to App development" src="/images/webflow/image4.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Create New Application">
+        Click on <Icon icon="plus" iconType="regular" /> `Create an App` button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New Application" src="/images/webflow/image5.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Enter Application Details">
+        Enter App name, description and homepage URL and then click on `Continue` button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Details" src="/images/webflow/image6.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Enter Redirect URI">
+        Enable the `Data client (REST API)` toggle button and Enter the Redirect URI.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Redirect URI" src="/images/webflow/image7.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Select Application Scopes">
+        Scroll down and select `Read-only` access for `User Account` and then click on `Create App` button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Application Scopes" src="/images/webflow/image8.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Copy Application Credentials">
+        Upon successfully creating your app, copy the new Client ID and Client Secret that are displayed, and store them safely.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Application Credentials" src="/images/webflow/image9.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    - Client ID
+    - Client Secret
+    - Site ID
+    - Application Scopes
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/webflow/image10.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Groups</li>
+</ul>
