@@ -9,7 +9,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   Ensure that your Webflow account has Admin privileges.
 </Warning>
 
-If you've been directed to StackOne to integrate with Webflow, the following steps will help you understand the process and any necessary actions to configure successful integration.
+If you've been directed to StackOne to integrate with Webflow, the following steps will help you understand the process and any necessary actions to configure a successful integration.
 
 ## Log in to Webflow
 
@@ -25,14 +25,14 @@ If you've been directed to StackOne to integrate with Webflow, the following ste
 
 <Steps>
   <Step title="Navigate to Sites">
-    Select `All sites` from left menu and select `Settings` from the three-dots in front of your Site.
+    Select `All sites` from the left menu and select `Settings` from the three dots in front of your Site.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="All sites" src="/images/webflow/image2.png" />
     </Frame>
   </Step>
 
   <Step title="Copy Site ID">
-    Under `General` menu scroll down to `Overview`. Copy and store the Site ID safely
+    Under `General`, scroll down to `Overview`. Copy and store the **Site ID** safely.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Site Settings" src="/images/webflow/image3.png" />
     </Frame>
@@ -45,7 +45,7 @@ This connection will authenticate on behalf of a registered Application in Webfl
 <Steps>
     
     <Step title="Navigate to App development">
-        Select `Settings > Apps & Integrations` from left menu and scroll down to `App development`.
+        Select `Settings > Apps & Integrations` from the left menu and scroll down to `App development`.
 
         <Frame>
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to App development" src="/images/webflow/image4.png" />
@@ -63,7 +63,7 @@ This connection will authenticate on behalf of a registered Application in Webfl
 
     
     <Step title="Enter Application Details">
-        Enter App name, description and homepage URL and then click on `Continue` button.
+        Enter an App name, description and homepage URL. Then, click on the `Continue` button.
 
         <Frame>
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Details" src="/images/webflow/image6.png" />
@@ -71,7 +71,7 @@ This connection will authenticate on behalf of a registered Application in Webfl
     </Step>
 
     <Step title="Enter Redirect URI">
-        Enable the `Data client (REST API)` toggle button and Enter the Redirect URI.
+        Enable the `Data client (REST API)` toggle button and Enter the Redirect URI: `https://api.stackone.com/connect/oauth2/oneflow_iam/callback`
 
         <Frame>
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Redirect URI" src="/images/webflow/image7.png" />
@@ -80,7 +80,7 @@ This connection will authenticate on behalf of a registered Application in Webfl
 
     
     <Step title="Select Application Scopes">
-        Scroll down and select `Read-only` access for `User Account` and then click on `Create App` button.
+        Scroll down and select `Read-only` access for `User Account` and then click on the `Create App` button.
 
         <Frame>
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Application Scopes" src="/images/webflow/image8.png" />
