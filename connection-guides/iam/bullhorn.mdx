@@ -11,12 +11,11 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 If you've been directed to StackOne to integrate with Bullhorn, the following steps will help you understand the process and any necessary actions to configure a successful integration.
 
-## Getting your Client ID, Client Secret and API Username
+## Get your Client ID and Client Secret
 
 These are unique identifiers for your account. If you do not possess this information, please contact Bullhorn Support or Submit a ticket via the <a href="https://www.bullhorn.com/au/technical-support-2/">Bullhorn Resource Center</a>.
 
-You will need to contact Bullhorn support to "add the following redirect URI: `https://api.stackone.com/connect/oauth2/bullhorn_ats/callback`".
-
+You will need to contact Bullhorn support to "add the following redirect URI: `https://api.stackone.com/connect/oauth2/bullhorn_iam/callback`".
 
 ## Connecting to StackOne
 
@@ -45,7 +44,17 @@ You will need to contact Bullhorn support to "add the following redirect URI: `h
 
 <IntegrationFooter />
 
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Roles</li>
+  <li>Groups</li>
+</ul>
+
 ## Useful Links
 <Card title="API Reference" icon="link" href="https://bullhorn.github.io/Getting-Started-with-REST">
     https://bullhorn.github.io/Getting-Started-with-REST
 </Card>
+
