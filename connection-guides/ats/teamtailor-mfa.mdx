@@ -1,0 +1,212 @@
+---
+title: "Teamtailor"
+description: "Follow these steps to connect Teamtailor with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your Teamtailor account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Teamtailor, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Generating API key and getting Company ID
+
+<Steps>
+  <Step title="Navigate to Settings">
+    In your Teamtailor account, click on Settings.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings" src="/images/teamtailor/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Find API Keys">
+    On the left-hand menu under the integrations header, find API keys.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Keys" src="/images/teamtailor/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create a New API Key">
+    Click the New API Key button at the top right of the page.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="New API Key" src="/images/teamtailor/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Set Name and Permissions">
+    Enter a descriptive name, set the scope to `admin` and permissions, where only Read is required.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Permissions" src="/images/teamtailor/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy API Key">
+    Copy the API key to a safe place.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Key" src="/images/teamtailor/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Get Company ID">
+    Make a note of the `company ID`, which is part of the URL as shown below:
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company ID" src="/images/teamtailor/image6.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Get user credentials
+
+You will also need to provide a user email and password. It is recommended that you set up a new account for integration purposes.
+
+<Steps>
+  <Step title="Create a New Employee">
+    Find the employees tab and click the ➕ to create a new employee.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="New Employee" src="/images/teamtailor/image7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Fill Out Required Fields">
+    Fill out the required fields and set the Role to Recruitment Admin. This will ensure the account has the correct permissions.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Role" src="/images/teamtailor/image8.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add Employee">
+    Click Add employee.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Employee" src="/images/teamtailor/image9.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create Account">
+    The email address you entered will receive an invitation. Click `Create account`, you may have to log out of your current account to create the password.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Account" src="/images/teamtailor/image10.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Find the Invitation Link">
+    If you have not received an invitation, you can go to the `Employees` tab again and click on the user's `pencil` ✏️ icon to edit their profile. You will see a link to the invitation, and you can click through this to set up the account.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Invitation Link" src="/images/teamtailor/image11.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Get Account Email and Password">
+    You should now have the account email address and password to proceed with the Hub.
+  </Step>
+</Steps>
+
+⚠️ If your account uses SSO, you may have to create the account differently:
+
+### Accounts with Single Sign-On (SSO)
+
+Follow steps 2.1 to 2.2 inclusive to create the employee, you will then have to exclude the employee from SSO, under the heading `Exclude individual users from SSO login`, as detailed here:
+
+<Steps>
+  <Step title="Exclude from SSO">
+    After the user has been excluded, ensure a password is set. You may have to edit the permissions of the user by accessing the Employees tab and clicking on the gear ⚙️ here.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Exclude from SSO" src="/images/teamtailor/image12.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Set Role">
+    You will see a page similar to step 2.2, where you can set the role to `Recruitment admin`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Role" src="/images/teamtailor/image13.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Two-Factor Authentication
+
+<Steps>
+  <Step title="Set up 2FA on your user profile">
+    In your Teamtailor account, click on Your account
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings" src="/images/teamtailor-mfa/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Security">
+    Click on Security
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Securoty" src="/images/teamtailor-mfa/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Setup 2-factor authentication">
+    Click on Setup two-factor authentication button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="2 Step Authentication" src="/images/teamtailor-mfa/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="2-Factor Authentication Secret">
+    Scan the QR Code in auth app and copy the key under the QR-code to a safe place to be used in the next step.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Authentication Secret" src="/images/teamtailor-mfa/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter 6-digit code">
+    Enter 6-digit code from the authenticator app to complete the setup.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Authenticator Code" src="/images/teamtailor-mfa/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="2-factor Authentication Complete">
+    The 2-factor Authentication setup is complete.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Authentication Complete" src="/images/teamtailor-mfa/image6.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Input the collected inputs into the StackOne Hub
+
+<Steps>
+  <Step title="Link Account">
+    Upon reaching the Link Account page, enter the gathered details and proceed by clicking the `Connect` button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/teamtailor-mfa/image7.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://support.teamtailor.com/en/articles/5963369-use-our-teamtailor-api">
+    https://support.teamtailor.com/en/articles/5963369-use-our-teamtailor-api
+</Card>
+<Card title="Two-Factor Authentication" icon="link" href="https://support.teamtailor.com/en/articles/6730339-login-methods-password-two-factor-authentication-2fa-and-or-sso">
+    https://support.teamtailor.com/en/articles/6730339-login-methods-password-two-factor-authentication-2fa-and-or-sso
+</Card>
