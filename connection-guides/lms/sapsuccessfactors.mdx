@@ -13,6 +13,24 @@ If you've been directed to StackOne to integrate with SAP SuccessFactors, the fo
 
 # Locating Credentials
 
+## Locating API Server
+
+<Steps>
+  <Step title="Find the API Server">
+    SAP uses multiple API server addresses. You will need to look up the API server that corresponds to your tenant domain on this [table](https://help.sap.com/docs/SAP_SUCCESSFACTORS_PLATFORM/93f95815070049ebaaff042d8322d518/af2b8d5437494b12be88fe374eba75b6.html) under the `API Server` column.
+
+    For example, if your domain was `https://pmsalesdemo8.successfactors.com/` you would search for `salesdemo8` in the table.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Server Example" src="/images/sapsuccessfactors/image1.png" />
+    </Frame>
+
+    Copy the value in the `API Server` column (remove the final forward-slash `/`). In this example, the value would be `https://apisalesdemo8.successfactors.com`.
+
+    Use this value as the `API Server` value when connecting SAP SuccessFactors to StackOne.
+  </Step>
+</Steps>
+
 ## Finding the Learning Hub URL
   <Steps>
       <Step title="Log into SAP">
