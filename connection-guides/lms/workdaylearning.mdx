@@ -112,13 +112,23 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Steps>
   <Step title="Edit Permissions">
-    Edit the Domain Security Policy Permissions in the Security Group. Add the GET and PUT/MANAGE operations for the following required permissions for the Learning Core:
+    Edit the Domain Security Policy Permissions in the Security Group. Add the **GET and PUT/Get Only** operations for the following required permissions for the Learning Core as per the table below:
 
     For integrating with the Learning Core of Workday
 
     - Set Up: Learning Catalog
     - Reports: Learning Record
     - Manage: Learning Content
+    - **Person Data**
+    - Personal Data
+        - Name
+    - Work Contact Information
+        - Work Email
+        - Work Phone
+    
+  <Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/image12.png" />
+  </Frame>
 
   </Step>
 </Steps>
@@ -138,6 +148,15 @@ You can use the Tenant and System User credentials you created in steps 1 & 2 to
 <Frame>
   <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/image9.png" />
 </Frame>
+
+## Troubleshooting
+<Steps>
+  <Step title="Linking Account or Unable to Create Content Initially">
+      If you are having trouble linking an account or creating content initially it may be due to the permissions configuration. 
+      Please check the correct permissions are configured for both PUT and GET of Learning Content and Learning Records.
+  </Step>
+
+</Steps>
 
 <IntegrationFooter />
 
