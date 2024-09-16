@@ -6,7 +6,7 @@ description: "Follow these steps to connect OpenAI via the StackOne Hub successf
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
-  Ensure you have Owner privileges within your OpenAI account.
+  Ensure you have Owner privileges within your OpenAI organization.
 </Warning>
 
 If you've been directed to StackOne to integrate with OpenAI, the following steps will help you understand the process and any necessary actions to configure successful integration.
@@ -47,7 +47,9 @@ If you've been directed to StackOne to integrate with OpenAI, the following step
 
 <Steps>
     <Step title="Get Project ID">
-       Visit the [Projects](https://platform.openai.com/organization/projects) page to locate your Project ID.
+       Each connection will be linked to a single OpenAI project within your organization.
+
+       Visit the [Projects](https://platform.openai.com/organization/projects) page to locate the desired Project ID.
     <Frame>
       <img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="Project ID" src="/images/openai/image5.png" />
     </Frame>
