@@ -1,0 +1,77 @@
+---
+title: "Linkedin Learning"
+description: "If you've been directed to StackOne to integrate with Linkedin LEarning, the following steps will help you understand the process and any necessary actions to configure successful integration."
+---
+
+<Warning>
+  This guidance assumes you have Admin privileges for your Linkedin Learning account.
+</Warning>
+
+## Create Application
+
+<Steps>
+  <Step title="Log into Linkedin Learning">
+    Log into your Linkedin Learning account.
+  </Step>
+
+  <Step title="Navigate to Integrate">
+    Hover over `Me` in the top-right corner, then select `Integrate`.
+
+    Select `Integrations` from the dropdown menu.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/linkedinlearning/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Navigate to Select the Access content and reports via API tab.">
+   Select the `Access content and reports via API` tab on the left hand menu.
+  </Step>
+
+  <Step title="Create a New App">
+    Expand the `Generate LinkedIn Learning REST API Application` section.
+    Click `Add application`.
+    Complete the form, explaining how the integration will be used.
+    Select Content for the Choose keys option
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/linkedinlearning/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Note the Client ID and Secret">
+    Click Next. Once you have saved the application you will be able to copy and paste the `Client ID` and `Client secret`.
+  </Step>
+
+</Steps>
+
+
+## Linking to StackOne
+
+You can use the Client ID and Client Secret to link your Linkedin Learning account to StackOne.
+  <Steps>
+    <Step title="Enable Linkedin Learning Integration">
+      In the StackOne Dashboard navigate to the `Integrations` page.
+
+      Navigate to the `LMS` tab and click the `+` button next to Linkedin Learning.
+
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enable Integration" src="/images/linkedinlearning/image3.png" />
+      </Frame>
+    </Step>
+
+    <Step title="Link Linkedin Learning Account">
+      In the StackOne Dashboard navigate to the `Accounts` page.
+
+      Click `Link Account` and select Linkedin Lerning.
+
+      In the modal enter the `Client ID` and `Client Secret` from the previous step.
+
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/linkedinlearning/image4.png" />
+      </Frame>
+
+      Click `Connect`.
+    </Step>
+
+  </Steps>
