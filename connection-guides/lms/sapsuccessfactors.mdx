@@ -13,6 +13,24 @@ If you've been directed to StackOne to integrate with SAP SuccessFactors, the fo
 
 # Locating Credentials
 
+## Locating API Server
+
+<Steps>
+  <Step title="Find the API Server">
+    SAP uses multiple API server addresses. You will need to look up the API server that corresponds to your tenant domain on this [table](https://help.sap.com/docs/SAP_SUCCESSFACTORS_PLATFORM/d599f15995d348a1b45ba5603e2aba9b/af2b8d5437494b12be88fe374eba75b6.html) under the `API Server` column.
+
+    For example, if your domain was `https://pmsalesdemo8.successfactors.com/` you would search for `salesdemo8` in the table.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Server Example" src="/images/sapsuccessfactors/image1.png" />
+    </Frame>
+
+    Copy the value in the `API Server` column (remove the final forward-slash `/`). In this example, the value would be `https://apisalesdemo8.successfactors.com`.
+
+    Use this value as the `API Server` value when connecting SAP SuccessFactors to StackOne.
+  </Step>
+</Steps>
+
 ## Finding the Learning Hub URL
   <Steps>
       <Step title="Log into SAP">
@@ -220,6 +238,33 @@ To automate the OCN content sync process, take the following steps:
   <Frame>
     <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Schedule Synchronisation Process" src="/images/sapsuccessfactors/auto-content-sync.png" />
   </Frame>
+  </Step>
+</Steps>
+
+## Importing Content
+
+Once OCN content is being automatically made availble for import as per the steps above you may manually import the content into the system
+
+<Steps>
+  <Step title="Search OCN Content">
+
+  In the SuccessFactors Learning Administration navigation menu, select Content > Open Content Network.
+
+  Select the content provider you wish to import content from and click `search`
+
+  <Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Schedule Synchronisation Process" src="/images/sapsuccessfactors/ocn-search.png" />
+  </Frame>
+
+  Tick the `import` box for all content you wish to import
+
+  Select `Import Selected`
+
+  <Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Schedule Synchronisation Process" src="/images/sapsuccessfactors/ocn-import.png" />
+  </Frame>
+
+  Note: All content updates via the OCN Network will update the imported content once the synchronization process has run without the need for manual updarte or import.
   </Step>
 </Steps>
 
