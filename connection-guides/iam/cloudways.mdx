@@ -1,0 +1,87 @@
+---
+title: "Cloudways"
+description: "Follow these steps to connect Cloudways via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Cloudways account has Owner or Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Cloudways, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Cloudways
+
+
+    <Step title="Log in">
+        Log in to your Cloudways account at [https://platform.cloudways.com/login](https://platform.cloudways.com/login).
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/cloudways/image1.png" />
+        </Frame>
+    </Step>
+
+
+
+## Create a New API Secret Key
+
+<Steps>
+    
+    <Step title="Navigate to API Integration">
+        Click menu icon in the bottem left, then click **API Integration.**
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Integration" src="/images/cloudways/image2.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Create New API Secret Key">
+         Under API Details, click **Generate Key** button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New API Secret Key" src="/images/cloudways/image3.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Confirmation">
+        Click on **Generate key** button and confirm.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Confirmation" src="/images/cloudways/image4.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Copy your API Secret Key">
+        Your new API Key will be displayed. If you ever wish to change your API Key, click on **Regenerate Key.** This will revoke your old Key, so please keep a note of your Key at a safe place to use it in the future.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your API Secret Key" src="/images/cloudways/image5.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    - **Email**
+    - **API Key**
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/cloudways/image6.png" />
+    </Frame>
+
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+</ul>
