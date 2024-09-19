@@ -129,8 +129,14 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   <Frame>
   <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/image12.png" />
   </Frame>
-
   </Step>
+  <Step title="The Permissions Should Look as Follows">
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/permissions.png" />
+    </Frame>
+  </Step>
+
 </Steps>
 
 ## Approve the Security Policy Changes
@@ -138,6 +144,32 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 <Steps>
   <Step title="Search for Activate Pending Security Policy Changes">
     In the Search bar, search for "Activate Pending Security Policy Changes". Review the policies that need approval in the summary of the changes in the security policy. Approve the pending security policy changes to activate them.
+  </Step>
+</Steps>
+
+## Configure Business Processes
+
+<Steps>
+  <Step title="Search for Manage Course Business Process">
+    In the Search bar, search for "bp: Manage Course". Click on the matching search result.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Manage Course" src="/images/workday/bp-manage-course.png" />
+    </Frame>
+  </Step>
+
+
+  <Step title="Navigate to Edit Business Process Policy">
+    Next to the Business Process Definition `Manage Course` click the kebab menu and select Business Process Policy > Edit.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Edit BP" src="/images/workday/navigate-edit-bp.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Edit Business Process Policy">
+    Add the user to the Security Groups for the initiating action `Manage Learning Course (Web Service)`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add User to Security Group" src="/images/workday/add-user-to-sg.png" />
+    </Frame>
   </Step>
 </Steps>
 
