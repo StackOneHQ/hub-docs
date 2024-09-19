@@ -1,0 +1,102 @@
+---
+title: "Retool"
+description: "Follow these steps to connect Retool via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Retool account has Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Retool, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Retool
+
+
+  <Step title="Log in">
+        Log in to your Retool account at [https://login.retool.com/auth/login](https://login.retool.com/auth/login).
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/retool/image2.png" />
+        </Frame>
+    </Step>
+
+
+
+## Create a New API Key
+
+<Steps>
+    
+    <Step title="Navigate to Your Profile">
+        Click your name in the top right, then click **Settings**.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Keys" src="/images/retool/image3.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Create New API Key">
+          Click the **Retool API** tab.
+          Click the **Create new** button
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New API Key" src="/images/retool/image4.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Select Scopes">
+        Enter the **Name** and **Description** for this new Token.
+
+         This Retool connection requires the following scopes. Select these under **Scopes**:
+        <ul>
+            <li>Retool RPC</li>
+        </ul>
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Scopes" src="/images/retool/image5.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Copy your API Key">
+        Your new **API Key** will be displayed only once. Copy and store this value securely.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your API Key" src="/images/retool/image6.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    - **API Key**
+    - **Domain URL** - It should be https://Subdomain.retool.com
+
+    Note - _The Subdomain is the organization name entered while creating the Retool account._
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/retool/image7.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Groups</li>
+  <li>Roles</li>
+</ul>
