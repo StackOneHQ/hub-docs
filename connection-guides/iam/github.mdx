@@ -1,0 +1,137 @@
+---
+title: "Github"
+description: "Follow these steps to connect Github via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Github account has the Owner privileges in the organization you are making connection with.
+</Warning>
+
+If you've been directed to StackOne to integrate with Github, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Github
+
+
+    <Step title="Log in">
+        Log in to your Github account at [https://github.com/login](https://github.com/login).
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/github/image2.png" />
+        </Frame>
+    </Step>
+
+
+
+## Create a New Personal Access Token
+
+<Steps>
+    
+    <Step title="Navigate to Your Profile">
+        Click the **Settings** tab.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Your Profile" src="/images/github/image3.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Navigate to Developer settings tab">
+        Click the **Developer settings**.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Developer settings" src="/images/github/image4.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Navigate to Personal access tokens tab">
+        Select the **Tokens (classic)** from the **Personal access tokens** dropdown.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Personal Access Tokens" src="/images/github/image5.png" />
+        </Frame>
+    </Step>
+    
+    <Step title="Generate new token">
+        Click **Generate new token** dropdown.
+        Select **Generate new token (classic)** from the dropdown.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate new token" src="/images/github/image6.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Expiration">
+        Select **No expiration** from the Expiration dropdown. 
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Expiration" src="/images/github/image7.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Scopes">
+        This Github connection requires the following scopes. Select these under **Scopes**:
+        <ul>
+            <li>admin-org</li>
+        </ul>
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Scopes" src="/images/github/image8.png" />
+        </Frame>
+    </Step>
+    
+    <Step title="Generate token">
+        Scroll down to the bottom and click **Generate token**.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate token" src="/images/github/image9.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Copy your Personal Access Token">
+        Your new **Personal Access Token** will be displayed only once. Copy and store this value securely.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your Personal Access Token" src="/images/github/image10.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+## Find Organization 
+
+<Steps>
+    <Step title="Navigate to Your Profile">
+        Select **Your organizations** tab.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your Personal Access Token" src="/images/github/image11.png" />
+       </Frame>
+    </Step>
+     <Step title="Organization name">
+       You can find the list of organizations here. Copy the name of the organization you want to make the connection with.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your Personal Access Token" src="/images/github/image13.png" />
+       </Frame>
+    </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    - **Personal Access Token**
+    - **Organization**
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/github/image12.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Roles</li>
+</ul>
