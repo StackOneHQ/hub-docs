@@ -1,0 +1,112 @@
+---
+title: "Workday ATS Assessment"
+description: "To successfully set up a webhook for a Workday Assessment order request, follow these steps to understand the process and configure any necessary actions for webhook notification."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes you have Admin privileges for your Workday account.
+</Warning>
+
+## Create an integration system using StackOne.
+
+<Steps>
+  <Step title="Create a Webhook">
+    To set up a webhook in StackOne.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Webhook" src="/images/workday-assessment/Add_Webhook.png" />
+    </Frame>
+
+    Please ensure that the status of the webhook in the grid below is set to `enabled`
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Webhook Enabled" src="/images/workday-assessment/Webhook_Enabled.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add a webhook event">
+    To add or edit a webhook event, click on the `Edit event` button and then click on the `+` button next to `created` under ATS Assessments.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Events" src="/images/workday-assessment/Edit_Events.png" />
+    </Frame>
+    
+    When the pop-up appears, please select the `Invited` event under Workday and then click on the `Confirm` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Workday Invited Native Event" src="/images/workday-assessment/Select_Workday_Invited_Native_Event.png" />
+    </Frame>
+
+    Please remember to click on the `Save` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Webhook Event Save" src="/images/workday-assessment/Webhook_Event_Save.png" />
+    </Frame>
+
+    <Check>Once you have completed the steps above, the `StackOne_IS_System` Integration System has been successfully created in your linked Workday account.</Check>
+  </Step>
+</Steps>
+
+## Set up integration system with assessment status & test
+
+<Steps>
+  <Step title="Set up the Assessment Statuses">
+    Navigate to Maintain Assessment Statuses, add an assessment status `Invited`, and ensure it is enabled with the overall status checked.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Statuses" src="/images/workday-assessment/Assessment_Statuses.png" />
+    </Frame>
+
+    To obtain the Reference ID of the `Invited` event, you can access it through the three-dot menu.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Status Reference ID" src="/images/workday-assessment/Status_Ref_ID.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Set up the Assessment Tests">
+    Navigate to the Maintain Recruiting Assessment Tests, add an assessment test, and ensure it is enabled by selecting `StackOne_IS_System` as an Integration System.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Tests" src="/images/workday-assessment/Assessment_Tests.png" />
+    </Frame>
+
+    To obtain the Reference ID of the selected test, you can access it through the three-dot menu.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Test Reference ID" src="/images/workday-assessment/Tests_Ref_ID.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Set up integration system with business process
+
+<Steps>
+  <Step title="Set up integration system with business process">
+    Log in to your Workday account and navigate to the `Assess Candidate` Business Process
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="BP Config IS" src="/images/workday-assessment/BP_Config_IS.png" />
+    </Frame>
+
+    Click on the `Configure` button next to the job condition rules. Select `StackOne_IS_System` as an integration and click on `OK`
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select IS on Popup" src="/images/workday-assessment/Select_IS_on_Popup.png" />
+    </Frame>
+
+    The pop-up will appear, allowing you to select values for the fields that will be included in the payload request when the `Invited` event is triggered from Worday.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Values for Fields" src="/images/workday-assessment/Set_Values_for_Fields.png" />
+    </Frame>
+    
+    **Please fill in the following information:**
+
+    - **Candidate First Name:** [First Name]
+    - **Candidate Last Name:** [Last Name]
+    - **Candidate Email Address:** [Email]
+    - **Candidate Reference ID:** [Candidate ID]
+    - **Job Application Reference ID:** [Job Requisition as Text]
+    - **Assessment Test Reference ID:** [Add Assessment Reference ID that you want to share with Candidate]
+
+    Click the `OK` button to save your configurations.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://doc.workday.com/">
+    https://doc.workday.com/
+</Card>
