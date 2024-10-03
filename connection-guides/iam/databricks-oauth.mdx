@@ -1,0 +1,61 @@
+---
+title: "Databricks (OAuth)"
+description: "Follow these steps to connect Databricks via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Databricks account has Account Admin or Workspace Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Databricks, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Databricks
+
+Log in to your Databricks instance at https://accounts.cloud.databricks.com
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/databricks/image1.png" />
+</Frame>
+
+## Obtain your Account ID
+
+Click the down arrow next to your username in the top-right corner. In the drop-down menu, copy your displayed **Account ID** to be used in a later step.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Obtain your Account ID" src="/images/databricks/image2.png" />
+</Frame>
+
+## Create New OAuth Service Credentials
+
+This connection will authenticate on behalf of registered OAuth credentials in Databricks.
+
+Follow the steps detailed in this [Databricks documentation page](https://docs.databricks.com/en/dev-tools/auth/oauth-m2m.html#authenticate-access-to-databricks-with-a-service-principal-using-oauth-oauth-m2mn) to:
+
+1. Create a *Service Principal* with *Admin* permissions. Enter `https://api.stackone.com/connect/oauth2/databricks_iam/callback` as the **Redirect URI**
+2. Generate an *OAuth Secret*, containing your **Client ID** and **Client Secret** 
+
+Please note that the documented steps will depend on your assigned account role within Databricks.
+
+Copy and store your **Client ID** and **Client Secret** securely to be used in the next step.
+
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the credentials from the previous steps:
+- **Account ID**
+- **Client ID**
+- **Client Secret**
+
+Proceed by clicking the Connect button.
+
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Groups</li>
+</ul>

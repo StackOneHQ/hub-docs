@@ -1,0 +1,75 @@
+---
+title: "Ironclad"
+description: "Follow these steps to connect Ironclad via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Ironclad account has Administrator privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Ironclad, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Ironclad
+
+Log in to Ironclad at https://ironcladapp.com/signin
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/ironclad/image1.png" />
+</Frame>
+
+
+## Create a New API Key
+
+<Steps>
+    
+    <Step title="Navigate to API Keys">
+        In the top-right corner, click your name and then **Company Settings**.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Keys1" src="/images/ironclad/image2.png" />
+        </Frame>
+
+        In the left navigation menu, click **API**.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Keys2" src="/images/ironclad/image3.png" />
+        </Frame>
+
+    </Step>
+
+    
+    <Step title="Create New API Token">
+        Under *Create New Token*, enter a name for the new token and click the **Create** button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New API Key" src="/images/ironclad/image4.png" />
+        </Frame>
+    </Step>
+    
+    <Step title="Copy your API Token">
+        Your new **API token** will be displayed. Copy and store this securely to be used in the next step, then click the **Confirm and close** button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your API Token" src="/images/ironclad/image5.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the **API Token** from the previous step.
+
+Proceed by clicking the Connect button.
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Groups</li>
+</ul>

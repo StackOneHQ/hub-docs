@@ -1,0 +1,89 @@
+---
+title: "Smartsheet"
+description: "Follow these steps to connect Smartsheet via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Smartsheet account has Administrator privileges.
+
+  A Smartsheet Business plan or higher is required for this integration.
+</Warning>
+
+If you've been directed to StackOne to integrate with Smartsheet, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Smartsheet
+
+Log in to your Smartsheet account at https://app.smartsheet.com 
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/smartsheet/image1.png" />
+</Frame>
+
+
+## Create a New Access Token
+
+<Steps>
+    
+    <Step title="Navigate to Access Tokens">
+        Click your profile icon in the bottom left corner, then click **Apps & Integrations...**
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Access Tokens" src="/images/smartsheet/image6.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Create New Access Token">
+        Under *Personal Settings*, click **API Access**, then click the **Generate new access token** button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New Access Token" src="/images/smartsheet/image7.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Enter Access Token Details">
+        Enter a **Name** for the new token, then click the **OK** button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Access Token Details" src="/images/smartsheet/image8.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Copy your Access Token">
+        Copy your displayed **Access Token** to be used in the next step.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your Access Token" src="/images/smartsheet/image9.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the **Access Token** from the previous step.
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/smartsheet/image1.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Roles</li>
+  <li>Users</li>
+</ul>
