@@ -1,0 +1,95 @@
+---
+title: "Ansible Tower"
+description: "Follow these steps to connect Ansible Tower via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Ansible Tower account has Administrator privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Ansible Tower, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Ansible Tower
+
+Log in to your Ansible Tower instance, and note your **Ansible Tower URL** to be used in a later step. 
+
+(Example: `https://ansible.myapp-exp.com`)
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/ansibletower/image1.png" />
+</Frame>
+
+## Create a New OAuth Application
+
+This connection will authenticate on behalf of a registered Application in Ansible.
+<Steps>
+    
+    <Step title="Navigate to Applications">
+        Click **Applications** in the left navigation bar.
+    </Step>
+
+    
+    <Step title="Create New Application">
+        Click the **+** button in the top right to begin creating a new application.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New Application" src="/images/ansibletower/image2.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Enter Application Details">
+    Enter the following details in the *Create New Application* window:
+
+    - Name
+    - Description (optional)
+    - Organization: select the organization to be associated with this connection
+    - Authorization Grant Type: Select *Authorization Code*
+    - Redirect URIS: Enter `https://api.stackone.com/connect/oauth2/ansibletower_iam/callback`
+    - Client Type: *Confidential* or *Public* can be selected for this connection
+
+    Click the *Save* button to proceed.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Details" src="/images/ansibletower/image3.png" />
+        </Frame>
+    </Step>
+    
+    <Step title="Copy Application Credentials">
+        Your new Application **Client ID** and **Client Secret** will be displayed. Copy these and store them securely to be used in a later step.
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    - Client ID
+    - Client Secret
+    - Ansible Tower URL
+
+    Proceed by clicking the Connect button.
+  </Step>
+
+  <Step title="Authorize Application Access">
+    Depending on your Ansible Tower instance configuration, a window may appear with a prompt to log in to Ansible Tower and authorize this new application.
+
+    Log in again and click the **Authorize** button to proceed.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Roles</li>
+  <li>Groups</li>
+</ul>

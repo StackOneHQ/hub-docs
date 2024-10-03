@@ -1,0 +1,116 @@
+---
+title: "Sophos"
+description: "Follow these steps to connect Sophos via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Sophos account has Administrator privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Sophos, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Sophos
+
+Log in to your Sophos account at https://central.sophos.com
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/sophos/image1.png" />
+</Frame>
+
+## Locate Your Tenant ID and API Host
+<Steps>
+    <Step title="Navigate to Support Settings">
+        Once logged in, click the profile icon in the top right corner, then click **Support Settings**.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Support Settings" src="/images/sophos/image6.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Tenant ID">
+
+        Your **Tenant ID** will be displayed near the bottom of the *Support settings* page. Click the **Copy** button to save this for a later step.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Tenant ID" src="/images/sophos/image7.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Data Region API Host">
+        On the same *Support settings* page, your Region will be displayed at the bottom: *"This account is located in the \<Your Region\> region"*
+
+        Using the table located at https://developer.sophos.com/intro#global-vs-regional-apis (also shown below), save the **API Host** that matches your region. This will be used in a later step.
+    
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Data Region API Hosts" src="/images/sophos/image8.png" />
+        </Frame>
+    </Step>
+</Steps>
+
+## Create New API Credentials
+
+This connection will authenticate on behalf of registered API Credentials in Sophos.
+<Steps>
+    
+    <Step title="Navigate to API Credentials">
+        Click the <Icon icon="gear" iconType="regular" /> `Settings` button in the top right.
+
+        Under *Administration*, click **API Credentials Management**.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Credentials" src="/images/sophos/image2.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Create New Credentials">
+        Under *API Credentials Management*, click the **Add Credential** button on the right.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New Application" src="/images/sophos/image3.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Enter Credentials Details">
+        Enter a **Credential name** and optionally a **Description**.
+
+        For *Role*, select **Service Principal ReadOnly**; the minimum required role for this integration.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials Details" src="/images/sophos/image4.png" />
+        </Frame>
+    </Step>
+    
+    <Step title="Copy Credentials">
+        Click **Show Client Secret**, then copy the displayed **Client ID** and **Client Secret**. Store these securely to be used in the next step.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Credentials" src="/images/sophos/image5.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the credentials from the previous steps:
+- **Client ID**
+- **Client Secret**
+- **Tenant ID**
+- **Data Region API Host**
+
+Proceed by clicking the Connect button.
+
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Groups</li>
+  <li>Roles</li>
+</ul>

@@ -1,0 +1,98 @@
+---
+title: "OpenVPN"
+description: "Follow these steps to connect OpenVPN via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your OpenVPN account has Administrator privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with OpenVPN, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to OpenVPN
+
+Log in to OpenVPN at https://myaccount.openvpn.com
+
+Enter and note your **Cloud ID** (subdomain) to be used in a later step.
+
+This can also be found in the URL once logged in. 
+
+(Example: `https://my-cloud-id.openvpn.com/`)
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/openvpn/image1.png" />
+</Frame>
+
+
+## Create API Credentials
+
+<Steps>
+    
+    <Step title="Navigate to API Credentials">
+        In the left navigation bar, click **API & Logs**, then **API**.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Credentials" src="/images/openvpn/image2.png" />
+        </Frame>
+    </Step>
+    
+    <Step title="Create New Credentials">
+        Under *API*, first ensure that *Enable API for the Cloud ID* is enabled.
+
+        Click the **Create Credentials** button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New Credentials" src="/images/openvpn/image3.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Enter Credentials Details">
+        Enter a **Name** for these new credentials, and select the desired **Lifetime** (expiry). 
+
+        Click the **Create** button at the bottom to proceed.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials Details" src="/images/openvpn/image4.png" />
+        </Frame>
+
+        <Warning>
+        Please note that when these credentials expire, a new set must be created and the credentials for this connection must be updated.
+        </Warning>
+    </Step>
+    
+    <Step title="Copy Credentials">
+        The new **Client ID** and **Client Secret** will be displayed only once. Copy these and store them securely to be used in the next step.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Credentials" src="/images/openvpn/image5.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    - **Cloud ID** (subdomain)
+    - **Client ID**
+    - **Client Secret**
+
+    Proceed by clicking the Connect button.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Roles</li>
+</ul>
