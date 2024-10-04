@@ -6,22 +6,22 @@ description: "Follow these steps to connect Webflow via the StackOne Hub success
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
-  Ensure that your Webflow account has Admin privileges.
+  Ensure that your Webflow account has Owner or Admin privileges within the Webflow site to be connected.
 </Warning>
 
 If you've been directed to StackOne to integrate with Webflow, the following steps will help you understand the process and any necessary actions to configure a successful integration.
 
 ## Log in to Webflow
 
-    <Step title="Log in to Webflow">
-        Log in to your [Webflow app](https://webflow.com/login)
+Log in to your Webflow app at https://webflow.com/login
 
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/webflow/image1.png" />
-        </Frame>
-    </Step>
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/webflow/image1.png" />
+</Frame>
 
 ## Get your Webflow Site ID
+
+One Webflow IAM connection will be associated with a single Webflow site. 
 
 <Steps>
   <Step title="Navigate to Sites">
@@ -32,7 +32,7 @@ If you've been directed to StackOne to integrate with Webflow, the following ste
   </Step>
 
   <Step title="Copy Site ID">
-    Under `General`, scroll down to `Overview`. Copy and store the **Site ID** safely.
+    Under `General`, scroll down to `Overview`. Copy and store the **Site ID** safely to be used in a later step.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Site Settings" src="/images/webflow/image3.png" />
     </Frame>
@@ -44,11 +44,11 @@ If you've been directed to StackOne to integrate with Webflow, the following ste
 This connection will authenticate on behalf of a registered Application in Webflow.
 <Steps>
     
-    <Step title="Navigate to App development">
+    <Step title="Navigate to Apps">
         Select `Settings > Apps & Integrations` from the left menu and scroll down to `App development`.
 
         <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to App development" src="/images/webflow/image4.png" />
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Apps" src="/images/webflow/image4.png" />
         </Frame>
     </Step>
 
@@ -63,7 +63,12 @@ This connection will authenticate on behalf of a registered Application in Webfl
 
     
     <Step title="Enter Application Details">
-        Enter an App name, description and homepage URL. Then, click on the `Continue` button.
+        Enter the following details for your new application:
+        - App name
+        - App description
+        - App homepage URL: this can be the URL of your organization's homepage
+        
+        Click the **Continue** button to proceed.
 
         <Frame>
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Details" src="/images/webflow/image6.png" />
@@ -80,7 +85,7 @@ This connection will authenticate on behalf of a registered Application in Webfl
 
     
     <Step title="Select Application Scopes">
-        Scroll down and select `Read-only` access for `User Account` and then click on the `Create App` button.
+        Scroll down and select `Read-only` access for `User Account` and then click the **Create App** button.
 
         <Frame>
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Application Scopes" src="/images/webflow/image8.png" />
@@ -89,7 +94,7 @@ This connection will authenticate on behalf of a registered Application in Webfl
 
     
     <Step title="Copy Application Credentials">
-        Upon successfully creating your app, copy the new Client ID and Client Secret that are displayed, and store them safely.
+        Your new application will now be listed. Copy the new **Client ID** and **Client Secret** that are displayed and store them securely to be used in a later step.
 
         <Frame>
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Application Credentials" src="/images/webflow/image9.png" />
@@ -104,15 +109,31 @@ This connection will authenticate on behalf of a registered Application in Webfl
 <Steps>
   <Step title="Enter Credentials">
     Upon reaching the Link Account page, enter the credentials from the previous steps:
-    - Client ID
-    - Client Secret
-    - Site ID
-    - Application Scopes
+    - **Client ID**
+    - **Client Secret**
+    - **Site ID**
+    - **Application Scopes**: `users:read`
 
     Proceed by clicking the Connect button.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/webflow/image10.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Authorize Application Access">
+    A window will appear, and you may be prompted to log in again to Webflow. 
+
+    *Note: If you are redirected to the Webflow homepage after logging in here, please close the window and connect again.*
+    
+    Details about the specified application will be displayed.
+
+    Under `Select sites or Workspaces to authorize`, select the **Workspace** containing the site to be associated with the connection.
+
+    Click the **Authorize App** button to proceed.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Authorize Application Access" src="/images/webflow/image11.png" />
     </Frame>
   </Step>
 </Steps>
