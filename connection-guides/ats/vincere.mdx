@@ -1,0 +1,80 @@
+---
+title: "Vincere"
+description: "Follow these steps to connect Vincere via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your Vincere account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Vincere, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Getting the API key
+
+<Steps>
+<Step>
+ To get a Vincere API Key, please contact Vincere Support Team at support@vincere.io.
+ 
+   Ensure you already have some information below
+  - Your tenant URL
+  - The name of the integration
+  - The callback URL
+</Step>
+</Steps>
+
+## Tenant URL
+
+<Steps>
+<Step>
+ When logged in to your Vincere account, your Tenant name can be found in the URL.
+  URL Example - https://**tenant**.vincere.io
+   <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Tenant Name" src="/images/vincere/image3.png" />
+    </Frame>
+</Step>
+</Steps>
+
+## Callback URL 
+
+<Steps>
+    https://app.stackone.com/connect/oauth2/vincere/callback
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the gathered details and proceed by clicking the `Connect` button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/vincere/image2.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [ATS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Jobs</li>
+  <li>Candidates</li>
+  <li>Applications</li>
+  <li>Job_postings</li>
+  <li>Rejected_reasons</li>
+  <li>Interview_stages</li>
+</ul>
+
+## Useful Links
+<Card title="Vincere Help" icon="link" href="https://help.vincere.io/">
+  https://help.vincere.io/
+</Card>
+<Card title="Vincere API Key Reference" icon="link" href="https://help.vincere.io/en/articles/9618701-all-about-api-key-in-vincere">
+  https://help.vincere.io/en/articles/9618701-all-about-api-key-in-vincere
+</Card>
+<Card title="How to contact Vincere support" icon="link" href="https://help.vincere.io/en/articles/6959443-how-to-contact-vincere-support-and-book-training">
+  https://help.vincere.io/en/articles/6959443-how-to-contact-vincere-support-and-book-training
+</Card>
