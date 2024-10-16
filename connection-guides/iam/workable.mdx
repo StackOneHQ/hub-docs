@@ -9,6 +9,10 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   This guidance assumes you have Super Admin privileges for your Workable account.
 </Warning>
 
+<Warning>
+  Note that Workable Account Users with the selected permission "Recruiting Member Access: No access" are not retrieved via this integration.
+</Warning>
+
 ## Generating Workable API key & enabling permissions
 
 <Steps>
@@ -63,6 +67,16 @@ In StackOne, ensure the Workable integration is enabled. In <b>Accounts > Link A
 </Frame>
 
 <IntegrationFooter />
+
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+<ul>
+ <li>Users</li>
+ <li>Roles</li>
+</ul>
+
 
 ## Useful Links
 <Card title="Authentication Guide" icon="link" href="https://workable.readme.io/reference/generate-an-access-token">

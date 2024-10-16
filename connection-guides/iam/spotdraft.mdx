@@ -1,0 +1,87 @@
+---
+title: "Spotdraft"
+description: "Follow these steps to connect Spotdraft with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your Spotdraft account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Spotdraft, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get user credentials
+
+You will need to provide a user email and password. It is recommended that you set up a new account for integration purposes.
+
+<Steps>
+<Step title="Log in to Spotdraft">
+    Log in to your [Spotdraft Account](https://app.spotdraft.com/auth/login).
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Login" src="/images/spotdraft/image1.png" />
+    </Frame>
+  </Step>
+  <Step title="Go to settings">
+    Hover on the `Settings` <Icon icon="gear" iconType="regular" /> button from the left menu and click on the `Access Control` tab.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings" src="/images/spotdraft/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create a New User">
+    Under the `Team Members` tab, click the `➕ Add New Member` to create a new employee.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="New User" src="/images/spotdraft/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Fill Out Required Fields">
+    Fill out the required fields and set the Team to `Admin`. This will ensure the account has the correct permissions, and then click `Send Invite` button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Role" src="/images/spotdraft/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create Account">
+    The email address you entered will receive an invitation. Click `JOIN NOW`, you may have to log out of your current account to create the password.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Account" src="/images/spotdraft/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Get Account Email and Password">
+    You should now have the account email address and password to proceed with the Hub.
+  </Step>
+</Steps>
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter User Details">
+    Upon reaching the Link Account page, enter the Username and Password from the previous step. Proceed by clicking the Connect button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/spotdraft/image6.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+<ul>
+ <li>Users</li>
+ <li>Roles</li>
+</ul>
+
+
+## Useful Links
+<Card title="Inviting a New Team Member" icon="link" href="https://help.spotdraft.com/setting-up-spotdraft/9RyxzEFZVWxKkFMHcWz33F/inviting-a-new-team-member/kUd69DJcSXNuEAP6zMrSRh">
+    https://help.spotdraft.com/setting-up-spotdraft/9RyxzEFZVWxKkFMHcWz33F/inviting-a-new-team-member/kUd69DJcSXNuEAP6zMrSRh
+</Card>

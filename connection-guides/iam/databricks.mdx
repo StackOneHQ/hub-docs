@@ -1,0 +1,73 @@
+---
+title: "Databricks"
+description: "Follow these steps to connect Databricks via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This authentication method requires User Provisioning to be enabled and set up within your Databricks account. 
+
+  Ensure that your Databricks account has Account Admin privileges.
+
+  A Databricks Premium plan or higher is required for this authentication method.
+</Warning>
+
+If you've been directed to StackOne to integrate with Databricks, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Databricks
+
+Log in to your Databricks instance at https://accounts.cloud.databricks.com
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/databricks/image1.png" />
+</Frame>
+
+## Obtain your Account ID
+
+Click the down arrow next to your username in the top-right corner. In the drop-down menu, copy your displayed **Account ID** to be used in a later step.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Obtain your Account ID" src="/images/databricks/image2.png" />
+</Frame>
+
+## Obtain your SCIM Token
+
+<Steps>
+    
+    <Step title="Navigate to User Provisioning">
+        Click <Icon icon="gear" iconType="regular" /> `Settings` in the left navigation, then **User Provisioning**.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to User Provisioning" src="/images/databricks/image3.png" />
+        </Frame>
+    </Step>
+    
+    <Step title="Copy your SCIM Token">
+        If User Provisioning is enabled for your account, your **SCIM Token** will be displayed under *User Provisioning*. Copy and store it securely to be used in the next step.
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    - **Account ID**
+    - **SCIM Token**
+
+    Proceed by clicking the Connect button.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Groups</li>
+</ul>

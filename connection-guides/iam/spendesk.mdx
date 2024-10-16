@@ -1,0 +1,60 @@
+---
+title: "Spendesk"
+description: "Follow these steps to connect Spendesk via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Account Owner privileges within your Spendesk account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Spendesk, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get OAuth Credentials
+
+<Steps>
+ <Step title="Get Partner Credentials">
+    To get credentials you need to contact with Spendesk partnership team. Spendesk will generate and share the credentials.\
+    [Contact the Spendesk Partnership team]( https://www.spendesk.com/partners/).
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Login" src="/images/spendesk/image.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter Authentication Details">
+    Upon reaching the Link Account page, enter the following authentication details from the previous steps:
+    <ul>
+      <li>Client ID</li>
+      <li>Client Secret</li>
+      <li>Scopes  `user:read`</li>
+    </ul>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/spendesk/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect">
+    Proceed by clicking the Connect button.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+<ul>
+ <li>Users</li>
+</ul>
+
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developer.spendesk.com/public/reference/general">
+    https://developer.spendesk.com/public/reference/general
+</Card>

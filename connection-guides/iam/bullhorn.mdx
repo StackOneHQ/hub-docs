@@ -1,0 +1,60 @@
+---
+title: "Bullhorn"
+description: "Follow these steps to connect Bullhorn with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your Bullhorn account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Bullhorn, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Get your Client ID and Client Secret
+
+These are unique identifiers for your account. If you do not possess this information, please contact Bullhorn Support or Submit a ticket via the <a href="https://www.bullhorn.com/au/technical-support-2/">Bullhorn Resource Center</a>.
+
+You will need to contact Bullhorn support to "add the following redirect URI: `https://api.stackone.com/connect/oauth2/bullhorn_iam/callback`".
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter your API credentials">
+    Upon reaching the Link Account page, enter the following credentials received from Bullhorn Support:
+    - Client ID
+    - Client Secret
+    - API Username
+
+    Proceed by clicking the `Connect` button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter your API credentials" src="/images/bullhorn/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Log in to your Bullhorn account">
+    In the window that appears, log in to your Bullhorn account to authorize account access.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to your Bullhorn account" src="/images/bullhorn/image2.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Roles</li>
+  <li>Groups</li>
+</ul>
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://bullhorn.github.io/Getting-Started-with-REST">
+    https://bullhorn.github.io/Getting-Started-with-REST
+</Card>
+

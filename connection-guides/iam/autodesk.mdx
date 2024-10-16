@@ -55,7 +55,7 @@ This guidance assumes that you are a Primary Admin or Secondary Admin within Aut
   </Step>
 
   <Step title="Enter Application Details">
-    Under Create Application, enter a Name for the new app, and select Server-to-Server App. Click the Create button to continue.
+    Under Create Application, enter a Name for the new app, and select Traditional Web App. Click the Create button to continue.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Details" src="/images/autodesk/image4.png" />
     </Frame>
@@ -65,6 +65,31 @@ This guidance assumes that you are a Primary Admin or Secondary Admin within Aut
     Copy your displayed Client ID and Client Secret and store them safely to use in the following steps.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Credentials" src="/images/autodesk/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Set Callback URL">
+    Under General Settings, enter the following as the Callback URL: `https://api.stackone.com/connect/oauth2/autodesk_iam/callback`
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Callback URL" src="/images/autodesk/image13.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Set API Access">
+    Under API Access, select the following two APIs required for this integration:
+    <ul>
+      <li>Autodesk Construction Cloud API</li>
+      <li>BIM 360 API</li>
+    </ul>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set API Access" src="/images/autodesk/image14.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Save Your New App">
+    Press the Save changes button to complete the creation of your new app.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Save Your New App" src="/images/autodesk/image15.png" />
     </Frame>
   </Step>
 </Steps>
@@ -105,7 +130,7 @@ This guidance assumes that you are a Primary Admin or Secondary Admin within Aut
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Developer Selection" src="/images/autodesk/image10.png" />
     </Frame>
-  </Step>
+  </Step> 
 
   <Step title="BIM 360 Info">
     Under BIM 360 info you need:
@@ -139,6 +164,17 @@ This guidance assumes that you are a Primary Admin or Secondary Admin within Aut
 </Steps>
 
 <IntegrationFooter />
+
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+<ul>
+ <li>Users</li>
+ <li>Roles</li>
+ <li>Groups</li>
+</ul>
+
 
 ## Useful Links
 <Card title="Get Access to a BIM 360 Account" icon="link" href="https://aps.autodesk.com/en/docs/bim360/v1/tutorials/getting-started/get-access-to-account/#step-1-provisioning-a-bim-360-account">

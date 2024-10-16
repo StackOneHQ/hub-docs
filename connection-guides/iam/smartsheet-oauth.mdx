@@ -1,0 +1,95 @@
+---
+title: "Smartsheet (OAuth)"
+description: "Follow these steps to connect Smartsheet via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Smartsheet account has Administrator privileges.
+
+  A Smartsheet Business plan or higher is required for this integration.
+</Warning>
+
+If you've been directed to StackOne to integrate with Smartsheet, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Smartsheet
+
+Log in to your Smartsheet account at https://app.smartsheet.com 
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/smartsheet/image1.png" />
+</Frame>
+
+
+## Create a New OAuth Application
+
+This connection will authenticate on behalf of a registered Application in Smartsheet.
+
+These steps require a Smartsheet Developer account. If you do not have one, one can be created at https://developers.smartsheet.com/register/
+
+<Steps>
+    
+    <Step title="Navigate to Developer Tools">
+        Click your profile icon in the bottom left corner, then click **Developer Tools...**
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Developer Tools" src="/images/smartsheet/image2.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Create New Application">
+        In the *Developer Tools* window, click the **Create New App** button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New Application" src="/images/smartsheet/image3.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Enter Application Details">
+        Enter the following details for the new Application:
+
+        - App name
+        - App description
+        - App URL: Can be the URL of your organization's homepage, for example
+        - App contact/support: Your email address
+        - App redirect URL: Enter `https://api.stackone.com/connect/oauth2/smartsheet_iam/callback`
+        - Publish App: Leave disabled
+
+        Proceed by clicking the **Save** button.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Details" src="/images/smartsheet/image4.png" />
+        </Frame>
+    </Step>
+    
+    <Step title="Copy Application Credentials">
+        Your **Client ID** (App client id) and **Client Secret** (App secret) will be displayed. Copy and store these securely to be used in the next step.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Application Credentials" src="/images/smartsheet/image5.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the credentials from the previous steps:
+- **Client ID**
+- **Client Secret**
+
+Proceed by clicking the Connect button.
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Roles</li>
+</ul>

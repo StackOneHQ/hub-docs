@@ -1,0 +1,94 @@
+---
+title: "SonarCloud"
+description: "Follow these steps to connect SonarCloud via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admins privileges within your SonarCloud account.
+</Warning>
+
+If you've been directed to StackOne to integrate with SonarCloud, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get User Token and Organization key
+
+<Steps>
+ <Step title="Log in to SonarCloud">
+    Log in to your [SonarCloud Account](https://sonarcloud.io/login).\
+    Choose the login method you prefer. For this guide, we will use `GitHub` for the login.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Login" src="/images/sonarcloud/image1.png" />
+    </Frame>
+  </Step>
+   <Step title="Enter Login Credentials">
+   Enter the credentials and click on the `Sign in` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Login" src="/images/sonarcloud/image2.png" />
+    </Frame>
+  </Step>
+   <Step title="Go to the My Account">
+      Click on the `Account` button in the top right corner, and then select **My Account**.
+      *Account >> My Account*
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="My Account Page" src="/images/sonarcloud/image3.png" />
+    </Frame>
+  </Step>
+  <Step title="Generate User Token">
+      Go to **Security** section, enter the token name and click on the `Generate Token` button. Copy the *User Token* and store it in the secure place, you need to create new token if the current one is expired. You can create multiple *User Token*.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate User Token" src="/images/sonarcloud/image4.png" />
+    </Frame>
+    <br/>
+      <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generated User Token" src="/images/sonarcloud/image5.png" />
+    </Frame>
+  </Step>
+   <Step title="Get Organization Key">
+      Go to **Organizations** section, to locate your Organization key. 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate User Token" src="/images/sonarcloud/image6.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter Authentication Details">
+    Upon reaching the Link Account page, enter the following authentication details from the previous steps:
+    <ul>
+      <li>API key (User Token)</li>
+      <li>Organization key</li>
+    </ul>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/sonarcloud/image7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect">
+    Proceed by clicking the Connect button.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+<ul>
+ <li>Users</li>
+ <li>Roles</li>
+ <li>Groups</li>
+</ul>
+
+
+## Useful Links
+
+<Card title="Getting Started" icon="link" href="https://docs.sonarsource.com/sonarcloud/getting-started/gitlab/">
+    https://docs.sonarsource.com/sonarcloud/getting-started/gitlab/
+</Card>
+<Card title="Web API" icon="link" href="https://sonarcloud.io/web_api">
+    https://sonarcloud.io/web_api
+</Card>

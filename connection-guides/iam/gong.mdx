@@ -1,0 +1,103 @@
+---
+title: "Gong"
+description: "Follow these steps to connect Gong via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Business Admins privileges within your Gong account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Gong, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get your Access Key and Access Key Secret
+
+<Steps>
+  <Step title="Log in to Gong">
+    Log in to your [Gong Account](https://app.gong.io/welcome/sign-in).
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Login" src="/images/gong/image1.png" />
+    </Frame>
+  </Step>
+  <Step title="Go to settings">
+    Click on the `Company settings` <Icon icon="gear" iconType="regular" /> button from the left menu at bottom.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings" src="/images/gong/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Navigate to API Page">
+    Under the `Ecosystem` section click on `API` menu
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Page" src="/images/gong/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Generate Access Key and Access Key Secret">
+    Scroll down to the `API KEYS` section and click `Get API Key` button to generate Access Key and Access Key Secret.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate API Access Key" src="/images/gong/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy the API Access Key and Access Key Secret to clipboard">
+    Copy your new Access Key and Click <b>Show secret</b> button and then Click <b>Copy</b> button to copy your new Access Key Secret to a safe place to be used in the next step.
+    <Frame>
+      <img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="API Access Key dialog" src="/images/gong/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Get your API Base URL and Workspace ID
+
+<Steps>
+    <Step title="Get API Base URL and Workspace ID">
+        Copy you API Base URL from `API KEYS` Section.
+    <Frame>
+      <img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="API Base URL" src="/images/gong/image6.png" />
+    </Frame>
+        Your Workspace ID is found in the URL.
+        Example given the URL: `https://my-domain.app.gong.io/company/api-authentication?workspace-id=11111111`.
+        The Workspace ID is `11111111`.
+    </Step>
+</Steps>
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter Authentication Details">
+    Upon reaching the Link Account page, enter the following authentication details from the previous steps:
+    <ul>
+      <li>Access Key</li>
+      <li>Access Key Secret</li>
+      <li>Workspace ID</li>
+      <li>API Base Url</li>
+    </ul>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/gong/image7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect">
+    Proceed by clicking the Connect button.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+<ul>
+ <li>Users</li>
+ <li>Roles</li>
+</ul>
+
+
+## Useful Links
+<Card title="Getting Started" icon="link" href="https://gong.app.gong.io/settings/api/documentation#overview">
+    https://gong.app.gong.io/settings/api/documentation#overview
+</Card>
+

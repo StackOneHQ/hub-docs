@@ -1,0 +1,85 @@
+---
+title: "Teamviewer"
+description: "Follow these steps to connect Teamviewer via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Teamviewer account has Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Teamviewer, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Teamviewer
+
+Log in to your Teamviewer account at https://account.teamviewer.com
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/teamviewer/image1.png" />
+</Frame>
+
+## Create a New Script Token
+
+<Steps>
+    
+    <Step title="Navigate to Script Tokens">
+        Go to your Teamviewer Management Console at https://login.teamviewer.com/nav/managecompany/apps
+
+        Click **Company Administration** on the left, then click **Apps**.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Script Tokens" src="/images/teamviewer/image2.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Create New Script Token">
+        Under *Apps and Scripts accessing your company*, click the **Create script token** button 
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New Script Token" src="/images/teamviewer/image3.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Select Script Token Permissions">
+        In the winow that appears on the right, enter a **Name** for this new token.
+
+        Select the following two permissions required for this integration:
+        - User management: **view users**
+        - Group management: **read groups**
+
+        Click the **Create** button to proceed.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Script Token Permissions" src="/images/teamviewer/image4.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Copy your Script Token">
+        Next to your new listed Script Token, click the *Copy* button and store it securely to be used in the next step.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your Script Token" src="/images/teamviewer/image5.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+Upon reaching the Link Account page, enter your **Script Token** created in the previous step.
+
+Proceed by clicking the Connect button.
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Roles</li>
+</ul>

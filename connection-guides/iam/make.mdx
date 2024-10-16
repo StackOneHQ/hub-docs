@@ -1,0 +1,134 @@
+---
+title: "Make"
+description: "Follow these steps to connect Make via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Make account has Owner or Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Make, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Make
+<Steps>
+    <Step title="Log in">
+        Log in to your Make account at [https://www.make.com/login](https://www.make.com/login).
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/make/image1.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Select the Organization to Connect">
+        Each Make connection will be linked to a single organization.
+
+        Select the Make organization you wish to connect.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select the Organization to Connect" src="/images/make/image2.png" />
+        </Frame>
+    </Step>
+</Steps>
+
+## Get your Make Environment
+
+Your **Environment** can be found in the URL when logged in to your Make organization.
+
+Given the URL `https://eu1.make.com`, the **Environment** is **eu1**.
+
+## Get your Make Organization ID
+
+Your **Organization ID** can be found in the URL when viewing your Organization Dashboard.
+
+Given the URL `https://eu1.make.com/organizations/1234567/dashboard`, the **Organization ID** is **1234567**.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Get your Make Organization ID" src="/images/make/image3.png" />
+</Frame>
+
+## Create a New API Token
+
+<Steps>
+
+    <Step title="Navigate to Your Profile">
+        Click your name in the bottom left, then click **Profile**.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Your Profile" src="/images/make/image4.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Navigate to API Tokens">
+        Click the **API ACCESS** tab.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Keys" src="/images/make/image5.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Create a New API Token">
+        Under *Tokens*, click the **+ Add token** button. 
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New API Token" src="/images/make/image6.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Select API Token Scopes">
+        Enter a **Label** for this new Token.
+
+        This IAM connection requires the following scopes to access the relevant resources. Select these under **Scopes**:
+        <ul>
+            <li>organizations:read</li>
+            <li>teams:read</li>
+            <li>user:read</li>
+        </ul>
+
+        Click the **Save** button to proceed.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select API Token Scopes" src="/images/make/image7.png" />
+        </Frame>
+    </Step>
+
+    
+    <Step title="Copy your API Token">
+        Your new **API Token** will be displayed only once. Copy and store this value securely.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your API Key" src="/images/make/image8.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    - **Environment**
+    - **Organization ID**
+    - **API Token**
+
+
+    Proceed by clicking the **Connect** button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/make/image9.png" />
+    </Frame>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Roles</li>
+  <li>Groups</li>
+</ul>

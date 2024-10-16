@@ -1,0 +1,76 @@
+---
+title: "Rollbar"
+description: "Follow these steps to connect Rollbar via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Owner privileges within your Rollbar account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Rollbar, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get Your Rollbar Access Token
+
+<Steps>
+  <Step title="Log in to Rollbar">
+    Log in to your [Rollbar Account](https://rollbar.com/login/). 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to Rollbar" src="/images/rollbar/image1.png" />
+    </Frame>
+  </Step>
+    <Step title="Navigate to Account Access Tokens">
+    Click the <Icon icon="gear" iconType="regular" /> `Settings` button on the left, then click `Setup > Account Access Tokens`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Account Access Tokens" src="/images/rollbar/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add Account Access Token">
+    Click the `Add new access token` button. The Account Access Token is now listed here.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Account Access Token" src="/images/rollbar/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add read scope">
+    Click the pencil <Icon icon="pencil" iconType="solid" /> icon of your Token, then update the name if required and check the `read` scope box. Click the check <Icon icon="check" iconType="solid" /> icon once done.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add scope" src="/images/rollbar/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Access Token">
+    Copy and store the Account Access Token safely.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Access Token" src="/images/rollbar/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting to StackOne
+
+Upon reaching the Link Account page, enter the **Account Access Token** from the previous step. Proceed by clicking the Connect button.
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/rollbar/image6.png" />
+</Frame>
+
+<IntegrationFooter />
+
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+<ul>
+ <li>Users</li>
+ <li>Roles</li>
+ <li>Groups</li>
+</ul>
+
+
+## Useful Links
+<Card title="Rollbar API" icon="link" href="https://docs.rollbar.com/reference/getting-started-1">
+    https://docs.rollbar.com/reference/getting-started-1
+</Card>
+
