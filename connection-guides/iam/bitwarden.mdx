@@ -6,12 +6,20 @@ description: "Follow these steps to connect Bitwarden via the StackOne Hub succe
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
-  Ensure you have Admin privileges for your Bitwarden Enterprise Organization.
+  Ensure you have Admin or Owner privileges for your Bitwarden Enterprise Organization.
 </Warning>
 
 If you've been directed to StackOne to integrate with Bitwarden, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
-This guidance assumes that you are an Admin within your Bitwarden Enterprise Organization.
+This guidance assumes that you are an Admin or Owner within your Bitwarden Enterprise Organization.
+
+## Get your Bitwarden Region Host
+
+Bitwarden has separate regional API hosts: `bitwarden.com` and `bitwarden.eu`.
+
+You can find your Region Host in the URL when logged in to your Bitwarden account.
+
+For example, given the URL: `https://vault.bitwarden.eu/#/organizations/abc123/members`, the **Region Host** is `bitwarden.eu`
 
 ## Get your Bitwarden Client ID and Client Secret
 
@@ -49,7 +57,10 @@ This guidance assumes that you are an Admin within your Bitwarden Enterprise Org
 
 <Steps>
   <Step title="Enter Credentials">
-    Upon reaching the Link Account page, enter the Client ID and Client Secret from the previous steps.
+    Upon reaching the Link Account page, enter the following details from the previous steps:
+    - Client ID
+    - Client Secret
+    - Region Host (e.g., `bitwarden.com` or `bitwarden.eu`)
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/bitwarden/image5.png" />
     </Frame>
