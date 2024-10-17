@@ -349,6 +349,7 @@
       "group": "",
       "pages": [
         "integrations",
+        "integration-configuration-concepts",
         "about"
       ]
     }
