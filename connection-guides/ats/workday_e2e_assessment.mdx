@@ -297,14 +297,14 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   <Step title="Sending via Start Proxy">
     If you are the recruiter, you should see the `Assess` button next to the candidate's name.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Recruiter" src="/images/workday-assessment/Recruiter_1.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Sending Invite" src="/images/workday-assessment/Recruiter_1.png" />
     </Frame>
   </Step>
 
   <Step title="Send the Assessment Invitation">
     You should set the Overall Status to `Invited` and select the Assessment as `Technical Assessment` from the dropdown menu. After that, click the `Submit` button.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Start Proxy" src="/images/workday-assessment/Recruiter_2.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Send Invite" src="/images/workday-assessment/Recruiter_2.png" />
     </Frame>
   </Step>
 </Steps>
@@ -316,7 +316,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   <Step title="Received notification payload">
     You will receive a webhook notification at your specified endpoint URL on StackOne. Here is an example of the payload.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Recruiter" src="/images/workday-assessment/unified_payload.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Received Notification" src="/images/workday-assessment/unified_payload.png" />
     </Frame>
 
     Check out the following link for all the details about webhooks!
@@ -330,7 +330,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 ## Update the result in Workday.
 
 <Steps>
-  <Step title="Received notification payload">
+  <Step title="Request to update result">
     Use `record_id` as the order `id` in the Update Assessment endpoint with the required body payload:
     ```json
       {
@@ -351,6 +351,13 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     <Card title="Update Assessments Result" icon="link" href="https://docs.stackone.com/reference/ats_update_assessments_result">
       https://docs.stackone.com/reference/ats_update_assessments_result
     </Card>
+  </Step>
+
+  <Step title="Updated result in Workday">
+    If you received a successful response, you can verify the score in Workday, which should be visible in the task list next to the assessment name.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Updated Result" src="/images/workday-assessment/Updated_result_1.png" />
+    </Frame>
   </Step>
 </Steps>
 
