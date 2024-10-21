@@ -9,7 +9,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   This guidance assumes you have Admin privileges for your Workday account.
 </Warning>
 
-## Create an integration system using StackOne.
+## Create an integration system using StackOne
 
 <Steps>
   <Step title="Create a Webhook">
@@ -44,63 +44,54 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 </Steps>
 
-## Set up integration system with assessment status & test
+
+## Received webhook notification
 
 <Steps>
-  <Step title="Set up the Assessment Statuses">
-    Navigate to Maintain Assessment Statuses, add an assessment status `Invited`, and ensure it is enabled with the overall status checked.
+  <Step title="Received notification payload">
+    You will receive a webhook notification at your specified endpoint URL on StackOne. Here is an example of the payload.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Statuses" src="/images/workday-assessment/Assessment_Statuses.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #EFEFEF' }} alt="Received Notification" src="/images/workday-assessment/unified_payload.png" />
     </Frame>
+    Check out the following link for all the details about webhooks!
+    <Card title="StackOne Webhooks" icon="link" href="https://docs.stackone.com/docs/webhooks">
+      https://docs.stackone.com/docs/webhooks
+    </Card>
 
-    To obtain the Reference ID of the `Invited` event, you can access it through the three-dot menu.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Status Reference ID" src="/images/workday-assessment/Status_Ref_ID.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Set up the Assessment Tests">
-    Navigate to the Maintain Recruiting Assessment Tests, add an assessment test, and ensure it is enabled by selecting `StackOne_IS_System` as an Integration System.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Tests" src="/images/workday-assessment/Assessment_Tests.png" />
-    </Frame>
-
-    To obtain the Reference ID of the selected test, you can access it through the three-dot menu.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Test Reference ID" src="/images/workday-assessment/Tests_Ref_ID.png" />
-    </Frame>
+    If you have any issue in getting the notifications, you can follow the configuration guide <a href="https://hub.stackone.com/integration-configuration-concepts/ats/workday_e2e_assessment">Workday ATS E2E Assessment</a>.
   </Step>
 </Steps>
 
-## Set up integration system with business process
+
+## Update the result in Workday
 
 <Steps>
-  <Step title="Set up integration system with business process">
-    Log in to your Workday account and navigate to the `Assess Candidate` Business Process
+  <Step title="Request to update result">
+    Use `record_id` as the order `id` in the Update Assessment endpoint with the required body payload:
+    ```json
+      {
+        "score": {
+          "value": "906"
+        },
+        "assessment_date": "2024-08-11T00:00:00.000Z",
+        "submission_date": "2024-08-12T00:00:00.000Z",
+        "summary": "Assessment is Passed",
+        "result": {
+          "value": "passed"
+        },
+        "result_url": "https://www.example.com/content/assessment-result.pdf"
+      }
+    ```
+    Check out the following link for all the details about update assessment result!
+    <Card title="Update Assessments Result" icon="link" href="https://docs.stackone.com/reference/ats_update_assessments_result">
+      https://docs.stackone.com/reference/ats_update_assessments_result
+    </Card>
+  </Step>
+  <Step title="Updated result in Workday">
+    If you received a successful response, you can verify the score in Workday, which should be visible in the task list next to the assessment name.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="BP Config IS" src="/images/workday-assessment/BP_Config_IS.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #EFEFEF' }} alt="Updated Result" src="/images/workday-assessment/Updated_result_1.png" />
     </Frame>
-
-    Click on the `Configure` button next to the job condition rules. Select `StackOne_IS_System` as an integration and click on `OK`
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select IS on Popup" src="/images/workday-assessment/Select_IS_on_Popup.png" />
-    </Frame>
-
-    The pop-up will appear, allowing you to select values for the fields that will be included in the payload request when the `Invited` event is triggered from Workday.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Values for Fields" src="/images/workday-assessment/Set_Values_for_Fields.png" />
-    </Frame>
-    
-    **Please fill in the following information:**
-
-    - **Candidate First Name:** [First Name]
-    - **Candidate Last Name:** [Last Name]
-    - **Candidate Email Address:** [Email]
-    - **Candidate Reference ID:** [Candidate ID]
-    - **Job Application Reference ID:** [Job Requisition as Text]
-    - **Assessment Test Reference ID:** [Add Assessment Reference ID that you want to share with Candidate]
-
-    Click the `OK` button to save your configurations.
   </Step>
 </Steps>
 

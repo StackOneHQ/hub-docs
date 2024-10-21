@@ -1,6 +1,6 @@
 ---
 title: "Workday ATS E2E Assessment"
-description: "To successfully set up a webhook for a Workday Assessment, follow these steps to understand the end-to-end process and configurations, including the necessary actions for webhook notification."
+description: "To successfully receive webhook notifications from Workday, follow these steps to configure the Assessment-related settings in your Workday account, and complete the necessary actions."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
@@ -8,56 +8,6 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 <Warning>
   This guidance assumes that you have admin privileges for your Workday account.
 </Warning>
-
-## Create an Integration System from StackOne
-
-<Steps>
-  <Step title="Create a Webhook">
-    Set up a webhook in StackOne
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Webhook" src="/images/workday-assessment/Add_Webhook.png" />
-    </Frame>
-
-    Please make sure that the webhook in the grid below is set to `enabled`
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Webhook Enabled" src="/images/workday-assessment/Webhook_Enabled.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Add a webhook event">
-    To add or modify a webhook event, click the `Edit event` button and then select the `+` button next to `created` under ATS Assessments.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Events" src="/images/workday-assessment/Edit_Events.png" />
-    </Frame>
-    
-    When the pop-up appears, please select the `Invited` event under Workday and click the `Confirm` button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Workday Invited Native Event" src="/images/workday-assessment/Select_Workday_Invited_Native_Event.png" />
-    </Frame>
-
-    Please remember to click on the `Save` button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Webhook Event Save" src="/images/workday-assessment/Webhook_Event_Save.png" />
-    </Frame>
-
-    <Check>Once you have completed the steps above, the `StackOne_IS_System` Integration System has been successfully created in your linked Workday account.</Check>
-  </Step>
-
-  <Step title="Verify the integration on the Workday">
-    Log into your Workday account and search for `StackOne_IS_System`
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search IS" src="/images/workday-assessment/verify_1.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Updated Endpoint Url">
-    You can find the Endpoint URL under integration system attributes on the `StackOne_IS_System` page. This URL is used by StackOne to receive notifications about Assessment Invites.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Endpoint Attribute" src="/images/workday-assessment/verify_2.png" />
-    </Frame>
-  </Step>
-</Steps>
-
 
 ## Create Assessment Category in Workday
 
@@ -185,8 +135,36 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="SO for JR" src="/images/workday-assessment/SO_for_JR.png" />
     </Frame>
 
-    You can find the list of Job Requisitions that the Assessment stage supports for sending notifications within the Integration System. New Job Requisitions can be added here.
+    You can find the list of Job Requisitions that the Assessment stage supports for sending notifications within the Integration System under `Positions with Open Job Requisition` grid.
   </Step>
+
+  <Step title="No Listed Job Requisitions">
+    If you haven't listed jobs under `Positions with Open Job Requisition`, find `Create Position` under Staffing in the 3-dot menu.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Job Position" src="/images/workday-assessment/SO_1.png" />
+    </Frame>
+
+    Fill in the required details to create a position that will be visible in the `Positions without Job Requisition` grid.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Created Job Position" src="/images/workday-assessment/SO_2.png" />
+    </Frame>
+
+    Navigate to the `Create Job Requisition` and select your supervisory organization and position. After clicking the `OK` button, please fill out the Job Requisition form and `Submit` it.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add in Position in Job Req" src="/images/workday-assessment/SO_3.png" />
+    </Frame>
+
+    The position will now be visible in the `In Progress Requisition Actions` grid.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Added in Position in Job Req" src="/images/workday-assessment/SO_4.png" />
+    </Frame>
+
+    Once the job requisition is approved, it will be visible in the `Positions with Open Job Requisition` grid and will be able to support sending notifications.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Approved Job Req" src="/images/workday-assessment/SO_5.png" />
+    </Frame>
+  </Step>
+
 </Steps>
 
 
@@ -253,7 +231,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 </Steps>
 
 
-## Send the assessment invitation to the candidate using Start Proxy.
+## Send the assessment invitation to the candidate using Start Proxy
 
 <Steps>
   <Step title="Sending via Start Proxy">
@@ -291,7 +269,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 </Steps>
 
 
-## Send the assessment invitation to the candidate without using a start proxy
+## Send the assessment invitation to the candidate without using a Start Proxy
 
 <Steps>
   <Step title="Sending via Start Proxy">
@@ -302,62 +280,11 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 
   <Step title="Send the Assessment Invitation">
-    You should set the Overall Status to `Invited` and select the Assessment as `Technical Assessment` from the dropdown menu. After that, click the `Submit` button.
+    You should set the Overall Status to `Invited` and select the Assessment as `Technical Assessment` from the dropdown menu.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Send Invite" src="/images/workday-assessment/Recruiter_2.png" />
     </Frame>
-  </Step>
-</Steps>
-
-
-## Received webhook notification
-
-<Steps>
-  <Step title="Received notification payload">
-    You will receive a webhook notification at your specified endpoint URL on StackOne. Here is an example of the payload.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Received Notification" src="/images/workday-assessment/unified_payload.png" />
-    </Frame>
-
-    Check out the following link for all the details about webhooks!
-    <Card title="StackOne Webhooks" icon="link" href="https://docs.stackone.com/docs/webhooks">
-      https://docs.stackone.com/docs/webhooks
-    </Card>
-  </Step>
-</Steps>
-
-
-## Update the result in Workday.
-
-<Steps>
-  <Step title="Request to update result">
-    Use `record_id` as the order `id` in the Update Assessment endpoint with the required body payload:
-    ```json
-      {
-        "score": {
-          "value": "906"
-        },
-        "assessment_date": "2024-08-11T00:00:00.000Z",
-        "submission_date": "2024-08-12T00:00:00.000Z",
-        "summary": "Assessment is Passed",
-        "result": {
-          "value": "passed"
-        },
-        "result_url": "https://www.example.com/content/assessment-result.pdf"
-      }
-    ```
-
-    Check out the following link for all the details about update assessment result!
-    <Card title="Update Assessments Result" icon="link" href="https://docs.stackone.com/reference/ats_update_assessments_result">
-      https://docs.stackone.com/reference/ats_update_assessments_result
-    </Card>
-  </Step>
-
-  <Step title="Updated result in Workday">
-    If you received a successful response, you can verify the score in Workday, which should be visible in the task list next to the assessment name.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Updated Result" src="/images/workday-assessment/Updated_result_1.png" />
-    </Frame>
+    Click on the `Submit` button to get the webhook notification from Workday. 
   </Step>
 </Steps>
 
