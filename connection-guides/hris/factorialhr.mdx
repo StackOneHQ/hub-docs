@@ -11,76 +11,31 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 If you've been directed to StackOne to integrate with Factorial HR, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
-## Create your OAuth Application
-
-<Steps>
-  <Step title="Go to OAuth Applications page">
-    Go to the [OAuth applications page](https://api.factorialhr.com/oauth/applications). Click on the green button which says New Application.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="New Application" src="/images/factorialhr/image1.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Enter Application Details">
-    Enter the new Application's Name and enter the Redirect URI: `https://api.stackone.com/connect/oauth2/factorialhr/callback`. Then click the blue Save button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Application Details" src="/images/factorialhr/image2.png" />
-    </Frame>
-  </Step>
-</Steps>
-
-## Get Your Client ID and Client Secret
-
-<Steps>
-  <Step title="Select an Existing Application">
-    From the [OAuth applications page](https://api.factorialhr.com) click on an existing application. This will take you to the application's page.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Existing Application" src="/images/factorialhr/image3.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Copy Client ID and Client Secret">
-    Here you will find your Client ID and Client Secret.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Client ID and Client Secret" src="/images/factorialhr/image4.png" />
-    </Frame>
-  </Step>
-</Steps>
-
 ## Connecting with StackOne
 
 <Steps>
-  <Step title="Navigate to Integrations">
-    Navigate to the Integrations page in the [StackOne Hub](https://app.stackone.com). Click on the Factorial HR tile under HRIS.
-  </Step>
-
-  <Step title="Select Authentication Type">
-    Select OAuth2 under authentication type and Production under Environment type. Enter the Client ID and Client Secret from the previous step, then click the Save Integration button.
+  <Step title="Proceed to the Accounts page">
+    Proceed to the Accounts page to establish a connection between FactorialHr and StackOne. Then click the `Connect` button.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Save Integration" src="/images/factorialhr/image5.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect Button" src="/images/factorialhr/image1.png" />
     </Frame>
   </Step>
 
-  <Step title="Link Account">
-    Navigate to the Accounts page. Select the black Link Account on the right and then select Factorial HR from the modal.
+  <Step title="Enter your Factorial Hr account credentials">
+    Enter your Factorial Hr account credentials in the opened tab.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/factorialhr/image6.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Factorial Hr Account Credentials" src="/images/factorialhr/image2.png" />
     </Frame>
   </Step>
 
-  <Step title="Connect">
-    Select Connect.
+  <Step title="Click Sign In">
+    Click sign in.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect" src="/images/factorialhr/image7.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Connection Successful">
-    If successful, you will see a Connection Successful message. Your account is now linked!
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connection Successful" src="/images/factorialhr/image8.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Sign In" src="/images/factorialhr/image3.png" />
     </Frame>
   </Step>
 </Steps>
+
+You'll get an instant "`Account connected`" success message and the opened tab will close.
 
 <IntegrationFooter />
