@@ -5,60 +5,190 @@ description: "Follow these steps to connect UKG Ready with StackOne Hub successf
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<Warning>
-  Ensure you have Admin privileges for your UKG Ready account.
-</Warning>
+<Warning>Ensure you have Admin privileges for your UKG Ready account.</Warning>
 
 If you've been directed to StackOne to integrate with UKG Ready, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
 This guidance assumes you have Admin privileges for your UKG Ready account.
 
-## Getting Company Short Name and API Key
+## Getting Company Short Name and UKG Ready URL
 
 <Steps>
   <Step title="Login to UKG Ready dashboard">
-    Login to your UKG Ready dashboard and click ≡ at the top-left corner.
+    Login to your UKG Ready dashboard and grab the UKG Ready URL from the address bar.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="UKG Ready Dashboard" src="/images/ukgready/image1.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="UKG Ready URL" src="/images/ukgready/image6.png" />
     </Frame>
   </Step>
 
-  <Step title="Navigate to Company Setup">
-    Expand ⚙️Settings menu and select Global Setup > Company Setup option.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company Setup" src="/images/ukgready/image2.png" />
-    </Frame>
-  </Step>
+<Step title="Navigate to Company Setup">
+  Click ≡ at the top-left corner.
+  <Frame>
+    <img
+      className="rounded-md"
+      style={{ margin: "0 auto", border: "1px solid #efefef" }}
+      alt="Company Setup"
+      src="/images/ukgready/image1.png"
+    />
+  </Frame>
+  From here navigate to `Settings > Global Setup > Company Setup`.
+  <Frame>
+    <img
+      className="rounded-md"
+      style={{ margin: "0 auto", border: "1px solid #efefef" }}
+      alt="global setup"
+      src="/images/ukgready/image2.png"
+    />
+  </Frame>
+  <Frame>
+    <img
+      className="rounded-md"
+      style={{ margin: "0 auto", border: "1px solid #efefef" }}
+      alt="global setup"
+      src="/images/ukgready/image3.png"
+    />
+  </Frame>
+</Step>
 
-  <Step title="Copy Company Short Name">
-    Under the Company Setup, copy your Company Short Name. If it is not available in that section, please enter the Company Short Name and click `Save` button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company Short Name" src="/images/ukgready/image3.png" />
-    </Frame>
-  </Step>
+<Step title="Copy Company Short Name">
+  Under `Company Setup > Company Info`, scroll down to the Company Address
+  section and copy the Company Short Name. If it is not available in that
+  section, please enter the Company Short Name and click `Save`.
+  <Frame>
+    <img
+      className="rounded-md"
+      style={{ margin: "0 auto", border: "1px solid #efefef" }}
+      alt="Company info"
+      src="/images/ukgready/image4.png"
+    />
+  </Frame>
+  <Frame>
+    <img
+      className="rounded-md"
+      style={{ margin: "0 auto", border: "1px solid #efefef" }}
+      alt="Company Short Name"
+      src="/images/ukgready/image5.png"
+    />
+  </Frame>
+</Step>
+</Steps>
 
-  <Step title="Generate API Key">
-    In the Login Info tab, locate the API Keys section. If you don't already have an API key, click the `Generate` button. Copy the generated API key to a safe place.
+## Enabling OAuth Applications in your dashboard
+
+<Steps>
+  <Step title="Enable OAuth Applications">
+    The option to generate OAuth credentials may not be available by default.
+    Therefore we will to enable this in the Login Config view. Navigate to `Edit
+    Tabs` tab
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate API Key" src="/images/ukgready/image4.png" />
+      <img
+        className="rounded-md"
+        style={{ margin: "0 auto", border: "1px solid #efefef" }}
+        alt="edit tabs tab"
+        src="/images/ukgready/image7.png"
+      />
+    </Frame>
+    If you don't already see `OAuth Applications` in the column view - then from
+    the `Available Windows` section look for `OAuth Applications` and drag it
+    into a column of your choice under the `Login Config` tab.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: "0 auto", border: "1px solid #efefef" }}
+        alt="edit tabs tab"
+        src="/images/ukgready/image8.png"
+      />
+    </Frame>
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: "0 auto", border: "1px solid #efefef" }}
+        alt="edit tabs tab"
+        src="/images/ukgready/image10.png"
+      />
+    </Frame>
+    Once you're happy with the view - click `Save` and navigate back to the `Company
+    Setup` view.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: "0 auto", border: "1px solid #efefef" }}
+        alt="edit tabs tab"
+        src="/images/ukgready/image11.png"
+      />
     </Frame>
   </Step>
 </Steps>
 
-## Utilizing API Key and Company Short Name
+## Generating OAuth Credentials
 
 <Steps>
-  <Step title="Link Account">
-    Upon reaching the Link Account page, enter the API key, your UKG Ready username/password, and your Company Short Name. Proceed by clicking the `Connect` button to establish the connection.
+  <Step title="Add OAuth Application">
+    On the `Login Config` tab, find `OAuth Applications` and click `Add OAuth
+    Application`.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/ukgready/image5.png" />
+      <img
+        className="rounded-md"
+        style={{ margin: "0 auto", border: "1px solid #efefef" }}
+        alt="login config"
+        src="/images/ukgready/image12.png"
+      />
     </Frame>
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: "0 auto", border: "1px solid #efefef" }}
+        alt="OAuth Application"
+        src="/images/ukgready/image13.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+## Generating OAuth Credentials
+
+<Steps>
+  <Step title="Generate OAuth">
+    If the authorisation type is set to `OAuth` then select `Application Type` to be
+    `Interactive`. If not then please proceed to the next step.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: "0 auto", border: "1px solid #efefef" }}
+        alt="login config"
+        src="/images/ukgready/image14.png"
+      />
+    </Frame>
+    Once you're happy with the configuration - click the `Save` button and enter
+    the `Client_ID` in the respective fields during the account linking process.
+  </Step>
+  <Step title="Generate OAuth Client Credentials Grant">
+    If the authorisation type is `OAuth Client Credentials Grant` then select
+    `Application Type` to be `Machine to Machine`.
+
+    Generate the `Client Secret` and select the appropriate access control and security profiles.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: "0 auto", border: "1px solid #efefef" }}
+        alt="login config"
+        src="/images/ukgready/image15.png"
+      />
+    </Frame>
+    Once you're happy with the configuration - click `Save` and enter
+    the `Client_ID` and `Client Secret` in the respective fields during the account linking process.
+
   </Step>
 </Steps>
 
 <IntegrationFooter />
 
 ## Useful Links
-<Card title="API Reference" icon="link" href="https://library.ukg.com/ukg-ready">
-    https://library.ukg.com/ukg-ready
+
+<Card
+  title="API Reference"
+  icon="link"
+  href="https://library.ukg.com/ukg-ready"
+>
+  https://library.ukg.com/ukg-ready
 </Card>
