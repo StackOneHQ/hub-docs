@@ -29,7 +29,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 ## Create Assessment Test in Workday
 
 <Steps>
-  <Step title="Create an assessment test">
+  <Step title="Create an Assessment Test">
     Navigate to the <i>Maintain Recruiting Assessment Tests</i> page and add an assessment test called `Technical Assessment`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Tests" src="/images/workday-assessment/Assessment_test_1.png" />
@@ -62,8 +62,8 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 ## Create Assessment Status in Workday
 
 <Steps>
-  <Step title="Create an assessment status">
-    Navigate to the <i>Maintain Assessment Statuses</i> page and add a new assessment status called `Invited`.
+  <Step title="Create an Assessment Status">
+    Navigate to the <i>Maintain Assessment Statuses</i> page and add a new assessment status (you can name it as `Invited` same as status name, or any name of your choice).
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/workday-assessment/Assessment_status_1.png" />
     </Frame>
@@ -79,45 +79,10 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 
   <Step title="Use of Assessment Status ID">
-    You will need to use the `Assessment_Status_ID`, which is `Invited`, when submitting the assessment to the candidate.
+    Please ensure that the Assessment Status ID is set to be `Invited`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Status ID" src="/images/workday-assessment/Assessment_status_3.png" />
     </Frame>
-  </Step>
-</Steps>
-
-
-## Update Assess Candidate Business Process in Workday
-
-<Steps>
-  <Step title="Select to update the Integration System">
-    Navigate to the <i>Assess Candidate Business Process</i> page. Then, click on the `Configure StackOne_IS_System` button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="BP Config IS" src="/images/workday-assessment/BP_Config_IS.png" />
-    </Frame>
-
-    Please select `StackOne_IS_System` as the integration and then click on the `OK` button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select IS on Popup" src="/images/workday-assessment/Select_IS_on_Popup.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Edit payload attribute values">
-    The pop-up will appear, allowing you to select the values for the fields included in the payload request when the `Invited` event is triggered from Workday.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Values for Fields" src="/images/workday-assessment/Set_Values_for_Fields.png" />
-    </Frame>
-    
-    **Please fill in the following information:**
-
-    - **Candidate First Name:** [First Name]
-    - **Candidate Last Name:** [Last Name]
-    - **Candidate Email Address:** [Email]
-    - **Candidate Reference ID:** [Candidate ID]
-    - **Job Application Reference ID:** [Job Requisition as Text]
-    - **Assessment Test Reference ID:** [Assessment_Test_ID for the assessment you want to send to the candidate]
-
-    Click the `OK` button to save your configurations.
   </Step>
 </Steps>
 
@@ -164,7 +129,41 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Approved Job Req" src="/images/workday-assessment/SO_5.png" />
     </Frame>
   </Step>
+</Steps>
 
+
+## Update Assess Candidate Business Process in Workday
+
+<Steps>
+  <Step title="Select to update the Integration System">
+    Navigate to the <i>Assess Candidate Business Process</i> page. Then, click on the `Configure StackOne_IS_System` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="BP Config IS" src="/images/workday-assessment/BP_Config_IS.png" />
+    </Frame>
+
+    Please select `StackOne_IS_System` as the integration and then click on the `OK` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select IS on Popup" src="/images/workday-assessment/Select_IS_on_Popup.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Edit payload attribute values">
+    The pop-up will appear, allowing you to select the values for the fields included in the payload request when the `Invited` event is triggered from Workday.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Values for Fields" src="/images/workday-assessment/Set_Values_for_Fields.png" />
+    </Frame>
+    
+    **Please fill in the following information:**
+
+    - **Candidate First Name:** [First Name]
+    - **Candidate Last Name:** [Last Name]
+    - **Candidate Email Address:** [Email]
+    - **Candidate Reference ID:** [Candidate ID]
+    - **Job Application Reference ID:** [Job Requisition as Text]
+    - **Assessment Test Reference ID:** [Assessment_Test_ID for the assessment you want to send to the candidate]
+
+    Click the `OK` button to save your configurations.
+  </Step>
 </Steps>
 
 
