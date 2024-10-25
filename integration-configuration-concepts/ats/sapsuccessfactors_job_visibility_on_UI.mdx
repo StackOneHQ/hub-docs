@@ -1,0 +1,50 @@
+---
+title: "SAP SuccessFactors Job visibility on UI"
+description: "To make hidden jobs visible in SAP SuccessFactors, follow these steps"
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes that you have admin privileges for your SAP SuccessFactors account.
+</Warning>
+
+<Steps>
+  <Step title="Get the job templateName or jobRequisitionId">
+    Retrieve the job template name (templateName) or job requisition id (jobReqId) from the API response that is not visible in the UI.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Webhook" src="/images/sapsuccessfactors/job-visibility-ui-1.png" />
+    </Frame>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Webhook Enabled" src="/images/sapsuccessfactors/job-visibility-ui-2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Go to > Admin Center > Reassign Job Requisitions">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Events" src="/images/sapsuccessfactors/job-visibility-ui-3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select > Template Name or enter Job Req Id > Search">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search IS" src="/images/sapsuccessfactors/job-visibility-ui-4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select the jobs that are not visible in the UI, and then click on Continue">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Endpoint Attribute" src="/images/sapsuccessfactors/job-visibility-ui-5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Assign the active users or admin to the Recruiter, Human Resources Administrator, and Job Requisition Originator roles.">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Endpoint Attribute" src="/images/sapsuccessfactors/job-visibility-ui-6.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<Note>
+  Note: If we don't have a job template name or job requisition ID, we can manually go through each template and check if any job has empty fields for the recruiter, originator, or human resource administrator, or if these fields are assigned to inactive users. If any such cases are found, we need to reassign the recruiter, originator, and human resource administrator.
+</Note>
