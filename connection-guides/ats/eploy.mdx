@@ -1,0 +1,141 @@
+---
+title: "Eploy"
+description: "Follow these steps to connect Eploy via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>Ensure that your Eploy account has Admin privileges.</Warning>
+
+If you've been directed to StackOne to integrate with Eploy, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Getting the Company Domain
+
+    <Step title="Login and fetch the company domain">
+        From the address bar of the browser, copy the company domain of your Eploy account.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/eploy/image1.png" />
+        </Frame>
+    </Step>
+
+## Getting the Client ID and Client Secret
+
+This connection will authenticate on behalf of a registered Application in Eploy.
+
+<Steps>
+    
+    <Step title="Navigate to API Keys">
+        Once logged in - from the navigation menu, go to **Admin** > **Systems / Security Settings** > **API Keys**
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Applications" src="/images/eploy/image2.png" />
+        </Frame>
+    </Step>
+
+    <Step title="Create REST API">
+        In the top left corner of the page, hit **NEW** and select **REST API**
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New Application" src="/images/eploy/image3.png" />
+        </Frame>
+    </Step>
+
+
+    <Step>
+        Give the **REST API** a name and select the appropriate user access, then hit **SAVE**
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Details" src="/images/eploy/image4.png" />
+        </Frame>
+    </Step>
+
+
+    <Step title="Copy client ID and client secret">
+        Keep a copy of the **Client ID** and **Client Secret** - this will be used to authenticate with Eploy via StackOne.
+        **Note:** Once the application is created, you will not be able to access the client secret again.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Application Scopes & Permissions" src="/images/eploy/image5.png" />
+        </Frame>
+    </Step>
+
+
+    <Step title="Add the scopes that are required by OAuth Application">
+        As per your requirements, select the scopes you wish to have enabled for the application from the dropdown list.
+        Once you have selected a scope, please associate it with the appropriate permission i.e., View, Insert, Update access. Then hit **SAVE**.
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Application Credentials" src="/images/eploy/image6.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials obtained from the previous steps:
+    **Note:** That to have full access to the Eploy API in the way you desire - you will need to select the appropriate scopes that match the scopes selected in step 5.
+    - **Company Domain**
+    - **Client ID**
+    - **Client Secret** 
+    - **Scope**
+        - `actions.insert`
+        - `actions.read`
+        - `actions.update`
+        - `applications.insert`
+        - `applications.read`
+        - `applications.update`
+        - `candidates.insert`
+        - `candidates.read`
+        - `candidates.update`
+        - `companies.insert`
+        - `companies.read`
+        - `companies.update`
+        - `contacts.insert`
+        - `contacts.read`
+        - `contacts.update`
+        - `export.insert`
+        - `files.read`
+        - `payrates.read`
+        - `paysalaries.read`
+        - `placements.insert`
+        - `placements.read`
+        - `placements.update`
+        - `purchaseorders.read`
+        - `timesheets.insert`
+        - `timesheets.read`
+        - `timesheets.update`
+        - `timesheets.delete`
+        - `users.insert`
+        - `users.read`
+        - `users.update`
+        - `vacancies.insert`
+        - `vacancies.read`
+        - `vacancies.update`
+        - `vacancytemplates.read`
+        - `workflows.read`
+    
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/eploy/image8.png" />
+    </Frame>
+
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [ATS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+
+<ul>
+  <li>Interview_stages</li>
+  <li>Applications</li>
+  <li>Candidates</li>
+  <li>Jobs</li>
+</ul>
