@@ -1,0 +1,92 @@
+---
+title: "Cornerstone"
+description: "Follow these steps to connect Cornerstone via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Cornerstone account has Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Cornerstone, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Generate Client ID and Secret key
+
+<Steps>
+    
+    <Step title="Login to your Cornerstone portal.">
+    </Step>
+
+    
+    <Step title="Navigate to Admin > Tools > Edge > API Management.">
+    </Step>
+
+    
+    <Step title="On the Manage Applications tab, click Register New Application.">
+    </Step>
+
+    
+    <Step title="Enter your Application Name.">
+    </Step>
+
+    <Step title="Enter the User ID of an active user in your portal.">
+    </Step>
+
+    <Step title="In the Scopes section, select the scopes you want to associate with your application.">
+       The following scopes are required to access the complete StackOne LMS integrations.
+
+       <ol type="a">
+        <li>vw_rpt_user:read</li>
+        <li>vw_rpt_training:read</li>
+        <li>training:read</li>
+        <li>transcript:read</li>
+        <li>vw_rpt_user_status:read</li>
+        <li>vw_rpt_subject:read</li>
+        <li>vw_rpt_lo_competencies_local:read</li>
+       </ol>
+    </Step>
+
+    <Step title="Click Register Application.">
+    </Step>
+
+      <Step title="Save your credentials securely">
+        If the User ID is valid, you'll receive:
+        - Client ID
+        - Client Secret
+        
+        Store these credentials securely in a password manager or secure vault. Never share them or commit them to version control.
+        
+        <Warning>
+            The Client Secret will only be shown once and cannot be retrieved later. If lost, you'll need to regenerate it.
+        </Warning>
+    </Step>
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps and proceed by clicking the <b>Connect</b> button
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/cornerstone/image2.png" />
+    </Frame>
+  </Step>
+  <Step title="Verify Connection">
+    After clicking Connect, the system will validate your credentials. A successful connection will be indicated by a green checkmark.
+    
+    If you encounter any errors:
+    - Verify that your Client ID and Secret are correct
+    - Ensure all required scopes were enabled
+    - Check that your Cornerstone portal is accessible
+    - Confirm your admin privileges are still active
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://csod.dev/guides/getting-started/">
+    https://csod.dev/guides/getting-started/
+</Card>
