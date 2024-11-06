@@ -50,7 +50,16 @@ If you've been directed to StackOne to integrate with Cornerstone, the following
     <Step title="Click Register Application.">
     </Step>
 
-    <Step title="If the User ID entered is valid, the page refreshes and displays a client ID and client secret. Copy both values to a safe place to be used in the next step">
+      <Step title="Save your credentials securely">
+        If the User ID is valid, you'll receive:
+        - Client ID
+        - Client Secret
+        
+        Store these credentials securely in a password manager or secure vault. Never share them or commit them to version control.
+        
+        <Warning>
+            The Client Secret will only be shown once and cannot be retrieved later. If lost, you'll need to regenerate it.
+        </Warning>
     </Step>
 </Steps>
 
@@ -60,10 +69,18 @@ If you've been directed to StackOne to integrate with Cornerstone, the following
 <Steps>
   <Step title="Enter Credentials">
     Upon reaching the Link Account page, enter the credentials from the previous steps and proceed by clicking the <b>Connect</b> button
-
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/cornerstone/image2.png" />
     </Frame>
+  </Step>
+  <Step title="Verify Connection">
+    After clicking Connect, the system will validate your credentials. A successful connection will be indicated by a green checkmark.
+    
+    If you encounter any errors:
+    - Verify that your Client ID and Secret are correct
+    - Ensure all required scopes were enabled
+    - Check that your Cornerstone portal is accessible
+    - Confirm your admin privileges are still active
   </Step>
 </Steps>
 
