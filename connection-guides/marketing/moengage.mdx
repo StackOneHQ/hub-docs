@@ -1,0 +1,83 @@
+---
+title: "MoEngage"
+description: "Follow these steps to connect MoEngage via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your MoEngage account has Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with MoEngage, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to MoEngage
+
+
+    <Step title="Log in">
+        Log in to your MoEngage account using the dashboard access URL provided during signup, e.g. [https://dashboard-01.moengage.com](https://dashboard-01.moengage.com).
+
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/moengage/image2.png" />
+        </Frame>
+    </Step>
+
+
+
+## Get the Workspace ID and API keys
+
+<Steps>
+    
+    <Step title="Navigate to Settings">
+        Click the Settings icon in the bottom-left corner, go to the Account section, and select APIs.
+        From here, you can copy the Workspace ID, Data API Key, and Push API Key.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Settings" src="/images/moengage/image3.png" />
+        </Frame>
+    </Step>
+
+</Steps>
+
+## Get the Data Center Number
+
+<Steps>
+    
+    <Step>
+     When logged in to your MoEngage account, your Data Center Number name can be found in the URL.
+    <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Data Center Number" src="/images/moengage/image4.png" />
+    </Frame>
+   </Step>
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps:
+     - **Data API Key**
+     - **Push API Key**
+     - **Workspace ID**
+     - **Data Center Number**
+     - **Created By** (This Email ID will be utilized to create and update the resources e.g. Content-Blocks, SMS and PUSH templates)
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/moengage/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [MARKETING Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Content_blocks</li>
+  <li>Email Templates</li>
+  <li>Push Templates</li>
+  <li>SMS Templates</li>
+</ul>
