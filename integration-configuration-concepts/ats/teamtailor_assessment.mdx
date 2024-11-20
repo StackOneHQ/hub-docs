@@ -1,0 +1,52 @@
+---
+title: "Teamtailor Assessment"
+description: "To successfully send webhook notifications from Teamtailor, follow these steps in your Teamtailor account, and complete the necessary actions."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+
+<Warning>
+  The following guidance assumes that you have already configured with StackOne.
+</Warning>
+
+## Send the assessment invitation to the candidate
+
+<Steps>
+  <Step title="Select Candidate from the Job">
+    Navigate to the <i>Job's</i> page and move one of the candidate to the specific stage where you want to trigger assessment.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/teamtailor-assessment/send_assess_1.png" />
+    </Frame>
+
+    Click on the candidate to open their application. Then, click on the three-dot more options in the lower bar and select `Add Integration`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/teamtailor-assessment/send_assess_2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="To Select & Send the Assessment">
+    Select the partner integration you want to use to send the assessment to the candidate.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit/View Assessment Status ID" src="/images/teamtailor-assessment/send_assess_3.png" />
+    </Frame>
+
+    A pop-up will display a text field with the assessment test ID that is configured at StackOne.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit/View Assessment Status ID" src="/images/teamtailor-assessment/send_assess_4.png" />
+    </Frame>
+
+    Click the `Send webhook` button to dispatch the notification, and you will see a success response on the same page.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit/View Assessment Status ID" src="/images/teamtailor-assessment/send_assess_5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://doc.teamtailor.com/">
+    https://doc.teamtailor.com/
+</Card>
