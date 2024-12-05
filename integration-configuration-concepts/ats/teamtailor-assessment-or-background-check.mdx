@@ -1,0 +1,48 @@
+---
+title: "Teamtailor Assessment or Background Check"
+description: "To successfully send webhook notifications from Teamtailor, follow these steps in your Teamtailor account, and complete the necessary actions."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+
+## Send the assessment/background check invitation to the candidate
+
+<Steps>
+  <Step title="Select Candidate from the Job">
+    Navigate to the <i>Job's</i> page and move one of the candidate to the specific stage where you want to trigger assessment/background check.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/teamtailor-assessment/send_assess_1.png" />
+    </Frame>
+
+    Click on the candidate to open their application. Then, click on the three-dot more options in the lower bar and select `Add Integration`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/teamtailor-assessment/send_assess_2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="To Select Integration & Send the Notification">
+    Select the partner integration you want to use to send the assessment/background check to the candidate.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit/View Assessment/Background check Status ID" src="/images/teamtailor-assessment/send_assess_3.png" />
+    </Frame>
+
+    A pop-up will appear to select the assessment/background check test. Below is an example of an assessment test.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit/View Assessment/Background check Status ID" src="/images/teamtailor-assessment/send_assessment_test.png" />
+    </Frame>
+
+    Click the `Send webhook` button to dispatch the notification, and you will see a success response on the same page.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit/View Assessment/Background check Status ID" src="/images/teamtailor-assessment/send_assess_5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://doc.teamtailor.com/">
+    https://doc.teamtailor.com/
+</Card>
