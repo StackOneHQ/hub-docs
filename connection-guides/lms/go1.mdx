@@ -7,94 +7,25 @@ description: "If you've been directed to StackOne to integrate with GO1, the fol
   This guidance assumes you have Admin privileges for your GO1 account.
 </Warning>
 
-## Create Integrations App
-
-<Steps>
-  <Step title="Log into GO1">
-    Log into your GO1 account.
-  </Step>
-
-  <Step title="Navigate to Integrations">
-    Click on your profile tab in the top right corner.
-
-    Select `Integrations` from the dropdown menu.
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/go1/image1.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Navigate to Developers Tab">
-    From the `Integrations` menu on the left of the screen select `Developers`.
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/go1/image2.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Create a New App">
-    Click `Create App` in the top right.
-
-    Enter the name of the app (e.g. Production, Development)
-
-    Enter the callback URL (e.g. Production: https://api.stackone.com/connect/oauth2/go1/callback)
-
-    `Production: https://api.stackone.com/connect/oauth2/go1/callback`
-    `Development: https://api.stackone-dev.com/connect/oauth2/go1/callback`
-
-    Click `Create Application`
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/go1/image3.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Note the Client ID and Secret">
-    Record the `Client ID` and `Client Secret` for use in the next steps.
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/go1/image4.png" />
-    </Frame>
-  </Step>
-
-</Steps>
-
-
 ## Linking to StackOne
-
-You can use the Client ID and Client Secret to link your GO1 account to StackOne.
   <Steps>
-    <Step title="Enable Go1 Integration">
-      In the StackOne Dashboard navigate to the `Integrations` page.
-
-      Navigate to the `LMS` tab and click the `+` button next to GO1.
-
-      <Frame>
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enable Integration" src="/images/go1/image5.png" />
-      </Frame>
-
-      In the modal enter the `Client ID` and `Client Secret` from the previous step.
-
-
-      Add relevant `Application Scopes` required for your integration.
-
-      E.g. `account:read`, `lo:read`, `portal:read`, `user:write`, `enrollment:write`
-
-      <Frame>
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/go1/image6.png" />
-      </Frame>
-    </Step>
-
     <Step title="Link Go1 Account">
       In the StackOne Dashboard navigate to the `Accounts` page.
 
       Click `Link Account` and select Go1.
 
+      Click `Connect`.
       <Frame>
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/go1/image7.png" />
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/go1/image8.png" />
       </Frame>
 
-      Click `Connect`.
+      Log into your GO1 account with your username and password.
+
+      Click `Authorize`
+
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/go1/image9.png" />
+      </Frame>
     </Step>
 
   </Steps>
