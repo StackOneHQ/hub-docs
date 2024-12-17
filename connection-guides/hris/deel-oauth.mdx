@@ -1,0 +1,101 @@
+---
+title: "Deel (OAuth)"
+description: "Follow these steps to connect Deel via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Deel account has Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Deel, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Create your Client ID and Client Secret
+
+This integration will authenticate on behalf of a registered application in Deel.
+
+<Steps>
+  <Step title="Navigate to the Deel Developer Center">
+      In Deel, click **Hub** in the navigation menu, then select **Apps > Developer Center**.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to the Deel Developer Center" src="/images/deel/image1.png" />
+      </Frame>
+  </Step>
+  <Step title="Create a new App">
+     On the **Apps** tab, click the **Create new app** button.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a new App" src="/images/deel/image9.png" />
+      </Frame>
+  </Step>
+  <Step title="Configure the App Details">
+      
+        <Info>
+            We recommend using an **Organization** app type which is tied to the organization. Personal Apps tied to an individual and will expire once the user leaves the company.
+        </Info>
+        Configure the app with the following details
+        - **App Type**: Organization
+        - **App Name**: e.g. StackOne
+        - **Redirect URL**: `https://api.stackone.com/connect/oauth2/deel/callback`
+        - **Description**: e.g. StackOne
+        - **Logo**: Any image (visible when authenticating)
+
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Configure the App Details" src="/images/deel/image10.png" />
+      </Frame>
+  </Step>
+  <Step title="Copy your Client ID and Client Secret">
+      Copy your Client ID and Client Secret and store them safely to be used in a later step.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your Client ID and Client Secret" src="/images/deel/image11.png" />
+      </Frame>
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step>
+    Upon reaching the Link Account page, enter the credential(s) from the previous steps:
+    - **Client ID**
+    - **Client Secret**
+    - **Scopes** (optional)
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/deel/image12.png" />
+    </Frame>
+  </Step>
+  <Step title="Authorize Application">
+      A new window will take you to Deel. If necessary, enter your Deel credentials or use one of the sign-in options available that are connected to your Deel account.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Authorize Application" src="/images/deel/image7.png" />
+      </Frame>
+  </Step>
+  <Step title="Accept the required scopes">
+        In order to connect to your Deel account, you need to grant permission for the App to access your data.
+        
+        Click **Allow** to proceed.
+    
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Accept permissions" src="/images/deel/image8.png" />
+        </Frame>
+    </Step>
+</Steps>
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [HRIS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Employees</li>
+  <li>Employments</li>
+  <li>Locations</li>
+  <li>Companies</li>
+  <li>Groups</li>
+</ul>
