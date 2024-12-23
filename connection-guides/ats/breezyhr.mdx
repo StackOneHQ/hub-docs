@@ -1,0 +1,90 @@
+---
+title: "Breezy HR"
+description: "Follow these steps to connect Breezy HR via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Breezy HR account has an **Administrator** Company Role.
+</Warning>
+
+If you've been directed to StackOne to integrate with Breezy HR, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Breezy HR
+
+Log in to your Breezy HR account at https://app.breezy.hr/signin.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to Breezy HR" src="/images/breezyhr/image1.png" />
+</Frame>
+
+
+## Create a new Breezy HR System User
+
+This integration will authenticate on behalf of a specified Breezy HR Company Administrator.
+
+You can use an existing User, or follow the steps below to create a new User.
+
+<Steps>
+  <Step title="Navigate to Users">
+      Click the Settings icon <Icon icon="gear" iconType="solid" color="#333333" /> in the left navigation.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Users" src="/images/breezyhr/image2.png" />
+      </Frame>
+  </Step>
+  <Step title="Create a new User">
+      Under Company Settings, click **Users**.
+
+      Click **Invite Members** to create a new User.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a new User" src="/images/breezyhr/image3.png" />
+      </Frame>
+  </Step>
+  <Step title="Send Invitation">
+      Enter the new User's Email Address. Then select **Administrator** in the dropdown box labeled "Add to this Role".
+
+      Click the **Invite User(s)** button to complete.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Send Invitation" src="/images/breezyhr/image4.png" />
+      </Frame>
+  </Step>
+  <Step title="Accept Invitation">
+      An invitation from Breezy HR will be sent to the email address submitted above. Accept the invitation to complete the User creation process.
+
+      This User's email and password will be required for this connection.
+  </Step>
+</Steps>
+## Find your Company ID
+
+Your Company ID can be found in the URL when you are logged into Breezy HR, located directly after `app.breezy.hr/app/`.
+
+Given the URL https://app.breezy.hr/app/my-company/home, your Company ID is `my-company`.
+
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the credential(s) from the previous steps:
+  - **Email Address**
+  - **Password**
+  - **Company ID**
+
+Proceed by clicking the Connect button.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/breezyhr/image5.png" />
+</Frame>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [ATS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Applications</li>
+  <li>Candidates</li>
+  <li>Job Postings</li>
+  <li>Jobs</li>
+</ul>
