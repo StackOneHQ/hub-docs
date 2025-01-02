@@ -60,10 +60,20 @@ This connection will authenticate on behalf of a registered OAuth Application in
     Under *Add connection*, enter the following required information:
 
     - Application Name: (Appropriate name for this application)
-    - Redirect URLs: `https://api.stackone.com/connect/oauth2/databricks_iam/callback`
+    - Redirect URLs: 
+    ```
+    https://api.stackone.com/connect/oauth2/databricks_iam/callback
+    ```
     - Access scopes: Select **All APIs**
     - Client secret: Select **Generate a client secret**
-    - Access token and Refresh token TTL: Can be left as the default values
+    - Access token TTL: 30 (recommended minimum)
+    - Refresh token TTL: **129,600** (strongly recommended)
+
+    <Warning>
+      When the Databricks refresh token expires, a manual re-authorization is required to re-establish the connection.
+
+      Therefore, we strongly recommend setting the refresh token TTL to the maximum allowed value of 129,600 minutes (90 days).
+    </Warning>
   
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter connection details" src="/images/databricks/image5.png" />
