@@ -1,0 +1,81 @@
+---
+title: "Webflow (Workspace)"
+description: "Follow these steps to connect Webflow via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that the authenticating Webflow account has Admin or Owner privileges within the Webflow Workspace to be connected.
+</Warning>
+
+<Warning>
+  The authenticating account for this connection must use email + password for login. Google SSO is not supported.
+</Warning>
+
+If you've been directed to StackOne to integrate with Webflow, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Webflow 
+
+Log in to your Webflow app at https://webflow.com/login
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/webflow/image1.png" />
+</Frame>
+
+## Get Your Webflow Workspace ID
+
+One Webflow IAM connection will be associated with a single Webflow workspace. 
+
+<Steps>
+  <Step title="Navigate to Your Workspace">
+    In the Webflow Dashboard, click the Workspace drop-down on the left. Select the workspace you wish to connect.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="All sites" src="/images/webflowworkspace/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Workspace ID">
+    Your **Workspace ID** can now be found in the URL. 
+    
+    Given the URL: `https://webflow.com/dashboard?workspace=my-workspace`
+    
+    The **Workspace ID** is *my-workspace*. Copy and store this for use in a later step.
+  </Step>
+</Steps>
+
+## Get Your Two-Factor Authentication (TOTP) Secret
+
+This step is required if Two-Factor Authentication is enabled on your Webflow account.
+
+Follow [Webflow's instructions](https://help.webflow.com/hc/en-us/articles/33961343631891-Two-factor-authentication-2FA#how-to-set-up-two-factor-authentication) for configuring Two-Factor Authentication.
+
+Your **TOTP Secret** (Time-based one-time password secret) will be displayed when enabling Two-Factor Authentication. Copy and store this for use in a later step.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Get Your Two-Factor Authentication (TOTP) Secret" src="/images/webflowworkspace/image2.png" />
+</Frame>
+
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the following credentials:
+- Workspace ID
+- Workspace Admin Email
+- Workspace Admin Password
+- TOTP Secret (if Two-Factor Authentication is enabled)
+
+Proceed by clicking the Connect button.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/webflowworkspace/image3.png" />
+</Frame>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Roles</li>
+</ul>

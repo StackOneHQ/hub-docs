@@ -1,0 +1,83 @@
+---
+title: "Deel"
+description: "Follow these steps to connect Deel via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Deel account has Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Deel, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Create your Deel API Access Token
+
+<Steps>
+  <Step title="Navigate to the Deel Developer Center">
+      In Deel, click **Hub** in the navigation menu, then select **Apps > Developer Center**.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Access Tokens" src="/images/deel/image1.png" />
+      </Frame>
+  </Step>
+  <Step title="Create a new API Access Token">
+     On the **API access & Sandbox** tab, scroll down to the **API access tokens** section.
+     
+     <Info>
+        We recommend using an **Organization Token** which is tied to the organization. Personal Tokens tied to an individual and will expire once the user leaves the company.
+     </Info>
+
+     Select **Organization Token** (or **Personal Token** if preferred), then click **Generate New Token** to create a new access token.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a new API Access Token" src="/images/deel/image2.png" />
+      </Frame>
+  </Step>
+  <Step title="Configure the API Access Token">
+      Set a label for the API Access Token, click **Next**
+
+      This integration requires the following scopes: `Select All`
+
+      Click **Generate**
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select API Access Token Scopes" src="/images/deel/image3.png" />
+      </Frame>
+  </Step>
+  <Step title="Copy your API Access Token">
+      Copy your API Access Token and store it safely to be used in a later step.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your API Access Token" src="/images/deel/image4.png" />
+      </Frame>
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the **API Access Token** from the previous steps.
+
+Proceed by clicking **Connect**.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/deel/image5.png" />
+</Frame>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [HRIS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Employees</li>
+  <li>Employments</li>
+  <li>Locations</li>
+  <li>Companies</li>
+  <li>Groups</li>
+</ul>
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developer.deel.com/docs/api-tokens-1">
+    https://developer.deel.com/docs/api-tokens-1
+</Card>

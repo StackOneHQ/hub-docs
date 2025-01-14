@@ -1,0 +1,138 @@
+---
+title: "Cornerstone"
+description: "Follow these steps to connect Cornerstone via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Cornerstone account has Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Cornerstone, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Generate Client ID and Secret key
+
+<Steps>
+    
+    <Step title="Login to your Cornerstone portal.">
+    </Step>
+
+    
+    <Step title="Navigate to Admin > Tools > Edge > API Management.">
+    </Step>
+
+    
+    <Step title="On the Manage Applications tab, click Register New Application.">
+    </Step>
+
+    
+    <Step title="Enter your Application Name.">
+    </Step>
+
+    <Step title="Enter the User ID of an active user in your portal.">
+    </Step>
+
+    <Step title="In the Scopes section, select the scopes you want to associate with your application.">
+       The following scopes are required to access the complete StackOne LMS integrations.
+
+       <ol type="a">
+        <li>vw_rpt_user:read</li>
+        <li>vw_rpt_training:read</li>
+        <li>training:read</li>
+        <li>transcript:read</li>
+        <li>vw_rpt_user_status:read</li>
+        <li>vw_rpt_subject:read</li>
+        <li>vw_rpt_lo_competencies_local:read</li>
+       </ol>
+    </Step>
+
+    <Step title="Click Register Application.">
+    </Step>
+
+      <Step title="Save your credentials securely">
+        If the User ID is valid, you'll receive:
+        - Client ID
+        - Client Secret
+        
+        Store these credentials securely in a password manager or secure vault. Never share them or commit them to version control.
+        
+        <Warning>
+            The Client Secret will only be shown once and cannot be retrieved later. If lost, you'll need to regenerate it.
+        </Warning>
+    </Step>
+</Steps>
+
+## Configure User Permissions
+
+<Steps>
+  <Step title="Navigate to Admin > Tools > Core Functions > Users">
+      Search for the user which is associated with the Application you created in the previous step.
+  </Step>
+
+  <Step title="Click on Options > Permissions">
+     Ensure the following permissions are configured to either `There are no constraints available for this permission.` or `Restrict to User's Corporation.`
+     - Reporting API - Read only
+     - Transcript API - Request
+     - Employee API - View
+  </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps and proceed by clicking the <b>Connect</b> button
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/cornerstone/image2.png" />
+    </Frame>
+  </Step>
+  <Step title="Verify Connection">
+    After clicking Connect, the system will validate your credentials. A successful connection will be indicated by a green checkmark.
+    
+    If you encounter any errors:
+    - Verify that your Client ID and Secret are correct
+    - Ensure all required scopes were enabled
+    - Check that your Cornerstone portal is accessible
+    - Confirm your admin privileges are still active
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Troubleshooting
+
+<Steps>
+  <Step title="What does it mean when I see the following response from a Cornerstone API: 'Provided user does not have Rest services permissions and/or constrainsts to perform this operation'?">
+    This error message indicates that the API you are trying to access is not enabled in your Cornerstone portal. To resolve this error, please follow the below steps:
+      1. Navigate to Admin > Tools > Edge > Integrations > Manage APIs within your Cornerstone portal.
+      2. Ensure the toggles for Cornerstone API and Reporting API are turned on.
+      3. If the toggles are already turned on, try turning them off and then back on again. This action resets the backend settings that control access to Cornerstone's APIs.
+
+    After performing the above steps, if you still see the same error response, please log a case with Cornerstone Global Customer Support (GCS).
+  </Step>
+  
+  <Step title="Why am I getting a 401 unauthorized response when trying to hit the Reporting API?">
+    There are a few things you should check when you receive this response:
+    1. Verify that the Reporting API is enable for the environment that you are trying to pull data from. You can do this by navigating to Admin > Tools > Edge > API Management > Manage APIs.
+    You should see the Reporting API enabled on this page.
+    2. If you are using OAuth 2.0 for your API authentication:
+      - Ensure that the user account associated with your registered OAuth 2.0 application has the Reporting API - Read only permission.
+      - Ensure that your OAuth 2.0 application has the required scope to access the endpoint that you are trying to retrieve data from.
+      - Ensure that the OAuth 2.0 access token is still valid. Remember that OAuth 2.0 access tokens are valid for an hour by default, unelss you set a different validity period for your application in the 
+      API Management page in Edge.
+
+    After performing the above steps, if you still see an 'unauthorized access' error, please log a case with Cornerstone Global Customer Support (GCS).
+  </Step>
+</Steps>
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://csod.dev/guides/getting-started/">
+    https://csod.dev/guides/getting-started/
+</Card>
+
+<Card title="CSOD Troubleshooting" icon="link" href="https://csod.dev/faq/">
+    https://csod.dev/faq/
+</Card>
