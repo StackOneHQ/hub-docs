@@ -1,0 +1,106 @@
+---
+title: "Greenhouse Assessment or Background Check"
+description: "To successfully send webhook notifications from Greenhouse, follow these steps in your Greenhouse account, and complete the necessary actions."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+
+## Send the assessment or background check invitation to the candidate
+
+<Steps>
+  <Step title="Add Assessment or Background Check stage with in the specific Job">
+    Visit the <i>Job's</i> page to add or edit a job by searching for terms like <i>Software Engineer</i>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Job Page" src="/images/greenhouse-assessment/Go_to_Job_Page_1.png" />
+    </Frame>
+    You'll be directed to the specific Job's page,
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Job" src="/images/greenhouse-assessment/Go_to_Job_Edit_2.png" />
+    </Frame>
+
+    Click on the Job to edit it, then scroll down and select `Interview Plan` under Job Setup.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Job Setup" src="/images/greenhouse-assessment/Go_to_Interview_Plan_1.png" />
+    </Frame>
+
+    Click the `Add Stage` button to select and add a new stage from the dropdown list.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Job Setup" src="/images/greenhouse-assessment/Go_to_Interview_Plan_2.png" />
+    </Frame>
+
+    You will find the additional stage included in the Interview Plan.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Job Setup" src="/images/greenhouse-assessment/Interview_Plan_Edited_3.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Add Candidate to the Job
+
+<Steps>
+  <Step title="Add a New Candidate within the Job">
+    Navigate to the <i>Add Candidate</i> page to add a candidate and select the relevant job from the dropdown list.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add New Candidate within the Job" src="/images/greenhouse-assessment/Add_Candidate_1.png" />
+    </Frame>
+
+    After adding a candidate, you will be directed to the candidate's profile page.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Profile Page" src="/images/greenhouse-assessment/Candidate_Profile_To_Move_1.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Move Candidate to the assessment or background check stage
+
+<Steps>
+  <Step title="Move Candidate to the assessment or background check stage">
+    Click the `Move Stage` button in the top-right corner, then select `Your Assessment or Background Check Integration` to proceed.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Move Candidate to the Assessment or Background Check Stage" src="/images/greenhouse-assessment/Move_Candidate_2.png" />
+    </Frame>
+
+    Candidate will be moved to the assessment or background check stage.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add New Candidate within the Job" src="/images/greenhouse-assessment/Moved_Candidate_3.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Send Webhook to the Candidate
+
+<Steps>
+  <Step title="Move Candidate to the assessment or background check Stage">
+    Click the `Send test to candidate` link to open a pop-up, allowing the recruiter to select which assessment or background check to send to the candidate.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Move Candidate to the assessment or background check Stage" src="/images/greenhouse-assessment/Select_Assessment_1.png" />
+    </Frame>
+
+    Notification will be sent to the candidate by clicking the `Send Test` button. You will receive confirmation at the same stage,
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add New Candidate within the Job" src="/images/greenhouse-assessment/Sent_Assessment_Webhook_1.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## To check updated result of the assessment or background check invitation of the candidate
+
+<Steps>
+  <Step title="To see the updated results of assessment">
+    Click on the candidate's name to view their application. You will see the updated results along with the assessment or background check integration stage from the previously sent webhook
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Assessment or Background Check Updated Results" src="/images/greenhouse-assessment/Check_Result.png" />
+    </Frame>
+    After the candidate has completed the assessment, click the `Go to test` link to view the results report.
+
+  </Step>
+</Steps>
+
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developers.greenhouse.io/assessment.html#introduction">
+    https://developers.greenhouse.io/assessment.html#introduction
+</Card>
