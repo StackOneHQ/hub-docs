@@ -120,23 +120,30 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     </Info>
 
     Edit the Domain Security Policy Permissions in the Security Group. 
+
+    You can reach this interface by searching for "Maintain Permissions for Security Group" in the search bar, and selecting the name of the Security Group you created in the previous step.
     
     Enable the **GET** operations for the following required permissions for the HRIS API:
 
     - **Job Requisition Data**
+    - **Job Information**
+    - **Job Profile**
+       - View
+    - **Manage**
+      - Location
     - **Person Data**
-      - **Personal Data**
-          - Name
-          - Citizenship Status
-          - Date of Birth
-          - Disabilities
-          - Gender
-          - Government IDs
-          - ID Information
-          - Marital Status
-          - National ID Identification
-          - Personal Information
-          - Photo
+        - Name
+        - Citizenship Status
+        - Date of Birth
+        - Disabilities
+        - Gender
+        - Government IDs
+        - ID Information
+        - Marital Status
+        - National ID Identification 
+        - Personal Information
+        - Personal Data
+        - Personal Photo
       - **Home Contact Information**
         - Home Address
         - Home Email
@@ -158,6 +165,8 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
         - Time Off Balances
         - Time Off Balances Manager View
       - Workers
+    - **View**
+      - National Identifiers - All
 
   </Step>
 </Steps>
