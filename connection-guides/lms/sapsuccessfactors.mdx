@@ -9,29 +9,17 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   Ensure you have Admin privileges for your SAP SuccessFactors account.
 </Warning>
 
-If you've been directed to StackOne to integrate with SAP SuccessFactors, the following steps will help you understand the process and any necessary actions to configure successful integration.
+If you've been directed to StackOne to integrate with SAP SuccessFactors, the following steps will help you understand the process and any necessary actions to configure successful integration.The type of Authentication
+flow you follow will depend on your use case.
 
-# Locating Credentials
+- If you are working with an external LXB/LMS to pull data into your SAP instance, you will need to follow the Authentication Flow 1.
+- If you are working with an external content provider to pull external content into your SAP instance, you will need to follow the Authentication Flow 2.
 
-## Locating API Server
+# Authentication Flow 1: Linking your SAP instance library to an external LXB/LMS to pull data
 
-<Steps>
- <Step title="Find the API Server">
-    SAP uses multiple API server addresses. You will need to look up the API server that corresponds to your tenant domain on this [table](https://help.sap.com/docs/SAP_SUCCESSFACTORS_PLATFORM/d599f15995d348a1b45ba5603e2aba9b/af2b8d5437494b12be88fe374eba75b6.html) under the `API Server` column.
+## Locating Credentials
 
-    For example, if your domain was `https://pmsalesdemo8.successfactors.com/` you would search for `salesdemo8` in the table.
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Server Example" src="/images/sapsuccessfactors/image1.png" />
-    </Frame>
-
-    Copy the value in the `API Server` column (remove the final forward-slash `/`). In this example, the value would be `https://apisalesdemo8.successfactors.com`.
-
-    Use this value as the `API Server` value when connecting SAP SuccessFactors to StackOne.
-  </Step>
-</Steps>
-
-## Finding the Learning Hub URL
+### Finding the Learning Hub URL
   <Steps>
       <Step title="Log into SAP">
         Log into SAP SuccessFactors.
@@ -50,7 +38,7 @@ If you've been directed to StackOne to integrate with SAP SuccessFactors, the fo
       </Step>
   </Steps>  
 
-  ## Finding Company ID
+  ### Finding Company ID
 
   <Steps>
     <Step title="Open User Modal">
@@ -66,7 +54,7 @@ If you've been directed to StackOne to integrate with SAP SuccessFactors, the fo
     </Step>
   </Steps>
 
-  ## Finding Username and Client Secret
+  ### Finding Username and Client Secret
   **If you are setting up SAP for creating content via OCN, please follow the below steps to create an OCN Admin Role and User and use that username.**
   <Steps>
     <Step title="Navigate to Administrators Settings Page">
@@ -83,12 +71,82 @@ If you've been directed to StackOne to integrate with SAP SuccessFactors, the fo
     </Step>
   </Steps>
 
+  ## Additional Configuration if syncing Skills and Competencies
 
-  # Additional Configuration Required For Creating Content via Open Content Network
+  ### Locating API Server
 
-  ## Create New Admin Role and User
+<Steps>
+ <Step title="Find the API Server">
+    SAP uses multiple API server addresses. You will need to look up the API server that corresponds to your tenant domain on this [table](https://help.sap.com/docs/SAP_SUCCESSFACTORS_PLATFORM/d599f15995d348a1b45ba5603e2aba9b/af2b8d5437494b12be88fe374eba75b6.html) under the `API Server` column.
 
-  ### Create Admin Role
+    For example, if your domain was `https://pmsalesdemo8.successfactors.com/` you would search for `salesdemo8` in the table. If the server is not listed, you may be able to find it by searching online or contacting your provider for support.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Server Example" src="/images/sapsuccessfactors/image1.png" />
+    </Frame>
+
+    Copy the value in the `API Server` column (remove the final forward-slash `/`). In this example, the value would be `https://apisalesdemo8.successfactors.com`.
+
+    Use this value as the `API Server` value when connecting SAP SuccessFactors to StackOne.
+  </Step>
+</Steps>
+
+### Locating API password
+
+<Steps>
+  <Step title="Locate API Password">
+    In the SuccessFactors main instanc, navigate to the user management tool.
+
+    Search for the integration system user and find the password within the user profile.
+
+    I required you can reset the password by searching *Reset User Password* in the search bar.
+
+    Note down the API password for this user.
+  </Step>
+</Steps>
+
+# Authentication Flow 2: Linking your SAP instance library to an external content provider pushing data to your SAP instance.
+
+### Finding the Learning Hub URL
+  <Steps>
+      <Step title="Log into SAP">
+        Log into SAP SuccessFactors.
+      </Step>
+      <Step title="Access the Learning Module">
+        Type Learning Administration in the search bar and select the Learning Administration module.
+      </Step>
+      <Step title="Record Learning Module URL">
+        Look in the browser address bar for the URL and save the address.
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Learning Server Example" src="/images/sapsuccessfactors/image10.png" />
+        </Frame>
+      In this case: https://sfcpart000906.scdemo.successfactors.com/ is the access point.
+
+      Use this value as the `Learning Domain URL` value when connecting SAP SuccessFactors to StackOne.
+      </Step>
+  </Steps>  
+
+### Finding Company ID
+
+<Steps>
+  <Step title="Open User Modal">
+    Select your profile image in the upper right-hand corner of the screen to open the dropdown modal
+  </Step>
+
+  <Step title="Locate Company ID">
+    Within the modal that appears, you will see `Company ID`. Copy and note down this value.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company ID" src="/images/sapsuccessfactors/image3.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Additional Configuration Required For Creating Content via Open Content Network
+
+  ### Create New Admin Role and User
+
+  #### Create Admin Role
   <Steps>
   <Step title="Add New OCN Admin Role">
     To create an OCN admin profile in SuccessFactors, take the following steps:
@@ -152,7 +210,7 @@ If you've been directed to StackOne to integrate with SAP SuccessFactors, the fo
   </Step>
 </Steps>
 
-### Create Admin User
+#### Create Admin User
 <Steps>
   <Step title="Add New Administrator">
     To create a system admin user in SuccessFactors, take the following steps:
@@ -165,7 +223,9 @@ If you've been directed to StackOne to integrate with SAP SuccessFactors, the fo
 
     Enter a new password in the password fields. 
     
-    **Take note of this password and username (AdminID) as these will be used to connect the account in the StackOne hub.**  
+    **Take note of this username (AdminID) as this will be used to connect the account in the StackOne hub.**  
+
+    Make sure the user is linked to an integration system user in the main SAP instance as we will require the api password for this user to access skills.
 
     Click Add.
 
@@ -185,7 +245,7 @@ If you've been directed to StackOne to integrate with SAP SuccessFactors, the fo
   </Step>
 </Steps>
 
-## Configure the OCN Property File
+### Configure the OCN Property File
 
 To configure the OCN property file, take the following steps:
 
@@ -218,7 +278,7 @@ To configure the OCN property file, take the following steps:
   </Step>
 </Steps>
 
-## Set Up OCN Content Synchronization Automatic Process
+### Set Up OCN Content Synchronization Automatic Process
 
 To automate the OCN content sync process, take the following steps:
 
@@ -243,7 +303,7 @@ To automate the OCN content sync process, take the following steps:
   </Step>
 </Steps>
 
-## Importing Content
+### Importing Content
 
 Once OCN content is being automatically made availble for import as per the steps above you may manually import the content into the system
 
@@ -270,7 +330,7 @@ Once OCN content is being automatically made availble for import as per the step
   </Step>
 </Steps>
 
-## Create a Provider label
+### Create a Provider label
 
 To create a LinkedIn Learning label, take the following steps:
 
@@ -322,7 +382,7 @@ To create a LinkedIn Learning label, take the following steps:
   </Step>
 </Steps>
 
-## Note Content Provider Name
+### Note Content Provider Name
 
 <Steps>
   <Step title="Note Provider Name">
@@ -330,7 +390,41 @@ To create a LinkedIn Learning label, take the following steps:
   </Step>
 </Steps>
 
-# Connecting with StackOne
+## Additional Configuration if syncing Skills and Competencies
+
+### Locating API Server
+
+<Steps>
+ <Step title="Find the API Server">
+    SAP uses multiple API server addresses. You will need to look up the API server that corresponds to your tenant domain on this [table](https://help.sap.com/docs/SAP_SUCCESSFACTORS_PLATFORM/d599f15995d348a1b45ba5603e2aba9b/af2b8d5437494b12be88fe374eba75b6.html) under the `API Server` column.
+
+    For example, if your domain was `https://pmsalesdemo8.successfactors.com/` you would search for `salesdemo8` in the table. If the server is not listed, you may be able to find it by searching online or contacting your provider for support.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Server Example" src="/images/sapsuccessfactors/image1.png" />
+    </Frame>
+
+    Copy the value in the `API Server` column (remove the final forward-slash `/`). In this example, the value would be `https://apisalesdemo8.successfactors.com`.
+
+    Use this value as the `API Server` value when connecting SAP SuccessFactors to StackOne.
+  </Step>
+</Steps>
+
+### Locating API password
+
+<Steps>
+  <Step title="Locate API Password">
+    In the SuccessFactors main instanc, navigate to the user management tool.
+
+    Search for the integration system user and find the password within the user profile.
+
+    I required you can reset the password by searching *Reset User Password* in the search bar.
+
+    Note down the API password for this user.
+  </Step>
+</Steps>
+
+## Connecting with StackOne
 
 <Steps>
   <Step title="Enter the Details">
@@ -352,7 +446,7 @@ Note: The integration may take up to 15 minutes to initially authenticate once t
 
 <IntegrationFooter />
 
-## Useful Links
+### Useful Links
 <Card title="API Reference" icon="link" href="https://api.sap.com/products/SAPSuccessFactors/apis/all">
     https://api.sap.com/products/SAPSuccessFactors/apis/all
 </Card>
