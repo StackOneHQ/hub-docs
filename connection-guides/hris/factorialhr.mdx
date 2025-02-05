@@ -1,6 +1,6 @@
 ---
-title: "Factorial HR - OAuth Authentication"
-description: "Follow these steps to connect Factorial HR with StackOne Hub successfully."
+title: "Factorial HR"
+description: "Follow these steps to connect FactorialHr via the StackOne Hub successfully."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
@@ -9,33 +9,62 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   Ensure you have Admin privileges for your Factorial HR account.
 </Warning>
 
-If you've been directed to StackOne to integrate with Factorial HR, the following steps will help you understand the process and any necessary actions to configure successful integration.
+If you've been directed to StackOne to integrate with Factorial HR, the following steps will help you understand the process and any necessary actions to configure a successful integration.
 
-## Connecting with StackOne
+
+## Create your Factorial HR API Key
 
 <Steps>
-  <Step title="Proceed to the Accounts page">
-    Proceed to the Accounts page to establish a connection between FactorialHr and StackOne. Then click the `Connect` button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect Button" src="/images/factorialhr/image1.png" />
-    </Frame>
+  <Step title="Navigate to API Keys">
+      In FactorialHR, click **Settings** in the side menu, scroll down to **Advanced configuration** then select **API Keys**.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Keys" src="/images/factorialhr/image4.png" />
+      </Frame>
   </Step>
-
-  <Step title="Enter your Factorial Hr account credentials">
-    Enter your Factorial Hr account credentials in the opened tab.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Factorial Hr Account Credentials" src="/images/factorialhr/image2.png" />
-    </Frame>
+  <Step title="Create a new API Key">
+      Click **New API Key** to create a new API Key.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a new API Key" src="/images/factorialhr/image5.png" />
+      </Frame>
   </Step>
-
-  <Step title="Click Sign In">
-    Click sign in.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Sign In" src="/images/factorialhr/image3.png" />
-    </Frame>
+  <Step title="Name the API Key">
+      Name the API Key then click **Get my API key**.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Name the API Key" src="/images/factorialhr/image6.png" />
+      </Frame>
+  </Step>
+  <Step title="Copy your API Key">
+      Copy your API Key and store it safely to be used in a later step.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your API Key" src="/images/factorialhr/image7.png" />
+      </Frame>
   </Step>
 </Steps>
 
-You'll get an instant "`Account connected`" success message and the opened tab will close.
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the **API Key** from the previous steps:
+
+Proceed by clicking the Connect button.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/factorialhr/image8.png" />
+</Frame>
 
 <IntegrationFooter />
+
+## Available data
+
+This integration has the following [HRIS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Companies</li>
+  <li>Documents</li>
+  <li>Employees</li>
+  <li>Employments</li>
+  <li>Groups</li>
+  <li>Locations</li>
+</ul>
