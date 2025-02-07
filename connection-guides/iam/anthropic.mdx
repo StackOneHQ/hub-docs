@@ -1,0 +1,91 @@
+---
+title: "Anthropic"
+description: "Follow these steps to connect Anthropic via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Anthropic account has **Admin** privileges within your Organization.
+</Warning>
+
+If you've been directed to StackOne to integrate with Anthropic, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+This connection will be associated with a single Anthropic Organization, which may contain multiple Anthropic Workspaces.
+
+## Log in to Anthropic
+
+Log in to your Anthropic account at https://console.anthropic.com/ 
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to Anthropic" src="/images/anthropic/image1.png" />
+</Frame>
+
+
+## Create your Anthropic Admin API Key
+
+Anthropic treats *API Keys* and **Admin keys** separately. An **Admin Key** must be used for this connection.
+
+<Info>
+    An Anthropic Admin Key has a prefix of **sk-ant-admin**
+</Info>
+
+<Steps>
+  <Step title="Navigate to Admin Keys">
+      Click **Admin keys** in the left navigation menu.
+  
+      <Frame>
+          <img className='rounded-md' style={{ width: '40%', margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Admin Keys" src="/images/anthropic/image2.png" />
+      </Frame>
+  </Step>
+  <Step title="Create a new Admin Key">
+      Click **Create Admin Key** to create a new key.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a new Admin Key" src="/images/anthropic/image3.png" />
+      </Frame>
+  </Step>
+  <Step title="Name the new Admin Key">
+      Enter a name for the new **Admin Key**, then click **Add**.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Name the new Admin Key" src="/images/anthropic/image4.png" />
+      </Frame>
+  </Step>
+  <Step title="Copy your Admin Key">
+      Copy your displayed **Admin Key** and store it safely to be used in the next step.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your Admin Key" src="/images/anthropic/image5.png" />
+      </Frame>
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the **Admin Key** from the previous step.
+
+Proceed by clicking the Connect button.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/anthropic/image6.png" />
+</Frame>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Groups</li>
+  <li>Roles</li>
+  <li>Users</li>
+</ul>
+
+## Useful Links
+<Card title="Anthropic Admin API" icon="link" href="https://docs.anthropic.com/en/docs/administration/administration-api">
+    https://docs.anthropic.com/en/docs/administration/administration-api
+</Card>
+<Card title="Anthropic Workspaces" icon="link" href="https://www.anthropic.com/news/workspaces">
+    https://www.anthropic.com/news/workspaces
+</Card>
