@@ -1,0 +1,47 @@
+---
+title: "Oracle"
+description: "If you've been directed to StackOne to integrate with Oracle, the following steps will help you understand the process and any necessary actions to configure successful integration."
+---
+
+<Warning>
+  This guidance assumes you have Admin privileges for your Oracle account.
+</Warning>
+
+## JWT Authentication
+
+<Steps>
+  <Step title="Find REST Server URL">
+    Log into the Oracle dashboard and take the root URL from the address bar.
+
+    E.g. If your url is `https://fa-test-saasfa.fa.ocs.oraclecloud.com/fscmUI/faces/AtkHomePageWelcome?` the REST Server URL is `https://fa-test-saasfa.fa.ocs.oraclecloud.com`
+  </Step>
+  <Step title="Find User Name">
+    XXXX
+  </Step>
+  <Step title="Find x509 Certificate">
+    Obtain the x509 certificate from your content provider.
+  </Step>
+  <Step title="Find Private Key">
+    Obtain the private key from your content provider.
+  </Step>
+</Steps>
+
+## Linking to StackOne
+
+You can use the Client ID and Client Secret to link your GO1 account to StackOne.
+  <Steps>
+    <Step title="Link Oracle Account">
+      In the StackOne hub click on the Oracle Tile.
+
+      Add the `REST Server URL`, `User Name`, `x509 Certificate`, `Private Key` from the previous steps.
+
+      Click `Connect`.
+    </Step>
+  </Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="Oracle JWT Docs" icon="link" href="https://www.oracle.com/webfolder/technetwork/tutorials/obe/fusionapps/HCM/JWT_API_Authentication_OBE/html/index.html">
+    https://www.oracle.com/webfolder/technetwork/tutorials/obe/fusionapps/HCM/JWT_API_Authentication_OBE/html/index.html
+</Card>

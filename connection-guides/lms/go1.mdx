@@ -57,6 +57,11 @@ description: "If you've been directed to StackOne to integrate with GO1, the fol
     </Frame>
   </Step>
 
+  <Step title="Find domain">
+   You can find the domain by taking the root URL from the address bar of your GO1 account and only taking the part before my.go1.com. and after the https://.
+
+   E.g. If your url is `https://my-domain.go1.com` the domain is `my-domain`
+  </Step>
 </Steps>
 
 
@@ -64,33 +69,20 @@ description: "If you've been directed to StackOne to integrate with GO1, the fol
 
 You can use the Client ID and Client Secret to link your GO1 account to StackOne.
   <Steps>
-    <Step title="Enable Go1 Integration">
-      In the StackOne Dashboard navigate to the `Integrations` page.
-
-      Navigate to the `LMS` tab and click the `+` button next to GO1.
-
-      <Frame>
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enable Integration" src="/images/go1/image5.png" />
-      </Frame>
+    <Step title="Link Go1 Account">
+      In the StackOne hub click on the GO1 Tile.
 
       In the modal enter the `Client ID` and `Client Secret` from the previous step.
 
-
-      Add relevant `Application Scopes` required for your integration.
+      Add relevant `Application Scopes` required for your integration and the `Domain` for the GO1 account you want to link.
 
       E.g. `account:read`, `lo:read`, `portal:read`, `user:write`, `enrollment:write`
 
-      Add the domain for the GO1 account you want to link.
+      Add the `domain` for the GO1 account you want to link.
 
       <Frame>
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/go1/image6.png" />
       </Frame>
-    </Step>
-
-    <Step title="Link Go1 Account">
-      In the StackOne Dashboard navigate to the `Accounts` page.
-
-      Click `Link Account` and select Go1.
 
       <Frame>
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/go1/image7.png" />
@@ -102,12 +94,8 @@ You can use the Client ID and Client Secret to link your GO1 account to StackOne
       </Frame>
     </Step>
 
-  <Step title="Authorize GO1 Account">
-      Click `Authorize`
-
-      <Frame>
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/go1/image9.png" />
-      </Frame>
+    <Step title="Enter Log in details">
+      In the GO1 pop up modal enter your GO1 username and password.
     </Step>
 
   </Steps>
