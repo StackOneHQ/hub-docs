@@ -474,26 +474,35 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   <Step title="Send Background Check to Candidate">
     Navigate to _Background Check_, click on the `Initiate Background Check` option in the Take Action menu.
 
-    <Accordion title="Users involved in recruiting must have the necessary permissions to initiate background checks.">
-      <Warning>
-        You have access to Provisioning. As a Recruiter, you may not have access to Provisioning. To complete tasks in Provisioning, contact your implementation partner or Account Executive. 
-        
-        For any non-implementation tasks, contact Technical Support of SAP SF.
-      </Warning>
+    <Accordion title="If `Initiate Background Check` option is not present">
+      <Steps>
+        <Step title="Assign Background Check Initiate Permission">
+          <Info>
+            Users involved in recruiting must have the necessary permissions to initiate background checks.
+          </Info>
+          Go to the specific _Job Requisition Template_ > _Template Settings_ > _Application Status Configuration_ and Add the feature permission block for background check to the job requisition template.
+          
+          <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Apply Updates" src="/images/sapsuccessfactors/background-check/sap_sf_bc_jr_template_feature_permissions_for_bc_52.png" />
+          </Frame>
 
-      Go to _Provisioning_ > _Managing Recruiting_ > _Import/Update/Export Job Requisition Template_ and Add the feature permission block for background check to the job requisition template.
+          Or you can add permissions via Job Requisition template XML file.
+          ```XML
+            <feature-permission type="backgroundCheck">
+              <description><\!\[CDATA[R can launch BackGround Check during statuses with screening category.]\]></description>
+              <role-name><\!\[CDATA[T]\]></role-name>
+              <role-name><\!\[CDATA[O]\]></role-name>
+              <role-name><\!\[CDATA[R]\]></role-name>
+              <role-name><\!\[CDATA[S]\]></role-name>
+              <status><\!\[CDATA[Background Check]\]></status>
+            </feature-permission>
+          ```
+        </Step>
 
-      ```XML
-        <feature-permission type="backgroundCheck">
-          <description><\!\[CDATA[R can launch BackGround Check during statuses with screening category.]\]></description>
-          <role-name><\!\[CDATA[T]\]></role-name>
-          <role-name><\!\[CDATA[O]\]></role-name>
-          <role-name><\!\[CDATA[R]\]></role-name>
-          <role-name><\!\[CDATA[S]\]></role-name>
-          <status><\!\[CDATA[Background Check]\]></status>
-        </feature-permission>
-      ```
-      Assign `Background Check Initiate Permission` and Allow users to execute "Application/UI" or "Event-based" Integrations role-based permissions from Admin Center.
+        <Step title="Assign Background Check Initiate Permission">
+          Assign `Background Check Initiate Permission` and Allow users to execute "Application/UI" or "Event-based" Integrations role-based permissions from Admin Center.
+        </Step>
+      </Steps>
       
     </Accordion>
 
