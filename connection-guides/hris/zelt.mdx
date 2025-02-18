@@ -56,6 +56,36 @@ If you've been directed to StackOne to integrate with Zelt, the following steps 
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Authorization Credentials" src="/images/zelt/image4.png" />
     </Frame>
   </Step>
+
+  <Step title="Update App Permissions">
+    Select the App that was created in the previous step. Then on the left navigation menu, select the `Permissions` tab. Click the pencil icon to edit the permissions.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Permissions" src="/images/zelt/image7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Update App Permissions">
+    Ensure the following permissions are selected, provide a reason for each permission, then click the **Update scopes**.
+    <ul>
+      <li>user:read:all</li>
+      <li>user.basicInfo:read</li>
+      <li>user.personalInfo:all</li>
+      <li>user.personalInfo:read</li>
+      <li>user.contract:read:all</li>
+      <li>user.compensation:read:all</li>
+      <li>user.role:read:all</li>
+      <li>company.settings:read</li>
+      <li>documents:all</li>
+      <li>user.basicInfo:all</li>
+      <li>user.onboard:all</li>
+      <li>user.contract:all</li>
+      <li>user.compensation:all</li>
+      <li>user.role:all</li>
+    </ul>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Permissions" src="/images/zelt/image8.png" />
+    </Frame>
+  </Step>
 </Steps>
 
 ## Connecting with StackOne
