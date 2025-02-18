@@ -1,0 +1,540 @@
+---
+title: "SAP SuccessFactors Background Check"
+description: "To successfully send webhook notifications from SAP SuccessFactors, follow these steps in your SAP SuccessFactors account and complete the necessary actions."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes that you have administrative privileges for your SAP SuccessFactors account.
+</Warning>
+
+## Enable the Other Background Check Vendor option
+
+<Steps>
+  <Step title="Background Check Central Configuration">
+    Go to the _Admin Center_ and search for _Background Check Central_
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search for BC Central" src="/images/sapsuccessfactors/background-check/sap_sf_bc_search_1.png" />
+    </Frame>
+    
+    Enable Background Check in Recruiting and Choose `Other Background Check Vendor`
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enable Background Check in Recruiting" src="/images/sapsuccessfactors/background-check/sap_sf_bc_enable_2.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Select the type of integration template for the external background check
+
+<Info>
+  Recruiters do not need the mandatory permissions to initiate background checks using the Integration Center. However, to use the Integration Center for modeling and executing the integration, you do need the following mandatory permissions:
+
+  - **Admin access to MDF OData API**
+  - **Access to Integration Center**
+  - **Access to non-Secured Objects**
+</Info>
+
+<Steps>
+  <Step title="Go to Integration Center">
+    Navigate to _Admin Center_ and search for _Integration Center_
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Integration Center" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_search_3.png" />
+    </Frame>
+    
+    To view the list of available integrations, click on `My Integrations`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="My Integrations" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select the Type of Integration Center Template">
+    Click the `+ Create` button and select _More Integration Types_ to access the list of available integration types.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select More Integration Types" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_access_integration_types_5.png" />
+    </Frame>
+    
+    Select the following values from the modal
+    - **Application/UI**, for **Trigger Type**
+    - **SuccessFactors**, for **Source Type**
+    - **REST**, for **Destination Type**
+    - **JSON**, for **Format**
+
+    Click on the `Create` button
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select correct values from the Modal" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_click_create_6.png" />
+    </Frame>
+
+    Use the search box to find the entity called `JobApplicationBackgroundCheckRequest`, and then select it from the search results.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search for JobApplicationBackgroundCheckRequest" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_search_job_entity_7.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Create and configure an integration template for background checks
+
+<Steps>
+  <Step title="Options Step">
+    Enter the name of the integration, then click the `Next` button to proceed with further configuration steps. You can also click the `Save` button to save the current step's configuration.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select More Integration Types" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_options_8.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Fields Step">
+    Click the `+` button and select the _Insert Sibling Element_ and _Add Child Element_ options to add new fields to map with the OData API entity's fields
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select option to map fields" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_configure_fields_9.png" />
+    </Frame>
+
+    Click on the inserted element to open a prompt where you can enter the name of the field. Then, click on the `Set as Associated Field` icon.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Open Modal to select association" src="/images/sapsuccessfactors/background-check/sap_Sf_bc_integration_center_data_field_mapping_11.png" />
+    </Frame>
+
+    Choose the specific fields to map that can be found in the _Entity Tree View_.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Open Modal to select association" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_select_entity_property_12.png" />
+    </Frame>
+
+    Select the field and Click on the `Change Association` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click on the change association" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_select_field_save_13.png" />
+    </Frame>
+
+    You will notice that the Association has been updated for the data field.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Updated data field association" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_added_association_14.png" />
+    </Frame>
+
+    Map the properties of the data fields to their corresponding properties in the OData API.
+    <Accordion title="Please follow the mapping below to receive the correct order notification">
+
+      | Expected properties of data fields                |  To  | Corresponding properties in the OData API entity                   |
+      | ------------------------------------------------- | ---- | ------------------------------------------------------------------ |
+      | backgroundCheckInfo/requestId                     |  ->  | requestId                                                          |
+      | backgroundCheckInfo/bgiAccountId                  |  ->  | jobApplication/jobRequisition/bgiAccountId/id                      |
+      | backgroundCheckInfo/packageId                     |  ->  | jobApplication/jobRequisition/packageId/id                         |
+      | backgroundCheckInfo/packageExternalCode           |  ->  | jobApplication/jobRequisition/packageId/externalCode               |
+      | backgroundCheckInfo/packageLocaleLabel            |  ->  | jobApplication/jobRequisition/packageId/localeLabel                |
+      | createdByUserInfo/userId                          |  ->  | createdByUserNav/userId                                            |
+      | createdByUserInfo/firstName                       |  ->  | createdByUserNav/firstName                                         |
+      | createdByUserInfo/lastName                        |  ->  | createdByUserNav/lastName                                          |
+      | createdByUserInfo/email                           |  ->  | createdByUserNav/email                                             |
+      | createdByUserInfo/jobRole                         |  ->  | createdByUserNav/jobRole                                           |
+      | createdDateTime                                   |  ->  | createdDateTime                                                    |
+      | lastModifiedDateTime                              |  ->  | lastModifiedDateTime                                               |
+      | orderStatus                                       |  ->  | orderStatus                                                        |
+      | responseCode                                      |  ->  | responseCode                                                       |
+      | responseDetail                                    |  ->  | responseDetail                                                     |
+      | vendorCode                                        |  ->  | vendorCode                                                         |
+      | vendorOrderNo                                     |  ->  | vendorOrderNo                                                      |
+      | applicationInfo/applicationId                     |  ->  | jobApplication/applicationId                                       |
+      | applicationInfo/appStatusName                     |  ->  | jobApplication/jobAppStatus/appStatusName                          |
+      | jobRequisitionInfo/jobReqId                       |  ->  | jobApplication/jobReqId                                            |
+      | jobRequisitionInfo/externalTitle                  |  ->  | jobApplication/jobRequisition/jobReqLocale/externalTitle           |
+      | jobRequisitionInfo/hiringManager/usersSysId       |  ->  | jobApplication/jobRequisition/hiringManager/usersSysId             |
+      | jobRequisitionInfo/hiringManager/firstName        |  ->  | jobApplication/jobRequisition/hiringManager/userNav/firstName      |
+      | jobRequisitionInfo/hiringManager/lastName         |  ->  | jobApplication/jobRequisition/hiringManager/userNav/lastName       |
+      | jobRequisitionInfo/hiringManager/email            |  ->  | jobApplication/jobRequisition/hiringManager/userNav/email          |
+      | jobRequisitionInfo/hiringManager/operatorRole     |  ->  | jobApplication/jobRequisition/hiringManager/operatorRole           |
+      | jobRequisitionInfo/hiringManagerTeam/usersSysId   |  ->  | jobApplication/jobRequisition/hiringManagerTeam/usersSysId         |
+      | jobRequisitionInfo/hiringManagerTeam/firstName    |  ->  | jobApplication/jobRequisition/hiringManagerTeam/userNav/firstName  |
+      | jobRequisitionInfo/hiringManagerTeam/lastName     |  ->  | jobApplication/jobRequisition/hiringManagerTeam/userNav/lastName   |
+      | jobRequisitionInfo/hiringManagerTeam/email        |  ->  | jobApplication/jobRequisition/hiringManagerTeam/userNav/email      |
+      | jobRequisitionInfo/hiringManagerTeam/operatorRole |  ->  | jobApplication/jobRequisition/hiringManagerTeam/operatorRole       |
+      | candidateInfo/candidateId                         |  ->  | jobApplication/candidate/candidateId                               |
+      | candidateInfo/firstName                           |  ->  | jobApplication/candidate/firstName                                 |
+      | candidateInfo/lastName                            |  ->  | jobApplication/candidate/lastName                                  |
+      | candidateInfo/primaryEmail                        |  ->  | jobApplication/candidate/primaryEmail                              |
+      | candidateInfo/contactEmail                        |  ->  | jobApplication/candidate/contactEmail                              |
+
+    </Accordion>
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="After mapping will look like" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_mapping_10.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Response Fields Step">
+    Click on the `Switch to Field Mapping View` option,
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Change the mapping view" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_response_field_mapping_view_15.png" />
+    </Frame>
+
+    Click on the `+` button and select the `JobApplicationBackgroundCheckRequest` entity. Then click `Add` and proceed by clicking the `Next` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="After adding will look like this response mapping" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_response_field_add_entity_16.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Filter and Sort Step">
+    You do not need to set anything on the Filter and Sort step. Simply click the `Next` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Change the mapping view" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_filter_and_sort_18.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Destination Settings Step">
+    Select the option for `REST Server Settings` and input the following details:
+    - **Connection Name:** You can choose any name you prefer.
+    - **REST API URL:** This is the endpoint URL provided by StackOne, which will be used to receive background check order requests.
+    - **Authentication Type:** Select `Basic Authentication` from the dropdown menu.
+    - **Username:** Enter the `External Trigger Token` that you receive from the `StackOne Integration Hub` during the connection setup.
+    - **Password:** This field can be left empty.
+    - **HTTP Method:** Choose the `POST` method under REST Operation Settings.
+
+    Click on the `Next` button to proceed.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Change the mapping view" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_destination_settings_17.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Review and Run Step">
+    Review the template structure in the _Review and Run_ step. To save it, select the `Save` option. After creation, the template will run in the background, eliminating the need to click `Run Now`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Review and Run" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_summary_19.png" />
+    </Frame>
+    
+    <Info>
+      You can access the logs by clicking on the `Last Run Time` link.
+    </Info>
+    You can confirm the integration by returning to _Integration Center_ > _My Integrations_.
+  </Step>
+</Steps>
+
+## Create Vendor from Recruiting External Vendor
+
+<Steps>
+  <Step title="Go to the Manage Data">
+    Navigate to _Manage Data_ and select `Recruiting External Vendor` from _Create New_ dropdown
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Recruiting External Vendor" src="/images/sapsuccessfactors/background-check/sap_sf_bc_manage_data_recruiting_externa_vendor_20.png" />
+    </Frame>
+    
+    Enter the External Code, Vendor Name, and select `Background Check` as the Integration Type from the dropdown menu. Click on `Save` to create the vendor.
+    <Warning>
+      `External Code` refers to a text string that serves as a code for the background check vendor. The OData API entities use this value to facilitate communication between the third-party vendor and SAP SuccessFactors. If this information is not entered correctly, certain integration scenarios may fail to function properly.
+    </Warning>
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter all required details of Recruiting External Vendor" src="/images/sapsuccessfactors/background-check/sap_sf_bc_manage_data_fill_details_21.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Create Recruiting Vendor Integration Mapping
+
+<Steps>
+  <Step title="Go to the Manage Data">
+    Navigate to _Manage Data_ and select `Recruiting Vendor Integration Mapping` from _Create New_ dropdown
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Recruiting Vendor Integration Mapping" src="/images/sapsuccessfactors/background-check/sap_sf_bc_manage_data_recruiting_vendor_integration_mapping_22.png" />
+    </Frame>
+    
+    Enter the External Code, select your Vendor Name, choose your Integration Name from the dropdown, and set the Default integration value to `Yes`. Click `Save` to save the mapping between the vendor and integration.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter all required details of Recruiting Vendor Integration Mapping" src="/images/sapsuccessfactors/background-check/sap_sf_bc_manage_data_fill_details_23.png" />
+    </Frame>
+
+    Enter a numeric value in the _Hours Before User Can Reinitiate_ field. This field currently has no functionality in SAP SF.
+
+    <Info>
+      Only one `Recruiting Vendor Integration Mapping` can be active at a time. To set the selected vendor integration as active for the instance, select `Yes` in the **Default Integration** field.
+    </Info>
+  </Step>
+</Steps>
+
+## Manage fields for the Job Requisition template
+
+<Steps>
+  <Step title="Go to Manage Templates">
+    Navigate to _Admin Center_ and search for _Manage Templates_
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Job Requisition template" src="/images/sapsuccessfactors/background-check/sap_sf_bc_search_manage_templates_24.png" />
+    </Frame>
+
+    Navigate to the _Recruiting Management_ tab, select _Job Requisition_, and choose the template that is in use for the specific job requisition, such as `Standard Job Requisition`.
+    <Accordion title="How to Locate the Job Requisition Template Name">
+      Go to the _Recruiting_ and select any specific job requisition.
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Specific Job Requistion" src="/images/sapsuccessfactors/background-check/sap_sf_bc_recruiting_info_26.png" />
+      </Frame>
+
+      Click on the `i` icon to view the Job Requisition Template.
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="JR Info" src="/images/sapsuccessfactors/background-check/sap_sf_bc_recruiting_JR_info_27.png" />
+      </Frame>
+    </Accordion>
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Standard Job Requisition" src="/images/sapsuccessfactors/background-check/sap_sf_bc_jr_specific_template_28.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add bgiAccountId & packageId fields in template">
+    Please add the following fields that you will receive in the order request:
+    
+    - **bgiAccountId:** You can create multiple accounts with a single third-party background check vendor. This field enables recruiters to select which account to use.
+    - **packageId:** Recruiters can choose the package they want to apply to a specific job requisition.
+
+    <Accordion title="You can specify the standard fields `bgiAccountId` and `packageId` using the Job Requisition XML as well.">
+      <Warning>
+        This approach will only be used if you have permission to upload the Job Requisition template via an XML file; otherwise, you can manually add the fields and click the `Publish` button.
+      </Warning>
+
+      ```XML
+        <field-definition id="bgiAccountId" type="picklist" required="false" custom="false"> 
+          <field-label><![CDATA[Account ID]]></field-label>
+          <field-description><![CDATA[Account ID]]></field-description> 
+          <picklist-id>accountId</picklist-id> 
+        </field-definition>
+
+        <field-definition id="packageId" type="picklist" required="false" custom="false">
+          <field-label><![CDATA[packageId]]></field-label>
+          <field-description><![CDATA[package]]></field-description>
+          <picklist-id>packageId</picklist-id>
+        </field-definition>
+      ```
+    </Accordion>
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add two fields from JR field template" src="/images/sapsuccessfactors/background-check/sap_sf_bc_jr_template_add_fields_29.png" />
+    </Frame>
+
+    In the next step, Update the permissions to ensure the fields are visible during Job Requisition creation or updates.
+  </Step>
+</Steps>
+
+## Manage the permissions for the fields added to the Job Requisition template
+
+<Steps>
+  <Step title="Go to Manage Templates">
+    To add or update field permissions, navigate to the specific Job Requisition Template, select `Field Permissions Defined`, and then click on `Add Field Permission` from the modal.
+
+    - **Field Permission description:** Enter any description
+    - **Field Permission Type:** Select `Write Permission`
+    - **Field Permission Role Name:** Select `Recruiter`
+    - **Field Reference ID:** Select `bgiAccountId` & `packageId` fields
+    - **Field Permission Status:** Select `All` or `pre-approved` from dropdown
+
+    After adding the fields, Click on the `Publish` to save your changes.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add field permissions from the JR template" src="/images/sapsuccessfactors/background-check/sap_sf_bc_jr_template_fields_permissisons_30.png" />
+    </Frame>
+
+    After successfully updating the permissions, the fields will be visible in the Job Requisition during create/edit.
+  </Step>
+</Steps>
+
+## To add background check accounts from the PickList Center.
+
+<Steps>
+  <Step title="Go to background check accounts">
+    Go to _Admin Center_ and search for `PickList Center`
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to PickList Center" src="/images/sapsuccessfactors/background-check/sap_sf_bc_picklist_center_accountid_41.png" />
+    </Frame>
+
+    Search for `bgiAccountId`
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search for bgiAccountId" src="/images/sapsuccessfactors/background-check/sap_sf_bc_picklist_center_bgiaccountid_42.png" />
+    </Frame>
+  </Step>
+  
+  <Step title="Add New Accounts">
+    Click on `bgiAccountId`. This will direct you to the Picklist Values page where you can add different `Background Check Accounts`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add new accounts for background check" src="/images/sapsuccessfactors/background-check/sap_sf_bc_picklist_center_bgiaccount_list_and_add_43.png" />
+    </Frame>
+
+    <Info>
+      You can create multiple accounts with a single third-party background check vendor. This field allows recruiters to select which account to use.
+    </Info>
+  </Step>
+</Steps>
+
+## To add background check packages from PickList Center
+
+<Steps>
+  <Step title="Go to the packages">
+    Go to _Admin Center_ and search for `PickList Center`
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="naviaget to Picklist center" src="/images/sapsuccessfactors/background-check/sap_sf_bc_picklist_center_accountid_41.png" />
+    </Frame>
+
+    Search for `packageId`
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search for packageId" src="/images/sapsuccessfactors/background-check/sap_sf_bc_picklist_center_packages_44.png" />
+    </Frame>
+  </Step>
+  
+  <Step title="Add New Packages">
+    Click on `packageId` to go to the Picklist Values page, where you can add different `Background Check Packages`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add new Packages" src="/images/sapsuccessfactors/background-check/sap_sf_bc_picklist_center_packages_id_packages_45.png" />
+    </Frame>
+
+    <Info>
+      Recruiters can choose the package they want to apply to the job requisition.
+    </Info>
+  </Step>
+</Steps>
+
+
+## To include a Background Check stage in the Talent Pipeline
+
+<Warning>
+  You can skip this step if you already have a separate `Background Check` stage in the talent pipeline for the Job Requisition.
+</Warning>
+
+<Steps>
+  <Step title="Go to Applicant Status Configuration">
+    Go to _Admin Center_ and search for `Edit Applicant Status Configuration`.Select the specific Applicant Status Set currently in use for the job requisition, such as the `Standard Status Set`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Applicant Status Configuration" src="/images/sapsuccessfactors/background-check/sap_sf_bc_edit_applicant_status_config_46.png" />
+    </Frame>
+
+    It will take you to the page for the `Standard Status Set`,
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Direct to status set page" src="/images/sapsuccessfactors/background-check/sap_sf_bc_applicant_status_config_page_47.png" />
+    </Frame>
+  </Step>
+  
+  <Step title="Edit Applicant Status Set configurations">
+    Find `Background Check` stage, edit and select `none` from the `Status Group` dropdown. This will make the Background Check visible as a separate stage in the Job Requisition's Talent Pipeline.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Applicant Status Set configurations" src="/images/sapsuccessfactors/background-check/sap_sf_bc_applicant_status_bc_edit_config_48.png" />
+    </Frame>
+
+    Click the `Save and Finish` button to save your changes.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Save and finish" src="/images/sapsuccessfactors/background-check/sap_sf_bc_applicant_status_config_bc_save_and_finish_49.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Where can you verify the added stage">
+    Navigate to the _Job Requisiton_ > _Candidates_. Above, you will see the updated talent pipeline,
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Where can you verify the added stage" src="/images/sapsuccessfactors/background-check/sap_sf_bc_recruiting_jr_after_51.png" />
+    </Frame>
+
+    You can now proceed to move the candidates to the Background Check stage.
+  </Step>
+</Steps>
+
+## Edit Job Requisition to Select Background Check
+
+<Steps>
+  <Step title="Go to Job Requisition">
+    Navigate to specific _Job Requisition_, hover over the specific requisition title to open the Actions menu and then select `View or Edit Requisition`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Actions menu" src="/images/sapsuccessfactors/background-check/sap_sf_bc_recruiting_JR_hove_actions_32.png" />
+    </Frame>
+
+    Select the correct values for the _Account ID_ and _Package ID_ fields. Click on the `Save Changes` button.
+    <Accordion title="If fields are not visible after adding fields & permissions in above steps">
+      Navigate to _Admin Center_ and search for `OData API Metadata Refresh and Export`
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="OData API Metadata Refresh and Export" src="/images/sapsuccessfactors/background-check/sap_sf_bc_odata_api_search_38.png" />
+      </Frame>
+
+      Click on the `Refresh` button next to Cache.
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Refresh button" src="/images/sapsuccessfactors/background-check/sap_sf_bc_odata_api_cache_refresh_39.png" />
+      </Frame>
+    </Accordion>
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Both fields are visible" src="/images/sapsuccessfactors/background-check/sap_sf_bc_job_req_bgi_package_fields_40.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## To Send Background Check to the Candidate
+
+<Info>
+  If you are not seeing the `Background Check` as a separate step in the current Job Requisition, please visit <a href="#to-include-a-background-check-stage-in-the-talent-pipeline">this</a> step.
+</Info>
+
+<Steps>
+  <Step title="Go to Talent Pipeline">
+    Navigate to the specific _Job Requisition_ and click on Candidates. Select the candidate, then choose the `Move Candidate` option from the Take Action menu.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Talent Pipeline" src="/images/sapsuccessfactors/background-check/sap_sf_bc_candidate_take_actions_33.png" />
+    </Frame>
+
+    Choose `Background Check` from the dropdown menu, then click `Apply Updates` to move the candidate forward.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Apply Updates" src="/images/sapsuccessfactors/background-check/sap_sf_bc_candidate_move_candidate_modal_34.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Send Background Check to Candidate">
+    Navigate to _Background Check_, click on the `Initiate Background Check` option in the Take Action menu.
+
+    <Accordion title="If `Initiate Background Check` option is not present">
+      <Steps>
+        <Step title="Assign Background Check Initiate Permission">
+          <Info>
+            Users involved in recruiting must have the necessary permissions to initiate background checks.
+          </Info>
+          Go to the specific _Job Requisition Template_ > _Template Settings_ > _Application Status Configuration_ and Add the feature permission block for background check to the job requisition template.
+          
+          <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Apply Updates" src="/images/sapsuccessfactors/background-check/sap_sf_bc_jr_template_feature_permissions_for_bc_52.png" />
+          </Frame>
+
+          Or you can add permissions via Job Requisition template XML file.
+          ```XML
+            <feature-permission type="backgroundCheck">
+              <description><\!\[CDATA[R can launch BackGround Check during statuses with screening category.]\]></description>
+              <role-name><\!\[CDATA[T]\]></role-name>
+              <role-name><\!\[CDATA[O]\]></role-name>
+              <role-name><\!\[CDATA[R]\]></role-name>
+              <role-name><\!\[CDATA[S]\]></role-name>
+              <status><\!\[CDATA[Background Check]\]></status>
+            </feature-permission>
+          ```
+        </Step>
+
+        <Step title="Assign Background Check Initiate Permission">
+          Assign `Background Check Initiate Permission` and Allow users to execute "Application/UI" or "Event-based" Integrations role-based permissions from Admin Center.
+        </Step>
+      </Steps>
+      
+    </Accordion>
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Initiate Background Check" src="/images/sapsuccessfactors/background-check/sap_sf_bc_initiate_bc_to_send_35.png" />
+    </Frame>
+    Click on the `Confirm` to send the Background Check. You'll get the success on the same modal.
+
+  </Step>
+
+  <Step title="How to view the requested background check?">
+    The Background Check request will appear in the candidate's application under the Background Check portlet.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Background Check Request portlet" src="/images/sapsuccessfactors/background-check/sap_sf_bc_bc_request_portlet_36.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## To Check Result of the Background Check
+
+<Steps>
+  <Step title="Go to Background Check portlet">
+    Go to the `Background Check` stage, The results will be available in the Background Check portlet within the candidate application.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Check Result of the Background Check" src="/images/sapsuccessfactors/background-check/sap_sf_bc_result_updated_37.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://api.sap.com/products/SAPSuccessFactors/apis/all">
+    https://api.sap.com/products/SAPSuccessFactors/apis/all
+</Card>
