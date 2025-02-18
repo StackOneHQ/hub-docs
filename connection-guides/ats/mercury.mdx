@@ -1,0 +1,76 @@
+---
+title: "Mercury"
+description: "Follow these steps to connect Mercury via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Mercury account has Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Mercury, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Mercury
+
+Log in to your Mercury account.
+
+## Create your Mercury Subscription Key
+
+<Steps>
+  <Step title="Navigate to Subscription Keys">
+      Click the **Products** button in the top right of the screen. Click on **Mercury Public API**. Under the heading **Your Subscriptions** there is a form for you to enter a subscription name and subscribe:
+      
+      <Info>
+        If you already have an active subscription. Click the **Profile** button in the top right of the screen.
+      </Info>
+
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Subscription Keys" src="/images/mercury/image1.png" />
+      </Frame>
+  </Step>
+  <Step title="Create a new Subscription Key">
+      Enter a **Subscription name** that is the name of your organisation and click **Subscribe**. You will now have a valid subscription to the Mercury Public API.
+    
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a new Subscription Key" src="/images/mercury/image2.png" />
+      </Frame>
+  </Step>
+  <Step title="Copy your Subscription Key">
+       Click the **Show** button next to the **Primary Key** and take a copy. This is what you will use to make authenticated requests to the Mercury Public API, by providing the value in the **subscription-key** header.
+  </Step>
+</Steps>
+## Find your Tenant Id
+
+You need to get the tenant id from Microsoft365 account.
+https://learn.microsoft.com/en-us/sharepoint/find-your-office-365-tenant-id
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Find your Tenant Id" src="/images/mercury/image1.png" />
+</Frame>
+## Find your Region
+
+Your region host can be found in the URL when logged in to your Mercury account. The regions can be **uks** or **eus2**.
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Find your Region" src="/images/mercury/image3.png" />
+</Frame>
+
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the credential(s) from the previous steps:
+  - **Subscription Key**
+  - **Tenant Id**
+  - **Region**
+
+Proceed by clicking the Connect button.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/mercury/image4.png" />
+</Frame>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://portal.wearemercury.com/knowledgebase/article/KA-01499/en-us">
+   https://portal.wearemercury.com/knowledgebase/article/KA-01499/en-us
+   https://apim-uks-thirdpartyintegration-prod.azure-api.net/swagger/index.html
+</Card>
