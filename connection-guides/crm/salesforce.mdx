@@ -108,3 +108,9 @@ This error message indicates that the account you have used to connect to Salesf
 If you receive an error when linking accounts similar to the following:
 <code>error=invalid_client_id&error_description=client%20identifier%20invalid</code>
 It can indicate that the Salesforce side still needs to be updated. Although Salesforce quotes up to 10 minutes after generating credentials for this to work, we have observed this taking up to 20 minutes to take effect. Please wait and try again.
+
+### Error: redirect_uri must match configuration
+
+If you receive an error when linking accounts similar to the following:
+<code>error=redirect_uri_mismatch&error_description=redirect_uri%20must%20match%20configuration</code>
+This indicates that the redirect URI you have used in the Salesforce Connected App is not correct. This should be set to the StackOne OAuth2 URL <code>https://api.stackone.com/connect/oauth2/salesforce/callback</code> as described in the section Enable OAuth Settings above.
