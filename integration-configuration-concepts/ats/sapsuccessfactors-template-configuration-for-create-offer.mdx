@@ -1,0 +1,71 @@
+---
+title: "SAP_SF Offer Template Confgiuration for Offer Creation"
+description: "To configure Offer Template in SAP SuccessFactors, follow these steps"
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes that you have admin privileges for your SAP SuccessFactors account.
+</Warning>
+
+ # Configure Offer Template
+
+ <Note>
+  Note: Offers can only be created using the offer template that does not include any offer approver steps.
+</Note>
+<Steps>
+  <Step title="Go to the Offer Templates">
+     You can find the Offer Templates by navigating to the *<b>Admin Center > Manage Templates > Recruiting Management > Offer Detail</b>*
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Offer Templates" src="/images/sapsuccessfactors/sapsuccessfactors-create-offer/create-offer-1.png" />
+    </Frame>
+  </Step>
+  <Step title="Add/Edit Offer Template">
+       1. Click On *<b>Add A New Template</b>* button to add new Offer Template. if you want to update existing one please select the offer template which you want to update from the list.
+       2. Add/Edit Template Name and then, 
+       3. Click on the *<b>Fields defined. Click to modify</b>* link to configure fields in the template.
+    <Frame>
+       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add/Edit Template" src="/images/sapsuccessfactors/sapsuccessfactors-create-offer/create-offer-2.png" />
+    </Frame>
+    <Frame>
+       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add/Edit Template" src="/images/sapsuccessfactors/sapsuccessfactors-create-offer/create-offer-3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Fields">
+   The offer template should be configured with the following field; we can add additional fields, although those fields should not be required.
+
+    <b>1. firstName </b>
+    <Frame>
+       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="First Name" src="/images/sapsuccessfactors/sapsuccessfactors-create-offer/create-offer-4.png" />
+    </Frame>
+    <br></br>
+     <b>2. lastName </b>
+    <Frame>
+       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Last Name" src="/images/sapsuccessfactors/sapsuccessfactors-create-offer/create-offer-5.png" />
+    </Frame>
+     <br></br>
+     <b>3. currency </b>
+
+      Note: You can modify list of enum according to your use case.
+    <Frame>
+       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Currency" src="/images/sapsuccessfactors/sapsuccessfactors-create-offer/create-offer-6.png" />
+    </Frame>
+     <br></br>
+     <b>4. salaryBase </b>
+    <Frame>
+       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Salary Base" src="/images/sapsuccessfactors/sapsuccessfactors-create-offer/create-offer-7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Save and Publish Template">
+    Once the field configuration is completed, save the template as a draft and then publish it.
+    <Frame>
+       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add/Edit Template" src="/images/sapsuccessfactors/sapsuccessfactors-create-offer/create-offer-8.png" />
+    </Frame>
+    <Frame>
+       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add/Edit Template" src="/images/sapsuccessfactors/sapsuccessfactors-create-offer/create-offer-9.png" />
+    </Frame>
+  </Step>
+</Steps>
