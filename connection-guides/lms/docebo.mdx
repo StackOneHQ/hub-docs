@@ -66,6 +66,26 @@ description: "If you've been directed to StackOne to integrate with Docebo, the 
 
    E.g. If your url is `https://my-domain.docebosaas.com` the domain is `my-domain`.
   </Step>
+
+  <Step title="Linking xAPI Content as Training Material">
+    Go to `Admin Menu` → `Settings` → `Advanced Settings`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/docebo/image8.png" />
+    </Frame>
+
+    Select the `E-learning` tab and scroll down to `xAPI (Tin Can) external content`.
+
+    Add your content domain ( e.g., https://www.test.com/* ). You can configure up to 20 domains, and use wildcard (*) if you want to upload full URLs.
+
+    Click `Add` and then `Save`.
+
+    Use this domain in the `content_url` field of your API request when upserting content.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/docebo/image7.png" />
+    </Frame>
+  </Step>
 </Steps>
 
 
