@@ -1,0 +1,57 @@
+---
+title: "Payfit"
+description: "Follow these steps to connect Payfit via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Payfit account has Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Payfit, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Payfit
+
+Log in to your Payfit account.
+
+
+## Create your Payfit API Key
+
+<Steps>
+  <Step title="Navigate to API Keys">
+      Go to **https://app.payfit.com/integrations/hub/api** and click on **Create a key**.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Keys" src="/images/payfit/image1.png" />
+      </Frame>
+  </Step>
+  <Step title="Select API Key Scopes">
+      Configure your key with an explicit label and the appropriate scopes.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select API Key Scopes" src="/images/payfit/image2.png" />
+      </Frame>
+  </Step>
+  <Step title="Copy your API Key">
+      Copy your newly created key and save it securely. You will not be able to access it again in the PayFit interface for security reasons.
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the credential(s) from the previous steps:
+  - **API Key**
+
+Proceed by clicking the Connect button.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/payfit/image3.png" />
+</Frame>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developers.adp.com/articles/api/">
+  https://developers.payfit.io/docs/authentication-via-api-key
+</Card>
