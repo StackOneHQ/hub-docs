@@ -9,31 +9,34 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   Ensure you have Admin privileges for your Autodesk account.
 </Warning>
 
-If you've been directed to StackOne to integrate with Autodesk, the following steps will help you understand the process and any necessary actions to configure successful integration.
+If you've been directed to StackOne to integrate with Autodesk, the following steps will help you understand the process and necessary actions to configure a successful integration.
 
-This guidance assumes that you are a Primary Admin or Secondary Admin within Autodesk.
+This guide assumes that you are a Primary Admin or Secondary Admin within Autodesk.
 
 ## Enable Your Autodesk Developer Account
 
 <Steps>
   <Step title="Gather Details">
-    Following the instructions from the article [Autodesk Get Access to a BIM 360 Account](https://aps.autodesk.com), gather the following details:
-    - Account Name - located in the top-right when logged in to the B360 Admin
+    Following the instructions from the article [Autodesk Get Access to a BIM 360 Account](https://aps.autodesk.com), gather these essential details:
+    - Account Name - Located in the top-right when logged into the BIM 360 Admin
       <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Applications" src="/images/autodesk/image1.png" />
       </Frame>
-    - Account ID - located in the URL when logged in to the B360 Admin. This will also be used when connecting with StackOne.
+    - Account ID - Found in the URL when logged into the BIM 360 Admin. You'll need this when connecting with StackOne.
 
       Example: `https://admin.b360.autodesk.com/admin/{{Account ID}}/projects`
 
-    - Account Admin Email - this can be found on the User Management by User page
+    - Account Admin Email - Available on the User Management by User page
   </Step>
 
   <Step title="Request Activation">
-    Send an email to bim360appsactivations@autodesk.com to request activation of your Developer Account. Include the Account Name, Account ID, and Account Admin Email from the step above.
-    <ul>
-      <li>This may take a few business days to complete. Autodesk will respond via email once complete.</li>
-    </ul>
+    Send an email to bim360appsactivations@autodesk.com requesting activation of your Developer Account. Include:
+    - Account Name
+    - Account ID
+    - Account Admin Email
+    <Note>
+      The activation process may take a few business days. Autodesk will notify you via email once complete.
+    </Note>
   </Step>
 </Steps>
 
@@ -41,53 +44,55 @@ This guidance assumes that you are a Primary Admin or Secondary Admin within Aut
 
 <Steps>
   <Step title="Access Applications">
-    In your Autodesk Platform, click your profile icon in the top-right, then click [Applications](https://aps.autodesk.com).
+    In your Autodesk Platform, click your profile icon in the top-right corner, then select [Applications](https://aps.autodesk.com).
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Applications" src="/images/autodesk/image2.png" />
     </Frame>
   </Step>
 
   <Step title="Create Application">
-    Click the + Create Application button.
+    Click the "+ Create Application" button.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Application" src="/images/autodesk/image3.png" />
     </Frame>
   </Step>
 
   <Step title="Enter Application Details">
-    Under Create Application, enter a Name for the new app, and select Traditional Web App. Click the Create button to continue.
+    In the Create Application form:
+    1. Enter a Name for your new app
+    2. Select "Traditional Web App"
+    3. Click the "Create" button
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Details" src="/images/autodesk/image4.png" />
     </Frame>
   </Step>
 
   <Step title="Copy Credentials">
-    Copy your displayed Client ID and Client Secret and store them safely to use in the following steps.
+    Securely copy and store your Client ID and Client Secret. You'll need these for the following steps.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Credentials" src="/images/autodesk/image5.png" />
     </Frame>
   </Step>
 
   <Step title="Set Callback URL">
-    Under General Settings, enter the following as the Callback URL: `https://api.stackone.com/connect/oauth2/autodesk_iam/callback`
+    Under General Settings, enter this Callback URL:
+    `https://api.stackone.com/connect/oauth2/autodesk_iam/callback`
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Callback URL" src="/images/autodesk/image13.png" />
     </Frame>
   </Step>
 
   <Step title="Set API Access">
-    Under API Access, select the following two APIs required for this integration:
-    <ul>
-      <li>Autodesk Construction Cloud API</li>
-      <li>BIM 360 API</li>
-    </ul>
+    Under API Access, select these two required APIs:
+    - Autodesk Construction Cloud API
+    - BIM 360 API
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set API Access" src="/images/autodesk/image14.png" />
     </Frame>
   </Step>
 
   <Step title="Save Your New App">
-    Press the Save changes button to complete the creation of your new app.
+    Click the "Save changes" button to complete your app creation.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Save Your New App" src="/images/autodesk/image15.png" />
     </Frame>
@@ -98,48 +103,49 @@ This guidance assumes that you are a Primary Admin or Secondary Admin within Aut
 
 <Steps>
   <Step title="Access Settings">
-    In your [B360 Admin](https://admin.b360.autodesk.com), click SETTINGS.
+    In your [BIM 360 Admin](https://admin.b360.autodesk.com), click "SETTINGS".
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Access Settings" src="/images/autodesk/image6.png" />
     </Frame>
   </Step>
 
   <Step title="Custom Integrations">
-    Click Custom Integrations.
+    Select "Custom Integrations".
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Custom Integrations" src="/images/autodesk/image7.png" />
     </Frame>
   </Step>
 
   <Step title="Add Custom Integration">
-    Create a new integration for the StackOne connection by clicking the Add Custom Integration button.
+    Click the "Add Custom Integration" button to create a new integration for StackOne.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Custom Integration" src="/images/autodesk/image8.png" />
     </Frame>
   </Step>
 
   <Step title="Select Access">
-    Under Select Access, enable BIM 360 Account Administration and Document Management, then click the Next button.
+    Under Select Access:
+    1. Enable BIM 360 Account Administration
+    2. Enable Document Management
+    3. Click "Next"
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Access" src="/images/autodesk/image9.png" />
     </Frame>
   </Step>
 
   <Step title="Developer Selection">
-    Select I'm the developer, then click the Next button.
+    Select "I'm the developer" and click "Next".
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Developer Selection" src="/images/autodesk/image10.png" />
     </Frame>
   </Step> 
 
   <Step title="BIM 360 Info">
-    Under BIM 360 info you need:
-    <ul>
-      <li>Check the box next to "I have saved the Account ID information securely"</li>
-      <li>Enter your App's Client ID from the previous step as the Forge Client ID</li>
-      <li>Enter the Name of your App as the App Name</li>
-      <li>Click the Save button to complete</li>
-    </ul>
+    Complete the BIM 360 information:
+    1. Check "I have saved the Account ID information securely"
+    2. Enter your App's Client ID as the Forge Client ID
+    3. Enter your App Name
+    4. Click "Save"
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="BIM 360 Info" src="/images/autodesk/image11.png" />
     </Frame>
@@ -150,13 +156,12 @@ This guidance assumes that you are a Primary Admin or Secondary Admin within Aut
 
 <Steps>
   <Step title="Enter Credentials">
-    Upon reaching the Link Account page, enter your credentials from the previous steps:
-    <ul>
-      <li>Client ID</li>
-      <li>Client Secret</li>
-      <li>Account ID</li>
-    </ul>
-    Proceed by clicking the Connect button.
+    On the Link Account page, enter these credentials:
+    - Client ID
+    - Client Secret
+    - Account ID
+
+    Click "Connect" to proceed.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/autodesk/image12.png" />
     </Frame>
@@ -165,27 +170,18 @@ This guidance assumes that you are a Primary Admin or Secondary Admin within Aut
 
 <IntegrationFooter />
 
+## Available Data
 
-## Available data
-
-This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
-<ul>
- <li>Users</li>
- <li>Roles</li>
- <li>Groups</li>
-</ul>
-
+This integration provides the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users):
+- Users
+- Roles
+- Groups
 
 ## Useful Links
 <Card title="Get Access to a BIM 360 Account" icon="link" href="https://aps.autodesk.com/en/docs/bim360/v1/tutorials/getting-started/get-access-to-account/#step-1-provisioning-a-bim-360-account">
-    https://aps.autodesk.com/en/docs/bim360/v1/tutorials/getting-started/get-access-to-account/#step-1-provisioning-a-bim-360-account
+    Official Autodesk guide for BIM 360 account access
 </Card>
 
 <Card title="​Manage API Access to BIM 360 Services" icon="link" href="https://aps.autodesk.com/en/docs/bim360/v1/tutorials/getting-started/manage-access-to-docs/#scenario-1-provision-access-for-your-own-app">
-    https://aps.autodesk.com/en/docs/bim360/v1/tutorials/getting-started/manage-access-to-docs/#scenario-1-provision-access-for-your-own-app
+    Official guide for managing BIM 360 API access
 </Card>
-
-
-
-
-

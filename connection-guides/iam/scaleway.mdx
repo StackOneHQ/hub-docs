@@ -6,27 +6,27 @@ description: "Follow these steps to connect Scaleway via the StackOne Hub succes
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
-  Ensure your Scaleway Role has the Access to Organization features Rule assigned. Scaleway Policies and Rules for your organization can be viewed on the [Identity and Access Management (IAM) > Policies](https://console.scaleway.com/iam/policies) page.
+  Ensure your Scaleway Role has the "Access to Organization Features" Rule assigned. Scaleway Policies and Rules for your organization can be viewed on the [Identity and Access Management (IAM) > Policies](https://console.scaleway.com/iam/policies) page.
 </Warning>
 
-If you've been directed to StackOne to integrate with Scaleway, the following steps will help you understand the process and any necessary actions to configure successful integration.
+If you've been directed to StackOne to integrate with Scaleway, follow these steps to configure a successful integration.
 
 ## Get Your Scaleway Organization ID
 
 <Steps>
   <Step title="Log in to Scaleway">
-    Log in to your [Scaleway account](https://console.scaleway.com)
+    Log in to your [Scaleway Account](https://console.scaleway.com)
   </Step>
 
   <Step title="Access Organization Settings">
-    In your Organization Dashboard, click Settings under your Organization name.
+    In your Organization Dashboard, click "Settings" under your Organization name.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Organization Dashboard" src="/images/scaleway/image1.png" />
     </Frame>
   </Step>
 
   <Step title="Copy Organization ID">
-    Click the button to copy your Organization ID and store it safely.
+    Click the copy button to copy your Organization ID and store it securely.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Organization ID" src="/images/scaleway/image2.png" />
     </Frame>
@@ -37,31 +37,37 @@ If you've been directed to StackOne to integrate with Scaleway, the following st
 
 <Steps>
   <Step title="Access IAM">
-    In your Scaleway Account, click your Organization icon in the top right, then click [IAM](https://console.scaleway.com).
+    In your Scaleway Account, click your Organization icon in the top right, then click [Identity and Access Management (IAM)](https://console.scaleway.com).
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="IAM" src="/images/scaleway/image3.png" />
     </Frame>
   </Step>
 
   <Step title="View Policies">
-    Click Policies
+    Click "Policies"
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Policy" src="/images/scaleway/image4.png" />
     </Frame>
   </Step>
 
   <Step title="Create New Policy">
-    Click the + Create policy button.
+    Click the "+ Create Policy" button.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Policy" src="/images/scaleway/image5.png" />
     </Frame>
   </Step>
 
   <Step title="Enter Policy Details">
-    Under Create a Policy, enter at least the following:
+    Under "Create a Policy", enter the following required information:
     <ul>
       <li>Policy name</li>
-      <li>Select a principal: Principal type Application, Application, Select or type an application, The name of this Application</li>
+      <li>Select a principal:
+        <ul>
+          <li>Principal type: Application</li>
+          <li>Application: Select or type an application</li>
+          <li>The name of this Application</li>
+        </ul>
+      </li>
     </ul>
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Policy Details" src="/images/scaleway/image6.png" />
@@ -69,21 +75,21 @@ If you've been directed to StackOne to integrate with Scaleway, the following st
   </Step>
 
   <Step title="Add Rules">
-    Click the Add rules button, select Access to Organization features, then click the Validate button.
+    Click the "Add Rules" button, select "Access to Organization Features", then click the "Validate" button.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Rules" src="/images/scaleway/image7.png" />
     </Frame>
   </Step>
 
   <Step title="Create Policy">
-    With your new Rule created, click the Create policy button. Your new Policy will be displayed.
+    After creating your new Rule, click the "Create Policy" button. Your new Policy will be displayed.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Policy Confirmation" src="/images/scaleway/image8.png" />
     </Frame>
   </Step>
 </Steps>
 
-## Create a new Scaleway Application
+## Create a New Scaleway Application
 
 <Steps>
   <Step title="Access Applications">
@@ -91,17 +97,17 @@ If you've been directed to StackOne to integrate with Scaleway, the following st
   </Step>
 
   <Step title="Create Application">
-    Click the + Create application button.
+    Click the "+ Create Application" button.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Application" src="/images/scaleway/image9.png" />
     </Frame>
   </Step>
 
   <Step title="Enter Application Details">
-    Under Create an Application, enter the following required details:
+    Under "Create an Application", enter the following required details:
     <ul>
       <li>Name</li>
-      <li>Policy: Select the Policy created in the previous step</li>
+      <li>Policy: Select the Policy created in the previous steps</li>
     </ul>
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Application Details" src="/images/scaleway/image10.png" />
@@ -109,7 +115,7 @@ If you've been directed to StackOne to integrate with Scaleway, the following st
   </Step>
 
   <Step title="Create Application">
-    Click the Create application button to proceed.
+    Click the "Create Application" button to proceed.
   </Step>
 </Steps>
 
@@ -121,28 +127,28 @@ If you've been directed to StackOne to integrate with Scaleway, the following st
   </Step>
 
   <Step title="Generate API Key">
-    Click the + Generate API key button.
+    Click the "+ Generate API Key" button.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate API Key" src="/images/scaleway/image11.png" />
     </Frame>
   </Step>
 
   <Step title="Enter API Key Details">
-    Under Generate an API Key, select the Application you created in the previous step. Enter any other optional details.
+    Under "Generate an API Key", select the Application you created in the previous steps. Enter any optional details as needed.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key Details" src="/images/scaleway/image12.png" />
     </Frame>
   </Step>
 
   <Step title="Generate API Key">
-    Click the Generate API key button at the bottom to proceed. Your Secret Key will be displayed once. Click the button to copy your Secret Key and store it safely.
+    Click the "Generate API Key" button to proceed. Your Secret Key will be displayed once. Click the copy button to copy your Secret Key and store it securely.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Secret Key" src="/images/scaleway/image13.png" />
     </Frame>
   </Step>
 
   <Step title="Close">
-    Press the Close button to proceed.
+    Click the "Close" button to proceed.
   </Step>
 </Steps>
 
@@ -150,23 +156,22 @@ If you've been directed to StackOne to integrate with Scaleway, the following st
 
 <Steps>
   <Step title="Enter Credentials">
-    Upon reaching the Link Account page, enter your Organization ID and Secret Key from the previous steps.
+    On the Link Account page, enter your Organization ID and Secret Key from the previous steps.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/scaleway/image14.png" />
     </Frame>
   </Step>
 
   <Step title="Connect">
-    Proceed by clicking the Connect button.
+    Click the "Connect" button to complete the integration.
   </Step>
 </Steps>
 
 <IntegrationFooter />
 
+## Available Data
 
-## Available data
-
-This integration has the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users) available from the provider:
+This integration provides access to the following [IAM Resources](https://docs.stackone.com/reference/iam_list_users):
 <ul>
  <li>Users</li>
  <li>Roles</li>
@@ -174,9 +179,7 @@ This integration has the following [IAM Resources](https://docs.stackone.com/ref
  <li>Policies</li>
 </ul>
 
-
 ## Useful Links
 <Card title="API Reference" icon="link" href="https://www.scaleway.com/en/developers/api/#identity-and-access-management-iam">
-    https://www.scaleway.com/en/developers/api/#identity-and-access-management-iam
+    Scaleway Identity and Access Management (IAM) API Documentation
 </Card>
-

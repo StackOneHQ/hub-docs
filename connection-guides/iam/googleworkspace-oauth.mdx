@@ -9,7 +9,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   Ensure that your Google Workspace account has Admin or Owner privileges.
 </Warning>
 
-If you've been directed to StackOne to integrate with Google Workspace, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+If you've been directed to StackOne to integrate with Google Workspace, the following steps will help you understand the process and configure a successful integration.
 
 ## Log in to Google Workspace
 
@@ -21,7 +21,7 @@ Log in to your Google Workspace Admin at https://admin.google.com/login
 
 ## Get your Google Workspace Domain
 
-Each connection will be associated with a single Google Workspace domain. If you wish to connect multiple domains, create a connection for each domain.
+Each connection will be associated with a single Google Workspace domain. If you wish to connect multiple domains, you'll need to create a separate connection for each domain.
 
 <Steps>
     <Step title="Navigate to Domains List">
@@ -31,7 +31,7 @@ Each connection will be associated with a single Google Workspace domain. If you
     </Step>
 
     <Step title="Copy Your Domain">
-        Copy the **Domain** you wish to connect from the displayed list. Store this to be used in later steps.
+        Copy the **Domain** you wish to connect from the displayed list. Save this for use in later steps.
 
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Your Domain" src="/images/googleworkspace/image3.png" />
     </Step>
@@ -43,7 +43,7 @@ Google requires manually enabling APIs for your account. The [Admin SDK API](htt
 
 <Steps>
     <Step title="Go to Your Google Cloud Console">
-        Go to your Google Cloud Console at https://console.cloud.google.com/
+        Navigate to your Google Cloud Console at https://console.cloud.google.com/
 
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to the Google Cloud Console" src="/images/googleworkspace/image4.png" />
     </Step>
@@ -55,7 +55,7 @@ Google requires manually enabling APIs for your account. The [Admin SDK API](htt
     </Step>
 
     <Step title="Locate the Admin SDK API">
-        Using the search bar, enter a search for *"admin sdk"*. Click the **Admin SDK API** result.
+        In the search bar, enter *"admin sdk"*. Click the **Admin SDK API** result.
 
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Locate the Admin SDK API" src="/images/googleworkspace/image6.png" />
     </Step>
@@ -73,7 +73,7 @@ This connection will authenticate on behalf of a registered OAuth Client in Goog
 <Steps>
     
     <Step title="Navigate to Admin SDK API Credentials">
-        In the Admin SDK API **Manage** page, scroll down to click **Credentials**.
+        On the Admin SDK API **Manage** page, scroll down and click **Credentials**.
 
         <Frame>
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Admin SDK API Credentials" src="/images/googleworkspace/image8.png" />
@@ -97,7 +97,7 @@ This connection will authenticate on behalf of a registered OAuth Client in Goog
         - Name: Enter a name for the new application
         - Authorized redirect URIs: `https://api.stackone.com/connect/oauth2/googleworkspace_iam/callback`
 
-        Then click the **Create** button at the bottom to proceed.
+        Click the **Create** button at the bottom to proceed.
 
         <Frame>
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Details" src="/images/googleworkspace/image10.png" />
@@ -109,7 +109,7 @@ This connection will authenticate on behalf of a registered OAuth Client in Goog
     </Step>
     
     <Step title="Copy Application Credentials">
-        The new application's **Client ID** and **Client Secret** will be displayed. **Copy** these values and store them securely to be used in the next step.
+        The new application's **Client ID** and **Client Secret** will be displayed. **Copy** these values and store them securely for use in the next step.
 
         <Frame>
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Application Credentials" src="/images/googleworkspace/image12.png" />
@@ -119,7 +119,7 @@ This connection will authenticate on behalf of a registered OAuth Client in Goog
 
 ## Configure OAuth Consent
 
-Google requires configuring a consent screen to be displayed when granting application access to your account.
+Google requires configuring a consent screen that will be displayed when granting application access to your account.
 
 <Steps>
     <Step title="Go to OAuth Consent Screen Setup">
@@ -129,7 +129,7 @@ Google requires configuring a consent screen to be displayed when granting appli
     </Step>
 
     <Step title="Select User Type">
-        Under *User Type* select **Internal**, then click the **Create** button.
+        Under *User Type*, select **Internal**, then click the **Create** button.
 
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select User Type" src="/images/googleworkspace/image14.png" />
     </Step>
@@ -147,17 +147,17 @@ Google requires configuring a consent screen to be displayed when granting appli
         *Developer contact information*
         - Email addresses: Your Google Workspace account email
 
-        Then click the **Save and Continue** button to proceed.
+        Click the **Save and Continue** button to proceed.
 
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Application Information" src="/images/googleworkspace/image15.png" />
     </Step>
 
     <Step title="Select Required Application Scopes">
-        Click the **Add or Remove Scopes** button, and a popout window will appear on the right titled *Update selected scopes*.
+        Click the **Add or Remove Scopes** button. A popout window titled *Update selected scopes* will appear on the right.
 
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Scopes Button" src="/images/googleworkspace/image16.png" />
 
-        Enable the following scopes which are required for full functionality of this integration:
+        Enable the following scopes required for full functionality of this integration:
 
         - `https://www.googleapis.com/auth/admin.directory.group.readonly`
         - `https://www.googleapis.com/auth/admin.directory.group.member.readonly`
@@ -165,19 +165,19 @@ Google requires configuring a consent screen to be displayed when granting appli
         - `https://www.googleapis.com/auth/admin.directory.orgunit.readonly`
         - `https://www.googleapis.com/auth/admin.directory.rolemanagement.readonly`
 
-        You can copy and paste each scope into the **Filter** bar to quickly locate them.
+        You can quickly locate each scope by copying and pasting it into the **Filter** bar.
 
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Scopes" src="/images/googleworkspace/image17.png" />
 
-        Once all five scopes have been enabled, click the **Update** button to proceed.
+        After enabling all five scopes, click the **Update** button to proceed.
 
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Update Scopes Button" src="/images/googleworkspace/image18.png" />
     </Step>
 
     <Step title="Complete Scope Selection">
-        Confirm that each of the required scopes is listed under *Your sensitive scopes*.
+        Verify that each of the required scopes is listed under *Your sensitive scopes*.
 
-        Then click the **Save and Continue** button to proceed.
+        Click the **Save and Continue** button to proceed.
 
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Complete Scope Selection" src="/images/googleworkspace/image19.png" />
     </Step>
@@ -188,13 +188,13 @@ Google requires configuring a consent screen to be displayed when granting appli
 
 <Steps>
   <Step title="Enter Credentials">
-    Upon reaching the Link Account page, enter the credentials from the previous steps:
+    On the Link Account page, enter the credentials from the previous steps:
     - **Domain**
     - **Client ID**
     - **Client Secret**
     - **Scopes** - If you selected only the required scopes in the previous steps, leave the default value for this field. Otherwise, enter the space-separated list of scopes granted to your application.
 
-    Proceed by clicking the Connect button.
+    Click the Connect button to proceed.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/googleworkspace/image20.png" />
@@ -204,7 +204,7 @@ Google requires configuring a consent screen to be displayed when granting appli
   <Step title="Grant OAuth Application Consent">
     A window will appear and may prompt you to log in to your Google Workspace account.
 
-    After logging in, you will be displayed the OAuth consent screen you configured in a [previous step](#configure-oauth-consent).
+    After logging in, you'll see the OAuth consent screen you configured in a [previous step](#configure-oauth-consent).
 
     Click the **Allow** button to grant the application access to your Google Workspace account.
 
@@ -216,14 +216,13 @@ Google requires configuring a consent screen to be displayed when granting appli
 
 <IntegrationFooter />
 
-## Available data
+## Available Data
 
 This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
 <ul>
  <li>Users</li>
  <li>Groups</li>
  <li>Roles</li>
-
 </ul>
 
 ## Useful Links

@@ -350,7 +350,19 @@
       "pages": [
         "integrations",
         "integration-configuration-concepts",
-        "about"
+        "about",
+        "connection-guides/iam/okta",
+        "connection-guides/iam/github",
+        "connection-guides/iam/ringcentral",
+        "connection-guides/iam/scaleway",
+        "connection-guides/iam/1password",
+        "connection-guides/hris/ukgready",
+        "connection-guides/hris/workday",
+        "connection-guides/iam/autodesk",
+        "connection-guides/hris/hibob-service-user",
+        "connection-guides/ats/teamtailor-mfa",
+        "connection-guides/iam/googleworkspace-oauth",
+        "integration-configuration-concepts/ats/workday-assessment"
       ]
     }
   ],

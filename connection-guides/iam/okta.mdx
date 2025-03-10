@@ -6,32 +6,30 @@ description: "Follow these steps to connect Okta via the StackOne Hub successful
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
-  Ensure that your Okta account has **API Access Administrator**, **Organization Administrator**, or  **Super Administrator** privileges.
+  Ensure that your Okta account has **API Access Administrator**, **Organization Administrator**, or **Super Administrator** privileges.
 </Warning>
 
-If you've been directed to StackOne to integrate with Okta, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+If you've been directed to StackOne to integrate with Okta, follow these steps to configure a successful integration.
 
 ## Log in to Okta
 
-Log in to your Okta account: https://login.okta.com/
+Log in to your Okta account at https://login.okta.com/
 
 <Frame>
-    <img className='rounded-md' style={{ width: '70%',margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to Okta" src="/images/okta/image2.png" />
+    <img className='rounded-md' style={{ width: '70%', margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to Okta" src="/images/okta/image2.png" />
 </Frame>
 
 ## Find your Okta Organization URL
 
-Your Organization URL can be found in the URL when logged in to Okta.
+Your Organization URL is visible in the browser address bar when logged in to Okta.
 
-Given the URL: `https://MY-ORG.okta.com/app/UserHome`, the **Organization URL** is `MY-ORG`.
-
+For example, if your URL is `https://MY-ORG.okta.com/app/UserHome`, your **Organization URL** is `MY-ORG`.
 
 ## Create your Okta API Token
 
 <Steps>
-
   <Step title="Navigate to your Okta Admin">
-    From your Okta homepage, click the **Admin** button in the top right.
+    From your Okta homepage, click the **Admin** button in the top-right corner.
   
     <Frame>
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to your Okta Admin" src="/images/okta/image3.png" />
@@ -39,13 +37,13 @@ Given the URL: `https://MY-ORG.okta.com/app/UserHome`, the **Organization URL** 
   </Step>
 
   <Step title="Navigate to API Tokens">
-      In the left navigation menu, click **Security > API**.
+      In the left navigation menu, select **Security > API**.
   
       <Frame>
           <img className='rounded-md' style={{ width: '50%', margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API" src="/images/okta/image4.png" />
       </Frame>
 
-      Then under *API*, click **Tokens**.
+      Then under *API*, select **Tokens**.
 
       <Frame>
           <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click API Tokens" src="/images/okta/image5.png" />
@@ -53,27 +51,27 @@ Given the URL: `https://MY-ORG.okta.com/app/UserHome`, the **Organization URL** 
   </Step>
 
   <Step title="Create a new API Token">
-      Click the **Create token** button to create a new API Token.
+      Click the **Create Token** button.
   
       <Frame>
           <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a new API Token" src="/images/okta/image6.png" />
       </Frame>
   </Step>
 
-  <Step title="Enter initial API Token details">
-      Enter a name for the new API Token, and select **Any IP** for the dropdown: *API calls made with this token must originate from*.
+  <Step title="Enter API Token details">
+      Enter a name for the new API Token. For the dropdown "API calls made with this token must originate from", select **Any IP**.
   
       <Frame>
           <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter initial API Token details" src="/images/okta/image7.png" />
       </Frame>
 
-        <Info>
-            If your Okta instance requires connections only from specific network zones, please contact integrations@stackone.com for details.
-        </Info>
+      <Info>
+          If your Okta instance requires connections only from specific network zones, contact integrations@stackone.com for assistance.
+      </Info>
   </Step>
 
   <Step title="Copy your API Token">
-      Copy your **API Token** and store it safely to be used in a later step.
+      Copy your **API Token** and store it securely for later use.
   
       <Frame>
           <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your API Token" src="/images/okta/image8.png" />
@@ -83,11 +81,11 @@ Given the URL: `https://MY-ORG.okta.com/app/UserHome`, the **Organization URL** 
 
 ## Connecting with StackOne
 
-Upon reaching the Link Account page, enter the credential(s) from the previous steps:
+On the Link Account page, enter your credentials from the previous steps:
   - **Organization URL**
   - **API Token**
 
-Proceed by clicking the Connect button.
+Click the Connect button to proceed.
 
 <Frame>
     <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/okta/image9.png" />
@@ -95,9 +93,9 @@ Proceed by clicking the Connect button.
 
 <IntegrationFooter />
 
-## Available data
+## Available Data
 
-This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+This integration provides access to the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api):
 <ul>
   <li>Users</li>
   <li>Groups</li>
