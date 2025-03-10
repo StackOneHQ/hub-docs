@@ -1,19 +1,19 @@
 ---
 title: "Workday"
-description: "If you've been directed to StackOne to integrate with Workday, the following steps will help you understand the process and any necessary actions to configure successful integration."
+description: "If you've been directed to StackOne to integrate with Workday, the following steps will help you understand the process and necessary actions to configure a successful integration."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
-  This guidance assumes you have Admin privileges for your Workday account.
+  This guidance assumes you have Administrator privileges for your Workday account.
 </Warning>
 
 ## Finding your Workday Tenant
 
 <Steps>
   <Step title="Log into Workday">
-    Log into your Workday account. Look at the address bar at the top of the browser window where the URL is displayed. Find your tenant immediately after `workday.com/`.
+    Log into your Workday account. In the address bar at the top of your browser window, locate your tenant name. It appears immediately after `workday.com/` in the URL.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Workday Tenant" src="/images/workday/image1.png" />
@@ -24,31 +24,30 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 ## Finding the Web Services Endpoint
 
 <Steps>
-  <Step title="Go to Public Web Services">
-    Go to the `Public Web Services` report.
+  <Step title="Navigate to Public Web Services">
+    Access the `Public Web Services` report.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Human Resources Web Service" src="/images/workday/image2.png" />
     </Frame>
   </Step>
 
-  <Step title="Find Human Resources">
-    Find Human Resources and hover over it to be able to interact with the menu. Via the three-dots menu, go to `Web Service` and click on `View SDL` (note that the page may take a minute to fully load).
+  <Step title="Locate Human Resources">
+    Find the Human Resources section and hover over it to interact with the menu. Click the three-dots menu, select `Web Service`, then click `View SDL` (Note: The page may take a moment to load completely).
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday/image3.png" />
     </Frame>
-
   </Step>
 
-  <Step title="Search for wsdl:service">
-    Search for `wsdl:service` in the file OR navigate directly to the very bottom of the page. You should see something like this:
+  <Step title="Locate the WSDL Service">
+    Either search for `wsdl:service` in the file or scroll to the bottom of the page. You should see something similar to this:
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday/image4.png" />
     </Frame>
 
-    Copy everything before `service` in the location attribute. Do not include the `https://` prefix. In the example tenant above, this would be `wd2-impl-services1.workday.com/ccx` but it may be different for your tenant (e.g., `wd5-services1.myworkday.com/ccx`).
+    Copy everything before `service` in the location attribute, excluding the `https://` prefix. For example, in the tenant shown above, this would be `wd2-impl-services1.workday.com/ccx`. Your tenant may have a different format (e.g., `wd5-services1.myworkday.com/ccx`).
   </Step>
 </Steps>
 
@@ -56,55 +55,57 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Steps>
   <Step title="Search for Create Integration System User">
-    Log in to your Workday tenant in the Workday portal. In the Search field, search for "Create Integration System User".
+    Log in to your Workday tenant through the Workday portal. In the Search field, enter "Create Integration System User".
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Integration System User" src="/images/workday/image5.png" />
     </Frame>
   </Step>
 
-  <Step title="Choose the Task">
-    Choose the "Create Integration System User" task.
+  <Step title="Select the Task">
+    Click on the "Create Integration System User" task.
   </Step>
 
-  <Step title="Enter Account Information">
-    Enter a username and password in the Account Information section on the "Create Integration System User" page.
+  <Step title="Configure Account Information">
+    In the Account Information section of the "Create Integration System User" page, enter your desired username and password.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Account Information" src="/images/workday/image6.png" />
     </Frame>
   </Step>
 
-  <Step title="Click OK">
+  <Step title="Complete the Process">
+    Click the OK button to create the Integration System User.
   </Step>
 </Steps>
 
 ## Add the Integration System User to a Security Group
 
 <Steps>
-  <Step title="Search for Create Security Group">
-    In the Search field, search for "Create Security Group". Select the "Create Security Group" task.
+  <Step title="Access Security Group Creation">
+    In the Search field, enter "Create Security Group" and select the "Create Security Group" task.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Security Group" src="/images/workday/image7.png" />
     </Frame>
   </Step>
 
-  <Step title="Select Security Group Type">
-    On the "Create Security Group" page, select "Integration System Security Group" from the Type of Tenanted Security Group pull-down menu. Enter a name in the Name field.
+  <Step title="Configure Security Group Settings">
+    On the "Create Security Group" page:
+    1. From the Type of Tenanted Security Group dropdown menu, select "Integration System Security Group"
+    2. Enter a descriptive name in the Name field
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Security Group Type" src="/images/workday/image8.png" />
     </Frame>
   </Step>
 
-  <Step title="Click OK">
-    Click OK.
+  <Step title="Save Security Group">
+    Click the OK button to create the Security Group.
   </Step>
 
-  <Step title="Edit Integration System Security Group">
-    On the "Edit Integration System Security Group (Unconstrained)" page, enter the same name you used when creating the ISU in the first section. Click OK.
-
+  <Step title="Complete Security Group Configuration">
+    On the "Edit Integration System Security Group (Unconstrained)" page, enter the same name you used when creating the Integration System User in the previous section. Click OK to save your changes.
   </Step>
 </Steps>
 
@@ -114,16 +115,18 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   <Step title="Edit Permissions">
 
     <Info>
-      The Workday HRIS integration currently requires **all** of the permissions listed below to be enabled. 
+      The Workday HRIS integration requires **all** of the permissions listed below to be enabled. 
 
-      Workday's API will return an error response if any of these permissions are missing.
+      The Workday API will return an error response if any of these permissions are missing.
     </Info>
 
     Edit the Domain Security Policy Permissions in the Security Group. 
 
-    You can reach this interface by searching for "Maintain Permissions for Security Group" in the search bar, and selecting the name of the Security Group you created in the previous step.
-    
-    Enable the **GET** operations for the following required permissions for the HRIS API:
+    To access this interface:
+    1. Search for "Maintain Permissions for Security Group" in the search bar
+    2. Select the Security Group you created in the previous step
+
+    Enable the following **GET** operations for the HRIS API:
 
     - **Job Requisition Data**
     - **Job Information**
@@ -168,21 +171,22 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       - Workers
     - **View**
       - National Identifiers - All
-
   </Step>
 </Steps>
 
 ## Approve the Security Policy Changes
 
 <Steps>
-  <Step title="Search for Activate Pending Security Policy Changes">
-    In the Search bar, search for "Activate Pending Security Policy Changes". Review the policies that need approval in the summary of the changes in the security policy. Approve the pending security policy changes to activate them.
+  <Step title="Activate Security Policy Changes">
+    1. In the Search bar, enter "Activate Pending Security Policy Changes"
+    2. Review the summary of pending security policy changes
+    3. Approve the changes to activate the new security policies
   </Step>
 </Steps>
 
 ## Linking to StackOne
 
-You can use the Tenant and System User credentials you created in steps 1 & 2 to link Workday.
+Use the Tenant and System User credentials you created in Steps 1 & 2 to establish the link with Workday.
 
 <Frame>
   <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/image9.png" />
@@ -191,5 +195,5 @@ You can use the Tenant and System User credentials you created in steps 1 & 2 to
 <IntegrationFooter />
 
 <Card title="Useful Links" icon="link" href="/content/components/card-group">
-  Workday API reference: <a href="https://doc.workday.com">https://doc.workday.com</a>
+  Workday API Documentation: <a href="https://doc.workday.com">https://doc.workday.com</a>
 </Card>

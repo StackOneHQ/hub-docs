@@ -350,7 +350,17 @@
       "pages": [
         "integrations",
         "integration-configuration-concepts",
-        "about"
+        "about",
+        "connection-guides/crm/salesforce",
+        "connection-guides/iam/contentful",
+        "connection-guides/hris/sapsuccessfactors",
+        "connection-guides/iam/scaleway",
+        "connection-guides/hris/ukgready",
+        "connection-guides/ats/teamtailor-mfa",
+        "connection-guides/hris/hibob-service-user",
+        "connection-guides/iam/googleworkspace-oauth",
+        "connection-guides/hris/workday",
+        "integration-configuration-concepts/ats/workday-assessment"
       ]
     }
   ],

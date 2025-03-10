@@ -6,19 +6,19 @@ description: "To successfully receive webhook notifications from Workday, follow
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
-  This guidance assumes that you have admin privileges for your Workday account.
+  This guidance assumes that you have administrator privileges for your Workday account.
 </Warning>
 
 ## Create Assessment Category in Workday
 
 <Steps>
-  <Step title="Create an assessment category">
-    Navigate to the <i>Maintain Recruiting Assessment Categories</i> page and add a new assessment category called `Technical Assessment Test`.
+  <Step title="Create an Assessment Category">
+    Navigate to the <i>Maintain Recruiting Assessment Categories</i> page and add a new Assessment Category called `Technical Assessment Test`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Categories" src="/images/workday-assessment/Assessment_category_1.png" />
     </Frame>
 
-    Please click on the `OK` button to save and the `Done` button to confirm.
+    Click the `OK` button to save and the `Done` button to confirm.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Category" src="/images/workday-assessment/Assessment_category_2.png" />
     </Frame>
@@ -30,28 +30,28 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Steps>
   <Step title="Create an Assessment Test">
-    Navigate to the <i>Maintain Recruiting Assessment Tests</i> page and add an assessment test called `Technical Assessment`.
+    Navigate to the <i>Maintain Recruiting Assessment Tests</i> page and add an Assessment Test called `Technical Assessment`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Tests" src="/images/workday-assessment/Assessment_test_1.png" />
     </Frame>
 
-    Enter the test name, select the assessment category created in the previous step, and choose the integration system generated from StackOne, named `StackOne_IS_System`.
+    Enter the test name, select the Assessment Category created in the previous step, and choose the Integration System generated from StackOne, named `StackOne_IS_System`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Tests" src="/images/workday-assessment/Assessment_test_2.png" />
     </Frame>
 
-    Please click on the `OK` button to save and the `Done` button to confirm.
+    Click the `OK` button to save and the `Done` button to confirm.
   </Step>
 
-  <Step title="To edit or retrieve the Assessment Test ID">
-    Click on the three-dot menu, go to `View IDs` to see and click on `Edit Reference ID` to make changes to the Reference ID.
+  <Step title="Edit or Retrieve the Assessment Test ID">
+    Click the three-dot menu and select `View IDs`. To modify the Reference ID, click `Edit Reference ID`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit/View Assessment Test ID" src="/images/workday-assessment/Assessment_test_3.png" />
     </Frame>
   </Step>
 
   <Step title="Use of Assessment Test ID">
-    You'll need the `Assessment_Test_ID` which is `RECRUITING_ASSESSMENT_TEST-6-111` here for notification payload configurations.
+    Note the `Assessment_Test_ID` (in this example, it's `RECRUITING_ASSESSMENT_TEST-6-111`). You'll need this for notification payload configurations.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Test ID" src="/images/workday-assessment/Assessment_test_4.png" />
     </Frame>
@@ -63,23 +63,23 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Steps>
   <Step title="Create an Assessment Status">
-    Navigate to the <i>Maintain Assessment Statuses</i> page and add a new assessment status (you can name it as `Invited` same as status name, or any name of your choice).
+    Navigate to the <i>Maintain Assessment Statuses</i> page and add a new Assessment Status. You can name it `Invited` or choose any other name.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/workday-assessment/Assessment_status_1.png" />
     </Frame>
 
-    Enter the status name, check the overall status and test status. Click on `OK` and `Done` buttons to save and confirm, respectively.
+    Enter the status name and check both the overall status and test status options. Click `OK` to save and `Done` to confirm.
   </Step>
 
-  <Step title="To edit or retrieve the Assessment Status ID">
-    Click on the three-dot menu, go to `View IDs` to see and click on `Edit Reference ID` to modify the Reference ID.
+  <Step title="Edit or Retrieve the Assessment Status ID">
+    Click the three-dot menu and select `View IDs`. To modify the Reference ID, click `Edit Reference ID`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit/View Assessment Status ID" src="/images/workday-assessment/Assessment_test_3.png" />
     </Frame>
   </Step>
 
   <Step title="Use of Assessment Status ID">
-    The Assessment Status ID is used to send the assessment invite notification, so please ensure it is set to `Invited` regardless of the status name provided.
+    The Assessment Status ID is used to send assessment invite notifications. Ensure it is set to `Invited`, regardless of the status name you provided.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Status ID" src="/images/workday-assessment/Assessment_status_3.png" />
     </Frame>
@@ -87,44 +87,44 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 </Steps>
 
 
-## Job requisitions within the supervisory organization in Workday
+## Job Requisitions Within the Supervisory Organization in Workday
 
 <Warning>
-  These steps assume you already have a Supervisory Organization in your Workday account. If not, please contact your admin to create one.
+  These steps assume you already have a Supervisory Organization in your Workday account. If not, please contact your administrator to create one.
 </Warning>
 
 <Steps>
   <Step title="Listed Job Requisitions">
-    Navigate to your<i>Supervisory Organization</i> page. Go to the `Staffing` tab below.
+    Navigate to your <i>Supervisory Organization</i> page and go to the `Staffing` tab.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="SO for JR" src="/images/workday-assessment/SO_for_JR.png" />
     </Frame>
 
-    You can find the list of Job Requisitions that the Assessment stage supports for sending notifications within the Integration System under `Positions with Open Job Requisition` grid.
+    Under the `Positions with Open Job Requisition` grid, you'll find the list of Job Requisitions that support Assessment stage notifications within the Integration System.
   </Step>
 
-  <Step title="No Listed Job Requisitions">
-    If you haven't listed jobs under `Positions with Open Job Requisition`, find `Create Position` under Staffing in the 3-dot menu.
+  <Step title="Creating New Job Requisitions">
+    If there are no jobs listed under `Positions with Open Job Requisition`, select `Create Position` from the Staffing options in the three-dot menu.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Job Position" src="/images/workday-assessment/SO_1.png" />
     </Frame>
 
-    Fill in the required details to create a position that will be visible in the `Positions without Job Requisition` grid.
+    Complete the required details to create a position. The new position will appear in the `Positions without Job Requisition` grid.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Created Job Position" src="/images/workday-assessment/SO_2.png" />
     </Frame>
 
-    Navigate to the `Create Job Requisition` and select your supervisory organization and position. After clicking the `OK` button, please fill out the Job Requisition form and `Submit` it.
+    Select `Create Job Requisition`, choose your Supervisory Organization and position, then click `OK`. Complete the Job Requisition form and click `Submit`.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add in Position in Job Req" src="/images/workday-assessment/SO_3.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Position in Job Req" src="/images/workday-assessment/SO_3.png" />
     </Frame>
 
-    The position will now be visible in the `In Progress Requisition Actions` grid.
+    The position will appear in the `In Progress Requisition Actions` grid.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Added in Position in Job Req" src="/images/workday-assessment/SO_4.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Added Position in Job Req" src="/images/workday-assessment/SO_4.png" />
     </Frame>
 
-    Once the job requisition is approved, it will be visible in the `Positions with Open Job Requisition` grid and will be able to support sending notifications.
+    After approval, the Job Requisition will move to the `Positions with Open Job Requisition` grid and will support notification sending.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Approved Job Req" src="/images/workday-assessment/SO_5.png" />
     </Frame>
@@ -135,132 +135,132 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 ## Update Assess Candidate Business Process in Workday
 
 <Steps>
-  <Step title="Select to update the Integration System">
-    Navigate to the <i>Assess Candidate Business Process</i> page. Then, click on the `Configure StackOne_IS_System` button.
+  <Step title="Select the Integration System">
+    Navigate to the <i>Assess Candidate Business Process</i> page and click `Configure StackOne_IS_System`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="BP Config IS" src="/images/workday-assessment/BP_Config_IS.png" />
     </Frame>
 
-    Please select `StackOne_IS_System` as the integration and then click on the `OK` button.
+    Select `StackOne_IS_System` as the Integration System and click `OK`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select IS on Popup" src="/images/workday-assessment/Select_IS_on_Popup.png" />
     </Frame>
   </Step>
 
-  <Step title="Edit payload attribute values">
-    The pop-up will appear, allowing you to select the values for the fields included in the payload request when the `Invited` event is triggered from Workday.
+  <Step title="Configure Payload Attribute Values">
+    In the popup window, select values for the fields included in the payload request when the `Invited` event is triggered from Workday.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Values for Fields" src="/images/workday-assessment/Set_Values_for_Fields.png" />
     </Frame>
     
-    **Please fill in the following information:**
+    **Complete the following fields:**
 
     - **Candidate First Name:** [First Name]
     - **Candidate Last Name:** [Last Name]
     - **Candidate Email Address:** [Email]
     - **Candidate Reference ID:** [Candidate ID]
     - **Job Application Reference ID:** [Job Requisition as Text]
-    - **Assessment Test Reference ID:** [Assessment_Test_ID for the assessment you want to send to the candidate]
+    - **Assessment Test Reference ID:** [Assessment_Test_ID for the desired assessment]
 
-    Click the `OK` button to save your configurations.
+    Click `OK` to save your configurations.
   </Step>
 </Steps>
 
 
-## Submit your application for the job from the candidate's profile in Workday
+## Submit Job Application from Candidate's Profile in Workday
 
 <Steps>
   <Step title="Apply to the Job">
-    Go to the <i>Find Candidates</i> page, select a Candidate's Profile, and click on `Job Application` under `Actions` to apply for the job.
+    Navigate to the <i>Find Candidates</i> page, select a Candidate's Profile, and click `Job Application` under `Actions`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Profile" src="/images/workday-assessment/Candidate_profile_1.png" />
     </Frame>
   </Step>
 
-  <Step title="Select the listed Job Requisition">
-    Please select the job from the dropdown menu listed above.
+  <Step title="Select the Job Requisition">
+    Choose the appropriate job from the dropdown menu.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Job Apply" src="/images/workday-assessment/Candidate_profile_2.png" />
     </Frame>
 
-    Enter the required details and click the `OK` button to submit the job application.
+    Complete the required details and click `OK` to submit the application.
   </Step>
 </Steps>
 
 
-## Move Candidate to the Assessment Stage in Workday
+## Move Candidate to Assessment Stage in Workday
 
 <Steps>
-  <Step title="Go to the Job Requisition">
-    Navigate to the <i>Job Requisitions</i> page by selecting the same Job Requisition from the pop-up where the candidate applied for the job.
+  <Step title="Access the Job Requisition">
+    Navigate to the <i>Job Requisitions</i> page and select the Job Requisition where the candidate applied.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View JR" src="/images/workday-assessment/JR_1.png" />
     </Frame>
 
-    Navigate to the `Candidate` tab and select the `Review` tab, where the candidate will be displayed in the grid below.
+    Go to the `Candidate` tab, then select the `Review` tab to see the candidate in the grid below.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Job Apply" src="/images/workday-assessment/JR_5.png" />
     </Frame>
   </Step>
 
-  <Step title="Move Candidate from Review to Assessment stage">
-    Check the candidate in the grid and click the `Move Forward` button.
+  <Step title="Move the Candidate Forward">
+    Select the candidate in the grid and click `Move Forward`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View JR" src="/images/workday-assessment/JR_2.png" />
     </Frame>
   </Step>
 
-  <Step title="Select Assessment from the dropdown">
-    In the pop-up, select the next stage, which is likely the Assessment Stage. Choose `Assessment` in both dropdown menus.
+  <Step title="Select the Assessment Stage">
+    In the popup window, select `Assessment` in both dropdown menus.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Job Apply" src="/images/workday-assessment/JR_3.png" />
     </Frame>
 
-    Click on the `OK` button to move.
+    Click `OK` to complete the move.
   </Step>
 
-  <Step title="Candidate Moved to the Assessment Stage">
-    If you go to the `Assessment` tab, the candidate will now be in the Assessment stage.
+  <Step title="Verify the Stage Change">
+    Check the `Assessment` tab to confirm the candidate appears in the Assessment stage.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View JR" src="/images/workday-assessment/JR_4.png" />
     </Frame>
 
-    If you're unable to move the candidate to the assessment stage directly, then shift the stages one at a time.
+    Note: If direct movement to the Assessment stage isn't possible, move through stages one at a time.
   </Step>
 </Steps>
 
 
-## Send the assessment invitation to the candidate using Start Proxy
+## Send Assessment Invitation Using Start Proxy
 
 <Steps>
-  <Step title="Sending via Start Proxy">
-    If you are not the recruiter, go to the recruiter’s account via `Start Proxy`. Click on the `Awaiting Action` link, and a pop-up will appear showing the recruiter’s name.
+  <Step title="Access Start Proxy">
+    If you're not the recruiter, use `Start Proxy` to access the recruiter's account. Click `Awaiting Action` to see the recruiter's name in the popup.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Recruiter" src="/images/workday-assessment/NR_1.png" />
     </Frame>
   </Step>
 
-  <Step title="Navigate to the Start Proxy">
-    Go to the <i>Start Proxy</i> page and select Recruiter from the dropdown menu.
+  <Step title="Navigate Through Start Proxy">
+    Go to the <i>Start Proxy</i> page and select the Recruiter from the dropdown.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Start Proxy" src="/images/workday-assessment/NR_2.png" />
     </Frame>
 
-    You'll be taken to the recruiter's homepage, where you need to navigate to the `My Tasks` page in the top-right corner.
+    On the recruiter's homepage, click `My Tasks` in the top-right corner.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="My Tasks" src="/images/workday-assessment/NR_3.png" />
     </Frame>
 
-    You will find the task at the top labeled with Job Requisition and Candidate name in the sidebar.
+    Find the task labeled with the Job Requisition and Candidate name in the sidebar.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Sidebar" src="/images/workday-assessment/NR_4.png" />
     </Frame>
 
-    Clicking on the sidebar task will display the candidate's assessment details on the right side.
+    Click the task to view the candidate's assessment details.
   </Step>
 
   <Step title="Send the Assessment Invitation">
-    You should set the Overall Status to `Invited` and select the Assessment as `Technical Assessment` from the dropdown menu. After that, click the `Submit` button.
+    Set the Overall Status to `Invited` and select `Technical Assessment` from the dropdown menu. Click `Submit`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Form" src="/images/workday-assessment/NR_5.png" />
     </Frame>
@@ -268,22 +268,23 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 </Steps>
 
 
-## Send the assessment invitation to the candidate without using a Start Proxy
+## Send Assessment Invitation Without Start Proxy
 
 <Steps>
-  <Step title="Sending via Start Proxy">
-    If you are the recruiter, you should see the `Assess` button next to the candidate's name.
+  <Step title="Direct Access">
+    If you are the recruiter, you'll see the `Assess` button next to the candidate's name.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Sending Invite" src="/images/workday-assessment/Recruiter_1.png" />
     </Frame>
   </Step>
 
   <Step title="Send the Assessment Invitation">
-    You should set the Overall Status to `Invited` and select the Assessment as `Technical Assessment` from the dropdown menu.
+    Set the Overall Status to `Invited` and select `Technical Assessment` from the dropdown menu.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Send Invite" src="/images/workday-assessment/Recruiter_2.png" />
     </Frame>
-    Click on the `Submit` button to get the webhook notification from Workday. 
+
+    Click `Submit` to trigger the webhook notification from Workday.
   </Step>
 </Steps>
 
@@ -291,6 +292,6 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 <IntegrationFooter />
 
 ## Useful Links
-<Card title="API Reference" icon="link" href="https://doc.workday.com/">
-    https://doc.workday.com/
+<Card title="Workday API Reference" icon="link" href="https://doc.workday.com/">
+    Official Workday API Documentation
 </Card>

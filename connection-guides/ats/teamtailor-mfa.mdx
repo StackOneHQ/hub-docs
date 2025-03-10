@@ -6,16 +6,16 @@ description: "Follow these steps to connect Teamtailor with StackOne Hub success
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
-  Ensure you have Admin privileges for your Teamtailor account.
+  Ensure you have Administrator privileges for your Teamtailor account.
 </Warning>
 
-If you've been directed to StackOne to integrate with Teamtailor, the following steps will help you understand the process and any necessary actions to configure successful integration.
+If you've been directed to StackOne to integrate with Teamtailor, follow these steps to configure a successful integration.
 
-## Generating API key and getting Company ID
+## Generating API Key and Getting Company ID
 
 <Steps>
   <Step title="Navigate to Settings">
-    In your Teamtailor account, click on Settings.
+    In your Teamtailor account, click on "Settings."
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings" src="/images/teamtailor/image1.png" />
@@ -23,7 +23,7 @@ If you've been directed to StackOne to integrate with Teamtailor, the following 
   </Step>
 
   <Step title="Find API Keys">
-    On the left-hand menu under the integrations header, find API keys.
+    In the left-hand menu under the "Integrations" header, locate "API Keys."
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Keys" src="/images/teamtailor/image2.png" />
@@ -31,7 +31,7 @@ If you've been directed to StackOne to integrate with Teamtailor, the following 
   </Step>
 
   <Step title="Create a New API Key">
-    Click the New API Key button at the top right of the page.
+    Click the "New API Key" button in the top-right corner of the page.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="New API Key" src="/images/teamtailor/image3.png" />
@@ -39,7 +39,7 @@ If you've been directed to StackOne to integrate with Teamtailor, the following 
   </Step>
 
   <Step title="Set Name and Permissions">
-    Enter a descriptive name, set the scope to `admin` and permissions, where only Read is required.
+    Enter a descriptive name for your API key. Set the scope to `admin` and configure the permissions. Note that only Read permissions are required.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Permissions" src="/images/teamtailor/image4.png" />
@@ -47,7 +47,7 @@ If you've been directed to StackOne to integrate with Teamtailor, the following 
   </Step>
 
   <Step title="Copy API Key">
-    Copy the API key to a safe place.
+    Copy the generated API key and store it in a secure location.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Key" src="/images/teamtailor/image5.png" />
@@ -55,7 +55,7 @@ If you've been directed to StackOne to integrate with Teamtailor, the following 
   </Step>
 
   <Step title="Get Company ID">
-    Make a note of the `company ID`, which is part of the URL as shown below:
+    Note your Company ID, which appears in the URL as shown below:
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company ID" src="/images/teamtailor/image6.png" />
@@ -63,13 +63,13 @@ If you've been directed to StackOne to integrate with Teamtailor, the following 
   </Step>
 </Steps>
 
-## Get user credentials
+## Get User Credentials
 
-You will also need to provide a user email and password. It is recommended that you set up a new account for integration purposes.
+You'll need to provide a user email and password. We recommend creating a new account specifically for integration purposes.
 
 <Steps>
   <Step title="Create a New Employee">
-    Find the employees tab and click the ➕ to create a new employee.
+    Navigate to the "Employees" tab and click the ➕ icon to create a new employee.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="New Employee" src="/images/teamtailor/image7.png" />
@@ -77,7 +77,7 @@ You will also need to provide a user email and password. It is recommended that 
   </Step>
 
   <Step title="Fill Out Required Fields">
-    Fill out the required fields and set the Role to Recruitment Admin. This will ensure the account has the correct permissions.
+    Complete all required fields and set the Role to "Recruitment Admin" to ensure the account has appropriate permissions.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Role" src="/images/teamtailor/image8.png" />
@@ -85,7 +85,7 @@ You will also need to provide a user email and password. It is recommended that 
   </Step>
 
   <Step title="Add Employee">
-    Click Add employee.
+    Click "Add Employee" to create the account.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Employee" src="/images/teamtailor/image9.png" />
@@ -93,7 +93,7 @@ You will also need to provide a user email and password. It is recommended that 
   </Step>
 
   <Step title="Create Account">
-    The email address you entered will receive an invitation. Click `Create account`, you may have to log out of your current account to create the password.
+    The provided email address will receive an invitation. Click "Create Account" to proceed. Note: You may need to log out of your current account to set up the password.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Account" src="/images/teamtailor/image10.png" />
@@ -101,7 +101,7 @@ You will also need to provide a user email and password. It is recommended that 
   </Step>
 
   <Step title="Find the Invitation Link">
-    If you have not received an invitation, you can go to the `Employees` tab again and click on the user's `pencil` ✏️ icon to edit their profile. You will see a link to the invitation, and you can click through this to set up the account.
+    If you haven't received an invitation, go to the "Employees" tab and click the pencil ✏️ icon to edit the user's profile. You'll find the invitation link there.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Invitation Link" src="/images/teamtailor/image11.png" />
@@ -109,19 +109,19 @@ You will also need to provide a user email and password. It is recommended that 
   </Step>
 
   <Step title="Get Account Email and Password">
-    You should now have the account email address and password to proceed with the Hub.
+    Once complete, you should have both the account email address and password ready for the Hub setup.
   </Step>
 </Steps>
 
-⚠️ If your account uses SSO, you may have to create the account differently:
+⚠️ For accounts using Single Sign-On (SSO), the account creation process differs:
 
 ### Accounts with Single Sign-On (SSO)
 
-Follow steps 2.1 to 2.2 inclusive to create the employee, you will then have to exclude the employee from SSO, under the heading `Exclude individual users from SSO login`, as detailed here:
+Complete steps 2.1 to 2.2 to create the employee. Then, exclude the employee from SSO under "Exclude Individual Users from SSO Login":
 
 <Steps>
   <Step title="Exclude from SSO">
-    After the user has been excluded, ensure a password is set. You may have to edit the permissions of the user by accessing the Employees tab and clicking on the gear ⚙️ here.
+    After excluding the user from SSO, ensure a password is set. You may need to edit the user's permissions by accessing the "Employees" tab and clicking the gear ⚙️ icon.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Exclude from SSO" src="/images/teamtailor/image12.png" />
@@ -129,7 +129,7 @@ Follow steps 2.1 to 2.2 inclusive to create the employee, you will then have to 
   </Step>
 
   <Step title="Set Role">
-    You will see a page similar to step 2.2, where you can set the role to `Recruitment admin`.
+    On the settings page (similar to step 2.2), set the role to "Recruitment Admin."
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Role" src="/images/teamtailor/image13.png" />
@@ -137,51 +137,51 @@ Follow steps 2.1 to 2.2 inclusive to create the employee, you will then have to 
   </Step>
 </Steps>
 
-## Two-Factor Authentication
+## Two-Factor Authentication (2FA)
 
 <Steps>
-  <Step title="Set up 2FA on your user profile">
-    In your Teamtailor account, click on Your account
+  <Step title="Set Up 2FA on Your User Profile">
+    In your Teamtailor account, click on "Your Account."
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings" src="/images/teamtailor-mfa/image1.png" />
     </Frame>
   </Step>
 
-  <Step title="Security">
-    Click on Security
+  <Step title="Access Security Settings">
+    Click on "Security."
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Securoty" src="/images/teamtailor-mfa/image2.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Security" src="/images/teamtailor-mfa/image2.png" />
     </Frame>
   </Step>
 
-  <Step title="Setup 2-factor authentication">
-    Click on Setup two-factor authentication button.
+  <Step title="Set Up Two-Factor Authentication">
+    Click the "Setup Two-Factor Authentication" button.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="2 Step Authentication" src="/images/teamtailor-mfa/image3.png" />
     </Frame>
   </Step>
 
-  <Step title="2-Factor Authentication Secret">
-    Scan the QR Code in auth app and copy the key under the QR-code to a safe place to be used in the next step.
+  <Step title="Save 2FA Secret">
+    Scan the QR code with your authenticator app and copy the key displayed below the QR code. Store this key in a secure location for the next step.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Authentication Secret" src="/images/teamtailor-mfa/image4.png" />
     </Frame>
   </Step>
 
-  <Step title="Enter 6-digit code">
-    Enter 6-digit code from the authenticator app to complete the setup.
+  <Step title="Enter Verification Code">
+    Enter the 6-digit code from your authenticator app to complete the setup.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Authenticator Code" src="/images/teamtailor-mfa/image5.png" />
     </Frame>
   </Step>
 
-  <Step title="2-factor Authentication Complete">
-    The 2-factor Authentication setup is complete.
+  <Step title="Confirm 2FA Setup">
+    Two-Factor Authentication setup is now complete.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Authentication Complete" src="/images/teamtailor-mfa/image6.png" />
@@ -189,11 +189,11 @@ Follow steps 2.1 to 2.2 inclusive to create the employee, you will then have to 
   </Step>
 </Steps>
 
-## Input the collected inputs into the StackOne Hub
+## Configure the StackOne Hub
 
 <Steps>
   <Step title="Link Account">
-    Upon reaching the Link Account page, enter the gathered details and proceed by clicking the `Connect` button.
+    On the Link Account page, enter all the collected information and click the "Connect" button.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/teamtailor-mfa/image7.png" />
@@ -205,8 +205,8 @@ Follow steps 2.1 to 2.2 inclusive to create the employee, you will then have to 
 
 ## Useful Links
 <Card title="API Reference" icon="link" href="https://support.teamtailor.com/en/articles/5963369-use-our-teamtailor-api">
-    https://support.teamtailor.com/en/articles/5963369-use-our-teamtailor-api
+    Teamtailor API Documentation
 </Card>
 <Card title="Two-Factor Authentication" icon="link" href="https://support.teamtailor.com/en/articles/6730339-login-methods-password-two-factor-authentication-2fa-and-or-sso">
-    https://support.teamtailor.com/en/articles/6730339-login-methods-password-two-factor-authentication-2fa-and-or-sso
+    Teamtailor Authentication Methods Guide
 </Card>

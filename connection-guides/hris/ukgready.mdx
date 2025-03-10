@@ -5,24 +5,24 @@ description: "Follow these steps to connect UKG Ready with StackOne Hub successf
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<Warning>Ensure you have Admin privileges for your UKG Ready account.</Warning>
+<Warning>You must have Admin privileges for your UKG Ready account to complete this integration.</Warning>
 
-If you've been directed to StackOne to integrate with UKG Ready, the following steps will help you understand the process and any necessary actions to configure successful integration.
+To integrate UKG Ready with StackOne, follow these steps to gather the necessary credentials and configure your account settings.
 
 ## Getting your UKG Ready URL and Company Short Name 
 
 <Steps>
-  <Step title="Login to UKG Ready dashboard">
-    Login to your UKG Ready account.
+  <Step title="Login to UKG Ready Dashboard">
+    Sign in to your UKG Ready account.
     
-    Copy your **UKG Ready URL** from the address bar, ending with `.rdy.ukg.dev`. Store this to be used in a later step.
+    Copy your **UKG Ready URL** from the address bar (it should end with `.rdy.ukg.dev`). Save this URL as you'll need it later.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="UKG Ready URL" src="/images/ukgready/image6.png" />
     </Frame>
   </Step>
 
-<Step title="Navigate to Company Setup">
-  Click ≡ at the top-left corner.
+<Step title="Access Company Setup">
+  Click the menu icon (≡) in the top-left corner.
   <Frame>
     <img
       className="rounded-md"
@@ -31,12 +31,12 @@ If you've been directed to StackOne to integrate with UKG Ready, the following s
       src="/images/ukgready/image1.png"
     />
   </Frame>
-  From here navigate to `Settings > Global Setup > Company Setup`.
+  Navigate through: `Settings > Global Setup > Company Setup`
   <Frame>
     <img
       className="rounded-md"
       style={{ margin: "0 auto", border: "1px solid #efefef" }}
-      alt="global setup"
+      alt="Global Setup"
       src="/images/ukgready/image2.png"
     />
   </Frame>
@@ -44,21 +44,21 @@ If you've been directed to StackOne to integrate with UKG Ready, the following s
     <img
       className="rounded-md"
       style={{ margin: "0 auto", border: "1px solid #efefef" }}
-      alt="global setup"
+      alt="Global Setup"
       src="/images/ukgready/image3.png"
     />
   </Frame>
 </Step>
 
-<Step title="Copy Company Short Name">
-  Under `Company Setup > Company Info`, scroll down to the Company Address
-  section and copy the Company Short Name. If it is not available in that
-  section, please enter the Company Short Name and click `Save`.
+<Step title="Locate Company Short Name">
+  In the `Company Setup > Company Info` section, scroll to the Company Address
+  area and locate the Company Short Name. If this field is empty, enter your
+  Company Short Name and click `Save`.
   <Frame>
     <img
       className="rounded-md"
       style={{ margin: "0 auto", border: "1px solid #efefef" }}
-      alt="Company info"
+      alt="Company Info"
       src="/images/ukgready/image4.png"
     />
   </Frame>
@@ -73,29 +73,29 @@ If you've been directed to StackOne to integrate with UKG Ready, the following s
 </Step>
 </Steps>
 
-## Enabling OAuth Applications in your dashboard
+## Enabling OAuth Applications in Your Dashboard
 
 <Steps>
   <Step title="Enable OAuth Applications">
-    The option to generate OAuth credentials may not be available by default, and must be enabled to support this connection.
+    By default, the OAuth credentials generation option may not be visible. Follow these steps to enable it:
     
-    Under *Company Setup* Navigate to `Edit Tabs`.
+    Navigate to `Edit Tabs` under *Company Setup*.
     <Frame>
       <img
         className="rounded-md"
         style={{ margin: "0 auto", border: "1px solid #efefef" }}
-        alt="edit tabs tab"
+        alt="Edit Tabs"
         src="/images/ukgready/image7.png"
       />
     </Frame>
-    If you don't already see `OAuth Applications` in the column view - then from
-    the `Available Windows` section look for `OAuth Applications` and drag it
-    into a column of your choice under the `Login Config` tab.
+    If `OAuth Applications` isn't already visible in the column view, find it in
+    the `Available Windows` section. Drag it into your preferred column under
+    the `Login Config` tab.
     <Frame>
       <img
         className="rounded-md"
         style={{ margin: "0 auto", border: "1px solid #efefef" }}
-        alt="edit tabs tab"
+        alt="OAuth Applications"
         src="/images/ukgready/image8.png"
       />
     </Frame>
@@ -103,17 +103,16 @@ If you've been directed to StackOne to integrate with UKG Ready, the following s
       <img
         className="rounded-md"
         style={{ margin: "0 auto", border: "1px solid #efefef" }}
-        alt="edit tabs tab"
+        alt="OAuth Tab Configuration"
         src="/images/ukgready/image10.png"
       />
     </Frame>
-    Once you're happy with the view - click `Save` and navigate back to the `Company
-    Setup` view.
+    Click `Save` to confirm your changes, then return to the `Company Setup` view.
     <Frame>
       <img
         className="rounded-md"
         style={{ margin: "0 auto", border: "1px solid #efefef" }}
-        alt="edit tabs tab"
+        alt="Save Configuration"
         src="/images/ukgready/image11.png"
       />
     </Frame>
@@ -123,14 +122,14 @@ If you've been directed to StackOne to integrate with UKG Ready, the following s
 ## Generating OAuth Credentials
 
 <Steps>
-  <Step title="Add OAuth Application">
-    Under *Company Setup* On the `Login Config` tab, find `OAuth Applications` and click `Add OAuth
+  <Step title="Create OAuth Application">
+    In the `Login Config` tab under *Company Setup*, locate `OAuth Applications` and select `Add OAuth
     Application`.
     <Frame>
       <img
         className="rounded-md"
         style={{ margin: "0 auto", border: "1px solid #efefef" }}
-        alt="login config"
+        alt="Login Config"
         src="/images/ukgready/image12.png"
       />
     </Frame>
@@ -138,52 +137,51 @@ If you've been directed to StackOne to integrate with UKG Ready, the following s
       <img
         className="rounded-md"
         style={{ margin: "0 auto", border: "1px solid #efefef" }}
-        alt="OAuth Application"
+        alt="Add OAuth Application"
         src="/images/ukgready/image13.png"
       />
     </Frame>
   </Step>
   
-  <Step title="Generate OAuth">
-    If the authorisation type is set to `OAuth` then select `Application Type` to be
-    `Interactive`. If not then please proceed to the next step.
+  <Step title="Configure OAuth Settings">
+    For authorization type `OAuth`, select `Interactive` as the `Application Type`.
     <Frame>
       <img
         className="rounded-md"
         style={{ margin: "0 auto", border: "1px solid #efefef" }}
-        alt="login config"
+        alt="OAuth Configuration"
         src="/images/ukgready/image14.png"
       />
     </Frame>
-    Once you're happy with the configuration - click the `Save` button and enter
-    the `Client_ID` in the respective fields during the account linking process.
+    Click `Save` and copy the generated `Client_ID`. You'll need this during the
+    account linking process.
   </Step>
-  <Step title="Generate OAuth Client Credentials Grant">
-    If the authorisation type is `OAuth Client Credentials Grant` then select
-    `Application Type` to be `Machine to Machine`.
 
-    Generate the `Client Secret` and select the appropriate access control and security profiles.
+  <Step title="Configure OAuth Client Credentials">
+    For authorization type `OAuth Client Credentials Grant`:
+    1. Select `Machine to Machine` as the `Application Type`
+    2. Generate a `Client Secret`
+    3. Configure appropriate access control and security profiles
     <Frame>
       <img
         className="rounded-md"
         style={{ margin: "0 auto", border: "1px solid #efefef" }}
-        alt="login config"
+        alt="Client Credentials Configuration"
         src="/images/ukgready/image15.png"
       />
     </Frame>
-    Once you're happy with the configuration - click `Save` and enter
-    the `Client_ID` and `Client Secret` in the respective fields during the account linking process.
-
+    Click `Save` and copy both the `Client_ID` and `Client Secret`. You'll need
+    these during the account linking process.
   </Step>
 </Steps>
 
 ## Job Change Reason Codes
 
-UKG Ready requires a Job Change Reason Code when assigning a job to a new hire, or changing an employee's job. At least one of these fields is required if employee jobs will be assiged via this connection.
+UKG Ready requires Job Change Reason Codes when assigning jobs to new hires or modifying existing employee positions. At least one code is required if you plan to manage employee jobs through this integration.
 
 <Steps>
-  <Step>
-    Click ≡ at the top-left corner.
+  <Step title="Access Menu">
+    Click the menu icon (≡) in the top-left corner.
     <Frame>
       <img
         className="rounded-md"
@@ -194,34 +192,33 @@ UKG Ready requires a Job Change Reason Code when assigning a job to a new hire, 
     </Frame>
   </Step>
 
-  <Step>
-    Navigate to `Settings > HR Setup > Company Setup > Job Change Reason Codes`.
+  <Step title="Navigate to Job Change Codes">
+    Go to `Settings > HR Setup > Company Setup > Job Change Reason Codes`.
     <Frame>
       <img
         className="rounded-md"
         style={{ margin: "0 auto", border: "1px solid #efefef" }}
-        alt="global setup"
+        alt="Global Setup"
         src="/images/ukgready/image16.png"
       />
     </Frame>
   </Step>
 
-  <Step>
-    The existing codes for your company will be displayed here. 
+  <Step title="Select or Create Codes">
+    Review your company's existing codes. You'll need:
 
-    For the **Job Change Reason Code - New Hire** field, we recommend using a code of Type "New Hire".
+    - For **Job Change Reason Code - New Hire**: Select a code with Type "New Hire"
+    - For **Job Change Reason Code - Other**: Select a code with Type "Other"
 
-    For the **Job Change Reason Code - Other** field, we recommend using a code of Type "Other".
+    To create a new code, click the `ADD NEW` button in the top-right corner.
 
-    You can create a new code by clicking the `ADD NEW` button in the top-right.
-
-    Copy the **Name** of each code you wish to use.
+    Make note of the **Name** for each code you plan to use.
   </Step>
 </Steps>
 
 ## Connecting with StackOne
 
-Upon reaching the Link Account page, enter the following credentials:
+On the Link Account page, provide these credentials:
 - UKG Ready URL
 - Client ID
 - Client Secret
@@ -229,7 +226,7 @@ Upon reaching the Link Account page, enter the following credentials:
 - Job Change Reason Code - New Hire (optional)
 - Job Change Reason Code - Other (optional)
 
-Proceed by clicking the Connect button.
+Click Connect to complete the integration.
 
 <Frame>
     <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/webflowworkspace/image3.png" />

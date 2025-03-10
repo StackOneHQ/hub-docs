@@ -1,21 +1,21 @@
 ---
-title: "Hibob - Service User"
-description: "Follow these steps to connect Hibob via the StackOne Hub successfully."
+title: "HiBob - Service User"
+description: "Follow these steps to connect HiBob via the StackOne Hub successfully."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
-  Ensure you have Admin privileges for your Hibob account.
+  Ensure you have Admin privileges for your HiBob account.
 </Warning>
 
-If you've been directed to StackOne to integrate with Hibob, the following steps will help you understand the process and any necessary actions to configure successful integration.
+If you've been directed to StackOne to integrate with HiBob, the following steps will help you understand the process and any necessary actions to configure a successful integration.
 
 ## Creating a new Service User
 
 <Steps>
   <Step title="Navigate to Service Users">
-    Using the left menu, select Settings > Integrations, select Automation under Categories. Click Manage under the Service Users Icon.
+    From the left menu, select Settings > Integrations. Then, select Automation under Categories. Click Manage under the Service Users icon.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Service Users" src="/images/hibob-service-user/image1.png" />
@@ -31,7 +31,7 @@ If you've been directed to StackOne to integrate with Hibob, the following steps
   </Step>
 
   <Step title="Fill in Details">
-    Fill in the details with relevant information and click Next.
+    Enter the required information in the form and click Next.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Fill Details" src="/images/hibob-service-user/image3.png" />
@@ -39,7 +39,7 @@ If you've been directed to StackOne to integrate with Hibob, the following steps
   </Step>
 
   <Step title="Copy Service User ID and Token">
-    Copy Service User ID and Token to a safe place, since the token cannot be retrieved after this. However, the token can be reset and a new one created.
+    Copy both the Service User ID and Token to a secure location. Note that the token cannot be retrieved after this step, though you can reset it to generate a new one if needed.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Service User ID and Token" src="/images/hibob-service-user/image4.png" />
@@ -47,21 +47,21 @@ If you've been directed to StackOne to integrate with Hibob, the following steps
   </Step>
 
   <Step title="Finish Creation">
-    Click Done and the Service User is created.
+    Click Done to complete the Service User creation process.
   </Step>
 </Steps>
 
-## Access permissions for the Service User
+## Access Permissions for the Service User
 
-The newly created Service User account has no access permissions, so you won't be able to retrieve data. Creating Permissions Groups is an additional process that is best described by Hibob:
+The newly created Service User account initially has no access permissions. You'll need to set up permissions to enable data retrieval. We recommend following HiBob's guide for creating permission groups:
 
 [Creating a Custom Permissions Group](https://help.hibob.com/hc/en-us/articles/4409776408209-Create-a-custom-permission-group)
 
-Once you have a permissions group for your service users, or already have a permissions group set up, you can add your new Service User to this group.
+Once you've created a permissions group or if you already have one configured, add your new Service User to this group.
 
-Ensure the following are enabled:
+Ensure the following permissions are enabled:
 
-*In `Features` tab*
+*In the `Features` tab*
 <Accordion title="People">
 <Frame>
   <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Feature permission for its People subsection" src="/images/hibob-service-user/image_features_tab.png" />
@@ -70,17 +70,19 @@ Ensure the following are enabled:
   - View the company's people directory
 - Employees
   - Add new people to the company
-- Organisational chart
+- Organizational chart
   - Export the company's org chart
   - View the company's org chart
 </Accordion>
 
-
-*In `People's Data` tab*
+*In the `People's Data` tab*
 <Accordion title="People">
 <Frame>
-  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Subsectionof the people data permission" src="/images/hibob-service-user/image_people_data_tab.png" />
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Subsection of the people data permission" src="/images/hibob-service-user/image_people_data_tab.png" />
 </Frame>
+
+Required permissions by section:
+
 - About
   - Edit selected employees' About sections
   - View selected employees' About sections
@@ -88,7 +90,7 @@ Ensure the following are enabled:
   - Edit selected employees' Address sections
   - View selected employees' Address section histories
   - View selected employees' Address sections
-- Basic info
+- Basic Info
   - Edit selected employees' Basic info sections
   - View selected employees' Basic info sections
 - EEO
@@ -124,59 +126,59 @@ Ensure the following are enabled:
   - Edit selected employees' Payroll sections
   - View selected employees' Payroll section histories
   - View selected employees' Payroll sections
-- People analytics
+- People Analytics
   - View selected employees' People analytics section histories
   - View selected employees' People analytics sections
 - Personal
   - Edit selected employees' Personal sections
   - View selected employees' Personal section histories
   - View selected employees' Personal sections
-- Personal contact details
+- Personal Contact Details
   - Edit selected employees' Personal contact details sections
   - View selected employees' Personal contact details sections
 - Training
   - Edit selected employees' Training sections
   - View selected employees' Training sections
-- User data
+- User Data
   - Edit selected employees' User data sections
   - View selected employees' User data sections
 - Work
   - Edit selected employees' Work sections
   - View selected employees' Work section histories
   - View selected employees' Work sections
-- Work contact details
+- Work Contact Details
   - Edit selected employees' Work contact details sections
   - View selected employees' Work contact details sections
-- Work eligibility
+- Work Eligibility
   - Edit selected employees' Work eligibility sections
   - View selected employees' Work eligibility sections
 </Accordion>
 
 <Accordion title="Documents">
-- Confidential Docs
-  - Upload selected employees’ docs in the folder
+- Confidential Documents
+  - Upload selected employees' docs in the folder
   - View selected employees' docs in the folder
-- Shared Docs
-  - Upload selected employees’ docs in the folder
+- Shared Documents
+  - Upload selected employees' docs in the folder
   - View selected employees' docs in the folder
 </Accordion>
 
-<Accordion title="Time off">
+<Accordion title="Time Off">
 - Balance
   - Bank overtime on behalf of their employees
   - See selected people's time off and sick leave balances
-  - View, approve or decline requests that are pending approval of others
-- See who's out today
+  - View, approve, or decline requests that are pending approval of others
+- See Who's Out Today
   - See who's out today
 </Accordion>
 
 <Warning>
-  Required permissions may be subject to change.
+  Required permissions may be subject to change in future updates.
 </Warning>
 
 <Steps>
   <Step title="Navigate to Permissions Groups">
-    Go to Settings in the left menu and click Permissions Groups under the Account heading. Click on the group you have made for your Service Users.
+    From the left menu, go to Settings and click Permissions Groups under the Account heading. Select the group you created for your Service Users.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Permissions Groups" src="/images/hibob-service-user/image5.png" />
@@ -184,7 +186,7 @@ Ensure the following are enabled:
   </Step>
 
   <Step title="Edit Permissions Group">
-    In the permissions group page, click the Group Actions dropdown and select Edit Details from the list; this will open a new modal.
+    On the permissions group page, click the Group Actions dropdown and select Edit Details to open a new modal.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Details" src="/images/hibob-service-user/image6.png" />
@@ -192,18 +194,19 @@ Ensure the following are enabled:
   </Step>
 
   <Step title="Select People By Condition">
-    If you're updating an existing Group, you may not want to change the setting in the radio button selection. But if it is a new group, click Select People By Condition; if it is already selected, continue.
+    For new groups, select "Select People By Condition." If this option is already selected, proceed to the next step.
 
     <Warning>
-      If the Group Members setting is Select People by Name, you won't be able to add the Service User to this group and should create another permissions group for your Service Users.
+      If "Select People by Name" is selected in the Group Members setting, you won't be able to add the Service User to this group. In this case, create a new permissions group for your Service Users.
     </Warning>
+
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select People By Condition" src="/images/hibob-service-user/image7.png" />
     </Frame>
   </Step>
 
   <Step title="Add Specific Employees">
-    Once the new modal has opened titled Select People By Condition, click the dropdown under Add Specific Employees. You can select all Service Users or individually as required, then click Apply and Apply again and finally Save.
+    In the "Select People By Condition" modal, click the dropdown under Add Specific Employees. You can select all Service Users or choose them individually as needed. Click Apply twice, then Save to confirm your changes.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Specific Employees" src="/images/hibob-service-user/image8.png" />
@@ -211,9 +214,9 @@ Ensure the following are enabled:
   </Step>
 </Steps>
 
-## Link your Hibob account with StackOne
+## Link Your HiBob Account with StackOne
 
-Use the Service User ID and the Service User Token generated in Step 1 to authenticate using the Service User account.
+Use the Service User ID and Service User Token generated in Step 1 to authenticate your Service User account.
 
 <Frame>
   <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/hibob-service-user/image9.png" />
@@ -225,4 +228,3 @@ Use the Service User ID and the Service User Token generated in Step 1 to authen
 <Card title="API Reference" icon="link" href="https://apidocs.hibob.com/docs">
     https://apidocs.hibob.com/docs
 </Card>
-

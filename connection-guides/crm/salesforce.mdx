@@ -6,30 +6,30 @@ description: "Follow these steps to connect Salesforce with StackOne Hub success
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
-  Ensure you have Admin privileges for your Salesforce account.
+  Ensure you have Administrator privileges for your Salesforce account.
 </Warning>
 
-If you've been directed to StackOne to integrate with Salesforce, the following steps will help you understand the process and any necessary actions to configure successful integration.
+If you've been directed to StackOne to integrate with Salesforce, follow these steps to configure a successful integration.
 
-## Generating your API credentials
+## Generating Your API Credentials
 
 <Steps>
   <Step title="Sign in to Salesforce">
-    Sign in to the Salesforce Developer and click on the Setup ⚙️ icon on the top-right menu.
+    Sign in to Salesforce Developer and click on the Setup ⚙️ icon in the top-right menu.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Setup icon" src="/images/salesforce/image1.png" />
     </Frame>
   </Step>
 
   <Step title="Navigate to App Manager">
-    From the left navigation in the Platform Tools section, select Apps > App Manager, then click on the New Connected App button in the top-right corner.
+    In the Platform Tools section of the left navigation, select Apps > App Manager. Then, click the New Connected App button in the top-right corner.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="App Manager" src="/images/salesforce/image2.png" />
     </Frame>
   </Step>
 
   <Step title="Enter Application Information">
-    In the New Connected App Basic Information section, you can enter your application-specific information, such as:
+    In the New Connected App Basic Information section, enter your application-specific details:
     <ul>
       <li>Connected App Name</li>
       <li>API Name</li>
@@ -41,28 +41,30 @@ If you've been directed to StackOne to integrate with Salesforce, the following 
   </Step>
 
   <Step title="Enable OAuth Settings">
-    Click on the checkbox for Enable OAuth Settings, which will open an additional section to configure your OAuth settings. In Callback URL, specify the StackOne OAuth2 URLs as follows:
+    Check the Enable OAuth Settings box to reveal additional OAuth configuration options. In the Callback URL field, enter the StackOne OAuth2 URL:
     <code>https://api.stackone.com/connect/oauth2/salesforce/callback</code>
   </Step>
 
   <Step title="Select OAuth Scopes">
-    Under Selected OAuth Scopes, you should select the following entries:
+    Under Selected OAuth Scopes, select these required permissions:
     <ul>
       <li>Manage user data via APIs</li>
       <li>Perform requests at any time</li>
     </ul>
-    The Require Secret for Web Server Flow and Require Secret for Refresh Token Flow checkboxes will be selected by default - leave these two options selected.
+    Leave the default selections enabled for:
+    - Require Secret for Web Server Flow
+    - Require Secret for Refresh Token Flow
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="OAuth Scopes" src="/images/salesforce/image4.png" />
     </Frame>
 
     <Note>
-    Note: You do not need to select or enable any of the subsequent options in the OAuth section
+      You do not need to enable any additional options in the OAuth section
     </Note>
   </Step>
 
   <Step title="Save the Settings">
-    Ensure to click Save. You will be taken to the connected app page, where you can use the Manage Consumer Details button to reveal your Client ID and Client Secret. You may be challenged to verify the logged-in account at this point. You will then be shown the consumer details, which you should copy and keep safe - these will be used in the StackOne Hub to configure your integration.
+    Click Save to proceed to the connected app page. Use the Manage Consumer Details button to view your Client ID and Client Secret. You may need to verify your account credentials at this step. Copy and securely store these credentials - you'll need them to configure your StackOne Hub integration.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Client ID and Client Secret" src="/images/salesforce/image5.png" />
     </Frame>
@@ -72,20 +74,20 @@ If you've been directed to StackOne to integrate with Salesforce, the following 
 ## Connecting with StackOne Hub
 
 <Steps>
-  <Step title="Create a new Integration">
-    Create a new Integration with Salesforce by selecting Salesforce as your CRM provider.
+  <Step title="Create a New Integration">
+    Start a new integration by selecting Salesforce as your CRM provider.
   </Step>
 
   <Step title="Enter Credentials">
-    Paste the Client ID and Client Secret into the Credentials box and your Salesforce URL that looks something like:
-    <code>https://acme.my.salesforce.com</code>
+    Enter your Client ID, Client Secret, and your Salesforce URL in the following format:
+    <code>https://your-domain.my.salesforce.com</code>
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Salesforce URL" src="/images/salesforce/image6.png" />
     </Frame>
   </Step>
 
   <Step title="Connect">
-    Then click the Connect button. The Salesforce tab will open to review and approve the connection.
+    Click the Connect button. A Salesforce tab will open for you to review and approve the connection.
   </Step>
 </Steps>
 
@@ -93,24 +95,27 @@ If you've been directed to StackOne to integrate with Salesforce, the following 
 
 ## Useful Links
 <Card title="API Reference" icon="link" href="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm">
-    https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm
+    Salesforce REST API Documentation
 </Card>
-
 
 ## Troubleshooting
 
 ### Error: The REST API is not enabled for this Organization
 
-This error message indicates that the account you have used to connect to Salesforce does not have API access enabled. This is based on the edition you are using (see [here](https://help.salesforce.com) for a description of the editions). The Developer Edition has API access, and an account with this profile should be used.
+This error occurs when your Salesforce account doesn't have API access enabled. API access varies by Salesforce edition (see [Salesforce Editions](https://help.salesforce.com)). We recommend using a Developer Edition account, which includes API access by default.
 
-### Error: invalid_client_id when linking the account
+### Error: invalid_client_id when Linking the Account
 
-If you receive an error when linking accounts similar to the following:
+If you receive this error:
 <code>error=invalid_client_id&error_description=client%20identifier%20invalid</code>
-It can indicate that the Salesforce side still needs to be updated. Although Salesforce quotes up to 10 minutes after generating credentials for this to work, we have observed this taking up to 20 minutes to take effect. Please wait and try again.
+
+This indicates that your Salesforce credentials are still being processed. While Salesforce states this can take up to 10 minutes, we've observed processing times of up to 20 minutes. Please wait and try again.
 
 ### Error: redirect_uri must match configuration
 
-If you receive an error when linking accounts similar to the following:
+If you receive this error:
 <code>error=redirect_uri_mismatch&error_description=redirect_uri%20must%20match%20configuration</code>
-This indicates that the redirect URI you have used in the Salesforce Connected App is not correct. This should be set to the StackOne OAuth2 URL <code>https://api.stackone.com/connect/oauth2/salesforce/callback</code> as described in the section Enable OAuth Settings above.
+
+This means your Salesforce Connected App's redirect URI is incorrect. Ensure it matches exactly:
+<code>https://api.stackone.com/connect/oauth2/salesforce/callback</code>
+as specified in the OAuth Settings section above.
