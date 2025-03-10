@@ -1,0 +1,54 @@
+---
+title: "Workday Rejected Reasons Configuration"
+description: "To configure the rejected reasons in workday job applications"
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes that you have admin privileges for your Workday account.
+</Warning>
+
+<Steps>
+  <Step title="Log in to your Workday account and search for the Maintain Recruiting Dispositions task">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Webhook" src="/images/workday-rejected-reasons-configuration/workday-reject-1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Fill in the required details to add a new Disposition Category (Rejected Reason), then click the OK button.">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Events" src="/images/workday-rejected-reasons-configuration/workday-reject-2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Search for the BP: Job Application task and select Job Application (Default Definition).">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search IS" src="/images/workday-rejected-reasons-configuration/workday-reject-3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click on the Edit Dynamic Definition button.">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Endpoint Attribute" src="/images/workday-rejected-reasons-configuration/workday-reject-4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="A pop-up will appear. Click the OK button.">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Endpoint Attribute" src="/images/workday-rejected-reasons-configuration/workday-reject-5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select the stage, add a new row by clicking the + icon, choose the possible disposition for the chosen stage of the application, and click the OK button.">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Endpoint Attribute" src="/images/workday-rejected-reasons-configuration/workday-reject-6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="When you decline a candidate from any stage, you will see the dispositions/rejected reasons that are configured for that specific stage.">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Endpoint Attribute" src="/images/workday-rejected-reasons-configuration/workday-reject-7.png" />
+    </Frame>
+  </Step>
+</Steps>
