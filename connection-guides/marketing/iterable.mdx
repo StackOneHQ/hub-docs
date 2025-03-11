@@ -1,0 +1,84 @@
+---
+title: "Iterable"
+description: "Follow these steps to connect Iterable with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you are an **org admin** or have the ***Manage Integrations*** project permission for your Iterable account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Iterable, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Find your Iterable region (EU or US)
+
+<Steps>
+  <Step title="Login to Iterable">
+    Login to your Airship tenant.
+
+    Check your browser's URL bar. The URL will indicate which region you are on:
+    `https://app.iterable.com` - US
+    `https://app.eu.iterable.com` - EU
+  </Step>
+</Steps>
+
+## Create an API key
+
+<Steps>
+  <Step title="Select Project">
+    Click on your account name/icon and select the project you wish to connect to.
+
+    <Frame as="div">
+      ![](/images/iterable/iterable-01)
+    </Frame>
+
+
+  </Step>
+
+  <Step title="Select API Keys">
+    Open the Integrations dropdown and select API Keys.
+
+    <Frame>
+      ![](/images/iterable-02.png)
+    </Frame>
+  </Step>
+
+  <Step title="Copy App Key">
+    Within Project Details on the right side, copy the App Key.
+
+    <Frame>
+      <img className="rounded-md" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="App Key" src="/images/airship/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Retrieve your Master Secret
+
+<Steps>
+  <Step title="Reveal Master Secret">
+    Within the Project Details panel, select "Click to reveal" next to Master Secret.
+
+    <Frame>
+      <img className="rounded-md" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Reveal Master Secret" src="/images/airship/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Master Secret">
+    Copy the contents of Master Secret.
+  </Step>
+</Steps>
+
+## Input the collected inputs into the StackOne hub
+
+<Steps>
+  <Step title="Enter the Details">
+    On the link account page, enter the details you have collected and click the `Connect` button.
+
+    <Frame>
+      <img className="rounded-md" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/airship/image6.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
