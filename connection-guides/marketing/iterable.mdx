@@ -1,17 +1,10 @@
----
-title: "Iterable"
-description: "Follow these steps to connect Iterable with StackOne Hub successfully."
----
-
-import IntegrationFooter from "/snippets/integration-footer.mdx";
-
 <Warning>
   Ensure you are an **org admin** or have the ***Manage Integrations*** project permission for your Iterable account.
 </Warning>
 
 If you've been directed to StackOne to integrate with Iterable, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
-## Find your Iterable region (EU or US)
+## Find your Iterable region (US or EU)
 
 <Steps>
   <Step title="Login to Iterable">
@@ -29,10 +22,8 @@ If you've been directed to StackOne to integrate with Iterable, the following st
   <Step title="Select Project">
     Click on your account name/icon and select the project you wish to connect to.
 
-    <Frame as="div">
-      <img width="480px" src="/images/iterable/iterable-01-project.png" />
-
-      ![](/images/iterable/iterable-01-project.png)
+    <Frame>
+      <img className="rounded-md" width="420px" style={{ margin: '0 auto', border: '1px solid #efefef' }} src="/images/iterable/iterable-01-project.png" />
     </Frame>
   </Step>
 
@@ -40,16 +31,21 @@ If you've been directed to StackOne to integrate with Iterable, the following st
     Open the Integrations dropdown and select API Keys.
 
     <Frame>
-      ![](/images/iterable/iterable-02-integrations.png)
+      <img className="rounded-md" width="420px" style={{ margin: '0 auto', border: '1px solid #efefef' }} src="/images/iterable/iterable-02-integrations.png" />
     </Frame>
   </Step>
 
-  <Step title="Copy App Key">
-    Within Project Details on the right side, copy the App Key.
+  <Step title="Click New API Key" />
 
-    <Frame>
-      <img className="rounded-md" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="App Key" src="/images/airship/image4.png" />
-    </Frame>
+  <Step title="Create API Key">
+    Enter a **Name** for the API Key
+    Select the **Type** as `Server-side`
+
+    Click **Create API Key**
+  </Step>
+
+  <Step title="Copy API Key">
+    Copy the API Key, this will be used later.
   </Step>
 </Steps>
 
