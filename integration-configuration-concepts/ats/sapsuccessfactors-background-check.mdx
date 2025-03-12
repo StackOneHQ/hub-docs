@@ -83,12 +83,20 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 
   <Step title="Configure Fields Step">
-    Click the `+` button and select the _Insert Sibling Element_ and _Add Child Element_ options to add new fields to map with the OData API entity's fields
+    Click on the `+` button > _Insert Sibling Element_, then click on the inserted element to open a prompt where you can enter the name of the element.
+    <Info>
+      Please refer the mapping listed <a href="#please-follow-the-mapping-below-to-receive-the-correct-order-notification">here</a>.
+    </Info>
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select option to map fields" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_configure_fields_9.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select option to map fields" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integrtion_center_config_fields_54.png" />
     </Frame>
 
-    Click on the inserted element to open a prompt where you can enter the name of the field. Then, click on the `Set as Associated Field` icon.
+    Click the `+` button > _Add Child Element_ for the added element and then click on the inserted element to open a prompt where you can enter the name of the child element.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select option to map child fields" src="/images/sapsuccessfactors/background-check/sap_sf_bc_integration_center_config_fields_53.png" />
+    </Frame>
+
+    To set the association for added element. Click on the `Set as Associated Field` icon.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Open Modal to select association" src="/images/sapsuccessfactors/background-check/sap_Sf_bc_integration_center_data_field_mapping_11.png" />
     </Frame>
@@ -233,13 +241,14 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Recruiting Vendor Integration Mapping" src="/images/sapsuccessfactors/background-check/sap_sf_bc_manage_data_recruiting_vendor_integration_mapping_22.png" />
     </Frame>
     
-    Enter the External Code, select your Vendor Name, choose your Integration Name from the dropdown, and set the Default integration value to `Yes`. Click `Save` to save the mapping between the vendor and integration.
+    Enter the External Code, select your Vendor Name, choose your Integration Name from the dropdown, and set the Default integration value to `Yes`. 
+    
+    Enter a numeric value in the _Hours Before User Can Reinitiate_ field. This field currently has no functionality in SAP SF. 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter all required details of Recruiting Vendor Integration Mapping" src="/images/sapsuccessfactors/background-check/sap_sf_bc_manage_data_fill_details_23.png" />
     </Frame>
 
-    Enter a numeric value in the _Hours Before User Can Reinitiate_ field. This field currently has no functionality in SAP SF.
-
+    Click `Save` to save the mapping between the vendor and integration.
     <Info>
       Only one `Recruiting Vendor Integration Mapping` can be active at a time. To set the selected vendor integration as active for the instance, select `Yes` in the **Default Integration** field.
     </Info>
@@ -350,7 +359,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     </Frame>
 
     <Info>
-      You can create multiple accounts with a single third-party background check vendor. This field allows recruiters to select which account to use.
+      You can create multiple accounts with a single third-party background check vendor. All accounts added in this picklist will be available for recruiters to choose as the Background Check Account under the Job Requisition details.
     </Info>
   </Step>
 </Steps>
@@ -377,7 +386,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     </Frame>
 
     <Info>
-      Recruiters can choose the package they want to apply to the job requisition.
+      All packages added in this picklist will be available for recruiters to choose as the Background Check Package to apply on the Job Requisitions.
     </Info>
   </Step>
 </Steps>
