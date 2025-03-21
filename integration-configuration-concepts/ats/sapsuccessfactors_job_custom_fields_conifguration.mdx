@@ -1,0 +1,125 @@
+---
+title: "SAP Success Factors Job Custom Field Configuration"
+description: "To create and view job custom field in SAP SuccessFactors, follow these steps"
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes that you have admin privileges for your SAP SuccessFactors account.
+</Warning>
+
+## Create SAP SuccessFactors Job Custom Field
+
+<Steps>
+  <Step title="Search for ‘Manage Templates'">
+    Search for 'Manage Templates' in the search bar and select it.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Manage Templates" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-01.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select the 'Recruiting Management' tab">
+    Select the 'Recruiting Management' tab on the Manage Templates screen.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Recruiting Management" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-02.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select the Job Requisition">
+    Select the Job Requisition template type
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Job Requisition Template Type" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-03.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select template">
+    Select any template in which you want to add a custom field.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Template" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-04.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select 'Click to Modify Defined Fields'">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click to Modify Fields" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-05.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add a Custom Field">
+    Click 'Add', then select 'Add Custom Field'
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Custom Field" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-06.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter Field Details">
+    Enter the Field ID, select the Field Type, and add the Field Label as required, and click Done.
+    <Note>
+        Note: You can configure the tab where the custom field should appear using the top and bottom arrows.
+    </Note>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Field Details" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-07.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Click to Modify Field Permissions">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Modify Permissions" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-08.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click 'Add field permissions'">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Field Permissions" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-09.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Field Permissions">
+    Enter the Permission Description, select the Field Type Permission, choose the Appropriate Role Name, select the newly created Custom Field in the Field Reference ID, set the Field Permission Status, and click Done.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Configure Field Permissions" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-10.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Now Click 'Publish'">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Publish" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-11.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click 'Yes'">
+    Click "Yes" to proceed.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Yes" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-12.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## View SAP SuccessFactors Job Custom Field
+
+<Steps>
+  <Step title="Search for 'View job requisitions'">
+    Search for 'View job requisitions' in the search bar and select it.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search View job requisitions" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-view-01.png" />
+    </Frame>
+  </Step>
+  
+  <Step title="Select Job Requisition">
+    Select any Job Requisition that was created using the specific template where the custom field was added.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Job Requisition" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-view-02.png" />
+    </Frame>
+  </Step>
+
+  <Step title="View Custom Field">
+    The newly created Custom Field will be displayed on this screen.
+    <Note>
+        Note: The custom field is currently displayed under the "Additional Comments" tab. To modify its placement, follow Step 7 of the "Create SAP SuccessFactors Job Custom Field" process.
+    </Note>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Custom Field" src="/images/sapsuccessfactors/job-custom-field/job-custom-field-view-03.png" />
+    </Frame>
+  </Step>
+</Steps>
