@@ -1,0 +1,73 @@
+---
+title: "Hibob Time-off Webhook Configuration"
+description: "To successfully configure the webhook and send the event on action of time-off"
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  The following guidance assumes you have Admin privileges for your Hibob
+  account.
+</Warning>
+
+## To Get External Trigger Token
+<Steps>
+  <Step title="To get the External Trigger Token">
+    From the StackOne hub, you will receive the `External Trigger Token` needed to enable the Hibob Time-off webhook.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/hibob-time-off-webhook/webhook-1.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## To enable Time-off Webhook events
+<Steps>
+  <Step title="Go to Integration">
+    Please navigate to the `Hibob` Dashboard, click on `Menu`, select `System Settings`, and then click on `Integrations`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/hibob-time-off-webhook/webhook-2.png" />
+    </Frame>
+  </Step>
+  <Step title="Enable the webhook">
+    Search for the `webhook` in the search bar and click the `Connect` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/hibob-time-off-webhook/webhook-3.png" />
+    </Frame>
+  </Step>
+  <Step title="Add webhook">
+    The following screen will appear as shown below. To add the webhook, click the` Add Webhook` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/hibob-time-off-webhook/webhook-4.png" />
+    </Frame>
+  </Step>
+  <Step title="Webhook Configurations">
+    Please provide the required details to configure the webhook for `time-off` events:
+    - **Name**: Enter the webhook name.
+    - **Endpoint URL**: Use the base URL provided by the partner and append your external trigger token from StackOne Hub as follows:
+      `BASE_URL?externalTriggerToken=<Your_External_Trigger_Token>`
+    - **Version**: Select the webhook version.
+    - **Events**: Choose the time-off event types.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/hibob-time-off-webhook/webhook-5.png" />
+    </Frame>
+    Check the Exclude Event checkbox if you don’t want to fetch system-triggered events.
+    Select the people for triggering the event, then click the `Add` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/hibob-time-off-webhook/webhook-6.png" />
+    </Frame>
+  </Step>
+  <Step title="Webhook Connected">
+    The following screen will appear as shown below once you have successfully configured the webhook.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/hibob-time-off-webhook/webhook-7.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://apidocs.hibob.com/reference/time-off-webhook-events">
+    https://apidocs.hibob.com/reference/time-off-webhook-events
+</Card>

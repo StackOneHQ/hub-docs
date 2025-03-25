@@ -1,0 +1,111 @@
+---
+title: "Docebo"
+description: "If you've been directed to StackOne to integrate with Docebo, the following steps will help you understand the process and any necessary actions to configure successful integration."
+---
+
+<Warning>
+  This guidance assumes you have Admin privileges for your Docebo account.
+</Warning>
+
+## Create Integrations App
+
+<Steps>
+  <Step title="Log into Docebo">
+    Log into your Docebo account.
+  </Step>
+
+  <Step title="Navigate to API AND SSO">
+    Click on `Admin Menu` in the top right corner.
+
+    Select `Manage` under `API AND SSO`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/docebo/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add OAuth App">
+    From the `API and SSO` menu on the left of the screen select `API Credentials`.
+    
+    Configure a new authentication app by selecting `Add OAuth2 App`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/docebo/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create a New OAuth App">
+    Enter the name of the app (e.g. Production, Development)
+
+    Enter `Description` and `Client ID`.
+
+    Enter the Redirect URI (e.g. Production: https://api.stackone.com/connect/oauth2/docebo/callback)
+
+    `Production: https://api.stackone.com/connect/oauth2/docebo/callback`
+
+    Select the required `Grant Types`.
+
+    Record the `Client ID` and `Client Secret` for use in the next steps.
+
+    Click `Confirm`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/docebo/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enable the OAuth App">
+    Enable the OAuth app by clicking the green tick icon.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/docebo/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Find domain">
+   You can find the domain by taking the root URL from the address bar of your Docebo account and only taking the part before .docebosaas.com and after the https://.
+
+   E.g. If your url is `https://my-domain.docebosaas.com` the domain is `my-domain`.
+  </Step>
+
+  <Step title="Linking xAPI Content as Training Material">
+    Go to `Admin Menu` → `Settings` → `Advanced Settings`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/docebo/image8.png" />
+    </Frame>
+
+    Select the `E-learning` tab and scroll down to `xAPI (Tin Can) external content`.
+
+    Add your content domain ( e.g., https://www.test.com/* ). You can configure up to 20 domains, and use wildcard (*) if you want to upload full URLs.
+
+    Click `Add` and then `Save`.
+
+    Use this domain in the `content_url` field of your API request when upserting content.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/docebo/image7.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Linking to StackOne
+
+You can use the Client ID and Client Secret to link your Docebo account to StackOne.
+  <Steps>
+    <Step title="Link Docebo Account">
+      In the StackOne dashboard, navigate to the `Accounts` page.
+
+      Click `Link Account` and select Docebo.
+
+      In the modal enter the `Client ID`, `Client Secret`, `Subdomain`, `Username` and `Password` from the previous steps.
+
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/docebo/image5.png" />
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/docebo/image6.png" />
+      </Frame>
+
+      Click `Connect`.
+    </Step>
+
+  </Steps>
