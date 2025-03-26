@@ -61,7 +61,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Steps>
   <Step title="Create Background Check Packages">
-    Navigate to the <i>Maintain Background Check Packages</i> page, add background check package or you can utilize <a href="https://docs.stackone.com/ats/api-reference/background-checks/packages/create-background-check-package" target="_blank">Background Checks Unified APIs</a>
+    Navigate to the <i>Maintain Background Check Packages</i> page, add background check package or you can utilize <a href="https://docs.stackone.com/ats/api-reference/background-checks/packages/create-background-check-package" target="_blank">Background Checks Unified APIs</a> to create
     
     <Info>
       These background check packages will be available during the background check submission for candidate.
@@ -96,7 +96,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 
   <Step title="No Listed Job Requisitions">
-    If you haven't listed jobs under `Positions with Open Job Requisition`, find `Create Position` under Staffing in the 3-dot menu.
+    If you haven't had jobs listed under `Positions with Open Job Requisition`, find `Create Position` under Staffing in the 3-dot menu.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Job Position" src="/images/workday-background-check/workday_bc_super_org_create_position_7.png" />
     </Frame>
@@ -128,7 +128,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Steps>
   <Step title="Select to update the Integration System">
-    Navigate to the <i>Background Check Business Process</i> page. Then, click on the `Configure StackOne_IS_System` button.
+    Navigate to the <i>Background Check Business Process</i> page. Then, click on the `Configure Integration System` button.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="BP Config IS" src="/images/workday-background-check/workday_bc_IS_business_process_step_b_12.png" />
     </Frame>
@@ -176,7 +176,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     - **New Password/Verify Password:** [You can enter any text here]
 
     <Info>
-      [Endpoint URL], you'll get from StackOne & Pick the [External Trigger Token] from StackOne Integration Hub during connection.
+      You'll get [Endpoint URL] from StackOne & Pick the [External Trigger Token] from StackOne Integration Hub that will be visible during connection.
     </Info>
 
     <Frame>
@@ -199,7 +199,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 
   <Step title="Select the listed Job Requisition">
-    Please select the job from the dropdown menu listed above.
+    Please select the job which you have created in the supervisory organization under Staffing from the dropdown menu listed above.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Job Apply" src="/images/workday-background-check/workday_bc_candidate_profile_applied_to_job_18.png" />
     </Frame>
@@ -213,19 +213,19 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Steps>
   <Step title="Go to the Job Requisition">
-    Navigate to the <i>Job Requisitions</i> page by selecting the same Job Requisition from the pop-up where the candidate applied for the job.
+    Navigate to the <i>Job Requisitions</i> page by selecting the same Job Requisition from the pop-up for which candidate has applied.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View JR" src="/images/workday-background-check/workday_bc_view_JR_19.png" />
     </Frame>
 
-    Navigate to the `Candidate` tab and select the `Review` tab, where the candidate will be displayed in the grid below.
+    Navigate to the `Candidate` tab and select the `Review` tab, where the candidate will be displayed in the grid.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Job Apply" src="/images/workday-background-check/workday_bc_JR_20.png" />
     </Frame>
   </Step>
 
   <Step title="Move Candidate from Review to Background Check stage">
-    Check the candidate in the grid and click the `Move Forward` button.
+    Select the candidate in the grid and click the `Move Forward` button.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View JR" src="/images/workday-background-check/workday_bc_jr_move_button_21.png" />
     </Frame>
@@ -245,8 +245,6 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View JR" src="/images/workday-background-check/workday_bc_jr_bc_satge_success_23.png" />
     </Frame>
-
-    If you're unable to move the candidate to the background check stage directly, then shift the stages one at a time.
   </Step>
 </Steps>
 
@@ -262,7 +260,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 
   <Step title="Send the Background Check Invitation">
-    Please select the Background Check Packge that you have created above <a href="#create-background-check-packages-in-workday">step</a> from the dropdown menu.
+    Please select the Background Check Packge that you have created <a href="#create-background-check-packages-in-workday">above</a> from the dropdown menu.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Send Invite" src="/images/workday-background-check/workday_bc_jr_bc_submission_25.png" />
     </Frame>
@@ -275,7 +273,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Steps>
   <Step title="Verify the sent background check inivitation">
-    To access the _Job Application_, click on the candidate's profile. Go to the _Screening_ > Background Check History tab
+    To access the _Job Application_, click on the candidate's name. Go to the _Screening_ > Background Check History tab
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Sent Invite" src="/images/workday-background-check/workday_bc_job_application_submitted_bc_26.png" />
     </Frame>
@@ -287,7 +285,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Steps>
   <Step title="Check background check result">
-    To access the _Job Application_, click on the candidate's profile. Go to the _Screening_ > Background Check History tab
+    To access the _Job Application_, click on the candidate's name. Go to the _Screening_ > Background Check History tab
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Sent Invite" src="/images/workday-background-check/workday_bc_job_application_result_updated_27.png" />
     </Frame>
