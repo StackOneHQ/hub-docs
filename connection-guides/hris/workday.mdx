@@ -76,6 +76,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 
   <Step title="Click OK">
+    Click OK.
   </Step>
 </Steps>
 
@@ -114,25 +115,32 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   <Step title="Edit Permissions">
 
     <Info>
-      The Workday HRIS integration currently requires **all** of the permissions listed below to be enabled. 
+      The Workday HRIS integration currently requires **all** of the permissions listed below to be enabled for full support. 
 
-      Workday's API will return an error response if any of these permissions are missing.
+      Workday's API may return an error response if any of these permissions are missing.
     </Info>
 
     Edit the Domain Security Policy Permissions in the Security Group. 
 
     You can reach this interface by searching for "Maintain Permissions for Security Group" in the search bar, and selecting the name of the Security Group you created in the previous step.
     
-    Enable the **GET** operations for the following required permissions for the HRIS API:
+    This integration uses the following Workday Security Group Permissions. For each listed permission, select either **Get Only** for read-only access, or **Get and Put** for read and write access in the *View/Modify Access* column.
 
-    - **Job Requisition Data**
-    - **Job Information**
-    - **Job Profile**
-       - View
-    - **Manage**
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View/Modify Access" src="/images/workday/image13.png" />
+    </Frame>
+
+    <Info>
+      Please note that Security Group Permissions can be customized within a Workday organization, and this list does not account for such customizations.
+    </Info>
+
+    - Job Requisition Data
+    - Job Information
+    - Job Profile: View
+    - **Manage:**
       - Location
       - Organization Integration
-    - **Person Data**
+    - **Person Data:**
         - Name
         - Citizenship Status
         - Date of Birth
@@ -153,7 +161,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       - Work Address
       - Work Email
       - Work Phone
-    - **Worker Data**
+    - **Worker Data:**
       - All Positions
       - Compensation
       - Current Staffing Information
@@ -166,8 +174,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
         - Time Off Balances
         - Time Off Balances Manager View
       - Workers
-    - **View**
-      - National Identifiers - All
+    - View: National Identifiers - All
 
   </Step>
 </Steps>

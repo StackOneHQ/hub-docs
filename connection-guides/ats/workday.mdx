@@ -98,8 +98,9 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       />
     </Frame>
   </Step>
+
   <Step title="Click OK">
-    
+    Click OK.
   </Step>
 </Steps>
 
@@ -150,52 +151,58 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 <Steps>
   <Step title="Edit Permissions">
     <Info>
-      The Workday ATS integration currently requires **all** of the permissions listed below to be enabled.
+      The Workday ATS integration currently requires **all** of the permissions listed below to be enabled for full support.
 
-      Workday's API will return an error response if any of these permissions are missing.
+      Workday's API may return an error response if any of these permissions are missing.
     </Info>
-    Edit the Domain Security Policy Permissions in the Security Group.
 
-    Enable the **GET** operations for the following required permissions for the ATS API:
+    You can reach this interface by searching for "Maintain Permissions for Security Group" in the search bar, and selecting the name of the Security Group you created in the previous step.
+    
+    This integration uses the following Workday Security Group Permissions. For each listed permission, select either **Get Only** for read-only access, or **Get and Put** for read and write access in the *View/Modify Access* column.
 
-    - **Job Requisition Data**
-    - **Candidate Data**
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View/Modify Access" src="/images/workday/image13.png" />
+    </Frame>
+
+    <Info>
+      Please note that Security Group Permissions can be customized within a Workday organization, and this list does not account for such customizations.
+    </Info>
+
+    - Job Requisition Data
+    - **Candidate Data:**
       - Interview Schedule
       - Offer details
       - Other Jobs
-      - **Other Information**
-        - Photo
-        - Attachment
-      - **Personal Information**
-      - **Job Application**
-        - Interview Schedule
-        - Jobs Requisitions
-        - Offer Details
-        - Other Jobs
-    - **Person Data**
-      - **Personal Data**
-        - Name
-        - Citizenship Status
-        - Date of Birth
-        - Disabilities
-        - Gender
-        - Government IDs
-        - ID Information
-        - Marital Status
-        - National ID Identification
-        - Personal Information
-        - Photo
-      - **Home Contact Information**
-        - Home Address
-        - Home Email
-        - Home Phone
-      - **Work Contact Information**
-        - Work Address
-        - Work Email
-        - Work Phone
-    - **Pre-Hire Process Data**
-      - Contact Information
+      - Other Information
+      - Photo
+      - Attachment
+      - Personal Information
+      - Job Application
+      - Interview Schedule
+      - Jobs Requisitions
+      - Offer Details
+      - Other Jobs
+    - **Person Data:**
+      - Personal Data
       - Name
+      - Citizenship Status
+      - Date of Birth
+      - Disabilities
+      - Gender
+      - Government IDs
+      - ID Information
+      - Marital Status
+      - National ID Identification
+      - Personal Information
+      - Personal Photo
+      - Home Address
+      - Home Email
+      - Home Phone
+      - Work Address
+      - Work Email
+      - Work Phone
+    - Pre-Hire Data: Employment Agreement
+    - Pre-Hire Personal Data
   </Step>
 </Steps>
 
