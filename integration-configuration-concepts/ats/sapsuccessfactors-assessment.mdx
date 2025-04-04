@@ -58,7 +58,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Steps>
   <Step title="Add a Vendor for Assessment">
-    Go to _Manage Assessment Vendors_. Click "Export" to download the CSV file. Add your vendor with a unique `clientId` and mark it as active by entering `Y` in the active column.
+    Go to _Manage Assessment Vendors_, Click "Export" to download the CSV file. Add your vendor with a unique `clientId` and mark it as active by entering `Y` in the active column.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add a Vendor" src="/images/sapsuccessfactors/assessment/sapsf_assess_add_new_vendor_in_sheet_1.png" />
     </Frame>
@@ -72,8 +72,8 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   <Step title="Upload the assessment vendor packages">
     You can upload Assessment Vendor Packages from _Provisioning > Managing Recruiting > Import/Export Assessment Vendor Packages_. Prepare a CSV file with the required columns and values, as illustrated in the image.
     
-    - **vendorId:** Identifies the assessment vendor the package uses. (`vendorId` has to be the same as `clientId`)
-    - **packageCode:** Identifies an assessment solution to use for the order.
+    - **vendorId:** Identifies the assessment vendor (`vendorId` has to be the same as `clientId`)
+    - **packageCode:** Identifies an assessment package to use for the order.
     - **shortName:** Shortened name of the package for use on the candidate summary page.
     - **Label:** Language in which the assessment is displayed
     
@@ -86,11 +86,11 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 </Steps>
 
 
-## Create a subscription and set up an external event
+## Create a subscriber and set up an external event
 
 <Steps>
-  <Step title="Create a subscription">
-    Go to the _Event Notification Subscription_ page. Under the _Subscription_ tab, add a subscription using your `Subscription Id` and `Client Id`. Note that your `clientId` should match the one uploaded with your vendor's name in the previous step.
+  <Step title="Create a subscriber">
+    Go to the _Event Notification Subscription_ page. Under the _Subscriber_ tab, add a subscriber using your `Subscriber Id` and `Client Id`. Note that your `clientId` should match the one uploaded with your vendor's name in the previous step.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a Subscriber" src="/images/sapsuccessfactors/assessment/sapsf_assess_add_subcriber_for_event_2.png" />
     </Frame>
@@ -243,6 +243,11 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     Navigate to specific _Job Requisition_, hover over the specific requisition title to open the Actions menu and then select `View or Edit Requisition`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Actions menu" src="/images/sapsuccessfactors/assessment/sapsf_assess_recruiting_jr_8.png" />
+    </Frame>
+
+    Click on the link labeled `Add More Assessments` to make the dropdown fields visible.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="enable dropdown fields" src="/images/sapsuccessfactors/assessment/sapsf_assess_add_more_assessments_15.png" />
     </Frame>
 
     Select the following values from the dropdown menus in the assessment:
