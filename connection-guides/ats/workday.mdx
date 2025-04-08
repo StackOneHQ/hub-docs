@@ -16,7 +16,12 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     Log into your Workday account. Look at the address bar at the top of the browser window where the URL is displayed. Find your tenant immediately after `workday.com/`.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Workday Tenant" src="/images/workday/image1.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Workday Tenant"
+        src="/images/workday/image1.png"
+      />
     </Frame>
   </Step>
 </Steps>
@@ -28,26 +33,37 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     Go to the `Public Web Services` report.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Human Resources Web Service" src="/images/workday/image2.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Human Resources Web Service"
+        src="/images/workday/image2.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Find Human Resources">
     Find Human Resources and hover over it to be able to interact with the menu. Via the three-dots menu, go to `Web Service` and click on `View SDL` (note that the page may take a minute to fully load).
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday/image3.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday/image3.png"
+      />
     </Frame>
-
   </Step>
-
   <Step title="Search for wsdl:service">
     Search for `wsdl:service` in the file OR navigate directly to the very bottom of the page. You should see something like this:
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday/image4.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday/image4.png"
+      />
     </Frame>
-
     Copy everything before `service` in the location attribute. Do not include the `https://` prefix. In the example tenant above, this would be `wd2-impl-services1.workday.com/ccx` but it may be different for your tenant (e.g., `wd5-services1.myworkday.com/ccx`).
   </Step>
 </Steps>
@@ -59,23 +75,32 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     Log in to your Workday tenant in the Workday portal. In the Search field, search for "Create Integration System User".
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Integration System User" src="/images/workday/image5.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create Integration System User"
+        src="/images/workday/image5.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Choose the Task">
     Choose the "Create Integration System User" task.
   </Step>
-
   <Step title="Enter Account Information">
     Enter a username and password in the Account Information section on the "Create Integration System User" page.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Account Information" src="/images/workday/image6.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Account Information"
+        src="/images/workday/image6.png"
+      />
     </Frame>
   </Step>
 
   <Step title="Click OK">
+    Click OK.
   </Step>
 </Steps>
 
@@ -86,25 +111,38 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     In the Search field, search for "Create Security Group". Select the "Create Security Group" task.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Security Group" src="/images/workday/image7.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create Security Group"
+        src="/images/workday/image7.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Select Security Group Type">
-    On the "Create Security Group" page, select "Integration System Security Group" from the Type of Tenanted Security Group pull-down menu. Enter a name in the Name field.
+    Choice: There are two types of security groups that can be chosen:
+
+    - Integration System Security Group (Unconstrained)
+    - Integration System Security Group (Constrained)\
+      \
+      The constrained security group will allow you to specify  On the "Create Security Group" page, select "Integration System Security Group" from the Type of Tenanted Security Group pull-down menu. Enter a name in the Name field.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Security Group Type" src="/images/workday/image8.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Security Group Type"
+        src="/images/workday/image8.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Click OK">
     Click OK.
   </Step>
-
   <Step title="Edit Integration System Security Group">
-    On the "Edit Integration System Security Group (Unconstrained)" page, enter the same name you used when creating the ISU in the first section. Click OK.
+    a. On the "Edit Integration System Security Group (Unconstrained)" page, enter the same name you used when creating the ISU in the first section. Click OK.
 
+    b. On the "Edit Integration System Security Group (Constrained)@ page, there will be additional options to choose the groups that the associated user will have access to.![image.png](/image.png)
   </Step>
 </Steps>
 
@@ -112,56 +150,59 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Steps>
   <Step title="Edit Permissions">
-
     <Info>
-      The Workday ATS integration currently requires **all** of the permissions listed below to be enabled. 
+      The Workday ATS integration currently requires **all** of the permissions listed below to be enabled for full support.
 
-      Workday's API will return an error response if any of these permissions are missing.
+      Workday's API may return an error response if any of these permissions are missing.
     </Info>
 
-    Edit the Domain Security Policy Permissions in the Security Group. 
+    You can reach this interface by searching for "Maintain Permissions for Security Group" in the search bar, and selecting the name of the Security Group you created in the previous step.
+    
+    This integration uses the following Workday Security Group Permissions. For each listed permission, select either **Get Only** for read-only access, or **Get and Put** for read and write access in the *View/Modify Access* column.
 
-    Enable the **GET** operations for the following required permissions for the ATS API:
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View/Modify Access" src="/images/workday/image13.png" />
+    </Frame>
 
-    - **Job Requisition Data**
-    - **Candidate Data**
+    <Info>
+      Please note that Security Group Permissions can be customized within a Workday organization, and this list does not account for such customizations.
+    </Info>
+
+    - Job Requisition Data
+    - **Candidate Data:**
       - Interview Schedule
       - Offer details
       - Other Jobs
-      - **Other Information**
-        - Photo
-        - Attachment
-      - **Personal Information**
-      - **Job Application**
-        - Interview Schedule
-        - Jobs Requisitions
-        - Offer Details
-        - Other Jobs
-    - **Person Data**
-      - **Personal Data**
-        - Name
-        - Citizenship Status
-        - Date of Birth
-        - Disabilities
-        - Gender
-        - Government IDs
-        - ID Information
-        - Marital Status
-        - National ID Identification
-        - Personal Information
-        - Photo
-      - **Home Contact Information**
-        - Home Address
-        - Home Email
-        - Home Phone
-      - **Work Contact Information**
-        - Work Address
-        - Work Email
-        - Work Phone
-    - **Pre-Hire Process Data**
-      - Contact Information
+      - Other Information
+      - Photo
+      - Attachment
+      - Personal Information
+      - Job Application
+      - Interview Schedule
+      - Jobs Requisitions
+      - Offer Details
+      - Other Jobs
+    - **Person Data:**
+      - Personal Data
       - Name
-
+      - Citizenship Status
+      - Date of Birth
+      - Disabilities
+      - Gender
+      - Government IDs
+      - ID Information
+      - Marital Status
+      - National ID Identification
+      - Personal Information
+      - Personal Photo
+      - Home Address
+      - Home Email
+      - Home Phone
+      - Work Address
+      - Work Email
+      - Work Phone
+    - Pre-Hire Data: Employment Agreement
+    - Pre-Hire Personal Data
   </Step>
 </Steps>
 
@@ -178,12 +219,18 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 You can use the Tenant and System User credentials you created in steps 1 & 2 to link Workday.
 
 <Frame>
-  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/image9.png" />
+  <img
+    className="rounded-md"
+    style={{ margin:"0 auto",border:"1px solid #efefef" }}
+    alt="Link to StackOne"
+    src="/images/workday/image9.png"
+  />
 </Frame>
 
 <IntegrationFooter />
 
 ## Useful Links
+
 <Card title="API Reference" icon="link" href="https://doc.workday.com/">
-    https://doc.workday.com/
+  https://doc.workday.com/
 </Card>
