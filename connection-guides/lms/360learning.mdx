@@ -1,0 +1,93 @@
+---
+title: "360 Learning"
+description: "If you've been directed to StackOne to integrate with 360 Learning, the following steps will help you understand the process and any necessary actions to configure successful integration."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes you have Admin privileges for your 360 Learning account.
+</Warning>
+
+## Create Integrations App
+
+<Steps>
+  <Step title="Log into 360 Learning">
+    Log into your 360 Learning account.
+  </Step>
+
+  <Step title="Navigate to Parent Group">
+    Select Root Parent Group under `All Groups`.
+
+    Click on `Settings` in the top right corner.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/360learning/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure API Key">
+    From the left settings menu, select `API`.
+    
+    Locate the `Company ID`, in the Authentication section.
+    
+    Click `Add API Key` to create a new API key.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/360learning/image2.png" />
+    </Frame>
+    
+    Enter `API Key` and click `Create`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/360learning/image3.png" />
+    </Frame>
+
+    Record the `Company ID` and `API Key` for use in the next steps.
+  </Step>
+
+  <Step title="Find Group ID">
+    Select the desired group to find the `Group Id` in the address bar.
+
+    E.g. If your url is `https://app.360learning.com/group/67c948a88723b46e710295bd/content/all`, the Group Id is `67c948a88723b46e710295bd`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/360learning/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Find User ID">
+    Navigate to `Group` -> `Users`.
+
+    Open the User Profile to find the `User Id` in the address bar.
+
+    E.g. If your url is `https://app.360learning.com/group/67c948a88723b46e710295bd/stats/users/current/users/67d14b2671c8825331af35f1`, the User Id is `67d14b2671c8825331af35f1`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/360learning/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Linking Your Account
+
+You can use the Company ID and API Key to link your 360 Learning account.
+  <Steps>
+    <Step title="Link 360 Learning Account">
+      In the modal enter the `Company ID`, `API Key`, `Group Id`, `User Id` and `External Platform`.
+
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/360learning/image6.png" />
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/360learning/image7.png" />
+      </Frame>
+
+      Click `Connect`.
+    </Step>
+
+  </Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://api.360learning.com/">
+    https://api.360learning.com/
+</Card>
