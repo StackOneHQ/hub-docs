@@ -10,7 +10,9 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 </Warning>
 
 <Info>
-    To add your integration as a stage, contact Eploy support. Otherwise, use any active stage in the Recruitment Workflow. If your integration is listed in the vacancy’s pipeline, follow the steps below to configure webhook notifications for background checks.
+    Please reach out to your integration partner to add an integration stage to the recruitment workflow. Once you move the candidate to that integration stage, the background check will be triggered.
+
+    To configure further in Eploy for background checks, please follow the steps outlined below.
 </Info>
 
 ## Add a custom option for background check packages
@@ -86,9 +88,9 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 ## Add background check packages
 
-<Tip>
-    You can utilize the [Background Check Unified APIs](https://docs.stackone.com/ats/api-reference/background-checks/packages/create-background-check-package) to create background check packages in Eploy.
-</Tip>
+<Info>
+    You can ask your integration partner to add the background check packages, or you can follow the steps outlined below to add them manually.
+</Info>
 
 <Steps>
     <Step title="Add background check packages through the Eploy user interface">
@@ -152,12 +154,6 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
         </Frame>
 
         Move the candidate to the Integration Stage or the specific stage where you want to trigger the background check invitation for that candidate
-        <Accordion title="Using a Stage Name for Polling" >
-            You will provide a stage name during the setup configuration in StackOne. We will utilize the polling technique to retrieve records at regular intervals if the candidate is available or has moved to that stage.
-            <Frame>
-                <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="provide stage name" src="/images/eploy/assess-bcs/eploy_bc_setup_field_config_19.png" />
-            </Frame>
-        </Accordion>
         <Frame>
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="move candidate" src="/images/eploy/assess-bcs/eploy_bc_move_candidate_integration_stage_14.png" />
         </Frame>
