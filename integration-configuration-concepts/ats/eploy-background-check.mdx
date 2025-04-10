@@ -152,13 +152,15 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
         </Frame>
 
         Move the candidate to the Integration Stage or the specific stage where you want to trigger the background check invitation for that candidate
+        <Accordion title="Using a Stage Name for Polling" >
+            You will provide a stage name during the setup configuration in StackOne. We will utilize the polling technique to retrieve records at regular intervals if the candidate is available or has moved to that stage.
+            <Frame>
+                <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="provide stage name" src="/images/eploy/assess-bcs/eploy_bc_setup_field_config_19.png" />
+            </Frame>
+        </Accordion>
         <Frame>
             <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="move candidate" src="/images/eploy/assess-bcs/eploy_bc_move_candidate_integration_stage_14.png" />
         </Frame>
-
-        <Info>
-            We are using a polling technique to retrieve records at regular intervals.
-        </Info>
     </Step>
 </Steps>
 
