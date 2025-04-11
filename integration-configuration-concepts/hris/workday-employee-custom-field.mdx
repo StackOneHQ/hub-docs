@@ -1,0 +1,141 @@
+---
+title: "Workday Employee Custom Field"
+description: "To create employee custom field in Workday, follow these steps"
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes that you have admin privileges for your Workday account.
+</Warning>
+
+## Create Workday Employee Custom Field
+
+<Steps>
+  <Step title="Search for 'Create Custom Object'">
+    Search for <b>Create Custom Object</b> in the search bar and select it.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Create Custom Object" src="/images/workday/custom-field/custom-field-01.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create Custom Object">
+    Select <b>Worker (Effective Dated)</b> in Workday Object.<br/> Enter a name for the custom object and click <b>OK</b>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Custom Object" src="/images/workday/custom-field/custom-field-25.jpg" />
+    </Frame>
+  </Step>
+
+  <Step title="Click 'Field Definitions'">
+    Click the <b>Field Definitions</b> tab in the sidebar.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Field Definitions" src="/images/workday/custom-field/custom-field-03.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click 'Add' button">
+    Click the <b>Add</b> button in Proposed New Fields.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Add button" src="/images/workday/custom-field/custom-field-04.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter Label & Field Type">
+    Enter a label for the field, select a field type from the dropdown menu, and click <b>Next</b>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Label & Field Type" src="/images/workday/custom-field/custom-field-05.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select 'Worker Data: Workers'">
+    Select <b>Worker Data: Workers</b> in Permissions tab and click <b>Next</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Permission" src="/images/workday/custom-field/custom-field-26.jpg" />
+    </Frame>
+  </Step>
+
+  <Step title="Review and Confirm">
+    Verify the custom object summary and click <b>OK</b>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Review and Confirm" src="/images/workday/custom-field/custom-field-07.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Field Selection">
+    Select the newly created custom field from the <b>Display Value</b> and <b>Reference ID</b> dropdowns if the Allow Multiple Instances per Object option is selected, and click <b>OK</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Configure Field Selection" src="/images/workday/custom-field/custom-field-08.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Activate Custom Object">
+    Activate the custom object by clicking <b>Done</b>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Activate Custom Object" src="/images/workday/custom-field/custom-field-09.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Additional Steps to Add Custom Objects in the Business Process Definition
+
+<Steps>
+  <Step title="Search for 'Business Process Definitions'">
+    Search for <b>Business Process Definitions</b> in the search bar and select it.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Business Process Definitions" src="/images/workday/custom-field/custom-field-10.jpg" />
+    </Frame>
+  </Step>
+
+  <Step title="Click 'OK'">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click OK" src="/images/workday/custom-field/custom-field-11.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Find and Edit Business Process Definition">
+    Find <b>Edit Worker Additional Data Event</b> business process. Click the three dots (...) in the Default Definition column of the Edit Worker Additional Data Event.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Find and Edit Business Process Definition" src="/images/workday/custom-field/custom-field-27.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click 'Edit Definition'">
+    Click <b>Edit Definition</b> under the Business Process tab.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Definition" src="/images/workday/custom-field/custom-field-28.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click 'OK'">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click OK" src="/images/workday/custom-field/custom-field-29.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Business Process Steps">
+    In the Business Process Steps tab:
+    <ul>
+        <li>Enter the order alphabetically in the Order column.</li>
+        <li>Select <b>Edit Additional Data</b> in the Type column.</li>
+        <li>Choose the newly created custom object in the Specify column.</li>
+        <li>Assign the relevant security groups in the Group column.</li>
+        <li>Click "OK"</li>
+      </ul>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Configure Business Process Steps" src="/images/workday/custom-field/custom-field-15.jpg" />
+    </Frame>
+  </Step>
+
+  <Step title="Verify and Complete">
+    Verify and Click <b>Done</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Verify and Complete" src="/images/workday/custom-field/custom-field-16.jpg" />
+    </Frame>
+  </Step>
+</Steps>
+
+<Note>
+    Note: Changes to Worker Effective-Dated Custom Field values made through the API must be approved via the UI.
+</Note>
+
+<IntegrationFooter />
