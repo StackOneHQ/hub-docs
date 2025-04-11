@@ -1,0 +1,108 @@
+---
+title: "Confluence"
+description: "Follow these steps to connect Confluence via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Confluence account has Org admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Confluence, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Confluence
+
+Log in to your Confluence account at https://id.atlassian.com/login.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to Confluence" src="/images/confluence/image1.png" />
+</Frame>
+
+## Find your Confluence Domain Name
+
+<Steps>
+  <Step title="Go to Confluence Page">
+      Select the app switcher button in the upper left-hand corner of the screen and Select an organization in the table. Click on `Confluence` from `YOUR APPS` menu to open confluence.
+
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Confluence Page" src="/images/confluence/image2.png" />
+      </Frame>
+  </Step>
+
+  <Step title="Find the Domain">
+    In the URL bar of your browser, you can find the domain by selecting the text in front of `.atlassian.net`.
+  
+    <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Find the Domain" src="/images/confluence/image3.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Create your Confluence API Token
+
+<Steps>
+  <Step title="Go to Account Settings">
+      Select your profile in the upper right-hand corner of the screen and Click **Account settings** in the navigation menu.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Account Settings" src="/images/confluence/image4.png" />
+      </Frame>
+  </Step>
+
+    <Step title="Navigate to API Tokens">
+      Select `Security` from menu and click on `Create and manage API tokens` under `API tokens` section.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Tokens" src="/images/confluence/image5.png" />
+      </Frame>
+  </Step>
+
+  <Step title="Create a new API Token">
+      Click **Create Classic API token** to create a new API Token.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a new API Token" src="/images/confluence/image6.png" />
+      </Frame>
+  </Step>
+  <Step title="Enter API Token details">
+      Enter the name and expiry date of the API Token and click on `Create` button
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter API Token details" src="/images/confluence/image7.png" />
+      </Frame>
+  </Step>
+  <Step title="Copy your API Token">
+      Copy your API Token and store it safely to be used in a later step.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your API Token" src="/images/confluence/image8.png" />
+      </Frame>
+  </Step>
+</Steps>
+## Find your UserName/Email
+
+Your UserName/Email can be found at your profile in the upper right-hand corner of the screen.
+
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the credential(s) from the previous steps:
+  - **UserName/Email**
+  - **API Token**
+  - **Domain Name**
+
+Proceed by clicking the Connect button.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/confluence/image9.png" />
+</Frame>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [DOCUMENTS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Drives</li>
+  <li>Files</li>
+</ul>
