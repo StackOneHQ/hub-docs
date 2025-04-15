@@ -1,0 +1,194 @@
+---
+title: "Eploy Background Check"
+description: "To successfully send webhook notifications from Eploy, follow these steps in your Eploy account, and complete the necessary actions."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes that you have admin privileges for your Eploy account.
+</Warning>
+
+<Info>
+    Please reach out to your integration partner to add an integration stage to the recruitment workflow. Once you move the candidate to that integration stage, the background check will be triggered.
+
+    To configure further in Eploy for background checks, please follow the steps outlined below.
+</Info>
+
+## Add a custom option for background check packages
+
+<Steps>
+    <Step title="Add a custom option to the user option types">
+        Navigate to the _Custom Fields_ page by selecting _Customize Fields_ from the _Admin_ menu
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Custom Fields page" src="/images/eploy/assess-bcs/eploy_bc_admin_custom_1.png" />
+        </Frame>
+        
+        Navigate to the _User Option Types_ tab and click the `New` button to create a new custom option in Eploy
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to user option types tab" src="/images/eploy/assess-bcs/eploy_bc_navigate_to_user_option_type_and_new_2.png" />
+        </Frame>
+
+        Enter the title as `Background Checks` and then click the `Save` button
+        <Warning>
+            Please use the name `Background Checks`, as this is necessary to ensure that you receive notifications from Eploy.
+        </Warning>
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="add custom option title" src="/images/eploy/assess-bcs/eploy_bc_user_option_type_4.png" />
+        </Frame>
+
+        The newly created `Background Checks` option will be visible in the _User Option Types_ grid
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="added custom option title" src="/images/eploy/assess-bcs/eploy_bc_user_option_type_newly_added_5.png" />
+        </Frame>
+    </Step>
+</Steps>
+
+
+## Add a custom field within the vacancy group
+
+<Steps>
+    <Step title="Add a custom field to fields">
+        Navigate to the _Custom Fields_ page by selecting _Customise Fields_ from the _Admin_ menu
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Custom Fields page" src="/images/eploy/assess-bcs/eploy_bc_admin_custom_1.png" />
+        </Frame>
+
+        Navigate to the _Fields_ tab and click the `New` > `Input Field` button to create a new input field in Eploy
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to fields tab" src="/images/eploy/assess-bcs/eploy_bc_add_custom_field_3.png" />
+        </Frame>
+
+        Select the field values according to the instructions below:
+        <Warning>
+            Please ensure you select the same values as suggested to receive Eploy notifications.
+        </Warning>
+
+        - **Field Group:** Select `Additional Details (Vacancies)`
+        - **Field Type:** Select `Input - Drop-down`
+        - **Display Format:** Select `Hierarchy List Searchable`
+        - **Option Type:** Select `Background Checks` (As you have created in above [step](#add-a-custom-option-for-background-check-packages))
+        - **Insert Below:** You can select any value here, it will determine where the field appears in the form
+        - **Active:** Ensure this field is marked as active
+        - **Field Label:** Select `Background Checks`
+        - **Help Description:** You may include any relevant description
+        
+        Click the `Save` button
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="add custom field" src="/images/eploy/assess-bcs/eploy_bc_create_new_field_within_the_vacancy_group_as_dropdown_9.png" />
+        </Frame>
+
+        The newly created `Background Checks` field will be visible in the _Fields_ grid
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="added custom field title" src="/images/eploy/assess-bcs/eploy_bc_new_field_will_be_visible_within_the_grid_10.png" />
+        </Frame>
+    </Step>
+</Steps>
+
+
+## Add background check packages
+
+<Info>
+    You can ask your integration partner to add the background check packages, or you can follow the steps outlined below to add them manually.
+</Info>
+
+<Steps>
+    <Step title="Add background check packages through the Eploy user interface">
+        Navigate to the _Drop Down Lists_ page located in the _Admin_ menu
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="navigate to dropdown list" src="/images/eploy/assess-bcs/eploy_bc_navigate_to_dropdown_list_17.png" />
+        </Frame>
+
+        Select `Background Checks` and click the `New` button to create a new package in Eploy
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="select background checks" src="/images/eploy/assess-bcs/eploy_bc_select_bc_from_dropdown_and_click_on_new_to_add_package_manually_from_ui_6.png" />
+        </Frame>
+
+        Enter the following field values:  
+        
+        - **Description:** This will be the label displayed in the dropdown list.  
+        - **Reference:** This can be any string and will not appear in the dropdown list.  
+
+        Click the `Save` button.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="click on save" src="/images/eploy/assess-bcs/eploy_bc_add_bc_package_and_save_7.png" />
+        </Frame>
+
+        The newly created background check package will be visible in the grid
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="added background checks field" src="/images/eploy/assess-bcs/eploy_bc_added_new_package_and_visible_on_grid_8.png" />
+        </Frame>
+    </Step>
+</Steps>
+
+
+## Configure the background check package for the vacancy
+
+<Steps>
+    <Step title="Configure the background check package">
+        Go to the _Additional Details_ page for any specific job vacancy
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="navigate to additional details page" src="/images/eploy/assess-bcs/eploy_bc_custom_bc_field_visible_in_ad_details_11.png" />
+        </Frame>
+
+        Edit Additional Details, to select the background check package,
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="edit additional details" src="/images/eploy/assess-bcs/eploy_bc_packages_visible_in_dropdown_12.png" />
+        </Frame>
+
+        The selected background check package will be displayed on the _Additional Details_ page
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="selected package" src="/images/eploy/assess-bcs/eploy_bc_selected_package_visible_eploy_vacancy_13.png" />
+        </Frame>
+    </Step>
+</Steps>
+
+
+## Move the candidate within the pipeline
+
+<Steps>
+    <Step title="Move the candidate to the specific stage">
+        To navigate to the _Pipeline_ page, click on the `Go to Pipeline` option located under the `Work on Vacancy` dropdown menu on the vacancy page
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="navigate to pipeline page" src="/images/eploy/assess-bcs/eploy_bc_vacancy_talent_pipeline_18.png" />
+        </Frame>
+
+        Move the candidate to the Integration Stage or the specific stage where you want to trigger the background check invitation for that candidate
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="move candidate" src="/images/eploy/assess-bcs/eploy_bc_move_candidate_integration_stage_14.png" />
+        </Frame>
+    </Step>
+</Steps>
+
+
+## To check the sent background check invitation
+
+<Steps>
+    <Step title="To check the sent background check invitation on Eploy user interface">
+        Navigate to the _Pipeline_ page and click on the candidate to check the sent background check invitation
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="check the sent background check invitation" src="/images/eploy/assess-bcs/eploy_bc_sent_to_the_candidate_as_visible_package_name_on_ui_15.png" />
+        </Frame>
+    </Step>
+</Steps>
+
+
+## To check the updated result of the background check
+
+<Steps>
+    <Step title="To check the updated result of the background check on Eploy user interface">
+        Go to the _Pipeline_ page and click on the candidate to view the updated result of the background check
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="check the updated result of the background check" src="/images/eploy/assess-bcs/eploy_bc_on_update_result_of_bc_on_ui_16.png" />
+        </Frame>
+    </Step>
+</Steps>
+
+
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://support.eploy.co.uk/hc/en-gb/articles/14089926025757-Eploy-RESTful-API-Workflow-based-Integrations">
+    https://support.eploy.co.uk/hc/en-gb/articles/14089926025757-Eploy-RESTful-API-Workflow-based-Integrations
+</Card>
