@@ -1,0 +1,73 @@
+---
+title: "Iterable"
+description: "Follow these steps to connect Iterable with StackOne Hub successfully."
+---
+
+<Warning>
+  Ensure you are an **org admin** or have the ***Manage Integrations*** project permission for your Iterable account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Iterable, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Find your Iterable region (US or EU)
+
+<Steps>
+  <Step title="Login to Iterable">
+    Login to your Iterable account.
+
+    Check your browser's URL bar. The URL will indicate which region your Iterable project is located in:
+    `https://app.iterable.com` - US
+    `https://app.eu.iterable.com` - EU
+  </Step>
+</Steps>
+
+## Create an API key
+
+<Steps>
+  <Step title="Select Project">
+    Click on your account name/icon and select the project you wish to connect to.
+
+    <Frame>
+      <img className="rounded-md" width="420px" style={{ margin: '0 auto', border: '1px solid #efefef' }} src="/images/iterable/iterable-01-project.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select API Keys">
+    Open the Integrations dropdown and select API Keys.
+
+    <Frame>
+      <img className="rounded-md" width="420px" style={{ margin: '0 auto', border: '1px solid #efefef' }} src="/images/iterable/iterable-02-integrations.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click New API Key" />
+
+  <Step title="Create API Key">
+    Enter a **Name** for the API Key
+    Select the **Type** as `Server-side`
+
+    Click **Create API Key**
+  </Step>
+
+  <Step title="Copy API Key">
+    Copy the API Key, this will be used to setup the connection with StackOne.
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Link Account">
+    On the link account page:
+
+    * Select the API Endpoint according to your region.
+
+    * Paste the API Key from above.
+
+    <Frame>
+      <img className="rounded-md" width="420px" style={{ margin: '0 auto', border: '1px solid #efefef' }} src="/images/iterable/iterable-03-connect.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
