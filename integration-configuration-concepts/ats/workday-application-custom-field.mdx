@@ -1,0 +1,123 @@
+---
+title: "Workday Application Custom Field"
+description: "To create and view application custom field in Workday, follow these steps"
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes that you have admin privileges for your Workday account.
+</Warning>
+
+## Create Workday Application Custom Field
+
+<Steps>
+  <Step title="Search for 'Create Custom Object'">
+    Search for <b>Create Custom Object</b> in the search bar and select it.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Create Custom Object" src="/images/workday/custom-field/custom-field-01.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create Custom Object">
+    Select <b>Job Application</b> in Workday Object.<br/> Enter a name for the custom object and click <b>OK</b>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Custom Object" src="/images/workday/custom-field/custom-field-24.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click 'Field Definitions'">
+    Click the <b>Field Definitions</b> tab in the sidebar.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Field Definitions" src="/images/workday/custom-field/custom-field-03.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click 'Add' button">
+    Click the <b>Add</b> button in Proposed New Fields.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Add button" src="/images/workday/custom-field/custom-field-04.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter Label & Field Type">
+    Enter a label for the field, select a field type from the dropdown menu, and click <b>Next</b>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Label & Field Type" src="/images/workday/custom-field/custom-field-05.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select 'Candidate Date: Job Application'">
+    Select <b>Candidate Date: Job Application</b> in Permissions tab and click <b>Next</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Permission" src="/images/workday/custom-field/custom-field-17.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Review and Confirm">
+    Verify the custom object summary and click <b>OK</b>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Review and Confirm" src="/images/workday/custom-field/custom-field-07.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Field Selection">
+    Select the newly created custom field from the <b>Display Value</b> and <b>Reference ID</b> dropdowns if the Allow Multiple Instances per Object option is selected, and click <b>OK</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Configure Field Selection" src="/images/workday/custom-field/custom-field-08.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Activate Custom Object">
+    Activate the custom object by clicking <b>Done</b>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Activate Custom Object" src="/images/workday/custom-field/custom-field-09.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## View Workday Application Custom Field
+
+<Steps>
+  <Step title="Click on 'Menu'">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click on Menu" src="/images/workday/custom-field/custom-field-18.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click 'Recruiting'">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Recruiting" src="/images/workday/custom-field/custom-field-19.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click on 'Find Candidates'">
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click on Find Candidates" src="/images/workday/custom-field/custom-field-20.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Access Job Application Actions">
+    Expand the <b>Job Applied</b> section for the candidate, hover over the job application, and click on the three dots (...).
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Access Job Application Actions" src="/images/workday/custom-field/custom-field-21.png" />
+    </Frame>
+  </Step>
+
+  <Step title="View All Additional Fields">
+    In the Additional Fields section, click on <b>View All</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View All Additional Fields" src="/images/workday/custom-field/custom-field-22.png" />
+    </Frame>
+  </Step>
+
+  <Step title="View Newly Created Custom Field">
+    Now, you will see the newly created custom field.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Newly Created Custom Field" src="/images/workday/custom-field/custom-field-23.png" />
+    </Frame>
+  </Step>
+
+</Steps>
+
+<IntegrationFooter />
