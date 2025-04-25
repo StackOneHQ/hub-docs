@@ -11,23 +11,65 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 If you've been directed to StackOne to integrate with Sharepoint, the following steps will help you understand the process and any necessary actions to configure a successful integration.
 
-## Log in to Sharepoint
+## OAuth + File Picker
+
+### Log in to Sharepoint
 
 <Steps>
-    <Step title="Connect to Sharepoint">
-        Click the Connect button to start the login process. You will be redirected to Sharepoint.
-    
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect to GoogleDrive" src="/images/sharepoint/image-1.png" />
-        </Frame>
-    </Step>
-    <Step title="Grant OAuth Application Consent">
-      A window will appear and may prompt you to log in to your Sharepoint account.
+  <Step title="Get your SharePoint Base URL">
 
-      After logging in, you will be displayed the OAuth consent screen.
 
-      Click the **Allow** button to grant the application access to your Sharepoint account.
-    </Step>
+    Your SharePoint base URL follows this format:
+
+    ```
+    https://{your-domain}.sharepoint.com
+    ```
+
+    You can find this URL by:
+
+    1. Opening your Microsoft SharePoint site
+    2. Copying the base URL from your browser's address bar
+
+  </Step>
+   <Step title="Log in to Microsoft Azure">
+    Log in to your [Microsoft Azure](https://portal.azure.com/) portal.
+
+    ![Azure Login Pn](/images/sharepoint/azure-login.png)
+  </Step>
+  <Step title="Obtain your Tenant ID">
+    Search Microsoft Entra ID and navigate to the **Overview** page.
+
+    **Copy** <Icon icon="clipboard" color="#333333" /> the Tenant ID and store safely to be used in a later step:
+
+    - Directory (tenant) ID
+
+    ![Ms Entra App Client Tenant Ids Sharepoint Pn](/images/sharepoint/tenant-id.png)
+  </Step>
+  <Step title="Connect to Sharepoint">
+    Enter the credentials in the fields below and click the Connect button to start the login process. You will be redirected to Sharepoint.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect to GoogleDrive" src="/images/sharepoint/image-2.png" />
+      </Frame>
+  </Step>
+  <Step title="Grant OAuth Application Consent">
+    A window will appear and may prompt you to log in to your Sharepoint account.
+
+    After logging in, you will be displayed the OAuth consent screen.
+
+    Click the **Allow** button to grant the application access to your Sharepoint account.
+  </Step>
+</Steps>
+
+## OAuth
+<Steps>
+ <Step title="Connect to Sharepoint">
+    Enter the credentials in the fields below and click the Connect button to start the login process. You will be redirected to Sharepoint.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect to GoogleDrive" src="/images/sharepoint/image-1.png" />
+      </Frame>
+  </Step>
 </Steps>
 
 <IntegrationFooter />
