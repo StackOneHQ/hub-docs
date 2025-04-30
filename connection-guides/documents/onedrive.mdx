@@ -1,0 +1,106 @@
+---
+title: "OneDrive"
+description: "Follow these steps to connect OneDrive via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Microsoft account has Admin or Owner privileges for the OneDrive tenant you wish to connect.
+</Warning>
+
+If you've been directed to StackOne to integrate with OneDrive, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## OAuth + File Picker
+
+### Log in to OneDrive
+
+<Steps>
+  <Step title="Get your OneDrive Base URL">
+    Your OneDrive base URL typically follows this format:
+    ```
+    https://{your-domain}-my.sharepoint.com
+    ```
+    You can find this URL by:
+    1. Opening your OneDrive in a browser
+    2. Copying the base URL from your browser's address bar
+  </Step>
+
+  <Step title="Log in to Microsoft Azure">
+    Log in to your [Microsoft Azure](https://portal.azure.com/) portal.
+    ![Azure Login](/images/onedrive/azure-login.png)
+  </Step>
+
+  <Step title="Register a New Application">
+    Navigate to **Microsoft Entra ID** > **App registrations** and click **New registration**.
+    - Enter a name for your application.
+    - Select the appropriate account type (usually "Accounts in this organizational directory only").
+    - For the Redirect URI, select `Web` and enter your application's redirect URI (e.g., `https://www.api.stackone.com/oauth/onedrive/callback`).
+    - Click **Register**.
+    ![Register App](/images/onedrive/register-app.png)
+  </Step>
+
+  <Step title="Obtain your Client ID and Tenant ID">
+    After registration, you'll be taken to the application overview page. Here you can find:
+    - **Application (client) ID**
+    - **Directory (tenant) ID**
+    Copy these values for use in the integration.
+    ![Get IDs](/images/onedrive/get-ids.png)
+  </Step>
+
+  <Step title="Create a Client Secret">
+    Go to **Certificates & secrets** > **Client secrets** and click **New client secret**.
+    - Add a description and select an expiration period.
+    - Click **Add**.
+    <Warning>
+      Copy the secret value immediately as it won't be shown again.
+    </Warning>
+    ![Create Secret](/images/onedrive/create-secret.png)
+  </Step>
+
+  <Step title="Configure API Permissions">
+    Go to **API permissions** and add the following permissions:
+    <h4>Delegated Permissions</h4>
+    <ul>
+      <li>Files.Read - Read user files</li>
+      <li>Files.Read.All - Read all files user can access</li>
+      <li>Files.ReadWrite - Read and write user files</li>
+      <li>Files.ReadWrite.All - Read and write all files user can access</li>
+      <li>offline_access - Maintain access to data you have given it access to</li>
+      <li>User.Read - Sign in and read user profile</li>
+    </ul>
+    <h4>Application Permissions</h4>
+    <ul>
+      <li>Files.Read.All - Read all files user can access</li>
+      <li>Files.ReadWrite.All - Read and write all files user can access</li>
+    </ul>
+    <Warning>
+      Make sure to grant both Delegated and Application permissions as required. Click "Grant admin consent" to approve these permissions.
+    </Warning>
+    ![Configure Permissions](/images/onedrive/configure-permissions.png)
+  </Step>
+
+  <Step title="Connect to OneDrive">
+    Enter the credentials in the fields below and click the Connect button to start the login process. You will be redirected to OneDrive.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect to OneDrive" src="/images/onedrive/connect.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Grant OAuth Application Consent">
+    A window will appear and may prompt you to log in to your OneDrive account.
+    After logging in, you will be displayed the OAuth consent screen.
+    Click the **Allow** button to grant the application access to your OneDrive account.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [DOCUMENTS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Drives</li>
+  <li>Files</li>
+  <li>Folders</li>
+</ul> 
