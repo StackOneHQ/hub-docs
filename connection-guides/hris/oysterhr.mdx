@@ -1,0 +1,134 @@
+---
+title: "Oyster HR"
+description: "Follow these steps to connect Oyster HR with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your Oyster HR account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Oyster HR, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Creating a Developer Application
+
+<Steps>
+  <Step title="Navigate to Developer Applications">
+    Sign in to your Oyster HR account.
+
+    In the sidebar, navigate to `Company` → `Developer`.
+
+    Click **Create new Developer Application**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Navigate to Developer Applications"
+        src="/images/oysterhr/image1.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Creating a Developer Application">
+    Enter `Name` and `Description` for the application.
+
+    In the `Redirect URL` field, enter the following URL:
+
+    ```
+    https://api.stackone.com/connect/oauth2/oysterhr/callback
+    ```
+
+    Click **Submit**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Creating Developer Application"
+        src="/images/oysterhr/image2.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Note Client ID and Client Secret">
+    Record the `Client ID` and `Client Secret` for use in the next steps.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Client ID and Secret"
+        src="/images/oysterhr/image3.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Authorization URL">
+    Record the `Authorization URL` for use in the next steps.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Authorization URL"
+        src="/images/oysterhr/image4.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+## Linking to StackOne
+
+You can use the `Client ID`, `Client Secret`, and `Authorization URL` to link your Oyster HR account with StackOne.
+
+<Steps>
+  <Step title="Link Oyster HR Account">
+    In the modal, enter the `Client ID`, `Client Secret`, and `Authorization URL` from the previous steps.
+
+    Click **Connect**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Link Account"
+        src="/images/oysterhr/image5.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Enter Login Details">
+    In the Oyster HR popup modal, enter your `Email` and `Password`.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Enter Login Details"
+        src="/images/oysterhr/image6.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Authorize Request">
+    Click **Authorize**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Authorize Request"
+        src="/images/oysterhr/image7.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://docs.oysterhr.com/reference/post_oauth2-token-1">
+   https://docs.oysterhr.com/reference/post_oauth2-token-1
+</Card>
