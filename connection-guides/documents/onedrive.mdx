@@ -1,0 +1,112 @@
+ ---
+title: "OneDrive"
+description: "Follow these steps to connect OneDrive via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Microsoft account has Admin or Owner privileges for the OneDrive tenant you wish to connect.
+</Warning>
+
+If you've been directed to StackOne to integrate with OneDrive, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+<Steps>
+  <Step title="Log in to Microsoft Azure">
+    Log in to your [Microsoft Azure](https://portal.azure.com/) portal.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Azure Login Portal" src="/images/onedrive/azure-login.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Register Application">
+    1. Navigate to **Microsoft Entra ID** > **App registrations**
+    2. Click **New registration**
+    3. Enter a name for your application
+    4. Select **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant)**
+    5. Set the redirect URI to `https://www.api.stackone.com/oauth/onedrive/callback`
+    6. Click **Register**
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Register New Application" src="/images/onedrive/register-app.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Get Required Credentials">
+    After registration, copy these values from the application overview page:
+    - **Application (client) ID**
+    - **Directory (tenant) ID**
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Get Application Credentials" src="/images/onedrive/get-credentials.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create Client Secret">
+    1. Navigate to **Certificates & secrets**
+    2. Click **New client secret**
+    3. Add a description and select an expiration period
+    4. Click **Add**
+    
+    <Warning>
+      Copy the secret value immediately as it won't be shown again.
+    </Warning>
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Client Secret" src="/images/onedrive/create-secret.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure API Permissions">
+    1. Navigate to **API permissions**
+    2. Click **Add a permission**
+    3. Select **Microsoft Graph**
+    4. Add the following permissions:
+
+    **Delegated Permissions:**
+    - Files.Read
+    - Files.Read.All
+    - Files.ReadWrite
+    - Files.ReadWrite.All
+    - offline_access
+    - User.Read
+
+    **Application Permissions:**
+    - Files.Read.All
+    - Files.ReadWrite.All
+
+    5. Click **Grant admin consent** for your organization
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Configure API Permissions" src="/images/onedrive/configure-permissions.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect to OneDrive">
+    Enter your credentials in the StackOne Hub and click **Connect** to start the OAuth flow.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect to OneDrive" src="/images/onedrive/connect.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Grant Consent">
+    You will be redirected to Microsoft's consent page. Review the permissions and click **Accept** to complete the integration.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Grant Consent" src="/images/onedrive/grant-consent.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [DOCUMENTS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Drives</li>
+  <li>Files</li>
+  <li>Folders</li>
+</ul>
