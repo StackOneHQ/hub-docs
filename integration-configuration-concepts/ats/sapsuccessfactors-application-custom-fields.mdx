@@ -1,5 +1,5 @@
 ---
-title: "SAP SuccessFactors Application Custom Field"
+title: "SAP SuccessFactors Application Custom Fields"
 description: "To create and view application custom fields in SAP SuccessFactors, follow these steps"
 ---
 
@@ -9,7 +9,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   This guidance assumes that you have admin privileges for your SAP SuccessFactors account.
 </Warning>
 
-## Configure Application Custom Field
+## Configure Application Custom Fields
 
 <Steps>
   <Step title="Search for Manage Templates">
@@ -20,14 +20,14 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 
   <Step title="Select Job Application template">
-    Go to the _Recruiting Management_ tab, select _Job Application_, and choose the default active template to which you want to add a custom field
+    Go to the _Recruiting Management_ tab, select _Job Application_, and choose the default active template to which you want to add a custom fields
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Manage Templates" src="/images/sapsuccessfactors/application-custom-field/sapsf_application_cf_mt_Recrut_manage_job_application_option_2.png" />
     </Frame>
   </Step>
 
-  <Step title="Add application custom field in template">
-    Click on `Fields defined` to add application custom fields
+  <Step title="Add application custom fields in template">
+    Click on `Fields defined`
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Manage Templates" src="/images/sapsuccessfactors/application-custom-field/sapsf_appliation_cf_mt_Temaplate_settingS_Field_defined_3.png" />
     </Frame>
@@ -37,7 +37,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Manage Templates" src="/images/sapsuccessfactors/application-custom-field/sapsf_aaplication_cf_add_custom_field_button_9.png" />
     </Frame>
 
-    Please fill in the following field values:
+    Enter the following field values:
 
     - **Field ID:** Enter the ID of the field.
     - **Field Type:** Select the type of field (e.g., text).
@@ -54,19 +54,19 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     Click on `Done` to save your changes.
 
     <Note>
-      You can set the position of the custom field using the top and bottom arrows.
+      You can set the position of the custom fields using the top and bottom arrows.
     </Note>
   </Step>
 
-  <Step title="Add application custom field permissions">
-    Click on `Fields Permissions defined` to add permissions for application custom fields
+  <Step title="Add application custom fields permissions">
+    Click on `Fields Permissions defined`
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Manage Templates" src="/images/sapsuccessfactors/application-custom-field/sapsf_application_cf_field_permisssion_5.png" />
     </Frame>
 
-    Please enter the following field values:
+    Enter the following field values:
 
-    - **Field Permission Description:** You may enter any description, as this is free text.
+    - **Field Permission Description:** You can enter any description as this field allows free text.
     - **Field Permission Type:** Select `Write Permission`.
     - **Field Permission Role Name:** Choose the role for which you want to make this custom field visible.
     - **Field Reference ID:** Select the custom field ID that you added in the step above.
@@ -93,7 +93,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 </Steps>
 
 
-## Configure Job Requisition Template to Add Custom Field
+## Configure Job Requisition Template to Add Custom Fields
 
 <Steps>
   <Step title="Search for Manage Templates">
@@ -109,7 +109,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Manage Templates" src="/images/sapsuccessfactors/application-custom-field/sapsf_application_cf_in_job_req_to_show_8.png" />
     </Frame>
 
-    Select the Job Requisition template to display the application custom field, such as `Standard Job Requisition`
+    Select the Job Requisition template to display the application custom fields, such as `Standard Job Requisition`
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Manage Templates" src="/images/sapsuccessfactors/application-custom-field/sapsf_application_cf_mt_jr_standard_9.png" />
     </Frame>
@@ -126,7 +126,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     - **Field Permission Description:** You can enter any description as this field allows free text.
     - **Field Permission Type:** Select `Read Permission`.
     - **Field Permission Role Name:** Choose the permission role for which the fields will be displayed.
-    - **Field Reference ID:** Select the custom field ID you added in the previous <a href="#configure-application-custom-field">step 3</a> under "Configure Application Custom Field" process that needs to be displayed on the UI.
+    - **Field Reference ID:** Select the custom field ID you added in the previous <a href="#configure-application-custom-fields">step 3</a> under "Configure Application Custom Fields" process that needs to be displayed on the UI.
     - **Required Fields:** Choose the fields that you want to make mandatory.
     - **Field Permission Status:** Select the application status indicating when the fields should be displayed.
 
@@ -135,7 +135,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     </Frame>
     Click on `Done` to save your changes.
 
-    Finally, click on `Save & Draft`, and then click `Publish` to save your changes.
+    Click on `Save & Draft`, and then click `Publish` to save your changes.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Manage Templates" src="/images/sapsuccessfactors/application-custom-field/sapsf_application_cf_save_field_permissions_12.png" />
     </Frame>
@@ -147,7 +147,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 </Steps>
 
 
-## View Application Custom Field in the Job Application
+## View Application Custom Fields in the Job Application
 
 <Steps>
   <Step title="Go to Job Requisition">
@@ -172,12 +172,12 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Manage Templates" src="/images/sapsuccessfactors/application-custom-field/sap_sf_bc_recruiting_JR_hove_actions_32.png" />
     </Frame>
 
-    Access the candidate's job application and update their application status as you have configured in the <a href="#configure-job-requisition-template-to-add-custom-field">step 3</a> in the "Configure Job Requisition template to add custom field" process.
+    Access the candidate's job application and update their application status as you have configured in the <a href="#configure-job-requisition-template-to-add-custom-fields">step 3</a> in the "Configure Job Requisition Template to Add Custom Fields" process.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Manage Templates" src="/images/sapsuccessfactors/application-custom-field/sapsf_applicationcf_goto_job_req_and_goto_stage_13.png" />
     </Frame>
 
-    The newly created custom field will be visible in the job application
+    The newly created custom fields will be visible in the job application
     <Accordion title="If fields are not visible after adding fields & permissions in above steps">
       Navigate to _Admin Center_ and search for `OData API Metadata Refresh and Export`
       <Frame>
@@ -195,7 +195,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     </Frame>
 
     <Note>
-      To adjust the placement of custom fields, refer to <a href="#configure-application-custom-field">step 3</a> in the "Configure Application Custom Field" process.
+      To adjust the placement of custom fields, refer to <a href="#configure-application-custom-fields">step 3</a> in the "Configure Application Custom Fields" process.
     </Note>
   </Step>
 </Steps>
