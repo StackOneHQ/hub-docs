@@ -1,0 +1,163 @@
+---
+title: "Cezanne HR"
+description: "Follow these steps to connect Cezanne HR with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your Cezanne HR account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Cezanne HR, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Getting your Subdomain
+
+<Steps>
+  <Step title="Find the Subdomain">
+    You can find the subdomain in the URL of your Cezanne HR account by taking the portion that appears before `.cezanneondemand.com` and after `https://`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Subdomain Example" src="/images/cezannehr/image6.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Creating an Application
+
+<Steps>
+  <Step title="Navigate to Applications">
+    Sign in to your Cezanne HR account.
+
+    In the sidebar, navigate to `Administration` → `Security Settings` → `Authorised Applications`.
+
+    Click **Add New**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Navigate to Applications"
+        src="/images/cezannehr/image1.png"
+      />
+    </Frame>
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Navigate to Applications"
+        src="/images/cezannehr/image2.png"
+      />
+    </Frame>
+    
+  </Step>
+
+  <Step title="Creating an Application">
+    Enter `Name` and `Description` for the application.
+
+    Click **Ok**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Creating Application"
+        src="/images/cezannehr/image3.png"
+      />
+    </Frame>
+
+
+    In the `Allowed Callbacks` field, enter the following URL:
+
+    ```
+    https://api.stackone.com/connect/oauth2/cezannehr/callback
+    ```
+
+    Click **Save**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Creating Application"
+        src="/images/cezannehr/image4.png"
+      />
+    </Frame>
+      
+  </Step>
+
+  <Step title="Note Client ID and Client Secret">
+    Record the `Client ID` and `Client Secret` for use in the next steps.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Creating Application"
+        src="/images/cezannehr/image5.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+## Linking to StackOne
+
+You can use the `Client ID`, `Client Secret`, and `Domain` to link your Cezanne HR account with StackOne.
+
+<Steps>
+  <Step title="Link Cezanne HR Account">
+    In the modal, enter the `Client ID`, `Client Secret`, and `Domain` from the previous steps.
+
+    Click **Connect**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Link Account"
+        src="/images/cezannehr/image7.png"
+      />
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Link Account"
+        src="/images/cezannehr/image8.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Enter Login Details">
+    In the Cezanne HR popup modal, enter your `Email` and `Password`.
+
+    Click **Log In**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Link Account"
+        src="/images/cezannehr/image9.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Authorize Request">
+    Click **Accept**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Link Account"
+        src="/images/cezannehr/image10.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://api.cezannehr.com/">
+   https://api.cezannehr.com/
+</Card>
