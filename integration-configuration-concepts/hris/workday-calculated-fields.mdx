@@ -1,0 +1,85 @@
+---
+title: "Workday Calculated Fields"
+description: "To add calculated fields in Workday, follow these steps"
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes that you have admin privileges for your Workday account.
+</Warning>
+
+## Add Workday Calculated Fields
+
+<Steps>
+  <Step title="Search for 'Create Integration System'">
+    Search for <b>Create Integration System</b> in the search bar and select it.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Create Custom Object" src="/images/workday/calculated-fields/image.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create Integration System">
+    Provide the <b>System Name</b>, <b>System ID</b> and select <b>Core Connector: Worker</b> in New Using Template and click <b>OK</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Custom Object" src="/images/workday/calculated-fields/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select 'Integration Service'">
+    Select the <b>Integration Service</b> in the Custom Integrations Services and click <b>OK</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Field Definitions" src="/images/workday/calculated-fields/image2.png" />
+    </Frame>
+  </Step>
+
+    <Step title="Add the 'Field Name' in the Servie">
+    Click on <b>Actions</b> on the Integration Services and select <b>Integration Field Override</b> and click on <b>Edit</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Field Definitions" src="/images/workday/calculated-fields/image3.png" />
+    </Frame>
+        Select the Business Object <b>Worker</b> and provide the Name of the field and click <b>OK</b> and <b>Done</b>.
+        <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Field Definitions" src="/images/workday/calculated-fields/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Go to 'Integration Override Fields'">
+    Click the <b>Actions</b> button and select <b>Integration System</b> and select <b>Configure Integration Field Overrides</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Add button" src="/images/workday/calculated-fields/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select the Calculated Field">
+    Select the field to be overriden and click <b>OK</b> and then <b>Done</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Label & Field Type" src="/images/workday/calculated-fields/image7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select the required 'Integration Attributes'">
+    Click the <b>Actions</b> button and select <b>Integration System</b> and select <b>Configure Integration Attributes</b>.
+    From the given list provide values for all the attributes that are <b>Required for Launch</b> and click <b>OK</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Add button" src="/images/workday/calculated-fields/image8.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Run the Integration">
+    Click the <b>Actions</b> button and select <b>Integration</b> and select <b>Launch/Schedule</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Review and Confirm" src="/images/workday/calculated-fields/image9.png" />
+    </Frame>
+    Click <b>OK</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Review and Confirm" src="/images/workday/calculated-fields/image10.png" />
+    </Frame>
+    Click <b>OK</b>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Review and Confirm" src="/images/workday/calculated-fields/image11.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
