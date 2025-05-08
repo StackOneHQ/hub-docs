@@ -11,14 +11,12 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 If you've been directed to StackOne to integrate with Sharepoint, the following steps will help you understand the process and any necessary actions to configure a successful integration.
 
-## OAuth + File Picker
+## OAuth \+ File Picker
 
 ### Log in to Sharepoint
 
 <Steps>
   <Step title="Get your SharePoint Base URL">
-
-
     Your SharePoint base URL follows this format:
 
     ```
@@ -29,9 +27,8 @@ If you've been directed to StackOne to integrate with Sharepoint, the following 
 
     1. Opening your Microsoft SharePoint site
     2. Copying the base URL from your browser's address bar
-
   </Step>
-   <Step title="Log in to Microsoft Azure">
+  <Step title="Log in to Microsoft Azure">
     Log in to your [Microsoft Azure](https://portal.azure.com/) portal.
 
     ![Azure Login Pn](/images/sharepoint/azure-login.png)
@@ -47,10 +44,15 @@ If you've been directed to StackOne to integrate with Sharepoint, the following 
   </Step>
   <Step title="Connect to Sharepoint">
     Enter the credentials in the fields below and click the Connect button to start the login process. You will be redirected to Sharepoint.
-  
-      <Frame>
-          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect to GoogleDrive" src="/images/sharepoint/image-2.png" />
-      </Frame>
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Connect to GoogleDrive"
+        src="/images/sharepoint/image-2.png"
+      />
+    </Frame>
   </Step>
   <Step title="Grant OAuth Application Consent">
     A window will appear and may prompt you to log in to your Sharepoint account.
@@ -62,13 +64,34 @@ If you've been directed to StackOne to integrate with Sharepoint, the following 
 </Steps>
 
 ## OAuth
+
 <Steps>
- <Step title="Connect to Sharepoint">
-    Enter the credentials in the fields below and click the Connect button to start the login process. You will be redirected to Sharepoint.
-  
-      <Frame>
-          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect to GoogleDrive" src="/images/sharepoint/image-1.png" />
-      </Frame>
+  <Step title="Connect to Sharepoint">
+    Enter the credentials in the fields below and click the Connect button to start the login process. You will be redirected to log in to Microsoft.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Connect to Sharepoint"
+        src="/images/sharepoint/image-1.png"
+      />
+    </Frame>
+  </Step>
+  <Step title="Authorize the Application">
+    After logging in to Microsoft, a consent screen will be displayed with the permissions required for the connecting application.
+
+    Click the **Accept** button to grant access.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Authorize Sharepoint application"
+        src="/sharepoint-stackone-consent-2.png"
+        title=""
+      />
+    </Frame>
   </Step>
 </Steps>
 
@@ -77,8 +100,7 @@ If you've been directed to StackOne to integrate with Sharepoint, the following 
 ## Available data
 
 This integration has the following [DOCUMENTS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
-<ul>
-  <li>Drives</li>
-  <li>Files</li>
-  <li>Folders</li>
-</ul>
+
+- Drives
+- Files
+- Folders
