@@ -13,32 +13,69 @@ If you've been directed to StackOne to integrate with Bullhorn, the following st
 
 ## Getting your Client ID, Client Secret and API Username
 
-These are unique identifiers for your account. If you do not possess this information, please contact Bullhorn Support or Submit a ticket via the <a href="https://www.bullhorn.com/au/technical-support-2/">Bullhorn Resource Center</a>.
+These are unique identifiers for your account. If you do not possess this information, please contact Bullhorn Support or Submit a ticket via the [Bullhorn Resource Center](https://www.bullhorn.com/au/technical-support-2/)
 
 You will need to contact Bullhorn support to "add the following redirect URI: `https://api.stackone.com/connect/oauth2/bullhorn_ats/callback`".
 
+## Identify a Bullhorn Custom Field for Data Storage
+
+This connection will store Background Check and Assessment information within a custom field in Bullhorn. To avoid overwriting existing data, please identify an unused custom field in your Bullhorn instance.
+
+You will be able to select `customTextBlock` 1 through 10 for this "Custom Field" in the connection step below.
+
+_Example_: `customTextBlock4`
+
+## (optional) Getting a Client Corporation ID and Client Contact ID
+
+To create a new Job with this connection, a **Client Corporation ID** (Company ID) and **Client Contact ID** are required to be associated with the new Job.
+
+The **Client Corporation ID** can be seen in the main _Companies_ page in your Bullhorn instance:
+
+![Bullhorn Company Ids Pn](/images/bullhorn-company-ids.png)
+
+The **Client Contact ID** can be seen by viewing the _Contacts_ of the same Company you will be using for this step.
+
+![Company Contacts Ids Pn](/images/bullhorn/company-contacts-ids.png)
 
 ## Connecting to StackOne
 
 <Steps>
   <Step title="Enter your API credentials">
     Upon reaching the Link Account page, enter the following credentials received from Bullhorn Support:
+
     - Client ID
     - Client Secret
     - API Username
+  </Step>
+  <Step title="Enter additional connection information">
+    - Custom Field
+      - Used for Background Check and Assessment data storage
+    - Client Corporation ID (optional)
+      - Required for creating Jobs
+    - Client Contact ID  (optional)
+      - Required for creating Jobs
 
-    Proceed by clicking the `Connect` button.
+    After entering the information above, proceed by clicking the `Connect` button.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter your API credentials" src="/images/bullhorn/image1.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Enter your API credentials"
+        src="/images/bullhorn/image-1.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Log in to your Bullhorn account">
     In the window that appears, log in to your Bullhorn account to authorize account access.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to your Bullhorn account" src="/images/bullhorn/image2.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Log in to your Bullhorn account"
+        src="/images/bullhorn/image2.png"
+      />
     </Frame>
   </Step>
 </Steps>
@@ -46,6 +83,7 @@ You will need to contact Bullhorn support to "add the following redirect URI: `h
 <IntegrationFooter />
 
 ## Useful Links
+
 <Card title="API Reference" icon="link" href="https://bullhorn.github.io/Getting-Started-with-REST">
-    https://bullhorn.github.io/Getting-Started-with-REST
+  https://bullhorn.github.io/Getting-Started-with-REST
 </Card>
