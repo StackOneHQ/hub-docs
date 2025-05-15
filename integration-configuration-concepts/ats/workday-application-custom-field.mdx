@@ -1,123 +1,105 @@
 ---
-title: "Workday Application Custom Field"
-description: "To create and view application custom field in Workday, follow these steps"
+title: "Workable Application Custom Fields"
+description: "To create and view application custom fields in Workable, follow these steps"
 ---
-
+ 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
-
+ 
 <Warning>
-  This guidance assumes that you have admin privileges for your Workday account.
+  This guidance assumes that you have admin privileges for your Workable account.
 </Warning>
-
-## Create Workday Application Custom Field
-
+ 
+## Create Workable Application Custom Field
+ 
 <Steps>
-  <Step title="Search for 'Create Custom Object'">
-    Search for <b>Create Custom Object</b> in the search bar and select it.
+  <Step title="Click on Profile Icon">
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search Create Custom Object" src="/images/workday/custom-field/custom-field-01.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Profile icon location in Workable" src="/images/workable/custom-field/custom-field-01.png" />
     </Frame>
   </Step>
-
-  <Step title="Create Custom Object">
-    Select <b>Job Application</b> in Workday Object.<br/> Enter a name for the custom object and click <b>OK</b>
+  <Step title="Click on Settings">
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Custom Object" src="/images/workday/custom-field/custom-field-24.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings menu option in dropdown" src="/images/workable/custom-field/custom-field-02.png" />
     </Frame>
   </Step>
-
-  <Step title="Click 'Field Definitions'">
-    Click the <b>Field Definitions</b> tab in the sidebar.
+  <Step title="Click on Workflow">
+   Click on <b>`Workflow`</b> and Scroll down to the bottom of the page and go to the <b>Candidate Custom Fields</b> section.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Field Definitions" src="/images/workday/custom-field/custom-field-03.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Workflow option" src="/images/workable/custom-field/custom-field-03.png" />
     </Frame>
   </Step>
-
-  <Step title="Click 'Add' button">
-    Click the <b>Add</b> button in Proposed New Fields.
+  <Step title="Candidate Custom Fields Section">
+    Here is the section where you can add custom fields.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Add button" src="/images/workday/custom-field/custom-field-04.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate custom fields section location" src="/images/workable/custom-field/custom-field-04.png" />
     </Frame>
   </Step>
-
-  <Step title="Enter Label & Field Type">
-    Enter a label for the field, select a field type from the dropdown menu, and click <b>Next</b>
+  <Step title="Fields Section">
+    Here are different groups of custom fields.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Label & Field Type" src="/images/workday/custom-field/custom-field-05.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Groups of custom fields in Workable" src="/images/workable/custom-field/custom-field-05.png" />
     </Frame>
   </Step>
-
-  <Step title="Select 'Candidate Date: Job Application'">
-    Select <b>Candidate Date: Job Application</b> in Permissions tab and click <b>Next</b>.
+  <Step title="Add a Custom Field">
+    Hover over the desired section and click on the <b>+</b> icon to add a new custom field.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Permission" src="/images/workday/custom-field/custom-field-17.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="create custom field + icon" src="/images/workable/custom-field/custom-field-06.png" />
     </Frame>
   </Step>
-
-  <Step title="Review and Confirm">
-    Verify the custom object summary and click <b>OK</b>
+  <Step title="Custom Field Form">
+    Here is the form to create a custom field.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Review and Confirm" src="/images/workday/custom-field/custom-field-07.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="custom field creation form" src="/images/workable/custom-field/custom-field-07.png" />
     </Frame>
   </Step>
-
-  <Step title="Configure Field Selection">
-    Select the newly created custom field from the <b>Display Value</b> and <b>Reference ID</b> dropdowns if the Allow Multiple Instances per Object option is selected, and click <b>OK</b>.
+  <Step title="Complete the Custom Field Form">
+    Enter a <b>custom field title</b>, choose a <b>Field Type</b>, and set <b>Provider = User</b> from the dropdown menu.
+    (The key requirement is that the custom field MUST be set to Provider = User.)
+ 
+    Click <b>Add Custom Field</b> and scroll to the bottom.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Configure Field Selection" src="/images/workday/custom-field/custom-field-08.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Updated custom field form " src="/images/workable/custom-field/custom-field-08.png" />
     </Frame>
   </Step>
-
-  <Step title="Activate Custom Object">
-    Activate the custom object by clicking <b>Done</b>
+  <Step title="Application Form Section">
+    Click the <b>Save Changes</b> button.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Activate Custom Object" src="/images/workday/custom-field/custom-field-09.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Save Changes button location" src="/images/workable/custom-field/custom-field-09.png" />
+    </Frame>
+  </Step>
+  <Step title="Created Custom Field">
+    Here is the <b>success</b> message confirming that the custom field was created.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Success message" src="/images/workable/custom-field/custom-field-10.png" />
+    </Frame>
+  </Step>
+  <Step title="Application Form Preview">
+    Click on <b>Preview</b> to see the custom fields.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Preview option for application form" src="/images/workable/custom-field/custom-field-11.png" />
+    </Frame>
+  </Step>
+  <Step title="Preview Candidate Custom Fields">
+    Click on a candidate profile and scroll down.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate profile view" src="/images/workable/custom-field/custom-field-12.png" />
+    </Frame>
+    You will see the newly created custom field.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Newly created custom field in candidate profile" src="/images/workable/custom-field/custom-field-13.png" />
+    </Frame>
+  </Step>
+  <Step title="Verify Custom Field Location">
+    You can also see the custom field in the <b>Candidate Profile</b> inside the <b>Candidate Custom Fields Section</b> in the group where you created it.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Custom field location in candidate custom fields section" src="/images/workable/custom-field/custom-field-14.png" />
     </Frame>
   </Step>
 </Steps>
-
-## View Workday Application Custom Field
-
-<Steps>
-  <Step title="Click on 'Menu'">
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click on Menu" src="/images/workday/custom-field/custom-field-18.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Click 'Recruiting'">
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click Recruiting" src="/images/workday/custom-field/custom-field-19.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Click on 'Find Candidates'">
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Click on Find Candidates" src="/images/workday/custom-field/custom-field-20.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Access Job Application Actions">
-    Expand the <b>Job Applied</b> section for the candidate, hover over the job application, and click on the three dots (...).
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Access Job Application Actions" src="/images/workday/custom-field/custom-field-21.png" />
-    </Frame>
-  </Step>
-
-  <Step title="View All Additional Fields">
-    In the Additional Fields section, click on <b>View All</b>.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View All Additional Fields" src="/images/workday/custom-field/custom-field-22.png" />
-    </Frame>
-  </Step>
-
-  <Step title="View Newly Created Custom Field">
-    Now, you will see the newly created custom field.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Newly Created Custom Field" src="/images/workday/custom-field/custom-field-23.png" />
-    </Frame>
-  </Step>
-
-</Steps>
-
+ 
 <IntegrationFooter />
+ 
+## Useful Links
+<Card title="API Reference" icon="link" href="https://help.workable.com/hc/en-us/articles/115012903847-Custom-fields-for-candidate-profiles">
+    https://help.workable.com/hc/en-us/articles/115012903847-Custom-fields-for-candidate-profiles
+</Card>
