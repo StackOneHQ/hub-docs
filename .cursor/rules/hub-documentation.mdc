@@ -1,1 +1,128 @@
- 
+---
+description: 
+globs: 
+alwaysApply: true
+---
+ <rule>
+name: hub_documentation
+description: Standards for creating and maintaining hub documentation guides
+
+filters:
+  - type: file_extension
+    pattern: "\\.mdx$"
+  - type: path
+    pattern: "^connection-guides/"
+
+actions:
+  - type: validate
+    conditions:
+      - pattern: "^---\ntitle:.*\ndescription:.*\n---"
+        message: "Each guide must start with frontmatter containing title and description"
+      - pattern: "import IntegrationFooter.*"
+        message: "Must import and use IntegrationFooter component"
+      - pattern: "<Steps>.*</Steps>"
+        message: "Must use Steps component for integration instructions"
+
+  - type: suggest
+    message: |
+      Hub documentation guides must follow this structure:
+
+      1. File Location:
+         - Place in connection-guides/{category}/{integration-name}.mdx
+         - Use kebab-case for filenames
+         - Categories: ats, documents, hris, iam, lms
+
+      2. Required Frontmatter:
+         ```mdx
+         ---
+         title: "Integration Name"
+         description: "Follow these steps to connect {Integration} via the StackOne Hub successfully."
+         ---
+         ```
+
+      3. Required Imports:
+         ```mdx
+         import IntegrationFooter from "/snippets/integration-footer.mdx"
+         ```
+
+      4. Standard Sections:
+         - Warning (if applicable)
+         - Introduction paragraph
+         - Authentication steps in <Steps> component
+         - IntegrationFooter
+         - Available data section
+
+      5. Authentication Patterns:
+         - OAuth
+         - API Key
+         - Service Account
+         - Partner OAuth
+         Each pattern has specific required steps
+
+      6. Image Guidelines:
+         - Store in /images/{integration-name}/
+         - Use descriptive kebab-case names
+         - Include in <Frame> components
+         - Add alt text and className
+
+      7. **Integration Index Entry:**
+         - After creating a new guide, add an entry in `integrations.mdx` that redirects or links to the new guide.
+         - Example:
+           ```mdx
+           - name: OneDrive
+             href: /connection-guides/documents/onedrive
+           ```
+         - This ensures the new integration is discoverable in the documentation index.
+
+  - type: validate
+    conditions:
+      - pattern: "- name: [Ii]ntegration\\s*Name\\s*\\n\\s*href: \\/connection-guides\\/[a-z-]+\\/[a-z-]+"
+        path: "integrations.mdx"
+        message: "A new entry must be added to integrations.mdx with a redirect or link to the new guide."
+
+examples:
+  - input: |
+      ---
+      title: "Example Integration"
+      description: "Follow these steps to connect Example via the StackOne Hub successfully."
+      ---
+
+      import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+      <Warning>
+        Required permissions or prerequisites
+      </Warning>
+
+      Introduction paragraph explaining the integration process.
+
+      <Steps>
+        <Step title="First Step">
+          Instructions for first step
+          
+          <Frame>
+            <img className='rounded-md' alt="Step description" src="/images/example/step-1.png" />
+          </Frame>
+        </Step>
+      </Steps>
+
+      <IntegrationFooter />
+
+      ## Available data
+      
+      This integration has the following [CATEGORY Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+      <ul>
+        <li>Resource1</li>
+        <li>Resource2</li>
+      </ul>
+
+      # integrations.mdx
+      - name: Example
+        href: /connection-guides/documents/example
+    output: "Valid hub documentation guide and index entry"
+
+metadata:
+  priority: high
+  version: 1.1
+  category: documentation
+  applies_to: ["connection-guides/**/*.mdx", "integrations.mdx"]
+</rule>
