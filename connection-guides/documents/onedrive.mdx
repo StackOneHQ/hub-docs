@@ -6,96 +6,91 @@ description: "Follow these steps to connect OneDrive via the StackOne Hub succes
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
-  Ensure that your Microsoft account has Admin or Owner privileges for the OneDrive tenant you wish to connect.
+  Ensure that your OneDrive account has Admin or Owner privileges.
 </Warning>
 
 If you've been directed to StackOne to integrate with OneDrive, the following steps will help you understand the process and any necessary actions to configure a successful integration.
 
+## OAuth \+ File Picker
+
+### Log in to OneDrive
+
 <Steps>
+  <Step title="Get your OneDrive Base URL">
+    Your OneDrive base URL follows this format:
+
+    ```
+    https://{your-domain}.sharepoint.com
+    ```
+
+    You can find this URL by:
+
+    1. Opening your Microsoft OneDrive site
+    2. Copying the base URL from your browser's address bar
+  </Step>
   <Step title="Log in to Microsoft Azure">
     Log in to your [Microsoft Azure](https://portal.azure.com/) portal.
-    
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Azure Login Portal" src="/images/onedrive/azure-login.png" />
-    </Frame>
+
+    ![Azure Login Pn](/images/sharepoint/azure-login.png)
   </Step>
+  <Step title="Obtain your Tenant ID">
+    Search Microsoft Entra ID and navigate to the **Overview** page.
 
-  <Step title="Register Application">
-    1. Navigate to **Microsoft Entra ID** > **App registrations**
-    2. Click **New registration**
-    3. Enter a name for your application
-    4. Select **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant)**
-    5. Set the redirect URI to `https://www.api.stackone.com/oauth/onedrive/callback`
-    6. Click **Register**
-    
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Register New Application" src="/images/onedrive/register-app.png" />
-    </Frame>
+    **Copy** <Icon icon="clipboard" color="#333333" /> the Tenant ID and store safely to be used in a later step:
+
+    - Directory (tenant) ID
+
+    ![Ms Entra App Client Tenant Ids OneDrive Pn](/images/sharepoint/tenant-id.png)
   </Step>
-
-  <Step title="Get Required Credentials">
-    After registration, copy these values from the application overview page:
-    - **Application (client) ID**
-    - **Directory (tenant) ID**
-    
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Get Application Credentials" src="/images/onedrive/get-credentials.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Create Client Secret">
-    1. Navigate to **Certificates & secrets**
-    2. Click **New client secret**
-    3. Add a description and select an expiration period
-    4. Click **Add**
-    
-    <Warning>
-      Copy the secret value immediately as it won't be shown again.
-    </Warning>
-    
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Client Secret" src="/images/onedrive/create-secret.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Configure API Permissions">
-    1. Navigate to **API permissions**
-    2. Click **Add a permission**
-    3. Select **Microsoft Graph**
-    4. Add the following permissions:
-
-    **Delegated Permissions:**
-    - Files.Read
-    - Files.Read.All
-    - Files.ReadWrite
-    - Files.ReadWrite.All
-    - offline_access
-    - User.Read
-
-    **Application Permissions:**
-    - Files.Read.All
-    - Files.ReadWrite.All
-
-    5. Click **Grant admin consent** for your organization
-    
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Configure API Permissions" src="/images/onedrive/configure-permissions.png" />
-    </Frame>
-  </Step>
-
   <Step title="Connect to OneDrive">
-    Enter your credentials in the StackOne Hub and click **Connect** to start the OAuth flow.
-    
+    Enter the credentials in the fields below and click the Connect button to start the login process. You will be redirected to OneDrive.
+
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connect to OneDrive" src="/images/onedrive/connect.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Connect to GoogleDrive"
+        src="/images/sharepoint/image-2.png"
+      />
     </Frame>
   </Step>
+  <Step title="Grant OAuth Application Consent">
+    A window will appear and may prompt you to log in to your OneDrive account.
 
-  <Step title="Grant Consent">
-    You will be redirected to Microsoft's consent page. Review the permissions and click **Accept** to complete the integration.
-    
+    After logging in, you will be displayed the OAuth consent screen.
+
+    Click the **Allow** button to grant the application access to your OneDrive account.
+  </Step>
+</Steps>
+
+## OAuth
+
+<Steps>
+  <Step title="Connect to OneDrive">
+    Enter the credentials in the fields below and click the Connect button to start the login process. You will be redirected to log in to Microsoft.
+
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Grant Consent" src="/images/onedrive/grant-consent.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Connect to Sharepoint"
+        src="/images/sharepoint/image-1.png"
+      />
+    </Frame>
+  </Step>
+  <Step title="Authorize the Application">
+    After logging in to Microsoft, a consent screen will be displayed with the permissions required for the connecting application.
+
+    Click the **Accept** button to grant access.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Authorize Sharepoint application"
+        src="images/sharepoint/sharepoint-stackone-consent-2.png"
+        title=""
+      />
     </Frame>
   </Step>
 </Steps>
@@ -105,8 +100,7 @@ If you've been directed to StackOne to integrate with OneDrive, the following st
 ## Available data
 
 This integration has the following [DOCUMENTS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
-<ul>
-  <li>Drives</li>
-  <li>Files</li>
-  <li>Folders</li>
-</ul>
+
+- Drives
+- Files
+- Folders
