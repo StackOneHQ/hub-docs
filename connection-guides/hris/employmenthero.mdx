@@ -1,0 +1,98 @@
+---
+title: "Employment Hero"
+description: "Follow these steps to connect Employment Hero via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Employment Hero account has Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Employment Hero, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Generate Client ID and Secret key
+
+<Steps>
+    
+    <Step title="Login to your Employment Hero portal.">
+    </Step>
+
+    
+    <Step title="Navigate to Account > Developer Portal > API">
+        <Frame>
+            <img
+                className="rounded-md"
+                style={{ margin:"0 auto",border:"1px solid #efefef" }}
+                alt="Navigate to Account > Developer Portal > API"
+                src="/images/employmenthero/image1.png"
+            />
+        </Frame>
+    </Step>
+
+    
+   <Step title="Click Add Application">
+     On the **API** tab, click the **Add Application** button.
+  
+        <Frame>
+            <img
+                className="rounded-md"
+                style={{ margin:"0 auto",border:"1px solid #efefef" }}
+                alt="Click Add Application"
+                src="/images/employmenthero/image2.png"
+            />
+        </Frame>
+  </Step>
+  <Step title="Configure the App Details">
+        Configure the app with the following details and then click on **Create** button
+        - **Name**: e.g. StackOne
+        - **Redirect URL**: `https://api.stackone.com/connect/oauth2/employmenthero/callback`
+        - **Scopes**: Select the required admin and user scopes to enable data access via API.
+        <Frame>
+            <img
+                className="rounded-md"
+                style={{ margin:"0 auto",border:"1px solid #efefef" }}
+                alt="Configure the App Details"
+                src="/images/employmenthero/image3.png"
+            />
+        </Frame>
+  </Step>
+  <Step title="Copy your Client ID and Client Secret">
+      Copy your Client ID and Client Secret and store them safely to be used in a later step.
+  
+        <Frame>
+            <img
+                className="rounded-md"
+                style={{ margin:"0 auto",border:"1px solid #efefef" }}
+                alt="Copy your Client ID and Client Secret"
+                src="/images/employmenthero/image4.png"
+            />
+        </Frame>
+  </Step>
+
+</Steps>
+
+
+## Connecting with StackOne
+
+<Steps>
+    <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the credentials from the previous steps and proceed by clicking the <b>Connect</b> button
+
+        <Frame>
+            <img
+                className="rounded-md"
+                style={{ margin:"0 auto",border:"1px solid #efefef" }}
+                alt="Enter Credentials"
+                src="/images/employmenthero/image5.png"
+            />
+        </Frame>
+    </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developer.employmenthero.com/api-references/">
+    https://developer.employmenthero.com/api-references/
+</Card>
