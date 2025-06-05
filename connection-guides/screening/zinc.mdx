@@ -1,0 +1,57 @@
+---
+title: "Zinc"
+description: "If you have been directed to StackOne to integrate with Zinc, the following steps will help you understand the process and any necessary actions to configure successful integration."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  The following guidance assumes you have Admin privileges for your Zinc
+  account.
+</Warning>
+
+## Generating an API Key
+
+<Steps>
+  <Step title="Sign in and open Company Settings">
+    Sign in to <a href="https://app.zincwork.com/sign-in">your account</a> and click the `Company Settings` <Icon icon="gear" iconType="regular" /> button on the side bar.
+
+    <Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Home page" src="/images/zinc/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Generate API Key">
+    Scroll down to the `Integrations` section and select a valid integration.
+
+    Click `Generate API Key` button.
+    <Frame>
+      <img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="Company settings page" src="/images/zinc/image2.png" />
+    </Frame>
+
+    Record the displayed API key for use in the final step.
+    <Frame>
+      <img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="API Keys page" src="/images/zinc/image3.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Use the API Key in the StackOne Hub
+
+Upon reaching the Link Account page, enter the generated API key and proceed by clicking the <b>Connect</b> button.
+
+<Frame>
+  <img
+    className="rounded-md"
+    style={{ width: "400px", margin: "0 auto", border: "1px solid #efefef" }}
+    alt="Access Token Created"
+    src="/images/zinc/image4.png"
+  />
+</Frame>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://docs.zincwork.com/">
+    https://docs.zincwork.com/
+</Card>
