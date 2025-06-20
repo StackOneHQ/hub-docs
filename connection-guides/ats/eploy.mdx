@@ -18,7 +18,12 @@ If you've been directed to StackOne to integrate with Eploy, the following steps
     You can find the subdomain in the URL of your Eploy account by taking the portion that appears before `.eploy.net` and after `https://`.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Subdomain Example" src="/images/eploy/image1.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Subdomain Example"
+        src="/images/eploy/image1.png"
+      />
     </Frame>
   </Step>
 </Steps>
@@ -30,44 +35,88 @@ In this example, the value would be: stackoneapidemo
 <Steps>
   <Step title="Navigate to API Keys">
     In the top navigation bar go to `Admin` → `System / Security Settings` → `API Keys`.
+
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create API Key" src="/images/eploy/image2.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create API Key"
+        src="/images/eploy/image2.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Create a New API Key">
     On the top-right select `New` → `Rest API`.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create API Key" src="/images/eploy/image3.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create API Key"
+        src="/images/eploy/image3.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Name the API Key">
     Enter `title` for the API Key, for example: `StackOne`.
-    
+
     Select an `API User` for your API Key to use and click `Save`.
+
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create API Key" src="/images/eploy/image4.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create API Key"
+        src="/images/eploy/image4.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Record Client ID, Client Secret and Assign Permissions">
     Your `Client ID` and `Client Secret` will be generated and displayed to you. Copy them to a safe place.
 
     Assign API permissions based on the integration requirements by clicking on `Add` button.
-    
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generated API Key" src="/images/eploy/image5.png" />
-    </Frame>
 
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Generated API Key"
+        src="/images/eploy/image5.png"
+      />
+    </Frame>
     Choose the APIs and the necessary permissions, then click `Save`.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generated API Key" src="/images/eploy/image6.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Generated API Key"
+        src="/images/eploy/image6.png"
+      />
     </Frame>
-
     Click `Save`.
+  </Step>
+</Steps>
+
+## Getting Your Candidate Custom Fields (optional)
+
+This integration supports Candidate Custom Fields set up in your Eploy instance. When connecting your account, you can enter the Custom Field IDs you wish to be included.
+
+<Steps>
+  <Step title="Navigate to Custom Fields">
+    In the top navigation bar go to `Admin` → `Customise Fields` → `Custom Fields` 
+
+    ![Eploy Custom Fields Top Nav Pn](/images/eploy/eploy-custom-fields-top-nav.png)
+  </Step>
+  <Step title="View Candidate Custom Fields">
+    Under **_Custom Fields_**, select the `Fields` tab. Then click the `Record Type` button and select `Candidates` to view all of the Candidate Custom Fields in your Eploy instance.
+
+    ![Eploy Candidate Custom Fields Filter Pn](/images/eploy/eploy-candidate-custom-fields-filter.png)
+  </Step>
+  <Step title="Note Field IDs">
+    In the filtered list of Candidate Custom Fields, note all of the **Field IDs** for the Custom Fields to be included in this integration. \
+    \
+    You will enter a list of these **Field IDs** when connecting your account.
   </Step>
 </Steps>
 
@@ -81,11 +130,25 @@ In this example, the value would be: stackoneapidemo
 
     Only the scopes assigned above during API key configuration will be allowed — see the full list <a href="https://support.eploy.co.uk/hc/en-gb/articles/14711773981853-Eploy-RESTful-API-Full-Developer-s-Guide#:~:text=A%20full%20list%20of%20Scopes%20are%20as%20follows">here</a>.
 
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/eploy/image7.png" />
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/eploy/image8.png" />
-    </Frame>
+    To optionally include Candidate Custom Fields, enter the comma-separated list of `Candidate Custom Field IDs`. 
 
+    _Example:_ `104,215,392,449` 
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Link Account"
+        src="/images/eploy/image7.png"
+      />
+
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Link Account"
+        src="/images/eploy/image8.png"
+      />
+    </Frame>
     Click `Connect`.
   </Step>
 </Steps>
@@ -93,6 +156,7 @@ In this example, the value would be: stackoneapidemo
 <IntegrationFooter />
 
 ## Useful Links
+
 <Card title="API Reference" icon="link" href="https://support.eploy.co.uk/hc/en-gb/categories/14740107974941-Eploy-RESTful-API">
-    https://support.eploy.co.uk/hc/en-gb/categories/14740107974941-Eploy-RESTful-API
+  https://support.eploy.co.uk/hc/en-gb/categories/14740107974941-Eploy-RESTful-API
 </Card>
