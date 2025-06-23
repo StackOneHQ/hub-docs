@@ -1,0 +1,121 @@
+---
+title: HubSpot Webhook Configuration Guide
+description: To successfully configure the webhook and send the event on action.
+---
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guide assumes that you have administrative privileges for your HubSpot account.
+</Warning>
+
+## ✅ Prerequisites
+
+Make sure you have the following before you start:
+
+- A [HubSpot Developer Account](https://developers.hubspot.com)
+- A HubSpot App (new or existing)
+- A HubSpot Developer API Key
+---
+
+## Get the Developer API Key
+<Steps>
+  <Step title="Get the Developer API Key">
+      - Go to the [HubSpot Developer Portal](https://developers.hubspot.com/).
+      - Select **API Key** from the left sidebar.
+      - Click **Show Key** to view your existing key or **Generate New Key** to create one.
+      - Copy the key and store it securely.
+
+      > **ℹ️ Note:** The `create` and `delete` webhooks for **contacts** and **accounts** are automatically created via the API when you define webhook events for create or delete actions. These use **automatic webhooks** and do not require manual configuration in the HubSpot UI. This API requires authentication using your **HubSpot Developer API Key**.
+ 
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key" src="/images/hubspot-webhook-configuration/image9.png" />
+    </Frame>
+    
+  </Step>
+</Steps>
+
+## To Get External Trigger URL
+<Steps>
+  <Step title="To get the External Trigger Url">
+    From the StackOne hub, you will receive the `External Trigger URL` needed to enable the HubSpot webhook.
+    > **ℹ️ Note:**  
+    > If the webhook type is **Automatic**, the `External Trigger URL` will be configured automatically. No manual setup is required in that case.
+    > - In **HubSpot**, **contacts/accounts creation and deletion** events are handled through **automatic webhooks**.  
+    > - This step is only required when configuring **update webhooks** for **contacts** or **accounts**.
+    
+ 
+    - Enable the webhook event.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Event Page" src="/images/hubspot-webhook-configuration/image1.png" />
+    </Frame>
+    - Copy the `External Trigger URL` from the StackOne hub.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Conneect Account" src="/images/hubspot-webhook-configuration/image2.png" />
+    </Frame>
+    
+  </Step>
+</Steps>
+
+## To Enable Webhook Events
+<Steps>
+  <Step title="Create or Use a HubSpot App">
+   - Go to [HubSpot Developer Portal](https://developers.hubspot.com).
+   - Select **Apps** from the navigation panel.
+   - Click **Create App** or open an existing one.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="HubSpot App" src="/images/hubspot-webhook-configuration/image3.png" />
+    </Frame>
+  </Step>
+  <Step title="Get the HubSpot Developer API Key">
+     HubSpot Webhooks require an `Developer API key` for authentication. You can find this key in your HubSpot app settings.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="HubSpot App" src="/images/hubspot-webhook-configuration/image3.png" />
+    </Frame>
+  </Step>
+  <Step title="Navigate to Webhooks">
+     In your app dashboard, click **Webhooks** from the left menu.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Webhook Page" src="/images/hubspot-webhook-configuration/image4.png" />
+    </Frame>
+  </Step>
+  <Step title="Set the Webhook URL">
+     - Add your `External Trigger URL` in the Target URL field.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Target URL" src="/images/hubspot-webhook-configuration/image5.png" />
+    </Frame>
+     - Click **Save** to save the changes.
+     <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Target URL" src="/images/hubspot-webhook-configuration/image8.png" />
+    </Frame>
+  </Step>
+  <Step title="Subscribe to Events">
+    - Click **Create Subscription**
+    - Select the object and event you want to subscribe to.
+      - `contact.propertyChange`
+      - `company.propertyChange`
+    - Select the field you want to trigger the `propertyChange` event on.
+    - Save subscription by clicking **Subscribe** button.
+    > **ℹ️ Note:**  
+    > - When configuring webhooks for **contacts** and **accounts**, the **creation** and **deletion** events are automatically created via API when you define webhooks for create or delete actions, as they use automatic webhooks.  
+    >  
+    > - This step is **only required** when configuring **update events** for **contacts** and **accounts**, since **update events are implemented using manual webhooks**. These must be configured manually in the webhook configuration.
+   
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Subscribe Event" src="/images/hubspot-webhook-configuration/image6.png" />
+    </Frame>
+    - Activate the webhook by clicking the **Activate** button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Activate Event" src="/images/hubspot-webhook-configuration/image7.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developers.hubspot.com/docs/guides/api/app-management/webhooks">
+    https://developers.hubspot.com/docs/guides/api/app-management/webhooks
+</Card>
+<Card title="HubSpot Developer Portal" icon="link" href="https://developers.hubspot.com">
+    https://developers.hubspot.com
+</Card>
