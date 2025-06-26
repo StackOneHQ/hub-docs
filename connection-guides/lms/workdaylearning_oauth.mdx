@@ -1,0 +1,93 @@
+---
+title: "Workday Learning (WQL)"
+description: "If you've been directed to StackOne to integrate with Workday Learning (WQL), the following steps will help you understand the process and any necessary actions to configure successful integration."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes you have Admin privileges for your Workday account.
+</Warning>
+
+## Finding your Workday Tenant
+
+<Steps>
+  <Step title="Log into Workday">
+    Log into your Workday account. Look at the address bar at the top of the browser window where the URL is displayed. Find your tenant immediately after `workday.com/`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Workday Tenant" src="/images/workday-oauth2/image1.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Register the Rest API Client
+
+<Steps>
+  <Step title="Go to Register API Client">
+    Go to the `Register API Client for Integration` Task.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Human Resources Web Service" src="/images/workday-oauth2/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Register API Client">
+    Register the API Client with the following details and then click on **OK** button
+    - **Client Name**: e.g. StackOne_Integrations
+    - **Non-Expiring Refresh Tokens**: Check the box
+    - **Scopes**: Select the required functional scopes to enable data access via API.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy the credentials">
+    After registering the client, you will be redirected to a page displaying the **Client ID** and **Client Secret**. Make sure to copy and securely store these credentials.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image4.png" />
+    </Frame>
+  </Step>
+
+   <Step title="Generate the Refresh token">
+    Follow the steps below to generate the refresh tokens.
+    - At the top of the page, click the **menu (⋯)** icon.
+    - Select **API Client** from the menu.
+    - Click on **Manage Refresh Tokens for Integrations**.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image5.png" />
+    </Frame>
+
+    Once you select **menu (⋯) → API Client → Manage Refresh Tokens for Integrations**, you will be redirected to a screen to choose your Workday account. Select the account and click **OK**.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image6.png" />
+    </Frame>
+
+    Once you're on the Refresh Token page, select **Generate New Refresh Token** and click **OK**.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image7.png" />
+    </Frame>
+
+    Once the refresh token is generated successfully, copy the token and click Done.
+     <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image8.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Linking to StackOne
+
+You can use the **Client ID**, **Client Secret** and **Refresh Token** credentials you created in steps 3 and 4 to link Workday.
+
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/image9.png" />
+</Frame>
+
+<IntegrationFooter />
+
+<Card title="Useful Links" icon="link" href="https://doc.workday.com">
+    https://doc.workday.com
+</Card>
