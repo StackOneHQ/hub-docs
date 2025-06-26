@@ -3,7 +3,7 @@ description:
 globs: 
 alwaysApply: true
 ---
- <rule>
+<rule>
 name: hub_documentation
 description: Standards for creating and maintaining hub documentation guides
 
@@ -28,9 +28,10 @@ actions:
       Hub documentation guides must follow this structure:
 
       1. File Location:
-         - Place in connection-guides/{category}/{integration-name}.mdx
+         - Place directly in connection-guides/{category}/{integration-name}.mdx
          - Use kebab-case for filenames
-         - Categories: ats, documents, hris, iam, lms
+         - Categories: ats, documents, hris, iam, lms, marketing, screening, crm
+         - IMPORTANT: Do NOT place in docs/hubs/{category}/ - place directly in the category folder
 
       2. Required Frontmatter:
          ```mdx
@@ -65,7 +66,22 @@ actions:
          - Include in <Frame> components
          - Add alt text and className
 
-      7. **Integration Index Entry:**
+      7. **Link Validation Requirements:**
+         - Test ALL external links before adding them to documentation
+         - Verify links are accessible and return expected content
+         - Check that API documentation links are still valid
+         - Ensure provider website links are working
+         - Test any download links or resource links
+         - If a link is broken, either find an alternative or remove it
+         - Consider adding link checking to your documentation workflow
+
+      8. **Linking Section Guidelines:**
+         - Use generic language like "your platform" or "the integration platform" instead of "StackOne"
+         - Focus on the provider's perspective and what they need to do
+         - Avoid mentioning specific product names in the linking steps
+         - Example: "Navigate to the Integrations page in your platform" instead of "Navigate to StackOne Hub"
+
+      9. **Integration Index Entry:**
          - After creating a new guide, add an entry in `integrations.mdx` that redirects or links to the new guide.
          - Example:
            ```mdx
@@ -105,6 +121,28 @@ examples:
         </Step>
       </Steps>
 
+      ## Linking your Provider Account
+
+      Now that you have all the required information, you can link your account.
+
+      <Steps>
+        <Step title="Access Integrations">
+          Navigate to the Integrations page in your platform.
+        </Step>
+
+        <Step title="Find Integration">
+          Search for the integration name in the list of available integrations and click on it.
+        </Step>
+
+        <Step title="Enter Connection Details">
+          Fill in the required fields with the information you gathered.
+        </Step>
+
+        <Step title="Test and Save">
+          Click Test Connection to verify the connection, then click Save to complete the integration.
+        </Step>
+      </Steps>
+
       <IntegrationFooter />
 
       ## Available data
@@ -122,7 +160,7 @@ examples:
 
 metadata:
   priority: high
-  version: 1.1
+  version: 1.3
   category: documentation
   applies_to: ["connection-guides/**/*.mdx", "integrations.mdx"]
 </rule>
