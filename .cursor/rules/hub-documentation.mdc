@@ -147,7 +147,7 @@ examples:
 
       ## Available data
       
-      This integration has the following [CATEGORY Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+      This integration has the following [CATEGORY Resources](mdc:https:/docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
       <ul>
         <li>Resource1</li>
         <li>Resource2</li>
