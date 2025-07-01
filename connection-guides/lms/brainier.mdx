@@ -1,0 +1,145 @@
+---
+title: Brainier
+description: Follow these steps to connect Brainier via the StackOne Hub successfully.
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+## Overview
+
+Brainier is a comprehensive Learning Management System (LMS) that provides enterprise-level training solutions. To use the Brainier Integration, you'll need to create an API Client and configure OAuth 2.0 authentication.
+
+<Warning>
+You need **Admin** privileges in your Brainier account to complete this integration. If you don't have admin access, please contact your Brainier administrator.
+</Warning>
+
+## Create an API Client
+
+To authenticate with the Brainier Elan REST API using OAuth 2.0, you must first create an API Client.
+
+<Steps>
+
+<Step title="Access API Client Management">
+Log in to your Brainier LMS site and navigate to:
+**Admin** > **Settings** > **Options** > **Integrations** > **Elan REST API** > **Manage API Clients**
+</Step>
+
+<Step title="Create New API Client">
+Click the **Add** button in the top right corner of the screen.
+</Step>
+
+<Step title="Configure API Client Settings">
+Fill out the following fields:
+
+- **Client Name**: Enter a descriptive name for this API Client (e.g., "StackOne Integration")
+- **Token Duration (minutes)**: Set the access token validity period in minutes (maximum: 1440 or 24 hours)
+- **Scopes**: Select the groups of API methods this client is allowed to access. For StackOne integration, ensure you select scopes that include:
+  - `groups`
+  - `users`
+  - Any additional scopes required for your specific use case
+</Step>
+
+<Step title="Save and Retrieve Credentials">
+Click **Save** to create the API Client. After saving, two new fields will appear:
+
+- **Client ID**: A unique identifier for this API Client
+- **Client Secret**: A secret value used for obtaining access tokens
+
+<Warning>
+Store the **Client Secret** in a secure location. This value should never be exposed to front-end code or shared publicly.
+</Warning>
+</Step>
+
+</Steps>
+
+## Gather Required Information
+
+Before linking your Brainier account with StackOne, you'll need to collect the following information:
+
+<Steps>
+
+<Step title="Subdomain">
+Your Brainier subdomain is the first part of your Brainier URL.
+
+For example, if your Brainier URL is `https://mycompany.brainier.com`, your subdomain is `mycompany`.
+</Step>
+
+<Step title="Client ID and Client Secret">
+These are the credentials you obtained when creating the API Client in the previous section.
+</Step>
+
+<Step title="Username">
+Identify the username of the account you want to bind the access token to. This is typically a SuperAdmin account or a dedicated service account with appropriate permissions.
+
+<Note>
+If no username is supplied during authentication, the token will be bound to the default SuperAdmin account (user_id 1).
+</Note>
+</Step>
+
+</Steps>
+
+## Linking your Brainier Account
+
+Now that you have all the required information, you can link your Brainier account.
+
+<Steps>
+<Step title="Enter Connection Details">
+Fill in the following fields with the information you gathered:
+
+- **Subdomain**: Enter your Brainier subdomain (without the `.brainier.com` part)
+- **Client ID**: Enter the Client ID from your API Client
+- **Client Secret**: Enter the Client Secret from your API Client
+- **Username**: Enter the username for the account to bind the token to (optional)
+</Step>
+
+<Step title="Test and Save">
+Click **Test Connection** to verify that the credentials are correct.
+</Step>
+
+</Steps>
+
+## Troubleshooting
+
+If you encounter issues during the integration process, check the following:
+
+<Steps>
+
+<Step title="Invalid Credentials">
+**Error**: `invalid_client`
+
+**Solution**: Verify that your Client ID and Client Secret are correct and haven't been modified. Ensure there are no extra spaces or characters.
+</Step>
+
+<Step title="Invalid Username">
+**Error**: `invalid_username`
+
+**Solution**: The username you provided doesn't exist in your Brainier LMS. Either:
+- Leave the username field empty to use the default SuperAdmin account
+- Verify the username exists in your Brainier system
+</Step>
+
+<Step title="Insufficient Permissions">
+**Error**: Access denied or scope errors
+
+**Solution**: Ensure the API Client has been configured with all necessary scopes, including `groups` and `users`. You may need to edit your API Client in Brainier to add additional scopes.
+</Step>
+
+<Step title="Connection Timeout">
+**Solution**: 
+- Verify your subdomain is correct
+- Check if your Brainier instance is accessible from external networks
+- Ensure there are no firewall rules blocking API access
+</Step>
+
+</Steps>
+
+## Useful Links
+
+<Card
+  title="Brainier API Documentation (Password Protected)"
+  icon="book"
+  href="https://devcenter.brainier.com/"
+>
+  Access Brainier's official API documentation for detailed information about available endpoints and methods.
+</Card>
+<IntegrationFooter />
