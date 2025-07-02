@@ -61,10 +61,34 @@ description: "If you've been directed to StackOne to integrate with Docebo, the 
     </Frame>
   </Step>
 
-  <Step title="Find domain">
+  <Step title="Find Domain">
    You can find the domain by taking the root URL from the address bar of your Docebo account and only taking the part before .docebosaas.com and after the https://.
 
    E.g. If your url is `https://my-domain.docebosaas.com` the domain is `my-domain`.
+  </Step>
+
+  <Step title="Find Catalog ID">
+  You have the option to also push content to a specific Catalog as well as the system.
+  
+   Navigate to `Admin Menu` and select `Catalog Management`.
+
+   <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/docebo/image9.png" />
+   </Frame>
+
+   Click on the catalog where you would like to upload your content.
+
+   <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/docebo/image10.png" />
+   </Frame>
+
+   The Catalog ID can be found in the address bar. 
+
+   E.g. If your url is `https://my-domain.docebosaas.com/catalog/manage/catalogs/23/properties` the Catalog ID is `23`.
+   
+   <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/docebo/image11.png" />
+   </Frame>
   </Step>
 
   <Step title="Linking xAPI Content as Training Material">
@@ -92,7 +116,7 @@ description: "If you've been directed to StackOne to integrate with Docebo, the 
 
 <Steps>
   <Step title="Enter Credentials">
-      In the modal enter the `Client ID`, `Client Secret`, `Subdomain`, `Username` and `Password` from the previous steps.
+      In the modal enter the `Client ID`, `Client Secret`, `Subdomain`, `Username`, `Password` and `Catalog Id` from the previous steps.
 
       <Frame>
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/docebo/image5.png" />
