@@ -21,6 +21,142 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 </Steps>
 
+## Set up an Integration System User
+
+<Steps>
+  <Step title="Search for Create Integration System User">
+    Log in to your Workday tenant in the Workday portal. In the Search field, search for "Create Integration System User".
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Integration System User" src="/images/workday/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Choose the Task">
+    Choose the "Create Integration System User" task.
+  </Step>
+
+  <Step title="Enter Account Information">
+    Enter a username and password in the Account Information section on the "Create Integration System User" page.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Account Information" src="/images/workday/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click OK">
+    Click OK.
+  </Step>
+</Steps>
+
+## Add the Integration System User to a Security Group
+
+<Steps>
+  <Step title="Search for Create Security Group">
+    In the Search field, search for "Create Security Group". Select the "Create Security Group" task.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Security Group" src="/images/workday/image7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Security Group Type">
+    On the "Create Security Group" page, select "Integration System Security Group" from the Type of Tenanted Security Group pull-down menu. Enter a name in the Name field.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Security Group Type" src="/images/workday/image8.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Click OK">
+    Click OK.
+  </Step>
+
+  <Step title="Edit Integration System Security Group">
+    On the "Edit Integration System Security Group (Unconstrained)" page, enter the same name you used when creating the ISU in the first section. Click OK.
+
+  </Step>
+</Steps>
+
+## Configure Domain Security Policy Permissions
+
+<Steps>
+  <Step title="Edit Permissions">
+
+    <Info>
+      The Workday HRIS integration currently requires **all** of the permissions listed below to be enabled for full support. 
+
+      Workday's API may return an error response if any of these permissions are missing.
+    </Info>
+
+    Edit the Domain Security Policy Permissions in the Security Group. 
+
+    You can reach this interface by searching for "Maintain Permissions for Security Group" in the search bar, and selecting the name of the Security Group you created in the previous step.
+    
+    This integration uses the following Workday Security Group Permissions. For each listed permission, select either **Get Only** for read-only access, or **Get and Put** for read and write access in the *View/Modify Access* column.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View/Modify Access" src="/images/workday/image13.png" />
+    </Frame>
+
+    <Info>
+      Please note that Security Group Permissions can be customized within a Workday organization, and this list does not account for such customizations.
+    </Info>
+
+    - Job Requisition Data
+    - Job Information
+    - Job Profile: View
+    - **Manage:**
+      - Location
+      - Organization Integration
+    - **Person Data:**
+        - Name
+        - Citizenship Status
+        - Date of Birth
+        - Disabilities
+        - Gender
+        - Government IDs
+        - ID Information
+        - Marital Status
+        - National ID Identification 
+        - Personal Information
+        - Personal Data
+        - Personal Photo
+      - Home Contact Information
+      - Home Address
+      - Home Email
+      - Home Phone
+      - Work Contact Information
+      - Work Address
+      - Work Email
+      - Work Phone
+    - **Worker Data:**
+      - All Positions
+      - Compensation
+      - Current Staffing Information
+      - Employment Data
+      - Organization Information
+      - Public Worker Reports
+      - **Time Off**
+        - Time Off
+        - Time Off Manager View
+        - Time Off Balances
+        - Time Off Balances Manager View
+      - **Leave of Absence**
+      - Workers
+    - View: National Identifiers - All
+
+  </Step>
+</Steps>
+
+## Approve the Security Policy Changes
+
+<Steps>
+  <Step title="Search for Activate Pending Security Policy Changes">
+    In the Search bar, search for "Activate Pending Security Policy Changes". Review the policies that need approval in the summary of the changes in the security policy. Approve the pending security policy changes to activate them.
+  </Step>
+</Steps>
+
 ## Register the Rest API Client
 
 <Steps>
@@ -65,7 +201,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image5.png" />
     </Frame>
 
-    Once you select **menu (⋯) → API Client → Manage Refresh Tokens for Integrations**, you will be redirected to a screen to choose your Workday account. Select the account and click **OK**.
+    Once you select **menu (⋯) → API Client → Manage Refresh Tokens for Integrations**, you will be redirected to a screen to choose your Workday account (the Integration System User you created earlier). Select the account and click **OK**.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image6.png" />
     </Frame>
