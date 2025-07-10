@@ -16,7 +16,12 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     Log into your Workday account. Look at the address bar at the top of the browser window where the URL is displayed. Find your tenant immediately after `workday.com/`.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Workday Tenant" src="/images/workday-oauth2/image1.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Workday Tenant"
+        src="/images/workday-oauth2/image1.png"
+      />
     </Frame>
   </Step>
 </Steps>
@@ -28,22 +33,29 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     Log in to your Workday tenant in the Workday portal. In the Search field, search for "Create Integration System User".
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Integration System User" src="/images/workday/image5.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create Integration System User"
+        src="/images/workday/image5.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Choose the Task">
     Choose the "Create Integration System User" task.
   </Step>
-
   <Step title="Enter Account Information">
     Enter a username and password in the Account Information section on the "Create Integration System User" page.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Account Information" src="/images/workday/image6.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Account Information"
+        src="/images/workday/image6.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Click OK">
     Click OK.
   </Step>
@@ -56,25 +68,31 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     In the Search field, search for "Create Security Group". Select the "Create Security Group" task.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Security Group" src="/images/workday/image7.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create Security Group"
+        src="/images/workday/image7.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Select Security Group Type">
     On the "Create Security Group" page, select "Integration System Security Group" from the Type of Tenanted Security Group pull-down menu. Enter a name in the Name field.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Security Group Type" src="/images/workday/image8.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Security Group Type"
+        src="/images/workday/image8.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Click OK">
     Click OK.
   </Step>
-
   <Step title="Edit Integration System Security Group">
     On the "Edit Integration System Security Group (Unconstrained)" page, enter the same name you used when creating the ISU in the first section. Click OK.
-
   </Step>
 </Steps>
 
@@ -82,27 +100,28 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Steps>
   <Step title="Edit Permissions">
-
     <Info>
-      The Workday HRIS integration currently requires **all** of the permissions listed below to be enabled for full support. 
+      The Workday HRIS integration currently requires **all** of the permissions listed below to be enabled for full support.
 
       Workday's API may return an error response if any of these permissions are missing.
     </Info>
-
-    Edit the Domain Security Policy Permissions in the Security Group. 
+    Edit the Domain Security Policy Permissions in the Security Group.
 
     You can reach this interface by searching for "Maintain Permissions for Security Group" in the search bar, and selecting the name of the Security Group you created in the previous step.
-    
-    This integration uses the following Workday Security Group Permissions. For each listed permission, select either **Get Only** for read-only access, or **Get and Put** for read and write access in the *View/Modify Access* column.
+
+    This integration uses the following Workday Security Group Permissions. For each listed permission, select either **Get Only** for read-only access, or **Get and Put** for read and write access in the _View/Modify Access_ column.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View/Modify Access" src="/images/workday/image13.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="View/Modify Access"
+        src="/images/workday/image13.png"
+      />
     </Frame>
-
     <Info>
       Please note that Security Group Permissions can be customized within a Workday organization, and this list does not account for such customizations.
     </Info>
-
     - Job Requisition Data
     - Job Information
     - Job Profile: View
@@ -110,18 +129,18 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       - Location
       - Organization Integration
     - **Person Data:**
-        - Name
-        - Citizenship Status
-        - Date of Birth
-        - Disabilities
-        - Gender
-        - Government IDs
-        - ID Information
-        - Marital Status
-        - National ID Identification 
-        - Personal Information
-        - Personal Data
-        - Personal Photo
+      - Name
+      - Citizenship Status
+      - Date of Birth
+      - Disabilities
+      - Gender
+      - Government IDs
+      - ID Information
+      - Marital Status
+      - National ID Identification
+      - Personal Information
+      - Personal Data
+      - Personal Photo
       - Home Contact Information
       - Home Address
       - Home Email
@@ -145,7 +164,6 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       - **Leave of Absence**
       - Workers
     - View: National Identifiers - All
-
   </Step>
 </Steps>
 
@@ -164,56 +182,91 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     Go to the `Register API Client for Integration` Task.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Human Resources Web Service" src="/images/workday-oauth2/image2.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Human Resources Web Service"
+        src="/images/workday-oauth2/image2.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Register API Client">
     Register the API Client with the following details and then click on **OK** button
+
     - **Client Name**: e.g. StackOne_Integrations
     - **Non-Expiring Refresh Tokens**: Check the box
     - **Scopes**: Select the required functional scopes to enable data access via API.
-      - *Staffing*
-      - *Time Tracking*
-      - *Time Off and Leave*
-      - *System*
+      - _Staffing_
+      - _Time Tracking_
+      - _Time Off and Leave_
+      - _System_
+      - _Workday Designer_
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image3.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-oauth2/image3.png"
+      />
     </Frame>
   </Step>
-
   <Step title="Copy the credentials">
     After registering the client, you will be redirected to a page displaying the **Client ID** and **Client Secret**. Make sure to copy and securely store these credentials.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image4.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-oauth2/image4.png"
+      />
     </Frame>
   </Step>
-
-   <Step title="Generate the Refresh token">
+  <Step title="Generate the Refresh token">
     Follow the steps below to generate the refresh tokens.
+
     - At the top of the page, click the **menu (⋯)** icon.
     - Select **API Client** from the menu.
     - Click on **Manage Refresh Tokens for Integrations**.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image5.png" />
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-oauth2/image5.png"
+      />
     </Frame>
-
     Once you select **menu (⋯) → API Client → Manage Refresh Tokens for Integrations**, you will be redirected to a screen to choose your Workday account (the Integration System User you created earlier). Select the account and click **OK**.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image6.png" />
-    </Frame>
 
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-oauth2/image6.png"
+      />
+    </Frame>
     Once you're on the Refresh Token page, select **Generate New Refresh Token** and click **OK**.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image7.png" />
-    </Frame>
 
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-oauth2/image7.png"
+      />
+    </Frame>
     Once the refresh token is generated successfully, copy the token and click Done.
-     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-oauth2/image8.png" />
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-oauth2/image8.png"
+      />
     </Frame>
   </Step>
 </Steps>
@@ -223,11 +276,16 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 You can use the **Client ID**, **Client Secret** and **Refresh Token** credentials you created in steps 3 and 4 to link Workday.
 
 <Frame>
-  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/image9.png" />
+  <img
+    className="rounded-md"
+    style={{ margin:"0 auto",border:"1px solid #efefef" }}
+    alt="Link to StackOne"
+    src="/images/workday/image9.png"
+  />
 </Frame>
 
 <IntegrationFooter />
 
 <Card title="Useful Links" icon="link" href="https://doc.workday.com">
-    https://doc.workday.com
+  https://doc.workday.com
 </Card>
