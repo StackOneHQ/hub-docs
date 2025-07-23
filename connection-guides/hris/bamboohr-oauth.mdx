@@ -1,0 +1,36 @@
+---
+title: "BambooHR (OAuth)"
+description: "Follow these steps to successfully connect your BambooHR account to StackOne Hub using OAuth."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that you have Admin privileges for your BambooHR account.
+</Warning>
+
+
+## Getting your Company Domain
+
+<Steps>
+  <Step title="Sign in to BambooHR">
+    Sign in to your BambooHR instance and note your company domain, which is the URL's prefix. For example, if your URL is `https://stackonetest.bamboohr.com`, then your Company Domain is **stackonetest**.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company Domain" src="/images/bamboohr/image1.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter Company Domain">
+    Upon reaching the Link Account page, enter the Company Domain and proceed by clicking the `Connect` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/bamboohr/bamboohr_oauth_connector.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
