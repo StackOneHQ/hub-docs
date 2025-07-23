@@ -74,6 +74,38 @@ description: "If you've been directed to StackOne to integrate with Udemy, the f
 
 </Steps>
 
+## Using SCIM for User Provisioning
+
+If the Udemy instance has SSO enabled, you will need to use SCIM for user provisioning. 
+
+Otherwise users will be provisioned from the Udemy API directly.
+
+<Steps>
+<Step title="Check SSO is Enabled">
+  Navigate to Manage > Settings > Single sign-on (SSO).
+
+  You should see a connection to your Identity Provider. 
+  
+  Follow the [Udemy SSO Configuration](https://business-support.udemy.com/hc/en-us/articles/115008213828-Overview-of-Udemy-Business-SSO-Core-Features) steps if configuration required.
+
+  <Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/udemy/SSO.png" />
+  </Frame>
+</Step>
+
+  <Step title="Enable SCIM">
+    Navigate to Manage > Settings > Provisioning (SCIM).
+
+    Setup the SCIM connection with the chosen Identity Provider.
+
+    Follow the [Udemy SCIM Configuration](https://business-support.udemy.com/hc/en-us/articles/360047732153-Configure-SCIM-Provisioning-With-Udemy-s-SCIM-API) steps if configuration required.
+
+  <Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/udemy/SCIM.png" />
+  </Frame>
+  </Step>
+</Steps>
+
 
 ## Linking your Account
   <Steps>
