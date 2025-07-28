@@ -1,0 +1,62 @@
+---
+title: "CascadeHR"
+description: "Follow these steps to connect CascadeHR with StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your CascadeHR account.
+</Warning>
+
+If you've been directed to StackOne to integrate with CascadeHR, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Get your Client Key and Client Secret
+  > **Important:** 
+  IRIS Cascade does **not** offer a self-service option for creating API credentials.  
+  To receive your **Client Key** and **Client Secret**, you must submit a request to IRIS support.
+
+ Refer to the official IRIS documentation for detailed instructions:  
+[Requesting access to the HR API](https://help-iris.co.uk/hr/cascade/api/getstart/request-access-api.htm#Availabl)
+  
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter your API credentials">
+    Upon reaching the Link Account page, enter the following credentials received from IRIS CascadeHR Support:
+    - Client ID (Key)
+    - Client Secret
+  </Step>
+    <Step title="Enter additional connection informations">
+    - **Location Hierarchy Level** (optional): required to fetch locations  
+    - **Department Hierarchy Level** (optional): required to fetch departments and create employees  
+    - **Team Hierarchy Level** (optional): required to fetch teams and create employees  
+
+
+     After entering the information above, proceed by clicking the **Connect** button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter your API credentials" src="/images/cascadehr/image1.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card
+  title="Requesting access to the HR API"
+  icon="link"
+  href="https://help-iris.co.uk/hr/cascade/api/getstart/request-access-api.htm#Availabl"
+>
+  Official guide to request CascadeHR API credentials
+</Card>
+
+<Card
+  title="CascadeHR API Reference"
+  icon="link"
+  href="https://swagger.hrapi.co.uk/"
+>
+  Live Swagger documentation for CascadeHR endpoints
+</Card>
+
+
