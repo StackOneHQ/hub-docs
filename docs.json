@@ -1,16 +1,38 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
   "name": "StackOne Hub Documentation",
-  "logo": {
-    "dark": "/logo/stackone_green_white_logo-140in212.svg",
-    "light": "/logo/stackone_green_logo-140in212.svg",
-    "href": "https://stackone.com"
-  },
-  "favicon": "/favicon.svg",
   "colors": {
     "primary": "#05C168",
     "light": "#07C983",
     "dark": "#0D9373"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "pages": [
+      "integrations",
+      "integration-configuration-concepts",
+      "about"
+    ]
+  },
+  "logo": {
+    "light": "/logo/stackone_green_logo-140in212.svg",
+    "dark": "/logo/stackone_green_white_logo-140in212.svg",
+    "href": "https://stackone.com"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:integrations@stackone.com"
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "twitter": "https://twitter.com/StackOneHQ",
+      "linkedin": "https://www.linkedin.com/company/stackonehq/"
+    }
   },
   "redirects": [
     {
@@ -337,25 +359,5 @@
       "source": "/en/articles/en/articles/7727327-ashby",
       "destination": "/connection-guides/ats/ashby"
     }
-  ],
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:integrations@stackone.com"
-    }
-  ],
-  "navigation": [
-    {
-      "group": "",
-      "pages": [
-        "integrations",
-        "integration-configuration-concepts",
-        "about"
-      ]
-    }
-  ],
-  "footerSocials": {
-    "twitter": "https://twitter.com/StackOneHQ",
-    "linkedin": "https://www.linkedin.com/company/stackonehq/"
-  }
+  ]
 }
