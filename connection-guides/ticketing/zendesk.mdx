@@ -26,7 +26,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     In the APIs section, click on <b>API Tokens</b> in the left sidebar.
     Here, you will see a list of existing API tokens. To create a new token, click on the <Icon icon="plus" iconType="regular" /> <b>Add API Token</b> button.
     <Frame>
-      <img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="API Tokens page" src="/images/zendesk/image2.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Tokens page" src="/images/zendesk/image2.png" />
     </Frame>
   </Step>
 
@@ -34,7 +34,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     In the dialog that appears, enter a description for your API token (e.g., "StackOne Integration") and click on the <b>Save</b> button to generate the Token.
     Once the token is generated, it will be displayed on the screen. Make sure to copy it immediately, as you won't be able to see it again.   
       <Frame>
-        <img className='rounded-md' style={{ width: '400px', margin: '0 auto', border: '1px solid #efefef' }} alt="API Key dialog" src="/images/zendesk/image3.png" />
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key dialog" src="/images/zendesk/image3.png" />
       </Frame>
   </Step>
 </Steps>
@@ -49,26 +49,18 @@ This will require Subdomain, email, and the API token you just generated.
     Go to the StackOne Hub and navigate to the Accounts section and click on the <b>Add Account</b> button.
   </Step>
 
-  <Step title="Enter your credentials">
-    Select <b>Zendesk</b> from the list of available integrations.(if not available, you can enable it from the Integrations section)
-  </Step>
-
-  <Step title="Fill in the required fields">
-    Enter your Zendesk subdomain, email, and the API token you generated earlier. Ensure that all fields are filled out correctly.
-  </Step>
-
   <Step title="Save and connect">
     Click on the <b>Connect</b> button to save your settings and establish the connection with Zendesk.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: "0 auto", border: "1px solid #efefef" }}
+        alt="Access Token Created"
+        src="/images/zendesk/image4.png"
+      />
+    </Frame>
   </Step>
 </Steps>
-<Frame>
-  <img
-    className="rounded-md"
-    style={{ width: "400px", margin: "0 auto", border: "1px solid #efefef" }}
-    alt="Access Token Created"
-    src="/images/zendesk/image4.png"
-  />
-</Frame>
 
 <Warning>
   The Scope will be automatically inherited with the user's email and API token.
@@ -78,6 +70,6 @@ This will require Subdomain, email, and the API token you just generated.
 <IntegrationFooter />
 
 ## Useful Links
-<Card title="API Reference" icon="link" href="https://developers.ashbyhq.com/reference/introduction">
-    https://developers.ashbyhq.com/reference/introduction
+<Card title="API Reference" icon="link" href="https://developer.zendesk.com/api-reference/">
+    https://developer.zendesk.com/api-reference/
 </Card>
