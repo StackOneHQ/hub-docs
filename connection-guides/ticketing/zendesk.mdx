@@ -1,0 +1,75 @@
+---
+title: "Zendesk"
+description: "Follow these steps to connect your Zendesk account with StackOne hub, ensuring a smooth integration process."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  The following guidance assumes you have Admin privileges for your Zendesk
+  account.
+</Warning>
+
+## Generating an API Token
+
+<Steps>
+  <Step title="Sign-in and open Apps and Integrations">
+    Sign in to <a href="https://www.zendesk.com/in/login/">your account</a>, you will need subdomain, email, and password to log in.
+    Click the Admin <Icon icon="gear" iconType="regular" /> button on the left sidebar, this will take you to the Admin Center.
+    <Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Admin Center" src="/images/zendesk/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add a new API key">
+    Click on the <b>Apps and Integrations</b> section in the left sidebar, then select <b>APIs</b> from the dropdown menu.
+    In the APIs section, click on <b>API Tokens</b> in the left sidebar.
+    Here, you will see a list of existing API tokens. To create a new token, click on the <Icon icon="plus" iconType="regular" /> <b>Add API Token</b> button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Tokens page" src="/images/zendesk/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter a description and generate the token">
+    In the dialog that appears, enter a description for your API token (e.g., "StackOne Integration") and click on the <b>Save</b> button to generate the Token.
+    Once the token is generated, it will be displayed on the screen. Make sure to copy it immediately, as you won't be able to see it again.   
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key dialog" src="/images/zendesk/image3.png" />
+      </Frame>
+  </Step>
+</Steps>
+
+## Use the API Token in the StackOne Hub
+
+Once you have copied the API token, you can use it in the StackOne Hub to connect your Zendesk account.
+This will require Subdomain, email, and the API token you just generated.
+
+<Steps>
+  <Step title="Navigate to the StackOne Hub">
+    Go to the StackOne Hub and navigate to the Accounts section and click on the <b>Add Account</b> button.
+  </Step>
+
+  <Step title="Save and connect">
+    Click on the <b>Connect</b> button to save your settings and establish the connection with Zendesk.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: "0 auto", border: "1px solid #efefef" }}
+        alt="Access Token Created"
+        src="/images/zendesk/image4.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+<Warning>
+  The Scope will be automatically inherited with the user's email and API token.
+  Ensure that the user has the necessary permissions to access the Zendesk resources required for the integration.
+</Warning>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developer.zendesk.com/api-reference/">
+    https://developer.zendesk.com/api-reference/
+</Card>
