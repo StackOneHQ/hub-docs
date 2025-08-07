@@ -5,10 +5,10 @@ description: "Explanation of how locations, department groups, team groups, and 
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-- Cascade HR does not provide a dedicated API endpoint for retrieving lists of departments, teams, or locations.
-- These lists are also not directly accessible through the Cascade HR user interface. While departments can be viewed within the Payroll module, there is currently no API access to extract this information.
+- CascadeHR does not provide a dedicated API endpoint for retrieving lists of departments, teams, or locations.
+- These lists are also not directly accessible through the CascadeHR user interface. While departments can be viewed within the Payroll module, there is currently no API access to extract this information.
 - As a workaround, we utilise the **Hierarchy** endpoint, which returns the complete organisational hierarchy structure. This endpoint provides a list of nodes, each containing a `Level` field that indicates its depth within the hierarchy.
-- According to the [Cascade HR service guide](https://help-iris.co.uk/hr/cascade/api/serviceguides/hierarchy-overview.htm), hierarchy nodes represent various group types, such as locations, departments, and teams.
+- According to the [CascadeHR service guide](https://help-iris.co.uk/hr/cascade/api/serviceguides/hierarchy-overview.htm), hierarchy nodes represent various group types, such as locations, departments, and teams.
 
     <Frame>
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Hierarchy" src="/images/cascadehr/image2.png" />
