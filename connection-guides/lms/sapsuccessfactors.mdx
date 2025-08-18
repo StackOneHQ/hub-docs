@@ -275,6 +275,38 @@ To configure the OCN property file, take the following steps:
     providers[ProviderName].baseLaunchUrl=https://www.ProviderRootUrl.com
 
     providers[ProviderName].pricingModel=
+
+    #### You can also set additional default values for Learning Items:
+
+    defaultValues.itemType[default]=value
+
+    - Go to References > Learning Activities > Item Types > Click Search. Choose an item type.
+
+    - E.g. COURSE or ONLINE. You will need the Item Type ID of your chosen Item Type to replace the `value` above.
+
+    defaultValues.itemCompletionStatus[default]=value
+
+    - Go to References > Manage Users Learning > Completion Status > Click Search. 
+
+    - Choose Completion Status. E.g. COMPLETE or ONLINE-COMPL. You will need the Completion Status ID of your chosen Completion Status to replace the `value` above. 
+
+    <Note>
+      Completion Status MUST be linked to the Item Type. You may need to enable additional columns in the search results table in order to find the correct completion status.
+    </Note>
+
+    defaultValues.domainID[default]=value
+
+    - Go to System Admin > Security > Security Domains > Click Search. 
+
+    - Choose the default security domain where the item should be created. This will control which admin users have access to the items created. 
+
+    defaultValues.markCompleteOnLaunch[default]=value
+
+    - This should be set to 'false' if the provider posts completion information back to SuccessFactors, items will not be marked as complete as soon as a user clicks on them. 
+
+    <Note>
+      If you want any of the above configurations to be specific to a provider, you can add `provider_name` instead of `default` in the property name - e.g. defaultValues.itemType[provider_name]=value
+    </Note>
   </Step>
 </Steps>
 
