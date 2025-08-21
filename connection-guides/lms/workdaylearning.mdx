@@ -120,18 +120,25 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     - Reports: Learning Record
     - Manage: Learning Content
     - **Person Data**
-    - Personal Data (Get only)
-        - Name
-    - Work Contact Information (Get only)
-        - Work Email
-        - Work Phone
+      - Personal Data (Get only)
+      - Name (Get only)
+      - Public Work Phone Integration (Get only)
+    - **Worker Data**
+      - Work Contact Information (Get only)
+      - Work Email (Get only)
+      - Work Phone (Get only)
+      - Public Worker Records (Get only)
+
+    #### Optional Permissions (if using either extended enterprise learners or skills)
     - Set Up: Skills and Experience (Get only)
+    - View: External Learning User (Get only)
     
-  <Frame>
-  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/image12.png" />
-  </Frame>
+  
   </Step>
-  <Step title="The Permissions Should Look as Follows">
+  <Step title="The Core Permissions Should Look as Follows">
+    <Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/image12.png" />
+    </Frame>
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/permissions.png" />
@@ -170,6 +177,8 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     Add the user to the Security Groups for the initiating action `Manage Learning Course (Web Service)`.
 
     Add the user to the Security Groups for the initiating action `Cancel Learning Enrollment (Web Service)` (Check with your content partner to see if this is required).
+
+    Add the user to the Security Groups for the initiating action `Manage Extended Enterprise Learner (Web Service)` (If you are using extended enterprise learners).
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add User to Security Group" src="/images/workday/add-user-to-sg.png" />
     </Frame>
