@@ -10,233 +10,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 </Warning>
 
 
-## Grant permissions to begin assessments with third-party vendors
-
-<Steps>
-  <Step title="Permissions Required for Vendor Assessment in SAP SuccessFactors">
-    In the Provisioning Account, you can create an Integration User and assign the necessary permissions to facilitate effective collaboration with third-party vendor assessments and SAP SuccessFactors.
-
-  <AccordionGroup>
-    <Accordion title="Recruiting Assessment Permissions">
-      - SFAPI Retrieve Assessment Order Permission
-      - SFAPI Update Assessment Report Permission
-    </Accordion>
-
-    <Accordion title="Permissions Required for Assessment Configurations">
-      - Make sure to provide recruiting users with the Manage Assessment Vendors permission.
-      - In _Provisioning > Company Settings_, enable the following options:
-        - Enable Assessment Integration
-        - SFAPI
-        - Enable SFAPI Web Services
-      - Grant the following permissions to the SFAPI integration user:
-        - Access to Event Notification Subscription
-        - Retrieve Assessment Order
-        - Update Assessment Report (please note that this permission is listed twice, ensure it is granted only once)
-      - Enable Assessment Integration (which requires Candidate Workbench) from the Provisioning Account.
-    </Accordion>
-  </AccordionGroup>
-  
-  </Step>
-</Steps>
-
-
-## Set the API login exceptions
-
-<Steps>
-  <Step title="Please add the integration user to the SAP SF API login exceptions list">
-    Navigate to _Admin Tools > Password & Login Policy Settings > Set API Login Exceptions > Add_ the following information:
-
-    - **Username:** Select the SFAPI integration user.
-    - **Maximum Password Age (days):** Set this option to -1.
-    - **IP Address Restrictions:** Specify the designated IP addresses or address range for use with the integration.
-
-  </Step>
-</Steps>
-
-
-## Add your vendor and upload the assessment vendor packages
-
-<Steps>
-  <Step title="Add a Vendor for Assessment">
-    Go to _Manage Assessment Vendors_, Click "Export" to download the CSV file. Add your vendor with a unique `clientId` and mark it as active by entering `Y` in the active column.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add a Vendor" src="/images/sapsuccessfactors/assessment/sapsf_assess_add_new_vendor_in_sheet_1.png" />
-    </Frame>
-    
-    Please select a updated file to import the Assessment Vendor List into SAP SuccessFactors.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Upload a file of vendor" src="/images/sapsuccessfactors/assessment/sapsf_assess_upload_new_vendor_14.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Upload the assessment vendor packages">
-    You can upload Assessment Vendor Packages from _Provisioning > Managing Recruiting > Import/Export Assessment Vendor Packages_. Prepare a CSV file with the required columns and values, as illustrated in the image.
-    
-    - **vendorId:** Identifies the assessment vendor (`vendorId` has to be the same as `clientId`)
-    - **packageCode:** Identifies an assessment package to use for the order.
-    - **shortName:** Shortened name of the package for use on the candidate summary page.
-    - **Label:** Language in which the assessment is displayed
-    
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Import/Export Assessment Vendor Packages" src="/images/sapsuccessfactors/assessment/sapsf_assess_upload_vendor_assessment_packages_csv_5.png" />
-    </Frame>
-
-    Choose file to import the Assessment Vendor List in SAP SF.
-  </Step>
-</Steps>
-
-
-## Create a subscriber and set up an external event
-
-<Steps>
-  <Step title="Create a subscriber">
-    Go to the _Event Notification Subscription_ page. Under the _Subscriber_ tab, add a subscriber using your `Subscriber Id` and `Client Id`. Note that your `clientId` should match the one uploaded with your vendor's name in the previous step.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a Subscriber" src="/images/sapsuccessfactors/assessment/sapsf_assess_add_subcriber_for_event_2.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Set up an external event to get notification">
-    Navigate to the _External Event_ tab and click the `+ Add New` button to create a new external event.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add New external event" src="/images/sapsuccessfactors/assessment/sapsf_assess_event_external_event_3.png" />
-    </Frame>
-
-    Select the values for the specified field:
-    - **Event Type:** Select `rcm_assessment_alert_v2`
-    - **Subscriber:** Select the subscriber you created in the previous step.
-    - **Protocol:** Select `SOAP_OVER_HTTP_HTTPS`
-    - **Endpoint URL:** Enter the endpoint URL provided by StackOne, which will be used to receive assessment order requests.
-    - **Authentication:** Select `NO`
-
-    <Info>
-      The Endpoint URL must contain the query parameter `externalTriggerToken`, which you will receive from the StackOne Connection Hub. This token verifies requests from SAP SF for the specific vendor.
-    </Info>
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Setup external event" src="/images/sapsuccessfactors/assessment/sapsf_assess_add_external_event_for_notification_4.png" />
-    </Frame>
-
-    To save the configuration for the External Event, click the `Save` button.
-  </Step>
-</Steps>
-
-
-## Manage fields for the Job Requisition template
-
-<Steps>
-  <Step title="Go to Manage Templates">
-    Navigate to _Admin Center_ and search for _Manage Templates_
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Job Requisition template" src="/images/sapsuccessfactors/assessment/sap_sf_bc_search_manage_templates_24.png" />
-    </Frame>
-
-    Navigate to the _Recruiting Management_ tab, select _Job Requisition_, and choose the template that is in use for the specific job requisition, such as `Standard Job Requisition`.
-    <Accordion title="How to Locate the Job Requisition Template Name">
-      Go to the _Recruiting_ and select any specific job requisition.
-      <Frame>
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Specific Job Requistion" src="/images/sapsuccessfactors/assessment/sap_sf_bc_recruiting_info_26.png" />
-      </Frame>
-
-      Click on the `i` icon to view the Job Requisition Template.
-      <Frame>
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="JR Info" src="/images/sapsuccessfactors/assessment/sap_sf_bc_recruiting_JR_info_27.png" />
-      </Frame>
-    </Accordion>
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Standard Job Requisition" src="/images/sapsuccessfactors/assessment/sap_sf_bc_jr_specific_template_28.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Add assessment field in template">
-    Please add the following field that will be visible within the Job Requisition and allow you to select an assessment.
-    
-    - **assessment:** This field enables the recruiter to select a specific assessment to associate with the job requisition.
-
-    <Accordion title="You can specify the standard field `assessment` using the Job Requisition XML as well.">
-      <Warning>
-        This approach will only be used if you have permission to upload the Job Requisition template via an XML file; otherwise, you can manually add the fields and click the `Publish` button.
-      </Warning>
-
-      ```XML
-        <field-definition id="assessment" type="derived" required="true" custom="false">
-          <field-label><![CDATA[Assessment assocication]]></field-label>
-          <field-description><![CDATA\[Assessmentasso]]></field-description>
-        </field-definition>
-        <field-permission type="write">
-          <description><![CDATA[job code permissions]]></description>
-          <role-name><![CDATA[R]]></role-name>
-          <status><![CDATA[pre-approved]]></status>
-          <field refid="assessment"/>
-        </field-permission>
-      ```
-    </Accordion>
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add a field from JR field template" src="/images/sapsuccessfactors/assessment/sapsf_assess_job_req_template_update_for_assessment_field_6.png" />
-    </Frame>
-
-  </Step>
-</Steps>
-
-
-## Manage the permissions for the assessment feature
-
-<Steps>
-  <Step title="Go to Manage Templates">
-    To add or update feature permissions, navigate to the specific Job Requisition Template > Application Status Configuration, select Feature Permissions Defined, and then click on `Add Feature Permission` from the modal.
-
-    - **Feature Permission Description:** [Operators with below roles can see Assessment detail report for the applicant when the application is in Phone Screen Status]
-    - **Feature Permission Type:** Select `assessmentIntegration`
-    - **Feature Permission Role Name:** Select `All`
-    - **Feature Permission Status:** Select the talent pipeline stage from dropdown on which you want to initiate the assessment.
-
-    <Info>
-      You can add multiple feature permissions for `assessmentIntegration` for the specific talent pipeline stage.
-    </Info>
-
-    <Accordion title="You can specify the feature permissions for `assessmentIntegration` using the Job Requisition XML as well.">
-      <Warning>
-        This approach will only be used if you have permission to upload the Job Requisition template via an XML file; otherwise, you can manually add the permissions and click the `Publish` button.
-      </Warning>
-
-      ```XML         
-        <feature-permission type="assessmentIntegration">
-          <description><\!\[CDATA\[Operators with below roles can see Assessment detail report for the applicant when the application is in Scheduled Status\]\]></description>
-          <role-name><\!\[CDATA\[S\]\]></role-name>
-          <role-name><\!\[CDATA\[T\]\]></role-name>
-          <role-name><\!\[CDATA\[O\]\]></role-name>
-          <role-name><\!\[CDATA\[R\]\]></role-name>
-          <role-name><\!\[CDATA\[G\]\]></role-name>
-          <status><\!\[CDATA\[Scheduled\]\]></status>  // You can choose any stage from the options provided; for this document, we have selected "Scheduled."
-        </feature-permission>
-        <feature-permission type="assessmentIntegration">
-          <description><\!\[CDATA\[Operators with below roles can see Assessment detail report for the applicant when the application is in New Application Status \]\]></description>
-          <role-name><\!\[CDATA\[S\]\]></role-name>
-          <role-name><\!\[CDATA\[T\]\]></role-name>
-          <role-name><\!\[CDATA\[O\]\]></role-name>
-          <role-name><\!\[CDATA\[R\]\]></role-name>
-          <role-name><\!\[CDATA\[G\]\]></role-name>
-          <status><\!\[CDATA\[Default\]\]></status>
-        </feature-permission>
-      ```
-    </Accordion>
-
-    After adding the feature permissions, click on `Publish` to save your changes.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add feature permission from the JR template" src="/images/sapsuccessfactors/assessment/sapsf_assess_jr_template_feature_permissions_7.png" />
-    </Frame>
-
-    <Tip>
-      When an assessment is configured in `Default` or `New Applicant`, the assessment is triggered when the candidate applies for the job. Immediately after applying and passing the prescreening questions, the candidate will be redirected to an assessment vendor site. After completing the assessment, the candidate will be redirected back to the career site.
-    </Tip>
-
-  </Step>
-</Steps>
-
-
-## Edit Job Requisition to select Assessment
+## Associate assessment to the job requisition
 
 <Steps>
   <Step title="Go to Job Requisition">
@@ -247,29 +21,13 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
     Click on the link labeled as `Add More Assessments` to add an assessment association row where you can select below details
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="add a row of fields" src="/images/sapsuccessfactors/assessment/sapsf_assess_add_more_assessments_15.png" />
-    </Frame>
-
-    - **Status:** Select `Stage` where you have setup the assessment integration feature, as described in the prior <a href="#manage-the-feature-permission-for-the-assessment">step</a>.
-    - **Vendor:** Select your vendor.
-    - **Assessment:** Select the assessment package that the recruiter wants to send to the candidate.
-    - **Email Template:** Select the email template that will be sent to the candidate once the assessment is triggered.
-
-    <Accordion title="If the fields are not visible after you have added the fields and set the permissions in the previous steps">
-      Navigate to _Admin Center_ and search for `OData API Metadata Refresh and Export`
-      <Frame>
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="OData API Metadata Refresh and Export" src="/images/sapsuccessfactors/assessment/sap_sf_bc_odata_api_search_38.png" />
-      </Frame>
-
-      Click on the `Refresh` button next to Cache.
-      <Frame>
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Refresh button" src="/images/sapsuccessfactors/assessment/sap_sf_bc_odata_api_cache_refresh_39.png" />
-      </Frame>
-    </Accordion>
-
-    <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Actions menu" src="/images/sapsuccessfactors/assessment/sapsf_assess_rec_jr_select_assessment_9.png" />
     </Frame>
+
+    - **Status:** Select the stage at which the vendor established the assessment integration feature.
+    - **Vendor:** Select the vendor.
+    - **Assessment:** Select the assessment package that the recruiter wants to send to the candidate.
+    - **Email Template:** Select the email template that will be sent to the candidate once the assessment is triggered.
   </Step>
 </Steps>
 
@@ -293,17 +51,10 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
     Assessment will be automatically triggered when a candidate moves successfully. You will see an 'Initiated' message in the Assessment portlet for that candidate's application.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Apply Updates" src="/images/sapsuccessfactors/assessment/sapsf_assess_init_12.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Job Requisition Fields" src="/images/sapsuccessfactors/assessment/sapsuccessfactors_JR_sent_assess_on_application_45.png" />
     </Frame>
 
     If you see an 'Initiation Failed' message, you can re-trigger the assessment from the Take Action menu
-  </Step>
-
-  <Step title="To access the assessment you requested">
-    The assessment request will be displayed in the candidate's application within the Assessment portlet
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Request portlet" src="/images/sapsuccessfactors/assessment/sapsf_assess_init_12.png" />
-    </Frame>
   </Step>
 </Steps>
 
@@ -313,7 +64,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   <Step title="To access the result of an assessment">
     Navigate to the stage where the assessment was triggered. The results will be available in the Assessment portlet within the candidate's application.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Check Result of the Assessment" src="/images/sapsuccessfactors/assessment/sapsf_assess_init_complete_13.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Job Requisition Fields" src="/images/sapsuccessfactors/assessment/sapsuccessfactors_updated_results_on SAP_UI_46.png" />
     </Frame>
   </Step>
 </Steps>
