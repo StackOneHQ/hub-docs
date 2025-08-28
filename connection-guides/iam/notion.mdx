@@ -1,0 +1,91 @@
+---
+title: "Notion"
+description: "Follow these steps to connect Notion via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Notion account has **Workspace owner** or **Workspace admin** privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Notion, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Notion
+
+Log in to your Notion account.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to Notion" src="/images/notion/iam_image1.png" />
+</Frame>
+
+
+## Create your Notion API Key
+
+<Steps>
+  <Step title="Navigate to Integrations">
+      Go to your Notion Profile Integrations page at https://www.notion.so/profile/integrations and click **New integration**.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Keys" src="/images/notion/iam_image2.png" />
+      </Frame>
+  </Step>
+  <Step title="Enter Integration Details">
+      Enter/select the following fields:
+      - **Integration Name**: A name for your integration
+      - **Associated workspace**: The Notion Workspace that this integration will have access to
+      - **Type**: Select *Internal*
+
+      Click **Save** to continue.
+    
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a new API Key" src="/images/notion/iam_image3.png" />
+      </Frame>
+  </Step>
+  <Step title="Copy your API Key">
+      A popup will appear displaying that the integration has been created successfully. Click **Configure integration settings** to continue.
+
+      Your **API Key** will be available to copy under *Internal Integration Secret*. **Copy** this value and store it safely to be used in a later step.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your API Key" src="/images/notion/iam_image4.png" />
+      </Frame>
+  </Step>
+  <Step title="Select API Key Capabilities">
+      Under *Capabilities* > *User Capabilities* ensure that "Read user information including email addresses" is selected. This is the only capability required for this integration.
+
+      Click **Save** to continue.
+  
+      <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select API Key Scopes" src="/images/notion/iam_image5.png" />
+      </Frame>
+  </Step>
+  
+</Steps>
+## Create your Notion SCIM Token (optional)
+
+A SCIM Token is needed for retrieving User Roles via this integration, but is only available for Notion Enterprise customers with SCIM Provisioning enabled.
+
+For more information on this and obtaining a SCIM Token, please refer to the [Notion SCIM Provisioning documentation](https://www.notion.com/help/provision-users-and-groups-with-scim).
+
+## Connecting with StackOne
+
+Upon reaching the Link Account page, enter the credential(s) from the previous steps:
+  - **API Key**
+  - **SCIM Token** (optional)
+
+Proceed by clicking the Connect button.
+
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/notion/iam_image6.png" />
+</Frame>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [IAM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Roles</li>
+</ul>
