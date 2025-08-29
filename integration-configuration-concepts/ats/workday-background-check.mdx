@@ -1,219 +1,84 @@
 ---
 title: "Workday Background Check"
-description: "To successfully receive webhook notifications from Workday, follow these steps to configure the Background Check-related settings in your Workday account, and complete the necessary actions."
+description: "Send invitations for background checks and verify results in Workday. This guide helps you manage the background check process for candidates."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<Warning>
-  This guidance assumes that you have admin privileges for your Workday account.
-</Warning>
 
-## Create Background Check Statuses in Workday
+## Submit a job application for the candidate in Workday
 
 <Steps>
-  <Step title="Create background check statuses">
-    Navigate to the <i>Maintain Background Check Statuses</i> page, add a new status and map it to the existing values in _Maps to_ dropdown.
-    Please click on the `OK` button to save and the `Done` button to confirm.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Background Check Statuses" src="/images/workday-background-check/workday_bc_maintian_bc_statuses_1.png" />
-    </Frame>
-
-    Ensure to add all the statuses as following with their respective mappings:
-
-    <Accordion title="Please follow the mapping below to add and map statuses">
-      <Info>
-        Following background check statuses will be used to update the result of background check.
-      </Info>
-
-      | Background Check Status Label |      | Maps to            |
-      | ----------------------------- | ---- | ------------------ |
-      | Completed                     |      | Completed          |
-      | Passed                        |      | Passed             |
-      | Pending                       |      | Pending            |
-      | Failed                        |      | Did Not Pass       |
-      | Expired                       |      | Error              |
-      | Cancelled                     |      | No Longer Applies  |
-    
-    </Accordion>
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Background Check Statuses" src="/images/workday-background-check/workday_bc_maintain_bc_add_this_statuses_2.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Edit Reference IDs of the background check statuses">
-    Go to _Edit Reference ID_ under _Action Menu_ to edit `Background_Check_Status_ID`
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Background Check Statuses" src="/images/workday-background-check/workday_bc_maintain_bc_edit_reference_id_3.png" />
-    </Frame>
-
-    Reference ID should be the same as the Label of statuses
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Background Check Statuses" src="/images/workday-background-check/workday_bc_maintain_bc_statuses_edited_reference_id_4.png" />
-    </Frame>
-
-  </Step>
-</Steps>
-
-
-## Create Background Check Packages in Workday
-
-<Steps>
-  <Step title="Create Background Check Packages">
-    Navigate to the <i>Maintain Background Check Packages</i> page, add background check package or you can utilize <a href="https://docs.stackone.com/ats/api-reference/background-checks/packages/create-background-check-package" target="_blank">Background Checks Unified APIs</a> to create
-    
-    <Info>
-      These background check packages will be available during the background check submission for candidate.
-    </Info>
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Tests" src="/images/workday-background-check/workday_bc_maintain_bc_add_packages_5.png" />
-    </Frame>
-
-    Please click on the `OK` button to save and the `Done` button to confirm.
-  </Step>
-</Steps>
-
-
-## Job requisitions within the supervisory organization in Workday
-
-<Warning>
-  These steps assume you already have a Supervisory Organization in your Workday account. If not, please contact your admin to create one.
-</Warning>
-
-<Steps>
-  <Step title="Listed Job Requisitions">
-    Navigate to your <i>Supervisory Organization</i> page. Go to the `Staffing` tab below.
-    <Info>
-      Ensure the Supervisory Organization's Staffing Model is `Position Management`
-    </Info>
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="SO for JR" src="/images/workday-background-check/workday_bc_super_org_staffing_position_6.png" />
-    </Frame>
-
-    You can find the list of Job Requisitions that the Background Check stage supports for sending notifications within the Integration System under `Positions with Open Job Requisition` grid.
-  </Step>
-
-  <Step title="No Listed Job Requisitions">
-    If you haven't had jobs listed under `Positions with Open Job Requisition`, find `Create Position` under Staffing in the 3-dot menu.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Job Position" src="/images/workday-background-check/workday_bc_super_org_create_position_7.png" />
-    </Frame>
-
-    Fill in the required details to create a position that will be visible in the `Positions without Job Requisition` grid.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Created Job Position" src="/images/workday-background-check/workday_bc_super_org_new_position_8.png" />
-    </Frame>
-
-    Navigate to the `Create Job Requisition` and select your supervisory organization and position. After clicking the `OK` button, please fill out the Job Requisition form and `Submit` it.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add in Position in Job Req" src="/images/workday-background-check/workday_bc_super_org_new_job_req_9.png" />
-    </Frame>
-
-    The position will now be visible in the `In Progress Requisition Actions` grid.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Added in Position in Job Req" src="/images/workday-background-check/workday_bc_super_org_assign_to_job_10.png" />
-    </Frame>
-
-    Once the job requisition is approved, it will be visible in the `Positions with Open Job Requisition` grid and will be able to support sending notifications.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Approved Job Req" src="/images/workday-background-check/workday_bc_super_org_position_added_11.png" />
-    </Frame>
-  </Step>
-</Steps>
-
-
-## Update Background Check Business Process in Workday
-
-<Steps>
-  <Step title="Select to update the Integration System">
-    Navigate to the <i>Background Check Business Process</i> page. Then, click on the `Configure Integration System` button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="BP Config IS" src="/images/workday-background-check/workday_bc_IS_business_process_step_b_12.png" />
-    </Frame>
-
-    Please select `Your Integartion System` as the integration and then click on the `OK` button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select IS on Popup" src="/images/workday-background-check/workday_bc_IS_select_IS_13.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Edit payload attribute values">
-    The pop-up will appear, allowing you to select the values for the fields included in the payload request when the Background Check will be submit from Workday.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Values for Fields" src="/images/workday-background-check/workday_bc_IS_step_b_14.png" />
-    </Frame>
-    
-    **Please fill in the following information:**
-
-    - **Background Check ID:** [Background Check Business Process]
-    - **As Of Entry Moment:** [Current Moment (DateTime)]
-
-    Click the `OK` button to save your configurations.
-  </Step>
-
-  <Step title="Select to update the Document Delivery">
-    In the next business process step, click on the `Configure Document Delivery` button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="BP Config IS" src="/images/workday-background-check/workday_bc_IS_document_delivery_15.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Add values in required fields">
-    The pop-up will appear, allowing you to select the values for the fields that includes the configuration regarding `Endpoint Url` as HTTP Address and `External Trigger Token` as User Id.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Values for Fields" src="/images/workday-background-check/workday_bc_IS_document_delivery_http_token_16.png" />
-    </Frame>
-    
-    **Please fill in the following information:**
-
-    - **From Specific Integration Step(s):** [Your Integration System]
-    - **Transport Type:** [HTTP/SSL]
-    - **HTTP Address:** [Endpoint URL]
-    - **Web Service Invocation Type:** [Basic Auth]
-    - **User Id:** [External Trigger Token]
-    - **New Password/Verify Password:** [You can enter any text here]
-
-    <Info>
-      You'll get [Endpoint URL] from StackOne & Pick the [External Trigger Token] from StackOne Integration Hub that will be visible during connection.
-    </Info>
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Values for Fields" src="/images/workday-background-check/workday_bc_stackone_hub_28.png" />
-    </Frame>
-    
-    Click the `OK` button to save your configurations.
-  </Step>
-</Steps>
-
-
-## Submit your application for the job from the candidate's profile in Workday
-
-<Steps>
-  <Step title="Apply to the Job">
-    Go to the <i>Find Candidates</i> page, select a Candidate's Profile, and click on `Job Application` under `Actions` to apply for the job.
+  <Step title="Apply for a job">
+    Navigate to the <i>Find Candidates</i> page, select a candidate's profile, and click on `Job Application` under `Actions` to apply for the job.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Profile" src="/images/workday-background-check/workday_bc_candidate_profile_action_apply_to_job_17.png" />
     </Frame>
   </Step>
 
-  <Step title="Select the listed Job Requisition">
-    Please select the job which you have created in the supervisory organization under Staffing from the dropdown menu listed above.
+  <Step title="Select the job requisition">
+    From the dropdown menu, select the relevant job.
+
+    <Accordion title="Finding Job Requisitions within your Supervisory Organisation">
+      <Warning>
+        These steps assume you have a Supervisory Organisation in your Workday account. 
+        If not, please contact your administrator to create one. You will also need the necessary permissions to access the _Supervisory Organisation_ in Workday.
+      </Warning>
+
+      <Step title="Available job requisitions">
+        Navigate to your <i>Supervisory Organisation</i> page and go to the `Staffing` tab.
+        <Info>
+          Ensure the Supervisory Organisation's Staffing Model is `Position Management`
+        </Info>
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="SO for JR" src="/images/workday-assessment/SO_for_JR.png" />
+        </Frame>
+
+        Under the `Positions with Open Job Requisition` section, you'll find a list of job requisitions that are configured to send notifications for the background check stage.
+      </Step>
+
+      <Step title="Creating a new job requisition">
+        If no jobs are listed under `Positions with Open Job Requisition`, find `Create Position` under the `Staffing` tab in the three-dot menu.
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Job Position" src="/images/workday-assessment/SO_1.png" />
+        </Frame>
+
+        Complete the required details to create a position. It will then appear in the `Positions without Job Requisition` section.
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Created Job Position" src="/images/workday-assessment/SO_2.png" />
+        </Frame>
+
+        Navigate to `Create Job Requisition`, select your supervisory organisation and position, click `OK`, complete the Job Requisition form, and then `Submit` it.
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add in Position in Job Req" src="/images/workday-assessment/SO_3.png" />
+        </Frame>
+
+        The position will now appear in the `In Progress Requisition Actions` section.
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Added in Position in Job Req" src="/images/workday-assessment/SO_4.png" />
+        </Frame>
+
+        Once the job requisition is approved, it will appear in the `Positions with Open Job Requisition` section and will be enabled for notifications.
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Approved Job Req" src="/images/workday-assessment/SO_5.png" />
+        </Frame>
+      </Step>
+    </Accordion>
+
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Job Apply" src="/images/workday-background-check/workday_bc_candidate_profile_applied_to_job_18.png" />
     </Frame>
 
-    Enter the required details and click the `OK` button to submit the job application.
+    Complete the required details and click the `OK` button to submit the job application.
   </Step>
 </Steps>
 
 
-## Move Candidate to the Background Check Stage in Workday
+## Move the candidate to the Background Check stage in Workday
 
 <Steps>
-  <Step title="Go to the Job Requisition">
-    Navigate to the <i>Job Requisitions</i> page by selecting the same Job Requisition from the pop-up for which candidate has applied.
+  <Step title="Navigate to the Job Requisition">
+    Go to the <i>Job Requisitions</i> page by selecting the same Job Requisition for which the candidate has applied.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View JR" src="/images/workday-background-check/workday_bc_view_JR_19.png" />
     </Frame>
@@ -224,24 +89,24 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     </Frame>
   </Step>
 
-  <Step title="Move Candidate from Review to Background Check stage">
+  <Step title="Move the candidate from Review to Background Check stage">
     Select the candidate in the grid and click the `Move Forward` button.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View JR" src="/images/workday-background-check/workday_bc_jr_move_button_21.png" />
     </Frame>
   </Step>
 
-  <Step title="Select Background Check from the dropdown">
-    In the pop-up, select the next stage, which maybe the Background Check stage else you have to move stages one at a time. For Background Check stage, Choose `Background Check` in both dropdown menus.
+  <Step title="Select the Background Check stage">
+    In the pop-up window, select the next stage. If the Background Check stage isn't immediately available, you may need to move through stages one at a time. For the Background Check stage, choose `Background Check` in both dropdown menus.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Job Apply" src="/images/workday-background-check/workday_bc_jr_moved_to_bc_stage_22.png" />
     </Frame>
 
-    Click on the `OK` button to move.
+    Click the `OK` button to move the candidate.
   </Step>
 
-  <Step title="Candidate Moved to the Background Check Stage">
-    If you go to the `Background Check` tab, the candidate will now be in the Background Check stage.
+  <Step title="Confirm the candidate has moved to the Background Check stage">
+    Navigate to the `Background Check` tab to confirm the candidate is now in the Background Check stage.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View JR" src="/images/workday-background-check/workday_bc_jr_bc_satge_success_23.png" />
     </Frame>
@@ -249,48 +114,40 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 </Steps>
 
 
-## Send the background check invitation to the candidate
+## Send a background check invitation to the candidate
 
 <Steps>
-  <Step title="Submit background check as a Recruiter">
-    If you are the recruiter, you should see the `Background Check` button next to the candidate's name.
+  <Step title="Submit a background check as a recruiter">
+    As the recruiter, you should see the `Background Check` button next to the candidate's name.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Sending Invite" src="/images/workday-background-check/workday_bc_jr_bc_stage_button_to_submit_24.png" />
     </Frame>
   </Step>
 
-  <Step title="Send the Background Check Invitation">
-    Please select the Background Check Packge that you have created <a href="#create-background-check-packages-in-workday">above</a> from the dropdown menu.
+  <Step title="Send the background check invitation">
+    Select the Background Check Package from the dropdown menu.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Send Invite" src="/images/workday-background-check/workday_bc_jr_bc_submission_25.png" />
     </Frame>
-    Click on the `Submit` button to get the webhook notification from Workday. 
+    Click the `Submit` button to trigger and send the webhook notification from Workday. 
   </Step>
 </Steps>
 
 
-## To verify the sent background check invitation for the candidate
+## Verify the background check invitation has been sent
 
-<Steps>
-  <Step title="Verify the sent background check inivitation">
-    To access the _Job Application_, click on the candidate's name. Go to the _Screening_ > Background Check History tab
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Sent Invite" src="/images/workday-background-check/workday_bc_job_application_submitted_bc_26.png" />
-    </Frame>
-  </Step>
-</Steps>
+To access the _Job Application_, click on the candidate's name. Navigate to _Screening_ > Background Check History tab to view the invitation status.
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Sent Invite" src="/images/workday-background-check/workday_bc_job_application_submitted_bc_26.png" />
+</Frame>
 
 
-## To check the updated result of the candidate's background check
+## View the candidate's background check results
 
-<Steps>
-  <Step title="Check background check result">
-    To access the _Job Application_, click on the candidate's name. Go to the _Screening_ > Background Check History tab
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Sent Invite" src="/images/workday-background-check/workday_bc_job_application_result_updated_27.png" />
-    </Frame>
-  </Step>
-</Steps>
+To access the _Job Application_, click on the candidate's name. Navigate to _Screening_ > Background Check History tab to view the updated results.
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Background Check Results" src="/images/workday-background-check/workday_bc_job_application_result_updated_27.png" />
+</Frame>
 
 
 <IntegrationFooter />
