@@ -15,6 +15,8 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   <Step title="Log into Workday">
     Log into your Workday account. Look at the address bar at the top of the browser window where the URL is displayed. Find your tenant immediately after `workday.com/`.
 
+    For example, if your URL is `https://my-instance.workday.com/my-tenant/d/etc`, your tenant is `my-tenant`.
+
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Workday Tenant" src="/images/workday/image1.png" />
     </Frame>
@@ -190,8 +192,15 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 ## Linking to StackOne
 
-You can use the Tenant and System User credentials you created in steps 1 & 2 to link Workday.
+Enter the following details in the StackOne connection form:
 
+- **[Web Service Endpoint](#finding-the-web-services-endpoint)**
+- **Workday Tenant Domain** (optional): The Domain of your Workday tenant. Can be found in the URL when logged into Workday. (e.g. `my-instance.workday.com`)
+- **[Tenant](#finding-your-workday-tenant)**
+- **[Integration System Username](#set-up-an-integration-system-user)**
+- **[Integration System User Password](#set-up-an-integration-system-user)**
+
+Click **Connect**.
 <Frame>
   <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link to StackOne" src="/images/workday/image14.png" />
 </Frame>
