@@ -15,8 +15,6 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   <Step title="Log into Workday">
     Log into your Workday account. Look at the address bar at the top of the browser window where the URL is displayed. Find your tenant immediately after `workday.com/`.
 
-    For example, if your URL is `https://my-instance.workday.com/my-tenant/d/etc`, your tenant is `my-tenant`.
-
     <Frame>
       <img
         className="rounded-md"
@@ -56,8 +54,6 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     </Frame>
 
     Copy everything before `service` in the location attribute. Do not include the `https://` prefix. In the example tenant above, this would be `wd2-impl-services1.workday.com/ccx` but it may be different for your tenant (e.g., `wd5-services1.myworkday.com/ccx`).
-
-    Save this value to be used in a later step.
   </Step>
 </Steps>
 
@@ -307,23 +303,15 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 </Steps>
 
-## Linking your Account
+## Linking to StackOne
 
-Enter the following details in the connection form:
-
-- **[Web Service Endpoint](#finding-the-web-services-endpoint)**
-- **Workday Tenant Domain** (optional): The Domain of your Workday tenant. Can be found in the URL when logged into Workday. (e.g. `my-instance.workday.com`)
-- **[Tenant](#finding-your-workday-tenant)**
-- **[Client ID](#register-the-rest-api-client)**
-- **[Client Secret](#register-the-rest-api-client)**
-
-Click **Connect**.
+You can use the **Client ID**, **Client Secret** and **Refresh Token** credentials you created in steps 3 and 4 to link Workday.
 
 <Frame>
   <img
     className="rounded-md"
     style={{ margin:"0 auto",border:"1px solid #efefef" }}
-    alt="Linking your Account"
+    alt="Link to StackOne"
     src="/images/workday/image9.png"
   />
 </Frame>
