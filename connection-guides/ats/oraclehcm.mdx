@@ -1,0 +1,124 @@
+---
+title: "Oracle HCM"
+description: "Follow these steps to connect Oracle HCM via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your Oracle HCM account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Oracle HCM, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Oracle HCM
+
+Log in to your Oracle HCM account.
+
+## Get your Rest Server URL
+
+You can find the REST Server URL, username, and password in the welcome email sent to your Oracle Cloud service administrator. This is typically the URL of your Oracle Cloud service. Example: `https://servername.fa.us2.oraclecloud.com`.
+
+## Create a Service User with Required Roles
+
+<Steps>
+  <Step title="Access Setup and Maintenance">
+    Within your Oracle Cloud Vision instance in the left side navigation panel, expand My Enterprise, then click Setup and Maintenance.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Setup and Maintenance" src="/images/oraclehcm/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Manage Job Roles">
+    Under "Functional Areas", click Users and Security. Then on the right, click Manage Job Roles.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Manage Job Roles" src="/images/oraclehcm/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add User Account">
+    In the left navigation panel, click Users. Then click the Add User Account button in the top right.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add User Account" src="/images/oraclehcm/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter User Information">
+    Enter the new User Information for the new Service User to be authorized for this integration. Store these credentials safely. The required fields are:
+    <ul>
+      <li>Last Name</li>
+      <li>Username</li>
+      <li>Password</li>
+      <li>Confirm Password</li>
+    </ul>
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="User Information" src="/images/oraclehcm/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add Required Privileges and Roles">
+    This integration uses the Oracle Privileges inherited from the following pre-defined Roles.
+    <ul>
+      <li>ORA_HRC_HUMAN_CAPITAL_MANAGEMENT_INTEGRATION_SPECIALIST_JOB</li>
+      <li>ORA_PER_RECRUITING_ADMINISTRATOR_JOB</li>
+      <li>ORA_FND_ANONYMOUS_USER_ABSTRACT</li>
+      <li>ORA_IRC_HIRING_MANAGER_ABSTRACT</li>
+    </ul>
+
+    Press the Add Role button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Role" src="/images/oraclehcm/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Search and Add Roles">
+    In the window that appears, for each required role:
+    <ol>
+      <li>Paste the role name into the Search box. Click the first result to populate the search results.</li>
+      <li>Click the role result matching the correct Code. Then click the Add Role Membership button.</li>
+    </ol>
+    Continue until all required roles are added, then click Done.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search and Add Roles" src="/images/oraclehcm/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Save and Close">
+    Confirm that the User Information and Roles are correct, then click the Save and Close button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Save and Close" src="/images/oraclehcm/image7.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting to StackOne
+
+<Steps>
+  <Step title="Enter Service User Details">
+    Upon reaching the Link Account page, enter the Service User's Username and Password from the previous step, and the Rest Server URL. Proceed by clicking the Connect button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/oraclehcm/image10.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [ATS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Applications</li>
+  <li>Candidates</li>
+  <li>Interview Stages</li>
+  <li>Job Postings</li>
+  <li>Jobs</li>
+  <li>Locations</li>
+  <li>Rejected Reasons</li>
+</ul>
+
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://docs.oracle.com/en/cloud/saas/human-resources/23d/farws/index.html">
+    https://docs.oracle.com/en/cloud/saas/human-resources/23d/farws/index.html
+</Card>
