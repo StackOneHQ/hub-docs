@@ -19,59 +19,66 @@ This guidance assumes you have Admin privileges for your Personio account.
   <Step title="Sign in to Personio">
     Sign in to the Personio website and click on the Settings tab on the left-hand side menu.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings Tab" src="/images/personio/image1.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Settings Tab" src="/images/personio/settings-tab.png" />
     </Frame>
   </Step>
 
-  <Step title="API credentials">
-    Click on the API credentials inside the integration box.
+  <Step title="Navigate to API credentials">
+    In the Settings menu, scroll down to the "Integrations" section and click on "API credentials".
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Credentials" src="/images/personio/image2.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Credentials Section" src="/images/personio/api-credentials-section.png" />
     </Frame>
   </Step>
 
-  <Step title="Generate new credential">
-    Click on the Generate new credential button.
+  <Step title="Create custom integration">
+    On the "Connected integrations" page, click the "Create custom integration" button.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate New Credential" src="/images/personio/image3.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Custom Integration" src="/images/personio/create-custom-integration.png" />
     </Frame>
   </Step>
 
-  <Step title="Enter company name">
-    Write your company name inside the name field, and please make sure your company name is in capital letters.
-  </Step>
-
-  <Step title="Select Integration method">
-    Click on the select box, then select an Integration method = Other, which integration you want to use.
+  <Step title="Enter integration details">
+    In the first step of the integration creation dialog, enter a name for your integration, and then click on the Next button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Integration Details Step" src="/images/personio/integration-details-step.png" />
+    </Frame>
   </Step>
 
   <Step title="Select permissions">
-    Select at least one permission to continue; for example, Employees or Attendances.
+    In the second step, select the data types you want to grant access to. You must select at least one permission to continue. Common options include:
+    - **employees** (Read/Write)
+    - **attendances** (Read/Write) 
+    - **Time off** (Read/Write)
+    - **documents** (Read/Write)
+    - **Recruiting** (Read/Write)
+    - **Webhooks** (Read/Write)
+    
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Permissions" src="/images/personio/image4.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Configure Access Rights" src="/images/personio/configure-access-rights.png" />
     </Frame>
   </Step>
 
-  <Step title="Choose attributes">
-    Click on Choose attributes. Select those attributes you want to show in your data, or Select all attributes.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Choose Attributes" src="/images/personio/image5.png" />
-    </Frame>
+  <Step title="Choose employee attributes (Optional)">
+    If you selected "employees" permissions, you can optionally click "Choose attributes" to select specific employee attributes you want to include in your data. You can also select all attributes.
   </Step>
 
-  <Step title="Generate credential">
-    Click on the Generate new credential button.
+  <Step title="Create integration">
+    After selecting your permissions, click "Create integration" to generate your API credentials.
   </Step>
 
-  <Step title="Save credential">
-    Please make sure your credential is generated successfully. If that is generated successfully, then click on the Save button.
+  <Step title="Copy API credentials">
+    Once the integration is created, you'll see your API credentials displayed:
+    - **Client ID**: A unique identifier for your integration
+    - **API Secret**: A secret key for authentication
+    
+    Copy both values to a secure location. You can use the "Copy" buttons provided.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Save Credential" src="/images/personio/image6.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Credentials Generated" src="/images/personio/api-credentials-generated.png" />
     </Frame>
   </Step>
 
   <Step title="Copy API credentials">
-    Copy your API credentials – client id and client secret to a safe place.
+    Copy your API credentials – client id and client secret to a safe place, then click "Finish".
   </Step>
 </Steps>
 
@@ -93,6 +100,6 @@ This guidance assumes you have Admin privileges for your Personio account.
 <IntegrationFooter />
 
 ## Useful Links
-<Card title="API Reference" icon="link" href="Xhttps://developer.personio.de/docs/getting-started-with-the-personio-apiXXX">
+<Card title="API Reference" icon="link" href="https://developer.personio.de/docs/getting-started-with-the-personio-api">
     https://developer.personio.de/docs/getting-started-with-the-personio-api
 </Card>
