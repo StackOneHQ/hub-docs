@@ -1,0 +1,102 @@
+---
+title: "BambooHR"
+description: "Follow these steps to connect BambooHR via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your BambooHR account.
+</Warning>
+
+If you've been directed to this guide to integrate with BambooHR for Learning Management System functionality, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Getting your Company Domain
+
+<Steps>
+  <Step title="Sign in to BambooHR">
+    Sign in to your BambooHR instance and take note of your company domain as the URL's prefix. In the example below, the Company Domain is `stackonetest`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Company Domain" src="/images/bamboohr_lms/image1.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Generating your API Key
+
+<Steps>
+  <Step title="Navigate to API Keys">
+    On the Home page, click on your Account avatar and select API Keys.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Keys" src="/images/bamboohr_lms/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add New Key">
+    Click Add New Key.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add New Key" src="/images/bamboohr_lms/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter a name">
+    Enter a name for the API key (e.g., "LMS Integration").
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter a name" src="/images/bamboohr_lms/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Generate Key">
+    Click Generate Key.
+  </Step>
+
+  <Step title="Copy the Key">
+    Click COPY KEY to copy the key to your clipboard (and then click Done).
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy the Key" src="/images/bamboohr_lms/image5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Linking your Provider Account
+
+Now that you have all the required information, you can link your account.
+
+<Steps>
+  <Step title="Access Integrations">
+    Navigate to the Integrations page in your platform.
+  </Step>
+
+  <Step title="Find BambooHR LMS">
+    Search for BambooHR in the list of available LMS integrations and click on it.
+  </Step>
+
+  <Step title="Enter Connection Details">
+    Fill in the required fields:
+    - **API Key**: Enter the API key you generated in the previous steps
+    - **Company Domain**: Enter your BambooHR company domain from step 1
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/bamboohr_lms/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Test and Save">
+    Click Test Connection to verify the connection, then click Save to complete the integration.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [LMS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Content</li>
+  <li>Users</li>
+  <li>Completion</li>
+</ul>
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://documentation.bamboohr.com/reference/">
+    https://documentation.bamboohr.com/reference/
+</Card>
