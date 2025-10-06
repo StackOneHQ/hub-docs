@@ -1,0 +1,97 @@
+---
+title: "Asana - OAuth2"
+description: "Follow these steps to connect your Asana account with StackOne hub using OAuth2, ensuring a smooth integration process."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  The following guidance assumes you have Admin privileges for your Asana account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Asana, the following steps will help you understand the process and any necessary actions to configure successful integration.
+
+## Get Your Asana Client ID and Secret
+<Steps>
+  <Step title="Sign-in and open the Developer App Console">
+    Sign in to <a href="https://app.asana.com/">your account</a>, you will need email and password to log in.
+    Click on your profile picture in the top right corner, then select <b>Settings</b> from the dropdown menu.
+    In the Profile Settings dialog, navigate to the <b>Apps</b> tab.
+    Scroll down to the bottom of the Apps tab and click on the <b>View Developer Console</b> link. This will take you to the Developer App Console.
+    <Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Profile Settings" src="/images/asana-oauth/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create new app">
+    In the Developer App Console, click on the <b>+ Create New App</b> button under the Apps section.
+    In the dialog that appears, enter a name for your app (e.g., "StackOne Integration") and click on the <b>Create App</b> button.
+    Once the app is created, you will be taken to the app's settings page where you can find your Client ID and Client Secret.
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create new app" src="/images/asana-oauth/image2.png" />
+      </Frame>
+  </Step>
+  <Step title="Add redirect URL and add required scopes">
+    In the app's settings page, navigate to oauth sidebar menu. Scroll down to the <b>Redirect URLs</b> section and click on the <b>Add Redirect URL</b> button.
+    Enter the following redirect URL: `https://api.stackone.com/connect/oauth2/asana/callback` and click on the <b>Add</b> button to save it.
+    Additionally, ensure that you have selected the required scopes for your integration or simply enable full permissions by clicking on the Full Permissions toggle.
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add redirect URL" src="/images/asana-oauth/image3.png" />
+      </Frame>
+  </Step>
+</Steps>
+
+## Get your Asana Workspace ID
+<Steps>
+  <Step title="Navigate to your workspace">
+    In Asana, click on your profile picture in the top right corner, then select <b>Switch Workspace</b> from the dropdown menu.
+    Select the workspace you want to integrate with StackOne.
+    Once you are in the desired workspace, look at the URL in your browser's address bar. The URL will be in the format `https://app.asana.com/1/{workspace_id}/home`.
+    The number before `/home` is your Workspace ID. Copy this ID for later use.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Workspace ID" src="/images/asana-oauth/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Use the Client ID, Secret, and Workspace ID in the StackOne Hub
+
+In the StackOne Hub, navigate to the integration settings for Asana. You will need to provide the following information:
+
+- **Client ID**: The Client ID you obtained from the Asana Developer App Console.
+- **Client Secret**: The Client Secret you obtained from the Asana Developer App Console.
+- **Workspace ID**: The Workspace ID you obtained from the Asana URL.
+
+Once you have entered this information, you can proceed with the integration process.
+
+<Steps>
+  <Step title="Save the integration settings">
+    Go to the StackOne Hub > Integrations section and Fill the required fields with the Client ID, Client Secret, and Workspace ID for Asana integration.
+    Click on the <b>Save Changes</b> button to save your settings.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Integration Settings" src="/images/asana-oauth/image5.png" />
+    </Frame>
+  </Step>
+  <Step title="Navigate to the Accounts section">
+    Navigate to the Accounts section and click on the <b>Link Account</b> button.
+    From the list of available integrations, select <b>Asana</b>.
+  </Step>
+  <Step title="Save and connect">
+    Click on the <b>Connect</b> button to save your settings and establish the connection with Asana.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: "0 auto", border: "1px solid #efefef" }}
+        alt="Access Token Created"
+        src="/images/asana-oauth/image6.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="Asana Guides - OAuth" icon="link" href="https://developers.asana.com/docs/oauth">
+    https://developers.asana.com/docs/oauth
+</Card>

@@ -1,0 +1,63 @@
+---
+title: "Asana"
+description: "Follow these steps to connect your Asana account with StackOne hub, ensuring a smooth integration process."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  The following guidance assumes you have Admin privileges for your Asana
+  account.
+</Warning>
+
+## Generating a Personal Access Token
+<Steps>
+  <Step title="Sign-in and open the Developer App Console">
+    Sign in to <a href="https://app.asana.com/">your account</a>, you will need email and password to log in.
+    Click on your profile picture in the top right corner, then select <b>Settings</b> from the dropdown menu.
+    In the Profile Settings dialog, navigate to the <b>Apps</b> tab.
+    Scroll down to the bottom of the Apps tab and click on the <b>View Developer Console</b> link. This will take you to the Developer App Console.
+    <Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Profile Settings" src="/images/asana/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create a new Personal Access Token">
+    In the Developer App Console, click on the <b>+ Create New Token</b> button under the Personal Access Tokens section.
+    In the dialog that appears, enter a name for your token (e.g., "StackOne Integration") and click on the <b>Create Token</b> button.
+    Once the token is generated, it will be displayed on the screen. Make sure to copy it immediately, as you won't be able to see it again.   
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Personal Access Token" src="/images/asana/image2.png" />
+      </Frame>
+  </Step>
+</Steps>
+
+## Use the Personal Access Token in the StackOne Hub
+Once you have copied the Personal Access Token, you can use it in the StackOne Hub to connect your Asana account.
+This will require Personal Access Token you just generated and workspace ID.
+
+<Steps>
+  <Step title="Navigate to the StackOne Hub">
+    Go to the StackOne Hub and navigate to the Accounts section and click on the <b>Link Account</b> button.
+  </Step>
+
+  <Step title="Save and connect">
+    Select the Asana from the list and fill the required details - Personal Access Token and Workspace ID.
+    Click on the <b>Connect</b> button to save your settings and establish the connection with Asana.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: "0 0", border: "1px solid #efefef" }}
+        alt="Access Token Created"
+        src="/images/asana/image3.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="Asana Guides - PAT" icon="link" href="https://developers.asana.com/docs/personal-access-token">
+    https://developers.asana.com/docs/personal-access-token
+</Card>
