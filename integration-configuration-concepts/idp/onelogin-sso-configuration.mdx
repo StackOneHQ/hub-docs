@@ -4,6 +4,7 @@ description: "Configure custom SSO attributes in OneLogin for LMS integrations."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
+import LMSIdentifiers from "/snippets/lms-identifiers.mdx";
 
 <Warning>
   Ensure that your OneLogin account has **Super User** or **Account Administrator** privileges.
@@ -284,12 +285,7 @@ Now that you have configured the custom SSO attributes in OneLogin, you can refe
 
 Different LMS platforms may require specific parameter configurations:
 
-### Common LMS Attribute Mappings
-- **Docebo**: Use `{user.email}` or `{user.username}` for the user identifier
-- **Cornerstone OnDemand**: May require `{user.employee_id}` or custom identifier
-- **SAP SuccessFactors**: Typically uses `{user.username}` or email-based identifiers
-- **Workday Learning**: Often requires `{user.employee_id}` or custom identifier
-- **360Learning**: Usually accepts `{user.email}` or `{user.username}`
+<LMSIdentifiers />
 
 ### Troubleshooting
 - Ensure parameter names match exactly between OneLogin and your LMS configuration

@@ -4,6 +4,7 @@ description: "Configure custom SSO attributes in Azure AD for LMS integrations."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
+import LMSIdentifiers from "/snippets/lms-identifiers.mdx";
 
 <Warning>
   Ensure that your Azure AD account has **Global Administrator** or **Application Administrator** privileges.
@@ -222,12 +223,7 @@ Now that you have configured the custom SSO attributes in Azure AD, you can refe
 
 Different LMS platforms may require specific attribute names or claim formats:
 
-### Common LMS Attribute Mappings
-- **Docebo**: Use `user.userprincipalname` or `user.mail` for the user identifier
-- **Cornerstone OnDemand**: May require `user.employeeid` or custom extension attribute
-- **SAP SuccessFactors**: Typically uses `user.userprincipalname` or email-based identifier
-- **Workday Learning**: Often requires employee ID or custom identifier
-- **360Learning**: Usually accepts `user.mail` or `user.userprincipalname`
+<LMSIdentifiers />
 
 ### Troubleshooting
 - Ensure claim names match exactly between Azure AD and your LMS configuration

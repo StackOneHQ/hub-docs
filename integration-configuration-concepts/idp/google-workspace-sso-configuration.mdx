@@ -4,6 +4,7 @@ description: "Configure custom SSO attributes in Google Workspace for LMS integr
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
+import LMSIdentifiers from "/snippets/lms-identifiers.mdx";
 
 <Warning>
   Ensure that your Google Workspace account has **Super Administrator** privileges.
@@ -243,12 +244,7 @@ Now that you have configured the custom SSO attributes in Google Workspace, you 
 
 Different LMS platforms may require specific attribute configurations:
 
-### Common LMS Attribute Mappings
-- **Docebo**: Use Primary email or Employee ID for the user identifier
-- **Cornerstone OnDemand**: May require Employee ID or custom identifier
-- **SAP SuccessFactors**: Typically uses Primary email or username-based identifiers
-- **Workday Learning**: Often requires Employee ID or custom identifier
-- **360Learning**: Usually accepts Primary email
+<LMSIdentifiers />
 
 ### Troubleshooting
 - Ensure attribute names match exactly between Google Workspace and your LMS configuration

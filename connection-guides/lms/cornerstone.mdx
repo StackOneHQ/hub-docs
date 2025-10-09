@@ -100,26 +100,6 @@ If you've been directed to StackOne to integrate with Cornerstone, the following
   </Step>
 </Steps>
 
-## SSO Configuration for User Mapping
-
-If your Cornerstone integration requires custom user identification through SSO, you may need to configure additional attributes in your Identity Provider. Cornerstone typically uses employee IDs or custom identifiers for user identification in SSO scenarios.
-
-<CardGroup cols={2}>
-  <Card title="Configure SSO Attributes" icon="key" href="/connection-guides/sso/sso-configuration-overview">
-    Learn how to set up custom SSO attributes like `lms_user_id` in your Identity Provider for seamless user mapping with Cornerstone OnDemand.
-  </Card>
-  
-  <Card title="Identity Provider Guides" icon="users" href="/connection-guides/sso/sso-configuration-overview">
-    Access specific configuration guides for Okta, Azure AD, Google Workspace, and OneLogin.
-  </Card>
-</CardGroup>
-
-For Cornerstone OnDemand integrations, the `lms_user_id` should typically be mapped to:
-- **Employee ID** - Most common for Cornerstone user identification
-- **Username** - Alternative identifier for username-based authentication
-- **Email address** - For organizations using email-based identifiers
-- **Custom identifier** - Organization-specific unique identifier
-
 <IntegrationFooter />
 
 ## Troubleshooting

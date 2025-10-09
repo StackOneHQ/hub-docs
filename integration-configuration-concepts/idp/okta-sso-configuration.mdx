@@ -4,6 +4,7 @@ description: "Configure custom SSO attributes in Okta for LMS integrations."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
+import LMSIdentifiers from "/snippets/lms-identifiers.mdx";
 
 <Warning>
   Ensure that your Okta account has **Application Administrator**, **Organization Administrator**, or **Super Administrator** privileges.
@@ -163,12 +164,7 @@ Now that you have configured the custom SSO attributes in Okta, you can referenc
 
 Different LMS platforms may require specific attribute names or values:
 
-### Common LMS Attribute Mappings
-- **Docebo**: Use `user.login` or `user.email` for the user identifier
-- **Cornerstone OnDemand**: May require `user.employeeNumber` or custom ID
-- **SAP SuccessFactors**: Typically uses `user.login` or username-based identifiers
-- **Workday Learning**: Often requires employee ID or custom identifier
-- **360Learning**: Usually accepts `user.email` or `user.login`
+<LMSIdentifiers />
 
 ### Troubleshooting
 - Ensure attribute names match exactly between Okta and your LMS configuration
