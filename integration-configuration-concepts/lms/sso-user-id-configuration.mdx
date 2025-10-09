@@ -1,0 +1,142 @@
+---
+title: "SSO User ID Configuration for LMS Integrations"
+description: "Overview of configuring custom SSO attributes (lms_user_id) across different Identity Providers for Learning Management System integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+## Overview
+
+When integrating Learning Management Systems (LMS) with StackOne, you often need to configure a custom Single Sign-On (SSO) attribute called `lms_user_id` in your Identity Provider (IDP). This attribute maps to the specific user identifier required by your LMS platform and ensures users are correctly identified during authentication.
+
+## Why LMS User ID Mapping is Important
+
+Different LMS platforms use various user identification schemes:
+
+- **Email-based systems**: Use email addresses as primary identifiers
+- **Employee ID systems**: Use corporate employee identifiers
+- **Username systems**: Use login usernames or aliases
+- **External ID systems**: Use third-party system identifiers
+- **Auto-generated IDs**: Use platform-specific unique identifiers
+
+The `lms_user_id` attribute allows you to map your IDP's user data to the specific identifier format expected by your LMS.
+
+## Supported Identity Providers
+
+StackOne supports SSO configuration for the most popular enterprise Identity Providers:
+
+### Enterprise IDPs
+- **[Okta](/integration-configuration-concepts/lms/okta-sso-configuration)** - Configure custom user attributes and SAML/OIDC mappings
+- **[Azure AD/Entra ID](/integration-configuration-concepts/lms/azure-ad-sso-configuration)** - Use extension attributes and claims configuration
+- **[OneLogin](/integration-configuration-concepts/lms/onelogin-sso-configuration)** - Set up custom user fields and parameter mappings
+
+### Cloud-Based IDPs
+- **[Google Workspace](/integration-configuration-concepts/lms/google-workspace-sso-configuration)** - Create custom attributes and SAML mappings
+- **[Auth0](/integration-configuration-concepts/lms/auth0-sso-configuration)** - Use metadata and custom claims configuration
+
+## Common Configuration Patterns
+
+### SAML Configuration
+For SAML-based integrations, you'll typically:
+
+1. **Create a custom user attribute** in your IDP
+2. **Populate the attribute** with LMS-specific user identifiers
+3. **Configure attribute statements** in your SAML application
+4. **Map the attribute** to the `lms_user_id` claim
+5. **Test the configuration** to ensure proper token generation
+
+### OIDC Configuration
+For OIDC-based integrations, you'll typically:
+
+1. **Create user metadata** or custom fields in your IDP
+2. **Set user-specific values** for the LMS identifier
+3. **Configure custom claims** in ID tokens or access tokens
+4. **Use rules or actions** to dynamically map attributes
+5. **Test token content** to verify claim presence
+
+## LMS-Specific Requirements
+
+Each LMS may have specific requirements for user identification:
+
+<Note>
+  **Important**: Always consult your specific LMS integration documentation to determine the correct user identifier format and mapping requirements.
+</Note>
+
+### Common Identifier Types
+
+| LMS Type | Common Identifier | Example Value |
+|----------|------------------|---------------|
+| Corporate LMS | Employee ID | `EMP-12345` |
+| Educational LMS | Student ID | `STU-67890` |
+| SaaS LMS | Email Address | `user@company.com` |
+| Custom LMS | External System ID | `EXT-ABC123` |
+| Multi-tenant LMS | Tenant + User ID | `tenant1:user123` |
+
+## Implementation Workflow
+
+1. **Identify LMS Requirements**
+   - Determine the user identifier format your LMS expects
+   - Understand whether the identifier should be static or dynamic
+   - Check if multiple identifiers are supported
+
+2. **Choose Your IDP Configuration Method**
+   - Select the appropriate Identity Provider from our supported list
+   - Follow the specific configuration guide for your IDP
+   - Consider using existing user attributes vs. creating custom fields
+
+3. **Configure User Mappings**
+   - Set up the `lms_user_id` attribute or claim in your IDP
+   - Populate user profiles with the correct LMS identifiers
+   - Configure SAML/OIDC applications with proper attribute mappings
+
+4. **Test Integration**
+   - Use your IDP's testing tools to verify token/assertion content
+   - Perform end-to-end SSO testing with your LMS
+   - Validate that users can successfully authenticate and access appropriate content
+
+5. **Deploy and Monitor**
+   - Roll out the configuration to all LMS users
+   - Monitor authentication logs for any issues
+   - Set up processes for updating user mappings as needed
+
+## Troubleshooting Common Issues
+
+### Attribute Not Appearing in Tokens
+- Verify the custom attribute is properly configured in your IDP
+- Check that users have the attribute populated
+- Ensure SAML/OIDC application includes the attribute in mappings
+- Review IDP logs for any configuration errors
+
+### Authentication Failures
+- Confirm LMS expects the specific attribute name you're sending
+- Verify the attribute value format matches LMS requirements
+- Check that users are assigned to the correct application
+- Review both IDP and LMS authentication logs
+
+### User Profile Mismatches
+- Ensure the `lms_user_id` value correctly identifies the user in the LMS
+- Verify there are no duplicate or conflicting identifiers
+- Check that the LMS user provisioning process handles the identifier correctly
+- Consider case sensitivity and special character requirements
+
+## Best Practices
+
+### Security Considerations
+- Store sensitive user identifiers in secure metadata fields when possible
+- Use app_metadata instead of user_metadata for non-user-editable data
+- Implement proper access controls for IDP configuration changes
+- Regularly audit user attribute mappings for accuracy
+
+### Maintenance
+- Document your user identifier mapping strategy
+- Set up automated processes for bulk user updates when possible
+- Monitor for authentication failures and user mapping issues
+- Plan for LMS migration scenarios where identifiers might change
+
+### Testing
+- Always test SSO configuration in a non-production environment first
+- Verify both new user onboarding and existing user authentication flows
+- Test edge cases like users with special characters in identifiers
+- Validate that user permissions and data sync correctly after authentication
+
+<IntegrationFooter />

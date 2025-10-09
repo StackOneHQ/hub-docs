@@ -1,0 +1,177 @@
+---
+title: "Okta SSO Configuration for LMS User ID"
+description: "Configure a custom SSO attribute (lms_user_id) in Okta for Learning Management System integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+<Warning>
+  This guide assumes you have administrator privileges in your Okta organization.
+</Warning>
+
+Configure a custom SSO attribute called `lms_user_id` in Okta that will map to the specific user identifier required by your Learning Management System. This attribute will be passed during SAML or OIDC authentication to identify users uniquely in your LMS.
+
+## Configure Custom Attribute
+
+<Steps>
+  <Step title="Access Okta Admin Console">
+    Log into your Okta organization as an administrator.
+    
+    Navigate to the Okta Admin Console by clicking on the "Admin" button in the top right corner.
+  </Step>
+
+  <Step title="Navigate to Profile Editor">
+    In the Admin Console, go to **Directory** > **Profile Editor**.
+    
+    <Frame>
+      <img className='rounded-md' alt="Okta Profile Editor navigation" src="/images/okta/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select User Profile">
+    Click on the **User (default)** profile to edit the default user profile.
+    
+    <Frame>
+      <img className='rounded-md' alt="Select User profile" src="/images/okta/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add Custom Attribute">
+    Click the **Add Attribute** button to create a new custom attribute.
+    
+    Fill in the attribute details:
+    - **Data type**: String
+    - **Display name**: LMS User ID
+    - **Variable name**: `lms_user_id`
+    - **Description**: Custom user identifier for LMS integration
+    - **Attribute length**: 1024 (or as required by your LMS)
+    - **Attribute required**: Optional (recommended) or Required based on your needs
+    
+    <Frame>
+      <img className='rounded-md' alt="Add custom attribute form" src="/images/okta/image3.png" />
+    </Frame>
+    
+    Click **Save**.
+  </Step>
+
+  <Step title="Populate User Attribute Values">
+    Navigate to **Directory** > **People** to manage user profiles.
+    
+    For each user who needs LMS access:
+    1. Click on the user's profile
+    2. Click **Edit** in the Profile tab
+    3. Scroll down to find the **LMS User ID** field
+    4. Enter the appropriate LMS-specific user identifier
+    5. Click **Save**
+    
+    <Frame>
+      <img className='rounded-md' alt="Edit user profile" src="/images/okta/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Configure SAML Application
+
+<Steps>
+  <Step title="Navigate to Applications">
+    Go to **Applications** > **Applications** in the Okta Admin Console.
+    
+    Find your LMS SAML application or create a new one if it doesn't exist.
+  </Step>
+
+  <Step title="Edit Application Settings">
+    Click on your LMS application name to open its settings.
+    
+    Navigate to the **Sign On** tab.
+    
+    <Frame>
+      <img className='rounded-md' alt="SAML application settings" src="/images/okta/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Attribute Statements">
+    Scroll down to the **Attribute Statements** section and click **Edit**.
+    
+    Add a new attribute statement:
+    - **Name**: `lms_user_id` (or as required by your specific LMS)
+    - **Name format**: Basic (recommended) or URI Reference
+    - **Value**: `user.lms_user_id`
+    
+    <Frame>
+      <img className='rounded-md' alt="Configure attribute statements" src="/images/okta/image6.png" />
+    </Frame>
+    
+    Click **Next** and then **Finish** to save the configuration.
+  </Step>
+</Steps>
+
+## Configure OIDC Application
+
+<Steps>
+  <Step title="Navigate to Applications">
+    Go to **Applications** > **Applications** in the Okta Admin Console.
+    
+    Find your LMS OIDC application or create a new one if it doesn't exist.
+  </Step>
+
+  <Step title="Edit Application Settings">
+    Click on your LMS application name to open its settings.
+    
+    Navigate to the **Sign On** tab.
+  </Step>
+
+  <Step title="Configure Custom Claims">
+    Scroll down to the **OpenID Connect ID Token** section.
+    
+    Add a custom claim:
+    - **Name**: `lms_user_id`
+    - **Include in token type**: ID Token (Always)
+    - **Value type**: Expression
+    - **Value**: `user.lms_user_id`
+    - **Include in**: Any scope
+    
+    <Frame>
+      <img className='rounded-md' alt="Configure custom claims" src="/images/okta/image7.png" />
+    </Frame>
+    
+    Click **Save** to apply the configuration.
+  </Step>
+</Steps>
+
+## LMS-Specific Attribute Values
+
+The value you enter in the `lms_user_id` field will depend on your specific LMS requirements. Here are common patterns:
+
+- **Email-based**: User's email address
+- **Username-based**: User's login username
+- **Employee ID**: Corporate employee identifier
+- **Custom ID**: LMS-generated unique identifier
+- **External ID**: Third-party system identifier
+
+<Note>
+  Consult your LMS integration documentation to determine the correct identifier format and source for your specific system.
+</Note>
+
+## Testing Configuration
+
+<Steps>
+  <Step title="Test SAML/OIDC Flow">
+    Use Okta's built-in testing tools to verify the SSO configuration:
+    
+    1. Go to your LMS application in Okta
+    2. Click the **Test** button or use **Preview SAML** functionality
+    3. Verify that the `lms_user_id` attribute appears in the assertion/token
+    4. Confirm the value matches the expected LMS user identifier
+  </Step>
+
+  <Step title="Verify LMS Integration">
+    Test the complete integration by:
+    
+    1. Accessing your LMS through the Okta dashboard
+    2. Confirming successful authentication
+    3. Verifying that the correct user profile is loaded in the LMS
+    4. Checking that user permissions and data are properly mapped
+  </Step>
+</Steps>
+
+<IntegrationFooter />

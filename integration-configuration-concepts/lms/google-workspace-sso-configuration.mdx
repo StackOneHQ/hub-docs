@@ -1,0 +1,247 @@
+---
+title: "Google Workspace SSO Configuration for LMS User ID"
+description: "Configure a custom SSO attribute (lms_user_id) in Google Workspace for Learning Management System integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+<Warning>
+  This guide assumes you have Super Admin privileges in your Google Workspace organization.
+</Warning>
+
+Configure a custom SSO attribute called `lms_user_id` in Google Workspace that will map to the specific user identifier required by your Learning Management System. This attribute will be passed during SAML authentication to identify users uniquely in your LMS.
+
+## Configure Custom User Attributes
+
+<Steps>
+  <Step title="Access Google Admin Console">
+    Log into the Google Admin Console at [https://admin.google.com](https://admin.google.com) with your Super Admin account.
+  </Step>
+
+  <Step title="Navigate to Directory">
+    In the Admin Console, go to **Directory** > **Users**.
+    
+    <Frame>
+      <img className='rounded-md' alt="Google Admin Console Directory" src="/images/googleworkspace/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Manage Custom Attributes">
+    Click on **More options** (three dots) in the toolbar, then select **Manage custom attributes**.
+    
+    <Frame>
+      <img className='rounded-md' alt="Manage custom attributes" src="/images/googleworkspace/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add Custom Attribute">
+    Click **ADD CUSTOM ATTRIBUTE** and configure:
+    
+    - **Category**: Create a new category like "LMS Integration" or use existing
+    - **Attribute name**: `LMS User ID`
+    - **Field name**: `lms_user_id`
+    - **Info type**: Text
+    - **Visibility**: Visible to admin only (recommended)
+    - **No. of values**: Single value
+    
+    <Frame>
+      <img className='rounded-md' alt="Add custom attribute form" src="/images/googleworkspace/image3.png" />
+    </Frame>
+    
+    Click **ADD** to create the attribute.
+  </Step>
+
+  <Step title="Set User Attribute Values">
+    For each user who needs LMS access:
+    
+    1. Go back to **Directory** > **Users**
+    2. Click on a specific user to open their profile
+    3. Scroll down to find your custom attribute section (e.g., "LMS Integration")
+    4. Enter the appropriate LMS-specific user identifier in the **LMS User ID** field
+    5. Click **SAVE**
+    
+    <Frame>
+      <img className='rounded-md' alt="Edit user custom attributes" src="/images/googleworkspace/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Configure SAML Application
+
+<Steps>
+  <Step title="Navigate to Apps">
+    In the Admin Console, go to **Apps** > **Web and mobile apps**.
+    
+    <Frame>
+      <img className='rounded-md' alt="Web and mobile apps" src="/images/googleworkspace/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add SAML App">
+    Click **Add App** > **Add custom SAML app**.
+    
+    If you already have a SAML app for your LMS, click on it to edit the configuration.
+    
+    <Frame>
+      <img className='rounded-md' alt="Add SAML app" src="/images/googleworkspace/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure App Details">
+    Fill in the basic application information:
+    
+    - **App name**: Your LMS name (e.g., "Company LMS")
+    - **Description**: Brief description of the application
+    - **App icon**: Upload your LMS logo if desired
+    
+    Click **CONTINUE**.
+  </Step>
+
+  <Step title="Download IdP Information">
+    Download or copy the Google Identity Provider details:
+    
+    - **SSO URL**
+    - **Entity ID**
+    - **Certificate**
+    
+    These will be needed for configuring your LMS.
+    
+    Click **CONTINUE**.
+  </Step>
+
+  <Step title="Configure Service Provider">
+    Enter your LMS SAML configuration:
+    
+    - **ACS URL**: Your LMS SAML assertion consumer service URL
+    - **Entity ID**: Your LMS entity identifier
+    - **Start URL**: Your LMS login page (optional)
+    - **Name ID format**: EMAIL (recommended) or PERSISTENT
+    - **Name ID**: Basic Information > Primary email
+    
+    <Frame>
+      <img className='rounded-md' alt="Service provider configuration" src="/images/googleworkspace/image7.png" />
+    </Frame>
+    
+    Click **CONTINUE**.
+  </Step>
+
+  <Step title="Configure Attribute Mapping">
+    Map the custom attribute to a SAML attribute:
+    
+    Click **ADD MAPPING** and configure:
+    - **Google Directory attributes**: Select your custom attribute "LMS User ID"
+    - **App attributes**: Enter `lms_user_id` (or as required by your LMS)
+    
+    You can also add standard mappings:
+    - **Google Directory attributes**: Basic Information > Primary email
+    - **App attributes**: `email`
+    
+    <Frame>
+      <img className='rounded-md' alt="Attribute mapping configuration" src="/images/googleworkspace/image8.png" />
+    </Frame>
+    
+    Click **FINISH** to complete the configuration.
+  </Step>
+</Steps>
+
+## Enable Application for Users
+
+<Steps>
+  <Step title="Configure User Access">
+    After creating the SAML app, you'll see the app configuration page.
+    
+    Click **User access** in the left sidebar.
+    
+    <Frame>
+      <img className='rounded-md' alt="User access configuration" src="/images/googleworkspace/image9.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Turn ON for Users">
+    Configure access settings:
+    
+    - **Service status**: ON for everyone or ON for some organizational units
+    - Select specific organizational units if needed
+    - Configure any additional access restrictions
+    
+    Click **SAVE** to apply the settings.
+  </Step>
+
+  <Step title="Test Configuration">
+    Test the SAML configuration:
+    
+    1. Use the **Test SAML Login** option in the app configuration
+    2. Or access your LMS through the Google Workspace app launcher
+    3. Verify that the SAML assertion includes the `lms_user_id` attribute
+    4. Confirm the attribute value matches the expected LMS user identifier
+    
+    <Frame>
+      <img className='rounded-md' alt="Test SAML login" src="/images/googleworkspace/image10.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Alternative: Using Standard Attributes
+
+If you prefer not to create custom attributes, you can use existing Google Workspace user fields:
+
+<Steps>
+  <Step title="Use Employee ID">
+    In **Directory** > **Users**, edit user profiles to include:
+    
+    - **Employee ID**: Set this field to your LMS user identifier
+    - **Employee Type**: Use for user role mapping if needed
+    - **Department**: Use for organizational mapping
+    
+    <Frame>
+      <img className='rounded-md' alt="Standard user attributes" src="/images/googleworkspace/image11.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Map Standard Attributes">
+    In your SAML app attribute mapping:
+    
+    - **Google Directory attributes**: Employee Information > Employee ID
+    - **App attributes**: `lms_user_id`
+    
+    This approach avoids creating custom attributes while still providing the required mapping.
+  </Step>
+</Steps>
+
+## LMS-Specific Attribute Values
+
+The value you enter in the `lms_user_id` field will depend on your specific LMS requirements. Common patterns:
+
+- **Email-based**: User's Google Workspace email
+- **Employee ID**: Corporate employee identifier
+- **Username**: Google Workspace username
+- **Custom ID**: LMS-generated unique identifier
+- **External ID**: Third-party system identifier
+
+<Note>
+  Consult your LMS integration documentation to determine the correct identifier format and source for your specific system.
+</Note>
+
+## Troubleshooting
+
+<Steps>
+  <Step title="Verify Attribute Mapping">
+    If the LMS user ID is not being passed correctly:
+    
+    1. Check that the custom attribute is populated for all users
+    2. Verify the attribute mapping in the SAML app configuration
+    3. Use Google's SAML test tool to inspect the assertion
+    4. Confirm the LMS expects the attribute name you're using
+  </Step>
+
+  <Step title="Check User Access">
+    If users cannot access the LMS:
+    
+    1. Verify the SAML app is enabled for the user's organizational unit
+    2. Check that users have the custom attribute populated
+    3. Confirm the LMS is configured to accept Google Workspace SAML assertions
+    4. Review Google Workspace and LMS logs for authentication errors
+  </Step>
+</Steps>
+
+<IntegrationFooter />

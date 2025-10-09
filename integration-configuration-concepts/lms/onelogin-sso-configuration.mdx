@@ -1,0 +1,279 @@
+---
+title: "OneLogin SSO Configuration for LMS User ID"
+description: "Configure a custom SSO attribute (lms_user_id) in OneLogin for Learning Management System integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+<Warning>
+  This guide assumes you have Super User or Admin privileges in your OneLogin organization.
+</Warning>
+
+Configure a custom SSO attribute called `lms_user_id` in OneLogin that will map to the specific user identifier required by your Learning Management System. This attribute will be passed during SAML or OIDC authentication to identify users uniquely in your LMS.
+
+## Configure Custom User Fields
+
+<Steps>
+  <Step title="Access OneLogin Admin Portal">
+    Log into your OneLogin admin portal at `https://your-subdomain.onelogin.com/admin` with your administrator account.
+  </Step>
+
+  <Step title="Navigate to Users">
+    In the OneLogin admin portal, navigate to **Users** > **User Fields**.
+    
+    <Frame>
+      <img className='rounded-md' alt="OneLogin User Fields navigation" src="/images/onelogin/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create Custom Field">
+    Click **New User Field** to create a custom field.
+    
+    Configure the field:
+    - **Name**: LMS User ID
+    - **Short Name**: lms_user_id
+    - **Include in User Provisioning**: Yes (if using provisioning)
+    - **User Editable**: No (recommended for security)
+    - **Default Value**: Leave empty
+    - **Required**: No (or Yes if all users must have LMS access)
+    
+    <Frame>
+      <img className='rounded-md' alt="Create custom user field" src="/images/onelogin/image2.png" />
+    </Frame>
+    
+    Click **Save** to create the field.
+  </Step>
+
+  <Step title="Set User Field Values">
+    Navigate to **Users** > **Users** to manage individual user profiles.
+    
+    For each user who needs LMS access:
+    1. Click on the user's name to open their profile
+    2. Scroll down to the **Custom Fields** section
+    3. Enter the appropriate LMS-specific user identifier in the **LMS User ID** field
+    4. Click **Save User**
+    
+    <Frame>
+      <img className='rounded-md' alt="Edit user custom fields" src="/images/onelogin/image3.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Configure SAML Application
+
+<Steps>
+  <Step title="Navigate to Applications">
+    In the OneLogin admin portal, go to **Applications** > **Applications**.
+    
+    Find your LMS SAML application or create a new one by clicking **Add App**.
+    
+    <Frame>
+      <img className='rounded-md' alt="OneLogin Applications" src="/images/onelogin/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Search or Create LMS App">
+    If creating a new app:
+    1. Search for your LMS in the OneLogin catalog
+    2. Or select **SAML Test Connector (IdP w/ attr)** for custom configuration
+    3. Click **Save** to add the application
+    
+    <Frame>
+      <img className='rounded-md' alt="Add SAML application" src="/images/onelogin/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Application Settings">
+    Click on your LMS application to open its configuration.
+    
+    Go to the **Configuration** tab and enter:
+    - **RelayState**: Your LMS login URL (if required)
+    - **Audience (EntityID)**: Your LMS entity identifier
+    - **Recipient**: Your LMS assertion consumer service URL
+    - **ACS (Consumer) URL Validator**: Validation regex (if required)
+    - **ACS (Consumer) URL**: Your LMS assertion consumer service URL
+    
+    <Frame>
+      <img className='rounded-md' alt="SAML configuration settings" src="/images/onelogin/image6.png" />
+    </Frame>
+    
+    Click **Save**.
+  </Step>
+
+  <Step title="Configure Parameters">
+    Navigate to the **Parameters** tab to configure attribute mappings.
+    
+    Click **Add parameter** to create a new parameter mapping:
+    - **Field name**: lms_user_id (or as required by your LMS)
+    - **Flags**: Include in SAML assertion
+    - **Value**: Select the custom field you created (LMS User ID)
+    
+    <Frame>
+      <img className='rounded-md' alt="Configure SAML parameters" src="/images/onelogin/image7.png" />
+    </Frame>
+    
+    You can also add standard parameters like:
+    - **Field name**: email
+    - **Value**: Email
+    
+    Click **Save** after adding each parameter.
+  </Step>
+</Steps>
+
+## Configure OIDC Application
+
+<Steps>
+  <Step title="Create OIDC Application">
+    If using OIDC instead of SAML, go to **Applications** > **Applications** and click **Add App**.
+    
+    Search for **OpenId Connect** or **OIDC** and select the appropriate connector.
+    
+    <Frame>
+      <img className='rounded-md' alt="Add OIDC application" src="/images/onelogin/image8.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Application Details">
+    In the **Configuration** tab, enter:
+    - **Display Name**: Your LMS name
+    - **Redirect URI**: Your LMS OIDC callback URL
+    - **Login URL**: Your LMS login page
+    - **Token Endpoint**: Authentication Method (usually Client Secret Basic)
+    
+    Click **Save**.
+  </Step>
+
+  <Step title="Configure Custom Claims">
+    Navigate to the **Parameters** tab.
+    
+    Add a custom claim for the LMS user ID:
+    - **Field name**: lms_user_id
+    - **Include in Token**: Access Token and/or ID Token
+    - **Value**: Select your custom field (LMS User ID)
+    
+    <Frame>
+      <img className='rounded-md' alt="Configure OIDC claims" src="/images/onelogin/image9.png" />
+    </Frame>
+    
+    Click **Save**.
+  </Step>
+</Steps>
+
+## Assign Users to Application
+
+<Steps>
+  <Step title="Navigate to Access Tab">
+    In your LMS application configuration, click on the **Access** tab.
+    
+    <Frame>
+      <img className='rounded-md' alt="Application access tab" src="/images/onelogin/image10.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add Roles or Users">
+    Click **Add Role** to assign roles that should have access to the LMS application.
+    
+    Or click **Add User** to assign individual users.
+    
+    Select the appropriate roles/users and click **Save**.
+    
+    <Frame>
+      <img className='rounded-md' alt="Assign users to application" src="/images/onelogin/image11.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Bulk User Management
+
+<Steps>
+  <Step title="Import Users via CSV">
+    For bulk operations, navigate to **Users** > **Users** and click **More Actions** > **Import**.
+    
+    Download the CSV template and include a column for your custom `lms_user_id` field.
+    
+    <Frame>
+      <img className='rounded-md' alt="Bulk import users" src="/images/onelogin/image12.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Use OneLogin API">
+    Alternatively, use the OneLogin API to programmatically manage user attributes:
+    
+    ```http
+    PUT https://api.onelogin.com/api/1/users/{user_id}
+    Content-Type: application/json
+    
+    {
+      "custom_attributes": {
+        "lms_user_id": "your-lms-specific-identifier"
+      }
+    }
+    ```
+  </Step>
+</Steps>
+
+## LMS-Specific Attribute Values
+
+The value you enter in the `lms_user_id` field will depend on your specific LMS requirements:
+
+- **Email-based**: User's OneLogin email address
+- **Username-based**: OneLogin username
+- **Employee ID**: Corporate employee identifier from OneLogin
+- **External ID**: Third-party system identifier
+- **Custom ID**: LMS-generated unique identifier
+
+<Note>
+  Consult your LMS integration documentation to determine the correct identifier format and source for your specific system.
+</Note>
+
+## Testing Configuration
+
+<Steps>
+  <Step title="Test SAML Assertion">
+    In your LMS application configuration:
+    
+    1. Go to the **SSO** tab
+    2. Click **View Details** next to SAML 2.0 Endpoint
+    3. Use the test URL to generate a sample SAML assertion
+    4. Verify that the `lms_user_id` attribute appears in the assertion
+    5. Confirm the value matches the expected LMS user identifier
+    
+    <Frame>
+      <img className='rounded-md' alt="Test SAML assertion" src="/images/onelogin/image13.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Test User Login">
+    Test the complete integration:
+    
+    1. Have a test user log into OneLogin
+    2. Click on the LMS application from their dashboard
+    3. Verify successful authentication to the LMS
+    4. Confirm the correct user profile loads in the LMS
+    5. Check that user permissions and data are properly mapped
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<Steps>
+  <Step title="Attribute Not Passing">
+    If the LMS user ID is not being passed:
+    
+    1. Verify the custom field is populated for the user
+    2. Check the parameter mapping in the application configuration
+    3. Ensure the parameter is flagged to be included in assertions
+    4. Review the SAML assertion using OneLogin's test tool
+  </Step>
+
+  <Step title="Authentication Failures">
+    If users cannot authenticate:
+    
+    1. Check that users are assigned to the application
+    2. Verify the LMS SAML/OIDC configuration matches OneLogin settings
+    3. Review OneLogin and LMS logs for specific error messages
+    4. Ensure certificate and endpoint configurations are correct
+  </Step>
+</Steps>
+
+<IntegrationFooter />

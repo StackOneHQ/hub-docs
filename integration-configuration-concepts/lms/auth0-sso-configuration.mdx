@@ -1,0 +1,347 @@
+---
+title: "Auth0 SSO Configuration for LMS User ID"
+description: "Configure a custom SSO attribute (lms_user_id) in Auth0 for Learning Management System integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+<Warning>
+  This guide assumes you have Administrator privileges in your Auth0 tenant.
+</Warning>
+
+Configure a custom SSO attribute called `lms_user_id` in Auth0 that will map to the specific user identifier required by your Learning Management System. This attribute will be passed during SAML or OIDC authentication to identify users uniquely in your LMS.
+
+## Configure User Metadata
+
+<Steps>
+  <Step title="Access Auth0 Management Dashboard">
+    Log into your Auth0 Management Dashboard at `https://manage.auth0.com` or your custom domain.
+  </Step>
+
+  <Step title="Navigate to Users">
+    In the Auth0 dashboard, go to **User Management** > **Users**.
+    
+    <Frame>
+      <img className='rounded-md' alt="Auth0 Users navigation" src="/images/auth0/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Set User Metadata">
+    For each user who needs LMS access:
+    
+    1. Click on a specific user to open their profile
+    2. Scroll down to the **Metadata** section
+    3. In the **user_metadata** field, add the LMS user ID:
+    
+    ```json
+    {
+      "lms_user_id": "your-lms-specific-identifier"
+    }
+    ```
+    
+    Or in the **app_metadata** field for more secure storage:
+    
+    ```json
+    {
+      "lms_user_id": "your-lms-specific-identifier"
+    }
+    ```
+    
+    <Frame>
+      <img className='rounded-md' alt="Edit user metadata" src="/images/auth0/image2.png" />
+    </Frame>
+    
+    4. Click **Save Changes**
+  </Step>
+
+  <Step title="Bulk User Management (Optional)">
+    For bulk operations, use the Auth0 Management API:
+    
+    ```http
+    PATCH https://your-domain.auth0.com/api/v2/users/{user_id}
+    Content-Type: application/json
+    Authorization: Bearer {management_api_token}
+    
+    {
+      "user_metadata": {
+        "lms_user_id": "your-lms-specific-identifier"
+      }
+    }
+    ```
+    
+    Or use the Auth0 CLI or bulk user import features.
+  </Step>
+</Steps>
+
+## Configure SAML Application
+
+<Steps>
+  <Step title="Navigate to Applications">
+    In the Auth0 dashboard, go to **Applications** > **Applications**.
+    
+    Click **Create Application** or select an existing SAML application for your LMS.
+    
+    <Frame>
+      <img className='rounded-md' alt="Auth0 Applications" src="/images/auth0/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Application Type">
+    If creating a new application:
+    1. Choose **Single Sign On Integrations**
+    2. Select **SAML** as the protocol
+    3. Enter your application name
+    4. Click **Create**
+    
+    <Frame>
+      <img className='rounded-md' alt="Create SAML application" src="/images/auth0/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure SAML Settings">
+    In the application settings, go to the **Settings** tab:
+    
+    - **Application Callback URL**: Your LMS SAML assertion consumer service URL
+    - **Settings**: Configure SAML-specific settings as required by your LMS
+    
+    <Frame>
+      <img className='rounded-md' alt="SAML application settings" src="/images/auth0/image5.png" />
+    </Frame>
+    
+    Click **Save Changes**.
+  </Step>
+
+  <Step title="Configure SAML Mappings">
+    Navigate to the **Addons** tab and enable **SAML2 Web App**.
+    
+    In the SAML2 Web App settings, configure the mappings:
+    
+    ```json
+    {
+      "mappings": {
+        "lms_user_id": "user.user_metadata.lms_user_id",
+        "email": "user.email",
+        "name": "user.name"
+      },
+      "audience": "your-lms-entity-id",
+      "recipient": "your-lms-acs-url",
+      "destination": "your-lms-acs-url"
+    }
+    ```
+    
+    <Frame>
+      <img className='rounded-md' alt="SAML mappings configuration" src="/images/auth0/image6.png" />
+    </Frame>
+    
+    Click **Save**.
+  </Step>
+</Steps>
+
+## Configure OIDC Application
+
+<Steps>
+  <Step title="Create OIDC Application">
+    If using OIDC, create a new application and select **Single Page Applications**, **Regular Web Applications**, or **Machine to Machine Applications** based on your LMS requirements.
+    
+    <Frame>
+      <img className='rounded-md' alt="Create OIDC application" src="/images/auth0/image7.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Application Settings">
+    In the **Settings** tab:
+    - **Allowed Callback URLs**: Your LMS OIDC callback URLs
+    - **Allowed Logout URLs**: Your LMS logout URLs
+    - **Allowed Web Origins**: Your LMS domain (if required)
+    
+    <Frame>
+      <img className='rounded-md' alt="OIDC application settings" src="/images/auth0/image8.png" />
+    </Frame>
+    
+    Note your **Domain**, **Client ID**, and **Client Secret** for LMS configuration.
+  </Step>
+
+  <Step title="Configure Custom Claims with Rules">
+    Create a Rule to add custom claims to tokens.
+    
+    Go to **Auth Pipeline** > **Rules** and click **Create Rule**.
+    
+    Use the "Add attributes to tokens" template or create a custom rule:
+    
+    ```javascript
+    function(user, context, callback) {
+      const namespace = 'https://your-lms-domain.com/';
+      
+      // Add lms_user_id to tokens
+      if (user.user_metadata && user.user_metadata.lms_user_id) {
+        context.idToken[namespace + 'lms_user_id'] = user.user_metadata.lms_user_id;
+        context.accessToken[namespace + 'lms_user_id'] = user.user_metadata.lms_user_id;
+      }
+      
+      callback(null, user, context);
+    }
+    ```
+    
+    <Frame>
+      <img className='rounded-md' alt="Auth0 Rules configuration" src="/images/auth0/image9.png" />
+    </Frame>
+    
+    Click **Save changes**.
+  </Step>
+</Steps>
+
+## Configure with Actions (Recommended)
+
+<Note>
+  Auth0 Actions are the successor to Rules and provide better performance and functionality.
+</Note>
+
+<Steps>
+  <Step title="Navigate to Actions">
+    Go to **Actions** > **Flows** and select **Login**.
+    
+    <Frame>
+      <img className='rounded-md' alt="Auth0 Actions flows" src="/images/auth0/image10.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create Custom Action">
+    Click the **+** icon to add a custom action.
+    
+    Create a new action with the following code:
+    
+    ```javascript
+    exports.onExecutePostLogin = async (event, api) => {
+      const namespace = 'https://your-lms-domain.com/';
+      
+      // Add lms_user_id to tokens
+      if (event.user.user_metadata && event.user.user_metadata.lms_user_id) {
+        api.idToken.setCustomClaim(namespace + 'lms_user_id', event.user.user_metadata.lms_user_id);
+        api.accessToken.setCustomClaim(namespace + 'lms_user_id', event.user.user_metadata.lms_user_id);
+      }
+    };
+    ```
+    
+    <Frame>
+      <img className='rounded-md' alt="Custom Action code" src="/images/auth0/image11.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Deploy and Apply Action">
+    1. Click **Deploy** to save your action
+    2. Drag the action into your Login flow
+    3. Click **Apply** to activate the flow
+    
+    <Frame>
+      <img className='rounded-md' alt="Apply Action to flow" src="/images/auth0/image12.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Alternative: Connection-Level Mapping
+
+<Steps>
+  <Step title="Configure Database Connection">
+    If using Auth0 Database connections, go to **Authentication** > **Database**.
+    
+    Click on your database connection to configure custom fields.
+    
+    <Frame>
+      <img className='rounded-md' alt="Database connection settings" src="/images/auth0/image13.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add Custom Database Scripts">
+    In the **Custom Database** tab, you can write scripts to retrieve user data from external systems and populate the `lms_user_id` field dynamically.
+    
+    Example login script:
+    
+    ```javascript
+    function login(email, password, callback) {
+      // Your authentication logic
+      // Return user profile with lms_user_id
+      callback(null, {
+        user_id: user.id,
+        email: user.email,
+        user_metadata: {
+          lms_user_id: user.external_system_id
+        }
+      });
+    }
+    ```
+  </Step>
+</Steps>
+
+## LMS-Specific Attribute Values
+
+The value you store in `user_metadata.lms_user_id` will depend on your specific LMS requirements:
+
+- **Email-based**: User's Auth0 email address
+- **User ID**: Auth0 user_id
+- **External ID**: ID from external identity sources
+- **Employee ID**: Corporate employee identifier
+- **Custom ID**: LMS-generated unique identifier
+
+<Note>
+  Use `app_metadata` instead of `user_metadata` for more secure storage of sensitive identifiers that users shouldn't be able to modify.
+</Note>
+
+## Testing Configuration
+
+<Steps>
+  <Step title="Test Token Content">
+    Use the Auth0 Dashboard's **Test** functionality:
+    
+    1. Go to your application's **Test** tab
+    2. Authenticate as a test user
+    3. Examine the returned ID token and access token
+    4. Verify that the `lms_user_id` claim is present
+    5. Confirm the claim value matches the expected LMS user identifier
+    
+    <Frame>
+      <img className='rounded-md' alt="Test application tokens" src="/images/auth0/image14.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Use Real-Time Webtask Logs">
+    Monitor your Rules/Actions in real-time:
+    
+    1. Go to **Monitoring** > **Logs**
+    2. Filter by type "Success Login"
+    3. Examine log entries to verify custom claims are being added
+    4. Look for any errors in Rules/Actions execution
+  </Step>
+
+  <Step title="Verify LMS Integration">
+    Complete the integration test:
+    
+    1. Access your LMS through Auth0 SSO
+    2. Confirm successful authentication
+    3. Verify that the correct user profile loads in the LMS
+    4. Check that user permissions and data are properly mapped
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<Steps>
+  <Step title="Claims Not Appearing">
+    If the `lms_user_id` claim is not in tokens:
+    
+    1. Verify the user has the metadata populated
+    2. Check that Rules/Actions are enabled and deployed
+    3. Ensure the namespace format is correct (must be a valid URL)
+    4. Review the Auth0 logs for any execution errors
+  </Step>
+
+  <Step title="Metadata Not Saved">
+    If user metadata is not being saved:
+    
+    1. Check Management API scopes include `update:users`
+    2. Verify the API token has sufficient permissions
+    3. Ensure the JSON format is valid
+    4. Check for any validation errors in the Auth0 logs
+  </Step>
+</Steps>
+
+<IntegrationFooter />
