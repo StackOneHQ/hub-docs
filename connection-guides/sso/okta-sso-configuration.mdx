@@ -1,0 +1,177 @@
+---
+title: "Okta SSO Configuration"
+description: "Configure custom SSO attributes in Okta for LMS integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Okta account has **Application Administrator**, **Organization Administrator**, or **Super Administrator** privileges.
+</Warning>
+
+This guide explains how to configure custom SSO attributes (such as `lms_user_id`) in Okta that can be used with LMS integrations. These attributes allow you to map user identities between your platform and the LMS provider.
+
+## Access Okta Admin Dashboard
+
+<Steps>
+  <Step title="Log in to Okta">
+    Log in to your Okta Admin Console at https://login.okta.com/
+    
+    <Frame>
+      <img className='rounded-md' style={{ width: '70%', margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to Okta" src="/images/okta/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Navigate to Applications">
+    From the Okta Admin Dashboard, navigate to **Applications > Applications** in the left sidebar.
+    
+    <Frame>
+      <img className='rounded-md' style={{ width: '50%', margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Applications" src="/images/okta/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Your Application">
+    Find and click on the application that will be used for SSO with your LMS integration.
+    
+    If you haven't created an application yet, click **Create App Integration** and follow the setup wizard to create a new SAML 2.0 or OIDC application.
+  </Step>
+</Steps>
+
+## Configure Custom User Attributes
+
+<Steps>
+  <Step title="Navigate to Sign On Tab">
+    In your application settings, click on the **Sign On** tab.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Sign On Tab" src="/images/okta/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Edit SAML Settings">
+    Scroll down to the **SAML Settings** section and click **Edit**.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit SAML Settings" src="/images/okta/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Attribute Statements">
+    In the SAML Settings page, scroll to the **Attribute Statements** section.
+    
+    Click **Add Another** to create a new attribute statement with the following values:
+    
+    - **Name**: `lms_user_id` (or the specific attribute name required by your LMS)
+    - **Name format**: `Unspecified` (recommended) or `URI Reference` 
+    - **Value**: Choose the appropriate user attribute from the dropdown:
+      - `user.login` - for username/email
+      - `user.id` - for Okta user ID
+      - `user.email` - for user email address
+      - Custom expression or profile attribute as needed
+    
+    <Info>
+      The exact attribute name and value will depend on your specific LMS requirements. Common LMS platforms may require different attribute names such as:
+      - Docebo: `user.login` or `user.email`
+      - Cornerstone: `user.employeeNumber`
+      - SAP SuccessFactors: `user.login`
+    </Info>
+  </Step>
+
+  <Step title="Add Additional Attributes (Optional)">
+    If your LMS integration requires additional user attributes, repeat the previous step to add them:
+    
+    Common additional attributes include:
+    - **first_name**: `user.firstName`
+    - **last_name**: `user.lastName`
+    - **email**: `user.email`
+    - **employee_id**: `user.employeeNumber`
+    - **department**: `user.department`
+    - **role**: `user.title`
+  </Step>
+
+  <Step title="Save Configuration">
+    Click **Next** through the remaining steps and **Finish** to save your SAML configuration.
+  </Step>
+</Steps>
+
+## Configure User Profile Mapping
+
+If you need to use custom profile attributes that aren't available in the default Okta user schema:
+
+<Steps>
+  <Step title="Navigate to Profile Editor">
+    In the Okta Admin Console, go to **Directory > Profile Editor**.
+  </Step>
+
+  <Step title="Edit User Profile">
+    Find and click on the **User (default)** profile to edit the base user schema.
+  </Step>
+
+  <Step title="Add Custom Attribute">
+    Click **Add Attribute** and configure:
+    - **Data type**: String (most common)
+    - **Display name**: Descriptive name (e.g., "LMS User ID")
+    - **Variable name**: Technical name (e.g., "lmsUserId")
+    - **Description**: Purpose of the attribute
+    - **Attribute required**: Set based on your requirements
+  </Step>
+
+  <Step title="Map to Application">
+    Return to your application's **Sign On** settings and use the new custom attribute in your SAML attribute statements as `user.lmsUserId`.
+  </Step>
+</Steps>
+
+## Test SSO Configuration
+
+<Steps>
+  <Step title="Assign Test User">
+    In your application settings, go to the **Assignments** tab and assign a test user to the application.
+  </Step>
+
+  <Step title="Test SSO Flow">
+    Use Okta's **Preview SAML Response** feature or test the SSO flow through your LMS integration to verify that the custom attributes are being passed correctly.
+  </Step>
+
+  <Step title="Verify Attribute Values">
+    Check that the `lms_user_id` and other configured attributes appear in the SAML response with the expected values.
+  </Step>
+</Steps>
+
+## Linking with Your LMS Integration
+
+Now that you have configured the custom SSO attributes in Okta, you can reference these in your LMS integration setup:
+
+<Steps>
+  <Step title="Access LMS Integration">
+    Navigate to the integration configuration page for your specific LMS platform.
+  </Step>
+
+  <Step title="Configure SSO Mapping">
+    In the SSO or user mapping section of your LMS integration, specify:
+    - **SSO Attribute Name**: `lms_user_id` (or the name you configured in Okta)
+    - **LMS Field**: The corresponding field in your LMS (varies by platform)
+  </Step>
+
+  <Step title="Test Integration">
+    Perform a test sync or SSO login to verify that users are being correctly identified and mapped between systems.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## LMS-Specific Attribute Requirements
+
+Different LMS platforms may require specific attribute names or values:
+
+### Common LMS Attribute Mappings
+- **Docebo**: Use `user.login` or `user.email` for the user identifier
+- **Cornerstone OnDemand**: May require `user.employeeNumber` or custom ID
+- **SAP SuccessFactors**: Typically uses `user.login` or username-based identifiers
+- **Workday Learning**: Often requires employee ID or custom identifier
+- **360Learning**: Usually accepts `user.email` or `user.login`
+
+### Troubleshooting
+- Ensure attribute names match exactly between Okta and your LMS configuration
+- Verify that all required attributes are mapped and have values for your users
+- Check SAML response format if using SAML-based SSO
+- Confirm that users have the necessary attribute values populated in their Okta profiles

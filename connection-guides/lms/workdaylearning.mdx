@@ -239,6 +239,26 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 </Steps>
 
+## SSO Configuration for User Mapping
+
+If your Workday Learning integration requires custom user identification through SSO, you may need to configure additional attributes in your Identity Provider. Workday Learning typically uses employee IDs or custom identifiers for user identification in SSO scenarios.
+
+<CardGroup cols={2}>
+  <Card title="Configure SSO Attributes" icon="key" href="/connection-guides/sso/sso-configuration-overview">
+    Learn how to set up custom SSO attributes like `lms_user_id` in your Identity Provider for seamless user mapping with Workday Learning.
+  </Card>
+  
+  <Card title="Identity Provider Guides" icon="users" href="/connection-guides/sso/sso-configuration-overview">
+    Access specific configuration guides for Okta, Azure AD, Google Workspace, and OneLogin.
+  </Card>
+</CardGroup>
+
+For Workday Learning integrations, the `lms_user_id` should typically be mapped to:
+- **Employee ID** - Most common for Workday user identification
+- **Workday User ID** - Internal Workday identifier
+- **Email address** - For organizations using email-based identifiers
+- **Custom identifier** - Organization-specific unique identifier from Workday HCM
+
 <IntegrationFooter />
 
 <Card title="Useful Links" icon="link" href="https://doc.workday.com">
