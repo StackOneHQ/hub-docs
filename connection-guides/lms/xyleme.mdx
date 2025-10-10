@@ -1,0 +1,81 @@
+---
+title: "Xyleme"
+description: "If you've been directed to StackOne to integrate with Xyleme, the following steps will help you understand the process and any necessary actions to configure successful integration."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes you have Admin privileges for your Xyleme account.
+</Warning>
+
+## Gather System Account Credentials
+
+<Steps>
+  <Step title="Log in to Xyleme">
+    Log in to your Xyleme account.
+    Your domain (tenant) is the subdomain used to access Xyleme. For example, if your URL is `https://my-domain.bravais.com/adminportal`, your domain is `my-domain`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Tenant Domain" src="/images/xyleme/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create System Account">
+    From the top navigation bar, open the **Admin Portal** dropdown to confirm you’re in the Admin Portal.
+    Next, open the **Users** dropdown and select **Users** to access the user management page.
+    On the Users page, click **Add user** to start creating a new user.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create System Account" src="/images/xyleme/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter User Details and Save">
+    In the **Add user** dialog, fill in the user’s **First name**, **Last name**, and **Email**.
+    Once all fields are completed, click **Save** to add the user to Xyleme.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter user details and save" src="/images/xyleme/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Search for the User and Open Details">
+    Return to the **Users** page and use the **Search users** box to find the user you just created.
+    Enter part of the user’s name or email and click the search icon.
+    In the results list, click the **three-dot menu** next to the correct user and select **View details**. This opens the user’s detail page.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Search for the user and open details" src="/images/xyleme/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Set Username and Password">
+    On the user’s profile page, ensure the **Identities** tab is selected.
+    Under **Local Identity**, add and copy the **Username** shown — this will be used as the system account’s login.
+    Enter a strong password in both the **New password** and **Re-type new password** fields.
+    Click **Save** to finalize the username and password for this account.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set username and password" src="/images/xyleme/image5.png" />
+    </Frame>
+    Record the `Username` and `Password` associated with this system account for use in the next steps.
+  </Step>
+</Steps>
+
+## Linking Your Account
+
+Use your domain and system account credentials to connect Xyleme with StackOne.
+
+<Steps>
+  <Step title="Link Xyleme Account">
+    In the connection modal, enter the `Domain` (tenant), `Username`, and `Password`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/xyleme/image6.png" />
+    </Frame>
+    Click `Connect`.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+
+<Card title="Xyleme Syndicate API Reference Documentation" icon="link" href="https://api-docs.xyleme.com/">
+  https://api-docs.xyleme.com/
+</Card>
