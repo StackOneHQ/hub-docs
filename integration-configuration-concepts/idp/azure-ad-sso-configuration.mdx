@@ -1,0 +1,233 @@
+---
+title: "Azure AD (Microsoft Entra ID) SSO Configuration"
+description: "Configure custom SSO attributes in Azure AD for LMS integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+import LMSIdentifiers from "/snippets/lms-identifiers.mdx";
+
+<Warning>
+  Ensure that your Azure AD account has **Global Administrator** or **Application Administrator** privileges.
+</Warning>
+
+This guide explains how to configure custom SSO attributes (such as `lms_user_id`) in Azure AD (Microsoft Entra ID) that can be used with LMS integrations. These attributes allow you to map user identities between your platform and the LMS provider.
+
+## Access Azure AD Admin Center
+
+<Steps>
+  <Step title="Log in to Azure AD">
+    Log in to the Azure AD Admin Center at https://aad.portal.azure.com/
+    
+    <Frame>
+      <img className='rounded-md' style={{ width: '70%', margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to Azure AD" src="/images/googleworkspace/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Navigate to Enterprise Applications">
+    In the left navigation menu, click on **Enterprise applications**.
+    
+    <Frame>
+      <img className='rounded-md' style={{ width: '50%', margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Enterprise Applications" src="/images/googleworkspace/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Your Application">
+    Find and click on the application that will be used for SSO with your LMS integration.
+    
+    If you haven't created an application yet, click **New application** and either:
+    - Search for your LMS in the Azure AD Gallery
+    - Create a **Non-gallery application** for custom SAML configuration
+  </Step>
+</Steps>
+
+## Configure Single Sign-On
+
+<Steps>
+  <Step title="Navigate to Single Sign-On">
+    In your application's overview page, click on **Single sign-on** in the left menu.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Single Sign-On Menu" src="/images/googleworkspace/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select SAML Method">
+    Choose **SAML** as your single sign-on method if not already selected.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select SAML" src="/images/googleworkspace/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Basic SAML">
+    Complete the basic SAML configuration with your LMS-specific URLs (if not already configured):
+    - **Identifier (Entity ID)**: Your LMS entity ID
+    - **Reply URL (Assertion Consumer Service URL)**: Your LMS ACS URL
+    - **Sign on URL**: Your LMS SSO URL
+  </Step>
+</Steps>
+
+## Configure User Attributes & Claims
+
+<Steps>
+  <Step title="Edit Attributes & Claims">
+    In the SAML configuration page, find the **Attributes & claims** section and click **Edit**.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit Attributes & Claims" src="/images/googleworkspace/image5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add New Claim">
+    Click **Add new claim** to create a custom attribute for your LMS integration.
+    
+    Configure the new claim with:
+    - **Name**: `lms_user_id` (or the specific attribute name required by your LMS)
+    - **Namespace**: Leave blank or use your organization's namespace
+    - **Source**: User attribute
+    - **Source attribute**: Choose from available options:
+      - `user.userprincipalname` - for email-based identifiers
+      - `user.objectid` - for Azure AD object ID
+      - `user.mail` - for email address
+      - `user.employeeid` - for employee ID
+      - Custom extension attribute (see next section)
+    
+    <Info>
+      The exact attribute name and source will depend on your specific LMS requirements. Common LMS platforms may require different configurations:
+      - Docebo: Often uses `user.userprincipalname` or `user.mail`
+      - Cornerstone: May require `user.employeeid` or custom identifier
+      - SAP SuccessFactors: Typically uses `user.userprincipalname`
+    </Info>
+  </Step>
+
+  <Step title="Add Additional Claims (Optional)">
+    If your LMS integration requires additional user attributes, repeat the previous step:
+    
+    Common additional claims include:
+    - **givenname**: `user.givenname`
+    - **surname**: `user.surname`
+    - **emailaddress**: `user.mail`
+    - **employeeid**: `user.employeeid`
+    - **department**: `user.department`
+    - **jobtitle**: `user.jobtitle`
+  </Step>
+
+  <Step title="Save Configuration">
+    Click **Save** to apply your attribute and claims configuration.
+  </Step>
+</Steps>
+
+## Configure Custom User Attributes
+
+If you need to use custom attributes that aren't available in the default Azure AD user schema:
+
+<Steps>
+  <Step title="Navigate to App Registrations">
+    In the Azure AD Admin Center, go to **App registrations** and find your application.
+  </Step>
+
+  <Step title="Configure Extension Attributes">
+    Go to **Manifest** and add custom extension properties, or use Azure AD B2C custom attributes if applicable.
+    
+    Alternatively, you can populate standard fields like `extensionAttribute1` through `extensionAttribute15` via:
+    - PowerShell commands
+    - Microsoft Graph API
+    - Azure AD Connect (for on-premises sync)
+  </Step>
+
+  <Step title="Update User Properties">
+    Populate the custom attributes for your users using one of these methods:
+    
+    **Via PowerShell:**
+    ```powershell
+    Set-AzureADUser -ObjectId "user@domain.com" -ExtensionProperty @{"extensionAttribute1"="LMS123456"}
+    ```
+    
+    **Via Microsoft Graph API:**
+    ```http
+    PATCH https://graph.microsoft.com/v1.0/users/{user-id}
+    {
+        "extensionAttribute1": "LMS123456"
+    }
+    ```
+  </Step>
+
+  <Step title="Map to Claims">
+    Return to your application's **Attributes & claims** and create a new claim mapping to `user.extensionattribute1` (or your chosen extension attribute).
+  </Step>
+</Steps>
+
+## Test SSO Configuration
+
+<Steps>
+  <Step title="Assign Test User">
+    In your application settings, go to **Users and groups** and assign a test user to the application.
+  </Step>
+
+  <Step title="Test SSO Flow">
+    Use the **Test** option in the SAML configuration or initiate SSO from your LMS to verify the configuration.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Test SSO" src="/images/googleworkspace/image6.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Verify SAML Response">
+    Check the SAML response to ensure that your custom `lms_user_id` and other configured attributes are present with the expected values.
+  </Step>
+</Steps>
+
+## Configure Conditional Access (Optional)
+
+<Steps>
+  <Step title="Navigate to Conditional Access">
+    In Azure AD, go to **Security > Conditional Access** to set up policies for your LMS application.
+  </Step>
+
+  <Step title="Create Policy">
+    Create a new policy to control access to your LMS based on conditions like:
+    - User or group membership
+    - Device compliance
+    - Location
+    - Risk levels
+  </Step>
+
+  <Step title="Apply to LMS Application">
+    In the policy settings, select your LMS application under **Cloud apps or actions**.
+  </Step>
+</Steps>
+
+## Linking with Your LMS Integration
+
+Now that you have configured the custom SSO attributes in Azure AD, you can reference these in your LMS integration setup:
+
+<Steps>
+  <Step title="Access LMS Integration">
+    Navigate to the integration configuration page for your specific LMS platform.
+  </Step>
+
+  <Step title="Configure SSO Mapping">
+    In the SSO or user mapping section of your LMS integration, specify:
+    - **SSO Attribute Name**: `lms_user_id` (or the claim name you configured in Azure AD)
+    - **LMS Field**: The corresponding field in your LMS (varies by platform)
+  </Step>
+
+  <Step title="Test Integration">
+    Perform a test sync or SSO login to verify that users are being correctly identified and mapped between systems.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## LMS-Specific Attribute Requirements
+
+Different LMS platforms may require specific attribute names or claim formats:
+
+<LMSIdentifiers />
+
+### Troubleshooting
+- Ensure claim names match exactly between Azure AD and your LMS configuration
+- Verify that all required claims are mapped and have values for your users
+- Check SAML assertion format and namespace usage
+- Confirm that users have the necessary attribute values populated in their Azure AD profiles
+- Use Azure AD sign-in logs to debug SSO issues and view SAML token contents

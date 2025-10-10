@@ -1,0 +1,255 @@
+---
+title: "Google Workspace SSO Configuration"
+description: "Configure custom SSO attributes in Google Workspace for LMS integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+import LMSIdentifiers from "/snippets/lms-identifiers.mdx";
+
+<Warning>
+  Ensure that your Google Workspace account has **Super Administrator** privileges.
+</Warning>
+
+This guide explains how to configure custom SSO attributes (such as `lms_user_id`) in Google Workspace that can be used with LMS integrations. These attributes allow you to map user identities between your platform and the LMS provider.
+
+## Access Google Admin Console
+
+<Steps>
+  <Step title="Log in to Google Admin">
+    Log in to your Google Admin Console at https://admin.google.com/
+    
+    <Frame>
+      <img className='rounded-md' style={{ width: '70%', margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to Google Admin" src="/images/googleworkspace/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Navigate to Apps">
+    In the left navigation menu, click on **Apps > SAML apps**.
+    
+    <Frame>
+      <img className='rounded-md' style={{ width: '50%', margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to SAML Apps" src="/images/googleworkspace/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Your Application">
+    Find and click on the SAML application that will be used for SSO with your LMS integration.
+    
+    If you haven't created a SAML app yet, click the **+** (plus) button to **Add a service/App** and choose **Add custom SAML app**.
+  </Step>
+</Steps>
+
+## Configure Custom User Attributes
+
+<Steps>
+  <Step title="Navigate to User Attributes">
+    Before configuring the SAML app, you need to set up custom user attributes.
+    
+    Go to **Directory > Users** and click on any user to see the profile structure.
+  </Step>
+
+  <Step title="Add Custom Attributes (If Needed)">
+    If you need custom attributes beyond the standard Google Workspace fields:
+    
+    1. Go to **Directory > Directory settings > Custom attributes**
+    2. Click **Add custom attribute**
+    3. Configure:
+       - **Category**: Create or select a category (e.g., "LMS Integration")
+       - **Name**: `lms_user_id` or your desired attribute name
+       - **Info type**: Text (single value)
+       - **Visibility**: Visible to admin and user
+       - **No. of values**: Single value (most common)
+    
+    <Info>
+      Google Workspace provides standard user profile fields that are often sufficient:
+      - Primary email address
+      - Employee ID
+      - Employee type
+      - Department
+      - Manager email
+      - Custom schemas for additional fields
+    </Info>
+  </Step>
+
+  <Step title="Populate User Data">
+    Ensure that the attribute you plan to use (custom or standard) is populated for your users:
+    
+    - Via Admin Console: **Directory > Users** > Select user > Edit profile
+    - Via Google Admin SDK API
+    - Via CSV import/export
+    - Via Google Cloud Directory Sync (GCDS) for on-premises integration
+  </Step>
+</Steps>
+
+## Configure SAML Application Attributes
+
+<Steps>
+  <Step title="Edit SAML App Configuration">
+    In your SAML app settings, click **Edit Service** or go to the app configuration.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit SAML App" src="/images/googleworkspace/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Service Provider Details">
+    Ensure your LMS service provider details are correctly configured:
+    - **ACS URL**: Your LMS Assertion Consumer Service URL
+    - **Entity ID**: Your LMS entity identifier
+    - **Start URL**: Your LMS SSO initiation URL (optional)
+  </Step>
+
+  <Step title="Add Attribute Mapping">
+    In the **Attribute mapping** section, click **Add mapping** and configure:
+    
+    **For Primary User Identifier:**
+    - **Google Directory attribute**: Choose from:
+      - Primary email
+      - Employee ID
+      - Custom attribute you created
+    - **App attribute**: `lms_user_id` (or the name expected by your LMS)
+    - **Attribute format**: Basic information (most common) or URI reference
+    
+    **For Additional Attributes (Optional):**
+    Add mappings for other required fields:
+    - **First name**: Basic information > First name → `first_name`
+    - **Last name**: Basic information > Last name → `last_name`
+    - **Email**: Basic information > Primary email → `email`
+    - **Department**: Basic information > Department → `department`
+    - **Job title**: Basic information > Job title → `job_title`
+    - **Employee ID**: Basic information > Employee ID → `employee_id`
+  </Step>
+
+  <Step title="Configure Name ID Format">
+    Set the **Name ID format** and **Name ID** based on your LMS requirements:
+    - **Name ID format**: Usually "EMAIL" or "UNSPECIFIED"
+    - **Name ID**: Map to the primary identifier (often Primary email)
+  </Step>
+
+  <Step title="Save Configuration">
+    Click **Save** to apply your SAML attribute configuration.
+  </Step>
+</Steps>
+
+## Advanced Custom Schema Configuration
+
+For complex LMS integrations requiring multiple custom fields:
+
+<Steps>
+  <Step title="Create Custom Schema">
+    Go to **Directory > Directory settings > Manage custom attributes**.
+    
+    Click **Add custom attribute** and select **Add custom schema**.
+  </Step>
+
+  <Step title="Define Schema Structure">
+    Create a schema specifically for LMS integration:
+    - **Schema name**: "LMS_Integration"
+    - Add multiple fields as needed:
+      - `lms_user_id` (Text, single value)
+      - `lms_role` (Text, single value)
+      - `lms_groups` (Text, multi-value for multiple group memberships)
+      - `training_manager` (Email, single value)
+  </Step>
+
+  <Step title="Populate Schema Data">
+    Use the Admin SDK API or CSV import to populate these custom schema fields for your users:
+    
+    ```json
+    {
+      "customSchemas": {
+        "LMS_Integration": {
+          "lms_user_id": "LMS123456",
+          "lms_role": "employee",
+          "lms_groups": ["engineering", "management"]
+        }
+      }
+    }
+    ```
+  </Step>
+
+  <Step title="Map Custom Schema in SAML">
+    In your SAML app attribute mapping, you can now reference:
+    - **Google Directory attribute**: Custom schema > LMS_Integration > lms_user_id
+    - **App attribute**: `lms_user_id`
+  </Step>
+</Steps>
+
+## Test SSO Configuration
+
+<Steps>
+  <Step title="Enable SAML App">
+    Ensure your SAML application status is **ON** for the appropriate organizational units.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enable SAML App" src="/images/googleworkspace/image4.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Test with User Account">
+    Use the **Test SAML login** feature in the Google Admin Console or test through your LMS SSO flow.
+  </Step>
+
+  <Step title="Verify SAML Response">
+    Check the SAML response to ensure your `lms_user_id` and other configured attributes are being transmitted with the expected values.
+    
+    You can use browser developer tools or SAML debugging tools to inspect the response.
+  </Step>
+</Steps>
+
+## Configure Group-Based Access (Optional)
+
+<Steps>
+  <Step title="Create LMS Access Group">
+    Go to **Directory > Groups** and create a group for LMS access (e.g., "LMS Users").
+  </Step>
+
+  <Step title="Add Users to Group">
+    Add the appropriate users to this group who should have LMS access.
+  </Step>
+
+  <Step title="Restrict SAML App Access">
+    In your SAML app settings, under **Service status**, you can restrict access to specific organizational units or groups.
+  </Step>
+
+  <Step title="Map Group Membership (Optional)">
+    If your LMS supports group-based role assignment, you can add attribute mappings for group membership:
+    - **Google Directory attribute**: Group membership
+    - **App attribute**: `groups` or `roles`
+  </Step>
+</Steps>
+
+## Linking with Your LMS Integration
+
+Now that you have configured the custom SSO attributes in Google Workspace, you can reference these in your LMS integration setup:
+
+<Steps>
+  <Step title="Access LMS Integration">
+    Navigate to the integration configuration page for your specific LMS platform.
+  </Step>
+
+  <Step title="Configure SSO Mapping">
+    In the SSO or user mapping section of your LMS integration, specify:
+    - **SSO Attribute Name**: `lms_user_id` (or the attribute name you configured in Google)
+    - **LMS Field**: The corresponding field in your LMS (varies by platform)
+  </Step>
+
+  <Step title="Test Integration">
+    Perform a test sync or SSO login to verify that users are being correctly identified and mapped between systems.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## LMS-Specific Attribute Requirements
+
+Different LMS platforms may require specific attribute configurations:
+
+<LMSIdentifiers />
+
+### Troubleshooting
+- Ensure attribute names match exactly between Google Workspace and your LMS configuration
+- Verify that all required attributes are mapped and have values for your users
+- Check that users are in the correct organizational unit with access to the SAML app
+- Use Google Admin Console's audit logs to debug SSO issues
+- Confirm that custom schema fields are properly populated for your users
+- Test with multiple users to ensure consistent attribute mapping

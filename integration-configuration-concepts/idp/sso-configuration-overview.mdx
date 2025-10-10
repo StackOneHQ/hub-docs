@@ -1,0 +1,183 @@
+---
+title: "SSO Configuration Overview"
+description: "Learn how to configure custom SSO attributes for LMS integrations across different Identity Providers."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+This guide provides an overview of configuring Single Sign-On (SSO) attributes for LMS integrations. Custom SSO attributes, such as `lms_user_id`, allow you to map user identities between your identity provider and Learning Management System (LMS) platforms.
+
+## What are Custom SSO Attributes?
+
+Custom SSO attributes are additional user data fields that are passed from your Identity Provider (IDP) to your LMS during the SSO authentication process. These attributes enable:
+
+- **User Identity Mapping**: Link users between your IDP and LMS using custom identifiers
+- **Role Assignment**: Automatically assign roles or permissions based on user attributes
+- **Group Membership**: Map users to appropriate groups or organizational units
+- **Profile Enrichment**: Pass additional user information like department, manager, or job title
+
+## Common Use Cases for LMS Integrations
+
+### Learning Management Systems
+When integrating with LMS platforms, you typically need to configure custom attributes to:
+
+1. **Map User Identities**: Each LMS may require a different user identifier format
+2. **Assign Learning Paths**: Route users to appropriate training based on their role or department
+3. **Track Compliance**: Ensure users complete required training based on their job function
+4. **Reporting and Analytics**: Provide detailed reporting based on organizational structure
+
+### Typical Attribute Requirements
+Most LMS integrations require at least one custom attribute for user identification:
+
+- **`lms_user_id`**: Primary identifier for the user in the LMS
+- **`employee_id`**: Corporate employee identifier
+- **`department`**: User's organizational department
+- **`role`** or **`job_title`**: User's position for role-based access
+- **`manager_email`**: Manager information for approval workflows
+
+## Supported Identity Providers
+
+We provide detailed configuration guides for the most popular Identity Providers:
+
+<CardGroup cols={2}>
+  <Card title="Okta SSO Configuration" icon="key" href="/connection-guides/sso/okta-sso-configuration">
+    Configure custom attributes in Okta for LMS integrations using SAML attribute statements.
+  </Card>
+  
+  <Card title="Azure AD SSO Configuration" icon="microsoft" href="/connection-guides/sso/azure-ad-sso-configuration">
+    Set up custom claims in Microsoft Entra ID (Azure AD) for seamless LMS user mapping.
+  </Card>
+  
+  <Card title="Google Workspace SSO Configuration" icon="google" href="/connection-guides/sso/google-workspace-sso-configuration">
+    Configure SAML attribute mapping in Google Workspace for LMS integrations.
+  </Card>
+  
+  <Card title="OneLogin SSO Configuration" icon="shield-check" href="/connection-guides/sso/onelogin-sso-configuration">
+    Set up custom parameters in OneLogin for LMS user identification and role mapping.
+  </Card>
+</CardGroup>
+
+## Configuration Steps Overview
+
+While each Identity Provider has its own interface and terminology, the general process follows these steps:
+
+<Steps>
+  <Step title="Identify Required Attributes">
+    Determine what custom attributes your LMS integration needs:
+    - Check your LMS documentation or integration requirements
+    - Common attributes include user ID, email, employee ID, department, role
+  </Step>
+
+  <Step title="Configure User Attributes">
+    Set up the required custom attributes in your Identity Provider:
+    - Create custom user fields if needed
+    - Populate existing user profiles with the required data
+    - Map attributes to appropriate user properties
+  </Step>
+
+  <Step title="Configure SSO Application">
+    Set up your LMS application in your Identity Provider:
+    - Configure SAML settings (Entity ID, ACS URL, etc.)
+    - Map user attributes to SAML assertions or claims
+    - Set up attribute statements with the correct names and values
+  </Step>
+
+  <Step title="Test Configuration">
+    Verify that your SSO configuration works correctly:
+    - Test with a sample user account
+    - Check that all required attributes are being passed
+    - Verify attribute values are formatted correctly
+  </Step>
+
+  <Step title="Configure LMS Integration">
+    Map the SSO attributes to your LMS integration:
+    - Specify which SSO attributes correspond to LMS fields
+    - Configure role mappings and group assignments
+    - Test the complete integration flow
+  </Step>
+</Steps>
+
+## LMS-Specific Considerations
+
+Different LMS platforms have varying requirements for SSO attributes:
+
+### Popular LMS Platforms
+
+**Docebo**
+- Primary identifier: Usually email or username
+- Additional attributes: First name, last name, role, groups
+- Format: Standard SAML attributes
+
+**Cornerstone OnDemand**
+- Primary identifier: Employee ID or custom identifier
+- Additional attributes: Manager, department, location
+- Format: May require specific attribute names
+
+**SAP SuccessFactors**
+- Primary identifier: Username or email-based identifier
+- Additional attributes: Job title, organization unit
+- Format: SAML assertions with specific formatting
+
+**Workday Learning**
+- Primary identifier: Employee ID or custom identifier  
+- Additional attributes: Manager, cost center, location
+- Format: SAML or SCIM-based provisioning
+
+**360Learning**
+- Primary identifier: Email address
+- Additional attributes: First name, last name, team
+- Format: Standard SAML attributes
+
+## Best Practices
+
+### Security Considerations
+- **Minimize Attribute Exposure**: Only pass attributes that are necessary for the integration
+- **Use Secure Protocols**: Ensure all SSO communications use HTTPS and proper certificate validation
+- **Regular Audits**: Review and audit SSO configurations and attribute mappings regularly
+- **Access Controls**: Implement proper access controls for SSO application management
+
+### Data Management
+- **Consistent Naming**: Use consistent attribute naming conventions across integrations
+- **Data Quality**: Ensure user profiles have complete and accurate data for required attributes
+- **Change Management**: Implement processes for handling changes to user attributes
+- **Backup Strategy**: Maintain backups of SSO configurations and user attribute mappings
+
+### Testing and Monitoring
+- **Regular Testing**: Test SSO flows regularly, especially after configuration changes
+- **Monitor Logs**: Review SSO authentication logs for errors or issues
+- **User Feedback**: Collect feedback from users about SSO experience and any issues
+- **Performance Monitoring**: Monitor SSO performance and response times
+
+## Troubleshooting Common Issues
+
+### Attribute Not Passed
+- Verify attribute is configured in IDP
+- Check that user has value for the attribute
+- Confirm attribute mapping syntax is correct
+
+### Incorrect Attribute Format
+- Review LMS documentation for required format
+- Check IDP attribute transformation rules
+- Verify data type compatibility
+
+### User Not Found in LMS
+- Confirm primary identifier attribute is correct
+- Check that user exists in both IDP and LMS
+- Verify attribute value matches between systems
+
+### Permission Denied
+- Check user has access to the SSO application
+- Verify group memberships and role assignments
+- Review conditional access policies
+
+<IntegrationFooter />
+
+## Need Help?
+
+If you need assistance with SSO configuration for your specific LMS integration:
+
+1. **Check Provider Documentation**: Review your Identity Provider's documentation for SAML/SSO configuration
+2. **LMS Support**: Consult your LMS provider's SSO setup guide
+3. **Integration Support**: Contact your integration platform support team for specific mapping requirements
+
+Each Identity Provider guide linked above provides detailed, step-by-step instructions for configuring custom SSO attributes specific to that platform.
