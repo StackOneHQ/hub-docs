@@ -304,6 +304,10 @@ To configure the OCN property file, take the following steps:
 
     - This should be set to 'false' if the provider posts completion information back to SuccessFactors, items will not be marked as complete as soon as a user clicks on them. 
 
+    defaultValues.autoImportOCNCourseEnabled[default]=value
+
+    - This should be set to true either for all providers or for a specific provider, to automate the import of content. If set to true, the content will be automatically imported into SuccessFactors when it is published in the provider.
+
     <Note>
       If you want any of the above configurations to be specific to a provider, you can add `provider_name` instead of `default` in the property name - e.g. defaultValues.itemType[provider_name]=value
     </Note>
@@ -336,6 +340,10 @@ To automate the OCN content sync process, take the following steps:
 </Steps>
 
 ### Importing Content
+
+<Note>
+  If you have enabled the autoImportOCNCourseEnabled property in the OCN property file, you can skip the manual import step below.
+</Note>
 
 Once OCN content is being automatically made availble for import as per the steps above you may manually import the content into the system
 
