@@ -1,6 +1,6 @@
 ---
 title: "Workday"
-description: "If you've been directed to StackOne to integrate with Workday, the following steps will help you understand the process and any necessary actions to configure successful integration."
+description: "Follow these steps to connect Workday via the StackOne Hub successfully."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
@@ -214,20 +214,58 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 </Steps>
 
-## Linking your Account
+## Linking your Workday Account
 
-You can use the Tenant and System User credentials you created in steps 1 & 2 to link Workday.
+Now that you have all the required information, you can link your account.
 
-<Frame>
-  <img
-    className="rounded-md"
-    style={{ margin:"0 auto",border:"1px solid #efefef" }}
-    alt="Linking your Account"
-    src="/images/workday/image9.png"
-  />
-</Frame>
+<Steps>
+  <Step title="Access Integrations">
+    Navigate to the Integrations page in your platform.
+  </Step>
+
+  <Step title="Find Workday">
+    Search for Workday in the list of available integrations and click on it.
+  </Step>
+
+  <Step title="Enter Connection Details">
+    Fill in the required fields with the information you gathered:
+    - Tenant URL
+    - Web Services Endpoint
+    - Username (Integration System User)
+    - Password
+    
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Linking your Account"
+        src="/images/workday/image9.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Test and Save">
+    Click Test Connection to verify the connection, then click Save to complete the integration.
+  </Step>
+</Steps>
 
 <IntegrationFooter />
+
+## Available data
+
+This integration has the following [ATS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Applications</li>
+  <li>Candidates</li>
+  <li>Jobs</li>
+  <li>Offers</li>
+  <li>Interviews</li>
+  <li>Application Custom Fields</li>
+  <li>Candidate Custom Fields</li>
+  <li>Job Custom Fields</li>
+  <li>Assessments</li>
+  <li>Background Checks</li>
+</ul>
 
 ## Useful Links
 

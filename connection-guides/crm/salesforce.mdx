@@ -69,27 +69,53 @@ If you've been directed to StackOne to integrate with Salesforce, the following 
   </Step>
 </Steps>
 
-## Connecting with StackOne Hub
+## Linking your Salesforce Account
+
+Now that you have all the required information, you can link your account.
 
 <Steps>
-  <Step title="Create a new Integration">
-    Create a new Integration with Salesforce by selecting Salesforce as your CRM provider.
+  <Step title="Access Integrations">
+    Navigate to the Integrations page in your platform.
   </Step>
 
-  <Step title="Enter Credentials">
-    Paste the Client ID and Client Secret into the Credentials box and your Salesforce URL that looks something like:
-    <code>https://acme.my.salesforce.com</code>
+  <Step title="Find Salesforce">
+    Search for Salesforce in the list of available integrations and click on it.
+  </Step>
+
+  <Step title="Enter Connection Details">
+    Fill in the required fields with the information you gathered:
+    - Client ID
+    - Client Secret
+    - Salesforce URL (e.g., https://acme.my.salesforce.com)
+    
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Salesforce URL" src="/images/salesforce/image6.png" />
     </Frame>
   </Step>
 
-  <Step title="Connect">
-    Then click the Connect button. The Salesforce tab will open to review and approve the connection.
+  <Step title="Test and Save">
+    Click Test Connection to verify the connection, then click Save to complete the integration. The Salesforce tab will open to review and approve the connection.
   </Step>
 </Steps>
 
 <IntegrationFooter />
+
+## Available data
+
+This integration has the following [CRM Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Accounts</li>
+  <li>Contacts</li>
+  <li>Leads</li>
+  <li>Opportunities</li>
+  <li>Users</li>
+  <li>Campaigns</li>
+  <li>Lists</li>
+  <li>Account Custom Fields</li>
+  <li>Contact Custom Fields</li>
+  <li>Lead Custom Fields</li>
+  <li>Opportunity Custom Fields</li>
+</ul>
 
 ## Useful Links
 <Card title="API Reference" icon="link" href="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm">

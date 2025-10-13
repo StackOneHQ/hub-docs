@@ -80,19 +80,32 @@ If you've been directed to StackOne to integrate with Cornerstone, the following
 </Steps>
 
 
-## Linking your Account
+## Linking your Cornerstone Account
+
+Now that you have all the required information, you can link your account.
 
 <Steps>
-  <Step title="Enter Credentials">
-    In the modal, enter the credentials from the previous steps and proceed by clicking the <b>Connect</b> button
+  <Step title="Access Integrations">
+    Navigate to the Integrations page in your platform.
+  </Step>
+
+  <Step title="Find Cornerstone">
+    Search for Cornerstone in the list of available integrations and click on it.
+  </Step>
+
+  <Step title="Enter Connection Details">
+    Fill in the required fields with the information you gathered:
+    - Client ID
+    - Client Secret
+    - Portal URL
+    
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/cornerstone/image2.png" />
     </Frame>
   </Step>
-  <Step title="Verify Connection">
-    After clicking Connect, the system will validate your credentials. A successful connection will be indicated by a green checkmark.
-    
-    If you encounter any errors:
+
+  <Step title="Test and Save">
+    Click Test Connection to verify the connection, then click Save to complete the integration. If you encounter any errors:
     - Verify that your Client ID and Secret are correct
     - Ensure all required scopes were enabled
     - Check that your Cornerstone portal is accessible
@@ -101,6 +114,21 @@ If you've been directed to StackOne to integrate with Cornerstone, the following
 </Steps>
 
 <IntegrationFooter />
+
+## Available data
+
+This integration has the following [LMS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Courses</li>
+  <li>Content</li>
+  <li>Assignments</li>
+  <li>Completions</li>
+  <li>Skills</li>
+  <li>Categories</li>
+  <li>User Custom Fields</li>
+  <li>Course Custom Fields</li>
+</ul>
 
 ## Troubleshooting
 

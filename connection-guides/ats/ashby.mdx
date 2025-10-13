@@ -1,6 +1,6 @@
 ---
 title: "Ashby"
-description: "If you have been directed to StackOne to integrate with Ashby, the following steps will help you understand the process and any necessary actions to configure successful integration."
+description: "Follow these steps to connect Ashby via the StackOne Hub successfully."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
@@ -57,20 +57,54 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 </Steps>
 
-## Use the API Key in the StackOne Hub
+## Linking your Ashby Account
 
-Upon reaching the Link Account page, enter the generated API key and proceed by clicking the <b>Connect</b> button.
+Now that you have all the required information, you can link your account.
 
-<Frame>
-  <img
-    className="rounded-md"
-    style={{ width: "400px", margin: "0 auto", border: "1px solid #efefef" }}
-    alt="Access Token Created"
-    src="/images/ashby/image5.png"
-  />
-</Frame>
+<Steps>
+  <Step title="Access Integrations">
+    Navigate to the Integrations page in your platform.
+  </Step>
+
+  <Step title="Find Ashby">
+    Search for Ashby in the list of available integrations and click on it.
+  </Step>
+
+  <Step title="Enter Connection Details">
+    Fill in the required field with the API key you generated.
+    
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ width: "400px", margin: "0 auto", border: "1px solid #efefef" }}
+        alt="Access Token Created"
+        src="/images/ashby/image5.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Test and Save">
+    Click Test Connection to verify the connection, then click Save to complete the integration.
+  </Step>
+</Steps>
 
 <IntegrationFooter />
+
+## Available data
+
+This integration has the following [ATS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Applications</li>
+  <li>Candidates</li>
+  <li>Jobs</li>
+  <li>Offers</li>
+  <li>Interviews</li>
+  <li>Application Custom Fields</li>
+  <li>Candidate Custom Fields</li>
+  <li>Job Custom Fields</li>
+  <li>Assessments</li>
+  <li>Background Checks</li>
+</ul>
 
 ## Useful Links
 <Card title="API Reference" icon="link" href="https://developers.ashbyhq.com/reference/introduction">

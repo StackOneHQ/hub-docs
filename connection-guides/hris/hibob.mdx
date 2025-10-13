@@ -46,18 +46,50 @@ If you've been directed to StackOne to integrate with Hibob, the following steps
   </Step>
 </Steps>
 
-## Linking your account in StackOne
+## Linking your Hibob Account
+
+Now that you have all the required information, you can link your account.
 
 <Steps>
-  <Step title="Enter API Key">
-    Upon reaching the Link Account page, enter the generated API key and proceed by clicking the `Connect` button.
+  <Step title="Access Integrations">
+    Navigate to the Integrations page in your platform.
+  </Step>
+
+  <Step title="Find Hibob">
+    Search for Hibob in the list of available integrations and click on it.
+  </Step>
+
+  <Step title="Enter Connection Details">
+    Fill in the required field with the API key you generated.
+    
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/hibob/image4.png" />
     </Frame>
   </Step>
+
+  <Step title="Test and Save">
+    Click Test Connection to verify the connection, then click Save to complete the integration.
+  </Step>
 </Steps>
 
 <IntegrationFooter />
+
+## Available data
+
+This integration has the following [HRIS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Employees</li>
+  <li>Employee Documents</li>
+  <li>Employments</li>
+  <li>Time Off</li>
+  <li>Time Off Requests</li>
+  <li>Benefits</li>
+  <li>Payroll Runs</li>
+  <li>Company</li>
+  <li>Locations</li>
+  <li>Employee Custom Fields</li>
+  <li>Groups</li>
+</ul>
 
 ## Troubleshooting
 
@@ -67,7 +99,7 @@ If you're getting `Could not connect account. Please check your credentials and 
 2. Ensure to Save settings inside the Approved scopes section, since without permissions APIs can't communicate with each other.
 
 ## Useful Links
-<Card title="API Reference" icon="link" href="https://apidocs.hibob.com/docs">
-    https://apidocs.hibob.com/docs
+<Card title="API Reference" icon="link" href="https://apidocs.hibob.com/docs/getting-started">
+    https://apidocs.hibob.com/docs/getting-started
 </Card>
 

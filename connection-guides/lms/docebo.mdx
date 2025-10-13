@@ -1,7 +1,9 @@
 ---
 title: "Docebo"
-description: "If you've been directed to StackOne to integrate with Docebo, the following steps will help you understand the process and any necessary actions to configure successful integration."
+description: "Follow these steps to connect Docebo via the StackOne Hub successfully."
 ---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
   This guidance assumes you have Admin privileges for your Docebo account.
@@ -112,18 +114,57 @@ description: "If you've been directed to StackOne to integrate with Docebo, the 
   </Step>
 </Steps>
 
-## Linking your Account
+## Linking your Docebo Account
+
+Now that you have all the required information, you can link your account.
 
 <Steps>
-  <Step title="Enter Credentials">
-      In the modal enter the `Client ID`, `Client Secret`, `Subdomain`, `Username`, `Password` and `Catalog Id` from the previous steps.
+  <Step title="Access Integrations">
+    Navigate to the Integrations page in your platform.
+  </Step>
 
-      <Frame>
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/docebo/image5.png" />
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/docebo/image6.png" />
-      </Frame>
+  <Step title="Find Docebo">
+    Search for Docebo in the list of available integrations and click on it.
+  </Step>
 
-      Click `Connect`.
-    </Step>
+  <Step title="Enter Connection Details">
+    Fill in the required fields with the information you gathered:
+    - Client ID
+    - Client Secret
+    - Subdomain
+    - Username
+    - Password
+    - Catalog ID (optional)
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/docebo/image5.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/docebo/image6.png" />
+    </Frame>
+  </Step>
 
-  </Steps>
+  <Step title="Test and Save">
+    Click Test Connection to verify the connection, then click Save to complete the integration.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [LMS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Users</li>
+  <li>Courses</li>
+  <li>Content</li>
+  <li>Assignments</li>
+  <li>Completions</li>
+  <li>Skills</li>
+  <li>Categories</li>
+  <li>User Custom Fields</li>
+  <li>Course Custom Fields</li>
+</ul>
+
+## Useful Links
+<Card title="Docebo Help Center" icon="link" href="https://help.docebo.com/hc/en-us/sections/360000089357-API-Documentation">
+    https://help.docebo.com/hc/en-us/sections/360000089357-API-Documentation
+</Card>
