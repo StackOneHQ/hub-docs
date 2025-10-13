@@ -1,0 +1,144 @@
+---
+title: "Staffology HR"
+description: "Follow these steps to connect Staffology HR via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you have Admin privileges for your Staffology HR account.
+</Warning>
+
+If you've been directed to StackOne to integrate with Staffology HR, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+This guidance assumes you have Admin privileges for your Staffology HR account.
+
+## Enable API Access
+
+<Steps>
+  <Step title="Login to Staffology HR">
+    Login to your Staffology HR account.
+  </Step>
+  <Step title="Open System Configuration">
+    From the sidebar, navigate to: <strong>System Tools → Utilities → Tools → System Configuration</strong>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="System Configuration" src="/images/staffologyhr/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enable API Access">
+    In the <strong>Modules</strong> section, select the <strong>API</strong> checkbox to enable API access.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enable API Access" src="/images/staffologyhr/image2.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Create an API User and Generate Credentials
+
+<Steps>
+  <Step title="Go to API Users">
+    From the sidebar, navigate to: <strong>System Tools → Utilities → Company → API Users</strong>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Users" src="/images/staffologyhr/image3.png" />
+    </Frame>
+  </Step>
+
+<Step title="Click Create User">
+  On the <strong>API Users</strong> page, click the <strong>Create User</strong>
+  button to start creating a new API user.
+  <Frame>
+    <img
+      className="rounded-md"
+      style={{ margin: "0 auto", border: "1px solid #efefef" }}
+      alt="Click Create User"
+      src="/images/staffologyhr/image4.png"
+    />
+  </Frame>
+</Step>
+
+<Step title="Enter User Details">
+  In the <strong>New API User</strong> popup, enter a name for the user that
+  relates to the API integration.
+  <Frame>
+    <img
+      className="rounded-md"
+      style={{ margin: "0 auto", border: "1px solid #efefef" }}
+      alt="Enter User Details"
+      src="/images/staffologyhr/image5.png"
+    />
+  </Frame>
+</Step>
+
+<Step title="Activate the User">
+  Select the <strong>Active</strong> checkbox to enable the user.
+  <Frame>
+    <img
+      className="rounded-md"
+      style={{ margin: "0 auto", border: "1px solid #efefef" }}
+      alt="Activate User"
+      src="/images/staffologyhr/image6.png"
+    />
+  </Frame>
+</Step>
+
+<Step title="Save the User">
+  Click <strong>Save</strong> to create the API user.
+  <Frame>
+    <img
+      className="rounded-md"
+      style={{ margin: "0 auto", border: "1px solid #efefef" }}
+      alt="Save User"
+      src="/images/staffologyhr/image7.png"
+    />
+  </Frame>
+</Step>
+
+<Step title="Generate Credentials">
+  Saving will generate a <strong>Username</strong> and <strong>Password</strong>
+  for the API user. 
+  <br /> Copy and securely store both credentials.
+  <Frame>
+    <img
+      className="rounded-md"
+      style={{ margin: "0 auto", border: "1px solid #efefef" }}
+      alt="Generate Credentials"
+      src="/images/staffologyhr/image8.png"
+    />
+  </Frame>
+</Step>
+
+</Steps>
+
+<Note>
+  Creating an API user grants full <strong>Set Rights</strong> permissions.
+</Note>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Username & Password">
+    Upon reaching the Link Account page, enter the gathered username and
+    password and proceed by clicking the `Connect` button.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: "0 auto", border: "1px solid #efefef" }}
+        alt="Link Account"
+        src="/images/staffologyhr/image9.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+
+<Card
+  title="API Reference"
+  icon="link"
+  href="https://help.staffology.co.uk/hr/integrations/api-user-create.htm"
+>
+  https://help.staffology.co.uk/hr/integrations/api-user-create.htm
+</Card>
