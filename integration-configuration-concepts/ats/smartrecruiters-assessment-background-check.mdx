@@ -1,0 +1,131 @@
+---
+title: "SmartRecruiters Background Check"
+description: "To successfully send test notifications from SmartRecruiters, follow these steps in your SmartRecruiters account, and complete the necessary actions."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  The following guidance assumes you have Admin privileges for your SmartRecruiters
+  account.
+</Warning>
+
+## To Get External Trigger Token
+<Steps>
+  <Step title="To get the External Trigger Token">
+  From the StackOne hub, you will receive the `External Trigger Token` needed to enable the SmartRecruiters Integration.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/smartrecruiters-assessments-background-checks/external-trigger-token.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## To enable the integration on your SmartRecruiters account
+<Steps>
+  <Step title="Go to Settings">
+    Please navigate to `Settings` in SmartRecruiters' dashboard. On the Home page, click on your Account avatar and select Settings.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Settings" src="/images/smartrecruiters-assessments-background-checks/sandbox-settings.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Apps & Integrations">
+    Select `Apps & Integrations` under settings.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Apps & Integrations" src="/images/smartrecruiters-assessments-background-checks/integration-page.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select your Integration">
+  </Step>
+
+  <Step title="View Details">
+  </Step>
+
+  <Step title="Enable Integration">
+    1. Click **Connect** button
+    2. Review permissions
+    3. Click **Allow and Continue** button
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Apps & Integrations" src="/images/smartrecruiters-assessments-background-checks/enable-integration.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Verify External-trigger-token">
+    You will be presented with the input form to verify the external trigger token:
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Apps & Integrations" src="/images/smartrecruiters-assessments-background-checks/input-external-trigger-token.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Adding Assessment/Background test check to Candidate.
+There are two type of assessments in SmartRecruiters - Candidate Assessments and Inline Assessments 
+
+<Steps title = "Candidate Assessments">
+  <Step title="Access Job Application">
+    1. User logs into SmartRecruiters
+    2. Navigates to **People**
+    3. Selects a specific candidate profile
+
+    <Frame>
+      ![User Configuration Form](/images/smartrecruiters-assessments-background-checks/select-candidate.png)
+    </Frame>
+  </Step>
+
+  <Step title="Initiate Assessment/Background Check">
+    From the candidate profile:
+    
+    1. Look for the assessment section
+    2. Click **Order Assessment** button
+    
+    <Frame>
+      ![Send Assessment Button](/images/smartrecruiters-assessments-background-checks/order-assessment-button.png)
+    </Frame>
+  </Step>
+
+  <Step title="Select Package">
+    In the assessment form:
+    
+    1. **Select Assessment Partner**: Select your assessment partner
+    2. **Select Package**: Choose from available test packages
+    3. **Click Continue**: Click on continue button 
+    
+    <Frame>
+      ![Package Selection Form](/images/smartrecruiters-assessments-background-checks/package-selection-form.png)
+    </Frame>
+  </Step>
+
+  <Step title="Send to Candidate">
+    1. Review the test details and candidate information
+    2. Click **Send** button
+    3. Candidate receives email notification with test link and instructions
+
+    <Frame>
+      ![Package Selection Form](/images/smartrecruiters-assessments-background-checks/send-test-to-candidate.png)
+    </Frame>
+  </Step>
+</Steps>
+
+
+## View Candidate's Result in SmartRecruiters
+<Steps>
+    <Step title="To get the result details">
+      A detailed result, along with a `Full Report link`, will appear once the candidate has completed the assessment
+      1. **Status Updates**: View real-time status in candidate profile (Sent, In Progress, Completed)
+      2. **View Attachments**: Click to view detailed results within SmartRecruiters
+      <Frame>
+       ![Assessment Status Tracking](/images/smartrecruiters-assessments-background-checks/assessment-status-and-result-tracking.png)
+      </Frame>
+    </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developers.smartrecruiters.com/reference/apply-api">
+    https://developers.smartrecruiters.com/reference/apply-api
+</Card>
