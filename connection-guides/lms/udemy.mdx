@@ -3,8 +3,10 @@ title: "Udemy"
 description: "How to obtain the credentials required to connect to Udemy."
 ---
 
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
 <Note>
-  Administrator access is required in your account to manage API credentials and settings.
+  Administrator access is required in your Udemy Business account to manage API credentials.
 </Note>
 
 ## Create Integrations App
@@ -107,16 +109,21 @@ Otherwise users will be provisioned from the Udemy API directly.
 </Steps>
 
 
-## Linking your Account
-  <Steps>
-    <Step title="Link Udemy Account">
-      In the modal enter the `Client ID`, `Client Secret`, `Company Subdomain` and `Account ID` from the previous steps.
+## Linking your Udemy Account
 
-      <Frame>
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/udemy/image8.png" />
-      </Frame>
+Enter these fields in your connection form:
+- **Client ID** (from Step 4)
+- **Client Secret** (from Step 4)
+- **Company Subdomain** (from Step 5)
+- **Account ID** (from Step 6)
 
-      Click `Connect`.
-    </Step>
+<IntegrationFooter />
 
-  </Steps>
+## Available data
+
+This integration has the following [LMS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+- Users
+- Learning Objects
+- Enrollments
+- Completions
+- Courses

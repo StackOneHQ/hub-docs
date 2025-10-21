@@ -1,10 +1,12 @@
 ---
-title: "Linkedin Learning"
-description: "How to obtain the credentials required to connect to Linkedinlearning."
+title: "LinkedIn Learning"
+description: "How to obtain the credentials required to connect to LinkedIn Learning."
 ---
 
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
 <Note>
-  Administrator access is required in your account to manage API credentials and settings.
+  Administrator access is required in your LinkedIn Learning account to create applications.
 </Note>
 
 ## Create Application
@@ -46,12 +48,20 @@ description: "How to obtain the credentials required to connect to Linkedinlearn
 </Steps>
 
 
-## Linking your Account
-  <Steps>
-    <Step title="Connect Linkedin Learning Account">
-      In the modal enter the `Client ID` and `Client Secret` from the previous step.
+## Linking your LinkedIn Learning Account
 
-      Click `Connect`.
-    </Step>
+Enter these fields in your connection form:
+- **Client ID** (from Step 5)
+- **Client Secret** (from Step 5)
 
-  </Steps>
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [LMS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+- Users
+- Learning Objects
+- Enrollments
+- Completions
+- Content
+- Reports

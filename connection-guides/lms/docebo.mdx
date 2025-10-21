@@ -3,8 +3,10 @@ title: "Docebo"
 description: "How to obtain the credentials required to connect to Docebo."
 ---
 
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
 <Note>
-  Administrator access is required in your account to manage API credentials and settings.
+  Administrator access is required in your Docebo account to create OAuth applications and manage settings.
 </Note>
 
 ## Create Integrations App
@@ -112,18 +114,24 @@ description: "How to obtain the credentials required to connect to Docebo."
   </Step>
 </Steps>
 
-## Linking your Account
+## Linking your Docebo Account
 
-<Steps>
-  <Step title="Enter Credentials">
-      In the modal enter the `Client ID`, `Client Secret`, `Subdomain`, `Username`, `Password` and `Catalog Id` from the previous steps.
+Enter these fields in your connection form:
+- **Client ID** (from Step 4)
+- **Client Secret** (from Step 4)
+- **Subdomain/Domain** (from Step 6)
+- **Username** (your Docebo username)
+- **Password** (your Docebo password)
+- **Catalog ID** (from Step 7, optional)
 
-      <Frame>
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/docebo/image5.png" />
-        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/docebo/image6.png" />
-      </Frame>
+<IntegrationFooter />
 
-      Click `Connect`.
-    </Step>
+## Available data
 
-  </Steps>
+This integration has the following [LMS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+- Users
+- Learning Objects
+- Enrollments
+- Completions
+- Catalogs
+- Content
