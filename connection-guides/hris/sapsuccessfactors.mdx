@@ -1,13 +1,13 @@
 ---
 title: "SAP SuccessFactors"
-description: "Follow these steps to connect SAP SuccessFactors with StackOne Hub successfully."
+description: "How to obtain the credentials required to connect to Sapsuccessfactors."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<Warning>
-  Ensure you have Admin privileges for your SAP SuccessFactors account with permission for the Manage Integration Tools > Manage OAuth2 Client Applications.
-</Warning>
+<Note>
+  Administrator access is required in your account to manage API credentials and settings.
+</Note>
 
 If you've been directed to StackOne to integrate with SAP SuccessFactors, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
@@ -157,7 +157,21 @@ If you've been directed to StackOne to integrate with SAP SuccessFactors, the fo
 Note: The integration may take up to 15 minutes to initially authenticate once the account has been connected. In the meantime, requests will return a 401: Unauthorized response.
 </Note>
 
+
+## Linking your Account
+
+Enter the required fields from the previous steps in your connection form.
+
 <IntegrationFooter />
+
+## Available data
+
+This integration has the following [HRIS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+- Employees
+- Employment
+- Groups
+- Time Off
+- Benefits
 
 ## Useful Links
 <Card title="API Reference" icon="link" href="https://api.sap.com/products/SAPSuccessFactors/apis/all">

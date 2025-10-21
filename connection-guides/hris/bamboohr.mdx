@@ -1,15 +1,13 @@
 ---
 title: "BambooHR"
-description: "Follow these steps to connect BambooHR with StackOne Hub successfully."
+description: "How to obtain the credentials required to connect to BambooHR."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<Warning>
-  Ensure you have Admin privileges for your BambooHR account.
-</Warning>
-
-If you've been directed to StackOne to integrate with BambooHR, the following steps will help you understand the process and any necessary actions to configure successful integration.
+<Note>
+  Administrator access is required in your BambooHR account to generate API keys and configure settings.
+</Note>
 
 ## Getting your Company Domain
 
@@ -25,7 +23,7 @@ If you've been directed to StackOne to integrate with BambooHR, the following st
 
 ## OpenID SSO Authentication
 
-For SSO authentication, StackOne Hub requires specifying only your Company Domain from step 1.
+For SSO authentication, only your Company Domain is required from Step 1.
 
 ### File Upload permission
 
@@ -74,15 +72,23 @@ If the connection form requires an API Key, follow these steps to generate it:
   </Step>
 </Steps>
 
-## Connecting to StackOne
+## Linking your BambooHR Account
 
-<Steps>
-  <Step title="Enter API Key and Company Domain">
-    Upon reaching the Link Account page, enter the API Key and Company Domain details and proceed by clicking the `Connect` button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/bamboohr/image6.png" />
-    </Frame>
-  </Step>
-</Steps>
+Enter these fields in your connection form:
+- **Company Domain** (from Step 1)
+- **API Key** (from Step 5, if using API authentication)
+
+For OpenID SSO authentication, only the Company Domain is required.
 
 <IntegrationFooter />
+
+## Available data
+
+This integration has the following [HRIS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+- Employees
+- Employment
+- Groups
+- Time Off
+- Benefits
+- Company
+- Employee Documents

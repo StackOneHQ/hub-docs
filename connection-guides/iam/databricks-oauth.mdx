@@ -1,79 +1,13 @@
 ---
 title: "Databricks (OAuth)"
-description: "Follow these steps to connect Databricks via the StackOne Hub successfully."
+description: "How to obtain the credentials required to connect to Databricks Oauth."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<Warning>
-  Ensure that your Databricks account has Account Admin privileges.
-</Warning>
-
-If you've been directed to StackOne to integrate with Databricks, the following steps will help you understand the process and any necessary actions to configure a successful integration.
-
-This integration will connect with Databricks at the *Account* level, which can contain multiple *Workspaces*. See Databricks [Accounts and workspaces](https://docs.databricks.com/en/getting-started/concepts.html#accounts-and-workspaces) for more information.
-
-## Log in to Databricks
-
-Log in to your Databricks account console.
-- AWS hosted: https://accounts.cloud.databricks.com
-- Azure hosted: https://accounts.azuredatabricks.net
-
-<Frame>
-    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in" src="/images/databricks/image1.png" />
-</Frame>
-
-## Obtain your Account ID
-
-Click the down arrow next to your username in the top-right corner. In the drop-down menu, copy your displayed **Account ID** to be used in a later step.
-
-<Frame>
-    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Obtain your Account ID" src="/images/databricks/image2.png" />
-</Frame>
-
-## Create New OAuth Application Credentials
-
-This connection will authenticate on behalf of a registered OAuth Application in Databricks.
-
-<Info>
-  The following Databricks interfaces are only available to Databricks Account Administrators.
-</Info>
-
-<Steps>
-  <Step title="Navigate to App Connections">
-    In your Databricks Account console, click **Settings** in the left navigation. Then click the **App Connections** tab.
-  
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to App Connections" src="/images/databricks/image3.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Add connection">
-    Click the **Add connection** button on the right.
-  
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add connection" src="/images/databricks/image4.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Enter connection details">
-    Under *Add connection*, enter the following required information:
-
-    - Application Name: (Appropriate name for this application)
-    - Redirect URLs: 
-    ```
-    https://api.stackone.com/connect/oauth2/databricks_iam/callback
-    ```
-    - Access scopes: Select **All APIs**
-    - Client secret: Select **Generate a client secret**
-    - Access token TTL: 30 (recommended minimum)
-    - Refresh token TTL: **129,600** (strongly recommended)
-
-    <Warning>
-      When the Databricks refresh token expires, a manual re-authorization is required to re-establish the connection.
-
-      Therefore, we strongly recommend setting the refresh token TTL to the maximum allowed value of 129,600 minutes (90 days).
-    </Warning>
+<Note>
+  Administrator access is required in your account to manage API credentials and settings.
+</Note>
   
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter connection details" src="/images/databricks/image5.png" />
@@ -106,6 +40,11 @@ You may be prompted to log in to your Databricks account to authorize the connec
 <Frame>
   <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Connecting with StackOne" src="/images/databricks/image7.png" />
 </Frame>
+
+
+## Linking your Account
+
+Enter the required fields from the previous steps in your connection form.
 
 <IntegrationFooter />
 
