@@ -1,95 +1,85 @@
 ---
-title: "GO1"
-description: "If you've been directed to StackOne to integrate with GO1, the following steps will help you understand the process and any necessary actions to configure successful integration."
+title: "Go1"
+description: "How to obtain the credentials required to connect to Go1."
 ---
 
-<Warning>
-  This guidance assumes you have Admin privileges for your GO1 account.
-</Warning>
+import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-## Create Integrations App
+<Note>
+  Administrator access is required in your Go1 portal to create developer applications.
+</Note>
 
 <Steps>
-  <Step title="Log into GO1">
-    Log into your GO1 account.
-  </Step>
+  <Step title="Access Developer Settings">
+    Log in to your Go1 portal and click on your profile tab in the top right corner.
 
-  <Step title="Navigate to Integrations">
-    Click on your profile tab in the top right corner.
-
-    Select `Integrations` from the dropdown menu.
+    Select **Integrations** from the dropdown menu, then click **Developers** from the left sidebar.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/go1/image1.png" />
+      <img src="/images/go1/image1.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Integrations" />
     </Frame>
   </Step>
 
-  <Step title="Navigate to Developers Tab">
-    From the `Integrations` menu on the left of the screen select `Developers`.
+  <Step title="Create New Application">
+    Click **Create App** in the top right corner.
+
+    Enter an application name (e.g., "Production Integration").
+
+    Enter the callback URL: `https://api.stackone.com/connect/oauth2/go1/callback`
+
+    Click **Create Application**.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/go1/image2.png" />
+      <img src="/images/go1/image3.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Application" />
     </Frame>
   </Step>
 
-  <Step title="Create a New App">
-    Click `Create App` in the top right.
-
-    Enter the name of the app (e.g. Production, Development)
-
-    Enter the callback URL (e.g. Production: https://api.stackone.com/connect/oauth2/go1/callback)
-
-    `Production: https://api.stackone.com/connect/oauth2/go1/callback`
-
-    Click `Create Application`
+  <Step title="Save Credentials">
+    Copy your **Client ID** and **Client Secret** immediately — they are only shown once.
 
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/go1/image3.png" />
+      <img src="/images/go1/image4.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Application Credentials" />
     </Frame>
   </Step>
 
-  <Step title="Note the Client ID and Secret">
-    Record the `Client ID` and `Client Secret` for use in the next steps.
-
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Dropdown Menu" src="/images/go1/image4.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Find domain">
-   You can find the domain by taking the root URL from the address bar of your GO1 account and only taking the part before my.go1.com. and after the https://.
-
-   E.g. If your url is `https://my-domain.go1.com` the domain is `my-domain`
+  <Step title="Note Your Domain">
+    Identify your Go1 domain from your portal URL. For example, if your URL is `https://my-company.go1.com`, your domain is `my-company`.
   </Step>
 </Steps>
 
+## Application Scopes
 
-## Linking your Account
-  <Steps>
-    <Step title="Link Go1 Account">
-      In the modal enter the `Client ID` and `Client Secret` from the previous step.
+| Scope | Purpose |
+|--------|----------|
+| account:read | Read portal information |
+| lo:read | Access learning objects |
+| portal:read | Read portal configuration |
+| user:write | Manage user profiles |
+| enrollment:write | Manage user enrollments |
 
-      Add relevant `Application Scopes` required for your integration and the `Domain` for the GO1 account you want to link.
+## Linking your Go1 Account
 
-      E.g. `account:read`, `lo:read`, `portal:read`, `user:write`, `enrollment:write`
+Enter these fields in your connection form:
+- **Client ID** (from Step 3)
+- **Client Secret** (from Step 3)  
+- **Domain** (from Step 4)
+- **Application Scopes** (select the scopes required for your integration)
 
-      Add the `domain` for the GO1 account you want to link.
+<IntegrationFooter />
 
-      Click `Connect`.
-    </Step>
+## Available data
 
-    <Step title="Enter Log in details">
-      In the GO1 pop up modal enter your GO1 username and password.
-    </Step>
+This integration has the following [LMS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+- Users
+- Learning Objects
+- Enrollments
+- Completions
+- Portal Configuration
 
-  </Steps>
+## Content Management
 
-  ## Content Visibility (Pulling Content from Go1)
+To control which content is available through the integration, use Go1 Admin to curate and manage content visibility for your third-party LMS/LXP users.
 
-  In order to give you control over managing what content will be available to your users you can curate the content via Go1Admin.
-
-  This is a centralised way to manage which content will be made available to your users in the third party LMS/LXP.
-
-  [GO1 Admin](https://developers.go1.com/products/go1-admin/)
+[Learn more about Go1 Admin](https://developers.go1.com/products/go1-admin/)
 
 

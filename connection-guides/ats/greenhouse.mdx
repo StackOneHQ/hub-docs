@@ -1,104 +1,96 @@
 ---
 title: "Greenhouse"
-description: "If you have been directed to StackOne to integrate with Greenhouse, the following steps will help you understand the process and any necessary actions to configure successful integration."
+description: "How to obtain the credentials required to connect to Greenhouse."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<Warning>
-  This guidance assumes you have Admin privileges for your Greenhouse account.
-</Warning>
-
-
-## Generating Harvest API Key
-
+<Note>
+  Administrator access is required in your Greenhouse account to manage API credentials.
+</Note>
 <Steps>
-  <Step title="Open the Configuration Page">
-    Click on Configure gear ⚙️ and open Dev Center > API credentials.
-    ​
-    <Frame>
-      ![Step 1](/images/greenhouse/image1.png)   
-    </Frame>
-  </Step>
-  <Step title="Create a New API Key">
-    Click Create new API key. Specify the following parameters:
-
-    API type – Harvest
-
-    Partner – Custom
-
-    Description – "Describe_your_integration"
-    ​
-    <Frame>
-      ![Step 2](/images/greenhouse/image2.png) 
-    </Frame>
-  </Step>
-  <Step title="Generate and Save the API Key">
-    Click Manage permissions.
-
-    Copy your newly generated API key to a safe place. Then click I have stored the API key.
+  <Step title="Access API Credentials">
+    Click the **Configure** gear icon ⚙️ and navigate to **Dev Center** → **API credentials**.
 
     <Frame>
-      ![Step 3](/images/greenhouse/image3.png)
+      <img src="/images/greenhouse/image1.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API credentials" />
     </Frame>
   </Step>
-  <Step title="Enabling Permissions">
-    In the Manage permissions page, enable Select all and click Save.
-    ​
-    <Frame>
-      ![Step 4](/images/greenhouse/greenhouse_permissions.gif)
-    </Frame>
-  </Step>
-</Steps>
 
-## Generating Job Board API Key
-<Steps> 
+  <Step title="Create Harvest API Key">
+    Click **Create new API key** and configure:
+    - **API type**: Harvest
+    - **Partner**: Custom
+    - **Description**: "YOUR_INTEGRATION_NAME_HERE"
+
+    <Frame>
+      <img src="/images/greenhouse/image2.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Harvest API Key" />
+    </Frame>
+  </Step>
+
+  <Step title="Save Harvest API Key">
+    Click **Manage permissions**, then copy and securely store your API key. Click **I have stored the API key** to continue.
+
+    <Frame>
+      <img src="/images/greenhouse/image3.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Save Harvest API Key" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Harvest Permissions">
+    In the permissions page, click **Select all** to enable all permissions, then click **Save**.
+
+    <Frame>
+      <img src="/images/greenhouse/greenhouse_permissions.gif" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Configure permissions" />
+    </Frame>
+  </Step>
+
   <Step title="Create Job Board API Key">
-    In the API credentials page, click Create new API key. Specify the following parameters:
+    Return to the API credentials page and create another key:
+    - **API type**: Job Board
+    - **Partner**: Custom
+    - **Description**: "YOUR_INTEGRATION_NAME_HERE"
 
-    API type – Job Board
-
-    Partner – Custom
-
-    Description – "Describe_your_integration"
+    Click **Create**.
 
     <Frame>
-    ![Step 4](/images/greenhouse/image4.png)
+      <img src="/images/greenhouse/image4.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Job Board API Key" />
     </Frame>
-
-    Click Create.
   </Step>
-  <Step title="Save the API Key">
-    Copy your Job Board API key to a safe place. Then click I have stored the API key.
-  
+
+  <Step title="Save Job Board API Key">
+    Copy and securely store your Job Board API key. Click **I have stored the API key**.
+
     <Frame>
-    ![Step 5](/images/greenhouse/image5.png)
+      <img src="/images/greenhouse/image5.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Save Job Board API Key" />
+    </Frame>
+  </Step>
+
+  <Step title="Get Site Admin User ID">
+    Navigate to your **Users** page and select a user with Site Admin permissions. Copy the user ID from the URL.
+
+    <Frame>
+      <img src="/images/greenhouse/10577285508763.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="User ID in URL" />
     </Frame>
   </Step>
 </Steps>
 
+## Linking your Greenhouse Account
 
-
-
-## Retrieve a greenhouse User ID
-Per the Greenhouse documentation, you can get a user ID by going to the users page, select a user with Site Admin permission and retrieve the user ID present in the URL:
-
-Screenshot of an example user ID
-
-<Frame>
-![Step 6](/images/greenhouse/10577285508763.png)
-</Frame>
-
-## Connect with StackOne
-Enter the gathered details in the relevant inputs and proceed by clicking the Connect button.
-
-<Frame>
-![Step 7](/images/greenhouse/F5PLzgbq4ZEu0KA2pDzz_i82EQ0cbhBzSMcna6Er9.gif)
-</Frame>
+Enter these fields in your connection form:
+- **Harvest API Key** (from Step 3)
+- **Job Board API Key** (from Step 6)
+- **Site Admin User ID** (from Step 7)
 
 <IntegrationFooter />
 
-## Useful Links
-<Card title="API Reference" icon="link" href="https://developers.greenhouse.io/harvest.html">
-    https://developers.greenhouse.io/harvest.html
-</Card>
+## Available data
+
+This integration has the following [ATS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+- Jobs
+- Candidates
+- Applications
+- Interviews
+- Scorecards
+- Users
+- Departments
+- Offers

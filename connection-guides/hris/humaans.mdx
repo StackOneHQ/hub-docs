@@ -1,66 +1,71 @@
 ---
 title: "Humaans"
-description: "Follow these steps to connect Humaans with StackOne Hub successfully."
+description: "How to obtain the credentials required to connect to Humaans."
 ---
 
 import IntegrationFooter from "/snippets/integration-footer.mdx";
 
-<Warning>
-  Ensure you have API access permissions for your Humaans account.
-</Warning>
-
-If you've been directed to StackOne to integrate with Humaans, the following steps will help you understand the process and any necessary actions to configure successful integration.
-
-This guidance assumes you have API access permissions for your Humaans account:
-
-- click Settings > Permissions
-- choose your role group, e.g., Owners
-- verify the Workspace permissions section has API access enabled
-  <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Access Tokens" src="/images/humaans/api_access_permissions.gif" />
-    </Frame>
-
-## Generating API Key
+<Note>
+  Administrator access is required in your Humaans account to generate API tokens.
+</Note>
 
 <Steps>
-  <Step title="Open API Access Tokens">
-    Click the expandable menu ⋮ at the top left corner of your screen, beside your name. Then click [API access tokens](https://app.humaans.io).
+  <Step title="Verify API Access Permissions">
+    Before creating a token, ensure you have the correct permissions:
+    - Click **Settings** → **Permissions**
+    - Select your role group (e.g., Owners)
+    - Verify that **API access** is enabled in the Workspace permissions section
+
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Access Tokens" src="/images/humaans/image1.png" />
+      <img src="/images/humaans/api_access_permissions.gif" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Access Permissions" />
     </Frame>
   </Step>
 
-  <Step title="Generate New Token">
-    Create a new API token by clicking the Generate new token button.
+  <Step title="Access API Tokens Page">
+    Click the expandable menu ⋮ at the top left corner, then select **API access tokens**.
+
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate New Token" src="/images/humaans/image2.png" />
+      <img src="/images/humaans/image1.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Access Tokens" />
     </Frame>
   </Step>
 
-  <Step title="Assign a Label and Enable Scopes">
-    Assign a label to your token and enable all of the scopes. Click Create access token.
+  <Step title="Create New Token">
+    Click **Generate new token**.
+
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assign Label and Enable Scopes" src="/images/humaans/image3.png" />
+      <img src="/images/humaans/image2.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Generate New Token" />
     </Frame>
   </Step>
 
-  <Step title="Copy the API Token">
-    Copy the API token to a safe place.
+  <Step title="Configure Token">
+    Assign a descriptive label to your token and enable all required scopes. Click **Create access token**.
+
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Token" src="/images/humaans/image4.png" />
+      <img src="/images/humaans/image3.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Configure Token" />
+    </Frame>
+  </Step>
+
+  <Step title="Save API Token">
+    Copy the API token immediately and store it securely — it won't be shown again.
+
+    <Frame>
+      <img src="/images/humaans/image4.png" style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Token" />
     </Frame>
   </Step>
 </Steps>
 
-## Use the API Key in the StackOne Hub
+## Linking your Humaans Account
 
-<Steps>
-  <Step title="Enter API Key and Connect">
-    Proceed to the Account page to establish a connection between Humaans and StackOne. Input your API key and proceed by clicking the `Connect` button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/humaans/image5.png" />
-    </Frame>
-  </Step>
-</Steps>
+Enter this field in your connection form:
+- **API Key** (from Step 5)
 
 <IntegrationFooter />
+
+## Available data
+
+This integration has the following [HRIS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+- Employees
+- Employment
+- Groups
+- Time Off
+- Benefits
