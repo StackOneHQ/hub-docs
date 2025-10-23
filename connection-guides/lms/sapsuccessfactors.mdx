@@ -464,6 +464,71 @@ To create a LinkedIn Learning label, take the following steps:
   </Step>
 </Steps>
 
+# SSO Configuration
+
+Proper SSO (Single Sign-On) configuration is essential for the SAP SuccessFactors integration to work correctly. The configuration ensures that users are properly identified and matched between your platform and SAP SuccessFactors.
+
+## NameID Configuration
+
+<Steps>
+  <Step title="Configure NameID Field">
+    The NameID in your SSO configuration should be set to the **UserID/StudentID** field to ensure proper user identification.
+    
+    This is the preferred configuration and should be implemented whenever possible.
+  </Step>
+  
+  <Step title="Verify Configuration">
+    Work with your content provider to verify that the NameID is properly configured to use the UserID/StudentID field.
+    
+    Test the SSO flow to ensure users are correctly identified in SAP SuccessFactors.
+  </Step>
+</Steps>
+
+## Alternative Configuration Options
+
+If the preferred NameID configuration cannot be implemented, the following alternatives are available:
+
+### Option 1: Custom Field Configuration
+
+<Steps>
+  <Step title="Set Custom Field">
+    If setting the NameID to UserID/StudentID is not possible, configure a custom field called `lms_user_id` and set it to the **UserID/StudentID** field value.
+  </Step>
+  
+  <Step title="Verify Custom Field">
+    Ensure the `lms_user_id` custom field is properly populated and accessible through the SSO configuration.
+  </Step>
+</Steps>
+
+### Option 2: External Reference Field Configuration
+
+<Steps>
+  <Step title="Configure External Reference Field">
+    If neither the NameID nor the custom field configuration is allowed, configure the `lms_external_reference_field` to map to the **personExternalID** field.
+    
+    This is the fallback option when other configurations are not feasible.
+  </Step>
+  
+  <Step title="Validate External Reference">
+    Work with your content provider to ensure the external reference field mapping is correctly implemented and tested.
+  </Step>
+</Steps>
+
+## Important Notes
+
+<Warning>
+  Correct SSO configuration is **essential** for ensuring the integration works as expected. Incorrect configuration may result in:
+  
+  - Users not being properly identified
+  - Learning records not being correctly attributed
+  - Authentication failures
+  - Data synchronization issues
+</Warning>
+
+<Note>
+  **Customer Responsibility**: The customer should work closely with their content provider to ensure the SSO configuration follows one of the recommended approaches above. The content provider should validate that the configuration meets the integration requirements.
+</Note>
+
 ## Linking your Account
 
 <Steps>
