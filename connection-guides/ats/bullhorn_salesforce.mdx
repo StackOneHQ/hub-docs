@@ -1,0 +1,157 @@
+---
+title: "Bullhorn Recruitment Cloud - Salesforce (OAuth)"
+description: "Follow these steps to connect Bullhorn Recruitment Cloud - Salesforce via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure that your Bullhorn Recruitment Cloud - Salesforce account has Admin privileges.
+</Warning>
+
+If you've been directed to StackOne to integrate with Bullhorn Recruitment Cloud - Salesforce, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Log in to Salesforce
+
+Log in to your Salesforce instance.
+
+## Find your Bullhorn Recruitment Cloud - Salesforce Salesforce URL
+
+Your Salesforce URL can be found in the URL when logged in to Bullhorn Recruitment Cloud - Salesforce.
+
+Given the URL: `https://mycompany.salesforce.com/dashboard/settings`, the **Salesforce URL** is `https://mycompany.salesforce.com`.
+
+## Create your Client ID and Client Secret
+
+This integration will authenticate on behalf of a registered application in Bullhorn Recruitment Cloud - Salesforce.
+
+<Steps>
+  <Step title="Create your Salesforce OAuth Application">
+      Follow the [Salesforce Client Credentials Guide](https://developer.salesforce.com/blogs/2023/03/using-the-client-credentials-flow-for-easier-api-authentication) to create your Salesforce OAuth Application.
+
+      Store your Client ID and Client Secret securely to be used in a later step.
+
+      The integration accesses the following Salesforce objects. Please ensure that the associated User has read or read/write access to these as required for your use case:
+      - TR1__ContactDocument__c
+      - TR1__Application__c
+      - TR1__Job_Board_Application__c
+      - Contact
+      - TR1__Job__c
+
+      Write operations may trigger automations depending on your Salesforce configuration that may require additional permissions.
+  </Step>
+</Steps>
+## Enter Job Board Application Custom Fields (optional)
+
+The integration utilizes the following fields from the Salesforce **TR1__Job_Board_Application__c** model:
+
+- `Id`
+- `Name`
+- `TR1__Job__c`
+- `TR1__Applicant__c`
+- `TR1__Job_Board_Source__c`
+- `TR1__Source__c`
+- `TR1__Status__c`
+- `CreatedDate`
+- `LastModifiedDate`
+
+To include any additional fields from this model, enter a comma-separated list of the field names.
+
+## Enter Shortlist Application Custom Fields (optional)
+
+The integration utilizes the following fields from the Salesforce **TR1__Application__c** model:
+
+- `Id`
+- `TR1__Applicant__c`
+- `TR1__Job__c`
+- `TR1__Stage__c`
+- `TR1__ATS_Stage__c`
+- `TR1__Status__c`
+- `TR1__Source__c`
+- `TR1__Job_Board_Source__c`
+- `CreatedDate`
+- `LastModifiedDate`
+
+To include any additional fields from this model, enter a comma-separated list of the field names.
+
+## Enter Candidate Custom Fields (optional)
+
+The integration utilizes the following fields from the Salesforce **Contact** model:
+
+- `Id`
+- `FirstName`
+- `LastName`
+- `Name`
+- `Email`
+- `TR1__Work_Email__c`
+- `TR1__Secondary_Email__c`
+- `Main_Email__c`
+- `Personal_Email__c`
+- `MobilePhone`
+- `Phone`
+- `HomePhone`
+- `AssistantPhone`
+- `Work_Phone__c`
+- `OtherPhone`
+- `Title`
+- `Company_Name_Text__c`
+- `TR1__Candidate_Status__c`
+- `TR1__LinkedIn_ProfileUrl__c`
+- `MailingCountry`
+- `CreatedDate`
+- `LastModifiedDate`
+
+To include any additional fields from this model, enter a comma-separated list of the field names.
+
+
+## Enter Job Custom Fields (optional)
+
+The integration utilizes the following fields from the Salesforce **TR1__Job__c** model:
+
+- `Id`
+- `Name`
+- `TR1__Job_Number__c`
+- `TR1__Job_Title__c`
+- `Job_Description__c`
+- `TR1__Status__c`
+- `TR1__Hiring_Manager__c`
+- `TR1__Is_Confidential__c`
+- `CreatedDate`
+- `LastModifiedDate`
+
+To include any additional fields from this model, enter a comma-separated list of the field names.
+
+## Connecting with StackOne
+
+<Steps>
+  <Step>
+    Upon reaching the Link Account page, enter the credential(s) from the previous steps:
+    - **Client ID**
+    - **Client Secret**
+    - **Salesforce URL**
+    - **Job Board Application Custom Fields** (optional)
+    - **Shortlist Application Custom Fields** (optional)
+    - **Candidate Custom Fields** (optional)
+    - **Job Custom Fields** (optional)
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/salesforcebullhorn/image1.png" />
+    </Frame>
+  </Step>
+</Steps>
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [ATS Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Applications</li>
+  <li>Applications Documents</li>
+  <li>Application Notes</li>
+  <li>Candidates</li>
+  <li>Application Stages</li>
+  <li>Job Postings</li>
+  <li>Jobs</li>
+</ul>
