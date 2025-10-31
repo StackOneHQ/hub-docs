@@ -1,0 +1,348 @@
+---
+title: "Workday WQL (OAuth)"
+description: "If you've been directed to StackOne to integrate with Workday, the following steps will help you understand the process and any necessary actions to configure successful integration."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes you have Admin privileges for your Workday account.
+</Warning>
+
+## Finding your Workday Tenant
+
+<Steps>
+  <Step title="Log into Workday">
+    Log into your Workday account. Look at the address bar at the top of the browser window where the URL is displayed. Find your tenant immediately after `workday.com/`.
+
+    For example, if your URL is `https://my-instance.workday.com/my-tenant/d/etc`, your tenant is `my-tenant`.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Workday Tenant"
+        src="/images/workday-oauth2/image1.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+## Finding the Web Services Endpoint
+
+<Steps>
+  <Step title="Go to Public Web Services">
+    Navigate to the `Public Web Services` report.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Human Resources Web Service" src="/images/workday-wql/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Find Human Resources">
+    Locate Human Resources and hover over it to interact with the menu. Via the three-dots menu, navigate to `Web Service` and click on `View WSDL` (please note that the page may take a minute to fully load).
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-wql/image3.png" />
+    </Frame>
+
+  </Step>
+
+  <Step title="Search for wsdl:service">
+    Search for `wsdl:service` in the file, or navigate directly to the very bottom of the page. You should see something like this:
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-wql/image4.png" />
+    </Frame>
+
+    Copy everything before `service` in the location attribute. Do not include the `https://` prefix. In the example tenant above, this would be `wd2-impl-services1.workday.com/ccx`, but it may be different for your tenant (e.g., `wd5-services1.myworkday.com/ccx`).
+
+    Save this value to be used in a later step.
+  </Step>
+</Steps>
+
+## Set up an Integration System User
+
+<Steps>
+  <Step title="Search for Create Integration System User">
+    Log in to your Workday tenant in the Workday portal. In the Search field, search for "Create Integration System User".
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create Integration System User"
+        src="/images/workday-wql/image5.png"
+      />
+    </Frame>
+  </Step>
+  <Step title="Choose the Task">
+    Choose the "Create Integration System User" task.
+  </Step>
+  <Step title="Enter Account Information">
+    Enter a username and password in the Account Information section on the "Create Integration System User" page.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Account Information"
+        src="/images/workday-wql/image6.png"
+      />
+    </Frame>
+  </Step>
+  <Step title="Click OK">
+    Click OK.
+  </Step>
+</Steps>
+
+## Add the Integration System User to a Security Group
+
+<Steps>
+  <Step title="Search for Create Security Group">
+    In the Search field, search for "Create Security Group". Select the "Create Security Group" task.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create Security Group"
+        src="/images/workday-wql/image7.png"
+      />
+    </Frame>
+  </Step>
+  <Step title="Select Security Group Type">
+    On the "Create Security Group" page, select "Integration System Security Group (Unconstrained)" from the Type of Tenanted Security Group drop-down menu. Enter a name in the Name field.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Security Group Type"
+        src="/images/workday-wql/image8.png"
+      />
+    </Frame>
+  </Step>
+  <Step title="Click OK">
+    Click OK.
+  </Step>
+  <Step title="Edit Integration System Security Group">
+    On the "Edit Integration System Security Group (Unconstrained)" page, enter the same name you used when creating the Integration System User in the first section. Click OK.
+  </Step>
+</Steps>
+
+## Configure Domain Security Policy Permissions
+
+<Steps>
+  <Step title="Edit Permissions">
+    <Info>
+      The Workday HRIS integration currently requires **all** of the permissions listed below to be enabled for full support.
+
+      Workday's API may return an error response if any of these permissions are missing.
+    </Info>
+    Edit the Domain Security Policy Permissions in the Security Group.
+
+    You can access this interface by searching for "Maintain Permissions for Security Group" in the search bar and selecting the name of the Security Group you created in the previous step.
+
+    This integration uses the following Workday Security Group Permissions. For each listed permission, select either **Get Only** for read-only access or **Get and Put** for read and write access in the _View/Modify Access_ column.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="View/Modify Access"
+        src="/images/workday-wql/image13.png"
+      />
+    </Frame>
+    <Info>
+      Please note that Security Group Permissions can be customized within a Workday organization, and this list does not account for such customizations.
+    </Info>
+    - Job Information
+    - Job Profile: View
+    - **Manage:**
+      - Location
+      - Organization Integration
+    - **Person Data:**
+      - Name
+      - Citizenship Status
+      - Date of Birth
+      - Disabilities
+      - Gender
+      - Government IDs
+      - ID Information
+      - Marital Status
+      - National ID Identification
+      - Personal Information
+      - Personal Data
+      - Personal Photo
+      - Home Contact Information
+      - Home Address
+      - Home Email
+      - Home Phone
+      - Work Contact Information
+      - Work Address
+      - Work Email
+      - Work Phone
+    - **Worker Data:**
+      - All Positions
+      - Compensation
+      - Current Staffing Information
+      - Employment Data
+      - Organization Information
+      - Public Worker Reports
+      - **Time Off**
+        - Time Off
+        - Time Off Manager View
+        - Time Off Balances
+        - Time Off Balances Manager View
+      - **Leave of Absence**
+      - Workers
+    - Set Up: Time Off
+    - Set Up: Time Off (Calculations - Absence Specific)
+    - System Auditing
+    - View: National Identifiers - All
+  </Step>
+</Steps>
+
+## Approve the Security Policy Changes
+
+<Steps>
+  <Step title="Search for Activate Pending Security Policy Changes">
+    In the search bar, search for "Activate Pending Security Policy Changes". Review the policies that require approval in the summary of the security policy changes. Approve the pending security policy changes to activate them.
+  </Step>
+</Steps>
+
+## Register the REST API Client
+
+<Steps>
+  <Step title="Go to Register API Client">
+    Navigate to the `Register API Client for Integration` task.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Human Resources Web Service"
+        src="/images/workday-oauth2/image2.png"
+      />
+    </Frame>
+  </Step>
+  <Step title="Register API Client">
+    Register the API Client with the following details and then click the **OK** button:
+
+    - **Client Name**: e.g., StackOne_Integrations
+    - **Non-Expiring Refresh Tokens**: Tick the box
+    - **Scopes**: Select the required functional scopes to enable data access via API.
+      - _Advanced Compensation_
+      - _Core Compensation_
+      - _Integrations_
+      - _Jobs & Positions_
+      - _Organizations and Roles_
+      - _Staffing_
+      - _System_
+      - _Tenant Non-Configurable_
+      - _Time Off and Leave_
+      - _Time Tracking_
+      - _Workday Designer_
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-oauth2/image3.png"
+      />
+    </Frame>
+  </Step>
+  <Step title="Copy the Credentials">
+    After registering the client, you will be redirected to a page displaying the **Client ID** and **Client Secret**. Please ensure you copy and securely store these credentials.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-oauth2/image4.png"
+      />
+    </Frame>
+  </Step>
+  <Step title="Generate the Refresh Token">
+    Follow the steps below to generate the refresh token:
+
+    - At the top of the page, click the **menu (⋯)** icon.
+    - Select **API Client** from the menu.
+    - Click **Manage Refresh Tokens for Integrations**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-oauth2/image5.png"
+      />
+    </Frame>
+    Once you select **menu (⋯) → API Client → Manage Refresh Tokens for Integrations**, you will be redirected to a screen to choose your Workday account (the Integration System User you created earlier). Select the account and click **OK**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-oauth2/image6.png"
+      />
+    </Frame>
+    Once you are on the Refresh Token page, select **Generate New Refresh Token** and click **OK**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-oauth2/image7.png"
+      />
+    </Frame>
+    Once the refresh token has been generated successfully, copy the token and click Done.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-oauth2/image8.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+## Linking Your Account
+
+Enter the following details in the connection form:
+
+- **[Web Service Endpoint](#finding-the-web-services-endpoint)**
+- **Workday Tenant Domain** (optional): The domain of your Workday tenant. This can be found in the URL when logged into Workday (e.g., `my-instance.workday.com`)
+- **[Tenant](#finding-your-workday-tenant)**
+- **[Client ID](#register-the-rest-api-client)**
+- **[Client Secret](#register-the-rest-api-client)**
+- **[Non-expiring Refresh Token](#register-the-rest-api-client)**
+- **Employee WQL Query** (optional): The custom Workday Query Language (WQL) query to use when fetching employees. If left blank, a default query will be used that retrieves commonly used fields.
+
+  ```sql
+  SELECT employeeID,legalFirstName,legalLastName, ... FROM employees;
+  ``` 
+
+Click **Connect**.
+
+<Frame>
+  <img
+    className="rounded-md"
+    style={{ margin:"0 auto",border:"1px solid #efefef" }}
+    alt="Linking your Account"
+    src="/images/workday-wql/image9.png"
+  />
+</Frame>
+
+<IntegrationFooter />
+
+<Card title="Useful Links" icon="link" href="https://doc.workday.com">
+  https://doc.workday.com
+</Card>
