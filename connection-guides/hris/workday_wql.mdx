@@ -1,0 +1,443 @@
+---
+title: "Workday WQL (OAuth)"
+description: "Follow these steps to understand the process and actions required for a successful connection."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes you have administrator privileges for your Workday account.
+</Warning>
+
+
+## Finding your Workday Tenant
+
+Log in to your Workday account. In the browser’s address bar, locate your tenant immediately after `workday.com/`.<br />
+
+If your URL is `https://my-instance.workday.com/my-tenant/d/etc`, your tenant is `my-tenant`.
+<Frame>
+  <img
+    className="rounded-md"
+    style={{ margin:"0 auto",border:"1px solid #efefef" }}
+    alt="Workday Tenant"
+    src="/images/workday-wql/image1.png"
+  />
+</Frame>
+
+
+## Finding the Web Services Endpoint
+
+<Steps>
+  <Step title="Go to Public Web Services">
+    Search and navigate to the `Public Web Services` report.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Human Resources Web Service" src="/images/workday-wql/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Open the Human Resources WSDL">
+    Locate **Human Resources** and hover to open the menu. From the three‑dot menu choose `Web Service` then click `View WSDL` (the page may take a minute to load).
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-wql/image3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Locate the wsdl:service element">
+    Search for `wsdl:service` or scroll to the bottom of the page. You should see a section like this:
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="WSDL Service" src="/images/workday-wql/image4.png" />
+    </Frame>
+    
+    Copy everything before `/service` in the location attribute. Exclude the `https://` prefix. In the example above this would be `wd2-impl-services1.workday.com/ccx` (yours may differ, e.g. `wd5-services1.myworkday.com/ccx`). <br /><br />
+  
+    Save this value to be used in a later step.
+  </Step>
+</Steps>
+
+
+## Set up an Integration System User
+
+<Steps>
+  <Step title="Search for Create Integration System User">
+    Search and navigate to the `Create Integration System User` task.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create Integration System User"
+        src="/images/workday-wql/image5.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Enter account information">
+    Enter a username and password in the Account Information section.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Account Information"
+        src="/images/workday-wql/image6.png"
+      />
+    </Frame>
+
+    Click `OK` to create the user.
+  </Step>
+</Steps>
+
+## Add the Integration System User to a Security Group
+
+<Steps>
+  <Step title="Search for Create Security Group">
+    Search and navigate to the `Create Security Group` task.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create Security Group"
+        src="/images/workday-wql/image7.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Choose group type">
+    Select `Integration System Security Group (Unconstrained)` from the Type of Tenanted Security Group drop‑down and enter the same name used when creating the Integration System User.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Security Group Type"
+        src="/images/workday-wql/image8.png"
+      />
+    </Frame>
+
+    Click `OK`.
+  </Step>
+</Steps>
+
+
+## Configure Domain Security Policy Permissions
+
+<Steps>
+  <Step title="Search for Maintain Permissions for Security Group">
+  Search and navigate to the `Maintain Permissions for Security Group` task.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create Security Group"
+        src="/images/workday-wql/image9.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Select Security Group Type">
+    Select the Security Group name created earlier.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create Security Group"
+        src="/images/workday-wql/image10.png"
+      />
+    </Frame>
+
+    This integration uses the following Workday Security Group permissions.
+    Set each listed permission to **Get Only/View Only** for read access in the _View/Modify Access_ column.
+    
+    <Info>
+      The Workday HRIS integration currently requires **all** of the permissions listed below to be enabled for full support. <br />
+
+      Workday's API may return an error response if any of these permissions are missing.
+    </Info>
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="View/Modify Access"
+        src="/images/workday-wql/image13.png"
+      />
+    </Frame>
+
+    <Note>
+      Please note that Security Group Permissions can be customised within a Workday organisation, and this list does not account for such customisations.
+    </Note>
+
+    | Domain Security Policy | View/Modify Access |
+    | ---------------------- | ------------------ |
+    | Workday Query Language | Get Only |
+    | Workday Query Language | View Only |
+    | Set Up: Plan Publishing | Get Only |
+    | WQL for Workday Extend | Get Only |
+    | Person Data: Name | Get Only |
+    | Person Data: Marital Status | Get Only |
+    | Person Data: Work Email | Get Only |
+    | Person Data: ID Information | Get Only |
+    | Person Data: Home Phone | Get Only |
+    | Person Data: Gender | Get Only |
+    | Person Data: Home Email | Get Only |
+    | Person Data: Date of Birth | Get Only |
+    | Person Data: Work Phone | Get Only |
+    | Person Data: Ethnicity | Get Only |
+    | Worker Data: Current Staffing Information | Get Only |
+
+  </Step>
+</Steps>
+
+
+## Activate the Security Policy Changes
+
+<Steps>
+  <Step title="Search for Activate Pending Security Policy Changes">
+    Search and navigate to the `Activate Pending Security Policy Changes` task.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Human Resources Web Service"
+        src="/images/workday-wql/image14.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Comment and Confirm">
+    Add an optional comment then click `OK`.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Human Resources Web Service"
+        src="/images/workday-wql/image15.png"
+      />
+    </Frame>
+
+    Review the policies that require approval in the summary of the security policy changes. Tick the confirmation box and click `OK` to approve the pending security policy changes to activate them.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Human Resources Web Service"
+        src="/images/workday-wql/image16.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Register the REST API Client
+
+<Steps>
+  <Step title="Go to Register API Client">
+    Search and navigate to the `Register API Client for Integrations` task.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Human Resources Web Service"
+        src="/images/workday-wql/image17.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Register API Client">
+  Register the API client with the following details:
+
+  - **Client Name**: Any name (e.g. `StackOne_Integrations`).
+  - **Non‑Expiring Refresh Tokens**: Tick the box.
+  - **Scopes**: Select required functional scopes for API access:
+      - _Adaptive Planning for Financial Plans_
+      - _Adaptive Planning for the Workforce_
+      - _Staffing_
+      - _System_
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-wql/image18.png"
+      />
+    </Frame>
+    Click `OK`.
+  </Step>
+
+  <Step title="Copy the Credentials">
+    After registration a page displays the **Client ID** and **Client Secret**. Copy and store these credentials securely.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-wql/image19.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Generate the Refresh Token">
+
+    - At the top of the page click the **menu (⋯)** icon.
+    - Select **API Client**.
+    - Click **Manage Refresh Tokens for Integrations**.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-wql/image20.png"
+      />
+    </Frame>
+    
+    Choose your Workday account (the [Integration System User](#set-up-an-integration-system-user) you've created earlier) and click `OK`.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-wql/image21.png"
+      />
+    </Frame>
+    
+    On the refresh token page select **Generate New Refresh Token** and click `OK`.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-wql/image22.png"
+      />
+    </Frame>
+
+    When generated, copy the token and click `Done`.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="WSDL Service"
+        src="/images/workday-wql/image23.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Custom WQL Query
+
+<Warning>
+  This section outlines a recommended workflow for generating a WQL query. If your organisation already has a validated WQL query for the required employee data, you can skip these steps and proceed directly to **[Connecting to StackOne](#connecting-to-stackone)**.
+</Warning>
+
+<Note>
+  Creating a custom report is optional for generating WQL (Workday Query Language). However, there are several ways to obtain WQL: <br/>
+  - **Custom Report Feature**: By using the custom report feature, users can more accurately tailor the data they wish to extract from the data source and then convert the report to WQL.<br/>
+  - **Standard Reports**: You can utilise existing standard reports and convert them directly to WQL. To do this, navigate to **Convert Report to WQL** and select the `Standard Report`.<br/>
+  - **Data Source Navigation**: You can also navigate to the Data Source using global search and access a specific data source (e.g., All Workers) to view the available data source fields. From there, you can form a WQL query according to the WQL syntax.
+
+</Note>
+
+### Create a Custom Report
+
+<Steps>
+  <Step title="Go to Create Custom Reports">
+    Use the global search bar to search for "Create Custom Report".
+    <Frame>
+      <img src="/images/workday-wql/workday_wql_custom_create_report_1.png" alt="Global search for Create Custom Report" style={{ maxHeight: '500px', width: 'auto' }} />
+    </Frame>
+
+    Enter the following details:
+    - **Report Name**: Name for the WQL report.
+    - **Optimised for Performance**: If ticked, only indexed data sources are shown. Untick this option to display all data sources.
+    - **Data Source**: Select the data source you want to build a custom report for (e.g. All Workers).
+    - **Report Type**: Select `Advanced`.
+
+    <Frame>
+      <img src="/images/workday-wql/workday_wql_custom_create_report_2.png" alt="Create Custom Report details" style={{ maxHeight: '500px', width: 'auto' }} />
+    </Frame>
+  
+    Click `OK` to create the report.
+  
+  </Step>
+
+  <Step title="Edit the custom report">
+  After creating the report you are taken to the editing page. Select the fields you want to include from the data source.
+
+    <Frame>
+      <img src="/images/workday-wql/workday_wql_custom_edit_report_3.png" alt="Edit Custom Report" style={{ maxHeight: '500px', width: 'auto' }} />
+    </Frame>
+  Click `OK` to save the field selection.
+  
+  </Step>
+
+  <Step title="Test the custom report">
+  Test the report by clicking `Test` in the three-dot action menu beside the report name.
+    <Frame>
+      <img src="/images/workday-wql/workday_wql_custom_test_report_4.png" alt="Edit Custom Report" style={{ maxHeight: '500px', width: 'auto' }} />
+    </Frame>
+  
+  </Step>
+</Steps>
+
+### Convert the Report to WQL in Workday
+
+<Steps>
+  <Step title="Go to Convert Reports to WQL">
+    Use the global search bar to search for "Convert Reports to WQL".
+    <Frame>
+      <img src="/images/workday-wql/workday_wql_convert_report_to_wql_5.png" alt="Global search for Convert Reports to WQL" style={{ maxHeight: '500px', width: 'auto' }} />
+    </Frame>
+
+  Select the custom report you created earlier in the [Create a Custom Report](#create-a-custom-report) step.
+    <Frame>
+      <img src="/images/workday-wql/workday_wql_crw_select_report_6.png" alt="Select created custom report" style={{ maxHeight: '500px', width: 'auto' }} />
+    </Frame>
+  Click `OK`.
+  </Step>
+
+  <Step title="Get the WQL query">
+    You are taken to a page showing the generated WQL query for your custom report.
+    <Frame>
+      <img src="/images/workday-wql/workday_wql_crw_generate_7.png" alt="Generated WQL Query" style={{ maxHeight: '500px', width: 'auto' }} />
+    </Frame>
+  Copy this WQL query and paste it into the `Employee WQL Query` field when connecting through the StackOne Connector Hub.
+
+    <Note>
+      WQL does not support calculated fields when converting custom reports to WQL.
+    </Note>
+  </Step>
+</Steps>
+
+
+## Connecting to StackOne
+
+Enter the following details in the StackOne Connector Hub:
+
+- **[Web Service Endpoint](#finding-the-web-services-endpoint)**
+- **[Tenant](#finding-your-workday-tenant)**
+- **[Client ID](#register-the-rest-api-client)**
+- **[Client Secret](#register-the-rest-api-client)**
+- **[Non-expiring Refresh Token](#register-the-rest-api-client)**
+- **Employee WQL Query**: The custom Workday Query Language (WQL) query used when fetching employees.
+
+  ```sql
+  /* Sample WQL query format */
+  SELECT employeeID,legalFirstName,legalLastName, ... FROM employees;
+  ```
+
+Click **Connect**.
+
+<Frame>
+  <img
+    className="rounded-md"
+    style={{ margin:"0 auto",border:"1px solid #efefef" }}
+    alt="Linking your Account"
+    src="/images/workday-wql/image24.png"
+  />
+</Frame>
+
+
+<IntegrationFooter />
+
+<Card title="Useful Links" icon="link" href="https://doc.workday.com">
+  https://doc.workday.com
+</Card>
