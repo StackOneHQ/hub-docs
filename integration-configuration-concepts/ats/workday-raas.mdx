@@ -9,6 +9,43 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   This guidance assumes that you have admin privileges for your Workday account.
 </Warning>
 
+
+## Set up an Integration System User
+
+<Warning>
+  Setting up an **Integration System User (ISU)** is recommended but optional. You can use an existing Workday user account with appropriate permissions instead. 
+  The key requirement is having valid credentials **(username and password)** with access to create and manage custom reports.
+</Warning>
+
+<Steps>
+  <Step title="Search for Create Integration System User">
+    Search and navigate to the `Create Integration System User` task.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Create Integration System User"
+        src="/images/workday-wql/image5.png"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Enter account information">
+    Enter a username and password in the Account Information section.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Account Information"
+        src="/images/workday-wql/image6.png"
+      />
+    </Frame>
+
+    Click `OK` to create the user.
+  </Step>
+</Steps>
+
+
 ## Access Report Designer
 
 <Steps>
