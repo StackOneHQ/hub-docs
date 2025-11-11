@@ -113,6 +113,20 @@ If your URL is `https://my-instance.workday.com/my-tenant/d/etc`, your tenant is
 
     Click `OK`.
   </Step>
+
+  <Step title="Assign the Security Group to the Integration System Users">
+    Select `Integration System Users` from the drop-down menu. You may choose the user created in the [step](#set-up-an-integration-system-user) above or any other user to whom you want to assign this security group.
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin:"0 auto",border:"1px solid #efefef" }}
+        alt="Assign User to Security Group"
+        src="/images/workday-wql/image25.png"
+      />
+    </Frame>
+
+    Click `OK`.
+  </Step>
 </Steps>
 
 
@@ -329,9 +343,9 @@ If your URL is `https://my-instance.workday.com/my-tenant/d/etc`, your tenant is
 
 <Note>
   Creating a custom report is optional for generating WQL (Workday Query Language). However, there are several ways to obtain WQL: <br/>
-  - **Custom Report Feature**: By using the custom report feature, users can more accurately tailor the data they wish to extract from the data source and then convert the report to WQL.<br/>
+  - **Custom Report**: By using the custom report feature, users can more accurately tailor the data they wish to extract from the data source and then convert the report to WQL.<br/>
   - **Standard Reports**: You can utilise existing standard reports and convert them directly to WQL. To do this, navigate to **Convert Report to WQL** and select the `Standard Report`.<br/>
-  - **Data Source Navigation**: You can also navigate to the Data Source using global search and access a specific data source (e.g., All Workers) to view the available data source fields. From there, you can form a WQL query according to the WQL syntax.
+  - **Data Sources**: You can also navigate to the **Data Sources** using global search and access a specific data source (e.g., All Workers) to view the available data source fields. From there, you can form a WQL query according to the WQL syntax.
 
 </Note>
 
