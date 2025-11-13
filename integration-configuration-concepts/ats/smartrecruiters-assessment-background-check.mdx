@@ -78,9 +78,9 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 ## Add an assessment / background check to a candidate
 
-SmartRecruiters supports two assessment delivery modes: <b>Candidate Assessments</b> (manual per candidate) and <b>Inline Assessments</b> (auto‑triggered by workflow configuration).
+SmartRecruiters supports three assessment delivery modes: <b>Ad-hoc</b> (manual per candidate), <b>Auto Trigger</b> (auto‑triggered by workflow configuration), and <b>Inline Assessment</b> (assessment within candidate application).
 
-### Candidate Assessments
+### Ad-hoc Assessments
 <Steps>
   <Step title="Open candidate profile">
     1. Log in to SmartRecruiters.
@@ -101,14 +101,14 @@ SmartRecruiters supports two assessment delivery modes: <b>Candidate Assessments
     </Note>
     <Steps>
       <Step title="Navigate to Person profile">
-        Navigate to the `Person profile` and click on `Job` for which you want to add the assessment.
+        Navigate to the `Person profile` and click on the `Job` for which you want to add the assessment.
         <Frame>
           <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Package Selection Form" src="/images/smartrecruiters-assessments-background-checks/select-job-on-candidate-profile.png" />
         </Frame>
       </Step>
 
       <Step title="Find Assessments Section">
-        Once you open the `Job` for the candidate, you will find the `Assessments section` there, specific to that particular job application.
+        Once you open the `Job` for the candidate, you will find the `Assessments` section there, specific to that particular job application.
         <Frame>
           <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Package Selection Form" src="/images/smartrecruiters-assessments-background-checks/assessment-section-in-job-application.png" />
         </Frame>
@@ -117,7 +117,7 @@ SmartRecruiters supports two assessment delivery modes: <b>Candidate Assessments
 
 
 
-    2. Click `Order Assessments` button
+    2. Click the `Order Assessments` button.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Package Selection Form" src="/images/smartrecruiters-assessments-background-checks/order-assessment-button.png" />
     </Frame>
@@ -146,8 +146,8 @@ SmartRecruiters supports two assessment delivery modes: <b>Candidate Assessments
 </Steps>
 
 
-### Inline Assessments
-Configure an inline assessment that auto‑triggers when a candidate is added to a job or moved into the assessment stage:
+### Auto Trigger Assessments
+Configure an assessment that auto‑triggers when a candidate is added to a job or moved into the assessment stage:
 <Steps>
   <Step title="Open Settings">
     Click the profile icon and select `Settings`.
@@ -170,14 +170,27 @@ Configure an inline assessment that auto‑triggers when a candidate is added to
     </Frame>
   </Step>
 
-  <Step title="Add Skills Test step">
-    Click `Add Step` and choose `Skills Test`.
+  <Step title="Add step">
+    Click `Add Step` and choose `Skills Test` or any other `Stage` on which you want to configure the `Assessments`.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Skills Test Step" src="/images/smartrecruiters-assessments-background-checks/add-select-step.png" />
     </Frame>
-    The step is added to the hiring process:
+    Once you select the step, it will be added to the hiring process.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Skills Test Step Added" src="/images/smartrecruiters-assessments-background-checks/selected-step.png" />
+    </Frame>
+
+    You can also add a `Custom Stage` by selecting the `Add Custom` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Skills Test Step Added" src="/images/smartrecruiters-assessments-background-checks/select-custom-stage.png" />
+    </Frame>
+    Enter the name of the `Stage`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Skills Test Step Added" src="/images/smartrecruiters-assessments-background-checks/custom-stage-name.png" />
+    </Frame>
+    Once you click the `Add` button, the step will be added to the hiring process.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Skills Test Step Added" src="/images/smartrecruiters-assessments-background-checks/selected-custom-step.png" />
     </Frame>
   </Step>
 
@@ -233,7 +246,7 @@ Configure an inline assessment that auto‑triggers when a candidate is added to
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Candidate for Stage" src="/images/smartrecruiters-assessments-background-checks/select-candidate-for-stage.png" />
     </Frame>
-    Click `Convert` button under the `Applicant profile` section.
+    Click the `Convert` button under the `Applicant profile` section.
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Candidate for Stage" src="/images/smartrecruiters-assessments-background-checks/select-convert-candidate-profile.png" />
     </Frame>
@@ -248,7 +261,44 @@ Configure an inline assessment that auto‑triggers when a candidate is added to
   </Step>
 </Steps>
 
+### Inline Assessments
+Configure an inline assessment that needs to be completed by the candidate within the job application.
+<Note>
+    Inline assessments introduce the ability to configure assessments as part of the job application process. Candidates will be asked to take an assessment when they apply. Once they complete the assessment, the application will be created successfully and will include the results.
+    Inline assessments are offered as a new category of assessments in our Marketplace. To add an inline assessment, a system admin needs to edit the hiring process for which they want the inline assessment to be active.
+</Note>
+<Steps>
+  <Step title="Open Settings">
+    Click the profile icon and select `Settings`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Access Admin Settings" src="/images/smartrecruiters-assessments-background-checks/access-admin-settings.png" />
+    </Frame>
+  </Step>
 
+  <Step title="Open Hiring Process">
+    Under Settings, click `Hiring Process`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Access Hiring Process" src="/images/smartrecruiters-assessments-background-checks/access-hiring-process.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select hiring process">
+    Create a new hiring process or select the default one, then click the `Edit` icon.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Hiring Process" src="/images/smartrecruiters-assessments-background-checks/select-inline-hiring-process-type.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Assessment Package">
+    Enable the assessment package you want to add to the hiring process for candidates within the job application.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Hiring Process" src="/images/smartrecruiters-assessments-background-checks/enable-inline-assessment-package.png" />
+    </Frame>
+    <Note>
+       You can only select a single package at a time for the hiring process to enable it within the candidate job application flow.
+    </Note>
+  </Step>
+</Steps>
 
 ## View order status and assessment result in SmartRecruiters
 
