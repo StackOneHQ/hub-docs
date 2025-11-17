@@ -6,12 +6,15 @@ description: "Follow these steps to connect Workday via Report as a Service (Raa
 import IntegrationFooter from "/snippets/integration-footer.mdx"
 
 <Warning>
-  This guidance assumes that you have admin privileges for your Workday account.
+  This guidance assumes you have administrative privileges for your Workday account.
 </Warning>
 
-Workday Report as a Service (RaaS) allows you to create custom reports and expose them as web services for integration purposes. This guide will walk you through setting up an Integration System User, creating a custom report, and connecting it through the integration platform.
+Workday Report as a Service (RaaS) allows you to create custom reports and expose them as web services for integration purposes. 
+This guide walks you through setting up an Integration System User, creating and sharing a web‑service‑enabled Advanced custom report, 
+configuring security group permissions, and connecting it through the integration platform.
 
-## Set up an Integration System User
+
+## Set Up an Integration System User (Optional)
 
 <Warning>
   Setting up an **Integration System User (ISU)** is recommended but optional. You can use an existing Workday user account with appropriate permissions instead. 
@@ -19,90 +22,52 @@ Workday Report as a Service (RaaS) allows you to create custom reports and expos
 </Warning>
 
 <Steps>
-  <Step title="Search for Create Integration System User">
-    Search and navigate to the `Create Integration System User` task.
-    
+  <Step title="Go to Create Integration System User">
+    Search for and open the `Create Integration System User` task.
     <Frame>
-      <img
-        className="rounded-md"
-        style={{ margin:"0 auto",border:"1px solid #efefef" }}
-        alt="Create Integration System User"
-        src="/images/workday-raas/image5.png"
-      />
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Create Integration System User" src="/images/workday-raas/workday_raas_search_create_ISU.png" />
     </Frame>
   </Step>
 
   <Step title="Enter account information">
-    Enter a username and password in the Account Information section.
-    
+    Enter a username and strong password in the Account Information section, then click `OK` to create the user.
     <Frame>
-      <img
-        className="rounded-md"
-        style={{ margin:"0 auto",border:"1px solid #efefef" }}
-        alt="Account Information"
-        src="/images/workday-raas/image6.png"
-      />
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Account Information" src="/images/workday-raas/workday_raas_create_ISU.png" />
     </Frame>
-
-    Click `OK` to create the user.
   </Step>
 </Steps>
 
-## Create Custom Report
+
+## Create and View a Custom Report (Optional)
 
 <Steps>
-  <Step title="Navigate to Report Designer">
-    Enter "Create Custom Report" in the Workday search bar and select it from the results.
-
+  <Step title="Go to Create Custom Report">
+    Search and navigate to the `Create Custom Report` task
     <Frame>
-      <img
-        className="rounded-md"
-        style={{ margin:"0 auto",border:"1px solid #efefef" }}
-        alt="Accessing Report Designer"
-        src="/images/workday-raas/image1.png"
-      />
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Accessing Report Designer" src="/images/workday-raas/workday_raas_search_custom_report.png" />
     </Frame>
   </Step>
   
-  <Step title="Initialize Report Creation">
-    Click "Create Custom Report" to begin the setup process.
-  </Step>
-</Steps>
+  <Step title="Configure custom report">
+    Follow the steps below to configure the custom report:
 
-## Configure Report Settings
-
-<Steps>
-  <Step title="Set Report Properties">
-    Enter the required information:
-
-    - **Report Name**: Must be unique within your tenant
-    - **Report Type**: Select "Simple"
-
+    - **Report Name**: Must be unique within the tenant
+    - **Report Type**: Select **Advanced**
+    - **Optimised for Performance**: Tick this box to enhance performance
+    - **Data Source**: Choose the appropriate data source based on the data you need (e.g. Workers for HCM reporting).
+       
     <Frame>
-      <img
-        className="rounded-md"
-        style={{ margin:"0 auto",border:"1px solid #efefef" }}
-        alt="Create Custom Report"
-        src="/images/workday-raas/image2.png"
-      />
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Create Custom Report" src="/images/workday-raas/workday_raas_create_custom_report.png" />
     </Frame>
-  </Step>
-  
-  <Step title="Select Data Sources">
-    Choose the appropriate data sources for your report based on the information you need to extract.
-  </Step>
-  
-  <Step title="Configure Fields">
-    Add and configure the necessary fields for your integration:
+    Click `OK` to continue.
 
-    1. Click "Add Field"
-    2. Select the source object
-    3. Choose the specific field
-    4. Configure field properties as needed
-    5. Set each "Column Heading Override XML Alias" to the corresponding field names
-
+    Add and configure report fields:
+    - Click the `+` icon to add a field.
+    - Select a Business Object (e.g. Worker) in the **Business Object** column.
+    - Choose the specific field (e.g. Employee ID) in the **Field** column.
+    - Set aliases in **Column Heading Override** and **Column Heading Override XML Alias** to ensure stable field names in API responses.
     <Info>
-      For employee data, you may want to include fields such as:
+      For employee data, you can include the following fields:
       - Employee_ID
       - First_Name
       - Last_Name
@@ -118,162 +83,63 @@ Workday Report as a Service (RaaS) allows you to create custom reports and expos
       - Termination_Date
       - Company_Name
     </Info>
-
     <Frame>
-      <img
-        className="rounded-md"
-        style={{ margin:"0 auto",border:"1px solid #efefef" }}
-        alt="Basic Settings"
-        src="/images/workday-raas/image3.png"
-      />
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Fields and Aliases Settings" src="/images/workday-raas/workday_raas_fields_aliases.png" />
     </Frame>
   </Step>
-  
-  <Step title="Add Filters (Optional)">
-    Add filters to refine the data displayed in your report. You can select the field and operators to filter by.
 
+  <Step title="Configure report filters (Optional)">
+    Add filters to narrow the result data set (e.g. Supervisory Organisation – Primary Position).
     <Frame>
-      <img
-        className="rounded-md"
-        style={{ margin:"0 auto",border:"1px solid #efefef" }}
-        alt="Filters"
-        src="/images/workday-raas/image4.png"
-      />
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Filters Settings" src="/images/workday-raas/workday_raas_filter_for_custom_report.png" />
     </Frame>
   </Step>
-</Steps>
 
-## Enable RaaS Settings
-
-<Steps>
-  <Step title="Configure RaaS">
-    Navigate to the "Advanced" tab and enable web service settings:
-
+  <Step title="Configure report prompts">
+    Enable prompt display by ticking **Display Prompt Values in Subtitle**. Leave other settings at their defaults.
     <Frame>
-      <img
-        className="rounded-md"
-        style={{ margin:"0 auto",border:"1px solid #efefef" }}
-        alt="RaaS Settings"
-        src="/images/workday-raas/image5.png"
-      />
-    </Frame>
-    
-    1. Check "Enable as Web Service"
-    2. Press "OK" to save
-  </Step>
-  
-  <Step title="Find Report URL">
-    Press the three-dot menu and select "Web Service" => "View URLs".
-
-    <Frame>
-      <img
-        className="rounded-md"
-        style={{ margin:"0 auto",border:"1px solid #efefef" }}
-        alt="View URLs"
-        src="/images/workday-raas/image6.png"
-      />
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Prompts Settings" src="/images/workday-raas/workday_raas_custom_report_prompt.png" />
     </Frame>
   </Step>
-  
-  <Step title="Copy Report URL">
-    Copy the URL and save it. This will be used to configure the integration.
 
+  <Step title="Configure advanced options">
+    Tick **Optimised for Performance** and **Enable As Web Service**. Leave other advanced options unchanged.
     <Frame>
-      <img
-        className="rounded-md"
-        style={{ margin:"0 auto",border:"1px solid #efefef" }}
-        alt="Copy Report URL"
-        src="/images/workday-raas/image9.png"
-      />
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Advanced Settings" src="/images/workday-raas/workday_raas_custom_report_advanced.png" />
+    </Frame>
+    Click `OK` to save the report.
+  </Step>
+
+  <Step title="Go to View Custom Report">
+    Search for `View Custom Report`, select the report you just created, then click `OK` to open it.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Accessing Report Designer" src="/images/workday-raas/workday_raas_search_view_custom_report.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Retrieve the Report URL">
+    Open the three‑dot menu, select _Web Service_ > _View URLs_; you will be redirected to the **View URLs Web Service** page.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="View URLs" src="/images/workday-raas/workday_raas_view_custom_report_view_url.png" />
+    </Frame>
+    Right‑click the **Workday XML** link and copy its URL.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Copy Workday XML URL" src="/images/workday-raas/workday_raas_workday_xml_url_page.png" />
     </Frame>
   </Step>
 </Steps>
 
-## Configure Security Group Permissions
 
-<Steps>
-  <Step title="Create Security Group">
-    Search for "Create Security Group" and select "Integration System Security Group (Unconstrained)" as the type. Enter a name for the security group and add the Integration System User you created earlier.
-  </Step>
+## Connecting to StackOne
 
-  <Step title="Set Report Permissions">
-    Ensure the Integration System User has access to the custom report:
-    
-    - Navigate to "Maintain Permissions for Security Group"
-    - Select your security group
-    - Grant **Get Only** access to the custom report
-    - Verify the ISU has access to the report's data source
-  </Step>
-</Steps>
+Use the **ISU Username**, **ISU Password**, and **Report URL** to create a connection.
+<Frame>
+  <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="StackOne Connector Hub" src="/images/workday-raas/workday_raas_connect_hub_stackone.png" />
+</Frame>
+<Note>
+  If you are encountering issues after connecting and calling the unified **List Employees** endpoint, you can visit [Integration Configuration & Concepts guide of Workday RaaS](https://hub.stackone.com/integration-configuration-concepts/hris/workday-raas)
+</Note>
 
-## Approve Security Policy Changes
-
-<Steps>
-  <Step title="Activate Pending Changes">
-    In the Search bar, search for "Activate Pending Security Policy Changes". Review the policies that need approval in the summary of the changes in the security policy. Approve the pending security policy changes to activate them.
-  </Step>
-</Steps>
-
-## Linking your Account
-
-Now that you have all the required information, you can link your account.
-
-<Steps>
-  <Step title="Access Integrations">
-    Navigate to the Integrations page in your platform.
-  </Step>
-
-  <Step title="Find Workday RaaS">
-    Search for Workday RaaS in the list of available integrations and click on it.
-  </Step>
-
-  <Step title="Enter Connection Details">
-    Fill in the required fields with the information you gathered:
-    
-    - **Report URL**: The URL you copied from the custom report
-    - **Username**: The Integration System User username
-    - **Password**: The Integration System User password
-  </Step>
-
-  <Step title="Test and Save">
-    Click Test Connection to verify the connection, then click Save to complete the integration.
-  </Step>
-</Steps>
-
-<IntegrationFooter />
-
-## Available data
-
-This integration provides access to custom report data from Workday. The available data depends on the fields you configured in your custom report and can include:
-
-<ul>
-  <li>Employee Information</li>
-  <li>Job Details</li>
-  <li>Compensation Data</li>
-  <li>Organizational Information</li>
-  <li>Time Off and Leave</li>
-  <li>Custom Fields</li>
-</ul>
-
-## Troubleshooting
-
-<Steps>
-  <Step title="Authentication Issues">
-    If experiencing authentication errors:
-
-    - Verify security group settings
-    - Check that the ISU has access to the report
-    - Ensure the username and password are correct
-  </Step>
-  
-  <Step title="Performance Optimization">
-    To improve performance:
-
-    - Use indexed fields where possible
-    - Use filters to limit the data returned
-    - Consider scheduling report generation during off-peak hours
-  </Step>
-</Steps>
 
 ## Useful Links
 
