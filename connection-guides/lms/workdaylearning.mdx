@@ -185,26 +185,64 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   </Step>
 </Steps>
 
-## Using Scorm Course Blocker
+## If Using Media File Blocker to prevent Automatic Course Completion
 
 <Steps>
-  <Step title="Download Scorm Course Blocker and Upload to Workday">
-   Download this file [workday-scorm-course.zip](/assets/workday-scorm-course.zip). 
+  <Step title="Get Asset from content provider"/>
+  <Step title="Accessing View Drive">
+    - Open Workday.
+    - In the search bar, type 'View Drive'.
+    - Click on 'View Drive' from the search results to navigate to the drive page.
 
-   In the Workday UI, search View Media > Create > Media Document Upload Create > Attach File and click Ok.
     <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Edit BP" src="/images/workday/create-media.png" />
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Accessing View Drive" src="/images/workday/workday-homepage.jpg" />
     </Frame>
 
-
-   Search View Reference IDs > Media - navigate to the correct document and copy the Reference ID.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Edit BP" src="/images/workday/ref-ids.png" />
-    </Frame>
+    [Watch this step](https://loom.com/share/badd4d0b64c349ec8f99e5638e6ea790?t=0)
   </Step>
 
-  <Step title="Enter these details in the account linking step">
-    In the account linking step, enter the Reference ID.
+  <Step title="Initiating File Upload">
+    - On the drive page, locate the 'New' button in the top left corner.
+    - Click on 'New' and then select 'Upload' from the dropdown menu.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Initiating File Upload" src="/images/workday/workday-view-drive.jpg" />
+    </Frame>
+    [Watch this step](https://loom.com/share/badd4d0b64c349ec8f99e5638e6ea790?t=18)
+  </Step>
+
+  <Step title="Selecting the File to Upload">
+    - Choose the file you want to upload (e.g., a PDF).
+    - Ensure the file is relevant, such as an instructional PDF for users.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Selecting the File to Upload" src="/images/workday/workday-upload-asset.jpg" />
+    </Frame>
+
+    [Watch this step](https://loom.com/share/badd4d0b64c349ec8f99e5638e6ea790?t=29)
+  </Step>
+
+  <Step title="Completing the Upload Process">
+    - After selecting the file, confirm the upload.
+    - Wait for the upload to complete.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Completing the Upload Process" src="/images/workday/workday-uploaded-asset.jpg"/>
+    </Frame>
+
+    [Watch this step](https://loom.com/share/badd4d0b64c349ec8f99e5638e6ea790?t=43)
+  </Step>
+
+  <Step title="Retrieving Workday ID">
+    - Click on the uploaded item to view its details.
+    - Navigate to the 'Info' section to find the Workday ID.
+    - Copy the Workday ID for future reference.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Retrieving Workday ID" src="/images/workday/workday-copy-asset-id.jpg" />
+    </Frame>
+
+    [Watch this step](https://loom.com/share/badd4d0b64c349ec8f99e5638e6ea790?t=54)
   </Step>
 </Steps>
 
