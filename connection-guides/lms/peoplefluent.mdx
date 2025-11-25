@@ -1,0 +1,48 @@
+---
+title: "PeopleFluent"
+description: "How to obtain the credentials required to connect to PeopleFluent."
+---
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+You must have administrator access in your PeopleFluent account to complete these steps.
+</Warning>
+
+## Collect your Credentials
+
+<Steps>
+  <Step title="Create an Administrator User">
+    In PeopleFluent, go to **Manage Center → Users → User Manager → Users**.  
+    Click **Create**, enter the user details, and assign a **System Administrator** role (or a system role with unrestricted access to **User Manager** and **Users**). Click **Save**.
+    <Frame>
+      <img className="rounded-md" alt="PeopleFluent create admin user"
+        src="/images/peoplefluent/create-admin-user.png"
+        style={{ margin:'0 auto', border:'1px solid #efefef' }} />
+    </Frame>
+  </Step>
+
+  <Step title="Collect Your Credentials">
+    Gather the following fields:
+    - **Username** — the administrator user’s login.
+    - **Password** — the administrator user’s password.
+    - **Company Domain** — taken from your login URL. For a URL like  
+      `https://my-domain.learning.peoplefluent.net/ekp/servlet/ekp/login`, enter `my-domain`.
+    <Frame>
+      <img className="rounded-md" alt="PeopleFluent credential fields"
+        src="/images/peoplefluent/credentials.png"
+        style={{ margin:'0 auto', border:'1px solid #efefef' }} />
+    </Frame>
+  </Step>
+</Steps>
+
+## Linking Your PeopleFluent Account
+<Steps>
+  <Step title="Provide Your Credentials">
+    Enter **Username**, **Password**, and **Company Domain** in the connection form.
+  </Step>
+  <Step title="Click Connect">
+    Click **Connect** to verify credentials and establish the connection.
+  </Step>
+</Steps>
+
+<IntegrationFooter />

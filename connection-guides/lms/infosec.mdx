@@ -1,0 +1,52 @@
+---
+title: "Infosec IQ"
+description: "How to obtain the credentials required to connect to Infosec IQ."
+---
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+You must have administrator access in your Infosec IQ account to complete these steps.
+</Warning>
+
+## Collect your Credentials
+
+<Steps>
+  <Step title="Generate an API Key">
+    In your Infosec IQ admin console, navigate to **Account Settings → API Keys**.  
+    Click **Create API Key**, provide a descriptive name, then click **Save** to get your API Key.  
+    <Frame>
+      <img className="rounded-md" alt="Infosec IQ API Key generation"
+        src="/images/infosec/api-key-generation.png"
+        style={{ margin:'0 auto', border:'1px solid #efefef' }} />
+    </Frame>
+  </Step>
+
+  <Step title="Select Your Server URL">
+    Determine the correct server region for your account and select the corresponding URL:  
+    - North American Server: `https://securityiq.infosecinstitute.com`  
+    - EU Server: `https://securityiq-eu.infosecinstitute.com`  
+    <Frame>
+      <img className="rounded-md" alt="Infosec IQ server region selector"
+        src="/images/infosec/server-url-selection.png"
+        style={{ margin:'0 auto', border:'1px solid #efefef' }} />
+    </Frame>
+  </Step>
+
+  <Step title="Copy Your Credentials">
+    Copy the following details exactly as shown to use when setting up the connection:  
+    - **API Key** (e.g., `c1c11me7-7ffa-4a7e-915f-1633e0bb83e5`)  
+    - **Server URL** (choose one of the two options above)
+  </Step>
+</Steps>
+
+## Linking Your Infosec IQ Account
+<Steps>
+  <Step title="Enter Your Credentials">
+    Enter the **API Key** and **Server URL** collected above into the connection setup form.
+  </Step>
+  <Step title="Click Connect">
+    Click the **Connect** button. The system will validate the key and server URL by performing a simple API call to the selected server region.
+  </Step>
+</Steps>
+
+<IntegrationFooter />

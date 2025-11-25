@@ -1,0 +1,144 @@
+---
+title: "Workday RaaS"
+description: "Follow these steps to connect Workday via Report as a Service (RaaS) successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+<Warning>
+  This guidance assumes you have administrative privileges for your Workday account.
+</Warning>
+
+
+## Set Up an Integration System User (Optional)
+
+<Warning>
+  Setting up an **Integration System User (ISU)** is recommended but optional. You can use an existing Workday user account with appropriate permissions instead. 
+  The key requirement is having valid credentials **(username and password)** with access to create and manage custom reports.
+</Warning>
+
+<Steps>
+  <Step title="Go to Create Integration System User">
+    Search for and open the `Create Integration System User` task.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Create Integration System User" src="/images/workday-raas/workday_raas_search_create_ISU.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter account information">
+    Enter a username and strong password in the Account Information section, then click `OK` to create the user.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Account Information" src="/images/workday-raas/workday_raas_create_ISU.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Create and View a Custom Report (Optional)
+
+<Steps>
+  <Step title="Go to Create Custom Report">
+    Search and navigate to the `Create Custom Report` task
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Accessing Report Designer" src="/images/workday-raas/workday_raas_search_custom_report.png" />
+    </Frame>
+  </Step>
+  
+  <Step title="Configure custom report">
+    Follow the steps below to configure the custom report:
+
+    - **Report Name**: Must be unique within the tenant
+    - **Report Type**: Select **Advanced**
+    - **Optimised for Performance**: Tick this box to enhance performance
+    - **Data Source**: Choose the appropriate data source based on the data you need (e.g. Workers for HCM reporting).
+       
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Create Custom Report" src="/images/workday-raas/workday_raas_create_custom_report.png" />
+    </Frame>
+    Click `OK` to continue.
+
+    Add and configure report fields:
+    - Click the `+` icon to add a field.
+    - Select a Business Object (e.g. Worker) in the **Business Object** column.
+    - Choose the specific field (e.g. Employee ID) in the **Field** column.
+    - Set aliases in **Column Heading Override** and **Column Heading Override XML Alias** to ensure stable field names in API responses.
+    <Info>
+      For employee data, you can include the following fields:
+      - Employee_ID
+      - First_Name
+      - Last_Name
+      - Display_Name
+      - Email_Work
+      - Email_Home
+      - Phone_Work
+      - Phone_Home
+      - Job_Title
+      - Hire_Date
+      - Gender
+      - Date_Of_Birth
+      - Termination_Date
+      - Company_Name
+    </Info>
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Fields and Aliases Settings" src="/images/workday-raas/workday_raas_fields_aliases.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure report filters (Optional)">
+    Add filters to narrow the result data set (e.g. Supervisory Organisation – Primary Position).
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Filters Settings" src="/images/workday-raas/workday_raas_filter_for_custom_report.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure report prompts">
+    Enable prompt display by ticking **Display Prompt Values in Subtitle**. Leave other settings at their defaults.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Prompts Settings" src="/images/workday-raas/workday_raas_custom_report_prompt.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure advanced options">
+    Tick **Optimised for Performance** and **Enable As Web Service**. Leave other advanced options unchanged.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Advanced Settings" src="/images/workday-raas/workday_raas_custom_report_advanced.png" />
+    </Frame>
+    Click `OK` to save the report.
+  </Step>
+
+  <Step title="Go to View Custom Report">
+    Search for `View Custom Report`, select the report you just created, then click `OK` to open it.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Accessing Report Designer" src="/images/workday-raas/workday_raas_search_view_custom_report.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Retrieve the Report URL">
+    Open the three‑dot menu, select _Web Service_ > _View URLs_; you will be redirected to the **View URLs Web Service** page.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="View URLs" src="/images/workday-raas/workday_raas_view_custom_report_view_url.png" />
+    </Frame>
+    Right‑click the **Workday XML** link and copy its URL.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Copy Workday XML URL" src="/images/workday-raas/workday_raas_workday_xml_url_page.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Connecting to StackOne
+
+Use the **ISU Username**, **ISU Password**, and **Report URL** to create a connection.
+<Frame>
+  <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="StackOne Connector Hub" src="/images/workday-raas/workday_raas_connect_hub_stackone.png" />
+</Frame>
+<Note>
+  If you are encountering issues after connecting and calling the unified **List Employees** endpoint, you can visit [Integration Configuration & Concepts guide of Workday RaaS](https://hub.stackone.com/integration-configuration-concepts/hris/workday-raas)
+</Note>
+
+
+## Useful Links
+
+<Card title="Workday Community" icon="link" href="https://community.workday.com">
+  https://community.workday.com
+</Card>

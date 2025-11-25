@@ -1,0 +1,292 @@
+---
+title: "SmartRecruiters Background Check"
+description: "To successfully send background check or assessment notifications from SmartRecruiters, follow these steps in your SmartRecruiters account and complete the required actions."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  The following guidance assumes you have Admin privileges for your SmartRecruiters
+  account.
+</Warning>
+
+## To Get External Trigger Token
+<Steps>
+  <Step title="Get the External Trigger Token">
+  From the StackOne Hub, you will receive the `External Trigger Token` needed to enable the SmartRecruiters integration.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="External Trigger Token" src="/images/smartrecruiters-assessments-background-checks/external-trigger-token.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Enable the integration in your SmartRecruiters account
+<Steps>
+  <Step title="Open Settings">
+    Navigate to `Settings` in the SmartRecruiters dashboard. On the home page, click your account avatar and select `Settings`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Settings" src="/images/smartrecruiters-assessments-background-checks/sandbox-settings.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Open Apps & Integrations">
+    Select `Apps & Integrations` under Settings.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Apps & Integrations" src="/images/smartrecruiters-assessments-background-checks/integration-page.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select the integration">
+    Locate and click the target integration in the list.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Integration" src="/images/smartrecruiters-assessments-background-checks/select-integration.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Review details & Connect">
+    Review the integration details and click `Connect`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Integration Details" src="/images/smartrecruiters-assessments-background-checks/integration-details.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Authorize integration">
+    1. Review the requested permissions.
+    2. Click the **Allow and Continue** button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enable Integration Connect Button" src="/images/smartrecruiters-assessments-background-checks/enable-integration.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Submit credentials">
+    Enter the external trigger token and email in the form, then click the `Submit` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Input External Trigger Token" src="/images/smartrecruiters-assessments-background-checks/input-external-trigger-token.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Confirm connection">
+    After successful verification, a confirmation message appears in the top‑right corner: `StackOne Assessments is connected`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Integration Connected Successfully" src="/images/smartrecruiters-assessments-background-checks/integration-connected.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Add an assessment / background check to a candidate
+
+SmartRecruiters supports three assessment delivery modes: <b>Ad-hoc</b> (manual per candidate), <b>Auto Trigger</b> (auto‑triggered by workflow configuration), and <b>Inline Assessment</b> (assessment within candidate application).
+
+### Ad-hoc Assessments
+<Steps>
+  <Step title="Open candidate profile">
+    1. Log in to SmartRecruiters.
+    2. Navigate to **People**.
+    3. Open the desired candidate profile.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Candidate" src="/images/smartrecruiters-assessments-background-checks/select-candidate.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Initiate assessment/background check">
+    From the candidate profile:
+    
+    1. Look for the assessment section
+    <Note>
+       If a candidate has multiple jobs, the `Assessments` section won’t appear directly on their profile. To access the assessments in this case, please follow these steps to navigate to the `Assessments` section for that candidate.
+    </Note>
+    <Steps>
+      <Step title="Navigate to Person profile">
+        Navigate to the `Person profile` and click on the `Job` for which you want to add the assessment.
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Package Selection Form" src="/images/smartrecruiters-assessments-background-checks/select-job-on-candidate-profile.png" />
+        </Frame>
+      </Step>
+
+      <Step title="Find Assessments Section">
+        Once you open the `Job` for the candidate, you will find the `Assessments` section there, specific to that particular job application.
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Package Selection Form" src="/images/smartrecruiters-assessments-background-checks/assessment-section-in-job-application.png" />
+        </Frame>
+      </Step>
+    </Steps>
+
+
+
+    2. Click the `Order Assessments` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Package Selection Form" src="/images/smartrecruiters-assessments-background-checks/order-assessment-button.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select package">
+    In the assessment modal:
+    1. <b>Select Assessment Partner</b>: Choose the assessment vendor.
+    2. <b>Select Package</b>: Pick a test package.
+    3. Click **Continue**.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Package Selection Form" src="/images/smartrecruiters-assessments-background-checks/package-selection-form.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Send to candidate">
+    1. Review test details and candidate information.
+    2. Click **Send**.
+    3. The candidate receives an email with the test link and instructions.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Send Test to Candidate" src="/images/smartrecruiters-assessments-background-checks/send-test-to-candidate.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+### Auto Trigger Assessments
+Configure an assessment that auto‑triggers when a candidate is added to a job or moved into the assessment stage:
+<Steps>
+  <Step title="Open Settings">
+    Click the profile icon and select `Settings`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Access Admin Settings" src="/images/smartrecruiters-assessments-background-checks/access-admin-settings.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Open Hiring Process">
+    Under Settings, click `Hiring Process`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Access Hiring Process" src="/images/smartrecruiters-assessments-background-checks/access-hiring-process.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select hiring process">
+    Create a new hiring process or select the default one, then click the `Edit` icon.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Hiring Process" src="/images/smartrecruiters-assessments-background-checks/select-hiring-process-type.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add step">
+    Click `Add Step` and choose `Skills Test` or any other `Stage` on which you want to configure the `Assessments`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Skills Test Step" src="/images/smartrecruiters-assessments-background-checks/add-select-step.png" />
+    </Frame>
+    Once you select the step, it will be added to the hiring process.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Skills Test Step Added" src="/images/smartrecruiters-assessments-background-checks/selected-step.png" />
+    </Frame>
+
+    You can also add a `Custom Stage` by selecting the `Add Custom` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Skills Test Step Added" src="/images/smartrecruiters-assessments-background-checks/select-custom-stage.png" />
+    </Frame>
+    Enter the name of the `Stage`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Skills Test Step Added" src="/images/smartrecruiters-assessments-background-checks/custom-stage-name.png" />
+    </Frame>
+    Once you click the `Add` button, the step will be added to the hiring process.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Skills Test Step Added" src="/images/smartrecruiters-assessments-background-checks/selected-custom-step.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Save hiring process">
+    Click `Save Hiring Process` to persist the changes.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Save Hiring Process" src="/images/smartrecruiters-assessments-background-checks/save-hiring-process.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add assessment entry">
+    In the `Skills Test` step, open the menu and select `Assessments`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Assessments" src="/images/smartrecruiters-assessments-background-checks/add-assessments.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure assessment">
+    Click `Configure`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Configure Assessment" src="/images/smartrecruiters-assessments-background-checks/configure-assessments.png" />
+    </Frame>
+    Select the assessment partner, assessment type, and package. Click `Save`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Assessment Package" src="/images/smartrecruiters-assessments-background-checks/select-assessment-package-config.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enable auto‑trigger">
+    Return to the `Config` page and enable the `Auto-triggered` toggle for the package.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enable Auto Trigger" src="/images/smartrecruiters-assessments-background-checks/enable-auto-trigger.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add candidate">
+    Click the `+` icon (top right) and choose `Add Candidate`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add Candidate" src="/images/smartrecruiters-assessments-background-checks/add-candidate.png" />
+    </Frame>
+  You can upload files or add a candidate manually. For this guide we follow the manual addition form path.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Manually Added Candidate" src="/images/smartrecruiters-assessments-background-checks/manually-added-candidate.png" />
+    </Frame>
+    Complete the form and click `Add Candidate`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Form" src="/images/smartrecruiters-assessments-background-checks/candidate-form.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Move candidate to assessment stage">
+    Open **People** and select the candidate.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Candidate for Stage" src="/images/smartrecruiters-assessments-background-checks/select-candidate-for-stage.png" />
+    </Frame>
+    Click the `Convert` button under the `Applicant profile` section.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Candidate for Stage" src="/images/smartrecruiters-assessments-background-checks/select-convert-candidate-profile.png" />
+    </Frame>
+    Click `Move Forward` and select `Skills Test` under the `In Review` stage.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Assessment Stage" src="/images/smartrecruiters-assessments-background-checks/select-assessment-stage.png" />
+    </Frame>
+    A checkmark appears on `Skills Test` once the assessment order is sent.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Inline Stage Sent" src="/images/smartrecruiters-assessments-background-checks/inline-stage-sent.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## View order status and assessment result in SmartRecruiters
+
+Navigate to the candidate application to check the status of assessment orders or results.
+
+<Steps>
+  <Step title="View status">
+    When an assessment is sent to the candidate, you will see the assessment status in the candidate's application profile.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Sent Status" src="/images/smartrecruiters-assessments-background-checks/assessment-sent-status.png" />
+    </Frame>
+  </Step>
+
+  <Step title="View results">
+    After the candidate completes the assessment:
+    1. **Status updates**: Track status (Sent, In Progress, Completed) in the candidate profile.
+    2. **Score updates**: View the score or result of the assessment for the candidate.
+    3. **Attachments / report**: Open the detailed results or follow the full report link (if provided).
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Status and Result Tracking" src="/images/smartrecruiters-assessments-background-checks/assessment-status-and-result-tracking.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developers.smartrecruiters.com/reference/apply-api">
+    https://developers.smartrecruiters.com/reference/apply-api
+</Card>

@@ -1,0 +1,70 @@
+---
+title: "Simployer One"
+description: "Follow these steps to connect Simployer One via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  Ensure you are an Owner in your Simployer One account. You need Owner permissions to generate access tokens.
+</Warning>
+
+If you've been directed to StackOne to integrate with Simployer One, the following steps will help you understand the process and any necessary actions to configure a successful integration.
+
+## Generate your Simployer One Access Token
+
+<Steps>
+  <Step title="Navigate to Access Tokens">
+    Log in to your Simployer One account and navigate to **Settings > Access tokens** from the side menu.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Access Tokens" src="/images/simployer/image1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Create New Access Token">
+    On the Access Token screen, fill in the following details:
+    - **Name**: Enter a name for the access token
+    - **Description**: Enter a description for the access token
+    - **Type**: Select **ALL** from the Type dropdown
+
+    Click **Save** to create the access token.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create New Access Token" src="/images/simployer/image2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Copy your Access Token">
+    Copy your displayed **Access Token** to be used in the next step.
+
+    <Warning>
+      **Important:** The token created will only be visible once, so make sure to keep it safe!
+    </Warning>
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy Access Token" src="/images/simployer/image3.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Connecting with StackOne
+
+<Steps>
+  <Step title="Enter Credentials">
+    Upon reaching the Link Account page, enter the **Access Token** from the previous step.
+
+    Proceed by clicking the Connect button.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/simployer/image4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Documentation" icon="link" href="https://docs.alexishr.com">
+  https://docs.alexishr.com
+</Card>

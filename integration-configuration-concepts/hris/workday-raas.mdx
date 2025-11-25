@@ -1,0 +1,319 @@
+---
+title: "Workday RaaS"
+description: "Follow these steps to configure and connect Workday via Report as a Service (RaaS) successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+<Warning>
+  This guidance assumes you have administrative privileges for your Workday account.
+</Warning>
+
+Workday Report as a Service (RaaS) allows you to create custom reports and expose them as web services for integration purposes. 
+This guide walks you through setting up an Integration System User, creating and sharing a web‑service‑enabled Advanced custom report, 
+configuring security group permissions, and connecting it through the integration platform.
+
+
+## Set Up an Integration System User (Optional)
+
+<Warning>
+  Setting up an **Integration System User (ISU)** is recommended but optional. You can use an existing Workday user account with appropriate permissions instead. 
+  The key requirement is having valid credentials **(username and password)** with access to create and manage custom reports.
+</Warning>
+
+<Steps>
+  <Step title="Go to Create Integration System User">
+    Search for and open the `Create Integration System User` task.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Create Integration System User" src="/images/workday-raas/workday_raas_search_create_ISU.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Enter account information">
+    Enter a username and strong password in the Account Information section, then click `OK` to create the user.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Account Information" src="/images/workday-raas/workday_raas_create_ISU.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Create and View a Custom Report (Optional)
+
+<Steps>
+  <Step title="Go to Create Custom Report">
+    Search and navigate to the `Create Custom Report` task
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Accessing Report Designer" src="/images/workday-raas/workday_raas_search_custom_report.png" />
+    </Frame>
+  </Step>
+  
+  <Step title="Configure custom report">
+    Follow the steps below to configure the custom report:
+
+    - **Report Name**: Must be unique within the tenant
+    - **Report Type**: Select **Advanced**
+    - **Optimised for Performance**: Tick this box to enhance performance
+    - **Data Source**: Choose the appropriate data source based on the data you need (e.g. Workers for HCM reporting).
+       
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Create Custom Report" src="/images/workday-raas/workday_raas_create_custom_report.png" />
+    </Frame>
+    Click `OK` to continue.
+
+    Add and configure report fields:
+    - Click the `+` icon to add a field.
+    - Select a Business Object (e.g. Worker) in the **Business Object** column.
+    - Choose the specific field (e.g. Employee ID) in the **Field** column.
+    - Set aliases in **Column Heading Override** and **Column Heading Override XML Alias** to ensure stable field names in API responses.
+    <Info>
+      For employee data, you can include the following fields:
+      - Employee_ID
+      - First_Name
+      - Last_Name
+      - Display_Name
+      - Email_Work
+      - Email_Home
+      - Phone_Work
+      - Phone_Home
+      - Job_Title
+      - Hire_Date
+      - Gender
+      - Date_Of_Birth
+      - Termination_Date
+      - Company_Name
+    </Info>
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Fields and Aliases Settings" src="/images/workday-raas/workday_raas_fields_aliases.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure report filters (Optional)">
+    Add filters to narrow the result data set (e.g. Supervisory Organisation – Primary Position).
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Filters Settings" src="/images/workday-raas/workday_raas_filter_for_custom_report.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure report prompts">
+    Enable prompt display by ticking **Display Prompt Values in Subtitle**. Leave other settings at their defaults.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Prompts Settings" src="/images/workday-raas/workday_raas_custom_report_prompt.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure advanced options">
+    Tick **Optimised for Performance** and **Enable As Web Service**. Leave other advanced options unchanged.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Advanced Settings" src="/images/workday-raas/workday_raas_custom_report_advanced.png" />
+    </Frame>
+    Click `OK` to save the report.
+  </Step>
+
+  <Step title="Go to View Custom Report">
+    Search for `View Custom Report`, select the report you just created, then click `OK` to open it.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Accessing Report Designer" src="/images/workday-raas/workday_raas_search_view_custom_report.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Retrieve the Report URL">
+    Open the three‑dot menu, select _Web Service_ > _View URLs_; you will be redirected to the **View URLs Web Service** page.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="View URLs" src="/images/workday-raas/workday_raas_view_custom_report_view_url.png" />
+    </Frame>
+    Right‑click the **Workday XML** link and copy its URL.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Copy Workday XML URL" src="/images/workday-raas/workday_raas_workday_xml_url_page.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Connecting to StackOne
+
+Use the **ISU Username**, **ISU Password**, and **Report URL** to create a connection.
+<Frame>
+  <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="StackOne Connector Hub" src="/images/workday-raas/workday_raas_connect_hub_stackone.png" />
+</Frame>
+<Info>
+  After connecting and calling the unified **List Employees** endpoint, you may see:
+  1. A response with all fields populated.
+  2. A response with fields present but values are `null`.
+  3. An error: `The task submitted is not authorized.`
+  4. An error: `Report not found`.
+
+  **Scenario 1** = successful configuration.  
+  **Scenario 2** = missing Security Group permissions for the ISU.  
+  **Scenarios 3 & 4** = insufficient report access for the ISU credentials used.
+
+  Proceed to [Configure Security Group Permissions for the ISU (Required for non‑null data)](#configure-security-group-permissions-for-the-isu-required-for-non‑null-data) 
+  and [Configure Custom Report Access for the ISU (Required for report access)](#configure-custom-report-access-for-the-isu-required-for-report-access) to resolve issues.
+</Info>
+
+
+## Configure Security Group Permissions for the ISU (Required for non‑null data)
+
+<Steps>
+  <Step title="Create a Security Group">
+    Search for and open the **Create Security Group** task.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Search Security Group" src="/images/workday-raas/workday_raas_search_security_group.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select type of Tenanted Security Group">
+    Choose `Integration System Security Group (Unconstrained)` and enter a name for the Security Group.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Create Security Group" src="/images/workday-raas/workday_raas_create_security_group.png" />
+    </Frame>
+    Click `OK`.
+  </Step>
+
+  <Step title="Assign the ISU to the Security Group">
+    Select `Integration System Users`. Pick the ISU created earlier (or another integration user).
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Add Members to Security Group" src="/images/workday-raas/workday_raas_assign_ISU_to_security_group.png" />
+    </Frame>
+    Click `OK` to save.
+  </Step>
+
+  <Step title="Go to Maintain Permissions for Security Group">
+    Search for `Maintain Permissions for Security Group` and open it.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Search Domain Security Policy Permissions" src="/images/workday-raas/workday_raas_search_for_maintain_permission_for_security_group.png" />
+    </Frame>
+    Select the Security Group you created in the steps above.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Select Created Security Group" src="/images/workday-raas/workday_raas_select_created_security_group.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Domain Security Policy Permissions">
+    Set required Domain Security Policy Permissions to **Get Only** in the _View/Modify Access_ column. Common Domain Security Policy Permissions are listed below:
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="View/Modify Access" src="/images/workday-raas/workday_raas_domain_security_policy_permissions.png" />
+    </Frame>
+    <Note>
+      Please note that Domain Security Policy Permissions can be customised within a Workday organisation, and this list does not account for such customisations.
+    </Note>
+    | Domain Security Policy | View/Modify Access |
+    | ---------------------- | ------------------ |
+    | Job Information | Get Only |
+    | Person Data: Date of Birth | Get Only |
+    | Person Data: Ethnicity | Get Only |
+    | Person Data: Gender | Get Only |
+    | Person Data: Home Email | Get Only |
+    | Person Data: ID Information | Get Only |
+    | Person Data: Marital Status | Get Only |
+    | Person Data: Personal Data | Get Only |
+    | Person Data: Work Email | Get Only |
+
+    <Warning>
+      Depending on the fields included in your custom report, additional Domain Security Policy Permissions may be required. 
+      If you encounter `null` values in the API response, review and add the necessary permissions accordingly.
+    </Warning>
+  </Step>
+
+  <Step title="Activate security changes">
+    Search for **Activate Pending Security Policy Changes** and open it.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Search to Activate Pending Permissions" src="/images/workday-raas/workday_raas_search_to_activate_pending_permissions.png" />
+    </Frame>
+    Optionally add a comment, then continue.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Navigate to Activate Pending Permissions" src="/images/workday-raas/workday_raas_navigate_to_activate_pending_permissions.png" />
+    </Frame>
+    Review the summary, tick the confirmation box, and click `OK`.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Confirm Permissions" src="/images/workday-raas/workday_raas_check_confirm_permissions.png" />
+    </Frame>
+    <Warning>
+      You must activate security changes each time you modify Domain Security Policy Permissions; otherwise changes will not take effect.
+    </Warning>
+  </Step>
+</Steps>
+
+
+## Configure Custom Report Access for the ISU (Required for report access)
+
+<Steps>
+  <Step title="Open the report">
+    Search for `View Custom Report`.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Search View Custom Report" src="/images/workday-raas/workday_raas_search_view_custom_report_1.png" />
+    </Frame>
+    Select your custom report.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Select Custom Report" src="/images/workday-raas/workday_raas_search_view_custom_report.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Check current ownership">
+    Navigate to the `Share` tab and view the **Report Owned by** value.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Default Report Owner" src="/images/workday-raas/workday_raas_default_report_owner.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Transfer ownership (if required)">
+    <Warning>
+      **Transferring ownership** revokes access from the current owner.  
+      After transferring, ensure you reconnect in the StackOne Connector Hub using the new owner’s ISU credentials; otherwise you will encounter the `The task submitted is not authorized` error.
+    </Warning>
+    If the current owner is not the ISU you intend to use to connect with StackOne, open the three‑dot menu under _Custom Report_ and select `Transfer Ownership`.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Change Report Owner" src="/images/workday-raas/workday_raas_report_transfer_ownership.png" />
+    </Frame>
+    Enter the new ISU username in `New Owner` and click `OK`.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Enter New Owner" src="/images/workday-raas/workday_raas_report_TO_select_ISU.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Grant access without transferring ownership">
+    <Warning>
+      Granting access retains the current owner. Authorised users can access the report and connect via the StackOne Connector Hub using their ISU credentials and the Report URL.
+    </Warning>
+    To grant access, choose `Edit` under _Custom Report_ from the three‑dot menu.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Edit Report" src="/images/workday-raas/workday_raas_report_edit.png" />
+    </Frame>
+    <Note>
+      Three options exist under **Report Definition Sharing Options**; the appropriate option for controlled user access is described in this guide.
+    </Note>
+    Go to the `Share` tab, select `Share with specific authorized groups and users`, choose the desired ISU in `Authorized Users`, then click `OK`.
+    <Accordion title="Report Definition Sharing Options Explained">
+      - **Do Not Share Report Definition**: Only the owner can access and retrieve data through the Report URL. If ownership changes or other ISU credentials are used, errors such as `Report not found` or `The task submitted is not authorized` may occur.  
+      - **Share with All Authorized Users**: All ISU users can access the report. Ownership should remain with the report creator; otherwise StackOne connections using other users’ credentials may encounter a `Report not found` error.  
+      - **Share with Specific Authorized Groups and Users**: Restrict access to selected groups/users.
+        - No selection acts like `Do Not Share Report Definition`.  
+        - Selecting users allows both owner and selected ISU users to access the report (ownership must still stay with the report creator to avoid a `Report not found` error).
+    </Accordion>
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Share Tab Settings" src="/images/workday-raas/workday_raas_report_TO_from_share_tab.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Troubleshooting
+
+<Steps>
+  <Step title="Connection errors">
+    - Verify ISU credentials in the StackOne Connector Hub.
+    - Verify the Report URL is correct and reachable.
+  </Step>
+  <Step title="Null field values">
+    - Add missing **Domain Security Policy Permissions** as described in the security configuration section.
+    - Activate pending security policy changes after modifications.
+    - Retry the endpoint (fields populate once permissions are effective).
+  </Step>
+</Steps>
+
+
+## Useful Links
+
+<Card title="Workday Community" icon="link" href="https://community.workday.com">
+  https://community.workday.com
+</Card>
