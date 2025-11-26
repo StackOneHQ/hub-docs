@@ -112,6 +112,40 @@ description: "If you've been directed to StackOne to integrate with Docebo, the 
   </Step>
 </Steps>
 
+## SSO Configuration
+
+Proper SSO (Single Sign-On) configuration is essential for the Docebo integration to work correctly. The configuration ensures that users are properly identified and matched between your platform and Docebo.
+
+### Configuration Options
+
+The SSO configuration should use the following approach:
+
+#### Custom Field Configuration
+
+<Steps>
+  <Step title="Set Custom Field">
+    Configure a custom field called `lms_user_id` and set it to the **User ID** field value.
+  </Step>
+  
+  <Step title="Verify Custom Field">
+    Ensure the `lms_user_id` custom field is properly populated and accessible through the SSO configuration.
+  </Step>
+</Steps>
+
+#### Important Notes
+
+<Warning>
+  Correct SSO configuration is **essential** for ensuring the integration works as expected. Incorrect configuration may result in:
+  
+  - Users not being properly identified
+  - Learning records not being correctly attributed
+  - Authentication failures
+</Warning>
+
+<Note>
+  **Customer Responsibility**: You should work closely with your content provider to ensure the SSO configuration follows one of the recommended approaches above. The content provider should validate that the configuration meets the integration requirements.
+</Note>
+
 ## Linking your Account
 
 <Steps>

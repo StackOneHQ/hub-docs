@@ -3,6 +3,8 @@ title: "Oracle"
 description: "If you've been directed to StackOne to integrate with Oracle, the following steps will help you understand the process and any necessary actions to configure successful integration."
 ---
 
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
 <Warning>
   This guidance assumes you have Admin privileges for your Oracle account.
 </Warning>
@@ -27,6 +29,40 @@ description: "If you've been directed to StackOne to integrate with Oracle, the 
     Obtain the private key from your content provider.
   </Step>
 </Steps>
+
+## SSO Configuration
+
+Proper SSO (Single Sign-On) configuration is essential for the Oracle integration to work correctly. The configuration ensures that users are properly identified and matched between your platform and Oracle.
+
+### Configuration Options
+
+The SSO configuration should use the following approach:
+
+#### Custom Field Configuration
+
+<Steps>
+  <Step title="Set Custom Field">
+    Configure a custom field called `lms_user_id` and set it to the **Email or username** field value.
+  </Step>
+  
+  <Step title="Verify Custom Field">
+    Ensure the `lms_user_id` custom field is properly populated and accessible through the SSO configuration.
+  </Step>
+</Steps>
+
+#### Important Notes
+
+<Warning>
+  Correct SSO configuration is **essential** for ensuring the integration works as expected. Incorrect configuration may result in:
+  
+  - Users not being properly identified
+  - Learning records not being correctly attributed
+  - Authentication failures
+</Warning>
+
+<Note>
+  **Customer Responsibility**: You should work closely with your content provider to ensure the SSO configuration follows one of the recommended approaches above. The content provider should validate that the configuration meets the integration requirements.
+</Note>
 
 ## Linking your Account
 <Steps>
