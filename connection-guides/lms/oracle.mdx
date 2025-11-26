@@ -1,7 +1,9 @@
 ---
 title: "Oracle"
-description: "If you've been directed to StackOne to integrate with Oracle, the following steps will help you understand the process and any necessary actions to configure successful integration."
+description: "Follow these steps to connect Oracle via the StackOne Hub successfully."
 ---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 <Warning>
   This guidance assumes you have Admin privileges for your Oracle account.
@@ -27,6 +29,56 @@ description: "If you've been directed to StackOne to integrate with Oracle, the 
     Obtain the private key from your content provider.
   </Step>
 </Steps>
+
+### SSO Configuration
+
+Proper SSO (Single Sign-On) configuration is essential for the Oracle integration to work correctly. The configuration ensures that users are properly identified and matched between your platform and Oracle.
+
+#### NameID Configuration
+
+<Steps>
+  <Step title="Configure NameID Field">
+    The NameID in your SSO configuration should be set to the **Email or username** field to ensure proper user identification.
+    
+    This is the preferred configuration and should be implemented whenever possible.
+  </Step>
+  
+  <Step title="Verify Configuration">
+    Work with your content provider to verify that the NameID is properly configured to use the Email or username field.
+    
+    Test the SSO flow to ensure users are correctly identified in Oracle.
+  </Step>
+</Steps>
+
+#### Alternative Configuration Options
+
+If the preferred NameID configuration cannot be implemented, the following alternative is available:
+
+##### Custom Field Configuration
+
+<Steps>
+  <Step title="Set Custom Field">
+    If setting the NameID to Email or username is not possible, configure a custom field called `lms_user_id` and set it to the **Email or username** field value.
+  </Step>
+  
+  <Step title="Verify Custom Field">
+    Ensure the `lms_user_id` custom field is properly populated and accessible through the SSO configuration.
+  </Step>
+</Steps>
+
+#### Important Notes
+
+<Warning>
+  Correct SSO configuration is **essential** for ensuring the integration works as expected. Incorrect configuration may result in:
+  
+  - Users not being properly identified
+  - Learning records not being correctly attributed
+  - Authentication failures
+</Warning>
+
+<Note>
+  **Customer Responsibility**: You should work closely with your content provider to ensure the SSO configuration follows one of the recommended approaches above. The content provider should validate that the configuration meets the integration requirements.
+</Note>
 
 ## Linking your Account
 <Steps>
