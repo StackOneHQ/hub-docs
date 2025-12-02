@@ -9,180 +9,190 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   This guidance assumes that you have admin privileges for your Eploy account.
 </Warning>
 
-<Info>
-    Please reach out to your integration partner to add an integration stage to the recruitment workflow. Once you move the candidate to that integration stage, the background check will be triggered.
 
-    To configure further in Eploy for background checks, please follow the steps outlined below.
-</Info>
+## Enable the Partner's Integration App in your Eploy account
 
-## Add a custom option for background check packages
+To enable the Eploy Technology Partner app and make it available as a stage within a Recruitment Workflow, go to the [Eploy Marketplace](https://www.eploy.com/product/eploy-marketplace).
+<Frame>
+    ![Eploy Marketplace](/images/eploy/assess-bcs/eploy_marketplace.png)
+</Frame>
 
-<Steps>
-    <Step title="Add a custom option to the user option types">
-        Navigate to the _Custom Fields_ page by selecting _Customize Fields_ from the _Admin_ menu
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Custom Fields page" src="/images/eploy/assess-bcs/eploy_bc_admin_custom_1.png" />
-        </Frame>
-        
-        Navigate to the _User Option Types_ tab and click the `New` button to create a new custom option in Eploy
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to user option types tab" src="/images/eploy/assess-bcs/eploy_bc_navigate_to_user_option_type_and_new_2.png" />
-        </Frame>
+Click the partner's app in the Marketplace that you want to enable. It will direct you to the [Integrate your Eploy with Partner form](https://www.eploy.com/partner/technology-partners). 
+Fill out the form to initiate your request to enable the integration app.
+<Frame>
+    ![Eploy Marketplace](/images/eploy/assess-bcs/eploy_marketplace_request_form.png)
+</Frame>
 
-        Enter the title as `Background Checks` and then click the `Save` button
-        <Warning>
-            Please use the name `Background Checks`, as this is necessary to ensure that you receive notifications from Eploy.
-        </Warning>
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="add custom option title" src="/images/eploy/assess-bcs/eploy_bc_user_option_type_4.png" />
-        </Frame>
+Once the partner's app is enabled, it appears in the **Stages** dropdown when creating or editing Recruitment Workflows.
 
-        The newly created `Background Checks` option will be visible in the _User Option Types_ grid
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="added custom option title" src="/images/eploy/assess-bcs/eploy_bc_user_option_type_newly_added_5.png" />
-        </Frame>
-    </Step>
-</Steps>
+<Note>
+    Visit the [Add a Recruitment Workflow](#add-a-recruitment-workflow) section to verify if the partner's integration app is enabled and visible in the Stages dropdown.
+</Note>
 
 
-## Add a custom field within the vacancy group
+## Add a Recruitment Workflow
 
-<Steps>
-    <Step title="Add a custom field to fields">
-        Navigate to the _Custom Fields_ page by selecting _Customise Fields_ from the _Admin_ menu
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Custom Fields page" src="/images/eploy/assess-bcs/eploy_bc_admin_custom_1.png" />
-        </Frame>
+Navigate to the _Recruitment Workflow_ page from the _Admin_ menu.
+<Frame>
+    ![Eploy Integration app Stage](/images/eploy/assess-bcs/eploy_navigate_to_recruitment_workflow.png)
+</Frame>
 
-        Navigate to the _Fields_ tab and click the `New` > `Input Field` button to create a new input field in Eploy
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to fields tab" src="/images/eploy/assess-bcs/eploy_bc_add_custom_field_3.png" />
-        </Frame>
+Click the `+ New` button to create a new workflow.
+<Frame>
+    ![Eploy Integration app Stage](/images/eploy/assess-bcs/eploy_new_recruitment_workflow.png)
+</Frame>
 
-        Select the field values according to the instructions below:
-        <Warning>
-            Please ensure you select the same values as suggested to receive Eploy notifications.
-        </Warning>
+Fill out the necessary fields in the _Create Recruitment Workflow_ form as per the requirements, and click `Save`.
+<Frame>
+    ![Eploy Integration app Stage](/images/eploy/assess-bcs/eploy_create_recruitment_workflow_form.png)
+</Frame>
 
-        - **Field Group:** Select `Additional Details (Vacancies)`
-        - **Field Type:** Select `Input - Drop-down`
-        - **Display Format:** Select `Hierarchy List Searchable`
-        - **Option Type:** Select `Background Checks` (As you have created in above [step](#add-a-custom-option-for-background-check-packages))
-        - **Insert Below:** You can select any value here, it will determine where the field appears in the form
-        - **Active:** Ensure this field is marked as active
-        - **Field Label:** Select `Background Checks`
-        - **Help Description:** You may include any relevant description
-        
-        Click the `Save` button
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="add custom field" src="/images/eploy/assess-bcs/eploy_bc_create_new_field_within_the_vacancy_group_as_dropdown_9.png" />
-        </Frame>
+Scroll down and click the `Add` button to add stages in the workflow.
+<Frame>
+    ![Eploy Integration app Stage](/images/eploy/assess-bcs/eploy_add_stage_button.png)
+</Frame>
 
-        The newly created `Background Checks` field will be visible in the _Fields_ grid
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="added custom field title" src="/images/eploy/assess-bcs/eploy_bc_new_field_will_be_visible_within_the_grid_10.png" />
-        </Frame>
-    </Step>
-</Steps>
+You can choose various stages as per the requirements and select the partner's integration app stage from the Stages dropdown to trigger the background check notification.
 
+For the partner's integration app stage, select the following values:
+- **Stage Name:** Select the partner's integration app name.
 
-## Add background check packages
+<Warning>
+    If your partner's integration app is enabled, it'll appear in the **Stages** dropdown such as `Your Integration Stage`, else contact Eploy support to enable the integration app.
+</Warning>
 
-<Info>
-    You can ask your integration partner to add the background check packages, or you can follow the steps outlined below to add them manually.
-</Info>
+- **Stage Type:** Select `Actions`.
+- **Action Type:** Select the partner's integration app name.
 
-<Steps>
-    <Step title="Add background check packages through the Eploy user interface">
-        Navigate to the _Drop Down Lists_ page located in the _Admin_ menu
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="navigate to dropdown list" src="/images/eploy/assess-bcs/eploy_bc_navigate_to_dropdown_list_17.png" />
-        </Frame>
+You may configure other settings as per the requirements and click `Save` to add this stage to the workflow.
+<Frame>
+    ![Eploy Integration app Stage](/images/eploy/assess-bcs/eploy_add_integration_stage_hub.png)
+</Frame>
 
-        Select `Background Checks` and click the `New` button to create a new package in Eploy
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="select background checks" src="/images/eploy/assess-bcs/eploy_bc_select_bc_from_dropdown_and_click_on_new_to_add_package_manually_from_ui_6.png" />
-        </Frame>
+After saving, the stage appears in the workflow.
+<Frame>
+	![Eploy integration stage](/images/eploy/assess-bcs/eploy_stage_appear_in_the_workflow_hub.png)
+</Frame>
 
-        Enter the following field values:  
-        
-        - **Description:** This will be the label displayed in the dropdown list.  
-        - **Reference:** This can be any string and will not appear in the dropdown list.  
+Ensure the workflow is set to `Active` to be visible when creating a vacancy.
+<Frame>
+    ![Eploy activate workflow](/images/eploy/assess-bcs/eploy_activate_workflow.png)
+</Frame>
 
-        Click the `Save` button.
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="click on save" src="/images/eploy/assess-bcs/eploy_bc_add_bc_package_and_save_7.png" />
-        </Frame>
-
-        The newly created background check package will be visible in the grid
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="added background checks field" src="/images/eploy/assess-bcs/eploy_bc_added_new_package_and_visible_on_grid_8.png" />
-        </Frame>
-    </Step>
-</Steps>
+The newly created workflow appears in the _Recruitment Workflow_ grid.
+<Frame>
+    ![Eploy saved workflow](/images/eploy/assess-bcs/eploy_workflow_visible_in_grid.png)
+</Frame>
 
 
-## Configure the background check package for the vacancy
+## Create a Vacancy in the Workflow
 
-<Steps>
-    <Step title="Configure the background check package">
-        Go to the _Additional Details_ page for specific job vacancies created within the Recruitment Workflow that includes the background check integration stage.
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="navigate to additional details page" src="/images/eploy/assess-bcs/eploy_bc_custom_bc_field_visible_in_ad_details_11.png" />
-        </Frame>
+Navigate to the _Vacancy_ page via `+` button in the top menu.
+<Frame>
+    ![Eploy navigate to vacancies](/images/eploy/assess-bcs/eploy_vacancy_navigation.png)
+</Frame>
 
-        Edit Additional Details, to select the background check package,
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="edit additional details" src="/images/eploy/assess-bcs/eploy_bc_packages_visible_in_dropdown_12.png" />
-        </Frame>
+Fill out the vacancy form by choosing the **Recruitment Workflow** that includes the partner's integration app stage you added earlier. You can also configure other fields as per the requirements and click `Save`.
+<Frame>
+    ![Eploy create vacancy](/images/eploy/assess-bcs/eploy_create_vacancy.png)
+</Frame>
 
-        The selected background check package will be displayed on the _Additional Details_ page
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="selected package" src="/images/eploy/assess-bcs/eploy_bc_selected_package_visible_eploy_vacancy_13.png" />
-        </Frame>
-    </Step>
-</Steps>
+You will be directed to the vacancy page after saving.
+<Frame>
+    ![Eploy create vacancy](/images/eploy/assess-bcs/eploy_created_vacancy_page.png)
+</Frame>
+
+You can see the partner's integration app stage in the vacancy's talent pipeline by navigating to `Work on Vacancy` > `Go to Pipeline`.
+<Frame>
+    ![Eploy integration stage in talent pipeline](/images/eploy/assess-bcs/eploy_navigate_to_vacancy_pipeline.png)
+</Frame>
+
+The stage appears in the vacancy's talent pipeline.
+<Frame>
+    ![Eploy integration stage in talent pipeline](/images/eploy/assess-bcs/eploy_vacancy_stage_appears_hub.png)
+</Frame>
+
+
+## Select a Background Check package to associate with the vacancy
+
+Navigate to the _Additional Details_ page of the vacancy to select and associate the background check package.
+<Frame>
+    ![Eploy navigate to additional details page of vacancy](/images/eploy/assess-bcs/eploy_navigate_to_additional_details_page_of_vacancy.png)
+</Frame>
+
+Edit the _Additional Details_, select the background check package from the `Background Checks` dropdown, and `Save` the changes.
+<Frame>
+    ![Eploy select background check package](/images/eploy/assess-bcs/eploy_edit_additional_details.png)
+</Frame>
+
+The selected background check package will appear on the _Additional Details_ page.
+<Frame>
+    ![Eploy selected background check package](/images/eploy/assess-bcs/eploy_selected_bc_visible_on_vacnacy_page.png)
+</Frame>
+
+
+## Create a Candidate and add as an applicant to the vacancy
+
+Navigate to the _Candidate_ page via `+` button in the top menu.
+<Frame>
+    ![Eploy navigate to candidates](/images/eploy/assess-bcs/eploy_navigate_to_candidates.png)
+</Frame>
+
+Fill out the necessary details in the **Create Candidate** form and `Save`.
+<Frame>
+    ![Eploy create candidate](/images/eploy/assess-bcs/eploy_create_candidate_form.png)
+</Frame>
+
+You will be directed to the candidate's profile page after saving, where you can initiate the candidate's application by clicking `Application` under the `+` button menu.
+<Frame>
+    ![Eploy create vacancy](/images/eploy/assess-bcs/eploy_candidate_created_and_apply_to_vacancy.png)
+</Frame>
+
+Select the **Vacancy** and **Stage**, and then `Save` to add the candidate as an applicant to the vacancy.
+<Frame>
+    ![Eploy apply to vacancy](/images/eploy/assess-bcs/eploy_create_application_form.png)
+</Frame>
+
+You can see the candidate added as an applicant to the vacancy by navigating to the vacancy's talent pipeline.
+<Frame>
+    ![Eploy candidate added to vacancy](/images/eploy/assess-bcs/eploy_navigate_to_vacancy_pipeline.png)
+</Frame>
+
+The candidate appears in the **Stage** you selected when creating the application.
+<Frame>
+    ![Eploy candidate in pipeline](/images/eploy/assess-bcs/eploy_candidate_in_pipeline_hub.png)
+</Frame>
+
+You can move the candidate's application to the partner's integration app stage to trigger the background check.
 
 
 ## Move the candidate within the pipeline
 
-<Steps>
-    <Step title="Move the candidate to the specific stage">
-        To navigate to the _Pipeline_ page, click on the `Go to Pipeline` option located under the `Work on Vacancy` dropdown menu on the vacancy page
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="navigate to pipeline page" src="/images/eploy/assess-bcs/eploy_bc_vacancy_talent_pipeline_18.png" />
-        </Frame>
+To navigate to the _Pipeline_ page, click on the `Go to Pipeline` option located under the `Work on Vacancy` dropdown menu on the vacancy page
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="navigate to pipeline page" src="/images/eploy/assess-bcs/eploy_navigate_to_vacancy_pipeline.png" />
+</Frame>
 
-        Move the candidate to the integration stage to initiate the background check invitation
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="move candidate" src="/images/eploy/assess-bcs/eploy_bc_move_candidate_integration_stage_14.png" />
-        </Frame>
-    </Step>
-</Steps>
+Move the candidate to the integration stage to initiate the background check invitation
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="move candidate" src="/images/eploy/assess-bcs/eploy_bc_move_candidate_integration_stage.png" />
+</Frame>
 
 
 ## To view the sent background check invitation
 
-<Steps>
-    <Step title="To view the sent background check invitation on Eploy user interface">
-        Navigate to the _Pipeline_ page and click on the candidate to check the sent background check invitation
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="check the sent background check invitation" src="/images/eploy/assess-bcs/eploy_bc_sent_to_the_candidate_as_visible_package_name_on_ui_15.png" />
-        </Frame>
-    </Step>
-</Steps>
+Navigate to the _Pipeline_ page and click on the candidate to check the sent background check invitation
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="check the sent background check invitation" src="/images/eploy/assess-bcs/eploy_bc_sent_to_the_candidate_as_visible_package_name_on_ui.png" />
+</Frame>
 
 
 ## To view the updated result of the background check
 
-<Steps>
-    <Step title="To view the updated result of the background check on Eploy user interface">
-        Go to the _Pipeline_ page and click on the candidate to view the updated result of the background check
-        <Frame>
-            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="check the updated result of the background check" src="/images/eploy/assess-bcs/eploy_bc_on_update_result_of_bc_on_ui_16.png" />
-        </Frame>
-    </Step>
-</Steps>
+Go to the _Pipeline_ page and click on the candidate to view the updated result of the background check
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="check the updated result of the background check" src="/images/eploy/assess-bcs/eploy_bc_on_update_result_of_bc_on_ui.png" />
+</Frame>
 
 
 
