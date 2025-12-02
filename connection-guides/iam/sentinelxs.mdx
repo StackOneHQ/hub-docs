@@ -17,37 +17,21 @@ Sentinel XS provides a comprehensive collection of SOAP Web Services that allow 
 
 <Steps>
   <Step title="Access Sentinel Administration">
-    Log in to your Sentinel system and navigate to the Administrator section. The Sentinel XS Web Service endpoint URL is typically configured in the system administration area.
-    
-    Contact your Sentinel administrator if you need assistance locating the web service endpoint URL.
-  </Step>
+    Log in to your Sentinel system and navigate to the Administrator section.
 
-  <Step title="Locate Web Service Endpoint">
     The Sentinel XS Web Service endpoint URL typically follows this format:
     - `https://{{your-sentinel-server}}/SentinelXS/SentinelXS.asmx`
     
-    Your specific endpoint URL may vary depending on your Sentinel installation. Consult your Sentinel documentation or administrator for the exact endpoint URL.
-  </Step>
-</Steps>
-
-## Get User Credentials
-
-You will need to provide a Username, Password, and the Web Service Endpoint URL. It is recommended that you set up a dedicated service account for integration purposes.
-
-<Steps>
-  <Step title="Log in to Sentinel">
-    Log in to your Sentinel system with administrator privileges.
+    The Web Service Endpoint URL is the URL without the `/SentinelXS/SentinelXS.asmx` extension. 
+    
+    Your specific endpoint URL may vary depending on your Sentinel installation. Contact your Sentinel administrator if you need assistance locating the web service endpoint URL.
   </Step>
 
   <Step title="Create or Locate Service Account">
+    <Warning>It is recommended that you set up a dedicated service account for integration purposes.</Warning>
+    
     Navigate to the Users and Permissions section in the Sentinel Administrator area. Create a new user account specifically for API integration, or identify an existing service account that has the necessary permissions to access the Sentinel database via the web service.
     
-    <Note>
-      The service account should have appropriate permissions to read and write data as required by your integration use case.
-    </Note>
-  </Step>
-
-  <Step title="Configure User Permissions">
     Ensure the service account has the necessary permissions to:
     - Access the Sentinel XS Web Service
     - Query and manipulate data in the Sentinel database as required
@@ -60,7 +44,7 @@ You will need to provide a Username, Password, and the Web Service Endpoint URL.
     Make note of the following information:
     - **Username**: The service account username
     - **Password**: The service account password
-    - **Web Service Endpoint URL**: The full URL to the Sentinel XS Web Service endpoint
+    - **Web Service Endpoint URL**: The URL to the Sentinel XS Web Service endpoint (without the `/SentinelXS/SentinelXS.asmx` extension)
   </Step>
 </Steps>
 
@@ -71,7 +55,7 @@ Now that you have all the required information, you can link your account.
 <Steps>
   <Step title="Enter Connection Details">
     Fill in the required fields with the information you gathered:
-    - **Web Service Endpoint URL**: Enter the full URL to your Sentinel XS Web Service endpoint
+    - **Web Service Endpoint URL**: Enter the URL to your Sentinel XS Web Service endpoint (without the `/SentinelXS/SentinelXS.asmx` extension)
     - **Username**: Enter the service account username
     - **Password**: Enter the service account password
   </Step>
