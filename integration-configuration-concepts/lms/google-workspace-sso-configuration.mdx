@@ -1,0 +1,317 @@
+---
+title: "Google Workspace SSO Configuration for LMS Integration"
+description: "Configure Google Workspace to provide custom SSO attributes for Learning Management System integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+<Warning>
+This configuration requires Google Workspace admin privileges and should be tested in a non-production environment first.
+</Warning>
+
+This guide walks you through configuring Google Workspace as your Identity Provider to include custom user attributes (like `lms_user_id`) needed for Learning Management System integrations.
+
+## Overview
+
+Google Workspace can provide custom user attributes in SAML assertions to support Learning Management System integrations. This enables seamless user mapping between your Google Workspace directory and LMS platforms.
+
+## Prerequisites
+
+- Super Admin access to Google Workspace
+- Understanding of the specific `lms_user_id` value required by your target LMS
+- Basic knowledge of SAML 2.0 protocol
+
+## SAML Configuration Steps
+
+<Steps>
+  <Step title="Access Google Admin Console">
+    Go to the Google Admin console (admin.google.com) and navigate to **Apps** > **Web and mobile apps**.
+  </Step>
+
+  <Step title="Add Custom SAML App">
+    - Click **Add app** > **Add custom SAML app**
+    - Enter your application name (e.g., "LMS Integration")
+    - Optionally upload an application logo
+    - Click **Continue**
+    
+    <Frame>
+      <img className='rounded-md' alt="Google Workspace SAML app creation" src="/images/sso/google-workspace-saml-app.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Download Google IdP Information">
+    Google will display the Identity Provider details:
+    - **SSO URL**: Copy this URL
+    - **Entity ID**: Note the entity identifier
+    - **Certificate**: Download the certificate file
+    - **Start URL**: (Optional) Set if needed
+    
+    Save this information for your LMS configuration.
+  </Step>
+
+  <Step title="Configure Service Provider Details">
+    Enter your LMS service provider information:
+    
+    **ACS URL**: Your LMS's Assertion Consumer Service URL
+    **Entity ID**: Your service provider entity ID
+    **Start URL**: (Optional) Your LMS login URL
+    **Name ID format**: Choose appropriate format (typically EMAIL)
+    **Name ID**: Select the user attribute (usually Primary email)
+  </Step>
+
+  <Step title="Add Attribute Mapping">
+    In the **Attribute mapping** section, add your custom attributes:
+    
+    - Click **Add mapping**
+    - **Google Directory attributes**: Select the source attribute
+    - **App attributes**: Enter `lms_user_id` (or your required attribute name)
+    
+    Common mappings:
+    - **Primary email** → `lms_user_id` (for email-based systems)
+    - **Employee ID** → `lms_user_id` (for employee ID-based systems)
+    - **Custom attributes** → `lms_user_id` (for custom fields)
+    
+    <Frame>
+      <img className='rounded-md' alt="Google Workspace attribute mapping" src="/images/sso/google-workspace-attributes.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure User Access">
+    Set access permissions:
+    - **ON for everyone**: All users in your domain
+    - **OFF for everyone, ON for some**: Specific organizational units or groups
+    - Configure based on your LMS access requirements
+  </Step>
+
+  <Step title="Test Configuration">
+    - Click **Test SAML login** to verify the setup
+    - Use a test user account to validate the SAML response
+    - Check that custom attributes appear correctly in the assertion
+  </Step>
+</Steps>
+
+## Custom User Attributes Setup
+
+If your LMS requires custom user attributes not available by default:
+
+<Steps>
+  <Step title="Create Custom User Schema">
+    In the Google Admin console:
+    - Go to **Directory** > **Users**
+    - Click **More** > **Manage custom attributes**
+    - Click **Add custom attribute**
+    - Define your custom attribute:
+      - **Name**: `lms_user_id` (or appropriate name)
+      - **Info type**: Text
+      - **Visibility**: Visible to user and admin
+      - **No. of values**: Single value
+  </Step>
+
+  <Step title="Populate Custom Attributes">
+    You can populate custom attributes via:
+    
+    **Manual Entry:**
+    - Edit individual user profiles
+    - Add the custom attribute value
+    
+    **Bulk Upload:**
+    - Use Google Admin SDK
+    - CSV import through third-party tools
+    - Google Apps Script automation
+  </Step>
+
+  <Step title="Update Attribute Mapping">
+    Return to your SAML app configuration:
+    - Edit the attribute mapping
+    - Select your custom attribute as the source
+    - Map it to the `lms_user_id` app attribute
+  </Step>
+</Steps>
+
+## Advanced Configuration Options
+
+### Organizational Unit-Based Access
+
+<Steps>
+  <Step title="Configure OU Access">
+    For granular control:
+    - Turn OFF the app for everyone
+    - Create specific organizational units for LMS users
+    - Turn ON the app only for those OUs
+  </Step>
+
+  <Step title="OU-Specific Attributes">
+    Different OUs can have different attribute mappings if needed:
+    - Create separate SAML apps for different user groups
+    - Configure different attribute mappings for each group
+  </Step>
+</Steps>
+
+### Group-Based Attribute Mapping
+
+<Steps>
+  <Step title="Create Google Groups">
+    Set up groups for different LMS roles:
+    - Navigate to **Directory** > **Groups**
+    - Create groups like "LMS_Students", "LMS_Faculty", "LMS_Admins"
+  </Step>
+
+  <Step title="Add Group Information to SAML">
+    In your SAML app attribute mapping:
+    - Add mapping for **Groups** → `groups`
+    - This will include group membership in the SAML assertion
+  </Step>
+</Steps>
+
+## OIDC Configuration Alternative
+
+While Google Workspace primarily uses SAML for SSO, you can also configure OAuth 2.0/OIDC:
+
+<Steps>
+  <Step title="Google Cloud Console Setup">
+    - Go to Google Cloud Console (console.cloud.google.com)
+    - Create or select a project
+    - Enable the Google Workspace APIs
+  </Step>
+
+  <Step title="Create OAuth 2.0 Credentials">
+    - Navigate to **APIs & Services** > **Credentials**
+    - Create OAuth 2.0 Client ID
+    - Configure authorized redirect URIs
+  </Step>
+
+  <Step title="Configure Scopes">
+    Request appropriate scopes:
+    - `openid` - For OIDC authentication
+    - `profile` - For user profile information
+    - `email` - For email address
+    - Custom scopes for additional attributes
+  </Step>
+</Steps>
+
+## Common LMS User ID Mappings
+
+| LMS Platform | Recommended Google Attribute | Configuration Notes |
+|--------------|----------------------------|-------------------|
+| Canvas | Employee ID or Primary email | Use Employee ID if available |
+| Blackboard | Primary email | Email format required |
+| Moodle | Employee ID or Custom attribute | Numeric IDs often preferred |
+| Docebo | Employee ID or Primary email | Support both formats |
+| Cornerstone | Employee ID | Numeric identifier preferred |
+
+## Testing Your Configuration
+
+<Steps>
+  <Step title="Use Google's Test Function">
+    In your SAML app settings:
+    - Click **Test SAML login**
+    - Select a test user
+    - Review the SAML assertion details
+    - Verify `lms_user_id` attribute is present and correct
+  </Step>
+
+  <Step title="Validate Attribute Values">
+    Check that the SAML response includes:
+    - Correct `lms_user_id` value
+    - Proper format (string, number, etc.)
+    - No HTML encoding issues
+    - Expected case sensitivity
+  </Step>
+
+  <Step title="End-to-End Integration Test">
+    - Test actual login to your LMS
+    - Verify user is created/matched correctly
+    - Check user profile information in LMS
+    - Test with multiple user types (students, faculty, etc.)
+  </Step>
+</Steps>
+
+## User Attribute Sources
+
+Google Workspace provides several built-in attributes you can use:
+
+### Standard Attributes
+- **Primary email**: User's primary email address
+- **Employee ID**: Employee identifier number
+- **First name**: User's first name
+- **Last name**: User's last name
+- **Full name**: Complete display name
+- **Department**: Organizational department
+- **Job title**: User's job title
+- **Manager**: Manager's email address
+- **Cost center**: Organizational cost center
+
+### Custom Attributes
+- **Custom attribute 1-n**: Your custom defined fields
+- **External ID**: External system identifiers
+- **Organizations**: Organizational information
+- **Relations**: Relationship information
+- **Addresses**: Physical address information
+
+## Security Best Practices
+
+- **Certificate Rotation**: Regularly update SAML certificates
+- **Access Review**: Periodically review user access and organizational unit assignments
+- **Audit Logging**: Monitor SAML authentication events in Google Admin console
+- **Network Restrictions**: Consider IP-based access restrictions if needed
+- **Session Management**: Configure appropriate session timeouts
+- **Data Minimization**: Only map necessary user attributes
+
+## Troubleshooting
+
+### Common Issues
+
+**Custom attribute not in SAML assertion:**
+- Verify the custom attribute is populated for the test user
+- Check attribute mapping configuration
+- Ensure the user has access to the SAML app
+
+**SAML authentication failing:**
+- Verify ACS URL matches exactly
+- Check certificate validity
+- Review SAML error messages in browser developer tools
+
+**User not found in LMS:**
+- Confirm `lms_user_id` format matches LMS requirements
+- Check for case sensitivity issues
+- Verify user exists in target system
+
+**Attribute format issues:**
+- Some LMS platforms expect specific formats (email vs. numeric ID)
+- Test different attribute sources
+- Check for special character handling
+
+### Debugging Tools
+
+<Steps>
+  <Step title="Google Admin Audit Logs">
+    Review SAML authentication events:
+    - Go to **Reporting** > **Audit and investigation**
+    - Filter by SAML application
+    - Review successful and failed authentication attempts
+  </Step>
+
+  <Step title="SAML Response Analysis">
+    Use browser developer tools or SAML debugging tools:
+    - Capture SAML POST requests
+    - Decode Base64 SAML responses
+    - Verify attribute values and formats
+  </Step>
+</Steps>
+
+## Migration Considerations
+
+When migrating from other identity providers:
+
+- **User Matching**: Plan how to match existing LMS users
+- **Attribute Mapping**: Ensure consistent attribute values
+- **Gradual Rollout**: Test with small user groups first
+- **Fallback Options**: Maintain alternative authentication methods during transition
+
+<IntegrationFooter />
+
+## Additional Resources
+
+- [Google Workspace SAML Documentation](https://support.google.com/a/answer/6087519)
+- [Custom User Attributes Guide](https://support.google.com/a/answer/6208725)
+- [Google Admin SDK Directory API](https://developers.google.com/admin-sdk/directory)

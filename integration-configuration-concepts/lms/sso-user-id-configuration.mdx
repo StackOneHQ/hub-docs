@@ -1,0 +1,258 @@
+---
+title: "SSO User ID Configuration for LMS Integrations"
+description: "Overview of configuring Identity Providers to include custom user identifiers for Learning Management System integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+## Overview
+
+Learning Management System (LMS) integrations often require mapping users between your Identity Provider (IdP) and the LMS platform. This mapping is typically achieved through a custom SSO attribute called `lms_user_id` that contains the user's identifier in the target LMS system.
+
+This document provides an overview of the concepts and links to specific Identity Provider configuration guides.
+
+## Key Concepts
+
+### User Identity Mapping
+
+When a user logs into an LMS through SSO, the system needs to:
+
+1. **Authenticate the user** through your Identity Provider
+2. **Receive user attributes** in the SAML assertion or OIDC claims
+3. **Map the user** to an existing LMS account using the `lms_user_id` attribute
+4. **Grant access** to the appropriate LMS resources
+
+### Common User ID Patterns
+
+Different LMS platforms expect different identifier formats:
+
+| ID Type | Description | Example | Common LMS Platforms |
+|---------|-------------|---------|---------------------|
+| **Email Address** | User's email address | `john.doe@company.edu` | Blackboard, some Canvas instances |
+| **Employee ID** | Numeric employee identifier | `123456` | Cornerstone, Docebo, Workday Learning |
+| **Student ID** | Academic student identifier | `STU789123` | Canvas, Moodle (academic) |
+| **Username** | Login username | `jdoe` | Moodle, custom LMS platforms |
+| **External ID** | External system identifier | `EXT_ABC123` | Multi-system integrations |
+
+### SSO Protocols
+
+Most LMS integrations use one of two SSO protocols:
+
+**SAML 2.0 (Recommended)**
+- More secure for enterprise environments
+- Better support for custom attributes
+- Standard protocol across most enterprise IdPs
+
+**OpenID Connect (OIDC)**
+- Modern OAuth 2.0-based protocol
+- Good for cloud-native applications
+- Flexible claim structure
+
+## Identity Provider Configuration Guides
+
+Choose your Identity Provider for detailed configuration instructions:
+
+### Enterprise Identity Providers
+
+<Cards>
+  <Card title="Okta SSO Configuration" href="/integration-configuration-concepts/lms/okta-sso-configuration">
+    Configure Okta to provide custom user attributes for LMS integrations using SAML 2.0 or OIDC.
+  </Card>
+  
+  <Card title="Azure AD/Entra ID Configuration" href="/integration-configuration-concepts/lms/azure-ad-sso-configuration">
+    Set up Microsoft Azure Active Directory with extension attributes and custom claims.
+  </Card>
+  
+  <Card title="Google Workspace Configuration" href="/integration-configuration-concepts/lms/google-workspace-sso-configuration">
+    Configure Google Workspace with custom user attributes and SAML mappings.
+  </Card>
+  
+  <Card title="Auth0 Configuration" href="/integration-configuration-concepts/lms/auth0-sso-configuration">
+    Set up Auth0 with user metadata and custom claims using Rules or Actions.
+  </Card>
+</Cards>
+
+### Other Popular Identity Providers
+
+If your Identity Provider isn't listed above, the general principles remain the same:
+
+1. **Create/configure** a SAML application or OIDC client
+2. **Add custom attributes** or claims for `lms_user_id`
+3. **Map user attributes** to the LMS identifier
+4. **Test the configuration** with sample users
+5. **Deploy to production** with proper access controls
+
+## Planning Your Implementation
+
+### Step 1: Identify LMS User Identifiers
+
+Before configuring your IdP, determine:
+
+- **What identifier format** does your LMS use?
+- **Where is this identifier stored** in your user directory?
+- **Is the identifier unique** across all users?
+- **Does it change over time** (avoid changing identifiers)?
+
+### Step 2: Choose User Attribute Source
+
+Common sources for `lms_user_id`:
+
+**Existing Attributes:**
+- Employee ID (for staff/faculty)
+- Student ID (for academic institutions)
+- Email address (universal but may change)
+- Username (if stable and unique)
+
+**Custom Attributes:**
+- LMS-specific identifiers
+- External system IDs
+- Composite identifiers
+
+### Step 3: Configure Identity Provider
+
+Follow the appropriate guide above to:
+
+1. Set up the SSO application
+2. Configure custom attributes/claims
+3. Map to your chosen user identifier
+4. Set up user access and permissions
+
+### Step 4: Test Configuration
+
+Always test your configuration:
+
+1. **Validate SSO response** contains the correct `lms_user_id`
+2. **Test user mapping** in the LMS
+3. **Verify edge cases** (new users, missing attributes, etc.)
+4. **Check error handling** for failed mappings
+
+## Security Considerations
+
+### Attribute Security
+
+- **Minimize sensitive data** in SSO attributes
+- **Use stable identifiers** that don't change frequently
+- **Encrypt assertions** when possible (SAML)
+- **Validate user input** before using in attributes
+
+### Access Control
+
+- **Limit application access** to authorized users only
+- **Use organizational units** or groups to control access
+- **Implement conditional access** policies where supported
+- **Monitor authentication events** regularly
+
+### Data Privacy
+
+- **Only include necessary attributes** in SSO responses
+- **Follow data protection regulations** (GDPR, CCPA, etc.)
+- **Document attribute usage** and retention policies
+- **Provide user transparency** about data sharing
+
+## Common Implementation Scenarios
+
+### Scenario 1: University Environment
+
+**Users**: Students, Faculty, Staff
+**Identifier**: Student ID for students, Employee ID for staff
+**Implementation**:
+- Use organizational units or groups to differentiate user types
+- Map different attributes based on user type
+- Include role/group information in SSO response
+
+### Scenario 2: Corporate Training
+
+**Users**: All employees
+**Identifier**: Employee ID
+**Implementation**:
+- Single attribute mapping for all users
+- Include department/role information
+- Sync with HR systems for user lifecycle management
+
+### Scenario 3: Multi-Tenant SaaS
+
+**Users**: Multiple customer organizations
+**Identifier**: Tenant-specific user ID
+**Implementation**:
+- Include tenant information in attributes
+- Use composite identifiers (tenant + user ID)
+- Separate SSO applications per tenant if needed
+
+## Troubleshooting Common Issues
+
+### User Not Found in LMS
+
+**Causes:**
+- `lms_user_id` doesn't match LMS user identifier
+- Case sensitivity issues
+- User doesn't exist in LMS yet
+- Identifier format mismatch
+
+**Solutions:**
+- Verify identifier format and case
+- Check LMS user provisioning
+- Review attribute mapping configuration
+- Test with known working users
+
+### Custom Attribute Not Appearing
+
+**Causes:**
+- User doesn't have the attribute populated
+- Incorrect attribute mapping
+- IdP configuration issues
+- SSO application not assigned to user
+
+**Solutions:**
+- Verify user attribute data
+- Check IdP attribute mapping
+- Review application assignments
+- Test SSO response directly
+
+### Authentication Failures
+
+**Causes:**
+- Incorrect SSO URLs or certificates
+- SAML configuration mismatch
+- Token/assertion format issues
+- Network or firewall blocks
+
+**Solutions:**
+- Verify SSO configuration details
+- Check certificate validity
+- Review error messages and logs
+- Test network connectivity
+
+## Best Practices
+
+### Configuration Management
+
+- **Use version control** for IdP configurations when possible
+- **Document attribute mappings** and business logic
+- **Maintain staging environments** for testing
+- **Plan for disaster recovery** and backup configurations
+
+### User Experience
+
+- **Provide clear error messages** for failed logins
+- **Offer alternative authentication** methods as fallback
+- **Test user journeys** regularly
+- **Monitor authentication performance**
+
+### Maintenance
+
+- **Regularly review user attributes** for accuracy
+- **Monitor for deprecated features** in your IdP
+- **Update certificates** before expiration
+- **Review access permissions** periodically
+
+<IntegrationFooter />
+
+## Next Steps
+
+1. **Choose your Identity Provider** from the guides above
+2. **Review your LMS documentation** for specific requirements
+3. **Plan your user attribute mapping** strategy
+4. **Configure and test** in a development environment
+5. **Deploy to production** with proper monitoring
+
+For LMS-specific requirements and examples, refer to the individual integration guides in your LMS category documentation.
