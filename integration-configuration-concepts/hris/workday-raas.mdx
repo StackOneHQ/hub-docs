@@ -65,9 +65,14 @@ configuring security group permissions, and connecting it through the integratio
     - Click the `+` icon to add a field.
     - Select a Business Object (e.g. Worker) in the **Business Object** column.
     - Choose the specific field (e.g. Employee ID) in the **Field** column.
-    - Set aliases in **Column Heading Override** and **Column Heading Override XML Alias** to ensure stable field names in API responses.
+    - Set aliases in **Column Heading Override** to ensure stable field names in API responses.
+
+    <Note>
+      The **Column Heading Override XML Alias** column will appear only after you enable **Enable As Web Service** under the Advanced tab and save the report. You can view this column when you return to edit the report.
+    </Note>
+
     <Info>
-      For employee data, you can include the following fields:
+      Add the following **field aliases** in your report. The aliases serve as stable identifiers for the API responses but the underlying fields must be properly configured.
       - Employee_ID
       - First_Name
       - Last_Name
@@ -83,6 +88,7 @@ configuring security group permissions, and connecting it through the integratio
       - Termination_Date
       - Company_Name
     </Info>
+
     <Frame>
       <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Fields and Aliases Settings" src="/images/workday-raas/workday_raas_fields_aliases.png" />
     </Frame>
@@ -96,7 +102,9 @@ configuring security group permissions, and connecting it through the integratio
   </Step>
 
   <Step title="Configure report prompts">
-    Enable prompt display by ticking **Display Prompt Values in Subtitle**. Leave other settings at their defaults.
+      - Tick **Populate Undefined Prompt Defaults** to make prompt default fields visible in the report table. Once the `Prompt Defaults` grid is visible, the **Populate Undefined Prompt Defaults** field will be automatically unticked.
+      - Tick **Display Prompt Values in Subtitle** to enable prompt display.
+
     <Frame>
       <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Prompts Settings" src="/images/workday-raas/workday_raas_custom_report_prompt.png" />
     </Frame>
@@ -261,11 +269,18 @@ Use the **ISU Username**, **ISU Password**, and **Report URL** to create a conne
       **Transferring ownership** revokes access from the current owner.  
       After transferring, ensure you reconnect in the StackOne Connector Hub using the new owner’s ISU credentials; otherwise you will encounter the `The task submitted is not authorized` error.
     </Warning>
+    
     If the current owner is not the ISU you intend to use to connect with StackOne, open the three‑dot menu under _Custom Report_ and select `Transfer Ownership`.
     <Frame>
       <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Change Report Owner" src="/images/workday-raas/workday_raas_report_transfer_ownership.png" />
     </Frame>
+
     Enter the new ISU username in `New Owner` and click `OK`.
+
+    <Note>
+      If you cannot find the ISU in the `New Owner` dropdown, you can share the report access without transferring ownership as described in the next step **Grant access without transferring ownership**.
+    </Note>
+    
     <Frame>
       <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Enter New Owner" src="/images/workday-raas/workday_raas_report_TO_select_ISU.png" />
     </Frame>
@@ -300,15 +315,30 @@ Use the **ISU Username**, **ISU Password**, and **Report URL** to create a conne
 ## Troubleshooting
 
 <Steps>
-  <Step title="Connection errors">
-    - Verify ISU credentials in the StackOne Connector Hub.
-    - Verify the Report URL is correct and reachable.
+  <Step title="Authentication (401 Unauthorized)/Authorization (403 Forbidden) errors">
+    - Verify that the ISU username and password are correct in the StackOne Connector Hub.
+    - Ensure the credentials have not expired or been changed.
+    - Confirm the ISU has the necessary security group permissions configured.
   </Step>
+
+  <Step title="502 The task submitted is not authorized error">
+    - Ensure the ISU has access to the custom report (either as owner or through authorized user sharing).
+    - Verify the report ownership configuration matches the ISU credentials being used.
+    - If ownership was recently transferred, reconnect in the StackOne Connector Hub with the new owner's credentials.
+  </Step>
+
+  <Step title="Report not found error">
+    - Verify the Report URL is correct and reachable.
+    - Ensure the ISU has access to the report through ownership or authorized user sharing.
+    - Check that the report is enabled as a web service in Advanced settings.
+  </Step>
+
   <Step title="Null field values">
     - Add missing **Domain Security Policy Permissions** as described in the security configuration section.
     - Activate pending security policy changes after modifications.
     - Retry the endpoint (fields populate once permissions are effective).
   </Step>
+
 </Steps>
 
 
