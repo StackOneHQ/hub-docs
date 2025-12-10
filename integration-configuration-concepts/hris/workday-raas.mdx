@@ -72,7 +72,7 @@ configuring security group permissions, and connecting it through the integratio
     </Note>
 
     <Info>
-      Add following **field's Alias** in your report. The aliases serve as stable identifiers for the API responses but the underlying fields must be properly configured.
+      Add the following **field aliases** in your report. The aliases serve as stable identifiers for the API responses but the underlying fields must be properly configured.
       - Employee_ID
       - First_Name
       - Last_Name
@@ -102,7 +102,7 @@ configuring security group permissions, and connecting it through the integratio
   </Step>
 
   <Step title="Configure report prompts">
-      - Tick **Populate Undefined Prompt Defaults** to make prompt default fields visible in the report table. Once `Prompt Defaults` grid is visible, ticked **Populate Undefined Prompt Defaults** field will be unticked again.
+      - Tick **Populate Undefined Prompt Defaults** to make prompt default fields visible in the report table. Once the `Prompt Defaults` grid is visible, the **Populate Undefined Prompt Defaults** field will be automatically unticked.
       - Tick **Display Prompt Values in Subtitle** to enable prompt display.
 
     <Frame>
@@ -278,7 +278,7 @@ Use the **ISU Username**, **ISU Password**, and **Report URL** to create a conne
     Enter the new ISU username in `New Owner` and click `OK`.
 
     <Note>
-      If you cannot find the ISU in the `New Owner` dropdown. You can share the report access without transferring ownership as described in the next **Grant access without transferring ownership**.
+      If you cannot find the ISU in the `New Owner` dropdown, you can share the report access without transferring ownership as described in the next step **Grant access without transferring ownership**.
     </Note>
     
     <Frame>
@@ -337,9 +337,6 @@ Use the **ISU Username**, **ISU Password**, and **Report URL** to create a conne
     - Add missing **Domain Security Policy Permissions** as described in the security configuration section.
     - Activate pending security policy changes after modifications.
     - Retry the endpoint (fields populate once permissions are effective).
-    <Warning>
-      Even after adding permissions, you may still see null values for some fields. Ensure the specific Domain Security Policy Permissions for those fields are set and that security changes are activated.
-    </Warning>
   </Step>
 
 </Steps>
