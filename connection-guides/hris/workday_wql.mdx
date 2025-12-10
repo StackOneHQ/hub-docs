@@ -349,49 +349,128 @@ If your URL is `https://my-instance.workday.com/my-tenant/d/etc`, your tenant is
 
 </Note>
 
-### Create a Custom Report
+
+## Create and View a Custom Report
 
 <Steps>
-  <Step title="Go to Create Custom Reports">
-    Use the global search bar to search for "Create Custom Report".
+  <Step title="Go to Create Custom Report">
+    Search and navigate to the `Create Custom Report` task
     <Frame>
-      <img src="/images/workday-wql/workday_wql_custom_create_report_1.png" alt="Global search for Create Custom Report" style={{ maxHeight: '500px', width: 'auto' }} />
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Accessing Report Designer" src="/images/workday-wql/workday_wql_custom_create_report_1.png" />
     </Frame>
+  </Step>
+  
+  <Step title="Configure custom report">
+    Follow these steps to configure the custom report:
 
-    Enter the following details:
-    - **Report Name**: Name for the WQL report.
-    - **Optimised for Performance**: If ticked, only indexed data sources are shown. Untick this option to display all data sources.
-    - **Data Source**: Select the data source you want to build a custom report for (e.g. All Workers).
-    - **Report Type**: Select `Advanced`.
+    - **Report Name**: Must be unique within the tenant
+    - **Report Type**: Select **Advanced**
+    - **Optimised for Performance**: Tick this box to enhance performance
+    - **Data Source**: Choose the appropriate data source based on the data you need (e.g. Workers for HCM reporting).
+       
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Create Custom Report" src="/images/workday-wql/workday_wql_create_custom_report.png" />
+    </Frame>
+    Click `OK` to continue.
+
+    Add and configure report fields:
+    - Click the `+` icon to add a field.
+    - Select a Business Object (e.g. Worker) in the **Business Object** column.
+    - Choose the specific field (e.g. Employee ID) in the **Field** column.
+    - Set aliases in **Column Heading Override** to ensure stable field names in API responses.
+
+    <Note>
+      The **Column Heading Override XML Alias** column will appear only after you enable **Enable As Web Service** under the Advanced tab and save the report. You can view this column when you return to edit the report.
+    </Note>
+
+    <Info>
+      Add following **field's Alias** in your report. The aliases serve as stable identifiers for the API responses but the underlying fields must be properly configured.
+      - Workday_ID
+      - Employee_ID
+      - Title
+      - First_Name
+      - Last_Name
+      - Display_Full_Name
+      - Personal_Email
+      - Work_Email
+      - Personal_Phone_Number
+      - Work_Phone_Number
+      - Gender
+      - Ethnicity
+      - Date_Of_Birth
+      - Marital_Status
+      - Job_Title
+      - Company
+      - Hire_Date
+      - Original_Hire_Date
+      - Employment_Status
+      - Location
+      - Employment_Type
+      - Manager
+      - Cost_Centers
+      - National_Identifier_Numbers
+      - Termination_Date
+      - Home_Address
+      - Home_Address_Country
+      - Home_Address_Postal_Code
+      - Home_Address_State
+      - Home_Address_City
+      - Work_Address
+      - Work_Address_Country
+      - Citizenships
+      - Job_Code
+      - Effective_Date
+      - Grade
+      - Benefits
+      - Skills
+    </Info>
 
     <Frame>
-      <img src="/images/workday-wql/workday_wql_custom_create_report_2.png" alt="Create Custom Report details" style={{ maxHeight: '500px', width: 'auto' }} />
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Fields and Aliases Settings" src="/images/workday-wql/workday_wql_fields_aliases.png" />
     </Frame>
-  
-    Click `OK` to create the report.
-  
   </Step>
 
-  <Step title="Edit the custom report">
-  After creating the report you are taken to the editing page. Select the fields you want to include from the data source.
+  <Step title="Configure report prompts">
+      - Tick **Populate Undefined Prompt Defaults** to make prompt default fields visible in the report table. Once the `Prompt Defaults` grid is visible, the ticked **Populate Undefined Prompt Defaults** field will be unticked again.
+      - Tick **Display Prompt Values in Subtitle** to enable prompt display.
 
     <Frame>
-      <img src="/images/workday-wql/workday_wql_custom_edit_report_3.png" alt="Edit Custom Report" style={{ maxHeight: '500px', width: 'auto' }} />
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Prompts Settings" src="/images/workday-wql/workday_wql_custom_report_prompt.png" />
     </Frame>
-  Click `OK` to save the field selection.
-  
   </Step>
 
-  <Step title="Test the custom report">
-  Test the report by clicking `Test` in the three-dot action menu beside the report name.
+  <Step title="Go to View Custom Report">
+    Search for `View Custom Report`,
     <Frame>
-      <img src="/images/workday-wql/workday_wql_custom_test_report_4.png" alt="Edit Custom Report" style={{ maxHeight: '500px', width: 'auto' }} />
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Search for View Custom Report" src="/images/workday-wql/workday_wql_search_for_view_custom_report.png" />
     </Frame>
-  
+    
+    select the report you just created, and then click `OK` to open it.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Select Custom report to View" src="/images/workday-wql/workday_wql_select_for_view_custom_report.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Test Custom Report">
+    Navigate to `Test` under the `Custom Report` menu via the 3-dot menu.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Navigate to Test" src="/images/workday-wql/workday_wql_navigate_to_test.png" />
+    </Frame>
+    
+    Click `OK` to test it.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Click OK on Pop-up" src="/images/workday-wql/workday_wql_click_ok_to_move_forward_to_test.png" />
+    </Frame>
+
+    You will get some sample data based on the fields you configured in the custom report.
+    <Frame>
+      <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Sample Data from Custom Report" src="/images/workday-wql/workday_wql_sample_data_from_custom_report.png" />
+    </Frame>
   </Step>
 </Steps>
 
-### Convert the Report to WQL in Workday
+
+## Convert the Report to WQL in Workday
 
 <Steps>
   <Step title="Go to Convert Reports to WQL">
@@ -400,19 +479,25 @@ If your URL is `https://my-instance.workday.com/my-tenant/d/etc`, your tenant is
       <img src="/images/workday-wql/workday_wql_convert_report_to_wql_5.png" alt="Global search for Convert Reports to WQL" style={{ maxHeight: '500px', width: 'auto' }} />
     </Frame>
 
-  Select the custom report you created earlier in the [Create a Custom Report](#create-a-custom-report) step.
+    Select the custom report you created earlier in the [Create and View a Custom Report](#create-and-view-a-custom-report) step.
     <Frame>
       <img src="/images/workday-wql/workday_wql_crw_select_report_6.png" alt="Select created custom report" style={{ maxHeight: '500px', width: 'auto' }} />
     </Frame>
-  Click `OK`.
+    Click `OK`.
   </Step>
 
-  <Step title="Get the WQL query">
+  <Step title="Click `OK` to continue">
+    <Frame>
+      <img src="/images/workday-wql/workday_wql_click_to_continue.png" alt="Click to continue without filter" style={{ maxHeight: '500px', width: 'auto' }} />
+    </Frame>
+  </Step>
+
+  <Step title="Get the generated WQL query">
     You are taken to a page showing the generated WQL query for your custom report.
     <Frame>
       <img src="/images/workday-wql/workday_wql_crw_generate_7.png" alt="Generated WQL Query" style={{ maxHeight: '500px', width: 'auto' }} />
     </Frame>
-  Copy this WQL query and paste it into the `Employee WQL Query` field when connecting through the StackOne Connector Hub.
+    Copy this WQL query and paste it into the `Employee WQL Query` field when connecting through the StackOne Connector Hub.
 
     <Note>
       WQL does not support calculated fields when converting custom reports to WQL.
@@ -434,7 +519,7 @@ Enter the following details in the StackOne Connector Hub:
 
   ```sql
   /* Sample WQL query format */
-  SELECT employeeID,legalFirstName,legalLastName, ... FROM employees;
+  SELECT workdayID as Workday_ID, employeeID as Employee_ID, legalName_Title as Title, legalFirstName as First_Name, legalLastName as Last_Name, legalNameInGeneralDisplayFormat as Display_Full_Name, email_PrimaryHome as Personal_Email, email_PrimaryWork as Work_Email, phone_PrimaryHome as Personal_Phone_Number FROM allWorkers
   ```
 
 Click **Connect**.
@@ -444,7 +529,7 @@ Click **Connect**.
     className="rounded-md"
     style={{ margin:"0 auto",border:"1px solid #efefef" }}
     alt="Linking your Account"
-    src="/images/workday-wql/image24.png"
+    src="/images/workday-wql/workday_wql_stackone_connector_hub_10.png"
   />
 </Frame>
 
