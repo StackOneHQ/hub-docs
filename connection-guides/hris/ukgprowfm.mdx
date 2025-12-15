@@ -1,0 +1,71 @@
+---
+title: "UKG Pro Workforce Management"
+description: "Follow these steps to connect UKG Pro Workforce Management via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guidance assumes you have admin access to UKG Pro Workforce Management and can create or request API credentials.
+</Warning>
+
+If you've been directed to StackOne to integrate with UKG Pro Workforce Management, the following steps will help you gather the required credentials and complete the connection.
+
+## Collect your UKG Pro Workforce Management credentials
+
+UKG Pro Workforce Management uses an OAuth LDAP (password-based) flow. You'll need the tenant host, an API client, and a user account that can access the required data.
+
+<Steps>
+  <Step title="Get your Host">
+    Ask your UKG Pro Workforce Management admin for your tenant host (for example: `service.ultipro.com`).
+  </Step>
+
+  <Step title="Create or request an API client">
+    In UKG Pro Workforce Management, create (or request from your UKG admin) an API client and obtain:
+    
+    - **Client ID**
+    - **Client Secret**
+  </Step>
+
+  <Step title="Prepare a username and password">
+    Use a dedicated integration user where possible. Make sure you have:
+    
+    - **Username**
+    - **Password**
+  </Step>
+</Steps>
+
+## Linking your UKG Pro Workforce Management account
+
+<Steps>
+  <Step title="Open the connection form">
+    In your integration platform, navigate to the Integrations page and select **UKG Pro Workforce Management**.
+  </Step>
+
+  <Step title="Enter connection details">
+    Enter the following values:
+    
+    - **Host**
+    - **Client ID**
+    - **Client Secret**
+    - **Username**
+    - **Password**
+  </Step>
+
+  <Step title="Test and save">
+    Click **Connect** to complete the setup.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following HRIS Resources available from the provider:
+<ul>
+  <li>Employees</li>
+  <li>Locations</li>
+  <li>Shifts</li>
+  <li>Time off</li>
+  <li>Time off policies</li>
+</ul>
