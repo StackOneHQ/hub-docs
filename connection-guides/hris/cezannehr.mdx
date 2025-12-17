@@ -66,6 +66,29 @@ If you've been directed to StackOne to integrate with Cezanne HR, the following 
       />
     </Frame>
 
+    Check the **Enable All Users** checkbox to allow any service user to authenticate using this application. If unchecked, only users explicitly added will be able to authenticate.
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Enable All Users"
+        src="/images/cezannehr/image11.png"
+      />
+    </Frame>
+
+    In the scopes section, ensure at a minimum the following permissions are enabled:
+    - **Token Details** - Required for authentication
+    - **API Read Access** - Required for data retrieval
+
+    <Frame>
+      <img
+        className="rounded-md"
+        style={{ margin: '0 auto', border: '1px solid #efefef' }}
+        alt="Configure Scopes"
+        src="/images/cezannehr/image12.png"
+      />
+    </Frame>
 
     In the `Allowed Callbacks` field, enter the following URL:
 
@@ -83,7 +106,6 @@ If you've been directed to StackOne to integrate with Cezanne HR, the following 
         src="/images/cezannehr/image4.png"
       />
     </Frame>
-      
   </Step>
 
   <Step title="Note Client ID and Client Secret">
