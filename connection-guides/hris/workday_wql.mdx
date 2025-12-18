@@ -195,6 +195,10 @@ If your URL is `https://my-instance.workday.com/my-tenant/d/etc`, your tenant is
     | Person Data: Work Phone | Get Only |
     | Person Data: Ethnicity | Get Only |
 
+<Warning>
+  Depending on the fields included in your custom report, additional **Domain Security Policy Permissions** may be required. 
+  If you encounter `null` values in the API response, review and add the necessary permissions accordingly.
+</Warning>
   </Step>
 </Steps>
 
@@ -234,6 +238,10 @@ If your URL is `https://my-instance.workday.com/my-tenant/d/etc`, your tenant is
         src="/images/workday-wql/image16.png"
       />
     </Frame>
+
+    <Warning>
+      You must **activate security changes** each time you modify Domain Security Policy Permissions; otherwise changes will not take effect.
+    </Warning>
   </Step>
 </Steps>
 
@@ -437,6 +445,8 @@ If your URL is `https://my-instance.workday.com/my-tenant/d/etc`, your tenant is
     <Frame>
       <img className="rounded-md" style={{ margin:"0 auto",border:"1px solid #efefef" }} alt="Prompts Settings" src="/images/workday-wql/workday_wql_custom_report_prompt.png" />
     </Frame>
+
+    Click `OK` to save the report.
   </Step>
 
   <Step title="Go to View Custom Report">
