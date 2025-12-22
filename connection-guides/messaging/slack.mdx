@@ -1,0 +1,66 @@
+---
+title: "Slack"
+description: "Follow these steps to connect Slack via the StackOne Hub successfully."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+<Warning>
+  You must be able to create and manage Slack apps for the workspace you want to connect.
+</Warning>
+
+If you've been directed to integrate with Slack, the following steps will help you configure the required OAuth application details so you can connect successfully.
+
+## Create a Slack app and configure OAuth
+
+<Steps>
+  <Step title="Create a Slack app">
+    Go to [Slack API: Your Apps](https://api.slack.com/apps) and create a new app (for example, **From scratch**).
+  </Step>
+
+  <Step title="Add the redirect URL">
+    In your app settings, open **OAuth &amp; Permissions** and add this **Redirect URL**:
+    `https://api.stackone.com/connect/oauth2/slack/callback`
+  </Step>
+
+  <Step title="Configure the required scopes">
+    In **OAuth &amp; Permissions**, add the scopes required by your integration (you can adjust these later if needed).
+  </Step>
+
+  <Step title="Install the app to your workspace">
+    Install the app to the Slack workspace you want to connect so the OAuth authorization flow can be completed.
+  </Step>
+
+  <Step title="Copy your Client ID and Client Secret">
+    In **Basic Information**, copy the **Client ID** and **Client Secret** and store them safely.
+  </Step>
+</Steps>
+
+## Linking your Slack account
+
+<Steps>
+  <Step title="Enter connection details">
+    In your integration platform, paste the **Client ID** and **Client Secret** from the previous steps (and any optional scopes/settings required for your use case).
+  </Step>
+
+  <Step title="Authorize access in Slack">
+    Start the OAuth flow and approve access when prompted by Slack.
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Available data
+
+This integration has the following [Messaging Resources](https://docs.stackone.com/reference/getting-started-with-your-api) available from the provider:
+<ul>
+  <li>Channels</li>
+  <li>Messages</li>
+  <li>Users</li>
+</ul>
+
+## Useful Links
+
+<Card title="Slack OAuth documentation" icon="link" href="https://docs.slack.dev/authentication/installing-with-oauth">
+  https://docs.slack.dev/authentication/installing-with-oauth
+</Card>

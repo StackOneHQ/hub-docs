@@ -358,6 +358,14 @@
     {
       "source": "/en/articles/en/articles/7727327-ashby",
       "destination": "/connection-guides/ats/ashby"
+    },
+    {
+      "source": "/integration-guides/messaging/slack",
+      "destination": "/connection-guides/messaging/slack"
+    },
+    {
+      "source": "/integration-guides/messaging/slack/",
+      "destination": "/connection-guides/messaging/slack"
     }
   ]
 }
