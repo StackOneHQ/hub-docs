@@ -237,6 +237,26 @@ Use the Service User ID and the Service User Token generated in Step 1 to authen
   <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Account" src="/images/hibob-service-user/image9.png" />
 </Frame>
 
+## Configure Webhooks
+
+To enable real-time data synchronization with time-off events, you need to configure webhooks in Hibob using the External Trigger Token provided by StackOne.
+
+For detailed instructions on configuring webhooks, see our [Hibob Webhook Configuration Guide](/integration-configuration-concepts/hris/hibob-webhook-configurations).
+
+### Testing Your Webhook
+
+To check if a webhook is working correctly:
+
+1. From the Webhooks list, locate the webhook you want to test
+2. From the three-dot menu at the end of the row, select **Test**
+3. The test will send a test event to the URL you provided with the "Ping test" string
+
+<Warning>
+  If the webhook test is unsuccessful (Bob did not receive a valid 200 response from your listener), the webhook will be deactivated. If this happens, fix the issue, reactivate the webhook, and try again.
+</Warning>
+
+For more details on webhook management, refer to [Hibob's Webhook Documentation](https://help.hibob.com/hc/en-us/articles/27276476753041-Manage-Webhooks).
+
 <IntegrationFooter />
 
 ## Useful Links
