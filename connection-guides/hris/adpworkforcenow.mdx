@@ -11,26 +11,75 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 If you've been directed to StackOne to integrate with ADP Workforce Now, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
-## Getting your Client ID and Client Secret
+## Prerequisites
 
-These are unique identifiers for your account. If you do not possess this information, please contact your ADP client representative.
+Before you begin, ensure you have the following:
 
-## Generating a Certificate Signing Request (CSR)
+- **Admin Access**: Admin privileges are required for ADP Marketplace, project creation, and certificate management
+- **ADP API Central App**: Purchase & Install "ADP API Central for ADP Workforce Now" from [https://apps.adp.com/en-US/apps/410612](https://apps.adp.com/en-US/apps/410612)
 
-You'll need a CSR to ensure secure communication. Refer to ADP's guide for a step-by-step process.
+## Step 1: Obtaining Client ID and Client Secret
 
-<a href="https://developers.adp.com/learn/how-to-articles/generate-a-certificate-signing-request" target="_blank" rel="noreferrer nofollow noopener" class="intercom-h2b-button">Generating a Certificate Signing Request</a>
+Access credentials via the ADP API Central app in your ADP account:
 
-The procedures for generating a CSR for ADP may vary depending on your partnership status with them. Ensure you follow the instructions relevant to your situation in the CSR guide above.
+1. Log in to ADP Central at [https://api-central.adp.com](https://api-central.adp.com)
+2. Navigate to **Projects** in the left menu
+3. Click **Create a Project**
 
-## Connecting to StackOne
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Project" src="/images/adpworkforcenow/image2.png" />
+</Frame>
 
-1. Enter your Client ID and Client Secret from Step 1.
-2. Locate the certificate issued by ADP and your private.key files generated in Step 2.
-3. Copy the contents of these files.
-4. Paste the copied contents into the designated areas in StackOne.
-5. If you initially used a passphrase to generate the key, add the same passphrase into the `(Optional) Passphrase` input.
-6. Click the `Connect` button.
+4. Enter project name, description (optional).
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Project details" src="/images/adpworkforcenow/image3.png" />
+</Frame>
+5. Select the required use case(s) (minimum: Worker Demographics & Pay Profile (Read/Write))
+
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Use case selection" src="/images/adpworkforcenow/image4.png" />
+</Frame>
+
+   - After project creation, enable all additional required APIs via the API Discovery tool within the project
+
+   <Frame>
+     <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Additional APIs" src="/images/adpworkforcenow/image8.png" />
+   </Frame>
+
+6. Click **Create Project**
+
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Project created" src="/images/adpworkforcenow/image5.png" />
+</Frame>
+
+7. In the project, go to **Credentials** tab
+8. Copy your **Client ID** and **Client Secret**
+
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Credentials tab" src="/images/adpworkforcenow/image7.png" />
+</Frame>
+
+## Step 2: Generating Certificate Files
+
+Generate certificate/private key files for secure authentication:
+
+1. In the ADP Central project, click **Manage Certificate**
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Manage Certificate" src="/images/adpworkforcenow/image6.png" />
+</Frame>
+2. Follow the steps to generate a certificate. Refer to ADP's official guide: [Generating a Certificate Signing Request](https://developers.adp.com/learn/how-to-articles/generate-a-certificate-signing-request)
+3. Download and save the certificate (.pem) and private key files
+4. Ensure full headers are included like `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----`
+
+## Step 3: Connecting to StackOne
+
+Complete the integration with the following steps:
+
+1. Enter your **Client ID** and **Client Secret** from Step 1
+2. Locate the certificate (.pem) issued by ADP and your private key file
+3. Open both files in a text editor and copy their full contents
+4. Paste the certificate content into the Certificate field and private key into the Private Key field in StackOne
+5. Click the `Connect` button
 
 <Frame>
   <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="StackOne Credentials" src="/images/adpworkforcenow/image1.png" />
@@ -39,6 +88,15 @@ The procedures for generating a CSR for ADP may vary depending on your partnersh
 <IntegrationFooter />
 
 ## Useful Links
-<Card title="API Reference" icon="link" href="https://developers.adp.com/articles/api/">
-  https://developers.adp.com/articles/api/
+
+<Card title="ADP Marketplace App" icon="link" href="https://apps.adp.com/en-US/apps/410612/adp-api-central-for-adp-workforce-now-and-adp-workforce-now-next-generation/overview">
+  ADP API Central Overview
+</Card>
+
+<Card title="CSR Guide" icon="link" href="https://developers.adp.com/learn/how-to-articles/generate-a-certificate-signing-request">
+  Generate CSR
+</Card>
+
+<Card title="API Reference" icon="link" href="https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn">
+  API Reference
 </Card>
