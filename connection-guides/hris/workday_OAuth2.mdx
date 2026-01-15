@@ -115,7 +115,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     On the "Create Security Group" page, select "User-Based Security Group" from the Type of Tenanted Security Group pull-down menu. Enter a name in the Name field.
 
     <Note>
-      Some Workday Business Processes require User-Based Security Groups to access by default. 
+      Some Workday Business Processes require User-Based Security Groups to access by default.
     </Note>
 
     <Frame>
@@ -208,13 +208,13 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
       - Leave of Absence
       - Leave of Absence (Leave of Absence Manager View)
       - Organization Information
-      - Public Worker Reports **(* requires "View" access)**
+      - Public Worker Reports (**requires 'View' access**)
       - Time Off
       - Time Off (Time Off)
       - Time Off (Time Off Balances)
       - Time Off (Time Off Balances Manager View)
       - Time Off (Time Off Manager View)
-      - Workers 
+      - Workers
   </Step>
 </Steps>
 
@@ -273,7 +273,7 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
     1. In the Search bar, search for "View Security for Securable Item".
     2. In the modal, search for the specific REST endpoint, report, or report field that is causing the error (e.g., search for "Leave Type" if you're getting an error about the `leaveType` field).
     3. From the search results, click the "View Security" button for the relevant item.
-      - There are often multiple items with the same name, so you may need to click the "View Security" button for each item.
+       - There are often multiple items with the same name, so you may need to click the "View Security" button for each item.
     4. Review the "Domain Security" section to see which Security Groups currently have access.
     5. Check if your User-Based Security Group is listed. If it is not listed:
        - Note the required Domain Security Policy permissions shown in the modal.
