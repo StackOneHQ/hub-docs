@@ -41,10 +41,22 @@ Log in to your Confluence account at https://id.atlassian.com/login.
 
 ## Create your Confluence API Token
 
+<Note>
+  **API Token Scopes:** If you're using OAuth 2.0 (3LO) or creating a scoped API token, ensure the following scopes are granted for full integration functionality:
+
+  - `read:space:confluence` - Required for accessing spaces (/api/v2/spaces)
+  - `read:content:confluence` - Required for content search (/rest/api/content/search) and export operations
+  - `read:page:confluence` - Required for accessing pages (/api/v2/pages)
+  - `read:attachment:confluence` - Required for downloading files
+  - `write:attachment:confluence` - Required for uploading files
+
+  For more information on Confluence OAuth scopes, see [Confluence OAuth Scopes Documentation](https://developer.atlassian.com/cloud/confluence/scopes-for-oauth-2-3LO-and-forge-apps/).
+</Note>
+
 <Steps>
   <Step title="Go to Account Settings">
       Select your profile in the upper right-hand corner of the screen and Click **Account settings** in the navigation menu.
-  
+
       <Frame>
           <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Account Settings" src="/images/confluence/image4.png" />
       </Frame>
@@ -52,7 +64,7 @@ Log in to your Confluence account at https://id.atlassian.com/login.
 
     <Step title="Navigate to API Tokens">
       Select `Security` from menu and click on `Create and manage API tokens` under `API tokens` section.
-  
+
       <Frame>
           <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Tokens" src="/images/confluence/image5.png" />
       </Frame>
@@ -60,21 +72,21 @@ Log in to your Confluence account at https://id.atlassian.com/login.
 
   <Step title="Create a new API Token">
       Click **Create Classic API token** to create a new API Token.
-  
+
       <Frame>
           <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a new API Token" src="/images/confluence/image6.png" />
       </Frame>
   </Step>
   <Step title="Enter API Token details">
       Enter the name and expiry date of the API Token and click on `Create` button
-  
+
       <Frame>
           <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter API Token details" src="/images/confluence/image7.png" />
       </Frame>
   </Step>
   <Step title="Copy your API Token">
       Copy your API Token and store it safely to be used in a later step.
-  
+
       <Frame>
           <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your API Token" src="/images/confluence/image8.png" />
       </Frame>
@@ -106,3 +118,8 @@ This integration has the following [DOCUMENTS Resources](https://docs.stackone.c
   <li>Drives</li>
   <li>Files</li>
 </ul>
+
+## Useful Links
+<Card title="Confluence OAuth Scopes Documentation" icon="link" href="https://developer.atlassian.com/cloud/confluence/scopes-for-oauth-2-3LO-and-forge-apps/">
+    https://developer.atlassian.com/cloud/confluence/scopes-for-oauth-2-3LO-and-forge-apps/
+</Card>
