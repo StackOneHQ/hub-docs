@@ -11,6 +11,12 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 If you've been directed to StackOne to integrate with Confluence, the following steps will help you understand the process and any necessary actions to configure a successful integration.
 
+Confluence supports two authentication methods:
+- **Classic API Token**: Uses basic authentication with username and API token
+- **Scoped API Key**: Uses OAuth 2.0 with granular permission scopes
+
+Choose the authentication method that best suits your security requirements.
+
 ## Log in to Confluence
 
 Log in to your Confluence account at https://id.atlassian.com/login.
@@ -19,7 +25,9 @@ Log in to your Confluence account at https://id.atlassian.com/login.
     <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Log in to Confluence" src="/images/confluence/image1.png" />
 </Frame>
 
-## Find your Confluence Domain Name
+## Authentication Method 1: Classic API Token
+
+### Find your Confluence Domain Name
 
 <Steps>
   <Step title="Go to Confluence Page">
@@ -32,14 +40,14 @@ Log in to your Confluence account at https://id.atlassian.com/login.
 
   <Step title="Find the Domain">
     In the URL bar of your browser, you can find the domain by selecting the text in front of `.atlassian.net`.
-  
+
     <Frame>
         <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Find the Domain" src="/images/confluence/image3.png" />
     </Frame>
   </Step>
 </Steps>
 
-## Create your Confluence API Token
+### Create your Confluence API Token
 
 <Steps>
   <Step title="Go to Account Settings">
@@ -80,11 +88,12 @@ Log in to your Confluence account at https://id.atlassian.com/login.
       </Frame>
   </Step>
 </Steps>
-## Find your UserName/Email
+
+### Find your UserName/Email
 
 Your UserName/Email can be found at your profile in the upper right-hand corner of the screen.
 
-## Linking your Account
+### Linking your Account with Classic API Token
 
 Upon reaching the Link Account page, select Confluence integration from hub and enter the credentials from the previous steps:
   - **UserName/Email**
@@ -96,6 +105,87 @@ Proceed by clicking the Connect button.
 <Frame>
     <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/confluence/image9.png" />
 </Frame>
+
+## Authentication Method 2: Scoped API Key
+
+Scoped API Keys use OAuth 2.0 authentication with granular permissions, providing better security by limiting access to only the specific operations your integration needs.
+
+### Retrieve your Cloud ID
+
+To use scoped API keys, you'll need your Atlassian Cloud ID.
+
+<Steps>
+  <Step title="Navigate to Atlassian Admin">
+    Log in to your Atlassian account and navigate to [admin.atlassian.com](https://admin.atlassian.com)
+  </Step>
+
+  <Step title="Find your Cloud ID">
+    Your Cloud ID is displayed in the URL when viewing your organization. The URL format is:
+    ```
+    https://admin.atlassian.com/s/{cloud-id}/
+    ```
+
+    Alternatively, you can retrieve your Cloud ID using the API:
+    ```bash
+    curl -X GET 'https://api.atlassian.com/oauth/token/accessible-resources' \
+      -H 'Authorization: Bearer YOUR_ACCESS_TOKEN'
+    ```
+  </Step>
+</Steps>
+
+For detailed instructions, see [Atlassian's guide on retrieving your Cloud ID](https://support.atlassian.com/jira/kb/retrieve-my-atlassian-sites-cloud-id/).
+
+### Required OAuth 2.0 Scopes
+
+When creating your OAuth app, you'll need to configure the following scopes based on your integration requirements:
+
+<Note>
+**Required Scopes for Confluence API Operations:**
+
+- **`read:space:confluence`** - Required for accessing spaces via `/api/v2/spaces`
+- **`read:content:confluence`** - Required for content search via `/rest/api/content/search` and export operations
+- **`read:page:confluence`** - Required for accessing pages via `/api/v2/pages`
+- **`read:attachment:confluence`** - Required for downloading files
+- **`write:attachment:confluence`** - Required for uploading files
+
+These scopes ensure your integration can perform all necessary operations including viewing spaces, searching content, accessing pages, and managing file attachments.
+</Note>
+
+### Create an OAuth 2.0 App
+
+<Steps>
+  <Step title="Access Developer Console">
+    Navigate to [Atlassian Developer Console](https://developer.atlassian.com/console/myapps/) and click **Create** to create a new app.
+  </Step>
+
+  <Step title="Configure OAuth 2.0">
+    Select **OAuth 2.0 integration** and configure your app settings including:
+    - App name
+    - Callback URL (redirect URI)
+    - Required scopes (listed above)
+  </Step>
+
+  <Step title="Obtain Credentials">
+    After creating the app, note down your:
+    - **Client ID**
+    - **Client Secret**
+    - **Cloud ID** (from the previous step)
+  </Step>
+</Steps>
+
+### Linking your Account with Scoped API Key
+
+Upon reaching the Link Account page, select Confluence integration from hub and enter:
+  - **Client ID**
+  - **Client Secret**
+  - **Cloud ID**
+
+Proceed by clicking the Connect button and authorize the requested scopes.
+
+## Useful Links
+
+- [Confluence OAuth 2.0 Scopes Documentation](https://developer.atlassian.com/cloud/confluence/scopes-for-oauth-2-3LO-and-forge-apps/)
+- [Retrieve Your Atlassian Cloud ID](https://support.atlassian.com/jira/kb/retrieve-my-atlassian-sites-cloud-id/)
 
 <IntegrationFooter />
 
