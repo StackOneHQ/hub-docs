@@ -39,65 +39,62 @@ Log in to your Confluence account at https://id.atlassian.com/login.
   </Step>
 </Steps>
 
-## Create your Confluence API Token
+## Create OAuth 2.0 Credentials for Service Accounts
+
+<Note>
+This integration uses OAuth 2.0 service accounts which provide secure, granular access to Confluence. The following OAuth scopes are required:
+- `search:confluence` - Search across Confluence content
+- `read:confluence-space.summary` - Read space summaries
+- `read:space:confluence` - Access spaces (/api/v2/spaces)
+- `read:page:confluence` - Access pages (/api/v2/pages)
+- `read:content:confluence` - Search and export content (/rest/api/content/search)
+- `write:page:confluence` - Create and update pages
+</Note>
 
 <Steps>
-  <Step title="Go to Account Settings">
-      Select your profile in the upper right-hand corner of the screen and Click **Account settings** in the navigation menu.
-  
-      <Frame>
-          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Account Settings" src="/images/confluence/image4.png" />
-      </Frame>
+  <Step title="Navigate to Developer Console">
+      Go to the [Atlassian Developer Console](https://developer.atlassian.com/console/myapps/) and log in with your Atlassian account.
   </Step>
 
-    <Step title="Navigate to API Tokens">
-      Select `Security` from menu and click on `Create and manage API tokens` under `API tokens` section.
-  
-      <Frame>
-          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to API Tokens" src="/images/confluence/image5.png" />
-      </Frame>
+  <Step title="Create OAuth 2.0 Integration">
+      Click **Create** and select **OAuth 2.0 integration** to create a new OAuth app.
   </Step>
 
-  <Step title="Create a new API Token">
-      Click **Create Classic API token** to create a new API Token.
-  
-      <Frame>
-          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a new API Token" src="/images/confluence/image6.png" />
-      </Frame>
+  <Step title="Configure Your App">
+      Enter a name for your OAuth integration and click **Create**.
   </Step>
-  <Step title="Enter API Token details">
-      Enter the name and expiry date of the API Token and click on `Create` button
-  
-      <Frame>
-          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter API Token details" src="/images/confluence/image7.png" />
-      </Frame>
+
+  <Step title="Configure Permissions">
+      Navigate to the **Permissions** tab and add the following OAuth 2.0 scopes:
+      - `search:confluence`
+      - `read:confluence-space.summary`
+      - `read:space:confluence`
+      - `read:page:confluence`
+      - `read:content:confluence`
+      - `write:page:confluence`
   </Step>
-  <Step title="Copy your API Token">
-      Copy your API Token and store it safely to be used in a later step.
-  
-      <Frame>
-          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy your API Token" src="/images/confluence/image8.png" />
-      </Frame>
+
+  <Step title="Create Service Account Credentials">
+      Navigate to the **Authorization** tab and create OAuth 2.0 credentials for a service account. Copy the **Client ID** and **Client Secret** - you'll need these for linking your account.
   </Step>
 </Steps>
-## Find your UserName/Email
-
-Your UserName/Email can be found at your profile in the upper right-hand corner of the screen.
 
 ## Linking your Account
 
-Upon reaching the Link Account page, select Confluence integration from hub and enter the credentials from the previous steps:
-  - **UserName/Email**
-  - **API Token**
+Upon reaching the Link Account page, select Confluence integration from the hub and enter the credentials from the previous steps:
+  - **Client ID**
+  - **Client Secret**
   - **Domain Name**
 
-Proceed by clicking the Connect button.
-
-<Frame>
-    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Enter Credentials" src="/images/confluence/image9.png" />
-</Frame>
+Proceed by clicking the Connect button to complete the OAuth authorization flow.
 
 <IntegrationFooter />
+
+## Useful Links
+
+- [Create OAuth 2.0 credential for service accounts](https://support.atlassian.com/user-management/docs/create-oauth-2-0-credential-for-service-accounts/)
+- [Atlassian Developer Console](https://developer.atlassian.com/console/myapps/)
+- [Confluence OAuth 2.0 Scopes](https://developer.atlassian.com/cloud/confluence/scopes-for-oauth-2-3LO-and-forge-apps/)
 
 ## Available data
 
