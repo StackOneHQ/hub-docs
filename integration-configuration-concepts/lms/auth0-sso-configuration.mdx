@@ -1,0 +1,417 @@
+---
+title: "Auth0 SSO Configuration for LMS Integration"
+description: "Configure Auth0 to provide custom SSO attributes for Learning Management System integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+<Warning>
+This configuration requires admin access to your Auth0 tenant and should be tested thoroughly before production deployment.
+</Warning>
+
+This guide walks you through configuring Auth0 as your Identity Provider to include custom user attributes (like `lms_user_id`) needed for Learning Management System integrations.
+
+## Overview
+
+Auth0 provides flexible user attribute management and can include custom claims in SAML assertions or OIDC tokens to support Learning Management System integrations. This enables seamless user mapping between your Auth0 user store and LMS platforms.
+
+## Prerequisites
+
+- Admin access to Auth0 dashboard
+- Understanding of the specific `lms_user_id` value required by your target LMS
+- Basic knowledge of SAML 2.0 or OIDC protocols
+
+## SAML Configuration
+
+<Steps>
+  <Step title="Access Auth0 Dashboard">
+    Log into your Auth0 dashboard and navigate to **Applications** > **Applications**.
+  </Step>
+
+  <Step title="Create SAML Application">
+    - Click **Create Application**
+    - Enter application name (e.g., "LMS Integration")
+    - Select **Regular Web Applications**
+    - Click **Create**
+    
+    Then switch to SAML2 Web App:
+    - Go to **Settings** tab
+    - Scroll to **Application Type**
+    - Select **SAML2 Web App**
+  </Step>
+
+  <Step title="Configure SAML Settings">
+    In the **Settings** tab, configure:
+    
+    **Application Callback URL**: Your LMS's Assertion Consumer Service URL
+    **Settings** (JSON format):
+    ```json
+    {
+      "audience": "your-service-provider-entity-id",
+      "recipient": "your-acs-url",
+      "destination": "your-acs-url",
+      "lifetimeInSeconds": 3600,
+      "signResponse": false,
+      "nameIdentifierFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
+      "nameIdentifierProbes": [
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
+      ]
+    }
+    ```
+    
+    <Frame>
+      <img className='rounded-md' alt="Auth0 SAML application settings" src="/images/sso/auth0-saml-settings.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Download Metadata">
+    - Scroll to **Advanced Settings**
+    - Click **Endpoints** tab
+    - Copy the **SAML Metadata URL** or download the metadata
+    - Note the **SAML Identity Provider URL**
+  </Step>
+
+  <Step title="Configure Custom Claims with Rules">
+    Navigate to **Auth Pipeline** > **Rules** and create a new rule:
+    
+    ```javascript
+    function addCustomClaims(user, context, callback) {
+      // Add custom lms_user_id claim
+      const namespace = 'https://your-domain.com/';
+      
+      // Set lms_user_id based on user attribute
+      if (user.app_metadata && user.app_metadata.lms_user_id) {
+        context.samlConfiguration.mappings = {
+          'https://schemas.auth0.com/lms_user_id': user.app_metadata.lms_user_id
+        };
+      } else if (user.user_metadata && user.user_metadata.employee_id) {
+        context.samlConfiguration.mappings = {
+          'https://schemas.auth0.com/lms_user_id': user.user_metadata.employee_id
+        };
+      } else {
+        // Fallback to user_id or email
+        context.samlConfiguration.mappings = {
+          'https://schemas.auth0.com/lms_user_id': user.email
+        };
+      }
+      
+      callback(null, user, context);
+    }
+    ```
+  </Step>
+
+  <Step title="Alternative: Using Actions (Recommended)">
+    For newer Auth0 tenants, use Actions instead of Rules:
+    
+    Navigate to **Actions** > **Flows** > **Login**:
+    - Click **Custom** tab and create new Action
+    - Add the following code:
+    
+    ```javascript
+    exports.onExecutePostLogin = async (event, api) => {
+      if (event.client.name === 'LMS Integration') {
+        // Add custom SAML attribute
+        if (event.user.app_metadata?.lms_user_id) {
+          api.samlResponse.setAttribute('lms_user_id', event.user.app_metadata.lms_user_id);
+        } else if (event.user.user_metadata?.employee_id) {
+          api.samlResponse.setAttribute('lms_user_id', event.user.user_metadata.employee_id);
+        } else {
+          api.samlResponse.setAttribute('lms_user_id', event.user.email);
+        }
+        
+        // Add other attributes as needed
+        api.samlResponse.setAttribute('department', event.user.user_metadata?.department || '');
+        api.samlResponse.setAttribute('job_title', event.user.user_metadata?.job_title || '');
+      }
+    };
+    ```
+  </Step>
+</Steps>
+
+## OIDC Configuration Alternative
+
+<Steps>
+  <Step title="Create OIDC Application">
+    - Create a new **Single Page Application** or **Regular Web Application**
+    - Configure the **Allowed Callback URLs**
+    - Set **Allowed Web Origins** if needed
+  </Step>
+
+  <Step title="Configure Custom Claims">
+    Create an Action for the Login flow:
+    
+    ```javascript
+    exports.onExecutePostLogin = async (event, api) => {
+      if (event.client.client_id === 'your-lms-client-id') {
+        // Add custom claims to ID token
+        const namespace = 'https://your-domain.com/';
+        
+        if (event.user.app_metadata?.lms_user_id) {
+          api.idToken.setCustomClaim(`${namespace}lms_user_id`, event.user.app_metadata.lms_user_id);
+        } else if (event.user.user_metadata?.employee_id) {
+          api.idToken.setCustomClaim(`${namespace}lms_user_id`, event.user.user_metadata.employee_id);
+        }
+        
+        // Add to access token if needed
+        api.accessToken.setCustomClaim(`${namespace}lms_user_id`, event.user.app_metadata.lms_user_id);
+      }
+    };
+    ```
+  </Step>
+
+  <Step title="Configure Token Settings">
+    In your application settings:
+    - Set **JsonWebToken Signature Algorithm** (RS256 recommended)
+    - Configure **Token Expiration** settings
+    - Enable **OIDC Conformant** mode
+  </Step>
+</Steps>
+
+## Managing User Attributes
+
+<Steps>
+  <Step title="User Metadata Structure">
+    Auth0 supports two types of metadata:
+    
+    **user_metadata**: Data that the user can modify
+    **app_metadata**: Data that only the application can modify
+    
+    For LMS integration, typically use `app_metadata` for `lms_user_id`:
+    
+    ```json
+    {
+      "app_metadata": {
+        "lms_user_id": "EMP123456",
+        "lms_role": "student",
+        "department": "Engineering"
+      },
+      "user_metadata": {
+        "preferences": {
+          "language": "en"
+        }
+      }
+    }
+    ```
+  </Step>
+
+  <Step title="Populate User Attributes">
+    You can set user metadata via:
+    
+    **Management API**:
+    ```javascript
+    const auth0 = require('auth0');
+    const management = new auth0.ManagementClient({
+      domain: 'your-domain.auth0.com',
+      clientId: 'your-client-id',
+      clientSecret: 'your-client-secret'
+    });
+    
+    management.updateUser(
+      { id: 'auth0|userId' },
+      { app_metadata: { lms_user_id: 'EMP123456' } }
+    );
+    ```
+    
+    **Auth0 Dashboard**: Manual entry in user profiles
+    **Bulk Import**: Using Auth0's user import functionality
+    **Database Connections**: Sync from external databases
+  </Step>
+
+  <Step title="Dynamic Attribute Assignment">
+    Use Rules/Actions to dynamically assign attributes based on user properties:
+    
+    ```javascript
+    exports.onExecutePostLogin = async (event, api) => {
+      // Assign lms_user_id based on email domain
+      const domain = event.user.email.split('@')[1];
+      let lms_user_id;
+      
+      if (domain === 'company.edu') {
+        // For students, use the email prefix
+        lms_user_id = event.user.email.split('@')[0];
+      } else if (domain === 'staff.company.edu') {
+        // For staff, use employee_id from user_metadata
+        lms_user_id = event.user.user_metadata.employee_id;
+      }
+      
+      if (lms_user_id) {
+        api.user.setAppMetadata('lms_user_id', lms_user_id);
+      }
+    };
+    ```
+  </Step>
+</Steps>
+
+## Database Connection Configuration
+
+If you're using a custom database connection:
+
+<Steps>
+  <Step title="Configure Database Connection">
+    - Go to **Authentication** > **Database**
+    - Create or configure your custom database connection
+    - Implement the **Login** script to return user profile with custom attributes
+  </Step>
+
+  <Step title="Login Script Example">
+    ```javascript
+    function login(email, password, callback) {
+      // Your authentication logic here
+      const query = 'SELECT * FROM users WHERE email = ?';
+      
+      mysql.query(query, [email], function(err, results) {
+        if (err) return callback(err);
+        if (results.length === 0) return callback(new WrongUsernameOrPasswordError(email));
+        
+        const user = results[0];
+        
+        // Verify password
+        if (!bcrypt.compareSync(password, user.password)) {
+          return callback(new WrongUsernameOrPasswordError(email));
+        }
+        
+        // Return user profile with custom attributes
+        return callback(null, {
+          user_id: user.id,
+          email: user.email,
+          name: user.name,
+          app_metadata: {
+            lms_user_id: user.employee_id,
+            department: user.department,
+            role: user.role
+          }
+        });
+      });
+    }
+    ```
+  </Step>
+</Steps>
+
+## Common LMS User ID Patterns
+
+| LMS Platform | Recommended Attribute Source | Auth0 Configuration |
+|--------------|----------------------------|-------------------|
+| Canvas | Employee ID or Email | `app_metadata.employee_id` or `email` |
+| Blackboard | Username or Email | `app_metadata.username` or `email` |
+| Moodle | Student/Employee ID | `app_metadata.lms_user_id` |
+| Docebo | Employee ID or Email | `app_metadata.employee_id` or `email` |
+| Cornerstone | Employee ID | `app_metadata.employee_id` |
+
+## Testing Your Configuration
+
+<Steps>
+  <Step title="Test SAML Response">
+    Use Auth0's SAML tester:
+    - Go to your application's **Addons** tab
+    - Enable **SAML2 Web App**
+    - Use the **Debug** URL with a test user
+    - Verify custom attributes appear in the SAML response
+  </Step>
+
+  <Step title="Real-time Webtask Logs">
+    Monitor your Rules/Actions:
+    - Go to **Monitoring** > **Logs**
+    - Filter by your application
+    - Check for any errors in custom claim processing
+  </Step>
+
+  <Step title="Integration Testing">
+    - Test complete login flow with your LMS
+    - Verify user creation/matching works correctly
+    - Test with different user types and attribute combinations
+  </Step>
+</Steps>
+
+## Security Best Practices
+
+- **Namespace Custom Claims**: Always use namespaced claim names to avoid conflicts
+- **Validate User Input**: Sanitize user metadata before using in claims
+- **Secure Secrets**: Store sensitive configuration in Auth0 secrets or environment variables
+- **Token Security**: Use appropriate token expiration times
+- **Audit Logs**: Regularly review Auth0 logs for suspicious activity
+- **Rate Limiting**: Configure appropriate rate limits for your applications
+
+## Advanced Features
+
+### Multi-tenant Support
+
+<Steps>
+  <Step title="Tenant-specific Attributes">
+    Use Rules/Actions to set different `lms_user_id` formats per tenant:
+    
+    ```javascript
+    exports.onExecutePostLogin = async (event, api) => {
+      const tenant = event.user.app_metadata.tenant;
+      
+      switch(tenant) {
+        case 'university-a':
+          api.samlResponse.setAttribute('lms_user_id', `UA-${event.user.user_metadata.student_id}`);
+          break;
+        case 'university-b':
+          api.samlResponse.setAttribute('lms_user_id', event.user.email);
+          break;
+        default:
+          api.samlResponse.setAttribute('lms_user_id', event.user.user_id);
+      }
+    };
+    ```
+  </Step>
+</Steps>
+
+### Progressive User Attribute Collection
+
+<Steps>
+  <Step title="Progressive Profiling">
+    Use Auth0's progressive profiling to collect `lms_user_id` after initial signup:
+    
+    - Create custom signup/login forms
+    - Add fields for employee ID or student ID
+    - Store in user_metadata or app_metadata
+    - Use Rules/Actions to require completion before LMS access
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+### Common Issues
+
+**Custom claim not in SAML assertion:**
+- Check if Rule/Action is executing (review logs)
+- Verify user has the required metadata populated
+- Ensure proper namespace formatting
+
+**Authentication failing:**
+- Verify ACS URL configuration matches exactly
+- Check SAML settings JSON syntax
+- Review certificate configuration
+
+**User attribute format issues:**
+- Some LMS platforms expect specific formats
+- Test with different metadata structures
+- Check for special character handling
+
+### Debugging Tools
+
+<Steps>
+  <Step title="Auth0 Logs">
+    Use the real-time logs:
+    - **Success Login**: Verify successful authentications
+    - **Failed Login**: Review authentication failures
+    - **Custom**: Check Rule/Action execution logs
+  </Step>
+
+  <Step title="SAML Tracer">
+    Use browser extensions to capture SAML traffic:
+    - Install SAML-tracer extension
+    - Capture SAML POST requests
+    - Verify attribute values in assertions
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Additional Resources
+
+- [Auth0 SAML Configuration](https://auth0.com/docs/protocols/saml)
+- [Auth0 Actions Documentation](https://auth0.com/docs/actions)
+- [User Metadata Management](https://auth0.com/docs/users/concepts/overview-user-metadata)

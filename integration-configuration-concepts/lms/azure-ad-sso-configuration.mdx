@@ -1,0 +1,295 @@
+---
+title: "Azure AD/Entra ID SSO Configuration for LMS Integration"
+description: "Configure Azure Active Directory (Entra ID) to provide custom SSO attributes for Learning Management System integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+<Warning>
+This configuration requires admin access to your Azure Active Directory tenant and should be tested thoroughly before production deployment.
+</Warning>
+
+This guide walks you through configuring Azure Active Directory (now Entra ID) as your Identity Provider to include custom user attributes (like `lms_user_id`) needed for Learning Management System integrations.
+
+## Overview
+
+Azure AD can provide custom user attributes in SAML tokens or OIDC claims to support Learning Management System integrations. This allows seamless user mapping between your corporate directory and LMS platforms.
+
+## Prerequisites
+
+- Global Administrator or Application Administrator role in Azure AD
+- Understanding of the specific `lms_user_id` value required by your target LMS
+- Basic knowledge of SAML 2.0 or OIDC protocols
+
+## SAML Configuration
+
+<Steps>
+  <Step title="Access Azure Portal">
+    Navigate to the Azure portal (portal.azure.com) and go to **Azure Active Directory** > **Enterprise applications**.
+  </Step>
+
+  <Step title="Create New Application">
+    - Click **New application**
+    - Select **Create your own application**
+    - Choose **Integrate any other application you don't find in the gallery (Non-gallery)**
+    - Provide a name for your LMS integration
+  </Step>
+
+  <Step title="Configure Single Sign-On">
+    In your application:
+    - Go to **Single sign-on**
+    - Select **SAML** as the single sign-on method
+    
+    <Frame>
+      <img className='rounded-md' alt="Azure AD SAML configuration" src="/images/sso/azure-saml-setup.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Basic SAML Configuration">
+    Configure the following settings:
+    
+    **Identifier (Entity ID)**: Your service provider entity ID
+    **Reply URL (Assertion Consumer Service URL)**: Your application's SSO endpoint
+    **Sign on URL**: (Optional) Your application's login URL
+    **Relay State**: (Optional) If required by your application
+  </Step>
+
+  <Step title="User Attributes & Claims">
+    In the **User Attributes & Claims** section:
+    
+    - Click **Add new claim**
+    - **Name**: Enter `lms_user_id` (or your required attribute name)
+    - **Source**: Select **Attribute**
+    - **Source attribute**: Choose from available options:
+      - `user.employeeid` - For employee ID-based systems
+      - `user.userprincipalname` - For email-based identifiers
+      - `user.mail` - For email addresses
+      - `user.extensionattribute1-15` - For custom attributes
+    
+    <Frame>
+      <img className='rounded-md' alt="Azure AD custom claims configuration" src="/images/sso/azure-custom-claims.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Additional Claims (Optional)">
+    Add other claims as needed:
+    
+    - **groups**: For group membership information
+    - **department**: For organizational structure
+    - **jobtitle**: For role-based access
+  </Step>
+
+  <Step title="Download Certificate">
+    In the **SAML Signing Certificate** section:
+    - Download the **Certificate (Base64)** or **Certificate (Raw)**
+    - Note the **Login URL** and **Logout URL**
+  </Step>
+
+  <Step title="Assign Users">
+    Go to **Users and groups**:
+    - Add individual users or groups who need access
+    - Ensure users have the required attributes populated
+  </Step>
+</Steps>
+
+## OIDC Configuration Alternative
+
+For applications using OpenID Connect:
+
+<Steps>
+  <Step title="Register OIDC Application">
+    In **App registrations**:
+    - Click **New registration**
+    - Enter application name
+    - Select appropriate account types
+    - Configure redirect URI
+  </Step>
+
+  <Step title="Configure API Permissions">
+    Add required permissions:
+    - `openid` (for OIDC)
+    - `profile` (for user profile information)
+    - `email` (if email claims needed)
+  </Step>
+
+  <Step title="Configure Token Claims">
+    In **Token configuration**:
+    - Click **Add optional claim**
+    - Select **ID** token type
+    - Add required claims like `employee_id`, `extension_attribute1`, etc.
+  </Step>
+
+  <Step title="Application Settings">
+    Configure authentication settings:
+    - Set appropriate token lifetimes
+    - Configure access token format (v1.0 or v2.0)
+    - Enable implicit grant if required
+  </Step>
+</Steps>
+
+## Custom User Attributes (Extension Attributes)
+
+If your LMS user identifier requires custom attributes:
+
+<Steps>
+  <Step title="Configure Extension Attributes">
+    Azure AD provides 15 extension attributes (`extensionAttribute1` through `extensionAttribute15`) for custom data.
+    
+    These can be populated via:
+    - Azure AD Connect (from on-premises AD)
+    - Microsoft Graph API
+    - PowerShell commands
+    - Manual entry in user profiles
+  </Step>
+
+  <Step title="Populate Extension Attributes via PowerShell">
+    ```powershell
+    # Connect to Azure AD
+    Connect-AzureAD
+    
+    # Set extension attribute for a user
+    Set-AzureADUser -ObjectId "user@domain.com" -ExtensionProperty @{"extensionAttribute1"="LMS123456"}
+    ```
+  </Step>
+
+  <Step title="Bulk Update via CSV Import">
+    Use Azure AD's bulk operations:
+    - Go to **Users** > **Bulk operations** > **Bulk update**
+    - Download the CSV template
+    - Add your extension attribute data
+    - Upload the completed CSV
+  </Step>
+</Steps>
+
+## Advanced Configuration
+
+### Conditional Access Integration
+
+<Steps>
+  <Step title="Create Conditional Access Policy">
+    Navigate to **Security** > **Conditional Access**:
+    - Create policy for your LMS application
+    - Configure user/group assignments
+    - Set location, device, or risk-based conditions
+  </Step>
+
+  <Step title="Configure Access Controls">
+    Set requirements such as:
+    - Multi-factor authentication
+    - Compliant device requirement
+    - Approved client app requirement
+  </Step>
+</Steps>
+
+### Group Claims Configuration
+
+<Steps>
+  <Step title="Enable Group Claims">
+    In your application's **Token configuration**:
+    - Click **Add groups claim**
+    - Select group types to include
+    - Choose between Group ID, sAMAccountName, or other formats
+  </Step>
+
+  <Step title="Configure Group Filtering">
+    For large organizations:
+    - Use security groups assigned to the application
+    - Filter by specific group name patterns
+    - Limit to specific group types
+  </Step>
+</Steps>
+
+## Common LMS User ID Mappings
+
+| LMS Platform | Recommended Azure AD Attribute | Alternative Options |
+|--------------|-------------------------------|-------------------|
+| Canvas | `user.employeeid` | `user.extensionattribute1` |
+| Blackboard | `user.userprincipalname` | `user.mail` |
+| Moodle | `user.employeeid` | `user.extensionattribute2` |
+| Docebo | `user.employeeid` | `user.mail` |
+| Cornerstone | `user.employeeid` | `user.extensionattribute1` |
+
+## Testing Your Configuration
+
+<Steps>
+  <Step title="Test SAML Token">
+    Use Azure AD's test functionality:
+    - In your application's SSO settings
+    - Click **Test this application**
+    - Select a test user and review the generated SAML token
+    - Verify custom attributes appear correctly
+  </Step>
+
+  <Step title="Validate Token Content">
+    Check that your `lms_user_id` claim contains:
+    - Correct value format
+    - Proper case sensitivity
+    - No extra whitespace or characters
+  </Step>
+
+  <Step title="End-to-End Testing">
+    Perform complete login flow:
+    - Test with multiple user accounts
+    - Verify successful authentication and user mapping
+    - Check that user appears correctly in your LMS
+  </Step>
+</Steps>
+
+## Security Best Practices
+
+- **Certificate Management**: Regularly rotate SAML signing certificates
+- **Token Encryption**: Enable token encryption for sensitive data
+- **Conditional Access**: Implement appropriate access policies
+- **Audit Logging**: Monitor sign-in activities and token issuance
+- **Least Privilege**: Only include necessary claims and attributes
+- **Network Security**: Restrict access to trusted networks when possible
+
+## Troubleshooting
+
+### Common Issues
+
+**Custom claim not appearing in token:**
+- Verify the user has the source attribute populated
+- Check claim configuration and source attribute mapping
+- Ensure the application has been assigned to the user/group
+
+**Authentication failures:**
+- Verify Reply URLs match exactly (case-sensitive)
+- Check certificate validity and configuration
+- Review error messages in Azure AD sign-in logs
+
+**User mapping issues:**
+- Confirm `lms_user_id` value format matches LMS expectations
+- Check for case sensitivity requirements
+- Verify user exists in target LMS system
+
+**Token size issues:**
+- Azure AD has token size limits (especially for group claims)
+- Use group filtering to reduce token size
+- Consider using group IDs instead of display names
+
+### Monitoring and Diagnostics
+
+<Steps>
+  <Step title="Review Sign-in Logs">
+    Navigate to **Monitoring** > **Sign-in logs**:
+    - Filter by your application
+    - Review successful and failed authentications
+    - Check token details for claim validation
+  </Step>
+
+  <Step title="Audit Application Changes">
+    Use **Audit logs** to track:
+    - Application configuration changes
+    - User assignments
+    - Certificate updates
+  </Step>
+</Steps>
+
+<IntegrationFooter />
+
+## Additional Resources
+
+- [Azure AD SAML Documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/single-sign-on-saml-protocol)
+- [Azure AD Custom Claims Documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims)
+- [Extension Attributes Guide](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions)

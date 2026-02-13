@@ -1,0 +1,212 @@
+---
+title: "Okta SSO Configuration for LMS Integration"
+description: "Configure Okta to provide custom SSO attributes for Learning Management System integrations."
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx"
+
+<Warning>
+This configuration requires admin access to your Okta instance and should be tested in a non-production environment first.
+</Warning>
+
+This guide walks you through configuring Okta as your Identity Provider to include custom user attributes (like `lms_user_id`) needed for Learning Management System integrations.
+
+## Overview
+
+When integrating with Learning Management Systems, you often need to map users between your identity provider and the LMS platform. This requires configuring custom attributes in your SAML or OIDC assertions that contain the user's identifier in the target LMS.
+
+## Prerequisites
+
+- Admin access to Okta
+- Understanding of the specific `lms_user_id` value required by your target LMS
+- Basic knowledge of SAML 2.0 or OIDC protocols
+
+## Configuration Steps
+
+<Steps>
+  <Step title="Access Okta Admin Console">
+    Log into your Okta admin console and navigate to **Applications** > **Applications**.
+  </Step>
+
+  <Step title="Create or Select Application">
+    Either create a new SAML 2.0 application or select your existing integration application.
+    
+    For new applications:
+    - Click **Create App Integration**
+    - Select **SAML 2.0**
+    - Enter your application name and optionally upload a logo
+  </Step>
+
+  <Step title="Configure SAML Settings">
+    In the SAML Settings section:
+    
+    **Single Sign-On URL**: Enter your application's SSO endpoint
+    **Audience URI (SP Entity ID)**: Enter your service provider entity ID
+    **Default RelayState**: (Optional) Set if needed by your application
+    
+    <Frame>
+      <img className='rounded-md' alt="Okta SAML basic settings" src="/images/sso/okta-saml-settings.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add Custom User Attributes">
+    In the **Attribute Statements** section, add your custom attributes:
+    
+    - **Name**: `lms_user_id` (or the specific attribute name required)
+    - **Name format**: Choose appropriate format (typically Unspecified)
+    - **Value**: Select the Okta user attribute that contains the LMS user identifier
+    
+    Common mappings:
+    - `user.login` - For email-based identifiers
+    - `user.employeeNumber` - For employee ID-based systems
+    - `user.customAttribute` - For custom user attributes
+    
+    <Frame>
+      <img className='rounded-md' alt="Okta custom attribute configuration" src="/images/sso/okta-custom-attributes.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Group Attribute Statements (Optional)">
+    If your LMS requires group or role information:
+    
+    - **Name**: `groups` or `roles`
+    - **Name format**: Unspecified
+    - **Filter**: Choose appropriate group filter
+    - **Value**: `Starts with`, `Equals`, `Contains`, or `Regex`
+  </Step>
+
+  <Step title="Assign Users and Groups">
+    In the **Assignments** tab:
+    - Assign individual users or groups who should have access
+    - Ensure assigned users have the required custom attributes populated
+  </Step>
+
+  <Step title="Download Metadata or Copy Settings">
+    From the **Sign On** tab, either:
+    - Download the metadata XML file, or
+    - Copy the Identity Provider metadata details:
+      - Identity Provider Single Sign-On URL
+      - Identity Provider Issuer
+      - X.509 Certificate
+  </Step>
+</Steps>
+
+## OIDC Configuration Alternative
+
+If your integration uses OIDC instead of SAML:
+
+<Steps>
+  <Step title="Create OIDC Application">
+    - Select **OIDC - OpenID Connect** when creating the application
+    - Choose **Web Application** as the application type
+  </Step>
+
+  <Step title="Configure Grant Types">
+    Enable the appropriate grant types:
+    - Authorization Code (recommended)
+    - Implicit (if required by your application)
+  </Step>
+
+  <Step title="Add Custom Claims">
+    In the **Claims** tab of your authorization server:
+    - Add a custom claim named `lms_user_id`
+    - Set the value to the appropriate user attribute
+    - Include in ID token and/or access token as needed
+  </Step>
+
+  <Step title="Configure Scopes">
+    Ensure your application includes the necessary scopes:
+    - `openid` (required)
+    - `profile` (for user information)
+    - Custom scopes if your claims require them
+  </Step>
+</Steps>
+
+## Custom User Attributes Setup
+
+If your LMS user identifier isn't a standard Okta attribute:
+
+<Steps>
+  <Step title="Create Custom User Attribute">
+    Navigate to **Directory** > **Profile Editor**
+    - Select the **User (default)** profile
+    - Click **Add Attribute**
+    - Define your custom attribute (e.g., `lms_user_id`)
+  </Step>
+
+  <Step title="Populate User Attributes">
+    You can populate custom attributes via:
+    - Manual entry in user profiles
+    - CSV import during user provisioning
+    - API updates using Okta's REST API
+    - Directory integration (Active Directory, LDAP)
+  </Step>
+</Steps>
+
+## Testing Your Configuration
+
+<Steps>
+  <Step title="Test SAML Assertion">
+    Use Okta's built-in SAML assertion preview:
+    - Go to your application's **Sign On** tab
+    - Click **Preview the SAML Assertion**
+    - Select a test user and verify the custom attributes appear correctly
+  </Step>
+
+  <Step title="Test Integration">
+    Perform a test login with a user account that has the required attributes populated to ensure the integration works end-to-end.
+  </Step>
+</Steps>
+
+## Common LMS User ID Patterns
+
+Different LMS platforms typically expect different identifier formats:
+
+| LMS Platform | Common `lms_user_id` Format | Okta Mapping |
+|--------------|----------------------------|--------------|
+| Canvas | Student/Employee ID | `user.employeeNumber` |
+| Blackboard | Username | `user.login` |
+| Moodle | Username or ID number | `user.login` or custom attribute |
+| Docebo | Employee ID or email | `user.employeeNumber` or `user.email` |
+| Cornerstone | Employee ID | `user.employeeNumber` |
+
+## Security Best Practices
+
+- **Encrypt Assertions**: Always enable assertion encryption in production
+- **Sign Assertions**: Configure assertion and response signing
+- **Validate Certificates**: Ensure proper certificate validation
+- **Minimal Attributes**: Only include necessary attributes in assertions
+- **Regular Rotation**: Rotate signing certificates regularly
+- **Monitor Access**: Review SAML/OIDC logs regularly for suspicious activity
+
+## Troubleshooting
+
+### Common Issues
+
+**Custom attribute not appearing in assertion:**
+- Verify the user has the attribute populated
+- Check attribute mapping configuration
+- Ensure proper name format is selected
+
+**Authentication failing:**
+- Verify SSO URLs and entity IDs match exactly
+- Check certificate validity and configuration
+- Review RelayState configuration if used
+
+**User not found in LMS:**
+- Verify the `lms_user_id` value matches the LMS user identifier exactly
+- Check for case sensitivity issues
+- Confirm the user exists in the target LMS
+
+**Attribute format issues:**
+- Some LMS platforms expect specific formats (email vs. ID)
+- Test with different name formats in attribute statements
+- Verify the LMS platform's expected attribute requirements
+
+<IntegrationFooter />
+
+## Additional Resources
+
+- [Okta SAML 2.0 Documentation](https://developer.okta.com/docs/concepts/saml/)
+- [Okta OIDC Documentation](https://developer.okta.com/docs/reference/api/oidc/)
+- [Custom User Attributes Guide](https://help.okta.com/en-us/Content/Topics/users-groups-profiles/usgp-about-profiles.htm)
