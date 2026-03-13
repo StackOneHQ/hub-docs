@@ -236,6 +236,10 @@
       "destination": "/connection-guides/iam/intercom"
     },
     {
+      "source": "/en/articles/9306105-iam-intercom",
+      "destination": "/connection-guides/iam/intercom"
+    },
+    {
       "source": "/en/articles/9306297-jetbrains-iam",
       "destination": "/connection-guides/iam/jetbrains"
     },
