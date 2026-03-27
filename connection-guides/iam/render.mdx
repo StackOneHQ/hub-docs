@@ -11,46 +11,27 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
 
 If you've been directed to StackOne to integrate with Render, the following steps will help you understand the process and any necessary actions to configure successful integration.
 
-## Get your Render API Key
+## Find your Team ID
 
 <Steps>
-  <Step title="Log in to Render">
-    Log in to your Render account and view your personal Account Settings page.
+  <Step title="Sign in to Render">
+    Sign in to your [Render account](https://dashboard.render.com) and navigate to **Team Settings**.
   </Step>
 
-  <Step title="Create API Key">
-    Click API Keys on the left, then the Create API Key button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create API Key" src="/images/render/image1.png" />
-    </Frame>
-  </Step>
+  <Step title="Copy your Team ID">
+    Copy the Team ID from your browser's address bar.
 
-  <Step title="Enter API Key Details">
-    In the window that appears, enter a Name for the new API Key, then press the Create API Key button.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="API Key Details" src="/images/render/image2.png" />
-    </Frame>
-  </Step>
-
-  <Step title="Copy API Key">
-    Copy your new API Key and store it safely.
-    <Frame>
-      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Copy API Key" src="/images/render/image3.png" />
-    </Frame>
+    The URL follows the format `https://dashboard.render.com/teams/{teamId}/settings`. For example, if your URL is `https://dashboard.render.com/teams/tea-abc123/settings`, your Team ID is `tea-abc123`.
   </Step>
 </Steps>
 
-## Connecting to StackOne
+## Provide your admin credentials
 
-<Steps>
-  <Step title="Enter API Key">
-    Upon reaching the Link Account page, enter the API Key from the previous step.
-  </Step>
+Use the email address and password of the team admin account when connecting to StackOne.
 
-  <Step title="Connect">
-    Proceed by clicking the Connect button.
-  </Step>
-</Steps>
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Admin credentials" src="/images/render/image4.png" />
+</Frame>
 
 <IntegrationFooter />
 
@@ -69,5 +50,3 @@ This integration has the following [IAM Resources](https://docs.stackone.com/ref
 <Card title="Authentication Guide" icon="link" href="https://api-docs.render.com/reference/authentication">
     https://api-docs.render.com/reference/authentication
 </Card>
-
-
