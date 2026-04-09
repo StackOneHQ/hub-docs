@@ -70,6 +70,10 @@ import IntegrationFooter from "/snippets/integration-footer.mdx";
   <Step title="Enter Account Information">
     Enter a username and password in the Account Information section on the "Create Integration System User" page.
 
+    <Note>
+      Workday doesn't allow certain special characters in the username and password. If you receive the error message "Could not validate credentials, please check your credentials and try again," this may be due to the use of unsupported special characters. Try using alphanumeric characters and common special characters like hyphens or underscores.
+    </Note>
+
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Account Information" src="/images/workday/image6.png" />
     </Frame>
