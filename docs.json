@@ -17,6 +17,7 @@
     "pages": [
       "integrations",
       "integration-configuration-concepts",
+      "faq-authentication",
       "about"
     ]
   },
