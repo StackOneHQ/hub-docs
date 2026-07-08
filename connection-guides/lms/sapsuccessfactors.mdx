@@ -109,11 +109,11 @@ flow you follow will depend on your use case.
 
 By default, StackOne classifies SAP items with the types `COURSE`, `MOOC`, or `ONLINE` as courses, and everything else (`BOOK`, `VIDEO`, `DOC`, etc.) as content.
 
-If your SAP instance uses its own custom item classification types for what you consider courses (for example, a custom type like `PROGRAM` or `WEBINAR`), those items won't appear in the StackOne `/courses` endpoint by default, since StackOne doesn't recognize your custom type names.
+If your SAP instance uses its own custom item classification types for what you consider courses (for example, a custom type like `PROGRAM` or `WEBINAR`), those items won't appear in the StackOne `/courses` endpoint by default, since StackOne doesn't recognize your custom type codes.
 
 To fix this, enter your custom SAP item type codes as a comma-separated list in the `Custom Course Content Types` field when connecting SAP SuccessFactors to StackOne (for example: `PROGRAM,WEBINAR`). These are added on top of the standard `COURSE`, `MOOC`, and `ONLINE` types — items matching any of them will be returned from `/courses`, and none of them will appear in `/content`.
 
-You can find your instance's item type IDs in SAP SuccessFactors Learning Administration, under the classification/type configuration for the content or course you're trying to sync.
+You can find your instance's item type codes in SAP SuccessFactors Learning Administration, under the classification/type configuration for the content or course you're trying to sync.
 
 # Authentication Flow 2: Linking your SAP instance library to an external content provider pushing data to your SAP instance.
 
