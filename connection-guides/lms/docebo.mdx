@@ -127,3 +127,38 @@ description: "If you've been directed to StackOne to integrate with Docebo, the 
     </Step>
 
   </Steps>
+
+## SSO Configuration
+
+Proper SSO (Single Sign-On) configuration is essential for completions to be recorded correctly. A learner's course completion is recorded using the Docebo `user_id`, so that identifier has to be included in the completion request.
+
+The SSO handshake happens directly between Docebo and your content provider, so the identifier can't be added automatically. Instead, you expose it through a custom SSO field that your content provider reads and passes on.
+
+### Custom Field Configuration
+
+<Steps>
+  <Step title="Set Custom Field">
+    In your Docebo SSO configuration, add a custom field called `lms_user_id` and set it to the Docebo `user_id` value.
+  </Step>
+
+  <Step title="Verify Custom Field">
+    Ensure the `lms_user_id` field is populated and accessible through the SSO configuration, so your content provider receives it when a learner launches content.
+  </Step>
+</Steps>
+
+<Info>
+  `lms_user_id` is the standard SSO field name used across LMS integrations. Only the value it maps to changes per provider. For Docebo, that value is the `user_id`.
+</Info>
+
+### Important Notes
+
+<Warning>
+  Correct SSO configuration is essential for completions to be recorded. If `lms_user_id` isn't set to the Docebo `user_id` and passed through SSO, you may see:
+
+  - Completions not recorded in Docebo
+  - Learning records attributed to the wrong learner
+</Warning>
+
+<Note>
+  **Shared Responsibility**: You configure the `lms_user_id` field in your Docebo SSO. Your content provider reads that value from the SSO handshake and includes it in the completion request. Confirm together that `lms_user_id` matches the Docebo `user_id`.
+</Note>
