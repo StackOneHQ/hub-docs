@@ -1,0 +1,91 @@
+---
+title: 'FAQ: API authentication methods'
+description: 'Answers to common questions about the authentication methods used to connect integrations in StackOne Hub.'
+---
+
+## What authentication methods does StackOne Hub support?
+
+StackOne Hub supports several authentication methods depending on the integration:
+
+- **API key** — A static token generated in the third-party platform and entered in the connection form.
+- **OAuth 2.0 (Authorization Code)** — You authorize StackOne via the provider's OAuth consent screen. No credentials are stored.
+- **OAuth 2.0 (Client Credentials)** — Machine-to-machine flow using a client ID and client secret you generate in the third-party platform.
+- **Basic credentials** — A username and password (or service user credentials) used by some enterprise systems.
+- **Service user** — A dedicated system/integration user created in the provider's platform with limited, scoped permissions.
+
+The authentication method for each connector is shown in its connection guide.
+
+## What is the difference between API key and OAuth authentication?
+
+With **API key** authentication, you generate a token directly in the third-party system and paste it into the StackOne connection form. The token is static and remains valid until you revoke it.
+
+With **OAuth** authentication, you grant StackOne access through the provider's authorization flow. StackOne receives an access token and (in most cases) a refresh token, so it can maintain access without storing your credentials.
+
+OAuth is generally preferred because you can revoke access from the provider's side at any time, and credentials are never directly shared.
+
+## Do I need admin access to connect an integration?
+
+Most integrations require admin or elevated privileges to generate API credentials or complete OAuth authorization. This is because:
+
+- API key generation is usually restricted to administrators.
+- OAuth flows may require permission to authorize third-party access on behalf of the organization.
+- Some integrations require creating a dedicated service/integration user with specific permission scopes.
+
+Check the connection guide for the specific integration to confirm what level of access is needed before starting.
+
+## What permissions or scopes are required?
+
+Required scopes vary by integration. Each connection guide lists the exact scopes you need to enable. As a general rule:
+
+- Only grant the scopes listed — StackOne requests the minimum permissions needed.
+- If you grant fewer scopes than required, some API calls may fail or return incomplete data.
+- Scopes can usually be updated later by regenerating credentials or re-authorizing.
+
+## What happens if I rotate or revoke my API key?
+
+If you rotate or revoke your API key in the third-party system, the existing connection in StackOne Hub will stop working. You will need to:
+
+1. Generate a new API key in the third-party system.
+2. Update the connection in StackOne Hub with the new credentials.
+
+For OAuth connections, revoking access from the provider's side (e.g., disconnecting the app in your account settings) will also break the connection.
+
+## Can I use a service user instead of my personal account?
+
+Yes, and for most enterprise integrations this is the recommended approach. Using a dedicated service or integration user:
+
+- Keeps your personal credentials separate from the integration.
+- Ensures the connection remains active if your personal account is deactivated.
+- Allows you to apply least-privilege permissions scoped only to what the integration needs.
+
+Many connection guides (for example, Hibob Service User and Workday ATS) specifically instruct you to create a service user.
+
+## Is it safe to enter my credentials in StackOne Hub?
+
+StackOne is designed with privacy and security as core principles:
+
+- Credentials are used to establish connections and are not stored beyond what is needed for authentication.
+- StackOne proxies API requests in real-time and does not store personal data by default.
+- The platform is SOC 2 Type II certified and GDPR compliant.
+
+For more details, visit [trust.stackone.com](https://trust.stackone.com) or contact [security@stackone.com](mailto:security@stackone.com).
+
+## What should I do if my connection fails due to authentication errors?
+
+<Steps>
+  <Step title="Verify your credentials">
+    Double-check that you copied the correct API key, client ID, or client secret — make sure there are no extra spaces or characters.
+  </Step>
+  <Step title="Check required scopes">
+    Ensure all required scopes listed in the connection guide are enabled and saved in the third-party system.
+  </Step>
+  <Step title="Confirm admin access">
+    Verify that the account used to generate credentials has the required admin or integration permissions.
+  </Step>
+  <Step title="Regenerate credentials">
+    If the error persists, try generating a new API key or refreshing OAuth tokens and reconnecting.
+  </Step>
+  <Step title="Contact support">
+    If you are still unable to connect, reach out to [integrations@stackone.com](mailto:integrations@stackone.com) with the name of the integration and the error message you are seeing.
+  </Step>
+</Steps>
