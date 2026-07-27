@@ -1,0 +1,146 @@
+---
+title: 'FAQ: API authentication methods'
+description: 'Answers to common questions about the authentication methods used to connect integrations via StackOne Hub.'
+---
+
+## What authentication methods does StackOne Hub support?
+
+StackOne Hub supports several authentication methods depending on the integration:
+
+- **API key** — You provide a static API key generated in the third-party system. StackOne uses it to make requests on your behalf.
+- **OAuth 2.0 (Authorization Code)** — You authorize StackOne via a browser-based login flow. StackOne receives a short-lived access token and a refresh token to maintain access without re-authentication.
+- **OAuth 2.0 (Client Credentials)** — Used for machine-to-machine integrations where no user login is required. You provide a client ID and client secret.
+- **Basic authentication** — You provide a username and password, or a username and API key combination.
+- **Service user** — Some systems (for example, Hibob) require you to create a dedicated service account with specific permissions, then provide those credentials to StackOne.
+
+The specific method required depends on the integration. Refer to the relevant [connection guide](/integrations) for details.
+
+### API key
+
+The API key is passed as a request header. Most integrations use `Authorization` with a `Bearer` token, though some use a custom header name (check the connection guide for your integration).
+
+```http
+GET /api/v1/employees HTTP/1.1
+Host: api.example.com
+Authorization: Bearer YOUR_API_KEY
+```
+
+### OAuth 2.0 (Authorization Code)
+
+StackOne initiates a browser-based authorization flow. After you log in and approve the requested scopes, the provider issues an authorization code that StackOne exchanges for an access token and a refresh token.
+
+```http
+# Step 1 — redirect the user to the provider's authorization endpoint
+GET https://accounts.example.com/oauth/authorize
+  ?response_type=code
+  &client_id=YOUR_CLIENT_ID
+  &redirect_uri=https://hub.stackone.com/oauth/callback
+  &scope=read:employees+offline_access
+
+# Step 2 — exchange the authorization code for tokens
+POST https://accounts.example.com/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+&code=AUTHORIZATION_CODE
+&redirect_uri=https://hub.stackone.com/oauth/callback
+&client_id=YOUR_CLIENT_ID
+&client_secret=YOUR_CLIENT_SECRET
+```
+
+### OAuth 2.0 (Client Credentials)
+
+No user login is required. StackOne exchanges your client ID and secret directly for an access token.
+
+```http
+POST https://accounts.example.com/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&client_id=YOUR_CLIENT_ID
+&client_secret=YOUR_CLIENT_SECRET
+&scope=read:employees
+```
+
+The response contains an access token used for subsequent API calls:
+
+```json
+{
+  "access_token": "ACCESS_TOKEN",
+  "token_type": "Bearer",
+  "expires_in": 3600
+}
+```
+
+### Basic authentication
+
+Your username and password (or username and API key) are Base64-encoded and sent in the `Authorization` header.
+
+```http
+GET /api/v1/employees HTTP/1.1
+Host: api.example.com
+Authorization: Basic BASE64(username:password)
+```
+
+### Service user
+
+A dedicated service account is created in the third-party system and granted the permissions StackOne needs. You then provide those service user credentials (typically an ID and secret or API key) when setting up the connection.
+
+```http
+GET /api/v1/employees HTTP/1.1
+Host: api.example.com
+X-Service-User-ID: SERVICE_USER_ID
+X-Service-User-Token: SERVICE_USER_TOKEN
+```
+
+<Note>Header names vary by integration. Check the connection guide for your specific system.</Note>
+
+---
+
+## Why does StackOne need OAuth scopes?
+
+When you connect a system via OAuth, StackOne requests only the scopes (permissions) needed to read or write the data your integration requires. The connection guide for each integration lists the exact scopes requested and why they are needed.
+
+You must accept the requested scopes during the authorization flow to complete the connection.
+
+---
+
+## What happens when my OAuth token expires?
+
+StackOne uses the refresh token obtained during the initial authorization to automatically renew your access token. You do not need to re-authenticate unless:
+
+- You revoke StackOne's access in the third-party system.
+- The refresh token itself expires (some systems enforce a maximum token lifetime).
+- Your password or API credentials change.
+
+If a connection becomes invalid, you will need to reconnect the integration through the StackOne Hub.
+
+---
+
+## Is my API key or credentials stored securely?
+
+StackOne never stores personal data by default and applies granular security controls to all credentials. Requests are proxied in real time. For full details, see the [About StackOne](/about) page or visit [trust.stackone.com](https://trust.stackone.com).
+
+---
+
+## What permissions does my account need to connect an integration?
+
+Most integrations require **admin-level access** in the third-party system to authorize the connection and grant the necessary scopes. Some integrations have more specific requirements — for example, a dedicated service user or a specific role. Check the connection guide for your integration for exact requirements.
+
+---
+
+## Can I use OAuth Client Credentials instead of a user-based OAuth flow?
+
+Some integrations support both options. For example, Workday ATS offers both standard OAuth and an OAuth Client Credentials variant. Check the [Connectors](/integrations) page to see if a Client Credentials option is available for your system.
+
+---
+
+## What should I do if my connection fails after changing my password or rotating my API key?
+
+You will need to reconnect the integration. Navigate to the StackOne Hub, remove the existing connection, and go through the connection setup again using your new credentials.
+
+---
+
+## Who can I contact for authentication issues?
+
+Email [integrations@stackone.com](mailto:integrations@stackone.com) for support with connection or authentication problems.
