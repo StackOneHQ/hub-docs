@@ -1,0 +1,98 @@
+---
+title: 'FAQ: API authentication methods'
+description: 'Common questions about the authentication methods used to connect integrations in StackOne Hub.'
+---
+
+## What authentication methods does StackOne Hub support?
+
+StackOne Hub supports two primary authentication methods:
+
+- **API key** — you provide a static API key generated from the third-party system.
+- **OAuth 2.0** — you authorize StackOne via a redirect flow, granting access without sharing credentials directly.
+
+Some connectors also support variations such as **service user credentials**, **client credentials**, or **partner OAuth**, depending on what the third-party system offers.
+
+## When should I use an API key vs. OAuth?
+
+| Method | Best for |
+|--------|----------|
+| API key | Systems that don't support OAuth, or when you need a long-lived, non-interactive token |
+| OAuth 2.0 | Systems that support OAuth and where you want token refresh handled automatically |
+
+Where a connector supports both methods, the connection guide for that integration notes which to use and any trade-offs.
+
+## Where do I find the API key for a specific integration?
+
+Each integration has its own process for generating API keys. Refer to the connection guide for your specific integration — for example:
+
+- [Ashby](/connection-guides/ats/ashby)
+- [Hibob (API key)](/connection-guides/hris/hibob)
+- [Greenhouse](/connection-guides/ats/greenhouse)
+
+Each guide walks you through exactly where to find or generate the required credentials in that system.
+
+## What is OAuth 2.0 and how does it work in StackOne?
+
+OAuth 2.0 is an authorization framework that allows StackOne to access a third-party system on your behalf without requiring you to share your password or API key directly.
+
+When connecting via OAuth:
+
+<Steps>
+  <Step title="Initiate the connection">
+    You start the connection flow from within your vendor's interface or the StackOne Hub.
+  </Step>
+  <Step title="Redirect to the third-party system">
+    You are redirected to the third-party system's login or authorization page.
+  </Step>
+  <Step title="Grant access">
+    You approve the requested permissions (scopes).
+  </Step>
+  <Step title="Token issued">
+    An access token is issued to StackOne. StackOne handles token refresh automatically when supported.
+  </Step>
+</Steps>
+
+## What is OAuth 2.0 client credentials?
+
+Client credentials is an OAuth 2.0 flow used for machine-to-machine authentication, where no user redirect is needed. Instead, you provide a **client ID** and **client secret** from the third-party system. StackOne uses these to obtain access tokens directly.
+
+This is used by connectors such as [JobAdder (OAuth)](/connection-guides/ats/jobadder-oauth-client-credentials).
+
+## What is partner OAuth?
+
+Partner OAuth is a variation of OAuth where StackOne acts as a registered partner application with the third-party provider. This means you don't need to register your own OAuth app — StackOne manages the OAuth application on your behalf.
+
+Connectors that use partner OAuth include:
+- [Deel (Partner OAuth)](/connection-guides/hris/deel-partner-oauth)
+- [Factorial HR (Partner OAuth)](/connection-guides/hris/factorialhr-partner-oauth)
+- [Lattice (Partner OAuth)](/connection-guides/hris/lattice-partner-oauth)
+
+## Do credentials get stored by StackOne?
+
+StackOne is designed with privacy in mind. It proxies requests in real-time and does not store personal data by default. Credentials used to authenticate are handled securely and are not exposed outside the integration flow.
+
+For more details, see [About StackOne](/about).
+
+## What permissions or scopes are required?
+
+The required scopes vary per integration. Each connection guide specifies the exact permissions you need to grant or enable. For example, the [Ashby guide](/connection-guides/ats/ashby) lists the specific API scopes needed for the ATS integration.
+
+If you are unsure about the required permissions, contact [integrations@stackone.com](mailto:integrations@stackone.com).
+
+## My authentication is failing — what should I check?
+
+<AccordionGroup>
+  <Accordion title="API key issues">
+    - Confirm the API key was copied in full with no extra spaces.
+    - Check that the key has not expired or been revoked in the third-party system.
+    - Verify the key has the required permissions/scopes as listed in the connection guide.
+  </Accordion>
+  <Accordion title="OAuth issues">
+    - Ensure you are logged into the correct account when authorizing.
+    - Check that you approved all requested permissions during the OAuth flow.
+    - If the token has expired and is not refreshing, try reconnecting the integration.
+  </Accordion>
+  <Accordion title="Still stuck?">
+    Contact [integrations@stackone.com](mailto:integrations@stackone.com) with the name of the integration and a description of the error you are seeing.
+  </Accordion>
+</AccordionGroup>
