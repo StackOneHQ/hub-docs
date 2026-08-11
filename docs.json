@@ -313,43 +313,49 @@
             "anchor": "ATS",
             "icon": "user-plus",
             "pages": [
-              "ats/introduction",
-              "ats/first-request",
               {
-                "group": "Connector-specific Guides",
-                "icon": "plug",
+                "group": "Unified ATS API",
+                "icon": "book-open",
+                "root": "ats/introduction",
                 "pages": [
-                  "integration-guides/ats/overview",
-                  "integration-guides/ats/bullhorn-assessment-or-background-check-custom-tab-integration",
-                  "integration-guides/ats/salesforce-bullhorn",
-                  "integration-guides/ats/eploy-background-check-integration-partner",
-                  "integration-guides/ats/greenhouse-partner-api",
-                  "integration-guides/ats/recruitee-partner-api",
-                  "integration-guides/ats/sapsuccessfactors-assessment",
-                  "integration-guides/ats/sapsuccessfactors-background-check",
-                  "integration-guides/ats/sapsuccessfactors-permission-configuration",
-                  "integration-guides/ats/smartrecruiters-assessment-or-background-check-integration",
-                  "integration-guides/ats/teamtailor-partner-api",
-                  "integration-guides/ats/workday-assessment",
-                  "integration-guides/ats/workday-background-check"
-                ]
-              },
-              {
-                "group": "Troubleshooting",
-                "icon": "bug",
-                "pages": [
-                  "ats/common-guide/connector-errors"
-                ]
-              },
-              {
-                "group": "Use-case guides",
-                "icon": "lightbulb",
-                "pages": [
-                  "ats/use-cases/job-board-easy-apply",
-                  "ats/use-cases/interview-intelligence",
-                  "ats/use-cases/application-screening",
-                  "ats/use-cases/assessment-flow",
-                  "ats/use-cases/intelligent-candidate-screening"
+                  "ats/first-request",
+                  {
+                    "group": "Connector-specific Guides",
+                    "icon": "plug",
+                    "pages": [
+                      "integration-guides/ats/overview",
+                      "integration-guides/ats/bullhorn-assessment-or-background-check-custom-tab-integration",
+                      "integration-guides/ats/salesforce-bullhorn",
+                      "integration-guides/ats/eploy-background-check-integration-partner",
+                      "integration-guides/ats/greenhouse-partner-api",
+                      "integration-guides/ats/recruitee-partner-api",
+                      "integration-guides/ats/sapsuccessfactors-assessment",
+                      "integration-guides/ats/sapsuccessfactors-background-check",
+                      "integration-guides/ats/sapsuccessfactors-permission-configuration",
+                      "integration-guides/ats/smartrecruiters-assessment-or-background-check-integration",
+                      "integration-guides/ats/teamtailor-partner-api",
+                      "integration-guides/ats/workday-assessment",
+                      "integration-guides/ats/workday-background-check"
+                    ]
+                  },
+                  {
+                    "group": "Troubleshooting",
+                    "icon": "bug",
+                    "pages": [
+                      "ats/common-guide/connector-errors"
+                    ]
+                  },
+                  {
+                    "group": "Use-case guides",
+                    "icon": "lightbulb",
+                    "pages": [
+                      "ats/use-cases/job-board-easy-apply",
+                      "ats/use-cases/interview-intelligence",
+                      "ats/use-cases/application-screening",
+                      "ats/use-cases/assessment-flow",
+                      "ats/use-cases/intelligent-candidate-screening"
+                    ]
+                  }
                 ]
               },
               {
@@ -595,14 +601,20 @@
             "anchor": "CRM",
             "icon": "address-book",
             "pages": [
-              "crm/introduction",
-              "crm/first-request",
               {
-                "group": "Connector-specific Guides",
-                "icon": "plug",
+                "group": "Unified CRM API",
+                "icon": "book-open",
+                "root": "crm/introduction",
                 "pages": [
-                  "integration-guides/crm/overview",
-                  "integration-guides/crm/hubspot-webhook-configuration"
+                  "crm/first-request",
+                  {
+                    "group": "Connector-specific Guides",
+                    "icon": "plug",
+                    "pages": [
+                      "integration-guides/crm/overview",
+                      "integration-guides/crm/hubspot-webhook-configuration"
+                    ]
+                  }
                 ]
               },
               {
@@ -647,49 +659,55 @@
             "anchor": "LMS",
             "icon": "graduation-cap",
             "pages": [
-              "lms/introduction",
-              "lms/first-request",
               {
-                "group": "Use-case guides",
-                "icon": "lightbulb",
-                "pages": [
-                  "lms/unified-lms-features/lms-features",
-                  "lms/unified-lms-features/batch",
-                  "lms/testing-integrations/testing",
-                  "lms/unified-lms-features/user-syncing",
-                  "lms/use-cases/learning-content-provider-lms-use-case",
-                  "lms/use-cases/lxp-lms-content-aggregators"
-                ]
-              },
-              {
-                "group": "Troubleshooting",
-                "icon": "bug",
-                "pages": [
-                  "lms/common-guide/connector-errors"
-                ]
-              },
-              {
-                "group": "Learning Content Providers",
-                "icon": "graduation-cap",
-                "pages": [
-                  "integration-guides/lms/external-content-providers/introduction",
-                  "integration-guides/lms/external-content-providers/partnership-integrations",
-                  "integration-guides/lms/external-content-providers/workday",
-                  "integration-guides/lms/external-content-providers/sap",
-                  "integration-guides/lms/external-content-providers/go1",
-                  "integration-guides/lms/external-content-providers/cornerstone",
-                  "integration-guides/lms/external-content-providers/docebo",
-                  "integration-guides/lms/external-content-providers/oracle",
-                  "integration-guides/lms/external-content-providers/other-integrations"
-                ]
-              },
-              {
-                "group": "LMS/LXP and Aggregators",
+                "group": "Unified LMS API",
                 "icon": "book-open",
+                "root": "lms/introduction",
                 "pages": [
-                  "integration-guides/lms/content-library-and-lxps/go1",
-                  "integration-guides/lms/content-library-and-lxps/workday",
-                  "integration-guides/lms/content-library-and-lxps/xyleme"
+                  "lms/first-request",
+                  {
+                    "group": "Use-case guides",
+                    "icon": "lightbulb",
+                    "pages": [
+                      "lms/unified-lms-features/lms-features",
+                      "lms/unified-lms-features/batch",
+                      "lms/testing-integrations/testing",
+                      "lms/unified-lms-features/user-syncing",
+                      "lms/use-cases/learning-content-provider-lms-use-case",
+                      "lms/use-cases/lxp-lms-content-aggregators"
+                    ]
+                  },
+                  {
+                    "group": "Troubleshooting",
+                    "icon": "bug",
+                    "pages": [
+                      "lms/common-guide/connector-errors"
+                    ]
+                  },
+                  {
+                    "group": "Learning Content Providers",
+                    "icon": "graduation-cap",
+                    "pages": [
+                      "integration-guides/lms/external-content-providers/introduction",
+                      "integration-guides/lms/external-content-providers/partnership-integrations",
+                      "integration-guides/lms/external-content-providers/workday",
+                      "integration-guides/lms/external-content-providers/sap",
+                      "integration-guides/lms/external-content-providers/go1",
+                      "integration-guides/lms/external-content-providers/cornerstone",
+                      "integration-guides/lms/external-content-providers/docebo",
+                      "integration-guides/lms/external-content-providers/oracle",
+                      "integration-guides/lms/external-content-providers/other-integrations"
+                    ]
+                  },
+                  {
+                    "group": "LMS/LXP and Aggregators",
+                    "icon": "book-open",
+                    "pages": [
+                      "integration-guides/lms/content-library-and-lxps/go1",
+                      "integration-guides/lms/content-library-and-lxps/workday",
+                      "integration-guides/lms/content-library-and-lxps/xyleme"
+                    ]
+                  }
                 ]
               },
               {
@@ -777,14 +795,20 @@
             "anchor": "Accounting",
             "icon": "calculator",
             "pages": [
-              "accounting/introduction",
-              "accounting/first-request",
               {
-                "group": "Connector-specific Guides",
-                "icon": "plug",
+                "group": "Unified Accounting API",
+                "icon": "book-open",
+                "root": "accounting/introduction",
                 "pages": [
-                  "integration-guides/accounting/overview",
-                  "integration-guides/accounting/xero"
+                  "accounting/first-request",
+                  {
+                    "group": "Connector-specific Guides",
+                    "icon": "plug",
+                    "pages": [
+                      "integration-guides/accounting/overview",
+                      "integration-guides/accounting/xero"
+                    ]
+                  }
                 ]
               },
               {
