@@ -1,0 +1,120 @@
+---
+noindex: true
+title: "ATS Connector Errors"
+sidebarTitle: "Connector Errors"
+description: "HTTP error codes, error response formats, and ATS provider-specific troubleshooting"
+---
+
+This guide covers error codes returned by the StackOne API and common ATS provider-specific issues.
+
+---
+
+## HTTP Error Codes
+
+All StackOne API errors follow a consistent response format:
+
+```json
+{
+  "statusCode": 400,
+  "message": "Human-readable error message",
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "errorCode": "ValidationError",
+  "provider_errors": []
+}
+```
+
+<Accordion title="Error Code Reference">
+
+| Code | Name | Description |
+|------|------|-------------|
+| **400** | Bad Request | Invalid request parameters or malformed request body |
+| **401** | Unauthorized | Missing or invalid API key, or expired credentials |
+| **403** | Forbidden | Valid credentials but insufficient permissions |
+| **404** | Not Found | Resource does not exist or was deleted |
+| **408** | Request Timeout | Request took too long to complete |
+| **409** | Conflict | Request conflicts with current resource state |
+| **412** | Precondition Failed | Linked account belongs to a disabled integration |
+| **422** | Unprocessable Entity | Request validation failed |
+| **429** | Too Many Requests | Rate limit exceeded |
+| **500** | Internal Server Error | Unexpected server error |
+| **501** | Not Implemented | Feature not supported for this provider |
+| **502** | Bad Gateway | Error from upstream provider |
+
+</Accordion>
+
+---
+
+## ATS Provider-Specific Issues
+
+### Teamtailor
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| `501` Bad Request | API key missing permissions | Ask customer to re-authenticate per [Teamtailor guide](/connection-guides/ats/teamtailor) |
+
+<Note>
+The `hired_at` field for candidates indicates when they entered the "Hired" stage in Teamtailor.
+</Note>
+
+---
+
+### Greenhouse
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| `404` Not Found | Invalid Greenhouse user ID provided during account linking | Ask customer to re-authenticate per [Greenhouse guide](/connection-guides/ats/greenhouse) |
+
+---
+
+### Lever
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| `400` Invalid Request | Missing or malformed parameter | Check request parameters against documentation |
+| `401` Unauthorized | Invalid credentials or insufficient scopes | Re-verify integration credentials per [Lever setup guide](https://docs.stackone.com/connectors/lever/guides/connector-profile/oauth-2-0) |
+| `403` Forbidden | Account settings block operation | Contact Lever Super Admin to update API settings |
+| `429` Too Many Requests | Rate limit exceeded | Use SDK `retryConfig` or implement retry strategy |
+| `500` Server Error | Lever server error | Contact StackOne support |
+| `503` Service Unavailable | Lever maintenance downtime | Retry with exponential backoff |
+
+<Note>
+The `updated_after` filter evaluates any candidate record change, not just specific fields. The `updated_at` field reflects only selected field updates. Filtering by `updated_at` values is unsupported.
+</Note>
+
+---
+
+### SmartRecruiters
+
+SmartRecruiters implements restrictive rate limits (1 request per 5 minutes for some endpoints) and doesn't support listing applications/interviews directly.
+
+**Default behavior:** The `interview` endpoint filters to candidates in `INTERVIEW`, `OFFERED`, `HIRED`, or `TRANSFERRED` status only. Candidates with status `REJECTED`, `WITHDRAWN`, `LEAD`, or `IN_REVIEW` are excluded.
+
+---
+
+### Bullhorn
+
+Bullhorn has relaxed validation that can cause silent failures:
+
+| Scenario | Behavior |
+|----------|----------|
+| Invalid `candidate_id` for notes | Note created but remains invisible in UI |
+| Missing `author_id` for notes | Defaults to API user ID |
+
+---
+
+### Workable
+
+Candidates created without an associated application are added to a generic talent pool. These candidates **will not appear** in API responses as the provider doesn't support returning talent pool candidates.
+
+---
+
+## Debugging Tips
+
+1. **Check Request Logs**: View detailed request/response logs in Dashboard → Logs
+2. **Inspect `provider_errors`**: The raw provider response is included for 4xx/5xx errors
+3. **Use the Playground**: Test actions interactively to isolate issues
+4. **Verify Permissions**: Many 403 errors are due to missing provider-side permissions
+
+<Card title="Request Logs" icon="scroll" href="https://docs.stackone.com/connect/troubleshooting">
+  View and debug API requests in the dashboard
+</Card>

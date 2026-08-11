@@ -1,0 +1,156 @@
+---
+noindex: true
+title: "Batch Operations"
+description: "This document outlines the StackOne unified LMS features for batch operations."
+---
+
+To enhance the documentation and ensure a clear, in-depth, and readable explanation of the batch operations API, we'll address the following key areas:
+
+1. **Batch vs Non-Batch Operations**
+2. **Viewing Results in the Request Logs Page**
+3. **Getting Individual Logs via `x-request-id`**
+4. **Synthetic vs Non-Synthetic Batching**
+5. **Batching of Batch Requests When Supported**
+
+---
+
+### **Batch Operations**
+
+**Overview**
+
+Batch operations allow you to pass a list of items in a single request, instead of processing each item individually. This is especially useful when interacting with systems like Learning Management Systems (LMS) that have strict rate limits or require bulk processing of data. Batch requests simplify handling large amounts of data, significantly improving efficiency in content uploads and reducing overhead.
+
+### **Key Differences: Batch vs Non-Batch Operations**
+
+- **Batch Operations:** Allow you to send a list of multiple items in a single request. This results in more efficient network usage and improved performance when interacting with APIs that support batch processing. The key advantage is that multiple items can be processed in parallel, reducing the number of network calls required.
+  
+- **Non-Batch Operations:** Each item is handled in a separate request. This is the default behaviour of the upsert content endpoint.
+
+### **Viewing Results in the Request Logs Page**
+
+To track the progress and results of batch operations, you can view them on the **Logs Page** in the StackOne UI. This page displays detailed logs for each batch operation.
+
+- **Unified Request Level:** The top level shows the overall unified batch operation with the unified batch response.
+  
+- **Provider Request Level:** Inside each batch operation, we display logs for every individual request made to the provider. This ensures transparency and gives you insight into how each item was processed. If the provider does not support native batch operations, individual requests are shown instead.
+
+In case of failure or delays, the logs provide details on what went wrong, including specific errors from the provider for each individual item or batch operation.
+
+### **Getting Individual Logs via `x-request-id`**
+
+For further granular control, each batch request will return an `x-request-id` in the response header. 
+
+- You can use this `x-request-id` to retrieve the logs for each specific request associated with that batch. This makes it easier to monitor the status and progress of each item individually. 
+
+**Example:** When you submit a batch request, the response header might look like this:
+
+```
+x-request-id: 1234567890abcdef
+```
+You can then query the request logs using the `x-request-id` to retrieve a detailed status report for each item in the batch.
+
+### **Synthetic vs Non-Synthetic Batching**
+
+There are two main types of batch processing: **Synthetic** and **Non-Synthetic** batches.
+
+- **Synthetic Batch Operations:** These occur when the underlying provider does not support native batch operations. In these cases, StackOne simulates batch processing by making individual requests for each item. The items are processed in bulk from your perspective, but each request is treated separately by the provider.
+  
+- **Non-Synthetic Batch Operations:** When the provider supports native batch operations, we take full advantage of their batch capabilities. The system respects the provider’s rate limits and maximum batch sizes, and processes the requests efficiently in groups. This is the most efficient way to handle bulk operations.
+
+### **Batching of Batch Requests When Supported**
+
+In certain cases, a single batch request may contain too many items, exceeding the provider's maximum batch size. When this happens, **unified batching** occurs:
+
+- **Unified Batching:** StackOne automatically splits the batch into smaller requests that comply with the provider's batch size limits. These smaller batches are then processed sequentially, ensuring compliance with the rate limits and handling large datasets in manageable chunks.
+
+### **Detailed Workflow**
+
+1. **Request Submission:** 
+   - The user sends a batch request containing multiple items to be processed by the LMS.
+   - The system validates the request and responds with a `202 Accepted` status code if the request is successfully queued.
+
+2. **Processing the Request:**
+   - If the LMS supports native batch operations, the system sends the entire batch request.
+   - If the LMS does not support batch operations, the system sends individual requests for each item (synthetic batch).
+
+3. **Logging & Monitoring:**
+   - Each batch operation is logged at the StackOne level. For each item in the batch, individual logs are displayed.
+   - If the request is split into multiple smaller batches (due to size limits), each smaller batch request will also be logged individually.
+
+4. **Response Handling:**
+   - Each item in the batch request is processed using the same upsert logic as individual content requests.
+   - Once processing is complete, you can track the success or failure of each request in the **Request Logs Page** using the `x-request-id`.
+
+5. **Future Enhancements:**
+   - The system will return content IDs in future versions of the batch response. This will allow users to track the progress of each item.
+   - A response URL will be included in the headers, enabling users to view detailed logs upon request completion.
+
+
+<Frame>
+![](/images/batch.png)
+</Frame>
+
+
+### **Example Request and Response**
+
+#### Request
+
+```json
+{
+  "items": [
+    {
+      "external_reference": "generic#lo123456789001",
+      "title": "Learning Object 1",
+      "description": "Description for LO 1",
+      "languages": [
+        { "value": "en_US" }
+      ],
+      "content_url": "https://example.com/object1",
+      "content_type": { "source_value": "article" },
+      "cover_url": "https://example.com/cover1.jpg",
+      "active": true,
+      "duration": "PT10M",
+      "categories": [{ "name": "Category A" }]
+    },
+    {
+      "external_reference": "generic#lo123456789002",
+      "title": "Learning Object 2",
+      "description": "Description for LO 2",
+      "languages": [{ "value": "en_US" }],
+      "content_url": "https://example.com/object2",
+      "content_type": { "source_value": "article" },
+      "cover_url": "https://example.com/cover2.jpg",
+      "active": true,
+      "duration": "PT15M",
+      "categories": [{ "name": "Category B" }]
+    }
+  ]
+}
+```
+
+#### Response Header (Example)
+
+```http
+x-request-id: abc123xyz789
+```
+
+#### Result Logs
+
+- After submission, you can view the request logs, showing each batch operation.
+- For synthetic batches, logs will show individual item processing. For non-synthetic batches, logs will show grouped batch processing results.
+
+### **Success Validation**
+
+You can validate the success of your batch operations by monitoring the **Logs Page** in the StackOne UI. 
+
+- The logs will provide detailed information about the status of each request in the batch. If the request fails or encounters issues, you’ll be able to see error messages and troubleshoot accordingly.
+  
+### **Best Practices for Batch Operations**
+
+- **Recommended Batch Size:** We suggest a maximum batch size of **10,000 items** per request. This ensures optimal performance while avoiding potential timeouts or memory issues during processing.
+- **Maximize Batch Size:** Whenever possible, include as many items as your provider allows within a batch (up to the recommended 10,000 item limit). This helps to minimize overhead and improve processing efficiency.
+- **Monitor Logs:** Always check the request logs for detailed progress and success/failure statuses of individual items in your batch.
+
+---
+
+This enhanced documentation should offer a more comprehensive and user-friendly explanation of batch operations, making it easier for users to understand the differences between batch vs non-batch processing, how to view results, and the benefits of synthetic vs non-synthetic batches.

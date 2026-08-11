@@ -1,0 +1,182 @@
+
+<Frame>
+![](/images/field-coverage-cover.png)
+</Frame>
+
+# Overview
+
+Field Coverage is a feature in StackOne that helps you understand which fields are supported across different connectors and API operations. This tool is great for planning your implementation, evaluating connector compatibility, and ensuring your use cases can be fully supported.
+
+> Field Coverage is available in the Dashboard at [app.stackone.com/field_coverage](https://app.stackone.com/field_coverage)
+
+# Key Features
+
+## Search Experience
+
+The field coverage interface provides a multiselect search experience.
+
+- Search by field and model
+- Layer multiple search terms and filters to display the union of all results
+- Fuzzy search - find fields and models even with partial or similar names
+
+<Frame>
+![](/images/field-coverage-search.png)
+</Frame>
+
+## Filters
+
+### Integration Filters
+Filter field coverage by specific connectors to focus on those relevant to your use case.
+
+- **Category filters**: HRIS, ATS, CRM, LMS, Marketing, Documents, etc.
+- **Provider filters**: Specific providers (e.g., BambooHR, Greenhouse, HubSpot)
+- **Status filters**: Active connectors
+
+### Operation Filters
+Narrow down results by operation filters.
+
+- **List operations**: Fields available when listing resources
+- **Get operations**: Fields available when retrieving individual resources
+- **Create operations**: Fields that can be set when creating new resources
+- **Update operations**: Fields that can be modified in existing resources
+
+<Frame>
+![](/images/field-coverage-filters.png)
+</Frame>
+
+## Export Behavior
+
+Field coverage data can be exported as CSV for analysis and documentation.
+
+- **CSV export**: For spreadsheet analysis and reporting
+
+### Export Options
+
+1. **Full export**: All field coverage data across all connectors
+2. **Filtered export**: Only data matching your current filters
+
+<Frame>
+![](/images/field-coverage-export.png)
+</Frame>
+
+## Key/Legend
+
+Understanding the visual indicators in field coverage.
+
+### Operation Indicators
+- **GET - Green G**
+- **LIST - Blue L**
+- **CREATE - Brown C**
+- **UPDATE - Purple U**
+- **UPSERT - Teal UP**
+
+### Capability Indicators
+- **Custom fields**: Wrench/gear icon indicating custom field support
+- **Enums**: Lowercase 'e' icon indicating enum field support
+- **Required**: Red dot in white square indicating required fields
+- **Conditionally required**: Orange dot with red outline indicating conditionally required fields
+- **Filtering**: Filter icon indicating filtering support
+- **Batch**: Refresh/sync icon indicating batch operation support
+- **Unsupported by Provider**: Grey icon with strikethrough indicating unsupported fields
+
+<Frame>
+![](/images/field-coverage-legend.png)
+</Frame>
+
+# Use Cases
+
+## Evaluating New Connectors
+
+**Scenario**: You want to evaluate whether a new connector can support your use case.
+
+### Step-by-Step Process
+
+1. **Filter for the specific integration**
+   - Choose the relevant category (HRIS, ATS, CRM, etc.)
+   - Use the integration filter to select the connector you're evaluating
+
+2. **Search for specific fields**
+   - Use the search functionality to find fields critical to your use case
+   - Look for both exact matches and similar field names
+
+3. **Expand relevant objects/models**
+   - Click on objects to see their complete field structure
+   - Check nested objects and relationships
+
+4. **Analyze coverage**
+   - Review the coverage indicators for each required field
+   - Note any limitations or unsupported fields
+
+5. **Export results**
+   - Export the filtered data for stakeholder review
+   - Document gaps and workarounds
+
+## Integration Planning
+
+**Scenario**: Planning a new integration and need to understand field availability.
+
+### Best Practices
+
+1. **Start with core fields**
+   - Identify the essential fields for your use case
+   - Check coverage across multiple potential connectors
+
+2. **Compare connectors**
+   - Use filters to compare field support across different providers
+   - Export comparison data for decision-making
+
+3. **Plan for gaps**
+   - Identify unsupported fields early
+   - Consider alternative approaches or custom field mapping
+
+## API Development
+
+**Scenario**: Building an application that consumes StackOne APIs.
+
+### Development Workflow
+
+1. **Research field availability**
+   - Use field coverage to understand what data is available
+   - Plan your data models based on actual field support
+
+2. **Handle field variations**
+   - Use the expand functionality to understand field differences
+   - Implement fallback logic for unsupported fields
+
+3. **Optimize API calls**
+   - Use field coverage to determine which fields to request
+   - Avoid requesting unsupported fields to improve performance
+
+
+# Caveats and Disclaimers
+
+## Coverage Accuracy
+
+<Warning>
+**Field coverage data may not always reflect the complete picture**
+</Warning>
+
+- **Dynamic fields**: Some connectors support dynamic or custom fields that may not appear in coverage data
+- **Provider updates**: Integration providers may add or modify fields without immediate coverage updates
+- **Conditional support**: Some fields may be available under specific conditions or configurations
+
+## Limitations
+
+### Data Freshness
+- Field coverage is updated regularly but may lag behind provider changes
+- Always verify critical field support through testing or direct API calls
+
+## Best Practices
+
+1. **Verify with testing**: Always test critical fields with actual API calls
+2. **Stay updated**: Regularly check field coverage for updates
+3. **Contact support**: Reach out to StackOne support for clarification on specific field support
+4. **Document findings**: Keep records of field support for your specific use cases
+
+# Getting Help
+
+If you need assistance with field coverage or have questions about specific field support:
+
+- **Status Page**: Check [status.stackone.com](https://status.stackone.com) for system status and incidents
+- **Documentation**: Check the relevant [API Reference](/hris/introduction) for detailed field information
+- **Support**: Contact StackOne support through the in-app support, email (support@stackone.com)

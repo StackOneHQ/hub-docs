@@ -1,0 +1,34 @@
+---
+noindex: true
+title: "Other Integrations"
+---
+
+## **Docebo**
+
+Content in Docebo shows as type tincan - [Docebo Tin Can](https://www.docebo.com/learning-network/blog/tin-can-elearning/) in this case, the content flow will work in exactly the same way as other integrations.
+
+The user will be redirected to the external content provider platform and the progress will be tracked via the User Completions endpoint.
+
+<Warning>
+Docebo does not allow updating content URLs or image URLs via the upsert content endpoint.
+</Warning>
+
+## **360 Learning**
+
+**Summary**
+
+360 Learning will automatically create a completion on content launch. This isn't configurable.
+
+The completion is initially created with 1% completion. When you create a completion via StackOne we will update this progress to 100%.
+
+**Top Level Flow**
+
+<video
+  controls
+  className="w-full aspect-video rounded-xl"
+  src="/videos/lms/360-learning/Integrating StackOne LMS with 360Learning.mp4"
+></video>
+
+**Known Provider Bugs**
+
+Completions `Result` is shown in the model and are accepted by the API but isn't shown in the UI.

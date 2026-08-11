@@ -1,0 +1,159 @@
+---
+noindex: true
+title: "Create Operations"
+description: "This document outlines the StackOne unified LMS features for external content provider content and completion management."
+---
+
+## **Content Management**
+
+### **Upsert**
+
+**Overview**
+
+Our unified LMS API uses an "upsert" approach for content management, ensuring efficient synchronization across various Learning Management Systems (LMS). This means content creation requests will either update existing content or create new content based on matching criteria.
+
+**Key Features and Behavior**
+
+* **Primary Identifier: `external_reference`:** The API prioritizes `external_reference` for content matching. If content with the provided `external_reference` exists, it will be updated.
+
+* **Enhanced Deduplication:**
+
+  * In most cases, `external_reference` is sufficient.
+
+  * If the target LMS supports deduplication based on other attributes (e.g., title), the API uses these to enhance matching, allowing synchronization with systems containing pre-existing data.
+
+* **Upsert Implementation:**
+
+  * If the LMS supports native upsert, it's used directly.
+
+  * Otherwise, a "get" operation checks for existing content using `external_reference` and/or other attributes.
+
+* **Response:**
+
+  * The API always returns the `external_reference`.
+
+  * An `id` is also returned if the LMS requires it for completions/assignments (i.e., doesn't support `external_reference` for these operations).
+
+**Workflow**
+
+1. **Request Submission:** Send a content creation request with data and `external_reference`.
+
+2. **Matching:** The API attempts to match content using `external_reference` and/or other attributes, using native upsert when available, or a "get" check otherwise.
+
+3. **Operation:** Existing content is updated or new content is created.
+
+4. **Response:** The API returns `external_reference`, and `id` if necessary.
+
+5. **Subsequent Operations:** Use `external_reference` (or `id`) for completions/assignments.
+
+<Frame>
+![](/images/upsert-flow.png)
+</Frame>
+
+**Important Considerations**
+
+* Ensure `external_reference` is unique and consistent.
+
+* The `id` is only provided when the LMS does not support the `external_reference` for completions/assignments.
+
+* Matching can occur based on attributes beyond `external_reference` if the LMS supports it.
+
+**Benefits**
+
+* Simplified content management.
+
+* Data consistency.
+
+* Efficient operations.
+
+* Enhanced synchronization with systems containing pre-existing data.
+
+### **Removing Content**
+
+**Overview**
+
+Content removal is handled through two methods, depending on LMS provider support: Soft Delete (universally available) and Hard Delete (provider-dependent).
+
+**Removal Options**
+
+* **Soft Delete (via Upsert):**
+
+  * Sets content to an inactive state, preserving all associated records.
+
+  * Effects:
+
+    * Content is hidden from user views.
+
+    * Content is inaccessible to users.
+
+    * Content remains visible in admin views and API list responses.
+
+    * Completion and assignment records are retained.
+
+  * This is achieved by sending an upsert request with the content and an inactive status.
+
+* **Hard Delete (via DELETE):**
+
+  * Permanently removes content.
+
+  * Availability: Dependent on LMS provider support.
+
+  * Provider Restrictions: Often limited due to contractual requirements and the need to maintain completion record relationships.
+
+**Key Considerations**
+
+* Soft Delete is available across all providers.
+
+* Hard Delete availability is subject to LMS provider capabilities.
+
+* Soft delete is achieved through the upsert endpoint by sending an inactive status.
+
+## **Assignment & Completion Management**
+
+### **Creating Assignments & Completions**
+
+The creation process for assignments and completions supports two distinct flows, depending on your needs and the desired level of control.
+
+**Creation Flows:**
+
+1. **User Assignment -> User Completion:**
+
+   * **Create Assignment:** First, create an assignment for a specific user using:
+
+     * The user ID.
+
+     * The content external reference.
+
+     * Any other required assignment data.
+
+   * **Create Completion:** Subsequently, create a completion for the same user and content, using:
+
+     * The user ID.
+
+     * The content external reference.
+
+     * Any required completion data.
+
+   * This flow allows for explicit assignment creation and tracking before marking it as complete.
+
+2. **User Completion:**
+
+   * Create a completion directly using:
+
+     * The user ID.
+
+     * The content external reference.
+
+     * Any required completion data.
+
+   * This flow simplifies the process by directly marking content as complete for a user, handling any underlying assignment creation if necessary.
+
+**Key Requirements:**
+
+* All assignment and completion creation operations must be performed as a user sub-resource.
+
+* The system uses the user ID and the content external reference to associate assignments and completions.
+
+<Frame>
+![](/images/diagram-export-13-03-2025-15_10_14.png)
+</Frame>

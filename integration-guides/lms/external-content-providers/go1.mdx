@@ -1,0 +1,57 @@
+---
+noindex: true
+title: "GO1 Integration"
+description: "Content & Completion Management"
+---
+
+## **Summary**
+
+The GO1 integration allows you to push content to GO1 and track user progress.
+
+GO1 offers a tenant-specific integration where you can push content to a specific customer's instance (**GO1**). This does not require a partnership agreement and will allow the specific tenant to access content without it being made available across the Go1 distribution network.
+ 
+They also offer a distribution network where content is made available to all customers (**GO1 Library**). This requires a partnership agreement.
+
+GO1 auto-completes content when a user launches it from the GO1 UI.
+
+<Frame>
+  ![](/images/content-distribution-integration.png)
+</Frame>
+
+## **Key Details**
+
+### **Content Management**
+
+* **Content Catalog:** GO1 manages the content library.
+
+* **Publishing:** Initial content push results in an unpublished state, requiring GO1 administrator publishing.
+
+* **Removal:** Communicate content removal to GO1; use soft delete (upsert with unpublished status) to hide content.
+
+### **Content Upsert Behavior**
+
+* **Deduplication:** Uses `external_reference` as the unique identifier.
+
+  * Existing content with matching `external_reference` will be updated.
+
+  * New content is created if no match is found.
+
+### **Completion Push**
+
+* Uses `content_external_reference` as the content identifier.
+
+### **Provider-Specific Quirks**
+
+* **Content Categorization:**
+
+  * **Taxonomy:** GO1's category taxonomy: [https://help.go1.com/en/articles/6767512-topics-taxonomy](https://help.go1.com/en/articles/6767512-topics-taxonomy)
+
+  * **Category Requirements:** Category and skill tagging is optional.
+
+### **Limitations**
+
+* **Rate Limits:** No rate limits currently.
+
+### **Testing and Validation**
+
+* Standard testing procedures apply.

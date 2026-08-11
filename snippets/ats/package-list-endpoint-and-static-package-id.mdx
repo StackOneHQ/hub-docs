@@ -1,0 +1,30 @@
+export const DifferenceBetweenListEndpointAndStaticIdOfPackage = ({ providerName, dynamicPackageImageAtProviderUI, staticPackageImageAtProviderUI }) => {
+    return (
+        <>
+            <Accordion title="How is the Package's List Endpoint URL different from a Static Package ID?">
+                <Info>
+                    The Package's List Endpoint URL allows StackOne to fetch a list of available packages from your system, while the Static Package ID is fixed and available for users to select on the provider's side.
+                </Info>
+
+                <b>When you have a Package's List Endpoint URL</b>
+                <br />
+                A list of packages will be available to select in {providerName}.
+                <Frame>
+                    <img src={dynamicPackageImageAtProviderUI} alt="Dynamic Package ID" style={{ maxHeight: '500px', width: 'auto' }} />
+                </Frame>
+                <br />
+
+                <b>When you have a Static Package ID</b>
+                <br />
+                A static package ID will be available to select in {providerName}.
+                <Frame>
+                    <img src={staticPackageImageAtProviderUI} alt="Static Package ID" style={{ maxHeight: '500px', width: 'auto' }} />
+                </Frame>
+            </Accordion>
+
+            <Note>
+                At least one field is necessary for making packages available in the Provider's UI. Preference will be given to the <b>Package's List Endpoint URL</b>, even if both fields are configured.
+            </Note>
+        </>
+    );
+};

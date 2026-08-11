@@ -1,0 +1,48 @@
+
+<Warning>
+  **Prerequisites**
+
+  Before testing with Postman, set up an integration and link an account following the [Getting Started](https://docs.stackone.com/gateway/quickstart) guide.
+</Warning>
+
+## Get the collection
+
+The StackOne public Postman workspace has a pre-configured collection for the Unified APIs (HRIS, ATS, CRM, and more). Fork it into your own workspace to get started:
+
+<a href="https://www.postman.com/stackonehq/stackone-public/collection/8d04033a-b6b1-4c91-8235-729f5c46123a" target="_blank">
+  <img src="https://run.pstmn.io/button.svg" alt="Run in Postman" height="48" />
+</a>
+
+The collection has Basic Auth configured with `{{apiKey}}` as the username, and an `x-account-id` header set to `{{accountId}}`.
+
+## Set up your environment
+
+<Steps>
+  <Step title="Create an environment">
+    In Postman, click the **Environments** icon in the left sidebar, then **+** to create a new environment. Name it "StackOne" (or similar).
+  </Step>
+  <Step title="Add your credentials">
+    Add these variables to the environment:
+
+    | Variable | Value |
+    |----------|-------|
+    | `apiKey` | Your StackOne API key: find it in the [dashboard](https://app.stackone.com) under **Settings → API Keys** |
+    | `accountId` | The linked account ID you want to target: visible in the [Accounts page](https://app.stackone.com/accounts) |
+
+  </Step>
+  <Step title="Select the environment">
+    Select your environment from the dropdown in the top-right corner of Postman before sending any request.
+  </Step>
+</Steps>
+
+## Make a request
+
+With your environment active, open any request in the collection and click **Send**. The `{{apiKey}}` and `{{accountId}}` variables are resolved automatically from your environment.
+
+<Tip>
+Start with **GET /accounts** to confirm your API key is working. It returns all linked accounts for your project.
+</Tip>
+
+## Troubleshooting
+
+**`{"error":"Invalid authentication token"}`**: Your `apiKey` variable is missing or incorrect. Check that the right environment is selected and the value matches your key from the dashboard.

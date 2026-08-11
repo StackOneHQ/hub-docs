@@ -1,0 +1,162 @@
+## HTTP Error Codes
+
+All StackOne API errors follow a consistent response format:
+
+```json
+{
+  "statusCode": 400,
+  "message": "Human-readable error message",
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "errorCode": "ValidationError",
+  "provider_errors": []
+}
+```
+
+### Error Code Reference
+
+| Code | Name | Description |
+|------|------|-------------|
+| **400** | Bad Request | Invalid request parameters or malformed request body |
+| **401** | Unauthorized | Missing or invalid API key, or expired credentials |
+| **403** | Forbidden | Valid credentials but insufficient permissions |
+| **404** | Not Found | Resource does not exist or was deleted |
+| **408** | Request Timeout | Request took too long to complete |
+| **409** | Conflict | Request conflicts with current resource state |
+| **412** | Precondition Failed | Linked account belongs to a disabled integration |
+| **422** | Unprocessable Entity | Request validation failed |
+| **429** | Too Many Requests | Rate limit exceeded |
+| **500** | Internal Server Error | Unexpected server error: check [status.stackone.com](https://status.stackone.com) |
+| **501** | Not Implemented | Feature not supported for this provider |
+| **502** | Bad Gateway | Error from upstream provider |
+
+---
+
+## Common Error Scenarios
+
+### 400 Bad Request
+
+**Causes:**
+- Missing required fields in request body
+- Invalid field types (e.g., string instead of number)
+- Malformed JSON
+
+**Example response:**
+```json
+{
+  "statusCode": 400,
+  "message": "Validation failed",
+  "errors": [
+    "first_name must be a string",
+    "email must be a valid email address"
+  ]
+}
+```
+
+**Fix:** Check your request body against the API reference for required fields and types.
+
+---
+
+### 401 Unauthorized
+
+**Causes:**
+- Missing `Authorization` header
+- Invalid API key
+- Expired OAuth credentials for linked account
+
+**Error codes:**
+| Error Code | Meaning |
+|------------|---------|
+| `AccountInvalidCredentialsError` | Credentials rejected by provider |
+| `AccountExpiredCredentialsError` | OAuth token expired |
+| `AccountAuthenticationFailedError` | General auth failure |
+
+**Fix:**
+- Verify your API key is correct and has appropriate scopes
+- For expired credentials, ask your customer to re-authenticate via the Integration Hub
+
+---
+
+### 403 Forbidden
+
+**Causes:**
+- API key lacks required scope
+- Linked account lacks permissions in the provider
+- Provider account settings restrict the operation
+
+**Fix:**
+- Check API key scopes in the Dashboard
+- Verify the linked account has permissions in the provider's admin settings
+
+---
+
+### 404 Not Found
+
+**Causes:**
+- Resource ID doesn't exist
+- Resource was deleted
+- Invalid `account_id` header
+
+**Fix:** Verify the resource ID exists by listing resources first.
+
+---
+
+### 408 Request Timeout
+
+The request took too long to complete. The response includes a `Retry-After: 60` header.
+
+**Fix:** Wait 60 seconds and retry. For large data sets, use pagination with smaller page sizes.
+
+---
+
+### 412 Precondition Failed
+
+**Cause:** The linked account belongs to an integration that has been disabled.
+
+**Error code:** `AccountIntegrationInactiveError`
+
+**Fix:** Re-enable the integration in Dashboard → Integrations, or ask the customer to re-link their account.
+
+---
+
+### 429 Too Many Requests
+
+Rate limit exceeded. The response may include a `Retry-After` header.
+
+**Fix:**
+- Implement exponential backoff in your retry logic
+- Use the StackOne SDK's built-in `retryConfig` option
+- Reduce request frequency
+
+---
+
+### 501 Not Implemented
+
+The requested action isn't supported for this provider.
+
+**Fix:** Check the [Field Coverage](https://app.stackone.com/field-coverage) page to see which operations are supported for each provider.
+
+---
+
+### 502 Bad Gateway
+
+An error occurred when calling the upstream provider.
+
+**Example response:**
+```json
+{
+  "statusCode": 502,
+  "message": "Bad Gateway",
+  "provider_errors": [
+    {
+      "status": 503,
+      "url": "/api/v1/employees",
+      "raw": { "error": "Service temporarily unavailable" }
+    }
+  ]
+}
+```
+
+**Fix:**
+- Check the `provider_errors` array for details about the upstream failure
+- The provider may be experiencing downtime. Check [status.stackone.com](https://status.stackone.com) for known incidents
+- Retry with exponential backoff

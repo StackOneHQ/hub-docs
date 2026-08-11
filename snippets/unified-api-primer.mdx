@@ -1,0 +1,14 @@
+## What is a Unified API?
+
+A **unified API** provides a single, standardized interface to interact with multiple third-party providers. Instead of learning each provider's unique API format, authentication scheme, and data model, you write code once, and StackOne handles the differences.
+
+**What StackOne normalizes:**
+- **Data models** – Consistent field names and structures across providers (e.g., `files` in Google Drive, SharePoint, and Dropbox all return the same schema; `users` in Google Workspace, Okta, and 1Password all return the same schema)
+- **Authentication** – OAuth, API keys, and tokens are managed per-provider; you just pass an `x-account-id` header
+- **Pagination** – Cursor-based pagination works the same regardless of whether the provider uses offsets, pages, or cursors
+- **Error formats** – Standardized error responses with provider-specific details when available
+
+<Tip>
+**Building AI agents?** Use the [MCP Server](https://docs.stackone.com/embed/call-actions/mcp), an [AI Toolset SDK](https://docs.stackone.com/embed/call-actions/agent-sdk), or the [Actions API (RPC)](https://docs.stackone.com/platform/api-reference/actions/make-an-rpc-call-to-an-action) instead. Same data, optimized for LLM tool calling.
+</Tip>
+

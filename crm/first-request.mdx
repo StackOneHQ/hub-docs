@@ -1,0 +1,107 @@
+---
+noindex: true
+title: "Making your first request"
+sidebarTitle: "Making your first request"
+description: "Make your first CRM API request to list contacts from a connected CRM system"
+---
+
+import FirstRequestIntro from "/snippets/guides/first-request-intro.mdx";
+import FirstRequestPrerequisites from "/snippets/guides/first-request-prerequisites.mdx";
+import FirstRequestGettingAccountId from "/snippets/guides/first-request-getting-account-id.mdx";
+import FirstRequestReferences from "/snippets/guides/first-request-references.mdx";
+
+<FirstRequestIntro />
+
+<FirstRequestPrerequisites />
+
+<FirstRequestGettingAccountId />
+
+## Making Your First Request
+
+Now you're ready to make your first CRM API call. Let's list contacts from the connected CRM system:
+
+<Tabs>
+  <Tab title="cURL">
+    ```bash
+    curl --request GET \
+      --url 'https://api.stackone.com/unified/crm/contacts' \
+      --header 'accept: application/json' \
+      --header 'authorization: Basic {base64_encoded_api_key}' \
+      --header 'x-account-id: {account_id}'
+    ```
+  </Tab>
+  <Tab title="TypeScript">
+    ```typescript
+    import { StackOne } from "@stackone/stackone-client-ts";
+
+    const client = new StackOne({ apiKey: "YOUR_API_KEY" });
+
+    const response = await client.crm.listContacts({
+      xAccountId: "your-account-id"
+    });
+
+    console.log(response.contacts);
+    ```
+  </Tab>
+  <Tab title="Python">
+    ```python
+    from stackone_client import StackOne
+
+    client = StackOne(api_key="YOUR_API_KEY")
+
+    response = client.crm.list_contacts(
+        x_account_id="your-account-id"
+    )
+
+    print(response.contacts)
+    ```
+  </Tab>
+</Tabs>
+
+### Example Response
+
+```json
+{
+  "data": [
+    {
+      "id": "contact_123",
+      "remote_id": "abc123",
+      "first_name": "Sarah",
+      "last_name": "Mitchell",
+      "emails": [
+        {
+          "type": "work",
+          "value": "sarah.mitchell@company.com"
+        }
+      ],
+      "phone_numbers": [
+        {
+          "type": "work",
+          "value": "+1-555-0456"
+        }
+      ],
+      "company_name": "Acme Corp",
+      "created_at": "2024-01-10T08:00:00Z"
+    }
+  ]
+}
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Get Contact" icon="user" href="/crm/api-reference/contacts/get-contact">
+    Retrieve details for a specific contact
+  </Card>
+  <Card title="List Accounts" icon="building" href="/crm/api-reference/accounts/list-accounts">
+    Get company accounts from the CRM
+  </Card>
+  <Card title="Pagination" icon="arrow-right" href="/legacy-unified-apis/common-guide/pagination">
+    Handle large result sets efficiently
+  </Card>
+  <Card title="Get All Lists" icon="list" href="/crm/api-reference/lists/get-all-lists">
+    View contact lists and segments
+  </Card>
+</CardGroup>
+
+<FirstRequestReferences />

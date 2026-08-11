@@ -1,0 +1,53 @@
+---
+noindex: true
+title: "Oracle Fusion Learning Integration"
+description: "Content & Completion Management for Oracle Cloud Learning"
+---
+
+## **Key Details**
+
+### **Oracle Platform Prerequisite**
+
+Oracle requires a partnership for external content providers. Once the integration is enabled there is a step for the tenant admin to enable the external content provider in the Oracle platform. [Example Configuration](https://docs.oracle.com/en/cloud/saas/talent-management/24d/faiml/configure-external-content-providers-for-oracle-learning.html)
+
+Once an external content provider is added to the Oracle partnership, Oracle will advertise the content provider in the Oracle Learning Catalog. They will also create specific documentation for the integration.
+
+Oracle have a release cadence of 3-6 months, so the integration will take time to be available in the Oracle Learning Catalog.
+
+- See [Oracle Data Exchange Reference](https://docs.oracle.com/en/cloud/saas/talent-management/24d/faiml/external-content-provider-and-oracle-learning-data-exchange-reference.html) for details on the underlying Learning Connect API.
+
+## **Integration Overview**
+
+<Frame>
+    ![](/images/oracle-integration-overview.png)
+</Frame>
+
+### **Content Upsert**
+
+- **Deduplication:** Oracle uses unique identifiers for content. Ensure the `external_reference` is unique during content creation.
+- **Implementation Notes:**
+  - **Course Context:** All content is within a course structure. Default course settings and enrollment requirements may apply.
+
+### **Completion Push**
+
+- Uses `learning_object_external_reference` for content identification via xAPI.
+
+## Integration Configurations
+
+### External Content Provider Enablement
+
+Oracle requires the external content provider to be enabled at the tenant level. This is a one-time setup step and must be completed before any API-based integration can function.
+
+- See [Configure Skillsoft](https://docs.oracle.com/en/cloud/saas/talent-management/24d/faiml/set-up-skillsoft-percipio-integration-with-oracle-learning.html) for an example of this setup step.
+
+### **Limitations**
+
+- **Rate Limits:** Oracle may enforce API rate limits. Consult Oracle documentation for current limits.
+
+### **Testing and Validation**
+
+- Standard testing procedures apply. Validate content upsert and completion flows end-to-end in a sandbox environment before production rollout.
+
+---
+
+> [Official Oracle documentation](https://docs.oracle.com/en/cloud/saas/talent-management/24d/faiml/external-content-provider-and-oracle-learning-data-exchange-reference.html). 

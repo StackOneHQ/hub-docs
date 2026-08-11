@@ -1,0 +1,44 @@
+---
+noindex: true
+title: "User Syncing from HRIS"
+description: "Leverage StackOne to sync user details from your customer's HRIS system into your SaaS system."
+---
+
+## Overview
+
+Think about your SaaS platform needing to stay synchronized with your customer's HRIS system. You want to pull employee data, keep it updated, and receive real-time notifications when changes occur. However, working with multiple HRIS systems can quickly get complicated.
+
+Each HRIS has its own way of handling data and different methods to keep things updated. Without a single solution to bring everything together, syncing employee records accurately across different customer systems takes a lot of time and effort.
+
+StackOne simplifies all of this by offering:
+- **Unified API** connects multiple HRIS systems, making it easy to sync employee data across platforms
+- **Real-time webhooks** to keep your system notified of changes
+- **Standardized data formats** to keep data consistent and organized across different HRIS platforms
+
+## Steps to Fulfill This Use Case
+
+<Steps>
+  <Step title="Pull Employee data through StackOne">
+    Make a request to the [List Employees](/hris/api-reference/employees/list-employees) endpoint to get detailed information of employees from your customer's HRIS system. Leverage the filters to only return recently updated records.
+    
+    Endpoints like [List Employee Documents](/hris/api-reference/employees/documents/list-employee-documents), [List Locations](/hris/api-reference/locations/list-work-locations), and [List Employee Time Off](/hris/api-reference/employees/time-off/list-employee-time-off-requests), can help you understand additional dimensions about employees for grouping in your product, or auto-provisioning.
+    
+    > **API Endpoint**: [GET /hris/employees](/hris/api-reference/employees/list-employees)
+  </Step>
+
+  <Step title="Update Employees">
+    If any updates are required to the employee information use the [Update Employee](/hris/api-reference/employees/update-employee) endpoint to make any changes.
+    
+    > **API Endpoint**: [PUT /hris/employees/:id](/hris/api-reference/employees/update-employee)
+  </Step>
+
+  <Step title="Configure a Webhook (optional)">
+    Configure a Webhook to keep notified of any new employees created, updated or deleted to keep your system in sync.
+    
+    > **Documentation**: [Webhook Guide](/legacy-unified-apis/common-guide/webhooks)
+  </Step>
+</Steps>
+
+---
+
+To find out more about the StackOne HRIS API click [here](/hris/introduction)

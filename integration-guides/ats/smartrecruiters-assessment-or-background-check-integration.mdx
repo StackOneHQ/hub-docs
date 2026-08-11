@@ -1,0 +1,615 @@
+---
+noindex: true
+title: 'SmartRecruiters Assessment or Background Check Integration'
+description: 'Learn how to set up and configure the SmartRecruiters integration for assessments and background checks'
+---
+
+import { DifferenceBetweenListEndpointAndStaticIdOfPackage } from "/snippets/ats/package-list-endpoint-and-static-package-id.mdx";
+
+## Purpose & Scope
+
+StackOne allows you to integrate with SmartRecruiters for Assessment and Background Check to receive webhook notifications whenever a user sends the test to a candidate, update the test result, and see the result on the candidate profile in SmartRecruiters. This guide covers the Assessments and Background Checks unified use case. For the end-to-end flow, see the [Unified Use Case](/ats/use-cases/assessment-flow) Overview.
+
+This guide covers how you can set up/configure integration at SmartRecruiters and integrate with StackOne.
+
+## Partnership Requirements
+
+### SmartRecruiters Marketplace Partnership
+
+To integrate with SmartRecruiters for assessments and background checks, you must apply to become a partner through the SmartRecruiters Marketplace:
+
+- **Partnership Required**: Yes, formal partnership application required
+- **Marketplace Application**: [SmartRecruiters Marketplace](https://marketplace.smartrecruiters.com/)
+- **Plan Requirements**: Partnership approval required regardless of SmartRecruiters plan tier
+- **Support Contact**: Available through marketplace partner portal after approval
+
+### Application Process
+
+<Steps>
+  <Step title="Submit Partnership Application">
+    1. Visit the [SmartRecruiters Marketplace](https://marketplace.smartrecruiters.com/)
+    2. Click on `Get started` or `Join the Marketplace`
+    3. Complete the partnership application form with your company details
+  </Step>
+
+  <Step title="Approval and Onboarding">
+    Upon approval, you'll receive:
+    - Access to SmartRecruiters Partner Portal
+    - API credentials and documentation
+    - Marketplace listing guidelines
+    - Technical support contact information
+  </Step>
+</Steps>
+
+<Warning>
+Partnership approval is mandatory before proceeding with the technical integration.
+</Warning>
+
+## Provider Side Setup
+
+### SmartRecruiters Configuration
+Once your application is listed on the SmartRecruiters Marketplace, no additional external setup is required on the provider side. End users will be able to and enable your integration directly from the marketplace and proceed with the configuration.
+To allow end users to start the assessment flow, the assessment partner only needs to complete the StackOne Configuration. Once the StackOne configuration is completed, assessment users will be able to enable the integration from the marketplace and begin using it.
+
+### SmartRecruiters API Documentation
+
+For detailed API specifications, refer to:
+- [SmartRecruiters Developer Documentation](https://developers.smartrecruiters.com/reference/apply-api)
+- [SmartRecruiters API Reference](https://developers.smartrecruiters.com/reference)
+
+## StackOne Configuration
+
+<Warning>
+The assessment partner must complete the StackOne configuration before proceeding with the assessment users or initiating the assessment integration process. Otherwise, the integration will not be activated from the marketplace.The assessment partner must complete the StackOne configuration before assessment users can enable the integration from the marketplace. Otherwise, the integration will not be activated from the marketplace.
+</Warning>
+
+### Enable SmartRecruiters in StackOne Dashboard
+
+<Steps>
+  <Step title="Navigate to Integrations">
+    1. Log into your StackOne Dashboard
+    2. Navigate to the ATS category on the Integrations page
+    3. Find and enable SmartRecruiters
+    
+    <Frame>
+      ![SmartRecruiters Integration Setup](/images/smartrecruiters/assessments-background-checks/smartrecruiters-integration-setup.png)
+    </Frame>
+  </Step>
+
+  <Step title="Complete Configuration Form">
+    Fill in the SmartRecruiters Configuration form with the following details:
+    
+    * **Authentication Type**: Select `OAuth2 - Assessments/Background checks` for standard integration
+    * **Partner Category**: Select `Assessment` or `Background Check` based on your integration type
+    * **Partner Client ID**: Enter your SmartRecruiters `Client ID` from Partner Portal
+    * **Partner Client Secret**: Enter your SmartRecruiters `Client Secret` from Partner Portal
+    * **Package's List Endpoint URL**: Implement and provide an endpoint to StackOne that StackOne will use to retrieve the list of packages when the recruiter wants to send a test to a candidate.
+   
+    Implement the following POST endpoint:
+    ```bash
+    curl --location 'https://your-domain.com/<route-to-the-post-endpoint>' \
+    --header 'Content-Type: application/json' \
+    --header 'x-stackone-signature: string' \
+    --header 'Authorization: Basic <base64-encoded-api-key>' \
+    --data '{
+        "job_id": "49201091",
+        "account_id": "456551489512493412",
+        "provider": "teamtailor"
+    }'
+    ```
+
+    The expected response of the POST endpoint (list of packages). Refer to:
+    - [List Assessments Packages](/ats/api-reference/assessments/packages/list-assessments-packages)
+    - [List Background Check Packages](/ats/api-reference/background-checks/packages/list-background-check-packages)
+
+    Enter the endpoint into the designated field:
+    ```plaintext
+    https://your-domain.com/<route-to-the-post-endpoint>
+    ```
+    * **Package ID**: If you do not have the Package List Endpoint URL, you can specify a particular package ID that will be visible to the recruiter when they wish to send the test to the candidate
+   
+   <DifferenceBetweenListEndpointAndStaticIdOfPackage
+      providerName="SmartRecruiters"
+      dynamicPackageImageAtProviderUI="/images/smartrecruiters/assessments-background-checks/dynami-packages-via-url.png"
+      staticPackageImageAtProviderUI="/images/smartrecruiters/assessments-background-checks/static_package_id.png"
+    ></DifferenceBetweenListEndpointAndStaticIdOfPackage>
+
+    * **SmartRecruiters Supported Assessment Types**: Please select one of the assessment types supported by SmartRecruiters
+    
+    <Frame>
+      ![SmartRecruiters Configuration Form](/images/smartrecruiters/assessments-background-checks/smartrecruiters-configuration-form.png)
+    </Frame>
+  </Step>
+
+  <Step title="Save Configuration">
+    Click `Confirm` or `Save Changes` to enable your OAuth APIs and allow end-users to link their SmartRecruiters accounts via the StackOne Hub.
+  </Step>
+
+  <Step title="Enable Webhook Events">
+    Configure webhook notifications for the following events based on your selected integration category:  
+    - `assessment.created` - When a recruiter sends an assessment to a candidate
+    - `background_check.created` - When a recruiter initiates a background check
+
+    <Steps>
+      <Step title="Add a Webhook">
+        Navigate to the Webhooks page, click on `Add webhook`.
+        <Frame>
+          ![Navigate to Webhooks](/images/smartrecruiters/assessments-background-checks/navigate-webhook.png)
+        </Frame>
+
+        Fill out the form:
+        - **Name**: Enter your webhook with a recognisable name
+        - **URL**: Enter the URL where the webhook will send the notification of the enabled events
+        <Frame>
+          ![Add Webhook Form](/images/smartrecruiters/assessments-background-checks/add-webhook.png)
+        </Frame>
+      </Step>
+
+      <Step title="Configure Event">
+        Enable webhook events from the Events tab for Assessment & Background Check, such as Assessments Order & Background Check Order
+         <Frame>
+          ![Configure Webhook Events](/images/smartrecruiters/assessments-background-checks/configure-webhook-event.png)
+        </Frame>
+      </Step>
+
+      <Step title="Save Configuration">
+        Click `Save` button to save your webhook config.
+        <Frame>
+          ![Save Webhook Configuration](/images/smartrecruiters/assessments-background-checks/save-webhook-config.png)
+        </Frame>
+      </Step>
+    </Steps>
+  </Step>
+</Steps>
+
+## ATS User Enablement
+
+### User Activation Flow
+
+<Steps>
+  <Step title="Obtain External Trigger Token">
+    Users get the External Trigger Token from StackOne:
+    1. Navigate to the StackOne Hub
+    2. Copy the external trigger token
+    
+    <Frame>
+      ![External Trigger Token](/images/smartrecruiters/assessments-background-checks/external-trigger-token.png)
+    </Frame>
+  </Step>
+
+  <Step title="Access SmartRecruiters Marketplace">
+    Users access the SmartRecruiters Marketplace through:
+    1. SmartRecruiters admin dashboard → `Settings` → `Apps and Integrations`
+    <Frame>
+      ![Access Settings](/images/smartrecruiters/assessments-background-checks/sandbox-settings.png)
+    </Frame>
+    <Frame>
+      ![Integration Page](/images/smartrecruiters/assessments-background-checks/integration-page.png)
+    </Frame>
+  </Step>
+
+  <Step title="Select Integration">
+    Navigate to specific integration from the list of available integrations in SmartRecruiters account.
+    1. Search for your integration by name
+    2. Click on your integration tile to view details
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Integration" src="/images/smartrecruiters/assessments-background-checks/select-integration.png" />
+    </Frame>
+  </Step>
+
+  <Step title="View Details">
+    Review the integration details and click on `Connect`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Integration Details" src="/images/smartrecruiters/assessments-background-checks/integration-details.png" />
+    </Frame>
+  </Step>
+
+
+  <Step title="Enable Integration">
+    1. Review permissions
+    2. Click `Allow and Continue` button
+
+    <Frame>
+      ![Enable Integration](/images/smartrecruiters/assessments-background-checks/enable-integration.png)
+    </Frame>
+  </Step>
+
+  <Step title="Input external trigger token into form">
+    Users will see a verification form where they need to enter their `External Trigger Token` received in the previous step along with their `Email Address`. After filling in the details, click the `Submit` button to verify and continue.
+    <Frame>
+      ![Input External Trigger Token](/images/smartrecruiters/assessments-background-checks/input-external-trigger-token.png)
+    </Frame>
+  </Step>
+
+  <Step title="Verify Connection">
+    Once submitted credentials are verified successfully, user will see a message on the top right corner of the screen that says: `StackOne Assessments is connected`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Integration Connected Successfully" src="/images/smartrecruiters/assessments-background-checks/integration-connected.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## ATS User Experience
+
+This section covers how recruiters use the integration to send assessments or background checks to candidates.
+
+SmartRecruiters supports two assessment delivery modes: <b>Ad-hoc</b> (manual per candidate) and <b>Auto Trigger</b> (auto‑triggered by workflow configuration).
+
+### Ad-hoc Assessments
+<Steps title="Ad-hoc Assessments">
+  <Step title="Access Job Application">
+    1. User logs into SmartRecruiters
+    2. Navigates to `People`
+    3. Selects a specific candidate profile
+
+    <Frame>
+      ![User Configuration Form](/images/smartrecruiters/assessments-background-checks/select-candidate.png)
+    </Frame>
+  </Step>
+
+  <Step title="Initiate Assessment/Background Check">
+    From the candidate profile, look for the assessment section.
+
+    <Info>
+      If a candidate has multiple jobs, the `Assessments` section won't appear directly on their profile. To access the assessments in this case, please follow these steps to navigate to the `Assessments` section for that candidate.
+      
+      <AccordionGroup>
+        <Accordion title="How to navigate to Assessments section for candidates with multiple jobs">
+          
+          **Step 1: Navigate to Person profile**
+          
+          Navigate the `Person profile` and click on `Job` for which you want to add the assessment.
+          <Frame>
+            ![Enable Integration](/images/smartrecruiters/assessments-background-checks/select-job-on-candidate-profile.png)
+          </Frame>
+
+          **Step 2: Find Assessments Section**
+          
+          Once you open the `Job` for the candidate, you will find the `Assessments section` there, specific to that particular job application.
+          <Frame>
+            ![Input External Trigger Token](/images/smartrecruiters/assessments-background-checks/assessment-section-in-job-application.png)
+          </Frame>
+        </Accordion>
+      </AccordionGroup>
+    </Info>
+
+    Click `Order Assessments` button.
+    <Frame>
+      ![Send Assessment Button](/images/smartrecruiters/assessments-background-checks/order-assessment-button.png)
+    </Frame>
+  </Step>
+
+  <Step title="Select Package">
+    In the assessment form:
+    
+    1. **Select Assessment Partner**: Select your assessment partner
+    2. **Select Package**: Choose from available test packages
+    3. **Click Continue**: Click on continue button 
+    <Note>
+     If a user selects multiple packages for a candidate, the assessment partner will receive multiple assessment orders.
+    </Note>
+    <Frame>
+      ![Package Selection Form](/images/smartrecruiters/assessments-background-checks/package-selection-form.png)
+    </Frame>
+  </Step>
+
+  <Step title="Send to Candidate">
+    1. Review the test details and candidate information
+    2. Click `Send` button
+    3. Candidate receives email notification with test link and instructions
+
+    <Frame>
+      ![Package Selection Form](/images/smartrecruiters/assessments-background-checks/send-test-to-candidate.png)
+    </Frame>
+  </Step>
+</Steps>
+
+
+### Auto Trigger Assessments
+Configure an assessment that auto‑triggers when a candidate is added to a job or moved into the assessment stage:
+<Steps title="Auto Trigger Assessments">
+  <Step title="Open Settings">
+    User opens the profile menu and selects `Settings`.
+    <Frame>
+      ![Access Admin Settings](/images/smartrecruiters/assessments-background-checks/access-admin-settings.png)
+    </Frame>
+  </Step>
+
+  <Step title="Open Hiring Process">
+    In `Settings`, user clicks `Hiring Process`.
+    <Frame>
+      ![Access Hiring Process](/images/smartrecruiters/assessments-background-checks/access-hiring-process.png)
+    </Frame>
+  </Step>
+
+  <Step title="Select Hiring Process">
+    User creates a `New Hiring Process` or selects `Default`, then clicks the `Edit` icon to modify it.
+    <Frame>
+      ![Select Hiring Process Type](/images/smartrecruiters/assessments-background-checks/select-hiring-process-type.png)
+    </Frame>
+  </Step>
+
+  <Step title="Add step">
+    User clicks `Add Step` and chooses `Skills Test` or any other `Stage` on which you want to configure the `Assessments`.
+    <Frame>
+      ![Add Select Step](/images/smartrecruiters/assessments-background-checks/add-select-step.png)
+    </Frame>
+    Once the user selects the step, it will be added to the hiring process.
+    <Frame>
+      ![Selected Step](/images/smartrecruiters/assessments-background-checks/selected-step.png)
+    </Frame>
+
+
+    User can also add a `Custom Stage` by selecting the `Add Custom` button.
+    <Frame>
+      ![Selected Step](/images/smartrecruiters/assessments-background-checks/select-custom-stage.png)
+    </Frame>
+    Enter the name of the `Stage`.
+    <Frame>
+      ![Selected Step](/images/smartrecruiters/assessments-background-checks/custom-stage-name.png)
+    </Frame>
+    Once the user clicks the `Add` button, the step will be added to the hiring process.
+    <Frame>
+      ![Selected Step](/images/smartrecruiters/assessments-background-checks/selected-custom-step.png)
+    </Frame>
+  </Step>
+
+  <Step title="Save Hiring Process">
+    User clicks `Save Hiring Process` to persist changes.
+    <Frame>
+      ![Save Hiring Process](/images/smartrecruiters/assessments-background-checks/save-hiring-process.png)
+    </Frame>
+  </Step>
+  
+  <Step title="Add Assessment Entry">
+    Inside the `Skills Test` step, user clicks the `Menu` icon and selects `Assessments`.
+    <Frame>
+      ![Add Assessments](/images/smartrecruiters/assessments-background-checks/add-assessments.png)
+    </Frame>
+  </Step>
+  
+  <Step title="Configure Assessment">
+    User clicks `Configure`.
+    <Frame>
+      ![Configure Assessments](/images/smartrecruiters/assessments-background-checks/configure-assessments.png)
+    </Frame>
+    User selects the `Assessment Partner`, `Assessment Type`, and `Assessment Package`, then clicks `Save`.
+      <Frame>
+      ![Select Assessment Package Configuration](/images/smartrecruiters/assessments-background-checks/select-assessment-package-config.png)
+    </Frame>
+  </Step>
+  
+  <Step title="Enable Auto-trigger">
+    After saving, user returns to the `Config` page and enables the `Auto-triggered` toggle for the selected package.
+    <Frame>
+      ![Enable Auto Trigger](/images/smartrecruiters/assessments-background-checks/enable-auto-trigger.png)
+    </Frame>
+  </Step>
+  
+  <Step title="Add Candidate">
+    User clicks the `+` icon (top right) and selects `Add Candidate`.
+    <Frame>
+      ![Add Candidate](/images/smartrecruiters/assessments-background-checks/add-candidate.png)
+    </Frame>
+    User may upload files/folders or add a candidate manually (example below):
+    <Frame>
+    ![Manually Added Candidate](/images/smartrecruiters/assessments-background-checks/manually-added-candidate.png)
+    </Frame>
+    User completes the candidate form and clicks `Add Candidate`.
+    <Frame>
+    ![Candidate Form](/images/smartrecruiters/assessments-background-checks/candidate-form.png)
+    </Frame>
+  </Step>
+  
+  <Step title="Move Candidate to Assessment Stage">
+    User opens `People`, selects the candidate.
+    <Frame>
+      ![Select Candidate for Stage](/images/smartrecruiters/assessments-background-checks/select-candidate-for-stage.png)
+    </Frame>
+    Clicks `Convert` button under the `Applicant profile` section.
+    <Frame>
+      ![Select Candidate for Stage](/images/smartrecruiters/assessments-background-checks/select-convert-candidate-profile.png)
+    </Frame>
+    Clicks `Move Forward`, and chooses `Skills Test` under the `In Review` stage
+    <Frame>
+    ![Select Assessment Stage](/images/smartrecruiters/assessments-background-checks/select-assessment-stage.png)
+    </Frame>
+    A checkmark appears on `Skills Test` once the assessment order is sent.
+    <Frame>
+    ![Inline Stage Sent](/images/smartrecruiters/assessments-background-checks/inline-stage-sent.png)
+    </Frame>
+  </Step>
+</Steps>
+
+
+### User experience after test has been sent and results updated
+<Steps>
+  <Step title="User Experience after the assessment has been sent">
+    When an assessment is sent to the candidate, the user will see the assessment status in the candidate's application profile.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Sent Status" src="/images/smartrecruiters/assessments-background-checks/assessment-sent-status.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+
+## ATS User Experience Customization
+
+<Steps>
+  <Step title="Update the result via Unified API">
+   	Utilize the following endpoints to update the results:
+      - [Assessment Update Result](/ats/api-reference/assessments/results/update-assessments-result)
+      - [Background Check Update Result](/ats/api-reference/background-checks/results/update-background-check-result)
+
+   	Utilize the following endpoint to get metadata to update the result of the assessment or background check:
+      - [Connector Meta Information](https://docs.stackone.com/platform/api-reference/connectors/get-connector-meta-information-legacy) with the provider key `smartrecruiters` for model `assessments/results.update` or `background_checks/results.update`
+
+
+    ### Payload to UI Mapping
+
+    The following shows how different payload fields and conditions affect what users see in the SmartRecruiters UI when updating test results:
+
+    <AccordionGroup>
+      <Accordion title="result[pending]">
+        **What users see in SmartRecruiters UI:** Grey icon, `Pending` status
+        
+        **Notes:** Shows test has been pending
+        
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Pending Status" src="/images/smartrecruiters/assessments-background-checks/result-pending.png" />
+        </Frame>
+      </Accordion>
+
+      <Accordion title="result[in_progress]">
+        **What users see in SmartRecruiters UI:** Yellow icon, `In Progress` status
+        
+        **Notes:** Shows ongoing test status
+        
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="In Progress Status" src="/images/smartrecruiters/assessments-background-checks/result-in-progress.png" />
+        </Frame>
+      </Accordion>
+
+      <Accordion title="result[completed]">
+        **What users see in SmartRecruiters UI:** Green checkmark, `Completed` status
+        
+        **Notes:** Shows successful completion status
+        
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Completed Status" src="/images/smartrecruiters/assessments-background-checks/result-completed.png" />
+        </Frame>
+      </Accordion>
+
+      <Accordion title="result[failed]">
+        **What users see in SmartRecruiters UI:** Red icon, `Rejected` status
+        
+        **Notes:** Indicates test failure or rejection
+        
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Rejected Status" src="/images/smartrecruiters/assessments-background-checks/result-rejected.png" />
+        </Frame>
+      </Accordion>
+
+      <Accordion title="result[expired]">
+        **What users see in SmartRecruiters UI:** Yellow icon, `Expired` status
+        
+        **Notes:** Shows test has expired without completion
+        
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Expired Status" src="/images/smartrecruiters/assessments-background-checks/result-expired.png" />
+        </Frame>
+      </Accordion>
+
+      <Accordion title="score[value,min,max]">
+        **What users see in SmartRecruiters UI:** Numerical score displayed prominently
+        
+        **Notes:** Value, min, and max are all required fields for score display.
+        
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Score Value" src="/images/smartrecruiters/assessments-background-checks/score-values.png" />
+        </Frame>
+      </Accordion>
+
+      <Accordion title="score[label]">
+        **What users see in SmartRecruiters UI:** Custom score label or description
+        
+        **Notes:** Optional descriptive label for the score
+        
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Score Label" src="/images/smartrecruiters/assessments-background-checks/score-label.png" />
+        </Frame>
+      </Accordion>
+
+      <Accordion title="result_url & attachments[content_type,url]">
+        **What users see in SmartRecruiters UI:** `Download Reports` section with file links
+        
+        **Notes:** Both content_type and url fields are required to attach report documents. For result_url, you only need to provide the report link in the result_url field. Both types of documents will be displayed in the same section.
+        
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Attachments" src="/images/smartrecruiters/assessments-background-checks/attachments.png" />
+        </Frame>
+      </Accordion>
+
+      <Accordion title="summary">
+         **What users see in SmartRecruiters UI:** Not currently visible in UI
+        
+        **Notes:** ***Optional field*** - Summary of the results.
+      </Accordion>
+
+      <Accordion title="start_date">
+        **What users see in SmartRecruiters UI:** Not currently visible in UI
+        
+        **Notes:** ***Optional field*** - Assessment start timestamp (when the assessment was initiated)
+      </Accordion>
+
+      <Accordion title="submission_date">
+        **What users see in SmartRecruiters UI:** Not currently visible in UI
+        
+        **Notes:** ***Optional field*** - Completion timestamp (when the assessment was submitted)
+      </Accordion>
+    </AccordionGroup>
+  </Step>
+</Steps>
+
+## Testing Checklist
+
+✅  **Partnership & Provider Setup:**
+      - Partnership application approved by SmartRecruiters Marketplace.
+      - Integration is listed and discoverable in SmartRecruiters Marketplace.
+
+✅  **StackOne Configuration:**
+      - SmartRecruiters integration enabled in StackOne Dashboard.
+      - Authentication Type `OAuth2 - Assessments/Background checks` is selected.
+      - Partner Category (Assessment or Background Check) is correctly configured.
+      - Valid Partner Client ID and Client Secret from SmartRecruiters Partner Portal are provided.
+      - Package's List Endpoint URL is implemented and returning valid response format, or Static Package ID is configured.
+      - SmartRecruiters Supported Assessment Types are selected.
+
+✅  **Webhook Configuration:**
+      - Webhook is created with valid URL.
+      - Correct webhook events are enabled (`assessment.created` or `background_check.created`).
+
+✅  **ATS User Enablement:**
+      - External Trigger Token is successfully obtained from StackOne Connector Hub.
+      - StackOne account is connected successfully.
+      - Integration can be found and selected in SmartRecruiters Marketplace.
+      - Integration connection is successfully established after providing External Trigger Token and Email Address.
+      - Success message `StackOne Assessments is connected` is displayed.
+
+✅  **ATS User Experience - Ad-hoc & Auto Trigger Assessments:**
+      - **Ad-hoc Assessments:**
+        - `Order Assessment` button is visible on candidate profile.
+        - Package selection dropdown displays available packages (from endpoint or static package).
+        - Assessment order is successfully sent to candidate.
+        - Assessment status updates are visible in candidate profile (Pending, In Progress, Completed, etc.).
+      - **Auto Trigger Assessments:**
+        - Hiring Process is configured with Skills Test or Custom Stage.
+        - Assessment is configured within the stage with correct partner and package.
+        - Auto-triggered toggle is enabled for the assessment.
+        - Assessment order is automatically triggered when candidate is moved to configured stage.
+        - Assessment status updates are visible in candidate profile (Pending, In Progress, Completed, etc.).
+
+✅  **Result Update:**
+      - Success response is received from the update result endpoint.
+      - Updated result status (pending, in_progress, completed, failed, expired) is visible in SmartRecruiters UI.
+      - Score values (value, min, max) are displayed correctly when provided.
+      - Summary section displays rich text summary when provided.
+      - Result URL and attachments are accessible in the `Download Reports` section.
+
+
+## Troubleshooting
+
+<div className="troubleshooting-table">
+
+| Symptom | Likely Cause | Fix |
+|---------|--------------|-----|
+| Integration not appearing in SmartRecruiters marketplace | Partnership not approved or marketplace listing incomplete | Verify partnership status in SmartRecruiters Partner Portal. Complete marketplace listing requirements. |
+| `Order Assessment` button missing from candidate profile | Integration not properly activated or insufficient permissions | Check integration status in SmartRecruiters Active Apps. Verify user has recruiter permissions. |
+| Getting `List displays incomplete data. An error occurred while fetching one or more packages from partner. Click 'Reload' button to try to fetch packages again` on `Order Assessments` pop-up    | Package's List Endpoint URL or Static Package ID is missing from StackOne Configuration. <br/><br/> Invalid response getting from the Package's List Endpoint URL. <br/><br/> Invalid Package's List Endpoint URL. 	| Add Static Package ID if you don't have Package's List Endpoint URL. <br/><br/> Response format should be expected as mentioned in the [StackOne Configuration](#stackone-configuration). <br/><br/> Check Package's List Endpoint URL implementation at your end. <br/><br/> Verify CORS. |
+| External Trigger Token field is not visible at StackOne Connector Hub | Selected Authentication Type is incorrect | Select Authentication Type `OAuth - Assessments/Background Checks` instead |
+| Test notification is not received | Invalid webhook URL <br/><br/> Incorrect webhook events are enabled. | Verify webhook URL <br/><br/> Enable expected events as mentioned in the [StackOne Configuration](#stackone-configuration). |
+| Unable to update result | Invalid payload format | Check [Connector Meta API](https://docs.stackone.com/platform/api-reference/connectors/get-connector-meta-information-legacy) endpoint for payload format.  |
+| Result URL or Attachment's URL showing error when opened. | Added result URL can be expired or is private. | Ensure to add public or signed URLs; verify CORS and expiry. |
+
+</div>

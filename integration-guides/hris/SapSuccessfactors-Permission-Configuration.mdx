@@ -1,0 +1,101 @@
+---
+noindex: true
+title: 'SAP SuccessFactors Permission Configuration'
+description: 'Configuration of Permissions in SAP SuccessFactors'
+---
+
+<Warning>
+    The following guidance assumes you have Admin privileges for your SAP SuccessFactors account.
+</Warning>
+
+## Permission Settings
+
+### Step 1: Role Configuration
+
+<Steps>
+  <Step title="Log in to SuccessFactors as an administrator">
+  </Step>
+
+  <Step title="Navigate to Admin Center.">
+  </Step>
+
+  <Step title="In the Tools search bar, search for Manage Permission Roles.">
+  </Step>
+
+  <Step title="Choose an existing role or create a new role.">
+  </Step>
+
+  <Step title="If you choose a new role, on the Role Details page, enter the role name.">
+   On the `Permission Role Details` page, enter the `Role Name` and `Description` in the first section.
+  </Step>
+</Steps>
+
+
+### Step 2: Permission Configuration For Role
+
+<Steps>
+  <Step title="Select the Permission">
+  On the `Permission Role Details` page, click the `Permissions` button in the second section.
+  </Step>
+
+  <Step title="Select the Module">
+    Select the `module` for which you want to configure permissions. For example, to configure permissions for `Employee Central entities` such as Person, Employment, and Time Off, you can select `Employee_Central_Effective_Dated_Entities`.
+  </Step>
+
+  <Step title="Select the Entity">
+    On the left side of the page, you will find a list of all entities for which you can configure `read (view)` and `write (edit)` permissions.
+    - Selecting the View checkbox allows users to read data from a specific entity using the OData API.
+    - Selecting the Edit checkbox grants users permission to write data to that entity using the Write OData API.
+  </Step>
+
+   <Step title="Click on Done">
+  </Step>
+</Steps>
+
+### Step 3: Assign Role
+
+<Steps>
+  <Step title="Assign the Role">
+    On the Permission Role Details page, click the `Assignments` tab in `Manage Permission Roles` to assign this role to a group of users.
+  </Step>
+
+  <Step title="Select the Group">
+    Click the `Add Role Assignment` button, select the `Role`, and then click the `Next` button.
+  </Step>
+
+  <Step title="Select the Users">
+    In the next tab, select the `Employees` or `Groups` to which you want to assign the role.
+   </Step>
+
+  <Step title="Click on Save">
+    In the final step, click the `Save` button to save your changes.
+  </Step>
+</Steps>
+
+### Step 4: Click the `Save Changes` button on the Permission Role Details page to save all changes. 
+
+
+<br /><br />
+
+## Required configuration for resource mapping via StackOne APIs
+
+
+
+### HRIS Resource and  Permissions Configuration
+
+To access the HRIS OData APIs in Employee Central, ensure the following permissions are granted:
+- Employee Central HRIS OData APIs – READ
+- Employee Central HRIS OData APIs – EDIT
+- OData Metadata API – READ
+
+To grant field/object-level access, the following permissions should be assigned:
+
+| Resource        | Fields                                           | Permission   | Category   |
+|-----------------|-------------------------------------------------|-------------|-----------|
+| Employees       | `First Name`,`Last Name`,`Gender`,`Marital Status`,`Job Title`,`Supervisor`,`Nationality`,`Work Schedule`,`Country`                                  | View/Edit/Insert/Correct | `Employee Central Effective Dated Entities` |
+|                 | `Display Name`,`Date Of Birth`,`Email Address`,`Phone Number`,`First Date Worked`,`Hire Date`,`Original Start Date`,`Termination Date`,`National Id`                                     | View/Edit| `Employee Data`  |
+|                 | `Department`,`Cost Center`,`Legal Entity`,`Job Classification`            | View/Edit/Insert/Correct| `MDF Foundation Objects`  |
+| Employments     | `Job Title`,`FTE`,`Work Schedule`,`Standard Weekly Hours`,`Company`,`Supervisor`                                     |  View/Edit/Insert/Correct | `Employee Central Effective Dated Entities`  |
+|                 | `Hire Date`,`Termination Date`,`Job Code`                                                                            | View/Edit| `Employee Data`  |
+| Time Off &  Policy    | `Is Fulltime Employee`,`Time Profile`,`Time In Position`,`Timezone`                                            | View/Edit/Insert/Correct | `Employee Central Effective Dated Entities` |
+|                 | Select all permissions in `Time Management User Permissions` and `Manage Time Off`                                                        | Select All               | `Time Management User Permissions`, `Manage Time Off` |

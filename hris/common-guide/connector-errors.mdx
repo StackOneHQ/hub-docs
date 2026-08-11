@@ -1,0 +1,109 @@
+---
+noindex: true
+title: "HRIS Connector Errors"
+sidebarTitle: "Connector Errors"
+description: "HTTP error codes, error response formats, and HRIS provider-specific troubleshooting"
+---
+
+This guide covers error codes returned by the StackOne API and common HRIS provider-specific issues.
+
+---
+
+## HTTP Error Codes
+
+All StackOne API errors follow a consistent response format:
+
+```json
+{
+  "statusCode": 400,
+  "message": "Human-readable error message",
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "errorCode": "ValidationError",
+  "provider_errors": []
+}
+```
+
+<Accordion title="Error Code Reference">
+
+| Code | Name | Description |
+|------|------|-------------|
+| **400** | Bad Request | Invalid request parameters or malformed request body |
+| **401** | Unauthorized | Missing or invalid API key, or expired credentials |
+| **403** | Forbidden | Valid credentials but insufficient permissions |
+| **404** | Not Found | Resource does not exist or was deleted |
+| **408** | Request Timeout | Request took too long to complete |
+| **409** | Conflict | Request conflicts with current resource state |
+| **412** | Precondition Failed | Linked account belongs to a disabled integration |
+| **422** | Unprocessable Entity | Request validation failed |
+| **429** | Too Many Requests | Rate limit exceeded |
+| **500** | Internal Server Error | Unexpected server error |
+| **501** | Not Implemented | Feature not supported for this provider |
+| **502** | Bad Gateway | Error from upstream provider |
+
+</Accordion>
+
+---
+
+## HRIS Provider-Specific Issues
+
+### HiBob
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| `403` Forbidden | Missing service user permissions | Enable "View selected employees' Lifecycle sections" per [HiBob guide](/connection-guides/hris/hibob-service-user) |
+
+<Warning>
+Fields like `termination_date` and `employment_status` may be null if "View selected employees' Lifecycle sections" permission is missing from the service user. Ensure proper permission sets are enabled.
+</Warning>
+
+---
+
+### Factorial HR
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| `403` Forbidden | OAuth token missing required scopes | Re-authenticate with scopes: `documents`, `employees`, `company_legal_entities`, `contracts`, `finance`, `company_locations` |
+
+<Note>
+This applies to OAuth integrations only.
+</Note>
+
+---
+
+### Personio
+
+Salary information in employment records is only accessible if the employee has:
+- At least one **Base Salary** entry
+- **Legal Entity** selected in their profile
+
+<Note>
+This is essential for retrieving `pay_rate` in the API response.
+</Note>
+
+---
+
+### CascadeHR
+
+Uses IRIS Cascade HR Absence API with the following limitations:
+
+| Limitation | Description |
+|------------|-------------|
+| No entitlement validation | System doesn't check leave balances |
+| No key person blocking | Can book time off regardless of team coverage |
+| No overlapping rules | No validation for conflicting absences |
+| Auto-approval | All absences are automatically approved as admin-entered |
+
+**Half-day support:** Only available on start or end date via `start_half_day` / `end_half_day` fields. Cannot mark arbitrary days as half days.
+
+---
+
+## Debugging Tips
+
+1. **Check Request Logs**: View detailed request/response logs in Dashboard → Logs
+2. **Inspect `provider_errors`**: The raw provider response is included for 4xx/5xx errors
+3. **Use the Playground**: Test actions interactively to isolate issues
+4. **Verify Permissions**: Many 403 errors are due to missing provider-side permissions
+
+<Card title="Request Logs" icon="scroll" href="https://docs.stackone.com/connect/troubleshooting">
+  View and debug API requests in the dashboard
+</Card>

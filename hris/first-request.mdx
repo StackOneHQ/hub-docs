@@ -1,0 +1,101 @@
+---
+noindex: true
+title: "Making your first request"
+sidebarTitle: "Making your first request"
+description: "Make your first HRIS API request to list employees from a connected HR system"
+---
+
+import FirstRequestIntro from "/snippets/guides/first-request-intro.mdx";
+import FirstRequestPrerequisites from "/snippets/guides/first-request-prerequisites.mdx";
+import FirstRequestGettingAccountId from "/snippets/guides/first-request-getting-account-id.mdx";
+import FirstRequestReferences from "/snippets/guides/first-request-references.mdx";
+
+<FirstRequestIntro />
+
+<FirstRequestPrerequisites />
+
+<FirstRequestGettingAccountId />
+
+## Making Your First Request
+
+Now you're ready to make your first HRIS API call. Let's list employees from the connected HR system:
+
+<Tabs>
+  <Tab title="cURL">
+    ```bash
+    curl --request GET \
+      --url 'https://api.stackone.com/unified/hris/employees' \
+      --header 'accept: application/json' \
+      --header 'authorization: Basic {base64_encoded_api_key}' \
+      --header 'x-account-id: {account_id}'
+    ```
+  </Tab>
+  <Tab title="TypeScript">
+    ```typescript
+    import { StackOne } from "@stackone/stackone-client-ts";
+
+    const client = new StackOne({ apiKey: "YOUR_API_KEY" });
+
+    const response = await client.hris.listEmployees({
+      xAccountId: "your-account-id"
+    });
+
+    console.log(response.employees);
+    ```
+  </Tab>
+  <Tab title="Python">
+    ```python
+    from stackone_client import StackOne
+
+    client = StackOne(api_key="YOUR_API_KEY")
+
+    response = client.hris.list_employees(
+        x_account_id="your-account-id"
+    )
+
+    print(response.employees)
+    ```
+  </Tab>
+</Tabs>
+
+### Example Response
+
+```json
+{
+  "data": [
+    {
+      "id": "emp_123",
+      "remote_id": "abc123",
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "display_full_name": "Jane Doe",
+      "work_email": "jane.doe@company.com",
+      "employment_status": "active",
+      "department": {
+        "id": "dept_456",
+        "name": "Engineering"
+      },
+      "start_date": "2023-01-15"
+    }
+  ]
+}
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Get Employee" icon="user" href="/hris/api-reference/employees/get-employee">
+    Retrieve details for a specific employee
+  </Card>
+  <Card title="List Departments" icon="building" href="/hris/api-reference/groups/list-department-groups">
+    Get organizational structure
+  </Card>
+  <Card title="Pagination" icon="arrow-right" href="/legacy-unified-apis/common-guide/pagination">
+    Handle large result sets efficiently
+  </Card>
+  <Card title="User Syncing" icon="rotate" href="/hris/use-cases/sync-users">
+    Keep your system in sync with HR data
+  </Card>
+</CardGroup>
+
+<FirstRequestReferences />

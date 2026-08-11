@@ -1,0 +1,63 @@
+
+Passthrough query parameters let you inject custom parameters directly into underlying provider APIs. This gives you access to provider-specific features without waiting for Unified API support.
+
+## What is a Passthrough Query Parameter?
+
+When invoking our unified API, you can provide query parameters to customize the API response. A passthrough query parameter is a special parameter that can be included in your API request, which will be directly passed on to the underlying provider API.
+
+## How Does it Work?
+
+The passthrough query mechanism uses a specific parameter pattern – the keyword "proxy" followed by brackets. If any parameter in this format is present in the API call, it will be extracted and passed as a query parameter to the underlying provider API.
+
+**Pattern**: `proxy[custom-query-name]=custom-query-value`
+
+- `custom-query-name`: The name of the custom query parameter.
+- `custom-query-value`: The value assigned to the custom query parameter.
+
+<Note>
+Note:
+ 
+More advanced filters are also supported: `proxy[filter[eq][age]]=25`.
+</Note>
+
+<Warning>
+Using the `proxy` passthrough parameter to set page-related parameter (eg: page limits, offsets, size etc.) may result in unexpected behaviour as it will override the values that StackOne sends with every provider request
+</Warning>
+
+## Example
+
+Suppose you use the unified API to get all candidates for <Tooltip tip="ATS - Application Tracking Systems help companies match candidates to their recruitment and hiring goals">ATS</Tooltip> category. This API already supports some optional filters, such as the `page_size` query parameter. If you know that one of the underlying providers supports a specific filter called `my-custom-filter`, you can use the passthrough query parameter to include this in your request, and it will be used when calling the provider API.
+
+API Request: `https://api.stackone.com/unified/ats/candidates?proxy[my-custom-filter]=123`
+
+With the above request, while the `page_size=20` parameter will be interpreted by our unified API, the `proxy[my-custom-filter]=123` will be extracted and passed directly to the underlying provider API as `my-custom-filter=123`.
+
+<Frame>
+![Proxy Parameter Mechanism](/images/0d948b1-proxy_mechanism.png)
+</Frame>
+
+
+Sorting candidates by the First Name for [TeamTailor API](https://docs.teamtailor.com/):
+
+`https://api.stackone.com/unified/ats/candidates?page_size=20&proxy[sort]=first_name`
+
+<Frame>
+![TeamTailor sort filter parameter](/images/b1a8ca6-proxy_param.gif)
+</Frame>
+
+## Benefits
+
+1. **Flexibility**: Developers can maximize the use of underlying provider APIs by tapping into specific features or filters that the unified API might not support directly.
+2. **Future-Proofing**: As underlying provider APIs evolve and introduce new query parameters, developers can start using those without waiting for the unified API to offer built-in support.
+
+## Caveats
+
+Although it's great to have the flexibility to use all the filters that the underlying provider supports, you should consider the following caveats when using this functionality:
+
+- These requests will not benefit from the unified vision, so a specific custom request with proxy parameters will not likely be supported between different providers;
+- We often need to use some filters in the underlying requests to support the unified models. To keep the response data as unified as possible between different providers, if you passthrough query parameters that are already being used by default, the values that you pass will have less precedence and will not be overridden;
+- The filters might be removed or deprecated by the underlying provider without the intervention of the StackOne team, which might break your custom use cases without notice.
+
+## Conclusion
+
+Passthrough query parameters give you direct access to provider-specific features and filters. Keep the tradeoffs in mind when using this mechanism.

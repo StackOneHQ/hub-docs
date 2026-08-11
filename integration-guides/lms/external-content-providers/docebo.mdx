@@ -1,0 +1,49 @@
+---
+title: "Docebo Integration"
+description: "Content & Completion Management"
+---
+
+## **Summary**
+
+The Docebo integration allows you to push content to Docebo and track learner completions.
+
+Content is delivered using the external link approach: StackOne pushes it into Docebo as an xAPI (Tin Can) learning object that Docebo launches in a new window. Learners discover the content in Docebo, consume it on your platform, and their completion is reported back through StackOne's API.
+
+## **Key Details**
+
+### **Content Upsert Behavior**
+
+* **Delivery Method:** Content is created as an xAPI (Tin Can) learning object with the launch mode set to "new window."
+
+* **Deduplication:** Uses `external_reference` as the unique identifier. Existing content with a matching `external_reference` is overwritten.
+
+* **Catalog (Optional):** You can push content into a specific Docebo catalog by supplying the Catalog ID when linking the account. See the [Docebo Hub connection guide](https://docs.stackone.com/connectors/docebo) for how to find it.
+
+### **Completion Push**
+
+* Completions are recorded against the Docebo `user_id` (the same value StackOne returns as the user `id`).
+
+* Because the SSO handshake happens directly between Docebo and your platform, the `user_id` has to be passed through SSO so it can be included in the completion request. See [SSO Configuration for Completion Creation](#sso-configuration-for-completion-creation) below.
+
+## **SSO Configuration for Completion Creation**
+
+When integrating with Docebo for completion tracking, proper SSO configuration is essential so completions are attributed to the correct learner. StackOne marks completions using the Docebo `user_id`, which must be passed to your platform through SSO and then included in the completion request.
+
+### **User Identification Configuration**
+
+##### **lms_user_id Configuration (Recommended)**
+
+Set the SSO field `lms_user_id` to the Docebo **user_id** in your SSO configuration. This is the same value StackOne returns as the user `id`, and `lms_user_id` is the standard field name used across StackOne LMS connectors.
+
+### **Passing a Category ID**
+
+To assign content to a specific Docebo category, you need the category's StackOne ID. Use the [List Categories](/lms/api-reference/categories/list-categories) request to retrieve the StackOne ID for the required category, then pass it as the unified `categories` value when creating or updating content.
+
+### **Connector Meta Information**
+
+The `/meta/connectors/docebo?include=connector_meta_field` endpoint provides the `connector_meta_field` information for the configuration options above. It contains the metadata needed to understand the available fields and their mapping requirements.
+
+### **Testing and Validation**
+
+* Verify that the chosen user identification method correctly maps users between systems.
+* Test completion creation with the configured SSO setup to ensure proper user attribution.

@@ -1,0 +1,126 @@
+
+There are three types of expressions supported:
+
+### JSON Path Expressions
+
+When the expression starts with `$`, it is treated as a JSON Path expression and will be evaluated as such.
+
+#### JSON Path Syntax
+
+| JSON Path              | Description                                                        |
+| ---------------------- | :----------------------------------------------------------------- |
+| `$`                    | The root object                                                    |
+| `.`                    | Child operator                                                     |
+| `@`                    | The current object                                                 |
+| `*`                    | Wildcard. All elements in an array, or all properties of an object |
+| `..`                   | Recursive descent                                                  |
+| `[]`                   | Subscript operator                                                 |
+| `[,]`                  | Union operator                                                     |
+| `[start : end : step]` | Array slice operator                                               |
+| `?(expression)`        | Filter expression                                                  |
+| `()`                   | Script expression                                                  |
+
+Examples:
+
+```js
+// Given the context: { user: { name: "John", age: 30 }, "info/email": "info@email.com" }
+'$.user.name'         // Returns "John"
+'$.user.age'          // Returns 30
+'$.user[*]'           // Returns ["John", 30]
+'$["info/email"]'     // Returns "info@email.com"
+```
+
+For more information on JSON Path syntax, refer to the original [JSON Path documentation](https://goessner.net/articles/JsonPath/).
+
+### JEXL Expressions
+
+This kind of expression is enclosed in double brackets `{{expression}}`. It supports variables and operators.
+
+#### Operators
+
+| Operator | Description                    |
+| :------- | :----------------------------- |
+| `!`      | Logical NOT                    |
+| `+`      | Addition, string concatenation |
+| `-`      | Subtraction                    |
+| `*`      | Multiplication                 |
+| `/`      | Division                       |
+| `//`     | Floor division                 |
+| `%`      | Modulus                        |
+| `^`      | Exponentiation                 |
+| `&&`     | Logical AND                    |
+| `\|`     | Logical OR                     |
+| `==`     | Equal                          |
+| `!=`     | Not equal                      |
+| `>`      | Greater than                   |
+| `>=`     | Greater than or equal          |
+| `<`      | Less than                      |
+| `<=`     | Less than or equal             |
+| `in`     | Element of string or array     |
+| `? :`    | Ternary operator               |
+
+Examples:
+
+```js
+// Given the context: { x: 10, y: 5 }
+'{{x + y}}'                  // Returns 15
+'{{x * 2}}'                  // Returns 20
+'{{x > y}}'                  // Returns true
+'{{x == 10 ? "yes" : "no"}}' // Returns "yes"
+'{{x in [1, 2, 3]}}'         // Returns false
+'{{x != y}}'                 // Returns true
+```
+
+#### Identifiers
+
+Identifiers can be used to reference variables in the context.
+
+```js
+// Given the context:
+// { 
+//     name: {
+//         first: "John",
+//         last: "Smith"
+//     },
+//     jobs: ["Developer", "Designer"]
+// }
+`{{name.first}}`          // Returns "John"
+`{{jobs[1]}}`             // Returns "Designer"
+```
+
+#### Collections
+
+Collections, or arrays of objects, can be filtered by including a filter expression in brackets.
+
+```js
+// Given the context:
+// {
+//     users: [
+//         { name: "John", age: 30 },
+//         { name: "Jane", age: 25 }
+//     ]
+// }
+`{{users[.name == "John"].age}}` // Returns 30
+`{{users[.age > 25].name}}`      // Returns ["John"]
+```
+
+### String Interpolation
+
+To simplify strings usage, a more straightforward syntax is provided for string interpolation of variables using the `${var}` syntax.
+
+Examples:
+
+```js
+// Given the context: { name: "John", age: 30 }
+"Hello ${name}"       // Returns "Hello John"
+"User is ${age}"    // Returns "User is 30"
+```
+
+Note: If the expression is a string without any of the patterns described above, it will be returned as is.
+
+```js
+// Given the context: { name: "John", age: 30 }
+"Hello world"       // Returns "Hello world"
+```
+
+For more information on the JEXL syntax, refer to the [JEXL Syntax documentation](https://commons.apache.org/proper/commons-jexl/reference/syntax.html).

@@ -14,10 +14,819 @@
     }
   },
   "navigation": {
-    "pages": [
-      "integrations",
-      "integration-configuration-concepts",
-      "about"
+    "tabs": [
+      {
+        "tab": "Hub Guides",
+        "pages": [
+          "integrations",
+          "integration-configuration-concepts",
+          "about"
+        ]
+      },
+      {
+        "tab": "Legacy Unified APIs",
+        "anchors": [
+          {
+            "anchor": "Getting Started",
+            "icon": "key",
+            "pages": [
+              "legacy-unified-apis/introduction",
+              "legacy-unified-apis/common-guide/stackone-api-sdks",
+              {
+                "group": "Unified Features",
+                "icon": "star",
+                "pages": [
+                  "legacy-unified-apis/common-guide/pagination",
+                  "legacy-unified-apis/common-guide/stackone-identifiers",
+                  "legacy-unified-apis/common-guide/webhooks",
+                  {
+                    "group": "Advanced Usage",
+                    "icon": "gear",
+                    "pages": [
+                      "legacy-unified-apis/common-guide/using-expand-and-include-api-parameters",
+                      "legacy-unified-apis/common-guide/using-the-passthrough-query-parameters",
+                      "legacy-unified-apis/common-guide/basic-authentication-with-stackone-api",
+                      "legacy-unified-apis/common-guide/using-postman"
+                    ]
+                  },
+                  {
+                    "group": "Field Mapping & Coverage",
+                    "icon": "table",
+                    "pages": [
+                      "legacy-unified-apis/common-guide/field-mapping",
+                      "legacy-unified-apis/common-guide/integration-field-mapping",
+                      "legacy-unified-apis/common-guide/expression-language-syntax",
+                      "legacy-unified-apis/common-guide/field-coverage"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Troubleshooting",
+                "icon": "wrench",
+                "pages": [
+                  "legacy-unified-apis/common-guide/request-tester",
+                  "legacy-unified-apis/error-codes-and-troubleshooting"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "HRIS",
+            "icon": "users",
+            "pages": [
+              {
+                "group": "Unified HRIS API",
+                "icon": "book-open",
+                "root": "hris/introduction",
+                "pages": [
+                  "hris/first-request",
+                  {
+                    "group": "Connector-specific Guides",
+                    "icon": "plug",
+                    "pages": [
+                      "integration-guides/hris/adp-workforce-now-employee-update-passthrough",
+                      "integration-guides/hris/SapSuccessfactors-Permission-Configuration",
+                      "integration-guides/hris/workday-wql"
+                    ]
+                  },
+                  {
+                    "group": "Troubleshooting",
+                    "icon": "bug",
+                    "pages": [
+                      "hris/common-guide/connector-errors"
+                    ]
+                  },
+                  {
+                    "group": "Use-case guides",
+                    "icon": "lightbulb",
+                    "pages": [
+                      "hris/use-cases/sync-users",
+                      "hris/use-cases/employee-provisioning"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "API Reference",
+                "icon": "code",
+                "pages": [
+                  {
+                    "group": "Companies",
+                    "pages": [
+                      "hris/api-reference/companies/list-companies",
+                      "hris/api-reference/companies/get-company"
+                    ]
+                  },
+                  {
+                    "group": "Custom Field Definitions",
+                    "pages": [
+                      "hris/api-reference/custom-field-definitions/list-employee-custom-field-definitions",
+                      "hris/api-reference/custom-field-definitions/get-employee-custom-field-definition"
+                    ]
+                  },
+                  {
+                    "group": "Employees",
+                    "pages": [
+                      "hris/api-reference/employees/list-employees",
+                      "hris/api-reference/employees/create-employee",
+                      "hris/api-reference/employees/get-employee",
+                      "hris/api-reference/employees/update-employee",
+                      "hris/api-reference/employees/invite-employee",
+                      {
+                        "group": "Shifts",
+                        "pages": [
+                          "hris/api-reference/employees/shifts/list-employee-shifts",
+                          "hris/api-reference/employees/shifts/get-employee-shift"
+                        ]
+                      },
+                      {
+                        "group": "Time Off",
+                        "pages": [
+                          "hris/api-reference/employees/time-off/list-employee-time-off-requests",
+                          "hris/api-reference/employees/time-off/create-employee-time-off-request",
+                          "hris/api-reference/employees/time-off/get-employees-time-off-request",
+                          "hris/api-reference/employees/time-off/update-employee-time-off-request",
+                          "hris/api-reference/employees/time-off/cancel-employee-time-off-request"
+                        ]
+                      },
+                      {
+                        "group": "Documents",
+                        "pages": [
+                          "hris/api-reference/employees/documents/batch-upload-employee-document",
+                          "hris/api-reference/employees/documents/upload-employee-document",
+                          "hris/api-reference/employees/documents/download-employee-document",
+                          "hris/api-reference/employees/documents/list-employee-documents",
+                          "hris/api-reference/employees/documents/get-employee-document"
+                        ]
+                      },
+                      {
+                        "group": "Work Eligibility",
+                        "pages": [
+                          "hris/api-reference/employees/work-eligibility/list-employee-work-eligibility",
+                          "hris/api-reference/employees/work-eligibility/create-employee-work-eligibility-request",
+                          "hris/api-reference/employees/work-eligibility/get-employees-work-eligibility",
+                          "hris/api-reference/employees/work-eligibility/update-employee-work-eligibility-request"
+                        ]
+                      },
+                      {
+                        "group": "Time Off Balances",
+                        "pages": [
+                          "hris/api-reference/employees/time-off-balances/list-employee-time-off-balances",
+                          "hris/api-reference/employees/time-off-balances/get-employee-time-off-balance"
+                        ]
+                      },
+                      {
+                        "group": "Employments",
+                        "pages": [
+                          "hris/api-reference/employees/employments/list-employee-employments",
+                          "hris/api-reference/employees/employments/create-employee-employment",
+                          "hris/api-reference/employees/employments/get-employee-employment",
+                          "hris/api-reference/employees/employments/update-employee-employment"
+                        ]
+                      },
+                      {
+                        "group": "Time Off Policies",
+                        "pages": [
+                          "hris/api-reference/employees/time-off-policies/list-assigned-time-off-policies"
+                        ]
+                      },
+                      {
+                        "group": "Skills",
+                        "pages": [
+                          "hris/api-reference/employees/skills/list-employee-skills",
+                          "hris/api-reference/employees/skills/create-employee-skill",
+                          "hris/api-reference/employees/skills/get-employee-skill"
+                        ]
+                      },
+                      {
+                        "group": "Tasks",
+                        "pages": [
+                          "hris/api-reference/employees/tasks/list-employee-tasks",
+                          "hris/api-reference/employees/tasks/get-employee-task",
+                          "hris/api-reference/employees/tasks/update-employee-task"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Documents",
+                    "pages": [
+                      "hris/api-reference/documents/list-employee-document-categories",
+                      "hris/api-reference/documents/get-employee-document-category"
+                    ]
+                  },
+                  {
+                    "group": "Employments",
+                    "pages": [
+                      "hris/api-reference/employments/list-employments",
+                      "hris/api-reference/employments/get-employment"
+                    ]
+                  },
+                  {
+                    "group": "Groups",
+                    "pages": [
+                      "hris/api-reference/groups/list-groups",
+                      "hris/api-reference/groups/list-department-groups",
+                      "hris/api-reference/groups/list-cost-center-groups",
+                      "hris/api-reference/groups/list-team-groups",
+                      "hris/api-reference/groups/list-division-groups",
+                      "hris/api-reference/groups/list-companies-groups",
+                      "hris/api-reference/groups/get-group",
+                      "hris/api-reference/groups/get-department-group",
+                      "hris/api-reference/groups/get-cost-center-group",
+                      "hris/api-reference/groups/get-team-group",
+                      "hris/api-reference/groups/get-division-group",
+                      "hris/api-reference/groups/get-company-group"
+                    ]
+                  },
+                  {
+                    "group": "Jobs",
+                    "pages": [
+                      "hris/api-reference/jobs/list-jobs",
+                      "hris/api-reference/jobs/get-job"
+                    ]
+                  },
+                  {
+                    "group": "Locations",
+                    "pages": [
+                      "hris/api-reference/locations/list-work-locations",
+                      "hris/api-reference/locations/get-work-location"
+                    ]
+                  },
+                  {
+                    "group": "Positions",
+                    "pages": [
+                      "hris/api-reference/positions/list-positions",
+                      "hris/api-reference/positions/get-position"
+                    ]
+                  },
+                  {
+                    "group": "Time Entries",
+                    "pages": [
+                      "hris/api-reference/time-entries/list-time-entries",
+                      "hris/api-reference/time-entries/get-time-entry"
+                    ]
+                  },
+                  {
+                    "group": "Time Off",
+                    "pages": [
+                      "hris/api-reference/time-off/list-time-off-requests",
+                      "hris/api-reference/time-off/get-time-off-request",
+                      "hris/api-reference/time-off/list-time-off-types",
+                      "hris/api-reference/time-off/get-time-off-type"
+                    ]
+                  },
+                  {
+                    "group": "Shifts",
+                    "pages": [
+                      "hris/api-reference/shifts/list-shifts",
+                      "hris/api-reference/shifts/get-shift"
+                    ]
+                  },
+                  {
+                    "group": "Time Off Policies",
+                    "pages": [
+                      "hris/api-reference/time-off-policies/list-time-off-policies",
+                      "hris/api-reference/time-off-policies/get-time-off-policy"
+                    ]
+                  },
+                  {
+                    "group": "Benefits",
+                    "pages": [
+                      "hris/api-reference/benefits/list-benefits",
+                      "hris/api-reference/benefits/get-benefit"
+                    ]
+                  },
+                  {
+                    "group": "Tasks",
+                    "pages": [
+                      "hris/api-reference/tasks/list-tasks",
+                      "hris/api-reference/tasks/get-task"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "ATS",
+            "icon": "user-plus",
+            "pages": [
+              "ats/introduction",
+              "ats/first-request",
+              {
+                "group": "Connector-specific Guides",
+                "icon": "plug",
+                "pages": [
+                  "integration-guides/ats/overview",
+                  "integration-guides/ats/bullhorn-assessment-or-background-check-custom-tab-integration",
+                  "integration-guides/ats/salesforce-bullhorn",
+                  "integration-guides/ats/eploy-background-check-integration-partner",
+                  "integration-guides/ats/greenhouse-partner-api",
+                  "integration-guides/ats/recruitee-partner-api",
+                  "integration-guides/ats/sapsuccessfactors-assessment",
+                  "integration-guides/ats/sapsuccessfactors-background-check",
+                  "integration-guides/ats/sapsuccessfactors-permission-configuration",
+                  "integration-guides/ats/smartrecruiters-assessment-or-background-check-integration",
+                  "integration-guides/ats/teamtailor-partner-api",
+                  "integration-guides/ats/workday-assessment",
+                  "integration-guides/ats/workday-background-check"
+                ]
+              },
+              {
+                "group": "Troubleshooting",
+                "icon": "bug",
+                "pages": [
+                  "ats/common-guide/connector-errors"
+                ]
+              },
+              {
+                "group": "Use-case guides",
+                "icon": "lightbulb",
+                "pages": [
+                  "ats/use-cases/job-board-easy-apply",
+                  "ats/use-cases/interview-intelligence",
+                  "ats/use-cases/application-screening",
+                  "ats/use-cases/assessment-flow",
+                  "ats/use-cases/intelligent-candidate-screening"
+                ]
+              },
+              {
+                "group": "API Reference",
+                "icon": "code",
+                "pages": [
+                  {
+                    "group": "Applications",
+                    "pages": [
+                      "ats/api-reference/applications/list-applications",
+                      "ats/api-reference/applications/create-application",
+                      "ats/api-reference/applications/get-application",
+                      "ats/api-reference/applications/update-application",
+                      "ats/api-reference/applications/move-application",
+                      "ats/api-reference/applications/reject-application",
+                      "ats/api-reference/applications/get-application-scorecard",
+                      {
+                        "group": "Offers",
+                        "pages": [
+                          "ats/api-reference/applications/offers/list-application-offers",
+                          "ats/api-reference/applications/offers/get-application-offer"
+                        ]
+                      },
+                      {
+                        "group": "Scorecards",
+                        "pages": [
+                          "ats/api-reference/applications/scorecards/list-application-scorecards"
+                        ]
+                      },
+                      {
+                        "group": "Application Changes",
+                        "pages": [
+                          "ats/api-reference/applications/application-changes/list-application-changes"
+                        ]
+                      },
+                      {
+                        "group": "Notes",
+                        "pages": [
+                          "ats/api-reference/applications/notes/list-application-notes",
+                          "ats/api-reference/applications/notes/create-application-note",
+                          "ats/api-reference/applications/notes/get-application-note",
+                          "ats/api-reference/applications/notes/update-application-note"
+                        ]
+                      },
+                      {
+                        "group": "Scheduled Interviews",
+                        "pages": [
+                          "ats/api-reference/applications/scheduled-interviews/list-applications-scheduled-interviews",
+                          "ats/api-reference/applications/scheduled-interviews/get-applications-scheduled-interview"
+                        ]
+                      },
+                      {
+                        "group": "Documents",
+                        "pages": [
+                          "ats/api-reference/applications/documents/upload-application-document",
+                          "ats/api-reference/applications/documents/download-application-document",
+                          "ats/api-reference/applications/documents/list-application-documents",
+                          "ats/api-reference/applications/documents/get-application-document"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Candidates",
+                    "pages": [
+                      "ats/api-reference/candidates/list-candidates",
+                      "ats/api-reference/candidates/create-candidate",
+                      "ats/api-reference/candidates/get-candidate",
+                      "ats/api-reference/candidates/update-candidate",
+                      {
+                        "group": "Notes",
+                        "pages": [
+                          "ats/api-reference/candidates/notes/list-candidate-notes",
+                          "ats/api-reference/candidates/notes/create-candidate-note",
+                          "ats/api-reference/candidates/notes/get-candidate-note"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Custom Field Definitions",
+                    "pages": [
+                      "ats/api-reference/custom-field-definitions/list-application-custom-field-definitions",
+                      "ats/api-reference/custom-field-definitions/get-application-custom-field-definition",
+                      "ats/api-reference/custom-field-definitions/list-candidate-custom-field-definitions",
+                      "ats/api-reference/custom-field-definitions/get-candidate-custom-field-definition",
+                      "ats/api-reference/custom-field-definitions/list-job-custom-field-definitions",
+                      "ats/api-reference/custom-field-definitions/get-job-custom-field-definition"
+                    ]
+                  },
+                  {
+                    "group": "Departments",
+                    "pages": [
+                      "ats/api-reference/departments/list-departments",
+                      "ats/api-reference/departments/get-department"
+                    ]
+                  },
+                  {
+                    "group": "Application Stages",
+                    "pages": [
+                      "ats/api-reference/application-stages/list-interview-stages",
+                      "ats/api-reference/application-stages/get-interview-stage",
+                      "ats/api-reference/application-stages/list-application-stages",
+                      "ats/api-reference/application-stages/get-application-stage"
+                    ]
+                  },
+                  {
+                    "group": "Interviews",
+                    "pages": [
+                      "ats/api-reference/interviews/list-interviews",
+                      "ats/api-reference/interviews/get-interview",
+                      {
+                        "group": "Notes",
+                        "pages": [
+                          "ats/api-reference/interviews/notes/create-interview-note",
+                          "ats/api-reference/interviews/notes/update-interview-note"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Jobs",
+                    "pages": [
+                      "ats/api-reference/jobs/list-jobs",
+                      "ats/api-reference/jobs/create-job",
+                      "ats/api-reference/jobs/get-job",
+                      "ats/api-reference/jobs/update-job",
+                      {
+                        "group": "Application Stages",
+                        "pages": [
+                          "ats/api-reference/jobs/application-stages/list-job-application-stages",
+                          "ats/api-reference/jobs/application-stages/get-job-application-stage"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Lists",
+                    "pages": [
+                      "ats/api-reference/lists/get-all-lists",
+                      "ats/api-reference/lists/get-list"
+                    ]
+                  },
+                  {
+                    "group": "Locations",
+                    "pages": [
+                      "ats/api-reference/locations/list-locations",
+                      "ats/api-reference/locations/get-location"
+                    ]
+                  },
+                  {
+                    "group": "Rejected Reasons",
+                    "pages": [
+                      "ats/api-reference/rejected-reasons/list-rejected-reasons",
+                      "ats/api-reference/rejected-reasons/get-rejected-reason"
+                    ]
+                  },
+                  {
+                    "group": "Users",
+                    "pages": [
+                      "ats/api-reference/users/list-users",
+                      "ats/api-reference/users/get-user"
+                    ]
+                  },
+                  {
+                    "group": "Job Postings",
+                    "pages": [
+                      "ats/api-reference/job-postings/list-job-postings",
+                      "ats/api-reference/job-postings/get-job-posting"
+                    ]
+                  },
+                  {
+                    "group": "Offers",
+                    "pages": [
+                      "ats/api-reference/offers/list-offers",
+                      "ats/api-reference/offers/create-offer",
+                      "ats/api-reference/offers/get-offer"
+                    ]
+                  },
+                  {
+                    "group": "Assessments",
+                    "pages": [
+                      {
+                        "group": "Packages",
+                        "pages": [
+                          "ats/api-reference/assessments/packages/list-assessments-packages",
+                          "ats/api-reference/assessments/packages/get-assessments-package"
+                        ]
+                      },
+                      {
+                        "group": "Orders",
+                        "pages": [
+                          "ats/api-reference/assessments/orders/order-assessments-request"
+                        ]
+                      },
+                      {
+                        "group": "Results",
+                        "pages": [
+                          "ats/api-reference/assessments/results/update-assessments-result"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Background Checks",
+                    "pages": [
+                      {
+                        "group": "Packages",
+                        "pages": [
+                          "ats/api-reference/background-checks/packages/list-background-check-packages",
+                          "ats/api-reference/background-checks/packages/create-background-check-package",
+                          "ats/api-reference/background-checks/packages/get-background-check-package",
+                          "ats/api-reference/background-checks/packages/update-background-check-package",
+                          "ats/api-reference/background-checks/packages/delete-background-check-package"
+                        ]
+                      },
+                      {
+                        "group": "Orders",
+                        "pages": [
+                          "ats/api-reference/background-checks/orders/order-background-check-request"
+                        ]
+                      },
+                      {
+                        "group": "Results",
+                        "pages": [
+                          "ats/api-reference/background-checks/results/update-background-check-result"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Documents",
+                    "pages": [
+                      "ats/api-reference/documents/list-application-document-categories",
+                      "ats/api-reference/documents/get-application-document-category"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "CRM",
+            "icon": "address-book",
+            "pages": [
+              "crm/introduction",
+              "crm/first-request",
+              {
+                "group": "Connector-specific Guides",
+                "icon": "plug",
+                "pages": [
+                  "integration-guides/crm/overview",
+                  "integration-guides/crm/hubspot-webhook-configuration"
+                ]
+              },
+              {
+                "group": "API Reference",
+                "icon": "code",
+                "pages": [
+                  {
+                    "group": "Contacts",
+                    "pages": [
+                      "crm/api-reference/contacts/list-contacts",
+                      "crm/api-reference/contacts/create-contact",
+                      "crm/api-reference/contacts/get-contact",
+                      "crm/api-reference/contacts/update-contact-early-access"
+                    ]
+                  },
+                  {
+                    "group": "Accounts",
+                    "pages": [
+                      "crm/api-reference/accounts/list-accounts",
+                      "crm/api-reference/accounts/get-account"
+                    ]
+                  },
+                  {
+                    "group": "Lists",
+                    "pages": [
+                      "crm/api-reference/lists/get-all-lists",
+                      "crm/api-reference/lists/get-list"
+                    ]
+                  },
+                  {
+                    "group": "Custom Field Definitions",
+                    "pages": [
+                      "crm/api-reference/custom-field-definitions/list-contact-custom-field-definitions",
+                      "crm/api-reference/custom-field-definitions/get-contact-custom-field-definition"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "LMS",
+            "icon": "graduation-cap",
+            "pages": [
+              "lms/introduction",
+              "lms/first-request",
+              {
+                "group": "Use-case guides",
+                "icon": "lightbulb",
+                "pages": [
+                  "lms/unified-lms-features/lms-features",
+                  "lms/unified-lms-features/batch",
+                  "lms/testing-integrations/testing",
+                  "lms/unified-lms-features/user-syncing",
+                  "lms/use-cases/learning-content-provider-lms-use-case",
+                  "lms/use-cases/lxp-lms-content-aggregators"
+                ]
+              },
+              {
+                "group": "Troubleshooting",
+                "icon": "bug",
+                "pages": [
+                  "lms/common-guide/connector-errors"
+                ]
+              },
+              {
+                "group": "Learning Content Providers",
+                "icon": "graduation-cap",
+                "pages": [
+                  "integration-guides/lms/external-content-providers/introduction",
+                  "integration-guides/lms/external-content-providers/partnership-integrations",
+                  "integration-guides/lms/external-content-providers/workday",
+                  "integration-guides/lms/external-content-providers/sap",
+                  "integration-guides/lms/external-content-providers/go1",
+                  "integration-guides/lms/external-content-providers/cornerstone",
+                  "integration-guides/lms/external-content-providers/docebo",
+                  "integration-guides/lms/external-content-providers/oracle",
+                  "integration-guides/lms/external-content-providers/other-integrations"
+                ]
+              },
+              {
+                "group": "LMS/LXP and Aggregators",
+                "icon": "book-open",
+                "pages": [
+                  "integration-guides/lms/content-library-and-lxps/go1",
+                  "integration-guides/lms/content-library-and-lxps/workday",
+                  "integration-guides/lms/content-library-and-lxps/xyleme"
+                ]
+              },
+              {
+                "group": "API Reference",
+                "icon": "code",
+                "pages": [
+                  {
+                    "group": "Courses",
+                    "pages": [
+                      "lms/api-reference/courses/list-courses",
+                      "lms/api-reference/courses/get-course"
+                    ]
+                  },
+                  {
+                    "group": "Users",
+                    "pages": [
+                      "lms/api-reference/users/list-users",
+                      "lms/api-reference/users/get-user",
+                      {
+                        "group": "Assignments",
+                        "pages": [
+                          "lms/api-reference/users/assignments/list-user-assignments",
+                          "lms/api-reference/users/assignments/create-user-assignment",
+                          "lms/api-reference/users/assignments/get-user-assignment"
+                        ]
+                      },
+                      {
+                        "group": "Completions",
+                        "pages": [
+                          "lms/api-reference/users/completions/list-user-completions",
+                          "lms/api-reference/users/completions/create-user-completion",
+                          "lms/api-reference/users/completions/get-user-completion",
+                          "lms/api-reference/users/completions/delete-user-completion"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "External Linking Learning Objects",
+                    "pages": [
+                      "lms/api-reference/external-linking-learning-objects/batch-upsert-external-linking-learning-objects",
+                      "lms/api-reference/external-linking-learning-objects/upsert-external-linking-learning-objects"
+                    ]
+                  },
+                  {
+                    "group": "Content",
+                    "pages": [
+                      "lms/api-reference/content/list-content",
+                      "lms/api-reference/content/get-content"
+                    ]
+                  },
+                  {
+                    "group": "Completions",
+                    "pages": [
+                      "lms/api-reference/completions/list-completions",
+                      "lms/api-reference/completions/get-completion"
+                    ]
+                  },
+                  {
+                    "group": "Categories",
+                    "pages": [
+                      "lms/api-reference/categories/get-category",
+                      "lms/api-reference/categories/list-categories"
+                    ]
+                  },
+                  {
+                    "group": "Skills",
+                    "pages": [
+                      "lms/api-reference/skills/get-skill",
+                      "lms/api-reference/skills/list-skills"
+                    ]
+                  },
+                  {
+                    "group": "Assignments",
+                    "pages": [
+                      "lms/api-reference/assignments/list-assignments",
+                      "lms/api-reference/assignments/get-assignment"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Accounting",
+            "icon": "calculator",
+            "pages": [
+              "accounting/introduction",
+              "accounting/first-request",
+              {
+                "group": "Connector-specific Guides",
+                "icon": "plug",
+                "pages": [
+                  "integration-guides/accounting/overview",
+                  "integration-guides/accounting/xero"
+                ]
+              },
+              {
+                "group": "API Reference",
+                "icon": "code",
+                "pages": [
+                  {
+                    "group": "Companies",
+                    "pages": [
+                      "accounting/api-reference/companies/list-companies",
+                      "accounting/api-reference/companies/get-company",
+                      {
+                        "group": "Accounts",
+                        "pages": [
+                          "accounting/api-reference/companies/accounts/list-accounts",
+                          "accounting/api-reference/companies/accounts/get-account"
+                        ]
+                      },
+                      {
+                        "group": "Tax Rates",
+                        "pages": [
+                          "accounting/api-reference/companies/tax-rates/list-tax-rates",
+                          "accounting/api-reference/companies/tax-rates/get-tax-rate"
+                        ]
+                      },
+                      {
+                        "group": "Journals",
+                        "pages": [
+                          "accounting/api-reference/companies/journals/batch-create-journals",
+                          "accounting/api-reference/companies/journals/list-journals",
+                          "accounting/api-reference/companies/journals/create-journal",
+                          "accounting/api-reference/companies/journals/get-journal"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   "logo": {

@@ -1,0 +1,297 @@
+---
+noindex: true
+title: 'Bullhorn Assessment or Background Check Custom Tab Integration'
+description: 'To set up, activate and use the Bullhorn custom tab for the assessments and background checks integration with StackOne.'
+---
+
+import { DifferenceBetweenListEndpointAndStaticIdOfPackage } from "/snippets/ats/package-list-endpoint-and-static-package-id.mdx";
+
+## Overview
+
+StackOne allows you to integrate with Bullhorn for Assessment and Background Check to receive webhook notifications whenever a 
+recruiter sends the test to a candidate, update the test result, and see the result on the candidate profile in Bullhorn.
+This guide covers how you can set up custom tabs in Bullhorn and integrate with StackOne.
+
+
+## Partnership Requirements
+
+No formal partnership is required to configure the Bullhorn custom tab for Assessment & Background Check, however you must have administrative privileges for your Bullhorn account.
+
+
+## Provider Side Setup
+
+<Steps>
+  <Step title="Access View Layout">
+    Log in to Bullhorn and click the **Menu** button.
+    <Frame>
+      ![Bullhorn Menu](/images/bullhorn/assessment-or-background-check/bullhorn-menu.png)
+    </Frame>
+    
+    Click the **Admin** button.
+    <Frame>
+      ![Admin Button](/images/bullhorn/assessment-or-background-check/admin-button.png)
+    </Frame>
+
+    Click **View Layout**.
+    <Frame>
+      ![View Layout](/images/bullhorn/assessment-or-background-check/view-layout.png)
+    </Frame>
+    
+    Select the `Candidate` entity from the Field Map Entity dropdown menu.
+    <Frame>
+      ![Candidate Entity](/images/bullhorn/assessment-or-background-check/candidate-entity.png)
+    </Frame>
+  </Step>
+
+  <Step title="Add a new Custom Tab">
+    Navigate to the **Custom Tab**.
+    <Frame>
+      ![Custom Tab Button](/images/bullhorn/assessment-or-background-check/custom-tab-button.png)
+    </Frame>
+    
+    Click the **Add New** button and enter the required information in the fields:
+
+    * **Name:** The name of the tab can be any text, e.g. `Assessments` or `Background Checks`
+    * **Enabled:** Tick this box to enable the tab
+    * **URL:** Enter the endpoint URL along with the query parameter: `externalTriggerToken`
+
+    ```plaintext
+    https://api.stackone.com/external-trigger/bullhorn_ats?externalTriggerToken=<your-external-trigger-token>
+    ```
+
+    <Info>
+      The endpoint URL must include the `externalTriggerToken` query parameter, which you will receive from the StackOne Connector Hub. This token verifies requests from Bullhorn for the specific account.
+    </Info>
+
+    <Note>
+      To obtain the **External Trigger Token**, please follow these steps:
+      - [StackOne Configuration](#stackone-configuration)
+      - [ATS User Enablement](#ats-user-enablement)
+    </Note>
+
+    - **User Types**: Select the user types who will have visibility of this tab.
+    
+    <Frame>
+      ![Custom Tab Configuration](/images/bullhorn/assessment-or-background-check/custom-tab-configuration.png)
+    </Frame>
+    
+    Click the **Save** button.
+    
+    <Frame>
+      ![Save Button](/images/bullhorn/assessment-or-background-check/save-button.png)
+    </Frame>
+  </Step>
+
+  <Step title="Locate the Custom Tab under Candidates">
+    Navigate to the _Candidates List_ page, click the `Menu` button, and then click `Primary`.  
+    <Frame>
+      ![Primary Menu](/images/bullhorn/assessment-or-background-check/primary-menu.png)
+    </Frame>
+    
+    Click the `Candidates` button.
+    <Frame>
+      ![Candidates Button](/images/bullhorn/assessment-or-background-check/candidates-button.png)
+    </Frame>
+
+    Click any candidate from the list.
+    <Frame>
+      ![Candidate List](/images/bullhorn/assessment-or-background-check/candidate-list.png)
+    </Frame>
+    
+    You will find the custom tab on the candidate detail page either within the main tab area or under the _More_ drop-down.
+    <Frame>
+      ![Custom Tab on Candidate Page](/images/bullhorn/assessment-or-background-check/custom-tab-candidate-page.png)
+    </Frame>
+  </Step>
+</Steps>
+
+
+## StackOne Configuration
+
+<Steps>
+  <Step title="Navigate to the ATS category">
+    Navigate to the ATS category on the _Integrations_ page and enable Bullhorn.
+    <Frame>
+      ![Bullhorn Integration Setup](/images/bullhorn/assessment-or-background-check/bullhorn_integration_setup_2.png)
+    </Frame>
+  </Step>
+
+  <Step title="Complete the configuration form">
+    Fill out the necessary fields in the **Bullhorn - Configuration model**:
+    
+  * **Authentication Type:** Select `OAuth2 - Assessments/Background Checks` to utilize the assessments/background checks integrations.
+  * **Partner Category:** Bullhorn does not define separate integration categories. You choose which feature to surface in the custom tab. If the tab is for background checks or assessments, select the corresponding category: `Background Checks` or `Assessments`.
+  * **Package's List Endpoint URL:** Implement and provide an endpoint to StackOne, which StackOne will use to retrieve the list of packages when the recruiter wants to send a test to a candidate.
+    
+    Implement the following POST endpoint:
+    ```bash
+    curl --location 'https://your-domain.com/<route-to-the-post-endpoint>' \
+    --header 'Content-Type: application/json' \
+    --header 'x-stackone-signature: string' \
+    --header 'Authorization: Basic <base64encoded-bullhorn-api-key>' \
+    --data '{
+      "account_id": "456551489512493413",
+      "provider": "bullhorn_ats"
+    }'
+    ```
+
+    The expected response of the POST endpoint (list of packages). Refer to:
+      - [List Assessments Packages](/ats/api-reference/assessments/packages/list-assessments-packages)
+      - [List Background Check Packages](/ats/api-reference/background-checks/packages/list-background-check-packages)
+
+    Enter the endpoint into the designated field:
+    ```plaintext
+    https://your-domain.com/<route-to-the-post-endpoint>
+    ```
+
+  * **Package ID:** If you do not have the Package's List Endpoint URL, you can add a static package ID that will be visible to the recruiter when they want to send a test to the candidate.
+
+    <DifferenceBetweenListEndpointAndStaticIdOfPackage 
+      providerName="Bullhorn"
+      dynamicPackageImageAtProviderUI="/images/bullhorn/assessment-or-background-check/bullhorn_dynamic_packages.png"
+      staticPackageImageAtProviderUI="/images/bullhorn/assessment-or-background-check/bullhorn_static_package_id.png"
+    />
+
+    <Frame>
+      ![Bullhorn Configuration Form](/images/bullhorn/assessment-or-background-check/bullhorn_config_setup_5.png)
+    </Frame>
+
+    Click on the `Confirm` or `Save Changes` button to enable OAuth APIs, which allows users to link their accounts via the StackOne Connector Hub.
+  </Step>
+
+
+  <Step title="Create a Webhook">
+		Navigate to the _Webhooks_ page, click `+ Add webhook`, and complete the form:
+
+    - **Name:** Enter a recognisable name for your webhook.
+    - **URL:** Enter the URL where the webhook will send notifications of enabled events.
+		<Frame>
+			<img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Webhook" src="/images/bullhorn/assessment-or-background-check/bullhorn_create_webhook_1.png" />
+		</Frame>
+	</Step>
+
+	<Step title="Select webhook event">
+		Navigate to the _Events_ tab and enable webhook events for Assessment & Background Check, such as `Assessments Order` & `Background Check Order`.
+		<Frame>
+			<img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Webhook Event" src="/images/bullhorn/assessment-or-background-check/bullhorn_enable_webhook_events_2.png" />
+		</Frame>
+
+		Click the `Confirm` button to save the webhook.
+	</Step>
+</Steps>
+
+
+## ATS User Enablement
+
+Navigate to the _Accounts_ page or the StackOne Connector Hub to link your Bullhorn account with StackOne.
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Bullhorn account" src="/images/bullhorn/assessment-or-background-check/bullhorn_account_page_10.png" />
+</Frame>
+
+You will receive the `External Trigger Token`, which must be passed as a query parameter along with the endpoint URL when setting up the custom tab in Bullhorn, as outlined in the [Provider Side Setup](#provider-side-setup).
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="External Trigger Token" src="/images/bullhorn/assessment-or-background-check/bullhorn_external_trigger_3.png" />
+</Frame>
+
+
+## ATS User Experience
+
+After completing the configuration process, users will see the custom tab on the candidate detail page in Bullhorn.
+<Frame>
+  ![Custom Tab on Candidate Page](/images/bullhorn/assessment-or-background-check/custom-tab-candidate-page.png)
+</Frame>
+
+Users can click on the `Send Assessment/Background Check` button, select one of the packages from the drop-down, and click on the `Send` button to send the assessment/background check test to the candidate.
+<Frame>
+  ![Send Background Check Button](/images/bullhorn/assessment-or-background-check/bullhorn_send_test.png)
+</Frame>
+
+A webhook notification will be triggered and you will receive the notification. On Bullhorn UI, the status will be updated to `Pending`.
+<Frame>
+  ![Webhook Notification](/images/bullhorn/assessment-or-background-check/bullhorn_sent_test.png)
+</Frame>
+
+Once the result is updated in Bullhorn’s UI, users will see the updated results.
+<Frame>
+  ![Updated Results](/images/bullhorn/assessment-or-background-check/updated-results.png)
+</Frame>
+
+
+## ATS User Experience Customization
+
+<Steps>
+  <Step title="To Update the result via unified api">
+    Utilize the following endpoints to update the results:
+      - [Assessment Update Result](/ats/api-reference/assessments/results/update-assessments-result)
+      - [Background Check Update Result](/ats/api-reference/background-checks/results/update-background-check-result)
+
+    Utilize the following endpoint to get endpoint's metadata to update the result of the assessment or background check:
+      - [Connector Meta Information](https://docs.stackone.com/platform/api-reference/connectors/get-connector-meta-information-legacy) with the provider key `bullhorn_ats` for model `assessments/results.update` or `background_checks/results.update`
+
+  <div className="fields-table-col-3">
+    | Fields (when provided)  | User sees in Bullhorn                                  | Comments                                         |
+    | ------------------      |------------------------------------------------------- |------------------------------------------------- |
+    | Score's value           | Score column will reflect the latest score's value     |                                                  |
+    | Result                  | Status column will reflect the latest result's status  | Result enum values from Meta API result field    |
+    | Submission Date         | Date column will reflect the latest submission date    |                                                  |
+    | Result Url              | Results URL column will reflect the latest Result URL as a View Result link  |                                                  |
+  </div>
+  </Step>
+
+  <Step title="How will the results of the assessment/background check be displayed to the user in Bullhorn?">
+    When a user opens a Assessment/Background Check custom tab, they will see the updated result with their score and status.
+    <Frame>
+      ![Updated Results](/images/bullhorn/assessment-or-background-check/updated-results.png)
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Testing Checklist
+
+✅ **Provider Setup Validation:**
+    - Logged-in with Admin account.
+    - Created and enabled a custom tab with valid user types assigned.
+    - Added a custom tab for Assessment or Background Check as mentioned in the <a href="#provider-side-setup">Provider Side Setup</a>.
+    - Valid StackOne URL along with the `externalTriggerToken` query parameter.
+
+✅ **StackOne Configuration Validation:**
+    - Selected `OAuth2 - Assessments/Background Checks` Authentication Type.
+    - Package's List Endpoint URL is correct.
+    - Package's List Endpoint response is expected according to the following endpoint's response:
+      - [List Assessments Packages](/ats/api-reference/assessments/packages/list-assessments-packages)
+      - [List Background Check Packages](/ats/api-reference/background-checks/packages/list-background-check-packages)
+
+✅ **ATS User Activation Validation:**
+   - Valid `externalTriggerToken` to the query parameter.
+
+✅ **Create a Webhook**
+   - Added a webhook for Bullhorn and enabled it with the events such as: `Assessments Order` or `Background Check Order`
+   - Valid webhook URL to receive assessment/background check notifications.
+
+✅ **ATS User Experience:**
+   - Custom tab is visible in the candidate detail page either within the main tab area or under the _More_ dropdown.
+   - When selecting a package and sending the webhook, the status is updated to `Pending` along with actions that is updated to `Sent`.
+
+✅ **Update Result**
+   - Success response from the update result endpoint.
+   - Updated result details to Bullhorn's UI.
+
+
+## Troubleshooting
+
+<div className="troubleshooting-table">
+| Symptom                                                                         | Likely cause                                                                      | Fix                                                                                                                 |
+| ---------------------------------------------------------------                 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------  |
+| Unable to access/add custom tab                                                 | Logged-in account is not an Admin account                                         | Log in with an Admin account                                                                                        |
+| External Trigger Token field is not visible at StackOne Connector Hub           | Selected Authentication Type is incorrect.                                        | Select Authentication Type `OAuth2 - Assessments/Background Checks` instead.                                        |
+| Custom tab is not visible in candidate detail page                              | Enabled checkbox is not checked.                                                  | Tick **Enabled** checkbox under the custom tab to enable the custom tab to visible within the candidate detail page.|
+| Custom tab is visible however getting 500                                       | **•** Invalid URL. <br/><br/> **•** Invalid External Trigger Token. <br/><br/> **•** Invalid Package's List Endpoint URL. | **•** Verify the StackOne URL. <br/><br/> **•** Verify External Trigger Token. <br/><br/> **•** Verify Package's List Endpoint URL.                                      |
+| Packages unavailable despite provided endpoint URL  | Empty Response from the Package's List Endpoint URL.                              | Verify the Package's List Endpoint URL and ensure it returns the expected package data.<br /><br /> <Note>If you don’t have the package list endpoint URL, you can use the Package ID with a static package.</Note>                             |
+| Test notification is not received                                               | **•** External Trigger Token is invalid. <br/><br/> **•** Invalid webhook URL at StackOne. <br/><br/> **•** Enabled events are not as expected. | **•** Use a valid External Trigger Token. <br/><br/> **•** Check webhook URL at StackOne. <br/><br/> **•** Check enabled events are expected.                         |
+| Status updated to `Pending` but record not found when revisiting the custom tab | **•** Either External Trigger Token is updated after notification has been sent. <br/><br/> **•** Enabled events are updated after notification has been sent. <br/><br/> **•** Custom field is updated and not the previous one that is selected at the time of getting notification sent from the StackOne Connector Hub. <br/><br/> **•** Custom Field data is corrupted due to reuse of that custom field at different places or for different custom tabs. | **•** Verify the External Trigger Token. <br/><br/> **•** Check enabled events are expected. <br/><br/> **•** Check the Custom Field data it can be corrupted. <br/><br/> **•** Select the correct custom field from the StackOne Connector Hub. <br/><br/> **•** Utilize a unique custom field and confirm it is not used elsewhere. |
+| Results not updating in Bullhorn                                                | **•** Custom field is updated and not the previous one that was selected at the time of notification sent from the StackOne Connector Hub. <br/><br/> **•** Custom Field data is corrupted due to reuse of that custom field at different places or for different custom tabs. | **•** Select the correct custom field from the StackOne Connector Hub. <br/><br/> **•** Utilize a unique custom field and confirm it is not used elsewhere. |
+| Result URL showing error when opened                                            | Added result URL can be expired or is private.                                     | Ensure to add public or signed URLs; verify CORS and expiry.                                                       |
+</div>
+
+For persistent issues, contact StackOne support with detailed error logs and configuration information.

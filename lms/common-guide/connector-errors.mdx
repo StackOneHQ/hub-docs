@@ -1,0 +1,68 @@
+---
+noindex: true
+title: "LMS Connector Errors"
+sidebarTitle: "Connector Errors"
+description: "HTTP error codes, error response formats, and LMS provider-specific troubleshooting"
+---
+
+This guide covers error codes returned by the StackOne API and common LMS provider-specific issues.
+
+---
+
+## HTTP Error Codes
+
+All StackOne API errors follow a consistent response format:
+
+```json
+{
+  "statusCode": 400,
+  "message": "Human-readable error message",
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "errorCode": "ValidationError",
+  "provider_errors": []
+}
+```
+
+<Accordion title="Error Code Reference">
+
+| Code | Name | Description |
+|------|------|-------------|
+| **400** | Bad Request | Invalid request parameters or malformed request body |
+| **401** | Unauthorized | Missing or invalid API key, or expired credentials |
+| **403** | Forbidden | Valid credentials but insufficient permissions |
+| **404** | Not Found | Resource does not exist or was deleted |
+| **408** | Request Timeout | Request took too long to complete |
+| **409** | Conflict | Request conflicts with current resource state |
+| **412** | Precondition Failed | Linked account belongs to a disabled integration |
+| **422** | Unprocessable Entity | Request validation failed |
+| **429** | Too Many Requests | Rate limit exceeded |
+| **500** | Internal Server Error | Unexpected server error |
+| **501** | Not Implemented | Feature not supported for this provider |
+| **502** | Bad Gateway | Error from upstream provider |
+
+</Accordion>
+
+---
+
+## LMS Provider-Specific Issues
+
+### SAP SuccessFactors
+
+For OCN (Open Content Network) integrations, use the `/unified/lms/content/batch` endpoint due to a rate limit of 1 request per 5 minutes.
+
+<Note>
+The `content_id` field is not required for completion creation.
+</Note>
+
+---
+
+## Debugging Tips
+
+1. **Check Request Logs**: View detailed request/response logs in Dashboard → Logs
+2. **Inspect `provider_errors`**: The raw provider response is included for 4xx/5xx errors
+3. **Use the Playground**: Test actions interactively to isolate issues
+4. **Verify Permissions**: Many 403 errors are due to missing provider-side permissions
+
+<Card title="Request Logs" icon="scroll" href="https://docs.stackone.com/connect/troubleshooting">
+  View and debug API requests in the dashboard
+</Card>

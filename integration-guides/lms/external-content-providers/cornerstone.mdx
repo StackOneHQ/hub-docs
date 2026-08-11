@@ -1,0 +1,43 @@
+---
+noindex: true
+title: "Cornerstone Integration"
+description: "Content & Completion Management"
+---
+
+## **Summary**
+
+The Cornerstone integration allows you to push content to Cornerstone and track user progress. There are 2 offerings from Cornerstone, both require partnership agreements:
+
+Cornerstone offers a tenant-specific integration where you can push content to a specific customer's instance (**Cornerstone**). This currently only supports the creation and not the update of content.
+
+Cornerstone also offers a distribution network where content is made available to all customers (**Cornerstone Library**). Additionally, this can be used as:
+
+- One-to-many connector: Content is pushed to a single account, and then distribution is handled by Cornerstone.
+- One-to-one connector: Content is pushed to a single account for each tenant, an agreement must be in place between the tenant and external content provider.
+
+One-to-many connector flow:
+
+<Frame>
+  ![](/images/content-distribution-integration.png)
+</Frame>
+
+## **Key Details**
+
+Cornerstone: [https://www.cornerstoneondemand.com/legal/content-providers](https://www.cornerstoneondemand.com/legal/content-providers)
+
+Cornerstone Online Content Connector: [https://csod.dev/reference/connectors/#tag/Online-Content-Connector](https://csod.dev/reference/connectors/#tag/Online-Content-Connector)
+
+## **Retrieving the External Trigger Token**
+
+For the Cornerstone 1:1 connector integration, you'll need to retrieve the external trigger token (ciid) required by Cornerstone. Follow these steps:
+
+1. Once a customer has connected their account to StackOne
+2. Navigate to the accounts screen in your StackOne dashboard
+3. Click "Edit Account" for the relevant Cornerstone connection
+4. Copy the external trigger token from the interface
+
+This external trigger token is essential for the proper functioning of the Cornerstone 1:1 connector and should be provided to your integration setup.
+
+## **Known Provider Bugs**
+
+There is currently a bug in the Cornerstone transcript endpoint (**Cornerstone** Integration) which will cause the due date to be displayed as +7 hours ahead of the expected time.
