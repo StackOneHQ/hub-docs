@@ -5,71 +5,60 @@ description: "If you have been directed to StackOne to integrate with Greenhouse
 
 
 <Warning>
-  This guidance assumes you have Admin privileges for your Greenhouse account.
+  This guidance assumes you have Admin privileges for your Greenhouse account, including the "Can manage ALL organization's API Credentials" permission.
 </Warning>
 
+Greenhouse is retiring the Harvest v1 and v2 API keys on August 31, 2026. The StackOne integration now connects using Harvest V3 OAuth credentials, a Client ID and Client Secret you generate in the Greenhouse Dev Center, instead of a single API key.
 
-## Generating Harvest API Key
+## Create Harvest V3 OAuth credentials
 
 <Steps>
-  <Step title="Open the Configuration Page">
-    Click on Configure gear ⚙️ and open Dev Center > API credentials.
-    ​
+  <Step title="Open API Credential Management">
+    Click the **Configure** icon on the navigation bar, click **Dev Center** on the left menu, then click **API Credential Management**.
+
     <Frame>
-      ![Step 1](/images/greenhouse/image1.png)   
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Open API Credential Management in the Greenhouse Dev Center" src="/images/greenhouse/image1.png" />
     </Frame>
   </Step>
-  <Step title="Create a New API Key">
-    Click Create new API key. Specify the following parameters:
 
-    API type – Harvest
-
-    Partner – Custom
-
-    Description – "Describe_your_integration"
-    ​
-    <Frame>
-      ![Step 2](/images/greenhouse/image2.png) 
-    </Frame>
+  <Step title="Create new API credentials">
+    Click **Create new API credentials**, select **Harvest V3 (OAuth)** as the API type, and enter a description, for example "StackOne Integration".
   </Step>
-  <Step title="Generate and Save the API Key">
-    Click Manage permissions.
 
-    Copy your newly generated API key to a safe place. Then click **I have stored the API key**.
-
-    <Frame>
-      ![Step 3](/images/greenhouse/image3.png)
-    </Frame>
+  <Step title="Copy your Client ID and Client Secret">
+    Copy both the **Client ID** and the **Client Secret** and store them somewhere safe before you close the dialog. Greenhouse shows the Client Secret only once. If you lose it, you'll need to create a new credential.
   </Step>
-  <Step title="Enabling Permissions">
-    In the Manage permissions page, enable Select the following 2 permissions and click **Save**:
 
-    - User Roles
-    - Users
-    ​
-    <Frame>
-      ![Step 4](/images/greenhouse/image6.png)
-    </Frame>
+  <Step title="Configure the scopes">
+    Open the **Settings** tab of your new credentials. Under **Manage Scopes**, click the **Harvest** dropdown and enable the scopes StackOne needs to read your users and their roles:
+    - `harvest:users:list`
+    - `harvest:user_roles:list`
   </Step>
 </Steps>
 
-## Retrieve your Greenhouse User ID
-Per the Greenhouse documentation, you can locate a User ID by going to the **Users** page, select a User with the **Site Admin** permission and retrieve the User ID present in the URL:
+## Find your User ID (optional)
 
-*Screenshot of an example User ID:*
+StackOne can act on behalf of a specific Greenhouse user when it calls the API. To set this up, go to **Configure > Users**, click the user, and copy the numeric ID from the browser URL. For example, `https://app.greenhouse.io/account/users/12345678/edit` gives you the ID `12345678`.
 
 <Frame>
-![Step 6](/images/greenhouse/10577285508763.png)
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Greenhouse user ID shown in the profile URL" src="/images/greenhouse/10577285508763.png" />
 </Frame>
+
+To find your own User ID, locate your account in the list (marked **"(you)"**), click **Export to Excel**, and read your ID from the **User ID** column.
+
+The user you choose needs Site Admin permissions. Greenhouse only lets Site Admins list users, so a User ID that isn't a Site Admin will cause user listing to fail.
+
+If you leave this field blank, StackOne acts as the auto-generated service account attached to your credentials instead of a specific user.
 
 ## Connect with StackOne
-Enter the gathered details in the relevant inputs and proceed by clicking the Connect button.
 
-<Frame>
-![Step 7](/images/greenhouse/image7.png)
-</Frame>
+To connect or reconnect your Greenhouse account, enter:
 
+- **Client ID**
+- **Client Secret**
+- **User ID** (optional)
 
+Then click **Connect**.
 
 ## Available data
 
@@ -81,6 +70,6 @@ This integration has the following [IAM Resources](https://docs.stackone.com/ref
 
 
 ## Useful Links
-<Card title="API Reference" icon="link" href="https://developers.greenhouse.io/harvest.html">
-    https://developers.greenhouse.io/harvest.html
+<Card title="API Reference" icon="link" href="https://harvestdocs.greenhouse.io/docs/authentication">
+    https://harvestdocs.greenhouse.io/docs/authentication
 </Card>
