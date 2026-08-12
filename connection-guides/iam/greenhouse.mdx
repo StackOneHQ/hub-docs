@@ -8,15 +8,13 @@ description: "If you have been directed to StackOne to integrate with Greenhouse
   This guidance assumes you have Admin privileges for your Greenhouse account, including the "Can manage ALL organization's API Credentials" permission.
 </Warning>
 
-Greenhouse is retiring the Harvest v1 and v2 API keys. The StackOne integration now connects using Harvest V3 OAuth credentials, a Client ID and Client Secret you generate in the Greenhouse Dev Center, instead of a single API key.
-
-If you already have a Greenhouse account connected to StackOne, you don't need to disconnect and set up a new one. Reconnect that same account with your new Harvest V3 credentials. Your account ID and everything you've already configured stay exactly as they are, and your existing syncs keep running once you've reconnected.
+Greenhouse is retiring the Harvest v1 and v2 API keys on August 31, 2026. The StackOne integration now connects using Harvest V3 OAuth credentials, a Client ID and Client Secret you generate in the Greenhouse Dev Center, instead of a single API key.
 
 ## Create Harvest V3 OAuth credentials
 
 <Steps>
   <Step title="Open API Credential Management">
-    Click the **Configure** icon on the navigation bar, click **Dev Center** on the left menu, then click **API Credential Management**.
+    Click the **Settings** icon on the navigation bar, click **Dev Center** on the left menu, then click **API Credential Management**.
 
     <Frame>
       <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Open API Credential Management in the Greenhouse Dev Center" src="/images/greenhouse/image1.png" />
@@ -54,33 +52,13 @@ If you leave this field blank, StackOne acts as the auto-generated service accou
 
 ## Connect with StackOne
 
-If this is your first time connecting Greenhouse to StackOne, go to **Accounts > Link Account > Greenhouse** and enter:
+To connect or reconnect your Greenhouse account, enter:
 
 - **Client ID**
 - **Client Secret**
 - **User ID** (optional)
 
 Then click **Connect**.
-
-## Reconnect your existing account
-
-If you already have a Greenhouse account connected, reconnect it instead of creating a new one.
-
-<Steps>
-  <Step title="Open the account in the StackOne Hub">
-    Go to **Accounts** in the StackOne Hub and find your existing Greenhouse account.
-  </Step>
-
-  <Step title="Start the reconnect flow">
-    Select **Reconnect** on that account. This may be labelled **Edit connection**.
-  </Step>
-
-  <Step title="Enter your new credentials">
-    Enter the **Client ID** and **Client Secret** you copied earlier, plus the **User ID** if you're using one, then save.
-  </Step>
-</Steps>
-
-Reconnecting keeps the same account ID and every setting you already had configured. Your syncs keep running once the new credentials are saved, so there is nothing else to redo.
 
 ## Available data
 
