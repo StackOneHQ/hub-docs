@@ -1,0 +1,472 @@
+---
+noindex: true
+title: "Workday Assessment"
+description: "Learn how to configure and integrate Workday Assessments with StackOne."
+---
+
+
+
+## Overview
+
+This guide explains how to integrate Workday Assessments with StackOne, enabling automatic management of assessments within your recruitment process.
+It details the configuration of assessment categories, tests, and statuses in Workday, as well as the setup of webhooks and integration systems.
+By following these steps, you will ensure automated assessment workflows and reliable synchronization of results between Workday and StackOne.
+
+
+## Partner Requirements
+
+There are no formal partnership requirements to configure and utilize the assessment feature with Workday; however, you must have administrative privileges for your Workday account.
+
+
+## Provider Side Setup
+
+### Create Assessment Category in Workday
+
+<Steps>
+  <Step title="Create an assessment category">
+    Navigate to the <i>Maintain Recruiting Assessment Categories</i> page and add a new assessment category named `Technical Assessment Test`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Categories" src="/images/workday/assessment/Assessment_category_1.png" />
+    </Frame>
+
+  Click the `OK` button to save, and then the `Done` button to confirm.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Category" src="/images/workday/assessment/Assessment_category_2.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+### Create Assessment Test in Workday
+
+<Steps>
+  <Step title="Create an Assessment Test">
+    Navigate to the <i>Maintain Recruiting Assessment Tests</i> page and add an assessment test called `Technical Assessment`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Tests" src="/images/workday/assessment/Assessment_test_1.png" />
+    </Frame>
+
+    Enter the test name, select the assessment category created in the previous step, and choose the `StackOne_IS_System` integration system generated from StackOne.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Tests" src="/images/workday/assessment/Assessment_test_2.png" />
+    </Frame>
+
+  Click `OK` to save, and then `Done` to confirm.
+  </Step>
+
+  <Step title="Edit or retrieve the Assessment Test ID">
+  Click the three-dot menu, select `View IDs` to view the ID, or `Edit Reference ID` to modify it.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit/View Assessment Test ID" src="/images/workday/assessment/Assessment_test_3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Use of the Assessment Test ID">
+  You will need the `Assessment_Test_ID` (for example, `RECRUITING_ASSESSMENT_TEST-6-111`) for the notification payload configuration.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Test ID" src="/images/workday/assessment/Assessment_test_4.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+### Create Assessment Status in Workday
+
+<Steps>
+  <Step title="Create an Assessment Status">
+    Navigate to the <i>Maintain Assessment Statuses</i> page and add a new assessment status. You can name it `Invited` or choose another name.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Maintain Assessment Status" src="/images/workday/assessment/Assessment_status_1.png" />
+    </Frame>
+
+  Enter the status name, and tick the overall status and test status boxes. Click `OK`, then `Done` to save and confirm.
+  </Step>
+
+  <Step title="Edit or retrieve the Assessment Status ID">
+  Click the three-dot menu, select `View IDs` to view the ID, or `Edit Reference ID` to modify it.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Edit/View Assessment Status ID" src="/images/workday/assessment/Assessment_test_3.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Use of the Assessment Status ID">
+  The Assessment Status ID is used for sending assessment invitation notifications. Ensure this ID is set to `Invited`, regardless of the status name you have provided.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Status ID" src="/images/workday/assessment/Assessment_status_3.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+### Job Requisitions within the Supervisory Organization in Workday
+
+<Warning>
+  These steps assume you already have a Supervisory Organization in your Workday account. If not, please contact your administrator to create one.
+</Warning>
+
+<Steps>
+  <Step title="Listed Job Requisitions">
+    Navigate to your <i>Supervisory Organization</i> page and go to the `Staffing` tab.
+    
+    <Info>
+  Ensure the Supervisory Organization’s Staffing Model is `Position Management`.
+    </Info>
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="SO for JR" src="/images/workday/assessment/SO_for_JR.png" />
+    </Frame>
+
+  Under the `Positions with Open Job Requisition` grid, you will find the list of Job Requisitions that support sending notifications for the Assessment stage via the Integration System.
+  </Step>
+
+  <Step title="No Listed Job Requisitions">
+    If there are no jobs listed under `Positions with Open Job Requisition`, find `Create Position` under the `Staffing` tab in the three-dot menu.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Job Position" src="/images/workday/assessment/SO_1.png" />
+    </Frame>
+
+  Fill in the required details to create a position. It will then appear in the `Positions without Job Requisition` grid.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Created Job Position" src="/images/workday/assessment/SO_2.png" />
+    </Frame>
+
+  Navigate to `Create Job Requisition`, select your Supervisory Organization and position, click `OK`, complete the Job Requisition form, and then `Submit` it.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add in Position in Job Req" src="/images/workday/assessment/SO_3.png" />
+    </Frame>
+
+  The position will now appear in the `In Progress Requisition Actions` grid.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Added in Position in Job Req" src="/images/workday/assessment/SO_4.png" />
+    </Frame>
+
+  Once the job requisition is approved, it will appear in the `Positions with Open Job Requisition` grid and will be enabled to send notifications.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Approved Job Req" src="/images/workday/assessment/SO_5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+### Update Assess Candidate Business Process in Workday
+
+<Steps>
+  <Step title="Select to update the Integration System">
+    Search for the business process named _Assess Candidate_ using the global search bar (e.g. `bp: Assess Candidate`).
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="BP Config IS" src="/images/workday/assessment/BP_Search.png" />
+    </Frame>
+
+    Navigate to the <i>Assess Candidate Business Process</i> page and click the `Configure Integration System` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="BP Config IS" src="/images/workday/assessment/BP_Config_IS.png" />
+    </Frame>
+
+  Select `StackOne_IS_System` as the integration and click `OK`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select IS on Popup" src="/images/workday/assessment/Select_IS_on_Popup.png" />
+    </Frame>
+    
+    <Warning>
+      If you don't see `StackOne_IS_System` as an available integration system, please verify that your Workday account is properly connected to StackOne and that you have set up the necessary webhook with the appropriate events in StackOne.<br /><br />
+      Please refer to the <a href="#stackone-configuration">StackOne Configuration</a> section to connect and set up the webhook for your Workday account.
+    </Warning>
+  </Step>
+
+  <Step title="Edit payload attribute values">
+  A pop-up will appear, allowing you to select the values for the fields to be included in the payload request when the `Invited` event is triggered from Workday.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Set Values for Fields" src="/images/workday/assessment/Set_Values_for_Fields.png" />
+    </Frame>
+    
+    **Please fill in the following information:**
+
+    - **Candidate First Name:** [First Name]
+    - **Candidate Last Name:** [Last Name]
+    - **Candidate Email Address:** [Email]
+    - **Candidate Reference ID:** [Candidate ID]
+    - **Job Application Reference ID:** [Job Requisition as Text]
+    - **Assessment Test Reference ID:** [Assessment_Test_ID for the assessment you want to send to the candidate]
+
+  Click `OK` to save your configuration.
+  </Step>
+</Steps>
+
+
+## StackOne Configuration
+
+<Steps>
+  <Step title="Enable Workday in StackOne">
+  Go to the ATS category on the _Integrations_ page and enable Workday.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Activate Workday" src="/images/workday/assessment/workday_config_enabled.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Complete the configuration form">
+  Complete the required fields in the **Workday - Configuration** modal:
+
+    * **Authentication Type** - You can select any Authentication Type to integrate with Workday.
+    * **Integration Category** - Select `Assessments`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Activate Workday" src="/images/workday/assessment/workday_config_setup_stackone.png" />
+    </Frame>
+
+  Click `Confirm` or `Save Changes` to enable the Workday integration, allowing end-users to link their accounts via the StackOne Connector Hub.
+  </Step>
+
+  <Step title="Create a Webhook">
+		Navigate to the _Webhooks_ page and click the `+ Add Webhook` button to add a webhook for Workday.
+		<Frame>
+			<img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create Webhook" src="/images/workday/assessment/stackone_add_webhook.png" />
+		</Frame>
+	</Step>
+
+	<Step title="Select webhook event">
+		Navigate to the _Events_ tab and enable the `Assessment Order` event from the grid.
+		<Frame>
+			<img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Select Webhook Event" src="/images/workday/assessment/stackone_adding_event.png" />
+		</Frame>
+
+		Click the `Save` button to save the webhook.
+
+    <Note>
+  To test the assessment webhook with your Workday Sandbox account, see the <a href="#ats-user-enablement">ATS User Enablement</a> section to connect and configure 
+  the **Integration System** programmatically in your Workday Sandbox account.
+    </Note>
+	</Step>
+</Steps>
+
+
+## ATS User Enablement
+
+When users connect their Workday account with StackOne, an Integration System will be created in the user's Workday account named `StackOne_IS_System`, along with the necessary assessment configurations. These include:
+
+- Endpoint URL (used to receive notifications)
+- Username
+- Password (used to authenticate each request from the user's Workday account)
+- Assessment Status (used to send the assessment)
+
+
+<Note>
+  The user must configure the Integration step under the `Assess Candidate` Business Process by selecting `StackOne_IS_System` from the Configure Integration System pop-up.
+</Note>
+
+Log in to your Workday account and search for _View Integration System_ in the global search bar. Search for `StackOne_IS_System` in the prompt that opens, then click `OK`.
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Integration System" src="/images/workday/assessment/workday_searcg_global_for_IS_prompt.png" />
+</Frame>
+
+You will find the Integration System named `StackOne_IS_System`, with the configured Integration Attributes and `Inline Assessment` as an Integration Template.
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Integration System" src="/images/workday/assessment/workday_IS_system_configured.png" />	
+</Frame>
+
+
+## ATS User Experience
+
+After completing the configuration process, users will have an **Assessment** stage in the Job Requisition workflow.
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Stage" src="/images/workday/assessment/workday_JR_Assess_Stage.png" />
+</Frame>
+
+When a candidate is moved to the **Assessment** stage, an `Assess` button will appear next to their name. The user can use this to send the assessment test to the candidate.
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assess Button" src="/images/workday/assessment/Recruiter_1.png" />
+</Frame>
+
+### Send the test to the candidate from Workday
+#### Move Candidate to the Assessment Stage in Workday
+
+<Steps>
+  <Step title="Go to the Job Requisition">
+    Navigate to the <i>Job Requisitions</i> page by selecting the same Job Requisition from the pop-up where the candidate applied for the job.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View JR" src="/images/workday/assessment/JR_1.png" />
+    </Frame>
+
+    Navigate to the `Candidate` tab and select the `Review` tab, where the candidate will be displayed in the grid below.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Job Apply" src="/images/workday/assessment/JR_5.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Move Candidate from Review to Assessment stage">
+  Select the candidate in the grid and click the `Move Forward` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View JR" src="/images/workday/assessment/JR_2.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Assessment from the dropdown">
+  In the pop-up, select the next stage, which is likely the Assessment Stage. Choose `Assessment` in both dropdown menus.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Candidate Job Apply" src="/images/workday/assessment/JR_3.png" />
+    </Frame>
+
+  Click the `OK` button to move.
+  </Step>
+
+  <Step title="Candidate Moved to the Assessment Stage">
+    If you go to the `Assessment` tab, the candidate will now be in the Assessment stage.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View JR" src="/images/workday/assessment/JR_4.png" />
+    </Frame>
+
+  If you are unable to move the candidate to the assessment stage directly, move the stages one at a time.
+  </Step>
+</Steps>
+
+#### Send the assessment invitation to the candidate using Start Proxy
+
+<Steps>
+  <Step title="Sending via Start Proxy">
+  If you are not the recruiter, go to the recruiter’s account via `Start Proxy`. Click the `Awaiting Action` link, and a pop-up will appear showing the recruiter’s name.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="View Recruiter" src="/images/workday/assessment/NR_1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Navigate to the Start Proxy">
+    Go to the <i>Start Proxy</i> page and select Recruiter from the dropdown menu.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Start Proxy" src="/images/workday/assessment/NR_2.png" />
+    </Frame>
+
+  You will be taken to the recruiter's homepage, where you need to navigate to the `My Tasks` page in the top-right corner.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="My Tasks" src="/images/workday/assessment/NR_3.png" />
+    </Frame>
+
+  You will find the task at the top, labelled with the Job Requisition and candidate name, in the sidebar.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Sidebar" src="/images/workday/assessment/NR_4.png" />
+    </Frame>
+
+  Clicking the sidebar task will display the candidate's assessment details on the right side.
+  </Step>
+
+  <Step title="Send the Assessment Invitation">
+  Set the Overall Status to `Invited` and select the Assessment as `Technical Assessment` from the dropdown menu. Then, click the `Submit` button.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Form" src="/images/workday/assessment/NR_5.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+#### Send the assessment invitation to the candidate as a Recruiter
+
+<Steps>
+  <Step title="Sending as a Recruiter">
+  If you are the recruiter, you should see the `Assess` button next to the candidate's name.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Sending Invite" src="/images/workday/assessment/Recruiter_1.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Send the Assessment Invitation">
+  Set the Overall Status to `Invited` and select the Assessment as `Technical Assessment` from the dropdown menu.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Send Invite" src="/images/workday/assessment/Recruiter_2.png" />
+    </Frame>
+  Click the `Submit` button to trigger the webhook notification from Workday. 
+  </Step>
+</Steps>
+
+<Note>
+  You can refer to the [Workday Assessment](/integration-configuration-concepts/ats/workday-assessment) guide for more details on how to send the test from Workday.
+</Note>
+
+### User will see after test has been sent
+
+The user can access the candidate's application by clicking their name visible in the `Candidates` tab on the Job Requisition Page.
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Details" src="/images/workday/assessment/JR_4.png" />
+</Frame>
+
+In the _Application > Screening_ tab, under the `Assessment` sub-tab, the user can view the details of the assessment that has been sent to the candidate.
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Assessment Details" src="/images/workday/assessment/sent_assess_request.png" />
+</Frame>
+
+
+## ATS User Experience Customization
+
+<Steps>
+  <Step title="To update the result via the Unified API">
+    Use the following endpoints to update the results:
+      - [Assessment Update Result](/ats/api-reference/assessments/results/update-assessments-result)
+
+    Use the following endpoint to get metadata to update the result of the assessment or background check:
+      - [Connector Meta Information](https://docs.stackone.com/platform/api-reference/connectors/get-connector-meta-information-legacy) with the provider key `workdayats` for model `assessments/results.update`
+  
+  <div className="field-table-col-3">
+    | Fields (when provided)       | User sees in Workday                                                             | Comment                                        |
+    | ------------------------     |--------------------------------------------------------------------------------- | ---------------------------------------------- |
+    | Result                       | Result will be displayed corresponding to the **Overall Status** label    | Result enum values from Meta API result field  |
+    | Summary                      | Summary will be displayed corresponding to the **Comment** label                 |                                                |
+    | Submission Date              | Submission date will be displayed corresponding to the **Overall Date** label    |                                                |
+    | Start Date                   | Start date will be displayed in the **Date** column within the Assessment grid   |                                                |
+  </div>
+  </Step>
+
+  <Step title="How assessment results are displayed to the customer in Workday">
+  When a customer opens a candidate's application, they can navigate to the `Assessment` tab within the application to view the assessment details and results.
+    <Frame>
+      ![Updated Result](/images/workday/assessment/result_update_assess.png)
+    </Frame>
+  </Step>
+</Steps>
+
+
+## Testing Checklist
+
+
+✅ **Provider Setup:**
+  - Logged in with an Admin account.
+  - Added Assessment Categories.
+  - Added Assessment Tests.
+  - Added Assessment Statuses. Ensure `Invited` is set as the Reference ID of the status you will choose when sending the Assessment.
+  - Job Requisitions are within the Supervisory Organization with the Staffing Model as `Position Management`.
+  - Configured the `Assess Candidate` Business Process with the Integration System that will be generated programmatically when the user connects Workday with StackOne.
+  - Added order payload attribute values with the correct `Assessment Test Reference ID`.
+
+
+✅ **StackOne Configuration:**
+  - Selected `Assessments` as the Integration Category.
+
+
+✅ **ATS User Activation:**
+  - Workday account connected successfully with StackOne.
+  - Check that the Integration System named `StackOne_IS_System` is created with the necessary assessment configurations.
+  - Ensure you configure the Integration step under the `Assess Candidate` Business Process by selecting `StackOne_IS_System` from the Configure Integration System pop-up.
+
+
+✅ **Create a Webhook:**
+  - Added a webhook for Workday and enabled it with events such as: `Assessment Order`.
+  - Valid webhook URL to receive assessment notifications.
+
+
+✅ **ATS User Experience:**
+  - Assessment stage is available in the Job Requisition workflow.
+  - `Invited` status, or a status with `Invited` as the Reference ID, is available to select on the Assessment pop-up when clicking the `Assess` button.
+  - In the _Application > Screening_ tab, under the `Assessment` sub-tab, the sent assessment details will be available.
+
+
+✅ **Update Result:**
+  - Success response from the update result endpoint.
+  - Updated result details visible in Workday's UI.
+
+
+## Troubleshooting
+
+<div className="troubleshooting-table">
+| Symptom                                                                                                 | Likely cause                                                                                                                                                                                                                                                                                                                          | Fix                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Unable to access Organization and Business Process.                                                     | Logged-in account is not an Admin account.                                                                                                                                                                                                                                                                                            | Log in with an Admin account.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Unable to search the above-mentioned navigations.                                                       | **•** Logged-in account is not an Admin account. <br/><br/> **•** You do not have permission to access.                                                                                                                                                                                                                               | **•** Log in with an Admin account. <br/><br/> **•** Contact your Workday account admin to provide the necessary permissions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Unable to find/configure the Integration System under the `Assess Candidate` Business Process.          | Workday account is not connected with StackOne.                                                                                                                                                                                                                                                                                       | Connect your Workday account with StackOne, which will create the Integration System programmatically.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `Assess` button is not visible next to the candidate's name in Job Requisition.                         | Logged-in user is not the recruiter or hiring manager for that Job Requisition.                                                                                                                                                                                                                                                       | **•** You can use the <a href="#send-the-assessment-invitation-to-the-candidate-using-start-proxy">Start Proxy</a> feature to send the assessment to the candidate. <br/><br/> **•** Ensure you are logged in as the recruiter or hiring manager associated with the Job Requisition.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Assessment test notification is not received.                                                           | **•** Invalid webhook configurations in StackOne. <br/><br/> **•** Supervisory Organization's Staffing Model is not set to `Position Management`. <br/><br/> **•** Job Requisition is not listed under the Supervisory Organization. <br/><br/> **•** `Invited` status, or a status with `Invited` as a Reference ID, is not created. | **•** The webhook URL and enabled events should be valid. Please refer <a href="#stackone-configuration">these</a> steps. <br/><br/> **•** Supervisory Organization's Staffing Model should be set to `Position Management`. <br/><br/> **•** Job Requisition should be listed under the Supervisory Organization. Please refer <a href="#job-requisitions-within-the-supervisory-organization-in-workday">these</a> steps. <br/><br/> **•** `Invited` status, or a status with `Invited` as a Reference ID, should be created. Please refer <a href="#create-assessment-status-in-workday">these</a> steps.  |
+| The selected test during the assessment submission to the candidate was not sent within the order notification.     | You have already configured the Assessment Test Reference ID under the Integration step in <a href="#update-assess-candidate-business-process-in-workday">Assess Candidate Business Process</a>.                                                                                                                    | You cannot select the dynamic test from the Assessment send pop-up as you have already configured the Assessment Test Reference ID under the Integration step in <a href="#update-assess-candidate-business-process-in-workday">Assess Candidate Business Process</a>.                                                                                                                                                                                                                                                                                                     |
+| Result URL showing error when opened.                                                                   | Added result URL may have expired or is private.                                                                                                                                                                                                                                                                                      | Ensure you add public or signed URLs; verify CORS and expiry.                                                                                                                         |
+</div>
+
+For persistent issues, contact StackOne support with detailed error logs and configuration information.

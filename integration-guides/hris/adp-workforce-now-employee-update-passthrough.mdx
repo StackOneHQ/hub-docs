@@ -1,0 +1,140 @@
+---
+noindex: true
+title: 'ADP Workforce Now Employee Update Passthrough Usage'
+description: 'Learn how to use the passthrough parameter for non-standard employee update operations in ADP Workforce Now'
+---
+
+## Overview
+
+ADP Workforce Now requires a non-standard approach when updating employee information through the StackOne Update Employee endpoint. Instead of following the typical unified API flow, ADP WFN uses a specialized passthrough mechanism that allows direct interaction with ADP's event-based API structure.
+
+## How the Passthrough Works
+
+When updating an employee in ADP Workforce Now, the `passthrough` parameter operates differently from other providers:
+
+- **Each key** in the `passthrough` object represents a **path segment** that gets appended to ADP's event API endpoint
+- **Each value** is the **complete request body** that gets sent as a POST request to that specific endpoint
+
+<Warning>
+  **Critical** You must include the worker's 'associateOID' in the 'eventContext' for all operations. This is required to identify which employee to update. Without it, the request will fail. This is equivalent to the unified 'remote_id' of the Employee being updated.
+</Warning>
+
+### Request Structure
+
+The passthrough data is sent to ADP WFN using the following endpoint pattern:
+
+```
+POST /events/hr/v1/{{path}}
+```
+
+Where `{{path}}` is replaced by each key in your passthrough object.
+
+## Example Usage
+
+Here's an example of how to structure your Update Employee request with the passthrough parameter to update an employee's organizational units and military status:
+
+```json
+{
+  "passthrough": {
+    "worker.work-assignment.organizational-units.change": {
+      "events": [
+        {
+          "data": {
+            "eventContext": {
+              "worker": {
+                "associateOID": "G5357R8DJ46DKM8P"
+              }
+            },
+            "transform": {
+              "worker": {
+                "workAssignment": {
+                  "organizationalUnits": [
+                    {
+                      "nameCode": {
+                        "codeValue": "DEPT-001"
+                      },
+                      "typeCode": {
+                        "codeValue": "Department"
+                      }
+                    },
+                    {
+                      "nameCode": {
+                        "codeValue": "DIV-TECH"
+                      },
+                      "typeCode": {
+                        "codeValue": "Division"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "worker.military-status.change": {
+      "events": [
+        {
+          "data": {
+            "eventContext": {
+              "worker": {
+                "associateOID": "G5357R8DJ46DKM8P"
+              }
+            },
+            "transform": {
+              "worker": {
+                "person": {
+                  "militaryStatusCode": {
+                    "codeValue": "D"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+In this example:
+- The first operation sends a POST to `/events/hr/v1/worker.work-assignment.organizational-units.change`
+- The second operation sends a POST to `/events/hr/v1/worker.military-status.change`
+- Each request body contains the complete event structure required by ADP
+- The `associateOID` (G5357R8DJ46DKM8P) identifies the worker being updated in both operations
+
+## Finding the Right Operation Path and Body Structure
+
+To determine the correct operation path and request body structure for your use case:
+
+1. **Visit the ADP API Explorer**: [https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn?domain=hr](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn?domain=hr)
+
+2. **Browse the available operations** to find the specific employee update action you need
+
+3. **Note the operation path name** - this becomes the key in your passthrough object
+   - Example: If the API Explorer shows `worker.work-assignment.organizational-units.change`, use that exact string as the key
+
+4. **Review the request body schema** - this becomes the value in your passthrough object
+
+<Note>
+  The ADP API Explorer provides comprehensive documentation on all available operations, required fields, and example payloads for the ADP Workforce Now HCM API.
+</Note>
+
+<Warning>
+  Always validate your passthrough structure against the ADP API documentation. Incorrect paths or malformed request bodies will result in API errors.
+</Warning>
+
+## Best Practices
+
+1. **Validate your payload structure** using the ADP API Explorer before implementing in production
+2. **Test with a sandbox account** first to ensure your passthrough structure is correct
+3. **Handle errors appropriately** - ADP may return specific validation errors for malformed requests
+
+## Additional Resources
+
+- [ADP API Explorer - HCM Workforce Now](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn?domain=hr)
+- [StackOne Update Employee API Reference](/hris/api-reference/employees/update-employee)
+- [StackOne Passthrough Query Parameters Guide](/legacy-unified-apis/common-guide/using-the-passthrough-query-parameters)
+

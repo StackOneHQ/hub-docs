@@ -1,0 +1,151 @@
+---
+noindex: true
+title: "SSO and User Matching"
+---
+
+## Overview
+
+There are two main approaches for handling user identification and matching in LMS integrations:
+
+## Approach 1: List Users and Store Data
+
+You provision users into your database and match your identifier (email/SSO ID) with the user metadata. Store the StackOne ID and use this in the URL of the User Assignments/Completions request.
+
+**Benefits:**
+- Minimal SSO configuration specifications
+- Complete user data available
+- Reliable user identification across sessions
+- Better tracking and analytics capabilities
+
+**Drawbacks:**
+- Storing lots of user data
+- Requires regular synchronization
+- Higher storage requirements
+
+## Approach 2: SSO Identifier Alignment
+
+Both you and your customer align on SSO identifiers using the StackOne docs. You map this to a reusable specific custom field and use this as the ID in the user completions/assignments requests.
+
+**Documentation Examples:**
+- [Your docs](/integration-guides/lms/external-content-providers/sap#sso-configuration-for-completion-creation)
+- [Customer docs](/connection-guides/lms/sapsuccessfactors#sso-configuration)
+
+**Benefits:**
+- Minimal data storage requirements
+- Direct SSO integration
+- Real-time user identification
+- No need for user data synchronization
+
+**Drawbacks:**
+- Requires customer SSO configuration
+- More complex initial setup
+- Dependency on customer's IdP configuration
+
+### General Flow for Approach 2:
+
+1. **Provider-Specific ID Required**: There will be a specific ID required by the provider for creating completions
+2. **Customer SSO Configuration**: Your customer must configure this to an ID value in their IdP/SSO (e.g., `lms_user_id`)
+3. **ID Mapping**: You must map this value and pass it in as the user ID in the URL
+
+---
+
+## User Matching Flow Diagrams
+
+### Approach 1: List Users and Store Data
+
+```mermaid
+sequenceDiagram
+    participant SaaS as Your SaaS
+    participant StackOne as StackOne
+    participant LMS as LMS Provider
+    participant DB as Your Database
+
+    Note over SaaS, DB: Initial Setup & Ongoing Sync
+    
+    rect rgb(240, 230, 255)
+        Note over SaaS, LMS: 1. Sync Users from LMS
+        SaaS->>StackOne: GET /lms/users
+        StackOne->>LMS: List users
+        LMS->>StackOne: User data (id, email, name, external_reference)
+        StackOne->>SaaS: Unified user response
+        SaaS->>DB: Store StackOne ID + user identifiers
+    end
+
+    rect rgb(230, 255, 236)
+        Note over SaaS, DB: 2. User Authentication & Matching
+        SaaS->>SaaS: User logs in (email/SSO)
+        SaaS->>DB: Match user by email/SSO ID
+        DB->>SaaS: Return stored StackOne ID
+    end
+
+    rect rgb(255, 245, 230)
+        Note over SaaS, LMS: 3. Create Assignments/Completions
+        SaaS->>StackOne: POST /lms/users/:id/assignments (using StackOne ID)
+        StackOne->>LMS: Create assignment with provider-specific ID
+        LMS->>StackOne: Assignment created
+        StackOne->>SaaS: Success response
+    end
+```
+
+### Approach 2: SSO Identifier Alignment
+
+```mermaid
+sequenceDiagram
+    participant SaaS as Your SaaS
+    participant Customer as Customer
+    participant IdP as Customer IdP/SSO
+    participant StackOne as StackOne
+    participant LMS as LMS Provider
+
+    Note over SaaS, LMS: Setup Phase
+    
+    rect rgb(240, 230, 255)
+        Note over Customer, IdP: 1. Configure SSO Mapping
+        Customer->>IdP: Configure custom field (e.g., lms_user_id)
+        IdP->>IdP: Map StackOne assignment/completion mapped user identifier to custom field
+    end
+
+    rect rgb(230, 255, 236)
+        Note over SaaS, IdP: 2. User Authentication
+        SaaS->>IdP: User redirected to IdP for SSO login
+        IdP->>IdP: User authenticates
+        IdP->>SaaS: User redirected back with SAML response (contains lms_user_id)
+        SaaS->>SaaS: Extract lms_user_id from SAML assertion
+    end
+
+    rect rgb(255, 245, 230)
+        Note over SaaS, LMS: 3. Direct ID Usage
+        SaaS->>StackOne: POST /lms/users/:id/assignments (using lms_user_id)
+        StackOne->>LMS: Create assignment with direct ID
+        LMS->>StackOne: Assignment created
+        StackOne->>SaaS: Success response
+    end
+```
+
+---
+
+## Authentication Considerations
+
+### SAML/SSO Support Scenarios
+
+**Scenario 1: LMS/IDP Supports SAML 2.0 SSO**
+- LMS acts as Identity Provider (IdP)
+- Users redirected with SAML assertion
+- Application receives SSO ID for identification
+- Smoothest user experience with single sign-on
+
+**Scenario 2: LMS Doesn't Support SAML/SSO & Customer doesn't have IDP**
+- Users authenticate directly with your application
+- Fallback authentication methods required:
+  - Email and password authentication
+  - Social login (Google/Microsoft)
+- Additional user provisioning strategies needed
+
+### User Provisioning Strategy
+
+To ensure reliable identification across any LMS platform:
+- Support multiple authentication flows simultaneously
+- Store required identifiers for matching (SSO ID, email, external references)
+- Implement fallback authentication when SAML unavailable
+
+---

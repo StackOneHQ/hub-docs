@@ -1,0 +1,38 @@
+---
+title: "Workday Learning Integration"
+description: "LMS/LXP and Content Aggregators"
+---
+
+## **Summary**
+
+The Workday Learning integration lets you read learning content, users, enrollments and completions from your customer's Workday tenant, and write content, courses and completions back into it.
+
+StackOne exposes two Workday Learning connectors. They cover the same unified models but sit on different Workday APIs, and each API can do things the other can't. Which one your customer links determines what the integration can support, so pick before onboarding rather than after.
+
+## **Which connector should I use?**
+
+| Connector | Workday API | Use it for |
+| --- | --- | --- |
+| **Workday Learning** | SOAP | Write use cases: creating content and courses, assigning learning, pushing completions |
+| **Workday Learning (REST API)** | REST | Read use cases: pulling courses, users, assignments and completions |
+
+**Write use cases need the SOAP connector.** The REST API doesn't expose all of the write operations required to support the full sync use case, so anything that pushes data into Workday has to go through SOAP.
+
+**Read use cases are better served by the REST connector.** The SOAP API has limitations when pulling large volumes of data, so read-heavy integrations against a large tenant will perform better on REST.
+
+If you need both — reading a large catalog *and* writing back — link both connectors for the customer and route each set of calls to the one that supports it.
+
+### **Limitations**
+
+* **SOAP:** Struggles with large data volumes. Expect degraded read performance on big tenants.
+* **REST:** Does not support the full set of write operations, so it cannot back a full sync on its own.
+* **Rate Limits:** Workday rate limits vary by tenant configuration.
+
+### **Testing and Validation**
+
+* Standard testing procedures apply.
+* Confirm which connector the customer has linked before troubleshooting a missing operation. A "not supported" write against the REST connector is expected behaviour, not a bug.
+
+<Card title="Connection Guides" icon="link" href="/connection-guides/lms/workdaylearning">
+  Setup steps for your customers: [Workday Learning (SOAP)](/connection-guides/lms/workdaylearning) · [Workday Learning (REST API)](/connection-guides/lms/workdaylearning_oauth)
+</Card>

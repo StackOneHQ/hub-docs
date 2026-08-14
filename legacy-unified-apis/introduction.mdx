@@ -1,0 +1,87 @@
+---
+noindex: true
+title: "Legacy Unified APIs Overview"
+sidebarTitle: "Overview"
+description: "Navigate the Legacy Unified APIs for HRIS, ATS, CRM, LMS, and Accounting integrations"
+---
+
+import LegacyUnifiedApisNotice from "/snippets/legacy-unified-apis-notice.mdx";
+import UnifiedApiPrimer from "/snippets/unified-api-primer.mdx";
+
+<LegacyUnifiedApisNotice />
+
+<UnifiedApiPrimer />
+
+## Legacy Unified APIs
+
+The Legacy Unified APIs provide standardized access to various business system categories. Each API follows the same patterns for authentication, pagination, and error handling, but exposes domain-specific data models.
+
+<CardGroup cols={2}>
+  <Card title="HRIS" icon="users" href="/hris/introduction">
+    Human Resources Information Systems - manage employees, time-off, benefits, and organizational data
+  </Card>
+  <Card title="ATS" icon="user-plus" href="/ats/introduction">
+    Applicant Tracking Systems - manage candidates, jobs, applications, and hiring workflows
+  </Card>
+  <Card title="CRM" icon="address-book" href="/crm/introduction">
+    Customer Relationship Management - manage contacts, accounts, and sales data
+  </Card>
+  <Card title="LMS" icon="graduation-cap" href="/lms/introduction">
+    Learning Management Systems - manage courses, content, assignments, and completions
+  </Card>
+  <Card title="Accounting" icon="calculator" href="/accounting/introduction">
+    Accounting Systems - manage accounts, transactions, and financial data
+  </Card>
+</CardGroup>
+
+## Common Features Across All APIs
+
+All Legacy Unified APIs share these common features:
+
+| Feature | Description |
+|---------|-------------|
+| **Authentication** | All APIs use the same [authentication method](https://docs.stackone.com/platform-api/authentication) with API keys and `x-account-id` headers |
+| **Pagination** | Consistent [cursor-based pagination](/legacy-unified-apis/common-guide/pagination) across all endpoints |
+| **Synthetic IDs** | [StackOne Identifiers](/legacy-unified-apis/common-guide/stackone-identifiers) work the same way across all APIs |
+| **Rate Limiting** | Same [rate limiting policies](https://docs.stackone.com/platform-api/rate-limiting) apply to all endpoints |
+| **Error Handling** | Standardized [error codes](/legacy-unified-apis/error-codes-and-troubleshooting) across all APIs |
+| **Policies** | The IAM Policies API (list, get) was part of the original IAM model and has been superseded by the new IAM entity model. |
+
+## Getting Started
+
+1. **Set up authentication** - Get your API key from the [dashboard](https://app.stackone.com/api_keys) and learn about [authentication](https://docs.stackone.com/platform-api/authentication)
+2. **Connect an account** - Use [StackOne Hub](https://docs.stackone.com/embed/account-linking/overview) to connect your first provider
+3. **Make your first request** - Follow the "Making your first request" guide for your chosen API
+4. **Explore common features** - Learn about [pagination](/legacy-unified-apis/common-guide/pagination), [field mapping](/legacy-unified-apis/common-guide/field-mapping), and [advanced query parameters](/legacy-unified-apis/common-guide/using-expand-and-include-api-parameters)
+
+## IAM Policies
+
+The IAM Policies API was part of the original IAM model. It has been superseded by the updated [IAM entity model](https://docs.stackone.com/iam/introduction), which replaces the Policies/Resources/Permissions structure with a scoped permissions model.
+
+The Policies endpoints remain available here for existing integrations:
+
+<CardGroup cols={2}>
+  <Card title="List Policies" icon="shield" href="https://docs.stackone.com/iam/api-reference/policies/list-policies">
+    Return all policies from the connected identity provider
+  </Card>
+  <Card title="Get Policy" icon="shield-halved" href="https://docs.stackone.com/iam/api-reference/policies/get-policy">
+    Return a single policy by ID
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Pagination" icon="list" href="/legacy-unified-apis/common-guide/pagination">
+    Learn how to paginate through large datasets
+  </Card>
+  <Card title="StackOne Identifiers" icon="fingerprint" href="/legacy-unified-apis/common-guide/stackone-identifiers">
+    Understand synthetic IDs and how to use them
+  </Card>
+  <Card title="Field Mapping" icon="table" href="/legacy-unified-apis/common-guide/field-mapping">
+    Map custom fields between your system and providers
+  </Card>
+  <Card title="Webhooks" icon="bell" href="/legacy-unified-apis/common-guide/webhooks">
+    Set up real-time notifications for data changes
+  </Card>
+</CardGroup>

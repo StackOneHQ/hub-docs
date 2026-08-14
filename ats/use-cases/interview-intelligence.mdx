@@ -1,0 +1,82 @@
+---
+noindex: true
+title: "Interview Intelligence"
+description: "Learn how to integrate real-time interview data into your SaaS to deliver intelligent insights and sync back to your customers' ATS"
+---
+
+<Frame>
+![StackOne Interview Intelligence Banner](/images/interview-intelligence-use-case-banner.png)
+</Frame>
+
+Imagine you're working on your SaaS, aiming to integrate real-time interview data along with AI-powered features such as interview recordings by a bot, automatic note-taking, and candidate feedback collection. While integrating real-time interview data into your SaaS seems straightforward, it can quickly become challenging when dealing with multiple ATS platforms.
+
+Each ATS provider, such as Greenhouse, Ashby, or Workday, has its own data structures, APIs, and syncing methods, which often lead to mismatched data, delayed interview updates, and the need for endless custom code just to keep everything in sync.
+
+<ResponseField name="StackOne simplifies all of this by offering:">
+  <Expandable title="StackOne Features">
+    <ResponseField name="Why StackOne?">
+      - **Unified API** that connects to multiple ATS platforms, simplifying interview data sync.
+      - **Consistent interview data formats** across different ATS integrations.
+      - **Scalability** that lets you easily add new ATS platforms as your needs grow.
+      - **Real-time updates through webhooks**, ensuring always-current interview data.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+With StackOne, you can move beyond the grind of manual integrations and focus on building the features that truly matter.
+
+## Integrating Interview Data and AI Intelligence: Key Steps and System Interactions
+
+Integrating real-time interview data and AI insights into your SaaS involves syncing data from ATS providers like Greenhouse and capturing details such as interview recording links, notes, and candidate feedback.
+
+### Steps for Enabling Interview Intelligence in Your SaaS
+
+Below are the steps to enable interview intelligence in your SaaS, allowing you to sync interview data from multiple ATS providers, keep your database updated in real time, and store AI-generated insights:
+
+<Steps>
+
+<Step title="Automate Sync with Webhooks for Real-Time Interview Updates">
+
+- **First, retrieve the list of interviews**: Start by fetching interviews from the selected ATS provider using `x-account-id` in the request header, according to the chosen ATS. Set the `updated_after` query parameter to one year ago (e.g., **2023-09-25T00:00:00.000Z**) to get interviews updated within the last year.
+
+    - API Endpoint: [GET /ats/interviews](/ats/api-reference/interviews/list-interviews)
+
+- **Next, store the data**: Save this interview data in your database. You’ll also want to fetch additional applicant details using `application_id` as the path parameter, which includes fields like `job ID`, `application_status`, and `remote_candidate_id`.
+
+    - API Endpoint: [GET /ats/applications/\{id\}](/ats/api-reference/applications/get-application)
+
+- **Then, [set up a webhook](/legacy-unified-apis/common-guide/webhooks) for real-time updates:** Set up a webhook to automatically sync new interviews or updates to existing interview data (e.g., `interview_status`, `interview_stage`, `interviewers info`, `start_at`, `end_at`, and `meeting_url`). Each time a webhook update is received, your SaaS database will be refreshed with the latest applicant data.
+
+</Step>
+
+<Step title="Fetch Interviews for Applicants as per the Requirement">
+
+- **First, pull relevant interviews from your database:** Use the database to pull up all relevant interviews along with the corresponding applicant details whenever you need them.
+
+- **Next, apply filters to refine your search:** Use parameters like `interview_status`, `start_at`, `interviewer info`, `application_id`, `interview_stage`, and more to get the interviews you need and display them on your dashboard.
+
+- **If you need more information**, make an API call to the specific ATS provider using `x-account-id` in the request header to fetch the additional interview details.
+
+    - ATS Endpoint: [GET /ats/interviews/\{id\}](/ats/api-reference/interviews/get-interview)
+
+</Step>
+
+<Step title="Generate and Store Interview Intelligence">
+
+- **Generate interview intelligence:** Utilize fetched interview data to generate intelligent insights such as **interview notes**, **candidate feedback**, **recording links**, and other relevant information captured during the interview process.
+
+- **Next, store this intelligence data:** Save these insights in your database so they’re accessible whenever needed, providing a centralized view of all interview details for easy reference.
+
+</Step>
+
+</Steps>
+
+The diagram below shows the key steps, from fetching interviews and storing them in your database to using webhooks for updates and incorporating AI-generated data.
+
+<Frame>
+![StackOne Interview Intelligence Flow Diagram](/images/interview-intelligence-use-case-flow-diagram.png)
+</Frame>
+
+## Conclusion
+
+In this walkthrough, we covered how to integrate real-time interview data and AI-driven features into your SaaS. With StackOne's unified API and webhooks, we made it easier to sync interview data from multiple ATS providers while also adding features like automatic interview recordings, notes, and candidate feedback. This approach keeps your SaaS updated and allows for efficient management of interview data across different ATS platforms.

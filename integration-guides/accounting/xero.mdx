@@ -1,0 +1,77 @@
+---
+noindex: true
+title: "Xero Accounting Integration"
+---
+
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+Before setting up the Xero integration, you need to create a new OAuth app in the [Xero Developer Portal](https://developer.xero.com/).
+
+<Warning>
+  Ensure that you have administrative access to your Xero organization and the ability to create apps in the Xero Developer Portal.
+</Warning>
+
+## Create and Configure a Xero OAuth App
+
+<Steps>
+  <Step title="Log in to Xero Developer Portal">
+    Navigate to the [Xero Developer Portal](https://developer.xero.com/) and log in with your Xero account credentials.
+
+    If you don't have a developer account, you can create one for free.
+  </Step>
+  <Step title="Create a New App">
+    Once logged in, click **My Apps** in the top navigation, then click **New app**.
+  </Step>
+  <Step title="Configure App Details">
+    Fill in your app details:
+
+    - **App name**: Choose a descriptive name for your integration
+    - **Integration type**: Web app
+    - **Company or application URL**: Your company or product website URL
+    - **Redirect URI**: Enter `https://api.stackone.com/connect/oauth2/xero/callback`
+
+    Agree to the terms and conditions and click **Create app**
+
+    <Warning>
+      The redirect URI must be exactly `https://api.stackone.com/connect/oauth2/xero/callback` for the StackOne integration to work properly.
+    </Warning>
+  </Step>
+  <Step title="Obtain Client Credentials">
+    After creating your app, you should be redirected to **App details**.
+
+    In the left hand menu, navigate to **Configuration**:
+
+    - **Client ID**: Copy existing value.
+    - **Client Secret**: Click "Generate a secret" to create a client secret.
+
+    <Warning>
+      Store your client secret securely. You won't be able to view it again after leaving the page. If you lose it, you'll need to generate a new one.
+    </Warning>
+    **Copy** and securely store both values as you'll need them for the StackOne integration configuration.
+  </Step>
+</Steps>
+
+## Enable the StackOne Xero Integration
+
+<Steps>
+  <Step title="Enable the Integration">
+    1. Go to the StackOne app \> [Connector Profiles](https://app.stackone.com/connector_profiles).
+    2. Navigate to **Accounting**.
+    3. Find **Xero** and click **\+** .
+  </Step>
+  <Step title="Setup the Integration">
+    Enter the following details
+
+    - **Client ID**: The Client ID of the Xero app (from previous steps).
+    - **Client Secret**: The Client Secret of the Xero app (from previous steps).
+    - **Application Scopes** (optional): The scopes you want the application to use (or if left blank, placeholder scopes will be used). [Xero Scopes](https://developer.xero.com/documentation/guides/oauth2/scopes/)
+
+    Click **Save Changes**.
+  </Step>
+  <Step title="Integration Enabled">
+    The integration is now enabled and your customers will now be able to connect their accounts. See the following for more information:
+    - [Generate an Auth Link](https://docs.stackone.com/embed/account-linking/auth-link)
+  </Step>
+</Steps>
+
+<IntegrationFooter />

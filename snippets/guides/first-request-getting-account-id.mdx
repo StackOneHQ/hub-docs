@@ -1,0 +1,26 @@
+## Getting Account ID
+
+<Note>
+**Authentication**: When using `curl -u "$API_KEY:"`, encoding is handled automatically. When setting the `Authorization` header manually, base64 encode `{api_key}:`, your key followed by a colon. See [Authentication](https://docs.stackone.com/platform-api/authentication) for details.
+</Note>
+
+1. List your linked accounts to find the account ID:
+
+```bash
+curl --request GET \
+     --url https://api.stackone.com/accounts \
+     --header 'accept: application/json' \
+     --header 'authorization: Basic {base64_encoded_api_key}'
+```
+
+2. From the response, copy the `id` value for your desired provider account.
+
+<Tip>
+Filter by provider using the `providers` query parameter:
+```bash
+curl --request GET \
+     --url 'https://api.stackone.com/accounts?providers={provider_name}' \
+     --header 'accept: application/json' \
+     --header 'authorization: Basic {base64_encoded_api_key}'
+```
+</Tip>

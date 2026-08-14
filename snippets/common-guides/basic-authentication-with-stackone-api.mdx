@@ -1,0 +1,252 @@
+
+## Overview
+
+StackOne uses API key-based authentication to secure access to all endpoints. This guide explains how to use your API keys with Basic Authentication to make secure requests to the StackOne API.
+
+<Info>
+**Basic Authentication** is one of the simplest authentication methods where credentials are sent as a Base64-encoded string in the Authorization header.
+</Info>
+
+## Prerequisites
+
+Before using Basic Authentication, ensure you have completed these steps:
+
+➡️ **[Create an API Key](https://docs.stackone.com/embed/api-keys)** : Generate your API key from the StackOne Dashboard
+
+## Steps for Basic Authentication
+
+<Steps>
+
+<Step title="Convert the API Key into a Base64 Encoded String">
+To authenticate using Basic Auth, you must convert your API key into a Base64 encoded string.
+
+<Warning>
+**Important**: The API key must be base64 encoded when using Basic authentication. You cannot use the raw API key directly.
+</Warning>
+
+Here are examples of how to encode your API key:
+
+**Terminal/Command Line:**
+```bash
+echo -n "your_api_key_here" | base64
+```
+
+**Python:**
+```python
+import base64
+
+api_key = 'your_api_key_here'
+base64_api_key = base64.b64encode(api_key.encode()).decode()
+print(base64_api_key)
+```
+
+**JavaScript/Node.js:**
+```javascript
+const apiKey = 'your_api_key_here';
+const base64ApiKey = Buffer.from(apiKey).toString('base64');
+console.log(base64ApiKey);
+```
+
+**Example**: If your API key is `v1.eu1.abc123xyz`, the base64 encoded result would be: `djEuZXUxLmFiYzEyM3h5eg==`
+</Step>
+
+<Step title="Using the Base64 Encoded API Key for API Requests">
+Include the Base64 encoded API key in the Authorization header of your requests.
+
+**Header Format:**
+```bash
+Authorization: Basic <BASE64_ENCODED_API_KEY>
+```
+
+**Complete cURL Example:**
+```bash
+curl --request GET \
+     --url 'https://api.stackone.com/accounts' \
+     --header 'accept: application/json' \
+     --header 'authorization: Basic djEuZXUxLmFiYzEyM3h5eg=='
+```
+</Step>
+
+<Step title="Making Unified API Requests">
+For unified API endpoints, you'll also need to include the account ID in the `x-account-id` header:
+
+```bash
+curl --request GET \
+     --url 'https://api.stackone.com/unified/ats/applications' \
+     --header 'accept: application/json' \
+     --header 'authorization: Basic djEuZXUxLmFiYzEyM3h5eg==' \
+     --header 'x-account-id: your_account_id_here'
+```
+
+<Note>
+Replace `your_account_id_here` with the actual account ID obtained from the [List Accounts](https://docs.stackone.com/platform/api-reference/accounts/list-accounts) endpoint.
+</Note>
+</Step>
+
+<Step title="Using StackOne SDKs with Basic Authentication">
+StackOne provides official SDKs for multiple programming languages that simplify API integration and handle authentication automatically. Here's how to initialize each SDK with your API key:
+
+<Tabs>
+  <Tab title="TypeScript" default>
+    ```typescript
+    import { StackOne } from '@stackone/stackone-client-ts';
+
+    // Initialize the StackOne client with your API credentials
+    const stackOne = new StackOne({
+      security: {
+        username: "your_api_key_here",
+        password: "",
+      },
+    });
+
+    // Example: List accounts
+    const accounts = await stackOne.accounts.list();
+
+    // Example: Make a unified API request
+    const applications = await stackOne.ats.applications.list({
+      accountId: 'your_account_id_here'
+    });
+    ```
+  </Tab>
+
+  <Tab title="Ruby">
+    ```ruby
+    require 'stackone_client'
+
+    # Initialize the StackOne client with your API key
+    s = ::StackOne::StackOne.new(
+      security: Models::Shared::Security.new(
+        password: "",
+        username: "your_api_key_here",
+      ),
+    )
+
+    # Example: List accounts
+    res = s.accounts.list_linked_accounts()
+    if ! res.linked_accounts_paginated.nil?
+      # handle response
+    end
+
+    # Example: Make a unified API request
+    req = Models::Operations::AtsListApplicationsRequest.new(
+      x_account_id: "your_account_id_here",
+    )
+    res = s.ats.list_applications(req)
+    if ! res.applications_paginated.nil?
+      # handle response
+    end
+    ```
+  </Tab>
+
+  <Tab title="PHP">
+    ```php
+    <?php
+    require_once 'vendor/autoload.php';
+
+    use StackOne\client;
+    use StackOne\client\Models\Components;
+
+    // Initialize the StackOne client with your API credentials
+    $sdk = client\StackOne::builder()
+        ->setSecurity(
+            new Components\Security(
+                username: 'your_api_key_here',
+                password: '',
+            )
+        )
+        ->build();
+
+    // Example: List accounts
+    $result = $sdk->accounts->listLinkedAccounts();
+
+    // Example: Make a unified API request
+    $result = $sdk->ats->listApplications(
+        xAccountId: 'your_account_id_here',
+    );
+    ?>
+    ```
+  </Tab>
+
+  <Tab title="Java">
+    ```java
+    import com.stackone.stackone_client_java.StackOne;
+    import com.stackone.stackone_client_java.models.components.Security;
+    import com.stackone.stackone_client_java.models.operations.ListLinkedAccountsResponse;
+    import com.stackone.stackone_client_java.models.operations.AtsListApplicationsResponse;
+
+    // Initialize the StackOne client with your API credentials
+    StackOne sdk = StackOne.builder()
+        .security(Security.builder()
+            .username("your_api_key_here")
+            .password("")
+            .build())
+        .build();
+
+    // Example: List accounts
+    ListLinkedAccountsResponse res = sdk.accounts().listLinkedAccounts()
+        .call();
+
+    // Example: Make a unified API request
+    AtsListApplicationsResponse res = sdk.ats().listApplications()
+        .xAccountId("your_account_id_here")
+        .call();
+    ```
+  </Tab>
+
+  <Tab title="C#">
+    ```csharp
+    using StackOneHQ.Client;
+    using StackOneHQ.Client.Models.Components;
+    using StackOneHQ.Client.Models.Operations;
+
+    // Initialize the StackOne client with your API credentials
+    var sdk = new StackOneHQClient(security: new Security() {
+        Username = "your_api_key_here",
+        Password = "",
+    });
+
+    // Example: List accounts
+    var res = await sdk.Accounts.ListLinkedAccountsAsync();
+
+    // Example: Make a unified API request
+    var res = await sdk.Ats.ListApplicationsAsync(new AtsListApplicationsRequest() {
+        XAccountId = "your_account_id_here",
+    });
+    ```
+  </Tab>
+</Tabs>
+
+<Note>
+The SDKs automatically handle Base64 encoding and proper Authorization header formatting for HTTP Basic Authentication. Provide your raw API key in the `username` field and leave `password` empty when initializing the client.
+</Note>
+</Step>
+
+</Steps>
+
+## Security Best Practices
+
+<Warning>
+**Store API Keys Securely**: Never expose API keys in client-side code, version control, or public repositories. Store them in secure locations such as environment variables or key vaults.
+</Warning>
+
+- Use environment variables to pass API keys to your application
+- Rotate API keys regularly for enhanced security
+- Use API key scopes to limit permissions when possible
+- Monitor API key usage through the StackOne Dashboard
+
+## Next Steps
+
+After setting up Basic Authentication:
+
+1. **[Making Your First API Request](https://docs.stackone.com/gateway/quickstart)** - Step-by-step examples for common API operations
+2. **[Explore API Endpoints](https://docs.stackone.com/platform-api/overview)** - Browse available Platform API endpoints
+3. **[Try Unified APIs](https://docs.stackone.com/documents/introduction)** - Start with Documents or IAM
+4. **[Use SDKs](/legacy-unified-apis/common-guide/stackone-api-sdks)** - Simplify integration with official SDKs
+5. **[Set up Webhooks](/legacy-unified-apis/common-guide/webhooks)** - Get real-time updates from connected providers
+
+## Additional Resources
+
+- [API Keys Management Guide](https://docs.stackone.com/embed/api-keys)
+- [Making Your First API Request](https://docs.stackone.com/gateway/quickstart)
+- [StackOne API SDKs](/legacy-unified-apis/common-guide/stackone-api-sdks)
+- [Rate Limiting](https://docs.stackone.com/platform-api/rate-limiting)

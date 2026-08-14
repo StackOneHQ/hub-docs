@@ -1,0 +1,513 @@
+---
+noindex: true
+title: "SAP SuccessFactors Assessment through a third-party vendor"
+description: "Learn how to set up and configure a third-party assessment vendor in SAP SuccessFactors for integration with StackOne."
+---
+
+
+## Overview
+This document outlines the procedure for configuring a third-party assessment vendor within SAP SuccessFactors and integrating it with StackOne. 
+The guide details adding a vendor, uploading assessment packages, and customizing job requisition templates to include assessment fields. 
+Finally, it explains how to set up external event notifications to trigger assessments and utilize the StackOne Unified API to return the results to SAP SuccessFactors.
+
+
+## Partner Requirements
+
+There are no formal partnership requirements for assessment vendor integration with SAP SuccessFactors. 
+You must have access to the Provisioning Account to create an integration user and grant the necessary permissions.
+
+### Required Permissions for Vendor Assessment in SAP SuccessFactors
+
+<Note>
+  If you don't have access to the Provisioning Account, contact your SAP SuccessFactors customer and ask them to follow the instructions below to grant you the necessary permissions.
+</Note>
+
+In the Provisioning Account, create an **Integration User** and assign the following permissions to enable effective collaboration with third-party assessment vendors 
+and SAP SuccessFactors.
+
+<AccordionGroup>
+  <Accordion title="Recruiting Assessment Permissions">
+    - SFAPI Retrieve Assessment Order Permission
+    - SFAPI Update Assessment Report Permission
+  </Accordion>
+
+  <Accordion title="Permissions Required for Assessment Configurations">
+    - Ensure recruiting users are granted the Manage Assessment Vendors permission.
+    - In _Provisioning > Company Settings_, enable the following options:
+      - Enable Assessment Integration
+      - SFAPI
+      - Enable SFAPI Web Services
+    - Grant the following permissions to the SFAPI integration user:
+      - Access to Event Notification Subscription
+      - Retrieve Assessment Order
+      - Update Assessment Report
+    - Enable Assessment Integration (which requires Candidate Workbench) from the Provisioning Account.
+  </Accordion>
+</AccordionGroup>
+
+
+## Provider Side Setup
+
+### Add the integration user to the SAP SuccessFactors API login exceptions list
+Navigate to _Admin Center > Tools > Password & Login Policy Settings > Set API Login Exceptions_, then **Add** the following information:
+
+- **Username:** Select the SFAPI integration user.
+- **Maximum Password Age (days):** Set to -1.
+- **IP Address Restrictions:** Specify the designated IP addresses or address range for the integration.
+
+### Add your vendor and upload the assessment vendor packages
+
+<Steps>
+  <Step title="Add a Vendor for Assessment">
+    Go to _Manage Assessment Vendors_, Click `Export` to download the CSV file. Add your vendor with a unique `clientId` and mark it as active by entering `Y` in the active column.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add a Vendor" src="/images/sapsuccessfactors/assessment/sapsf_assess_add_new_vendor_in_sheet_1.png" />
+    </Frame>
+
+    Select an updated file to import the Assessment Vendor List into SAP SuccessFactors.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Upload a file of vendor" src="/images/sapsuccessfactors/assessment/sapsf_assess_upload_new_vendor_14.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Upload the assessment vendor packages">
+    <Note>
+      If you do not have access to the Provisioning Account, please contact your SAP SuccessFactors customer. Provide them with the CSV file of the assessment vendor package and request that they upload it. Alternatively, you can ask them to follow the instructions below for uploading the file.
+    </Note>
+
+    Assessment vendor packages will be uploaded from _Provisioning Account > Managing Recruiting > Import/Export Assessment Vendor Packages_. Prepare a CSV file with the required columns and values, as illustrated in the image.
+    
+    - **vendorId:** Identifies the assessment vendor (must be the same as the `clientId`).
+    - **packageCode:** Identifies an assessment package for the order.
+    - **shortName:** A shortened name for the package, for use on the candidate summary page.
+    - **Label:** The language in which the assessment is displayed.
+    
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Import/Export Assessment Vendor Packages" src="/images/sapsuccessfactors/assessment/sapsf_assess_upload_vendor_assessment_packages_csv_5.png" />
+    </Frame>
+
+    Choose the file to import the assessment vendor packages list into SAP SuccessFactors.
+  </Step>
+</Steps>
+
+### Create a subscriber and set up an external event
+
+<Steps>
+  <Step title="Create a subscriber">
+    Go to the _Event Notification Subscription_ page. Under the _Subscriber_ tab, add a subscriber using your `Subscriber Id` and `Client Id`. 
+    Note that your `clientId` must match the one uploaded with your vendor's name in the previous <a href="#add-your-vendor-and-upload-the-assessment-vendor-packages">step</a>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Create a Subscriber" src="/images/sapsuccessfactors/assessment/sapsf_assess_add_subcriber_for_event_2.png" />
+    </Frame>
+
+    <Note>
+      If multiple subscribers are created using the same `client_id`, an error will occur when sending the assessment notification.
+    </Note>
+  </Step>
+
+  <Step title="Set up an external event to receive notifications">
+    Navigate to the _External Event_ tab and click `+ Add New` to add a new external event.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add New external event" src="/images/sapsuccessfactors/assessment/sapsf_assess_event_external_event_3.png" />
+    </Frame>
+
+    Select the values for the specified fields:
+    - **Event Type:** Select `rcm_assessment_alert_v2`.
+    - **Subscriber:** Select the subscriber you created in the previous <a href="#add-your-vendor-and-upload-the-assessment-vendor-packages">step</a>.
+    - **Protocol:** Select `SOAP_OVER_HTTP_HTTPS`.
+    - **Endpoint URL:** Enter the endpoint URL, including the `externalTriggerToken` query parameter, which will be used to receive assessment order requests.
+
+    ```plaintext
+    https://api.stackone.com/external-trigger/sapsuccessfactors_ats?externalTriggerToken=<external-trigger-token>
+    ```
+
+    <Info>
+      The endpoint URL must include the query parameter `externalTriggerToken`, which you will receive from the StackOne Connection Hub. This token verifies requests from SAP SuccessFactors for that specific vendor.
+    </Info>
+
+    <Note>
+      To obtain the **External Trigger Token**, please follow these steps:
+      - [StackOne Configuration](#stackone-configuration)
+      - [ATS User Enablement](#ats-user-enablement)
+    </Note>
+
+    - **Authentication:** Select `NO`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Setup external event" src="/images/sapsuccessfactors/assessment/sapsf_assess_add_external_event_for_notification_4.png" />
+    </Frame>
+
+    Click `Save` to save the configuration for the external event.
+  </Step>
+</Steps>
+
+### Manage fields for the Job Requisition template
+
+<Steps>
+  <Step title="Go to Manage Templates">
+    Navigate to _Admin Center_ and search for _Manage Templates_.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Navigate to Job Requisition template" src="/images/sapsuccessfactors/assessment/sap_sf_bc_search_manage_templates_24.png" />
+    </Frame>
+
+    Navigate to the _Recruiting Management_ tab, select _Job Requisition_, and choose the template in use for the specific job requisition, such as `Standard Job Requisition`.
+    <Accordion title="How to Locate the Job Requisition Template Name">
+      Go to _Recruiting_ and select any specific job requisition.
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Specific Job Requistion" src="/images/sapsuccessfactors/assessment/sap_sf_bc_recruiting_info_26.png" />
+      </Frame>
+
+      Click on the `i` icon to view the Job Requisition Template.
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="JR Info" src="/images/sapsuccessfactors/assessment/sap_sf_bc_recruiting_JR_info_27.png" />
+      </Frame>
+    </Accordion>
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Standard Job Requisition" src="/images/sapsuccessfactors/assessment/sap_sf_bc_jr_specific_template_28.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Add assessment field in template">
+    To add or update fields, navigate to the specific _Job Requisition Template_, select `Fields Defined`, and then click `Add Standard Field`.
+
+    - **Field-ID:** Select `assessment`.
+    - **Field Type:** Select `Derived`.
+    - **Field Label:** Enter a relevant label, such as `Assessment association`.
+    - **Field Description:** Enter a relevant description, such as `Assessmentasso`. 
+    - **Required:** Select the checkbox to make this field mandatory, as per your requirement.
+
+    <Accordion title="You can also specify the standard `assessment` field using the Job Requisition XML.">
+      <Warning>
+        This approach should only be used if you have permission to upload the Job Requisition template via an XML file; otherwise, you can add the fields manually and click `Publish`.
+      </Warning>
+
+      ```XML
+        <field-definition id="assessment" type="derived" required="true" custom="false">
+          <field-label><![CDATA[Assessment assocication]]></field-label>
+          <field-description><![CDATA\[Assessmentasso]]></field-description>
+        </field-definition>
+        <field-permission type="write">
+          <description><![CDATA[job code permissions]]></description>
+          <role-name><![CDATA[R]]></role-name>
+          <status><![CDATA[pre-approved]]></status>
+          <field refid="assessment"/>
+        </field-permission>
+      ```
+    </Accordion>
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add a field from JR field template" src="/images/sapsuccessfactors/assessment/sapsf_assess_job_req_template_update_for_assessment_field_6.png" />
+    </Frame>
+
+    <Info>
+      This `assessment` field enables the user to select a specific assessment to associate with the job requisition.
+    </Info>
+  </Step>
+</Steps>
+
+### Manage the permissions for the assessment feature
+
+<Steps>
+  <Step title="Go to Manage Templates">
+    To add or update feature permissions, navigate to the specific _Job Requisition Template_ > _General Settings_ > _Application Status Configuration_, select `Feature Permissions Defined`, and then click `Add Feature Permission`.
+
+    - **Feature Permission Description:** Enter a relevant description.
+    - **Feature Permission Type:** Select `assessmentIntegration`.
+    - **Feature Permission Role Name:** Select `All`.
+    - **Feature Permission Status:** Select the talent pipeline stage at which you want to initiate the assessment.
+
+    <Info>
+      You can add multiple feature permissions for `assessmentIntegration` for a specific talent pipeline stage.
+    </Info>
+
+    <Accordion title="You can also specify the feature permissions for `assessmentIntegration` using the Job Requisition XML.">
+      <Warning>
+        This approach should only be used if you have permission to upload the Job Requisition template via an XML file; otherwise, you can add the permissions manually and click `Publish`.
+      </Warning>
+
+      ```XML         
+        <feature-permission type="assessmentIntegration">
+          <description><\!\[CDATA\[Operators with below roles can see Assessment detail report for the applicant when the application is in Scheduled Status\]\]></description>
+          <role-name><\!\[CDATA\[S\]\]></role-name>
+          <role-name><\!\[CDATA\[T\]\]></role-name>
+          <role-name><\!\[CDATA\[O\]\]></role-name>
+          <role-name><\!\[CDATA\[R\]\]></role-name>
+          <role-name><\!\[CDATA\[G\]\]></role-name>
+          <status><\!\[CDATA\[Scheduled\]\]></status>  // You can choose any stage from the options provided; for this document, we have selected "Scheduled."
+        </feature-permission>
+        <feature-permission type="assessmentIntegration">
+          <description><\!\[CDATA\[Operators with below roles can see Assessment detail report for the applicant when the application is in New Application Status \]\]></description>
+          <role-name><\!\[CDATA\[S\]\]></role-name>
+          <role-name><\!\[CDATA\[T\]\]></role-name>
+          <role-name><\!\[CDATA\[O\]\]></role-name>
+          <role-name><\!\[CDATA\[R\]\]></role-name>
+          <role-name><\!\[CDATA\[G\]\]></role-name>
+          <status><\!\[CDATA\[Default\]\]></status>
+        </feature-permission>
+      ```
+    </Accordion>
+
+    After adding the feature permissions, click `Done`, and then click `Publish` to save your changes.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Add feature permission from the JR template" src="/images/sapsuccessfactors/assessment/sapsf_assess_jr_template_feature_permissions_7.png" />
+    </Frame>
+
+    <Tip>
+      When an assessment is configured in `Default` or `New Applicant`, it is triggered when the candidate applies for the job. Immediately after applying and passing any prescreening questions, the candidate will be redirected to an assessment vendor site. After completing the assessment, the candidate is redirected back to the career site.
+    </Tip>
+
+  </Step>
+</Steps>
+
+### Assessment fields under Job Requisition
+
+<Steps>
+    <Step title="Go to Job Requisition">
+        Access the specific _Job Requisition_ that uses the template where you configured the Assessment in the previous <a href="#manage-the-permissions-for-the-assessment-feature">steps</a>. Hover over the job requisition title to open the Actions menu, then select `View or Edit Requisition`.
+        <Frame>
+          <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Actions menu" src="/images/sapsuccessfactors/assessment/sapsf_assess_recruiting_jr_8.png" />
+        </Frame>
+
+        To add an Assessment association row, click the `Add More Assessments` link and select the details below.
+        <Frame>
+            <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="add a row of fields" src="/images/sapsuccessfactors/assessment/sap_successfactors_JR_edit_assess_44.png" />
+        </Frame>
+
+        The following fields will be visible on the job requisition:
+
+        - **Status:** Select the stage where you have set up the assessment integration feature, as described in the previous <a href="#manage-the-permissions-for-the-assessment-feature">step</a>.
+        - **Vendor:** Select the vendor, for example, `STACK_ASSESSMENT_TEST`.
+        - **Assessment:** Select the specific assessment package to be sent to the candidate.
+        - **Email Template:** Select the email template to be sent to the candidate once the assessment is triggered.
+    
+        <Accordion title="If the fields are not visible after you have added them and set the permissions in the previous steps">
+            Navigate to _Admin Center_ and search for `OData API Metadata Refresh and Export`.
+            <Frame>
+              <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="OData API Metadata Refresh and Export" src="/images/sapsuccessfactors/assessment/sap_sf_bc_odata_api_search_38.png" />
+            </Frame>
+
+            Click the `Refresh` button next to Cache.
+            <Frame>
+              <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Refresh button" src="/images/sapsuccessfactors/assessment/sap_sf_bc_odata_api_cache_refresh_39.png" />
+            </Frame>
+        </Accordion>
+    </Step>
+</Steps>
+
+
+## StackOne Configuration
+
+<Steps>
+  <Step title="Enable SAP SuccessFactors in StackOne">
+    Go to the ATS category on the _Integrations_ page and enable SAP SuccessFactors.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Activate SAP SuccessFactors" src="/images/sapsuccessfactors/assessment/sapsuccessfactors_enable_41.png" />
+    </Frame>
+  </Step>
+
+    <Step title="Complete the configuration form">
+    Fill out the required fields in the **SAP SuccessFactors - Configuration** modal:
+
+    * **Authentication Type** - Select `Client Application`.
+    * **Integration Category** - Select `Assessments`.
+
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Activate SAP SuccessFactors" src="/images/sapsuccessfactors/assessment/sapsuccessfactors_config_40.png" />
+    </Frame>
+
+    Click `Confirm` or `Save Changes` to enable the SAP SuccessFactors integration, allowing end-users to link their accounts via the StackOne Connector Hub.
+  </Step>
+
+  <Step title="Add a Webhook">
+    Navigate to the _Webhooks_ page, click `Add webhook`, and complete the form:
+
+    - **Name:** Enter a recognisable name for your webhook.
+    - **URL:** Enter the URL where the webhook will send notifications of enable events.
+
+    <Frame>
+        ![Add Webhook form](/images/sapsuccessfactors/assessment/sapsuccessfactors_add_webhook_form.png)
+    </Frame>
+
+    Enable the webhook event from the `Events` tab for Assessment, such as `Assessment Order`.
+    <Frame>
+        ![Select webhook events](/images/sapsuccessfactors/assessment/sapsuccessfactors_add_webhook_assess.png)
+    </Frame>
+  </Step>
+</Steps>
+
+
+## ATS User Enablement
+
+<Note>
+  Users can obtain an **External Trigger Token** if they wish to use a different token from another StackOne project. 
+  Users can then update the `externalTriggerToken` in the query parameter of the endpoint URL. Please refer to <a href="#create-a-subscriber-and-set-up-an-external-event">these</a> steps.
+</Note>
+
+Navigate to the _Accounts_ page or the StackOne Connector Hub to link your SAP SuccessFactors account with StackOne.
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link SAP SuccessFactors account" src="/images/sapsuccessfactors/assessment/sapsuccessfactors_Link_Account_page_43.png" />
+</Frame>
+
+You will receive the `External Trigger Token`, which must be passed as a query parameter with the endpoint URL when setting up the external event in SAP SuccessFactors, as outlined in the previous <a href="#create-a-subscriber-and-set-up-an-external-event">steps</a>.
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="External Trigger Token" src="/images/sapsuccessfactors/assessment/sapsuccessfactors_external_trigger_token_42.png" />
+</Frame>
+
+
+## ATS User Experience
+
+<Steps>
+  <Step title="Go to Job Requisition">
+    Navigate to the relevant _Job Requisition_, hover over the requisition title to open the Actions menu, and then select `View or Edit Requisition`.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Actions menu" src="/images/sapsuccessfactors/assessment/sapsf_assess_recruiting_jr_8.png" />
+    </Frame>
+
+    Users will see the option to add an Assessment association row. By clicking `Add More Assessments`, users can select the details.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="add a row of fields" src="/images/sapsuccessfactors/assessment/sap_successfactors_JR_edit_assess_44.png" />
+    </Frame>
+
+    The following fields will be visible to users on the job requisition to associate an assessment with it:
+
+    - **Status:** Select the stage where you have set up the assessment integration feature, as described in the previous <a href="#manage-the-permissions-for-the-assessment-feature">step</a>.
+    - **Vendor:** Select the vendor, for example, `STACK_ASSESSMENT_TEST`.
+    - **Assessment:** Select the specific assessment package to be sent to the candidate.
+    - **Email Template:** Select the email template to be sent to the candidate once the assessment is triggered.
+    
+    <Accordion title="If fields are not visible after adding them and setting permissions in the above steps">
+      Navigate to _Admin Center_ and search for `OData API Metadata Refresh and Export`.
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="OData API Metadata Refresh and Export" src="/images/sapsuccessfactors/assessment/sap_sf_bc_odata_api_search_38.png" />
+      </Frame>
+
+      Click the `Refresh` button next to Cache.
+      <Frame>
+        <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Refresh button" src="/images/sapsuccessfactors/assessment/sap_sf_bc_odata_api_cache_refresh_39.png" />
+      </Frame>
+    </Accordion>
+  </Step>
+
+  <Step title="Move candidate to the assessment-configured stage">
+    Go to the `Candidates` tab located within the Job Requisition section.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="job requisition candidate tab" src="/images/sapsuccessfactors/assessment/sap_sf_job_req_candidate_tab.png" />
+    </Frame>
+
+    You will receive the list of candidates who applied for the job. Move candidates to the stage where you previously configured the assessment, as described in the <a href="#manage-the-permissions-for-the-assessment-feature">steps</a>.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Job requisition talent pipeline" src="/images/sapsuccessfactors/assessment/sap_sf_job_req_talent_pipeline.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Visibility of the Initiate Assessment option">
+    <Warning>
+      If you see the message below in the candidate's application, the assessment will not be sent.<br/>
+
+      ⚠️ **Non Applicant**<br/>
+      **This candidate has been forwarded to this job by [recruiter] and added to this job but has not yet applied for it.**
+
+      The assessment will only be sent to the candidate when they apply for the job.
+    </Warning>
+    
+    The assessment will be sent to the candidate automatically when they are moved to the assessment-configured stage in the talent pipeline.
+    <Frame>
+      <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Take Actions menu" src="/images/sapsuccessfactors/assessment/sapsuccessfactors_assess_sent_failed.png" />
+    </Frame>
+
+    <Info>
+      The `Initiate Assessment` option under the `Take Actions` menu will only be visible if the assessment fails to send, allowing it to be re-initiated.
+    </Info>
+  </Step>
+</Steps>
+
+### Send the test to the candidate from SAP SuccessFactors
+
+<Frame caption="Test your integration with StackOne using your SAP SuccessFactors Sandbox" >
+  <video
+      controls
+      className="w-full aspect-video"
+      src="https://cdn.stackone.com/public/sap_successfactors_assessment_flow.mov"
+  />
+</Frame>
+
+<Note>
+  Follow the [SAP SuccessFactors Assessment](/integration-configuration-concepts/ats/sapsuccessfactors-assessment) guide for instructions on how to send the test from SAP SuccessFactors.
+</Note>
+
+### User experience after the assessment has been sent
+
+When an assessment is sent to the candidate, the user will see the `Initiated` status along with the Assessment Package in the Assessment Portlet on the candidate's application.
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Job Requisition Fields" src="/images/sapsuccessfactors/assessment/sapsuccessfactors_JR_sent_assess_on_application_45.png" />
+</Frame>
+
+
+## ATS User Experience Customization
+
+<Steps>
+  <Step title="Update the result via Unified API">
+    Utilize the following endpoints to update the results:
+      - [Assessment Update Result](/ats/api-reference/assessments/results/update-assessments-result)
+
+    Utilize the following endpoint to get metadata to update the result of the assessment:
+      - [Connector Meta Information](https://docs.stackone.com/platform/api-reference/connectors/get-connector-meta-information-legacy) with the provider key `sapsuccessfactors_ats` for the `assessments/results.update` model.
+
+#### User sees the updated results with different conditions of the assessment in SAP SuccessFactors
+    |                                                                                                                                                                                   |
+    | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | When the result is `completed` with all details        <br/> ![completed with all details](/images/sapsuccessfactors/assessment/sapsuccessfactors_assessment_completed_with_all_details.png)  |
+    | When the result is `completed` without other details   <br/> ![completed without score](/images/sapsuccessfactors/assessment/sapsuccessfactors_result_2.png)                         |
+    | When the result does not include a Result URL          <br/> ![completed without result url](/images/sapsuccessfactors/assessment/sapsuccessfactors_result_3.png)                    |
+  </Step>
+</Steps>
+
+
+## Testing Checklist
+
+✅  **Provider Setup:**
+      - You have all the necessary permissions mentioned in the [Partner Requirements](#partner-requirements) section.
+      - A vendor for Assessment with a unique `clientId` has been added with an active `Y` status.
+      - The vendor's assessment packages have been uploaded with a valid `vendorId`.
+      - A subscriber has been created with a unique `Subscriber Id` and a valid `Client Id` (same as `vendorId`).
+      - An external event has been created with the correct and valid endpoint URL, including a valid `externaltriggerToken` in the query parameter.
+      - The `assessment` field has been added to the Job Requisition template with the necessary permissions.
+      - The feature permission for `assessmentIntegration` has been granted to the job requisition template.
+      - The `Add More Assessments` link and Assessment fields are visible to users during the creation/editing of the Job Requisition, as mentioned in <a href="#ats-user-experience">this</a> step.
+
+✅  **StackOne Configuration:**
+      - The integration category `Assessments` is selected.
+
+✅  **ATS User Activation:**
+      - A valid `externalTriggerToken` is provided in the query parameter along with the endpoint URL.
+
+✅  **Create a Webhook:**
+      - A webhook for SAP SuccessFactors has been added and enabled with the `Assessment Order` event.
+      - A valid webhook URL has been added to receive assessment notifications.
+
+✅  **ATS User Experience:**
+      - The `Assessment` stage is visible in the talent pipeline for the job requisition.
+      - The `Add More Assessments` link and Assessment fields are visible to users during the creation/editing of the Job Requisition, as mentioned in <a href="#ats-user-experience">this</a> step.
+      - After sending the assessment to a candidate, the user can see the `Initiated` status along with the Assessment Package in the Assessment Portlet on the candidate's application.
+
+✅  **Update Result:**
+      - A success response is received from the update result endpoint.
+      - The updated result details are visible in the SAP SuccessFactors UI.
+
+
+## Troubleshooting
+
+<div className="troubleshooting-table">
+| Symptom | Likely Cause | Fix |
+| ------- | ------------ | --- |
+| Unable to access some of the navigations necessary for configuration. | **•** Insufficient permissions. <br/><br/> **•** The logged-in account is not an Admin account. | **•** Ensure the account has the <a href="#partner-requirements">necessary permissions</a>. <br/><br/> **•** Log in with an Admin account. |
+| The `Add More Assessments` link and Assessment fields are not visible when creating/editing the Job Requisition. | **•** Fields are not configured in the Job Requisition template. <br/><br/> **•** Fields do not have the necessary permissions in the Job Requisition template. <br/><br/> **•** The OData API cache has not been refreshed after adding fields and permissions. | **•** Add the `assessment` field and its permissions in the Job Requisition template. <br/> Please refer to the following sections: <br/>- <a href="#manage-fields-for-the-job-requisition-template">Manage fields for the Job Requisition template</a>. <br/>- <a href="#manage-the-permissions-for-the-assessment-feature">Manage permissions for the assessment feature</a>. <br/>- <a href="#assessment-fields-under-job-requisition">Refresh the OData API cache</a>. |
+| Packages are not available to select from the `Assessment` field when creating/editing the Job Requisition. | **•** The assessment vendor package list has not been uploaded. <br/><br/> **•** Invalid `clientId` or `vendorId`. | **•** Upload the assessment vendor packages list from the Provisioning Account. <br/><br/> **•** Ensure the `clientId` and `vendorId` are valid. |
+| The `Initiate Assessment` option is not visible under the `Take Actions` menu within the candidate's application. | **•** The user does not have the necessary permissions to initiate assessments. <br/><br/> **•** The `Initiated Assessment` button will only be visible if the assessment initiation fails when moving the candidate to the configured assessment stage. | **•** Add the Assessment feature permission to the Job Requisition template. Please refer to <a href="#manage-the-permissions-for-the-assessment-feature">this</a> section. |
+| **•** Error when sending the assessment. <br/><br/> **•** Test notification not received. | **•** Insufficient permissions. <br/><br/> **•** Multiple subscribers with same `client_id`. <br/><br/> **•** Invalid Endpoint URL or other configurations under External Event. <br/><br/> **•** Invalid External Trigger Token. | **•** Add the Assessment feature permission to the Job Requisition template. Please refer to <a href="#manage-the-permissions-for-the-assessment-feature">this</a> section. <br/><br/> **•** To add a subscriber, please provide a unique `client_id`. For instructions, visit <a href="#create-a-subscriber-and-set-up-an-external-event">Create a Subscriber</a>. <br/><br/> **•** Verify the Endpoint URL with all other valid configurations, as mentioned <a href="#create-a-subscriber-and-set-up-an-external-event">here</a>. <br/><br/> **•** The External Trigger Token must be valid. |
+| Unable to update the result. | Invalid payload format. | Check the [Connector Meta Information](https://docs.stackone.com/platform/api-reference/connectors/get-connector-meta-information-legacy) endpoint for the correct payload format. |
+| The result URL shows an error when opened. | The result URL may have expired or is private. | Ensure you add public or signed URLs; verify CORS and expiry. |
+</div>
+
+For persistent issues, contact StackOne support with detailed error logs and configuration information.

@@ -1,0 +1,475 @@
+---
+noindex: true
+title: "Eploy Background Check Partner Integration"
+description: "Learn how to set up and use the Eploy Background Check as a Partner Integration with StackOne"
+---
+
+
+
+## Overview
+
+This guide explains how to configure custom options and fields, add background check packages in Eploy, and integrate with StackOne to receive background check notifications.
+
+
+## Partner Requirements
+
+Eploy integration partnership is required to proceed with this documentation. Visit [Eploy Technology Partner Support](https://www.eploy.com/partner/technology-partners) to fill out the form and initiate the partnership process. One of the Eploy team members will reach out to you to discuss the partnership and integration process.
+
+### Eploy Approach: Workflow-based Integrations
+
+Eploy enables workflow-based integrations for recruitment, handling tasks like background checks. 
+The process begins by regularly polling Eploy to identify applicants needing processing. Their data is then extracted to initiate the integration, 
+which includes creating actions and marking exported applications.
+
+A typical Eploy workflow is structured as follows:
+
+<Frame>
+    ![eploy process flow](/images/eploy/background-check/eploy_bc_assess_process_flow_diagram_4.png)
+</Frame>
+
+### StackOne's Unified Approach for Integration Partners
+
+StackOne manages the Eploy-required polling internally. The interaction model for this integration follows our standard webhook-based Background Check pattern.
+Because Eploy requires polling, there can be a short delay between moving an application into the background check stage and the order being triggered.
+
+<Info>
+    **Note:** Repeating the following step is required for each user that you want to connect with Eploy.
+    
+    To add your background check integration, please contact [**Eploy Technology Partner Support**](https://www.eploy.com/partner/technology-partners)
+</Info>
+
+After your integration app is added as a stage in Eploy, configure the same stage name in StackOne as outlined in the following [steps](#stackone-configuration).
+
+<Frame>
+    ![stackone sequence flow](/images/eploy/background-check/eploy_bc_assess_process_sequence_diagram_7.png)
+</Frame>
+
+
+## Provider Side Setup
+
+Once the Eploy partnership is established, your Eploy integration app will appear in the [Eploy Marketplace](https://www.eploy.com/product/eploy-marketplace).
+After it is enabled for testing, the integration app will be available as a stage option in the Stages dropdown when creating or editing Recruiting Workflows.
+
+<Note>
+    Visit the [ATS User Experience](#ats-user-experience) section to be ensure that the integration app is enabled and visible as a stage in a Recruiting Workflow.
+</Note>
+
+<Frame>
+    ![Eploy Integration app Stage](/images/eploy/background-check/eploy_workflow_add_stage.png)
+</Frame>
+
+<Note>
+    Users must contact you or Eploy to activate the integration partnership. Once activated, your app appears in the Stages dropdown when users create or edit Recruiting Workflows.
+</Note>
+
+### Add a custom option for background check packages
+
+Navigate to the _Custom Fields_ page by selecting _Customise Fields_ from the _Admin_ menu
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Custom Fields page" src="/images/eploy/background-check/eploy_bc_admin_custom_1.png" />
+</Frame>
+
+Navigate to the _User Option Types_ tab and click the `New` button to create a new custom option in Eploy
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to user option types tab" src="/images/eploy/background-check/eploy_bc_navigate_to_user_option_type_and_new_2.png" />
+</Frame>
+
+Enter the title as `Background Checks` and then click the `Save` button
+<Warning>
+    Use the name **Background Checks**, as this is necessary to ensure that you receive notifications from Eploy.
+</Warning>
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="add custom option title" src="/images/eploy/background-check/eploy_bc_user_option_type_4.png" />
+</Frame>
+
+The newly created `Background Checks` option will be visible in the _User Option Types_ grid
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="added custom option title" src="/images/eploy/background-check/eploy_bc_user_option_type_newly_added_5.png" />
+</Frame>
+
+### Add a custom field within the vacancy group
+
+Navigate to the _Custom Fields_ page by selecting _Customise Fields_ from the _Admin_ menu
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to Custom Fields page" src="/images/eploy/background-check/eploy_bc_admin_custom_1.png" />
+</Frame>
+
+Navigate to the _Fields_ tab and click the `New` > `Input Field` button to create a new input field in Eploy
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Go to fields tab" src="/images/eploy/background-check/eploy_bc_add_custom_field_3.png" />
+</Frame>
+
+Select the field values according to the instructions below:
+<Warning>
+    Ensure you select the same values as suggested to receive Eploy notifications.
+</Warning>
+
+- **Field Group:** Select `Additional Details (Vacancies)`
+- **Field Type:** Select `Input - Drop-down`
+- **Display Format:** Select `Hierarchy List Searchable`
+- **Option Type:** Select `Background Checks` (as created in the [previous step](#add-a-custom-option-for-background-check-packages))
+- **Insert Below:** You can select any value here; it will determine where the field appears in the form
+- **Active:** Ensure this field is marked as **active**
+- **Field Label:** Select `Background Checks`
+- **Help Description:** You may include any relevant description
+
+Click the `Save` button
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="add custom field" src="/images/eploy/background-check/eploy_bc_create_new_field_within_the_vacancy_group_as_dropdown_9.png" />
+</Frame>
+
+The newly created `Background Checks` field will be visible in the _Fields_ grid
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="added custom field title" src="/images/eploy/background-check/eploy_bc_new_field_will_be_visible_within_the_grid_10.png" />
+</Frame>
+
+### Add background check packages
+
+<Info>
+  You can use the [Create Background Check Package](/ats/api-reference/background-checks/packages/create-background-check-package) unified endpoint to add background check packages, or follow the steps outlined below to add them manually.
+</Info>
+
+Navigate to the _Drop Down Lists_ page located in the _Admin_ menu to add background check packages through the Eploy user interface
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="navigate to dropdown list" src="/images/eploy/background-check/eploy_bc_navigate_to_dropdown_list_17.png" />
+</Frame>
+
+Select `Background Checks` and click the `New` button to create a new package in Eploy
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="select background checks" src="/images/eploy/background-check/eploy_bc_select_bc_from_dropdown_and_click_on_new_to_add_package_manually_from_ui_6.png" />
+</Frame>
+
+Enter the following field values:  
+
+- **Description:** This will be the label displayed in the dropdown list.  
+- **Reference:** This can be any string and will not appear in the dropdown list.  
+
+Click the `Save` button.
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="click on save" src="/images/eploy/background-check/eploy_bc_add_bc_package_and_save_7.png" />
+</Frame>
+
+The newly created background check package will be visible in the grid
+<Frame>
+    <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="added background checks field" src="/images/eploy/background-check/eploy_bc_added_new_package_and_visible_on_grid_8.png" />
+</Frame>
+
+### Configure the background check package for the vacancy
+
+<Info>
+    Users will need to select the background check package for each vacancy to associate the relevant background check.
+</Info>
+
+Go to the _Additional Details_ page for job vacancies created within the Recruitment Workflow that includes the background check integration stage.
+
+<Note>
+    Visit the [ATS User Experience](#ats-user-experience) section to see how to create a vacancy in a workflow that includes the background check integration stage.
+</Note>
+
+<Frame>
+    ![Eploy navigate to additional details page of vacancy](/images/eploy/background-check/eploy_navigate_to_additional_details_page_of_vacancy.png)
+</Frame>
+
+Edit _Additional Details_ to select the background check package.
+<Frame>
+    ![Eploy navigate to additional details page of vacancy](/images/eploy/background-check/eploy_edit_additional_details.png)
+</Frame>
+
+The selected background check package will be displayed on the _Additional Details_ page.
+<Frame>
+    ![Eploy selected background check package](/images/eploy/background-check/eploy_selected_bc_visible_on_vacnacy_page.png)
+</Frame>
+
+
+## StackOne Configuration
+
+<Steps>
+    <Step title="Navigate to enable Eploy in StackOne">
+			Go to the ATS category on the _Integrations_ page and find Eploy.
+			<Frame>
+            ![enable eploy](/images/eploy/background-check/eploy_bc_assess_enable_1.png)
+        </Frame>
+    </Step>
+
+    <Step title="Configure Eploy in StackOne">
+        Fill out the necessary fields in the **Eploy - Configuration** modal:
+
+				- **Authentication Type:** Select `OAuth2`.
+        - **Integration Stage Name:** Enter the stage name exactly as your integration app's stage name in Eploy to trigger the Background Check.
+        <Frame>
+            ![configure eploy](/images/eploy/background-check/eploy_bc_assess_config_form.png)
+        </Frame>
+
+				Click `Confirm` or `Save Changes` to enable your OAuth APIs, which allows end-users to link their accounts via the Hub.
+    </Step>
+
+	<Step title="Add a Webhook">
+    Navigate to the _Webhooks_ page, click `Add webhook`, and fill out the form:
+
+    - **Name:** A recognisable name for the webhook.
+    - **URL:** The endpoint that will receive notifications for enabled events.
+
+    <Frame>
+        ![Add Webhook form](/images/eploy/background-check/eploy_add_webhook.png)
+    </Frame>
+    
+    Enable webhook events in the `Events` tab for Background Check, such as `Background Check Order`.
+    <Frame>
+      ![Select webhook events](/images/eploy/background-check/eploy_webhook_event.png)
+    </Frame>
+    Click `Confirm` and then `Save` to add the webhook.
+		</Step>
+</Steps>
+
+
+## ATS User Enablement
+
+To enable the Eploy Technology Partner app and make it available as a stage within a Recruitment Workflow, go to the [Eploy Marketplace](https://www.eploy.com/product/eploy-marketplace).
+<Frame>
+    ![Eploy Marketplace](/images/eploy/background-check/eploy_marketplace.png)
+</Frame>
+
+Click the listed partner's app in the Marketplace. It will direct you to the [Integrate your Eploy with Partner form](https://www.eploy.com/partner/technology-partners). Fill out the form to initiate your request to enable the integration for your Eploy account.
+<Frame>
+    ![Eploy Marketplace](/images/eploy/background-check/eploy_marketplace_request_form.png)
+</Frame>
+
+Once the partner's app is enabled, it appears in the Stages dropdown when creating or editing Recruitment Workflows.
+
+<Note>
+    Visit the [ATS User Experience](#ats-user-experience) section to verify if the partner's integration app is enabled and visible in the Stages dropdown.
+</Note>
+
+
+## ATS User Experience
+
+### Add a Recruitment Workflow
+
+Navigate to the _Recruitment Workflow_ page from the _Admin_ menu.
+<Frame>
+    ![Eploy Integration app Stage](/images/eploy/background-check/eploy_navigate_to_recruitment_workflow.png)
+</Frame>
+
+Click the `+ New` button to create a new workflow.
+<Frame>
+    ![Eploy Integration app Stage](/images/eploy/background-check/eploy_new_recruitment_workflow.png)
+</Frame>
+
+Fill out the necessary fields in the _Create Recruitment Workflow_ form as per the requirements, and click `Save`.
+<Frame>
+    ![Eploy Integration app Stage](/images/eploy/background-check/eploy_create_recruitment_workflow_form.png)
+</Frame>
+
+Scroll down and click the `Add` button to add stages in the workflow.
+<Frame>
+    ![Eploy Integration app Stage](/images/eploy/background-check/eploy_add_stage_button.png)
+</Frame>
+
+User can choose various stages as per the requirements and select the partner's integration app stage from the Stages dropdown to trigger the background check notification.
+
+For the partner's integration app stage, select the following values:
+- **Stage Name:** Select the partner's integration app name.
+
+<Frame>
+    ![Eploy Integration app Stage](/images/eploy/background-check/eploy_workflow_add_stage.png)
+</Frame>
+
+- **Stage Type:** Select `Actions`.
+- **Action Type:** Select the partner's integration app name.
+
+User may configure other settings as per the requirements and click `Save` to add this stage to the workflow.
+<Frame>
+    ![Eploy Integration app Stage](/images/eploy/background-check/eploy_add_integration_stage.png)
+</Frame>
+
+After saving, the stage appears in the workflow.
+<Frame>
+	![Eploy integration stage](/images/eploy/background-check/eploy_stage_appear_in_the_workflow.png)
+</Frame>
+
+Ensure the workflow is set to `Active` to be visible when creating a vacancy.
+<Frame>
+    ![Eploy activate workflow](/images/eploy/background-check/eploy_activate_workflow.png)
+</Frame>
+
+The newly created workflow appears in the _Recruitment Workflow_ grid.
+<Frame>
+    ![Eploy saved workflow](/images/eploy/background-check/eploy_workflow_visible_in_grid.png)
+</Frame>
+
+### Create a Vacancy in the Workflow
+
+Navigate to the _Vacancy_ page via `+` button in the top menu.
+<Frame>
+    ![Eploy navigate to vacancies](/images/eploy/background-check/eploy_vacancy_navigation.png)
+</Frame>
+
+Fill out the vacancy form by choosing the **Recruitment Workflow** that includes the partner's integration app stage user added earlier. User can also configure other fields as per the requirements and click `Save`.
+<Frame>
+    ![Eploy create vacancy](/images/eploy/background-check/eploy_create_vacancy.png)
+</Frame>
+
+User will be directed to the vacancy page after saving.
+<Frame>
+    ![Eploy create vacancy](/images/eploy/background-check/eploy_created_vacancy_page.png)
+</Frame>
+
+User can see the partner's integration app stage in the vacancy's talent pipeline by navigating to `Work on Vacancy` > `Go to Pipeline`.
+<Frame>
+    ![Eploy integration stage in talent pipeline](/images/eploy/background-check/eploy_navigate_to_vacancy_pipeline.png)
+</Frame>
+
+The stage appears in the vacancy's talent pipeline.
+<Frame>
+    ![Eploy integration stage in talent pipeline](/images/eploy/background-check/eploy_vacancy_stage_appears.png)
+</Frame>
+
+### Select a Background Check package to associate with the vacancy
+
+Navigate to the _Additional Details_ page of the vacancy to select and associate the background check package.
+<Frame>
+    ![Eploy navigate to additional details page of vacancy](/images/eploy/background-check/eploy_navigate_to_additional_details_page_of_vacancy.png)
+</Frame>
+
+Edit the _Additional Details_, select the background check package from the `Background Checks` dropdown, and `Save` the changes.
+<Frame>
+    ![Eploy select background check package](/images/eploy/background-check/eploy_edit_additional_details.png)
+</Frame>
+
+The selected background check package will appear on the _Additional Details_ page.
+<Frame>
+    ![Eploy selected background check package](/images/eploy/background-check/eploy_selected_bc_visible_on_vacnacy_page.png)
+</Frame>
+
+### Create a Candidate and add as an applicant to the vacancy
+
+Navigate to the _Candidate_ page via `+` button in the top menu.
+<Frame>
+    ![Eploy navigate to candidates](/images/eploy/background-check/eploy_navigate_to_candidates.png)
+</Frame>
+
+Fill out the necessary details in the **Create Candidate** form and `Save`.
+<Frame>
+    ![Eploy create candidate](/images/eploy/background-check/eploy_create_candidate_form.png)
+</Frame>
+
+User will be directed to the candidate's profile page after saving, where they can initiate the candidate's application by clicking `Application` under the `+` button menu.
+<Frame>
+    ![Eploy create vacancy](/images/eploy/background-check/eploy_candidate_created_and_apply_to_vacancy.png)
+</Frame>
+
+Select the **Vacancy** and **Stage**, and then `Save` to add the candidate as an applicant to the vacancy.
+<Frame>
+    ![Eploy apply to vacancy](/images/eploy/background-check/eploy_create_application_form.png)
+</Frame>
+
+User can see the candidate added as an applicant to the vacancy by navigating to the vacancy's talent pipeline.
+<Frame>
+    ![Eploy candidate added to vacancy](/images/eploy/background-check/eploy_navigate_to_vacancy_pipeline.png)
+</Frame>
+
+The candidate appears in the **Stage** user selected when creating the application.
+<Frame>
+    ![Eploy candidate in pipeline](/images/eploy/background-check/eploy_candidate_in_pipeline.png)
+</Frame>
+
+User can move the candidate's application to the partner's integration app stage to trigger the background check.
+<Note>
+    Because Eploy requires polling, there can be a short delay between moving an application into the background check stage and the order being triggered.
+</Note>
+
+### Send test to the candidate
+<Frame caption="Test your integration with StackOne using your Eploy Sandbox" >
+	<video
+			controls
+			className="w-full aspect-video"
+			src="https://cdn.stackone.com/public/eploy_background_checks_order_and_update_result.mov"
+	/>
+</Frame>
+
+### User will see after test has been sent
+When a user sends the background check test to a candidate, a success message is shown on the candidate's application.
+<Frame>
+	![Eploy sent test view](/images/eploy/background-check/eploy_bc_sent_to_the_candidate_as_visible_package_name_on_ui.png)
+</Frame>
+
+
+## ATS User Experience Customization
+
+<Steps>
+	<Step title="Update the result via Unified API">
+		Use the following endpoint to update the results:
+			- [Background Check Update Result](/ats/api-reference/background-checks/results/update-background-check-result)
+
+		Use the following endpoint to get metadata needed to update the background check result:
+			- [Connector Meta Information](https://docs.stackone.com/platform/api-reference/connectors/get-connector-meta-information-legacy) with the provider key `eploy` for model `background_checks/results.update`
+
+        <div className="fields-table">
+        | Fields (when provided)    | User sees in Eploy                                                     |  
+		| ------------------------- |----------------------------------------------------------------------- | 
+		| Score label & value       | Score label and value will appear together in Eploy                    |
+		| Submission date           | Submission date will appear above or below the result detail block     |
+		| Summary                   | Summary will appear above the package name                             |
+		| Result URL                | Result URL will appear within the `View Results` link                  |
+    </div>
+	</Step>
+
+	<Step title="How will the results of the background check be displayed to the user in Eploy?">
+		When a user opens a candidate application, the updated results are visible.
+		<Frame>
+			![Eploy update result view](/images/eploy/background-check/eploy_bc_on_update_result_of_bc_on_ui.png)
+		</Frame>
+	</Step>
+</Steps>
+
+
+## Testing Checklist
+
+✅  **Provider Setup:**
+        - Ensure the Eploy Partner Integration app is enabled for your Eploy Sandbox account.
+        - Add the `Background Checks` custom option in User Option Types. See <a href="#add-a-custom-option-for-background-check-packages">this</a> step.
+        - Add a custom input field for the vacancy group; it appears under _Additional Details_. See <a href="#add-a-custom-field-within-the-vacancy-group">this</a> step.
+        - Add background check packages; they appear in the custom field dropdown. See <a href="#add-background-check-packages">this</a> step.
+        - Associate a background check package with the vacancy. See <a href="#configure-the-background-check-package-for-the-vacancy">this</a> step.
+
+
+✅  **StackOne Configuration:**
+        - Enter a valid `Integration Stage Name` that exactly matches your integration app's stage name in Eploy.
+
+
+✅  **ATS User Enablement:**
+        - The partner app is enabled by Eploy and visible in the Stages dropdown to add within a workflow.
+        - The user associates the background check package for the vacancy.
+
+
+✅  **Create a Webhook:**
+        - Add a webhook for Eploy with a valid URL and enable expected Background Check events, such as `Background Check Order`.
+
+
+✅  **ATS User Experience:**
+        - Go to _Vacancy_ > _Additional Details_ and select a background check package to associate with the vacancy.
+        - The integration stage is visible when the vacancy is created in a workflow that includes the background check stage.
+            - The user can move the application to the integration stage.
+            - The user can see the sent test details in the candidate's application.
+
+
+✅  **Update Result:**
+        - Receive a success response from the update result endpoint.
+        - Updated result details appear in Eploy's UI.
+
+
+## Troubleshooting
+
+<div className="troubleshooting-table">
+| Symptom                                                                                                                 | Likely cause                                                                                                                                                                                                                          | Fix                                                                                                                                                                                                                                                                                                                |
+| ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Unable to find your Integration app in the [Eploy Marketplace](https://www.eploy.com/product/eploy-marketplace). 				| Eploy Partner Integration is not published/approved.                                                                                                                                                                             			| Contact Eploy support for partnership status.                                                                                                                                                                                                                                                                 |
+| Integration partner app not visible under stage list dropdown.                                               						| Integration app is not active for your eploy account.                                                                                                                                                 																| Contact Eploy support for partnership status.                                                                                                                                                                                                                                |
+| Integration partner app not visible as a stage in vacancy pipeline.                                               			| Integration app is not selected as a stage in vacancy's workflow.                                                                                                                                                 										| Navigate to vacancy's workflow and add integration as a stage. please refer to <a href="#ats-user-experience">this</a> steps.                                                                                                                                                                                                                                |
+| Unable to see the `Background Checks` custom field in Additional Details page of the vacancy.                        		| Custom field is not created or configured incorrectly.                                                                                                                                                                                | Create a custom field as per the instructions in the [Add a custom field within the vacancy group](#add-a-custom-field-within-the-vacancy-group) section.                                                                                                                                                       |
+| Unable to see the list of packages in the `Background Checks` dropdown field in Additional Details page of the vacancy. | Packages are not added for background checks custom fields.                                                                                                                                                                 					| Add background check packages as mentioned in the [Add background check packages](#add-background-check-packages) section.                                                                                     |
+| Test notification is not received.                                                                                      | **•** Invalid webhook URL. <br/><br/> **•** Incorrect webhook events are enabled.                                                                                                                                                     | **•** Verify webhook URL. <br/><br/> **•** Enable expected events as mentioned in the [StackOne Configuration](#stackone-configuration).                                                                                                                                                                           |
+| Unable to update result.                                                                                                | Invalid payload format.                                                                                                                                                                                                               | Check Connector Meta API endpoint for payload format.                                                                                                                                                                                                                                                              |
+</div>
+
+For persistent issues, contact StackOne support with detailed error logs and configuration information.

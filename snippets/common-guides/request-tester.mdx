@@ -1,0 +1,136 @@
+
+The Request Tester lets you execute HTTP requests against any linked account directly from the dashboard. Use it to verify connections, test specific endpoints, and troubleshoot integration issues.
+
+<Note>
+**Unified API Testing**: The Request Tester is the recommended way to test Unified API endpoints against specific accounts. It provides direct access to the API without requiring code or external tools.
+</Note>
+
+## Accessing the Request Tester
+
+<Steps>
+  <Step title="Navigate to Accounts">
+    Go to [Accounts](https://app.stackone.com/accounts) in the StackOne dashboard.
+  </Step>
+  <Step title="Find your account">
+    Locate the linked account you want to test.
+  </Step>
+  <Step title="Open Request Tester">
+    Click the ellipsis menu (⋯) on the account row and select **Request Tester**.
+  </Step>
+</Steps>
+
+<Tip>
+You can also access the Request Tester from the account detail page by clicking the **Test Request** button.
+</Tip>
+
+## Using the Request Tester
+
+### Select an Endpoint
+
+Choose from available endpoints organized by category:
+
+| Category | Example Endpoints |
+|----------|-------------------|
+| **HRIS** | List Employees, Get Employee, List Time Off |
+| **ATS** | List Candidates, Get Application, List Jobs |
+| **IAM** | List Users, Get Group, List Roles |
+| **Documents** | List Files, Get Folder, List Drives |
+
+### Configure Parameters
+
+Depending on the endpoint, you can configure:
+
+- **Path parameters** – Required IDs like `employee_id` or `file_id`
+- **Query parameters** – Pagination, filtering, and expansion options
+- **Request body** – For POST/PUT/PATCH requests
+
+<AccordionGroup>
+  <Accordion title="Common query parameters">
+    | Parameter | Description |
+    |-----------|-------------|
+    | `page_size` | Number of results per page (default varies by endpoint) |
+    | `next` | Pagination cursor for fetching next page |
+    | `updated_after` | Filter by modification date |
+    | `expand` | Include related resources in response |
+  </Accordion>
+  <Accordion title="Using the expand parameter">
+    Some endpoints support expanding related data. For example, when listing employees you might expand `work_location` or `manager` to include those details inline.
+
+    See [Using Expand and Include Parameters](/legacy-unified-apis/common-guide/using-expand-and-include-api-parameters) for details.
+  </Accordion>
+</AccordionGroup>
+
+### Execute and Inspect
+
+Click **Send Request** to execute. The response panel shows:
+
+- **Status code** – HTTP status (200, 400, 404, etc.)
+- **Response body** – JSON data returned by the API
+- **Response headers** – Including rate limit information
+- **Timing** – Request duration
+
+## Troubleshooting with Request Tester
+
+The Request Tester is particularly useful for debugging:
+
+<AccordionGroup>
+  <Accordion title="Connection issues">
+    If an account shows an error status, use the Request Tester to execute a simple request (like listing records). The response will reveal:
+    - Authentication failures (401/403)
+    - Token expiration
+    - Permission issues
+    - Provider API errors
+  </Accordion>
+  <Accordion title="Missing data">
+    When expected data isn't appearing:
+    1. Test the specific endpoint directly
+    2. Check if the data exists in the source system
+    3. Review field mappings in the response
+    4. Verify scopes/permissions in the integration configuration
+  </Accordion>
+  <Accordion title="Pagination problems">
+    To debug pagination:
+    1. Make an initial request with a small `page_size`
+    2. Copy the `next` cursor from the response
+    3. Make a follow-up request with that cursor
+    4. Verify data continuity between pages
+  </Accordion>
+  <Accordion title="Slow responses">
+    If requests are slow:
+    - Check the response timing in the panel
+    - Try smaller `page_size` values
+    - Review [Request Logs](https://docs.stackone.com/connect/troubleshooting) for detailed timing breakdown
+  </Accordion>
+</AccordionGroup>
+
+## Request Tester vs AI Playground
+
+| Feature | Request Tester | AI Playground |
+|---------|---------------|---------------|
+| **Purpose** | Direct API testing | Natural language exploration |
+| **Best for** | Debugging, verification | Discovery, prototyping |
+| **Input** | Structured parameters | Natural language prompts |
+| **Output** | Raw API response | AI-interpreted results |
+| **Unified APIs** | **Recommended** | Supported |
+| **Provider actions** | Supported | Supported |
+
+<Tip>
+Use the **Request Tester** when you need precise control over parameters and want to see exact API responses. Use the **AI Playground** when exploring capabilities or testing complex multi-step workflows.
+</Tip>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Accounts" icon="users" href="https://docs.stackone.com/gateway/concepts/linked-accounts">
+    Manage linked accounts
+  </Card>
+  <Card title="Request Logs" icon="scroll" href="https://docs.stackone.com/connect/troubleshooting">
+    View detailed request history
+  </Card>
+  <Card title="Error Codes" icon="triangle-exclamation" href="/legacy-unified-apis/error-codes-and-troubleshooting">
+    Understand error responses
+  </Card>
+  <Card title="AI Playground" icon="message" href="https://docs.stackone.com/embed/call-actions/troubleshooting/playground">
+    Test with natural language
+  </Card>
+</CardGroup>

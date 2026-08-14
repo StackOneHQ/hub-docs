@@ -1,0 +1,100 @@
+---
+noindex: true
+title: "Making your first request"
+sidebarTitle: "Making your first request"
+description: "Make your first LMS API request to list content from a connected learning management system"
+---
+
+import FirstRequestIntro from "/snippets/guides/first-request-intro.mdx";
+import FirstRequestPrerequisites from "/snippets/guides/first-request-prerequisites.mdx";
+import FirstRequestGettingAccountId from "/snippets/guides/first-request-getting-account-id.mdx";
+import FirstRequestReferences from "/snippets/guides/first-request-references.mdx";
+
+<FirstRequestIntro />
+
+<FirstRequestPrerequisites />
+
+<FirstRequestGettingAccountId />
+
+## Making Your First Request
+
+Now you're ready to make your first LMS API call. Let's list content from the connected learning management system:
+
+<Tabs>
+  <Tab title="cURL">
+    ```bash
+    curl --request GET \
+      --url 'https://api.stackone.com/unified/lms/content' \
+      --header 'accept: application/json' \
+      --header 'authorization: Basic {base64_encoded_api_key}' \
+      --header 'x-account-id: {account_id}'
+    ```
+  </Tab>
+  <Tab title="TypeScript">
+    ```typescript
+    import { StackOne } from "@stackone/stackone-client-ts";
+
+    const client = new StackOne({ apiKey: "YOUR_API_KEY" });
+
+    const response = await client.lms.listContent({
+      xAccountId: "your-account-id"
+    });
+
+    console.log(response.content);
+    ```
+  </Tab>
+  <Tab title="Python">
+    ```python
+    from stackone_client import StackOne
+
+    client = StackOne(api_key="YOUR_API_KEY")
+
+    response = client.lms.list_content(
+        x_account_id="your-account-id"
+    )
+
+    print(response.content)
+    ```
+  </Tab>
+</Tabs>
+
+### Example Response
+
+```json
+{
+  "data": [
+    {
+      "id": "content_123",
+      "remote_id": "abc123",
+      "title": "Introduction to Project Management",
+      "description": "Learn the fundamentals of project management",
+      "content_type": {
+        "value": "course"
+      },
+      "duration": "PT2H30M",
+      "active": true,
+      "created_at": "2024-01-05T10:00:00Z",
+      "updated_at": "2024-01-15T16:30:00Z"
+    }
+  ]
+}
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Get Content" icon="book" href="/lms/api-reference/content/get-content">
+    Retrieve details for specific content
+  </Card>
+  <Card title="List Users" icon="users" href="/lms/api-reference/users/list-users">
+    Get learners from the LMS
+  </Card>
+  <Card title="Pagination" icon="arrow-right" href="/legacy-unified-apis/common-guide/pagination">
+    Handle large result sets efficiently
+  </Card>
+  <Card title="Completions" icon="check-circle" href="/lms/api-reference/completions/list-completions">
+    View learning completions
+  </Card>
+</CardGroup>
+
+<FirstRequestReferences />

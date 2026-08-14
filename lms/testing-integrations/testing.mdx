@@ -1,0 +1,101 @@
+---
+noindex: true
+title: "Testing Create Operations"
+---
+**Introduction**
+
+This document outlines the testing procedures for your integration between your external content provider and our unified LMS platform. By following these steps, you can verify that content is correctly uploaded, updated, and that user completions are accurately recorded.
+
+**Test Environment Setup**
+
+* **Access Credentials:** Ensure you have the necessary API keys, authentication tokens, and LMS test user accounts.
+* **Test LMS Environment:** Utilize a dedicated test LMS environment to avoid impacting live data.
+* **External Content Provider Test Data:** Prepare test content with diverse metadata (titles, descriptions, URLs, etc.) and user completion scenarios.
+
+**Testing Scenarios**
+
+**1. Test Create Content (Upsert)**
+
+* **Objective:** Verify that content can be created successfully via the Upsert API.
+* **Steps:**
+    1.  **Prepare Test Data:** Create a JSON payload with the required content fields (title, description, URL, thumbnail image, duration, external\_reference).
+    2.  **Send Upsert Request:** Use your API client (e.g., Postman, curl) to send an Upsert request to the appropriate endpoint.
+    3.  **Verify Response:** Check the API response for a successful creation status (e.g., HTTP 201 Created).
+    4.  **LMS Verification:** Log in to the test LMS and navigate to the content library.
+    5.  **Check Core Fields:** Verify that the content item exists and that the title, description, URL, thumbnail, and duration match the test data.
+    6.  **Verify External Reference:** Ensure the content item's external\_reference matches the value provided in the request.
+    7.  **Clickable URL:** Click on the content item's URL within the LMS. Confirm it redirects to the external content provider's page.
+* **Checklist:**
+    * [ ] Successful API response (201 Created).
+    * [ ] Content item appears in the LMS.
+    * [ ] Title, description, URL, thumbnail, and duration are correct.
+    * [ ] External\_reference is correct.
+    * [ ] URL redirects to the external content provider.
+
+**3. Test Update Content (Upsert)**
+
+* **Objective:** Verify that existing content can be updated successfully via the Upsert API.
+* **Steps:**
+    1.  **Create Initial Content:** First, create a content item using the Upsert API (as in step 1).
+    2.  **Prepare Update Data:** Modify the JSON payload, changing the title, description, or other fields, but keep the same external\_reference.
+    3.  **Send Upsert Request (Update):** Send the updated payload to the Upsert endpoint.
+    4.  **Verify Response:** Check for a successful update status (e.g., HTTP 200 OK).
+    5.  **LMS Verification:** Verify that the content item in the LMS has been updated with the new metadata.
+* **Checklist:**
+    * [ ] Successful API response (200 OK).
+    * [ ] Content item in the LMS is updated.
+    * [ ] Updated fields reflect the changes in the request.
+
+**2. Test Create Content (Upsert Batch)**
+
+* **Objective:** Verify that multiple content items can be created successfully via the Upsert Batch API.
+* **Steps:**
+    1.  **Prepare Batch Test Data:** Create a JSON payload containing an array of multiple content objects, each with unique external\_references and diverse metadata.
+    2.  **Send Upsert Batch Request:** Send the request to the Upsert Batch endpoint.
+    3.  **Verify Response:** Check for a successful response (e.g., HTTP 202 Accepted).
+    4.  **Dashboard Logs Verification:** Check the dashboard logs to ensure each underlying request for the batch was processed successfully.
+    5.  **LMS Verification:** Verify each content item from the batch appears in the LMS.
+    6.  **Check Core Fields and External References:** Verify the metadata and external\_references for each content item in the LMS.
+    7.  **Clickable URL verification:** Verify each url redirects to the external content provider.
+* **Checklist:**
+    * [ ] Successful API response (202 Accepted).
+    * [ ] Dashboard logs indicate all underlying requests were successful.
+    * [ ] All content items from the batch appear in the LMS.
+    * [ ] All core fields and external\_references are correct for each item.
+    * [ ] All urls redirect to the external content provider.
+
+**4. Test Activate/Deactivate Content**
+
+* **Objective:** Verify that content can be activated and deactivated, affecting its visibility in the LMS.
+* **Steps:**
+    1.  **Create Content:** Create a content item using the Upsert API.
+    2.  **Send Activation/Deactivation Request:** Use the appropriate API endpoint to change the content's active status (e.g., set "active": false).
+    3.  **Verify Response:** Check for a successful response.
+    4.  **LMS Verification:** Check the content's visibility in the LMS. If deactivated, it should be hidden or marked as inactive. If activated it should be visible.
+    5.  **Repeat:** Repeat the process to toggle the active status and verify the changes in the LMS.
+* **Checklist:**
+    * [ ] Successful API response.
+    * [ ] Content visibility in the LMS matches the active status.
+
+**5. Test User Completion**
+
+* **Objective:** Verify that user completions are recorded accurately.
+* **Steps:**
+    1.  **Complete Content (External Provider):** Simulate a user completing the content on your external platform.
+    2.  **Send Completion Request:** Send a completion request to the appropriate API endpoint, including the user ID, external\_reference, and completed\_at timestamp.
+    3.  **Verify Response:** Check for a successful response (e.g., HTTP 201 Created).
+    4.  **LMS Verification:** Check the user's completion records in the LMS to ensure the completion is registered with the correct user, content, and timestamp.
+* **Checklist:**
+    * [ ] Successful API response (201 Created).
+    * [ ] Completion record appears in the LMS.
+    * [ ] User ID, external\_reference, and completed\_at timestamp are correct.
+
+**Troubleshooting**
+
+* If you encounter any issues, please provide the following information:
+    * API request and response details.
+    * LMS screenshots or logs.
+    * External content provider logs.
+    * The external\_reference of the content in question.
+
+By following this testing guide, you can ensure your LMS integration functions correctly and provides a smooth experience for your users.

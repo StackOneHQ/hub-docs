@@ -1,0 +1,101 @@
+---
+noindex: true
+title: "Making your first request"
+sidebarTitle: "Making your first request"
+description: "Make your first Accounting API request to list accounts from a connected accounting system"
+---
+
+import FirstRequestIntro from "/snippets/guides/first-request-intro.mdx";
+import FirstRequestPrerequisites from "/snippets/guides/first-request-prerequisites.mdx";
+import FirstRequestGettingAccountId from "/snippets/guides/first-request-getting-account-id.mdx";
+import FirstRequestReferences from "/snippets/guides/first-request-references.mdx";
+
+<FirstRequestIntro />
+
+<FirstRequestPrerequisites />
+
+<FirstRequestGettingAccountId />
+
+## Making Your First Request
+
+Now you're ready to make your first Accounting API call. Let's list accounts from the connected accounting system:
+
+<Tabs>
+  <Tab title="cURL">
+    ```bash
+    curl --request GET \
+      --url 'https://api.stackone.com/unified/accounting/accounts' \
+      --header 'accept: application/json' \
+      --header 'authorization: Basic {base64_encoded_api_key}' \
+      --header 'x-account-id: {account_id}'
+    ```
+  </Tab>
+  <Tab title="TypeScript">
+    ```typescript
+    import { StackOne } from "@stackone/stackone-client-ts";
+
+    const client = new StackOne({ apiKey: "YOUR_API_KEY" });
+
+    const response = await client.accounting.listAccounts({
+      xAccountId: "your-account-id"
+    });
+
+    console.log(response.accounts);
+    ```
+  </Tab>
+  <Tab title="Python">
+    ```python
+    from stackone_client import StackOne
+
+    client = StackOne(api_key="YOUR_API_KEY")
+
+    response = client.accounting.list_accounts(
+        x_account_id="your-account-id"
+    )
+
+    print(response.accounts)
+    ```
+  </Tab>
+</Tabs>
+
+### Example Response
+
+```json
+{
+  "data": [
+    {
+      "id": "acct_123",
+      "remote_id": "1000",
+      "name": "Cash",
+      "type": {
+        "value": "asset"
+      },
+      "currency": "USD",
+      "current_balance": 50000.00,
+      "status": {
+        "value": "active"
+      },
+      "created_at": "2024-01-01T00:00:00Z"
+    }
+  ]
+}
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Get Account" icon="wallet" href="/accounting/api-reference/companies/accounts/get-account">
+    Retrieve details for a specific account
+  </Card>
+  <Card title="List Journals" icon="arrow-right-arrow-left" href="/accounting/api-reference/companies/journals/list-journals">
+    Get journal entries from the system
+  </Card>
+  <Card title="Pagination" icon="arrow-right" href="/legacy-unified-apis/common-guide/pagination">
+    Handle large result sets efficiently
+  </Card>
+  <Card title="List Companies" icon="address-book" href="/accounting/api-reference/companies/list-companies">
+    View companies in the accounting system
+  </Card>
+</CardGroup>
+
+<FirstRequestReferences />

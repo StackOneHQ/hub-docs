@@ -1,0 +1,3983 @@
+{
+  "openapi": "3.1.0",
+  "paths": {
+    "/unified/accounting/companies": {
+      "get": {
+        "operationId": "accounting_list_companies",
+        "parameters": [
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "description": "The account identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "raw",
+            "required": false,
+            "in": "query",
+            "description": "Indicates that the raw request result should be returned in addition to the mapped result (default value is false)",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "proxy",
+            "required": false,
+            "in": "query",
+            "description": "Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "additionalProperties": true,
+              "nullable": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "The comma separated list of fields that will be returned in the response (if empty, all fields are returned)",
+            "schema": {
+              "nullable": true,
+              "example": "id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day,unified_custom_fields",
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter",
+            "required": false,
+            "in": "query",
+            "description": "Filter parameters that allow greater customisation of the list response",
+            "explode": true,
+            "style": "deepObject",
+            "schema": {
+              "properties": {
+                "updated_after": {
+                  "description": "Use a string with a date to only select results updated after that given date",
+                  "example": "2020-01-01T00:00:00.000Z",
+                  "type": "string",
+                  "format": "date-time",
+                  "nullable": true,
+                  "additionalProperties": false
+                }
+              },
+              "nullable": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "The page number of the results to fetch",
+            "deprecated": true,
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "page_size",
+            "required": false,
+            "in": "query",
+            "description": "The number of results per page (default value is 25)",
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "next",
+            "required": false,
+            "in": "query",
+            "description": "The unified cursor",
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "updated_after",
+            "required": false,
+            "in": "query",
+            "description": "Use a string with a date to only select results updated after that given date",
+            "deprecated": true,
+            "schema": {
+              "format": "date-time",
+              "nullable": true,
+              "example": "2020-01-01T00:00:00.000Z",
+              "type": "string"
+            }
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "required": false,
+            "description": "Set to \"heartbeat\" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)",
+            "schema": {
+              "type": "string",
+              "example": "heartbeat"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of companies was retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountingCompaniesPaginated"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "The request has timed out.",
+            "headers": {
+              "Retry-After": {
+                "description": "A time in seconds after which the request can be retried.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimedOutResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict with current state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreconditionFailedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error while executing the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "This functionality is not implemented.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotImplementedResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad gateway error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ],
+        "summary": "List Companies",
+        "tags": [
+          "Companies"
+        ],
+        "x-speakeasy-group": "accounting",
+        "x-speakeasy-name-override": "list_companies",
+        "x-speakeasy-pagination": {
+          "type": "cursor",
+          "inputs": [
+            {
+              "name": "next",
+              "in": "parameters",
+              "type": "cursor"
+            }
+          ],
+          "outputs": {
+            "nextCursor": "$.next"
+          }
+        },
+        "x-speakeasy-retries": {
+          "statusCodes": [
+            429,
+            408
+          ],
+          "strategy": "backoff"
+        }
+      }
+    },
+    "/unified/accounting/companies/{id}": {
+      "get": {
+        "operationId": "accounting_get_company",
+        "parameters": [
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "description": "The account identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "raw",
+            "required": false,
+            "in": "query",
+            "description": "Indicates that the raw request result should be returned in addition to the mapped result (default value is false)",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "proxy",
+            "required": false,
+            "in": "query",
+            "description": "Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "additionalProperties": true,
+              "nullable": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "The comma separated list of fields that will be returned in the response (if empty, all fields are returned)",
+            "schema": {
+              "nullable": true,
+              "example": "id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day,unified_custom_fields",
+              "type": "string"
+            }
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "required": false,
+            "description": "Set to \"heartbeat\" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)",
+            "schema": {
+              "type": "string",
+              "example": "heartbeat"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The company with the given identifier was retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountingCompanyResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "The request has timed out.",
+            "headers": {
+              "Retry-After": {
+                "description": "A time in seconds after which the request can be retried.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimedOutResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict with current state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreconditionFailedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error while executing the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "This functionality is not implemented.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotImplementedResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad gateway error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ],
+        "summary": "Get Company",
+        "tags": [
+          "Companies"
+        ],
+        "x-speakeasy-group": "accounting",
+        "x-speakeasy-name-override": "get_company",
+        "x-speakeasy-retries": {
+          "statusCodes": [
+            429,
+            408
+          ],
+          "strategy": "backoff"
+        }
+      }
+    },
+    "/unified/accounting/companies/{id}/accounts": {
+      "get": {
+        "operationId": "accounting_list_company_accounts",
+        "parameters": [
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "description": "The account identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "raw",
+            "required": false,
+            "in": "query",
+            "description": "Indicates that the raw request result should be returned in addition to the mapped result (default value is false)",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "proxy",
+            "required": false,
+            "in": "query",
+            "description": "Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "additionalProperties": true,
+              "nullable": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "The comma separated list of fields that will be returned in the response (if empty, all fields are returned)",
+            "schema": {
+              "nullable": true,
+              "example": "id,remote_id,company_id,remote_company_id,code,name,type,active,unified_custom_fields",
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter",
+            "required": false,
+            "in": "query",
+            "description": "Filter parameters that allow greater customisation of the list response",
+            "explode": true,
+            "style": "deepObject",
+            "schema": {
+              "properties": {
+                "updated_after": {
+                  "description": "Use a string with a date to only select results updated after that given date",
+                  "example": "2020-01-01T00:00:00.000Z",
+                  "type": "string",
+                  "format": "date-time",
+                  "nullable": true,
+                  "additionalProperties": false
+                }
+              },
+              "nullable": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "The page number of the results to fetch",
+            "deprecated": true,
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "page_size",
+            "required": false,
+            "in": "query",
+            "description": "The number of results per page (default value is 25)",
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "next",
+            "required": false,
+            "in": "query",
+            "description": "The unified cursor",
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "updated_after",
+            "required": false,
+            "in": "query",
+            "description": "Use a string with a date to only select results updated after that given date",
+            "deprecated": true,
+            "schema": {
+              "format": "date-time",
+              "nullable": true,
+              "example": "2020-01-01T00:00:00.000Z",
+              "type": "string"
+            }
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "required": false,
+            "description": "Set to \"heartbeat\" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)",
+            "schema": {
+              "type": "string",
+              "example": "heartbeat"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of accounts was retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountingAccountsPaginated"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "The request has timed out.",
+            "headers": {
+              "Retry-After": {
+                "description": "A time in seconds after which the request can be retried.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimedOutResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict with current state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreconditionFailedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error while executing the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "This functionality is not implemented.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotImplementedResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad gateway error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ],
+        "summary": "List Accounts",
+        "tags": [
+          "Companies",
+          "Accounts"
+        ],
+        "x-speakeasy-group": "accounting",
+        "x-speakeasy-name-override": "list_company_accounts",
+        "x-speakeasy-pagination": {
+          "type": "cursor",
+          "inputs": [
+            {
+              "name": "next",
+              "in": "parameters",
+              "type": "cursor"
+            }
+          ],
+          "outputs": {
+            "nextCursor": "$.next"
+          }
+        },
+        "x-speakeasy-retries": {
+          "statusCodes": [
+            429,
+            408
+          ],
+          "strategy": "backoff"
+        }
+      }
+    },
+    "/unified/accounting/companies/{id}/accounts/{subResourceId}": {
+      "get": {
+        "operationId": "accounting_get_company_account",
+        "parameters": [
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "description": "The account identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subResourceId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "raw",
+            "required": false,
+            "in": "query",
+            "description": "Indicates that the raw request result should be returned in addition to the mapped result (default value is false)",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "proxy",
+            "required": false,
+            "in": "query",
+            "description": "Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "additionalProperties": true,
+              "nullable": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "The comma separated list of fields that will be returned in the response (if empty, all fields are returned)",
+            "schema": {
+              "nullable": true,
+              "example": "id,remote_id,company_id,remote_company_id,code,name,type,active,unified_custom_fields",
+              "type": "string"
+            }
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "required": false,
+            "description": "Set to \"heartbeat\" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)",
+            "schema": {
+              "type": "string",
+              "example": "heartbeat"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The account with the given identifier was retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountingAccountResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "The request has timed out.",
+            "headers": {
+              "Retry-After": {
+                "description": "A time in seconds after which the request can be retried.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimedOutResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict with current state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreconditionFailedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error while executing the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "This functionality is not implemented.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotImplementedResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad gateway error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ],
+        "summary": "Get Account",
+        "tags": [
+          "Companies",
+          "Accounts"
+        ],
+        "x-speakeasy-group": "accounting",
+        "x-speakeasy-name-override": "get_company_account",
+        "x-speakeasy-retries": {
+          "statusCodes": [
+            429,
+            408
+          ],
+          "strategy": "backoff"
+        }
+      }
+    },
+    "/unified/accounting/companies/{id}/tax_rates": {
+      "get": {
+        "operationId": "accounting_list_company_tax_rates",
+        "parameters": [
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "description": "The account identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "raw",
+            "required": false,
+            "in": "query",
+            "description": "Indicates that the raw request result should be returned in addition to the mapped result (default value is false)",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "proxy",
+            "required": false,
+            "in": "query",
+            "description": "Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "additionalProperties": true,
+              "nullable": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "The comma separated list of fields that will be returned in the response (if empty, all fields are returned)",
+            "schema": {
+              "nullable": true,
+              "example": "id,remote_id,company_id,remote_company_id,name,code,percentage,active,unified_custom_fields",
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter",
+            "required": false,
+            "in": "query",
+            "description": "Filter parameters that allow greater customisation of the list response",
+            "explode": true,
+            "style": "deepObject",
+            "schema": {
+              "properties": {
+                "updated_after": {
+                  "description": "Use a string with a date to only select results updated after that given date",
+                  "example": "2020-01-01T00:00:00.000Z",
+                  "type": "string",
+                  "format": "date-time",
+                  "nullable": true,
+                  "additionalProperties": false
+                }
+              },
+              "nullable": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "The page number of the results to fetch",
+            "deprecated": true,
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "page_size",
+            "required": false,
+            "in": "query",
+            "description": "The number of results per page (default value is 25)",
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "next",
+            "required": false,
+            "in": "query",
+            "description": "The unified cursor",
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "updated_after",
+            "required": false,
+            "in": "query",
+            "description": "Use a string with a date to only select results updated after that given date",
+            "deprecated": true,
+            "schema": {
+              "format": "date-time",
+              "nullable": true,
+              "example": "2020-01-01T00:00:00.000Z",
+              "type": "string"
+            }
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "required": false,
+            "description": "Set to \"heartbeat\" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)",
+            "schema": {
+              "type": "string",
+              "example": "heartbeat"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of tax rates was retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountingTaxRatesPaginated"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "The request has timed out.",
+            "headers": {
+              "Retry-After": {
+                "description": "A time in seconds after which the request can be retried.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimedOutResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict with current state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreconditionFailedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error while executing the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "This functionality is not implemented.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotImplementedResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad gateway error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ],
+        "summary": "List Tax Rates",
+        "tags": [
+          "Companies",
+          "Tax Rates"
+        ],
+        "x-speakeasy-group": "accounting",
+        "x-speakeasy-name-override": "list_company_tax_rates",
+        "x-speakeasy-pagination": {
+          "type": "cursor",
+          "inputs": [
+            {
+              "name": "next",
+              "in": "parameters",
+              "type": "cursor"
+            }
+          ],
+          "outputs": {
+            "nextCursor": "$.next"
+          }
+        },
+        "x-speakeasy-retries": {
+          "statusCodes": [
+            429,
+            408
+          ],
+          "strategy": "backoff"
+        }
+      }
+    },
+    "/unified/accounting/companies/{id}/tax_rates/{subResourceId}": {
+      "get": {
+        "operationId": "accounting_get_company_tax_rate",
+        "parameters": [
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "description": "The account identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subResourceId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "raw",
+            "required": false,
+            "in": "query",
+            "description": "Indicates that the raw request result should be returned in addition to the mapped result (default value is false)",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "proxy",
+            "required": false,
+            "in": "query",
+            "description": "Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "additionalProperties": true,
+              "nullable": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "The comma separated list of fields that will be returned in the response (if empty, all fields are returned)",
+            "schema": {
+              "nullable": true,
+              "example": "id,remote_id,company_id,remote_company_id,name,code,percentage,active,unified_custom_fields",
+              "type": "string"
+            }
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "required": false,
+            "description": "Set to \"heartbeat\" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)",
+            "schema": {
+              "type": "string",
+              "example": "heartbeat"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The tax rate with the given identifier was retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountingTaxRateResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "The request has timed out.",
+            "headers": {
+              "Retry-After": {
+                "description": "A time in seconds after which the request can be retried.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimedOutResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict with current state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreconditionFailedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error while executing the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "This functionality is not implemented.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotImplementedResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad gateway error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ],
+        "summary": "Get Tax Rate",
+        "tags": [
+          "Companies",
+          "Tax Rates"
+        ],
+        "x-speakeasy-group": "accounting",
+        "x-speakeasy-name-override": "get_company_tax_rate",
+        "x-speakeasy-retries": {
+          "statusCodes": [
+            429,
+            408
+          ],
+          "strategy": "backoff"
+        }
+      }
+    },
+    "/unified/accounting/companies/{id}/journals/batch": {
+      "post": {
+        "operationId": "accounting_batch_create_company_journals",
+        "parameters": [
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "description": "The account identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "required": false,
+            "description": "Set to \"heartbeat\" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)",
+            "schema": {
+              "type": "string",
+              "example": "heartbeat"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountingJournalBatchCreateRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Batch operation accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchResultApiModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "The request has timed out.",
+            "headers": {
+              "Retry-After": {
+                "description": "A time in seconds after which the request can be retried.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimedOutResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict with current state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreconditionFailedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error while executing the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "This functionality is not implemented.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotImplementedResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad gateway error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ],
+        "summary": "Batch Create Journals",
+        "tags": [
+          "Companies",
+          "Journals"
+        ],
+        "x-speakeasy-group": "accounting",
+        "x-speakeasy-name-override": "batch_create_company_journals",
+        "x-speakeasy-retries": {
+          "statusCodes": [
+            429,
+            408
+          ],
+          "strategy": "backoff"
+        }
+      }
+    },
+    "/unified/accounting/companies/{id}/journals": {
+      "get": {
+        "operationId": "accounting_list_company_journals",
+        "parameters": [
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "description": "The account identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "raw",
+            "required": false,
+            "in": "query",
+            "description": "Indicates that the raw request result should be returned in addition to the mapped result (default value is false)",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "proxy",
+            "required": false,
+            "in": "query",
+            "description": "Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "additionalProperties": true,
+              "nullable": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "The comma separated list of fields that will be returned in the response (if empty, all fields are returned)",
+            "schema": {
+              "nullable": true,
+              "example": "id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at,unified_custom_fields",
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter",
+            "required": false,
+            "in": "query",
+            "description": "Filter parameters that allow greater customisation of the list response",
+            "explode": true,
+            "style": "deepObject",
+            "schema": {
+              "properties": {
+                "updated_after": {
+                  "description": "Use a string with a date to only select results updated after that given date",
+                  "example": "2020-01-01T00:00:00.000Z",
+                  "type": "string",
+                  "format": "date-time",
+                  "nullable": true,
+                  "additionalProperties": false
+                }
+              },
+              "nullable": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "The page number of the results to fetch",
+            "deprecated": true,
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "page_size",
+            "required": false,
+            "in": "query",
+            "description": "The number of results per page (default value is 25)",
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "next",
+            "required": false,
+            "in": "query",
+            "description": "The unified cursor",
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "updated_after",
+            "required": false,
+            "in": "query",
+            "description": "Use a string with a date to only select results updated after that given date",
+            "deprecated": true,
+            "schema": {
+              "format": "date-time",
+              "nullable": true,
+              "example": "2020-01-01T00:00:00.000Z",
+              "type": "string"
+            }
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "required": false,
+            "description": "Set to \"heartbeat\" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)",
+            "schema": {
+              "type": "string",
+              "example": "heartbeat"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of journals was retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountingJournalsPaginated"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "The request has timed out.",
+            "headers": {
+              "Retry-After": {
+                "description": "A time in seconds after which the request can be retried.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimedOutResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict with current state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreconditionFailedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error while executing the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "This functionality is not implemented.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotImplementedResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad gateway error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ],
+        "summary": "List Journals",
+        "tags": [
+          "Companies",
+          "Journals"
+        ],
+        "x-speakeasy-group": "accounting",
+        "x-speakeasy-name-override": "list_company_journals",
+        "x-speakeasy-pagination": {
+          "type": "cursor",
+          "inputs": [
+            {
+              "name": "next",
+              "in": "parameters",
+              "type": "cursor"
+            }
+          ],
+          "outputs": {
+            "nextCursor": "$.next"
+          }
+        },
+        "x-speakeasy-retries": {
+          "statusCodes": [
+            429,
+            408
+          ],
+          "strategy": "backoff"
+        }
+      },
+      "post": {
+        "operationId": "accounting_create_company_journal",
+        "parameters": [
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "description": "The account identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "required": false,
+            "description": "Set to \"heartbeat\" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)",
+            "schema": {
+              "type": "string",
+              "example": "heartbeat"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountingJournalCreateRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The journal was created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "The request has timed out.",
+            "headers": {
+              "Retry-After": {
+                "description": "A time in seconds after which the request can be retried.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimedOutResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict with current state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreconditionFailedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error while executing the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "This functionality is not implemented.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotImplementedResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad gateway error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ],
+        "summary": "Create Journal",
+        "tags": [
+          "Companies",
+          "Journals"
+        ],
+        "x-speakeasy-group": "accounting",
+        "x-speakeasy-name-override": "create_company_journal",
+        "x-speakeasy-retries": {
+          "statusCodes": [
+            429,
+            408
+          ],
+          "strategy": "backoff"
+        }
+      }
+    },
+    "/unified/accounting/companies/{id}/journals/{subResourceId}": {
+      "get": {
+        "operationId": "accounting_get_company_journal",
+        "parameters": [
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "description": "The account identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subResourceId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "raw",
+            "required": false,
+            "in": "query",
+            "description": "Indicates that the raw request result should be returned in addition to the mapped result (default value is false)",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "proxy",
+            "required": false,
+            "in": "query",
+            "description": "Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "additionalProperties": true,
+              "nullable": true,
+              "type": "object"
+            }
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "The comma separated list of fields that will be returned in the response (if empty, all fields are returned)",
+            "schema": {
+              "nullable": true,
+              "example": "id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at,unified_custom_fields",
+              "type": "string"
+            }
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "required": false,
+            "description": "Set to \"heartbeat\" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)",
+            "schema": {
+              "type": "string",
+              "example": "heartbeat"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The journal with the given identifier was retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountingJournalResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "The request has timed out.",
+            "headers": {
+              "Retry-After": {
+                "description": "A time in seconds after which the request can be retried.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimedOutResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict with current state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreconditionFailedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error while executing the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "This functionality is not implemented.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotImplementedResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad gateway error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ],
+        "summary": "Get Journal",
+        "tags": [
+          "Companies",
+          "Journals"
+        ],
+        "x-speakeasy-group": "accounting",
+        "x-speakeasy-name-override": "get_company_journal",
+        "x-speakeasy-retries": {
+          "statusCodes": [
+            429,
+            408
+          ],
+          "strategy": "backoff"
+        }
+      }
+    }
+  },
+  "info": {
+    "title": "Accounting",
+    "description": "The documentation for the StackOne Unified API - ACCOUNTING",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [
+    {
+      "name": "Journals",
+      "description": "Journal entries and transactions."
+    },
+    {
+      "name": "Companies",
+      "description": "Accounting companies."
+    },
+    {
+      "name": "Accounts",
+      "description": "Chart of accounts."
+    },
+    {
+      "name": "Tax Rates",
+      "description": "Tax rates."
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.stackone.com"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "basic": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "schemas": {
+      "AccountingAccount": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier",
+            "example": "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            "nullable": true
+          },
+          "remote_id": {
+            "type": "string",
+            "description": "Provider's unique identifier",
+            "example": "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            "nullable": true
+          },
+          "company_id": {
+            "type": "string",
+            "description": "ID of the company this account belongs to",
+            "example": "company_123",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "description": "External system's account code/number",
+            "example": "4000",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the account",
+            "example": "Cash",
+            "nullable": true
+          },
+          "type": {
+            "description": "Type of account",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountTypeEnum"
+              }
+            ]
+          },
+          "active": {
+            "description": "Whether the account is active",
+            "example": true,
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "true",
+                  "false"
+                ]
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "AccountingAccountResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountingAccount"
+              }
+            ]
+          },
+          "raw": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RawResponse"
+            }
+          }
+        }
+      },
+      "AccountingAccountsPaginated": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountingAccount"
+            }
+          },
+          "raw": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RawResponse"
+            }
+          }
+        }
+      },
+      "AccountingCompaniesPaginated": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountingCompany"
+            }
+          },
+          "raw": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RawResponse"
+            }
+          }
+        }
+      },
+      "AccountingCompany": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier",
+            "example": "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            "nullable": true
+          },
+          "remote_id": {
+            "type": "string",
+            "description": "Provider's unique identifier",
+            "example": "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the company",
+            "example": "Acme Corp",
+            "nullable": true
+          },
+          "base_currency": {
+            "description": "Default currency for the company",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CurrencyEnum"
+              }
+            ]
+          },
+          "fiscal_year_start_month": {
+            "type": "number",
+            "description": "Fiscal year start month (1-12)",
+            "example": 1,
+            "nullable": true
+          },
+          "fiscal_year_start_day": {
+            "type": "number",
+            "description": "Fiscal year start day (1-31)",
+            "example": 1,
+            "nullable": true
+          }
+        }
+      },
+      "AccountingCompanyResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountingCompany"
+              }
+            ]
+          },
+          "raw": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RawResponse"
+            }
+          }
+        }
+      },
+      "AccountingJournal": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier",
+            "example": "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            "nullable": true
+          },
+          "remote_id": {
+            "type": "string",
+            "description": "Provider's unique identifier",
+            "example": "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            "nullable": true
+          },
+          "company_id": {
+            "type": "string",
+            "description": "ID of the company this journal belongs to",
+            "example": "comp_123456789",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "description": "Reference number for the journal",
+            "example": "JRN-2024-001",
+            "nullable": true
+          },
+          "memo": {
+            "type": "string",
+            "description": "Memo or description for the journal",
+            "example": "Monthly closing entries",
+            "nullable": true
+          },
+          "transaction_date": {
+            "type": "string",
+            "description": "Date of the journal transaction",
+            "example": "2024-03-20T10:00:00Z",
+            "format": "date-time",
+            "nullable": true
+          },
+          "status": {
+            "description": "Status of the journal",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountingJournalStatusEnum"
+              }
+            ]
+          },
+          "lines": {
+            "description": "List of journal lines",
+            "example": [
+              {
+                "id": "line_1",
+                "account_id": "acc_123",
+                "description": "Payment for office supplies",
+                "amount": 10010,
+                "tax_amount": 2002
+              }
+            ],
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JournalLine"
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the journal was created",
+            "example": "2024-03-20T10:00:00Z",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Timestamp when the journal was last updated",
+            "example": "2024-03-20T10:00:00Z",
+            "format": "date-time",
+            "nullable": true
+          },
+          "posted_at": {
+            "type": "string",
+            "description": "Timestamp when the journal was posted",
+            "example": "2024-03-20T10:00:00Z",
+            "format": "date-time",
+            "nullable": true
+          }
+        }
+      },
+      "AccountingJournalBatchCreateRequestDto": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "description": "The batch of journals to create",
+            "nullable": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountingJournalCreateRequestDto"
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "AccountingJournalCreateRequestDto": {
+        "type": "object",
+        "properties": {
+          "reference": {
+            "type": "string",
+            "description": "Reference number for the journal",
+            "example": "JRN-2024-001",
+            "nullable": true
+          },
+          "memo": {
+            "type": "string",
+            "description": "Memo or description for the journal",
+            "example": "Monthly closing entries",
+            "nullable": true
+          },
+          "currency_code": {
+            "description": "Currency code for the journal and all lines",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CurrencyEnum"
+              }
+            ]
+          },
+          "exchange_rate": {
+            "type": "number",
+            "description": "Exchange rate to company base currency to apply to all lines",
+            "example": 1,
+            "nullable": true
+          },
+          "transaction_date": {
+            "type": "string",
+            "description": "Date of the journal transaction",
+            "example": "2024-03-20T10:00:00Z",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lines": {
+            "description": "List of journal lines",
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateJournalLine"
+            }
+          }
+        }
+      },
+      "AccountingJournalResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountingJournal"
+              }
+            ]
+          },
+          "raw": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RawResponse"
+            }
+          }
+        }
+      },
+      "AccountingJournalsPaginated": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountingJournal"
+            }
+          },
+          "raw": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RawResponse"
+            }
+          }
+        }
+      },
+      "AccountingJournalStatusEnum": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The journal status",
+            "enum": [
+              "draft",
+              "posted",
+              "void",
+              "unmapped_value",
+              null
+            ],
+            "example": "draft",
+            "x-speakeasy-unknown-values": "allow",
+            "nullable": true
+          },
+          "source_value": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "array",
+                "items": {}
+              }
+            ],
+            "example": "draft",
+            "nullable": true
+          }
+        }
+      },
+      "AccountingTaxRate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier",
+            "example": "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            "nullable": true
+          },
+          "remote_id": {
+            "type": "string",
+            "description": "Provider's unique identifier",
+            "example": "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            "nullable": true
+          },
+          "company_id": {
+            "type": "string",
+            "description": "ID of the company this tax rate belongs to",
+            "example": "company_123",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the tax rate",
+            "example": "VAT 7.5%",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "description": "External system's tax code",
+            "example": "TAX001",
+            "nullable": true
+          },
+          "percentage": {
+            "type": "number",
+            "description": "Tax rate percentage",
+            "example": 7.5,
+            "nullable": true
+          },
+          "active": {
+            "description": "Whether the tax rate is active",
+            "example": true,
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "true",
+                  "false"
+                ]
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "AccountingTaxRateResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountingTaxRate"
+              }
+            ]
+          },
+          "raw": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RawResponse"
+            }
+          }
+        }
+      },
+      "AccountingTaxRatesPaginated": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountingTaxRate"
+            }
+          },
+          "raw": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RawResponse"
+            }
+          }
+        }
+      },
+      "AccountTypeEnum": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "Type of account",
+            "enum": [
+              "asset",
+              "liability",
+              "equity",
+              "revenue",
+              "expense",
+              "unmapped_value",
+              null
+            ],
+            "example": "asset",
+            "x-speakeasy-unknown-values": "allow",
+            "nullable": true
+          },
+          "source_value": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "array",
+                "items": {}
+              }
+            ],
+            "example": "asset",
+            "nullable": true
+          }
+        }
+      },
+      "BadGatewayResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 502
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Bad Gateway"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp when the error occurred",
+            "example": "2023-05-30T00:00:00.000Z",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp"
+        ]
+      },
+      "BadRequestResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 400
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Bad Request"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp when the error occurred",
+            "example": "2023-05-30T00:00:00.000Z",
+            "format": "date-time"
+          },
+          "data": {
+            "description": "Error details",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UnifiedError"
+              }
+            ]
+          },
+          "provider_errors": {
+            "description": "List of provider-specific errors",
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProviderError"
+            }
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp"
+        ]
+      },
+      "BatchResultApiModel": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "example": 202,
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "example": "Batch operation accepted",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "example": "2021-01-01T01:01:01.000Z",
+            "format": "date-time",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "example": [
+              [
+                "Missing field: name"
+              ],
+              [],
+              []
+            ],
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          }
+        }
+      },
+      "ConflictResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 409
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Conflict"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp when the error occurred",
+            "example": "2023-05-30T00:00:00.000Z",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp"
+        ]
+      },
+      "CreateJournalLine": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "ID of the ledger account this line references",
+            "example": "acc_123456789",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the journal line",
+            "example": "Payment for office supplies",
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "description": "Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative for credit",
+            "example": 10010,
+            "nullable": true
+          },
+          "tax_rate_id": {
+            "type": "string",
+            "description": "ID of the tax rate applied",
+            "example": "tax_123456789",
+            "nullable": true
+          },
+          "tax_amount": {
+            "type": "number",
+            "description": "Tax amount of the line in minor units, e.g. 10010 for 100.10 USD",
+            "example": 10010,
+            "nullable": true
+          }
+        }
+      },
+      "CreateResult": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "example": 201
+          },
+          "message": {
+            "type": "string",
+            "example": "Record created successfully."
+          },
+          "timestamp": {
+            "type": "string",
+            "example": "2021-01-01T01:01:01.000Z",
+            "format": "date-time"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CreateResultDataApiModel"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp",
+          "data"
+        ]
+      },
+      "CreateResultDataApiModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier",
+            "example": "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            "nullable": true
+          },
+          "remote_id": {
+            "type": "string",
+            "description": "Provider's unique identifier",
+            "example": "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            "nullable": true
+          }
+        }
+      },
+      "CurrencyEnum": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "Default currency for the company",
+            "enum": [
+              "AED",
+              "AFN",
+              "ALL",
+              "AMD",
+              "ANG",
+              "AOA",
+              "ARS",
+              "AUD",
+              "AWG",
+              "AZN",
+              "BAM",
+              "BBD",
+              "BDT",
+              "BGN",
+              "BHD",
+              "BIF",
+              "BMD",
+              "BND",
+              "BOB",
+              "BRL",
+              "BSD",
+              "BTN",
+              "BWP",
+              "BYN",
+              "BZD",
+              "CAD",
+              "CDF",
+              "CHF",
+              "CLP",
+              "CNY",
+              "COP",
+              "CRC",
+              "CUC",
+              "CUP",
+              "CVE",
+              "CZK",
+              "DJF",
+              "DKK",
+              "DOP",
+              "DZD",
+              "EGP",
+              "ERN",
+              "ETB",
+              "EUR",
+              "FJD",
+              "FKP",
+              "GBP",
+              "GEL",
+              "GHS",
+              "GIP",
+              "GMD",
+              "GNF",
+              "GTQ",
+              "GYD",
+              "HKD",
+              "HNL",
+              "HRK",
+              "HTG",
+              "HUF",
+              "IDR",
+              "ILS",
+              "INR",
+              "IQD",
+              "IRR",
+              "ISK",
+              "JMD",
+              "JOD",
+              "JPY",
+              "KES",
+              "KGS",
+              "KHR",
+              "KMF",
+              "KPW",
+              "KRW",
+              "KWD",
+              "KYD",
+              "KZT",
+              "LAK",
+              "LBP",
+              "LKR",
+              "LRD",
+              "LSL",
+              "LYD",
+              "MAD",
+              "MDL",
+              "MGA",
+              "MKD",
+              "MMK",
+              "MNT",
+              "MOP",
+              "MRU",
+              "MUR",
+              "MVR",
+              "MWK",
+              "MXN",
+              "MYR",
+              "MZN",
+              "NAD",
+              "NGN",
+              "NIO",
+              "NOK",
+              "NPR",
+              "NZD",
+              "OMR",
+              "PAB",
+              "PEN",
+              "PGK",
+              "PHP",
+              "PKR",
+              "PLN",
+              "PYG",
+              "QAR",
+              "RON",
+              "RSD",
+              "RUB",
+              "RWF",
+              "SAR",
+              "SBD",
+              "SCR",
+              "SDG",
+              "SEK",
+              "SGD",
+              "SHP",
+              "SLL",
+              "SOS",
+              "SRD",
+              "SSP",
+              "STN",
+              "SYP",
+              "SZL",
+              "THB",
+              "TJS",
+              "TMT",
+              "TND",
+              "TOP",
+              "TRY",
+              "TTD",
+              "TWD",
+              "TZS",
+              "UAH",
+              "UGX",
+              "USD",
+              "UYU",
+              "UZS",
+              "VES",
+              "VND",
+              "VUV",
+              "WST",
+              "XAF",
+              "XCD",
+              "XDR",
+              "XOF",
+              "XPF",
+              "YER",
+              "ZAR",
+              "ZMW",
+              "ZWL",
+              "unmapped_value",
+              null
+            ],
+            "example": "USD",
+            "x-speakeasy-unknown-values": "allow",
+            "nullable": true
+          },
+          "source_value": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "array",
+                "items": {}
+              }
+            ],
+            "example": "USD",
+            "nullable": true
+          }
+        }
+      },
+      "ForbiddenResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 403
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Forbidden resource"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp when the error occurred",
+            "example": "2023-05-30T00:00:00.000Z",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp"
+        ]
+      },
+      "InternalServerErrorResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 500
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Internal server error"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp when the error occurred",
+            "example": "2023-05-30T00:00:00.000Z",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp"
+        ]
+      },
+      "JournalLine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the journal line",
+            "example": "line_123456789",
+            "nullable": true
+          },
+          "account_id": {
+            "type": "string",
+            "description": "ID of the ledger account this line references",
+            "example": "acc_123456789",
+            "nullable": true
+          },
+          "account_type": {
+            "description": "Type of the account",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountTypeEnum"
+              }
+            ]
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the journal line",
+            "example": "Payment for office supplies",
+            "nullable": true
+          },
+          "currency_code": {
+            "description": "Currency code for this line",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CurrencyEnum"
+              }
+            ]
+          },
+          "exchange_rate": {
+            "type": "number",
+            "description": "Exchange rate to company base currency",
+            "example": 1,
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "description": "Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative for credit",
+            "example": 10010,
+            "nullable": true
+          },
+          "tax_amount": {
+            "type": "number",
+            "description": "Tax amount of the line in minor units, e.g. 10010 for 100.10 USD",
+            "example": 2002,
+            "nullable": true
+          },
+          "tax_rate_percentage": {
+            "type": "number",
+            "description": "Tax rate percentage",
+            "example": 15,
+            "nullable": true
+          }
+        }
+      },
+      "NotFoundResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 404
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Not Found"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp when the error occurred",
+            "example": "2023-05-30T00:00:00.000Z",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp"
+        ]
+      },
+      "NotImplementedResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 501
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Not Implemented"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp when the error occurred",
+            "example": "2023-05-30T00:00:00.000Z",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp"
+        ]
+      },
+      "PreconditionFailedResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 412
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Precondition failed"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp when the error occurred",
+            "example": "2023-05-30T00:00:00.000Z",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp"
+        ]
+      },
+      "ProviderError": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number",
+            "description": "HTTP status code of the provider error",
+            "example": 400,
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "URL that caused the error",
+            "example": "https://api.provider.com/v1/resource",
+            "nullable": true
+          },
+          "raw": {
+            "type": "object",
+            "description": "Raw error response from the provider",
+            "example": {
+              "message": "Invalid input parameters"
+            },
+            "nullable": true
+          },
+          "headers": {
+            "type": "object",
+            "description": "Response headers",
+            "example": {
+              "content-type": "application/json",
+              "x-request-id": "5678c28b211dace4e0a0f9171e6b88c5"
+            },
+            "nullable": true
+          }
+        }
+      },
+      "RawResponse": {
+        "type": "object",
+        "properties": {
+          "method": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "body": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": 0,
+                  "maximum": 255
+                }
+              }
+            ],
+            "additionalProperties": true,
+            "nullable": true
+          },
+          "response": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "required": [
+          "method",
+          "url"
+        ]
+      },
+      "RequestTimedOutResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 408
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Request timed out"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp when the error occurred",
+            "example": "2023-05-30T00:00:00.000Z",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp"
+        ]
+      },
+      "TooManyRequestsResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 429
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Too many requests"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp when the error occurred",
+            "example": "2023-05-30T00:00:00.000Z",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp"
+        ]
+      },
+      "UnauthorizedResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 401
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Unauthorized"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp when the error occurred",
+            "example": "2023-05-30T00:00:00.000Z",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp"
+        ]
+      },
+      "UnifiedError": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 400,
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Bad Request",
+            "nullable": true
+          },
+          "headers": {
+            "type": "object",
+            "description": "Response headers",
+            "example": {
+              "content-type": "application/json",
+              "x-request-id": "5678c28b211dace4e0a0f9171e6b88c5"
+            },
+            "nullable": true
+          }
+        }
+      },
+      "UnprocessableEntityResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 422
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Unprocessable Entity"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp when the error occurred",
+            "example": "2023-05-30T00:00:00.000Z",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "timestamp"
+        ]
+      }
+    }
+  }
+}

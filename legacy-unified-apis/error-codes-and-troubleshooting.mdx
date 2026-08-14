@@ -1,0 +1,61 @@
+---
+noindex: true
+title: "Error Codes and Troubleshooting"
+description: "Unified API error codes and troubleshooting guide"
+---
+
+import HttpErrors from "/snippets/errors/http-errors.mdx";
+
+Encountering errors while interacting with APIs is a common occurrence. Although the StackOne Unified API will try to remediate issues automatically, it is important to understand what each error code signifies.
+
+This guide lists the error codes you may encounter while using the StackOne Unified API, the possible reasons behind these errors, and steps for resolution.
+
+---
+
+<HttpErrors />
+
+---
+
+## Provider Errors
+
+When the underlying provider API returns an error, the StackOne Unified API includes any data returned by the provider in the `provider_errors` array:
+
+```json
+{
+  "statusCode": 404,
+  "message": "Resource not found",
+  "provider_errors": [
+    {
+      "status": 404,
+      "url": "/api/v1/employees/250",
+      "raw": { "error": "Employee with id 250 does not exist" }
+    }
+  ]
+}
+```
+
+<Tip>
+Always check the `provider_errors` array for additional context from the upstream provider. This can help diagnose issues specific to the connected system.
+</Tip>
+
+---
+
+## Getting Help
+
+For any unresolved issues or further assistance, contact our support team via your dedicated Slack channel or at [support@stackone.com](mailto:support@stackone.com).
+
+<CardGroup cols={2}>
+  <Card title="Status Page" icon="signal" href="https://status.stackone.com">
+    Check system status and incidents
+  </Card>
+  <Card title="Request Tester" icon="flask" href="https://docs.stackone.com/embed/call-actions/troubleshooting/playground">
+    Debug requests directly in the dashboard
+  </Card>
+  <Card title="Request Logs" icon="scroll" href="https://docs.stackone.com/connect/troubleshooting">
+    View detailed request history
+  </Card>
+  <Card title="AI Error Explainer" icon="robot" href="https://docs.stackone.com/connect/troubleshooting#error-explainer">
+    Get AI-powered error resolution steps
+  </Card>
+</CardGroup>
+

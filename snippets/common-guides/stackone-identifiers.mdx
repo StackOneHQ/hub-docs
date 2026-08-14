@@ -1,0 +1,80 @@
+# Understanding Synthetic IDs in Our API
+
+We often need to combine data from multiple sources to create unified responses. For instance, consider Workday's Applications. To create a unified application with the data provided by Workday, we need to link Job Requisitions with Candidates. Here, a candidate can be associated with multiple job requisitions and vice versa. Consequently, we can't use either of these IDs to identify a specific record.
+
+<Tip>
+    StackOne synthetic IDs can be used interchangeably with original provider IDs.
+</Tip>
+
+## What Are Synthetic IDs?
+
+To address this, we've introduced the concept of synthetic IDs. These IDs do not match an ID in the underlying provider, but allow you (and us) to identify the combined resources that were used to create this unified response. You can then use these IDs across our unified API. For example, you could use a `job_id` from a listing to search for candidates matching that value.
+
+For simplicity, all IDs provided by the API will be synthetic IDs. These IDs are easy to identify because they are prefixed with `c28xIQ`. In most cases, you'll still be able to see the underlying ID from the provider in a field prefixed by `remote_`. For example, in the case of `job_id`, the underlying ID will be in `remote_job_id`.
+
+<Note>
+It is strongly recommended to use the synthetic identifier for ease of use and consistency.
+</Note>
+
+Here's an example response showing both StackOne and remote identifiers:
+
+```json
+{
+    "id": "c28xIQ123ABC",               // StackOne identifier for current resource
+    "remote_id": "E123456",             // Provider's original identifier
+    "first_name": "John",
+    "last_name": "Doe",
+    "department_id": "c28xIQ789XYZ",    // StackOne identifier for department
+    "remote_department_id": "D789"      // Provider's department identifier
+}
+```
+
+## Using Synthetic and Regular IDs
+
+When it comes to writing or fetching data, both types of IDs can be used interchangeably.
+
+### Fetching Data
+
+For reading, let's say we have the synthetic and regular IDs:
+
+```jsx
+{
+  job_id: 'c28xIQaWQ6MQ',
+  remote_id: '1'
+}
+
+```
+
+You can make either of these calls and expect the same response:
+
+```bash
+# Using a regular ID
+curl --request GET \
+--url https://api.stackone.com/unified/ats/jobs/1 \
+--header 'accept: application/json'
+
+# Using a synthetic ID
+curl --request GET \
+--url https://api.stackone.com/unified/ats/jobs/c28xIQaWQ6MQ \
+--header 'accept: application/json'
+
+```
+
+This applies to any query parameters as well:
+
+```bash
+# Using a regular ID
+curl --request GET \
+     --url https://api.stackone.com/unified/ats/applications?raw=false&filter[job_id]=1&page_size=25 \
+     --header 'accept: application/json'
+
+# Using a synthetic ID
+curl --request GET \
+     --url https://api.stackone.com/unified/ats/applications?raw=false&filter[job_id]=c28xIQaWQ6MQ&page_size=25 \
+     --header 'accept: application/json'
+
+```
+
+### Writing Data
+
+When it comes to writing, the behavior is similar. You can use the ID field as usual and provide either a regular ID or a synthetic ID.

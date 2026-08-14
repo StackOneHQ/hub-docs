@@ -1,0 +1,60 @@
+---
+title: "Pagination"
+description: ""
+---
+
+StackOne's <Tooltip tip="Unified API - A Unified API is an application programming interface (API) that gives developers access to information from diverse sources via a single interface">Unified API</Tooltip> allows paginating on API requests that return multiple records using a page cursor.
+
+The following optional URL parameters are used for pagination:
+
+<ParamField query="page_size" type="string" default="25">
+  The number of records per page.
+</ParamField>
+
+<ParamField query="next" type="string">
+  The `next` parameter is used to iterate through data pages.
+</ParamField>
+
+<Warning>
+  It is recommended to keep the same page\_size throughout the sequence of pagination requests otherwise unexpected behaviour may occur.
+</Warning>
+
+## Sample URL
+
+```
+https://api.stackone.com/unified/hris/employees?page_size=25&next=eyJyIjphAsHHere
+```
+
+## Sample Response
+
+In the response payload, you can find the `next` cursor. To get the next page of data send a new request with the `next` parameter set to this value.
+
+```json
+"next":"eyJyIjphAsHHere",
+"data":[
+   0: [...],
+   1: [...],
+   ...
+   24: [...],
+]
+```
+
+Once the cursor reaches the end of the data list, both values become NULL.
+
+## Page Size
+
+By default, the `page_size` parameter is set to 25 results per page, you can over-ride this by passing in a custom page size with this parameter. If fewer records remain in the underlying connected provider than a given page\_size, you will not receive a `next`  cursor value on the next request.
+
+For example, if you have 17 records in total, all of them will be shown on one page with `next` parameter being empty. Then you specify the `page_size` = 10, you'll get the `next` value. If you use this `next` value, you will get a stripped array of the last 7 records.
+
+## Early Cursor return
+
+Occasionally we have to apply custom filters or structure requests to ensure we can get data which is not returned by the native API, this can cause timeout issues where we wouldn't fill an entire page.
+
+In this case we will return a cursor value with the incomplete page, and you can continue paginating through the data to the end of the data set. When the final record is reached on the underlying provider we will return an empty next cursor.
+
+
+```json
+"next":"eyJyIjphAsHHere",
+"data":[]
+```

@@ -1,0 +1,73 @@
+
+<Frame>
+![](/images/81fc298-Field_Mapping_Cover_Image.png)
+</Frame>
+
+# Overview
+
+Custom Unified Fields enables you to create bespoke fields that and implement them across any connector already supported on the StackOne platform.
+
+This gives you flexibility and control over any unified API and connectors available on StackOne, allowing you to tailor each connector to meet your specific product needs.
+
+➡️ Custom unified fields can only use data that is already returned by underlying connectors. You cannot fetch additional requests or use data not already present in the underlying provider requests that StackOne's default unified operations make.
+
+➡️ Custom unified fields are, like any other unified fields, real-time by default meaning that the data returned by the StackOne unified API will reflect the latest values from the source fields.
+
+> 🙋 Reach out to StackOne's support to get Custom Unified Fields enabled for your organization
+
+# Use-cases
+
+Use-cases are broad and entirely dependant on the product and feature you're building and what type of connectors you're using. Some examples of custom unified fields:
+
+- A new `emergency_contact_number` to be retrieved when listing [Employees](/hris/api-reference/employees/list-employees) (HRIS)
+- A `multi_factor_authentication` boolean variable on IAM [Users](https://docs.stackone.com/iam/api-reference/users/list-users) on top of the existing array (IAM)
+- Support for an LMS [Content](/lms/api-reference/content/list-content) `label` surfacing label and tag data from LMS systems that support it (LMS)
+
+# Nomenclature:
+
+We'll refer throughout the guides and user interface to various properties
+
+- **Custom Unified Field:** A user-defined field that can be mapped and unified across various connectors by a Project Admin
+- **Variable Key:** The unique identifier for the custom field.
+- **Display Name:** The user-friendly name for the custom field.
+- **Variable Type:** The data type of the custom field (currently only primitive data types are supported).
+- **Field Mapping:** The process of linking a custom unified field to fields from different HR systems.
+
+# Creating and managing fields
+
+Project admins can access the field mapping section by clicking on ["Field Mapping"](https://app.stackone.com/field_mapping) in the left-hand menu.:
+
+<Frame>
+![](/images/e9690c5-CleanShot_2024-07-31_at_22.21.352x.png)
+</Frame>
+
+To create the Custom Unified Field, you will need to specify the necessary details such as the Variable Key (which will be the actual property key in the returned JSON, an associated Type and a name & description to go with it (meant more for documentation and readability purposes as these latter two will not be returned in the request's response). All these details can be updated later via the `edit` button.
+
+<Frame>
+![](/images/e240ef2-CleanShot_2024-07-30_at_15.24.502x.png)
+</Frame>
+
+### Limitations
+
+- **Data Types:** Only primitive data types (string, number, boolean) are supported. Values will be typecasted when possible.
+- **Operations:** Initially, only read operations (List and Get) are supported. Write operations will be introduced in future updates.
+
+# Future capabilities of custom unified fields
+
+Currently, Custom Unified Field mapping allows you to pull and use information that is already returned by the provider. Here's what we'll enable and add in future release
+
+- Ability to update and add underlying provider requests so you can use more data from the underlying tools
+- Creation of brand new operations and unified models
+- Operations, formulas and functions so you can create more complex, derived fields and values.
+- Account specific overrides so you can have different mapping per account and use tenant-based custom fields for specific field mappings when relevant
+
+# FAQ
+
+**Why can't I see the `Field Mapping` section in the side-menu?**  
+The feature is only available to Project Admin and needs to first be enabled by StackOne (reach out to StackOne support for it to be enabled for your organization)
+
+**Why can't I see the unified model I want to add custom unified for in the `Field Mapping` page?**  
+Only pre-selected unified models have been enabled, if you would like to access another model available in our API but not visible in the custom unified fields section, reach out to our support team.
+
+**How can I map a complex object like an array, enum or object?**  
+This is currently not supported in the beta version but will come shortly with the global release of this feature.

@@ -1,0 +1,26 @@
+export const DifferenceBetweenPublicAndPartnerAPI = ({ 
+    showPublic = true, 
+    showPartner = true, 
+    showPublicPartner = true,
+    title = "Difference between Public API & Partner API"
+}) => {
+    return (
+        <>
+            <Accordion title={title}>
+                <ul className='custom-list-accordion'>
+                    {showPublic && (
+                        <li><b>Public API:</b> Access to the StackOne Unified APIs, excluding the Assessments and Background Checks Unified API and its features.</li>
+                    )}
+
+                    {showPartner && (
+                        <li><b>Partner API:</b> Access to the Assessments and Background Checks Unified API and its features, but not other StackOne Unified APIs. This allows you to integrate your provider's partner app with StackOne.</li>
+                    )}
+
+                    {showPublicPartner && (
+                        <li><b>Public + Partner API:</b> Access to all StackOne Unified APIs, including the Assessments and Background Checks Unified API and its features.</li>
+                    )}
+                </ul>
+            </Accordion>
+        </>
+    );
+};

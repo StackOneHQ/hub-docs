@@ -1,0 +1,131 @@
+---
+noindex: true
+title: "External Link Approach for Learning Content Providers"
+description: "Introduction to the external link approach for content delivery and its benefits over legacy SCORM/AICC formats"
+---
+
+## Overview
+
+Learning content providers using StackOne's LMS integrations use an **external link approach** for content delivery. This method directs users to content hosted on third-party platforms where they can consume learning materials directly on the provider's platform.
+
+<Note>
+The external link approach is the recommended modern standard for content delivery, offering superior flexibility and user experience compared to legacy formats.
+</Note>
+
+## How External Link Approach Works
+
+With the external link approach:
+
+1. **Content Discovery**: Users discover available content through your platform via StackOne's unified API
+2. **External Redirection**: When users select content, they are directed to the content provider's platform
+3. **Direct Consumption**: Users consume content directly on the provider's optimized platform
+4. **Progress Tracking**: Learning progress and completion data flows back through StackOne's API
+
+## Why External Links Are Preferred Over SCORM/AICC
+
+### Widespread API Support
+
+Modern web APIs that support external linking are universally supported across all platforms and browsers. Unlike SCORM or AICC, which require specific runtime implementations, external links work with standard web technologies that every LMS supports.
+
+### SCORM and AICC Are Legacy Formats
+
+SCORM (Shareable Content Object Reference Model) and AICC (Aviation Industry Computer-Based Training Committee) are outdated standards with significant limitations:
+
+**Data Storage Restrictions**
+- SCORM has a 4,096 character limit for suspend data, severely restricting the ability to save detailed progress information
+- Limited data types supported for tracking learner interactions
+
+**Outdated JavaScript APIs**
+- SCORM relies on legacy JavaScript APIs that are incompatible with modern web development practices
+- Requires specific browser configurations that conflict with modern security policies
+
+**Limited Offline Capabilities**
+- SCORM packages require complex workarounds for offline functionality
+- Modern web standards offer better progressive web app capabilities
+
+**Browser Compatibility Issues**
+- Legacy SCORM players often fail on modern browsers due to security restrictions
+- Cross-origin policy conflicts with contemporary web security standards
+
+### Maximum Control Over Learning Journey
+
+The external link approach gives content providers complete control over the user experience:
+
+**User Experience Design Freedom**
+- Complete control over interface design, navigation, and user interaction patterns
+- Ability to implement advanced features like adaptive learning, personalization, and social learning
+
+**Content Delivery Optimization**
+- Use of modern CDNs for optimal content delivery performance
+- Implementation of progressive loading and streaming technologies
+- Real-time content updates without LMS dependencies
+
+**Advanced Analytics Integration**
+- Integration with sophisticated analytics platforms for detailed learner behavior tracking
+- Custom reporting and business intelligence capabilities
+- Cross-platform analytics aggregation
+
+### Enhanced User Learning Tracking
+
+External links enable superior tracking capabilities:
+
+**Granular Progress Monitoring**
+- Track detailed user interactions, time spent on specific sections, and engagement patterns
+- Monitor learning path progression and decision points
+- Capture rich contextual data about learning behavior
+
+**Real-Time Performance Data**
+- Instant feedback on learner performance and comprehension
+- Adaptive content delivery based on real-time assessment results
+- Dynamic difficulty adjustment based on learner performance
+
+**Cross-Platform Analytics**
+- Unified tracking across multiple devices and platforms
+- Comprehensive learning journey mapping across different touchpoints
+- Integration with enterprise learning analytics systems
+
+**Custom Reporting and Insights**
+- Tailored reporting that matches specific business or educational requirements
+- Advanced data visualization and learning analytics dashboards
+- Predictive analytics for learning outcomes and intervention recommendations
+
+## Modern Technical Advantages
+
+### Scalability and Performance
+
+- **Global Content Delivery**: Leverage modern CDN technologies for optimal global content delivery
+- **Elastic Scaling**: Handle varying loads without LMS infrastructure constraints
+- **Performance Optimization**: Use modern web technologies like service workers and progressive web apps
+
+### Security and Compliance
+
+- **Modern Security Protocols**: Implement contemporary authentication and authorization standards
+- **Data Privacy Controls**: Fine-grained control over data collection and privacy compliance
+- **Secure Content Delivery**: Use HTTPS and modern encryption standards for all content delivery
+
+### Integration Flexibility
+
+- **API-First Architecture**: Modern RESTful APIs that integrate with any technology stack
+- **Webhook Support**: Real-time notifications for learning events and progress updates
+- **Standards Compliance**: Support for modern e-learning standards like xAPI and cmi5
+
+## Getting Started
+
+To implement the external link approach with StackOne:
+
+1. **Content Hosting**: Ensure your content is hosted on a platform accessible via web links
+2. **Progress Tracking**: Implement progress tracking that can send data back via StackOne's API
+3. **User Authentication**: Set up secure user authentication and session management
+4. **Analytics Integration**: Configure tracking and analytics for comprehensive learner insights
+
+<Note>
+StackOne's unified API abstracts the complexity of different LMS providers while maintaining the benefits of the external link approach across all integrated platforms.
+</Note>
+
+## Next Steps
+
+- Review the specific [partnership integration requirements](./partnership-integrations) for platforms that require formal partnerships
+- Explore platform-specific guides for [Cornerstone](./cornerstone), [Oracle](./oracle), [Workday](./workday), and [Go1](./go1)
+- Learn about [other integration options](./other-integrations) available through StackOne
+
+For technical implementation guidance and best practices, contact the StackOne team to discuss your specific content delivery requirements.

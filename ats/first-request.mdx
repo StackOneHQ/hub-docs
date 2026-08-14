@@ -1,0 +1,98 @@
+---
+noindex: true
+title: "Making your first request"
+sidebarTitle: "Making your first request"
+description: "Make your first ATS API request to list candidates from a connected applicant tracking system"
+---
+
+import FirstRequestIntro from "/snippets/guides/first-request-intro.mdx";
+import FirstRequestPrerequisites from "/snippets/guides/first-request-prerequisites.mdx";
+import FirstRequestGettingAccountId from "/snippets/guides/first-request-getting-account-id.mdx";
+import FirstRequestReferences from "/snippets/guides/first-request-references.mdx";
+
+<FirstRequestIntro />
+
+<FirstRequestPrerequisites />
+
+<FirstRequestGettingAccountId />
+
+## Making Your First Request
+
+Now you're ready to make your first ATS API call. Let's list candidates from the connected applicant tracking system:
+
+<Tabs>
+  <Tab title="cURL">
+    ```bash
+    curl --request GET \
+      --url 'https://api.stackone.com/unified/ats/candidates' \
+      --header 'accept: application/json' \
+      --header 'authorization: Basic {base64_encoded_api_key}' \
+      --header 'x-account-id: {account_id}'
+    ```
+  </Tab>
+  <Tab title="TypeScript">
+    ```typescript
+    import { StackOne } from "@stackone/stackone-client-ts";
+
+    const client = new StackOne({ apiKey: "YOUR_API_KEY" });
+
+    const response = await client.ats.listCandidates({
+      xAccountId: "your-account-id"
+    });
+
+    console.log(response.candidates);
+    ```
+  </Tab>
+  <Tab title="Python">
+    ```python
+    from stackone_client import StackOne
+
+    client = StackOne(api_key="YOUR_API_KEY")
+
+    response = client.ats.list_candidates(
+        x_account_id="your-account-id"
+    )
+
+    print(response.candidates)
+    ```
+  </Tab>
+</Tabs>
+
+### Example Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cand_123",
+      "remote_id": "abc123",
+      "first_name": "Alex",
+      "last_name": "Johnson",
+      "name": "Alex Johnson",
+      "email": "alex.johnson@email.com",
+      "phone_number": "+1-555-0123",
+      "created_at": "2024-01-15T09:30:00Z",
+      "updated_at": "2024-01-20T14:45:00Z"
+    }
+  ]
+}
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Get Candidate" icon="user" href="/ats/api-reference/candidates/get-candidate">
+    Retrieve details for a specific candidate
+  </Card>
+  <Card title="List Jobs" icon="briefcase" href="/ats/api-reference/jobs/list-jobs">
+    Get open positions from the ATS
+  </Card>
+  <Card title="Pagination" icon="arrow-right" href="/legacy-unified-apis/common-guide/pagination">
+    Handle large result sets efficiently
+  </Card>
+  <Card title="Applications" icon="file-lines" href="/ats/api-reference/applications/list-applications">
+    View candidate applications
+  </Card>
+</CardGroup>
+
+<FirstRequestReferences />

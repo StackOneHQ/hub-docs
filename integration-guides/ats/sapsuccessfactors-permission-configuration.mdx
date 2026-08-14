@@ -1,0 +1,224 @@
+---
+noindex: true
+title: 'SAP SuccessFactors Permission Configuration'
+description: 'Configuration of Permissions in SAP SuccessFactors'
+---
+
+<Warning>
+    The following guidance assumes you have Admin privileges for your SAP SuccessFactors account.
+</Warning>
+
+## Permission Settings
+
+### Step 1: Role Configuration
+
+<Steps>
+  <Step title="Log in to SuccessFactors as an administrator">
+  </Step>
+
+  <Step title="Navigate to Admin Center.">
+  </Step>
+
+  <Step title="In the Tools search bar, search for Manage Permission Roles.">
+  </Step>
+
+  <Step title="Choose an existing role or create a new role.">
+  </Step>
+
+  <Step title="If you choose a new role, on the Role Details page, enter the role name.">
+   On the `Permission Role Details` page, enter the `Role Name` and `Description` in the first section.
+  </Step>
+</Steps>
+
+
+### Step 2: Permission Configuration For Role
+
+<Steps>
+  <Step title="Select the Permission">
+  On the `Permission Role Details` page, click the `Permissions` button in the second section.
+  </Step>
+
+  <Step title="Select the Module">
+    Select the `module` for which you want to configure permissions. For example, to configure permissions for `Recruiting entities` such as Applications, Jobs, and Assessments, you can select `Recruiting Permissions`.
+  </Step>
+
+  <Step title="Select the Entity">
+    On the left side of the page, you will find a list of all entities for which you can configure `read (view)` and `write (edit)` permissions.
+    - Selecting the View checkbox allows users to read data from a specific entity using the OData API.
+    - Selecting the Edit checkbox grants users permission to write data to that entity using the Write OData API.
+  </Step>
+
+   <Step title="Click on Done">
+  </Step>
+</Steps>
+
+### Step 3: Assign Role
+
+<Steps>
+  <Step title="Assign the Role">
+    On the Permission Role Details page, click the `Assignments` tab in `Manage Permission Roles` to assign this role to a group of users.
+  </Step>
+
+  <Step title="Select the Group">
+    Click the `Add Role Assignment` button, select the `Role`, and then click the `Next` button.
+  </Step>
+
+  <Step title="Select the Users">
+    In the next tab, select the `Employees` or `Groups` to which you want to assign the role.
+   </Step>
+
+  <Step title="Click on Save">
+    In the final step, click the `Save` button to save your changes.
+  </Step>
+</Steps>
+
+### Step 4: Click the `Save Changes` button on the Permission Role Details page to save all changes. 
+
+
+<br /><br />
+
+## Required configuration for resource mapping via StackOne APIs
+
+### ATS Resource and Permissions Configuration
+
+To access the ATS OData APIs in Recruiting, ensure the following permissions are granted:
+
+<AccordionGroup>
+  <Accordion title="Applications" defaultOpen>
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Application Export`, `OData API Application Create`, `OData API Application Update`, `OData API Candidate Export`, `OData API Candidate Create`, `OData API Candidate Update`, `Candidate Tagging Permission` |
+
+  </Accordion>
+
+  <Accordion title="Applications > Documents">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Application Export`, `OData API Application Create`, `OData API Application Update` |
+| Manage Integration Tools | `OData API Attachment Export`, `OData API Attachment Import` |
+
+  </Accordion>
+
+  <Accordion title="Applications > Notes">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Application Export`, `OData API Application Create`, `OData API Application Update`, `OData API Application Audit Export` |
+
+  </Accordion>
+
+  <Accordion title="Applications > Offers">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Offer Approval Export`, `OData API Offer Approval Create`, `OData API Offer Approval Update` |
+
+  </Accordion>
+
+  <Accordion title="Assessments">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Application Export`, `OData API Application Create`, `OData API Application Update` |
+
+  </Accordion>
+
+  <Accordion title="BackgroundChecks">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Application Export`, `OData API Application Create`, `OData API Application Update` |
+
+  </Accordion>
+
+  <Accordion title="Candidates">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Candidate Export`, `OData API Candidate Create`, `OData API Candidate Update`, `Candidate Tagging Permission` |
+
+  </Accordion>
+
+  <Accordion title="Candidates > Notes">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Candidate Export`, `OData API Candidate Create`, `OData API Candidate Update`, `Candidate Tagging Permission` |
+
+  </Accordion>
+
+  <Accordion title="Custom Field Definitions > Applications">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Application Export`, `OData API Application Create`, `OData API Application Update` |
+
+  </Accordion>
+
+  <Accordion title="Custom Field Definitions > Candidates">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Candidate Export`, `OData API Candidate Create`, `OData API Candidate Update`, `Candidate Tagging Permission` |
+
+  </Accordion>
+
+  <Accordion title="Custom Field Definitions > Jobs">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Requisition Export`, `OData API Requisition Create`, `OData API Requisition Update` |
+
+  </Accordion>
+
+  <Accordion title="Interviews">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Application Export`, `OData API Application Update`, `OData API Interview Central Create/Update` |
+
+  </Accordion>
+
+  <Accordion title="Job Postings">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Requisition Export`, `OData API Requisition Create`, `OData API Requisition Update` |
+
+  </Accordion>
+
+  <Accordion title="Jobs">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Requisition Export`, `OData API Requisition Create`, `OData API Requisition Update` |
+
+  </Accordion>
+
+  <Accordion title="Offers">
+    
+| Category | Permission |
+|----------|------------|
+| Recruiting Permissions | `OData API Offer Approval Export`, `OData API Offer Approval Create`, `OData API Offer Approval Update` |
+
+  </Accordion>
+
+  <Accordion title="Department">
+    
+| Category | Permission |
+|----------|------------|
+| MDF Foundation Objects | `Actions`, `View Current`, `View History`, `Create`, `Insert`, `Correct`, `Delete`, `Import`, `Export` |
+
+  </Accordion>
+
+  <Accordion title="Location">
+    
+| Category | Permission |
+|----------|------------|
+| MDF Foundation Objects | `Actions`, `View Current`, `View History`, `Create`, `Insert`, `Correct`, `Delete`, `Import`, `Export` |
+| Foundation Object Types | `View`, `Create`, `Insert`, `Correct`, `Delete` |
+
+  </Accordion>
+</AccordionGroup>

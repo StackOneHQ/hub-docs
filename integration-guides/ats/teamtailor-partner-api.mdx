@@ -1,0 +1,330 @@
+---
+noindex: true
+title: "Teamtailor Partner API"
+description: "To activate the Teamtailor Partner API or Public + Partner API in StackOne for integrating your Teamtailor Marketplace Integration, please follow the necessary steps."
+---
+
+import { DifferenceBetweenPublicAndPartnerAPI } from "/snippets/ats/public-and-partner-api.mdx";
+import { DifferenceBetweenListEndpointAndStaticIdOfPackage } from "/snippets/ats/package-list-endpoint-and-static-package-id.mdx";
+
+
+## Overview
+
+StackOne allows you to integrate your Teamtailor integration app with the Assessment and Background Check categories. 
+This guide covers how you can set up/configure integration at Teamtailor and integrate with StackOne.
+
+
+## Partnership Requirements
+
+<Warning>
+   The partnership with Teamtailor Integration is necessary to proceed with this documentation.
+</Warning>
+
+To become a Teamtailor Integration Partner, navigate to [resource partnership](https://www.teamtailor.com/en/resources/partnerships), 
+then click on `Apply today` which will scroll down to the Integration Partner section that contains a `Find out more` button to 
+direct you to the [Integrate with Teamtailor](https://teamtailor.notion.site/Integrate-with-Teamtailor-3919690568754aaaa7ffd681afe955f2) page.
+
+<Frame>
+   ![Integrate with Teamtailor page](/images/teamtailor/assessment-or-background-check/teamtailor_tech_partner_page.png)
+</Frame>
+
+Click on `Apply as Tech Partner!` button to fill out the **Teamtailor - Tech Partner Integration Request Form**.
+
+<Note>
+   Once you have obtained the Teamtailor partnership, follow the steps below to create an integration with Teamtailor for the Assessment & Background Check categories.
+</Note>
+
+
+## StackOne approach for Teamtailor Integration
+
+Once you <a href="#provider-side-setup">Create an Integration Partner</a> in Teamtailor, the next step is to enable and configure Teamtailor in StackOne. This process will generate an **External Trigger Token** for users, which acts as a key to activate/enable your integration through the Teamtailor Marketplace.
+
+Users will utilize this **External Trigger Token** to integrate the Assessment/Background Check partner application into their job stage workflow.
+<Frame>
+![StackOne approach](/images/teamtailor/assessment-or-background-check/Stackone_approach_on_Teamtailor.png)
+</Frame>
+
+
+## Provider Side Setup
+
+<Steps>
+   <Step title="Navigate to Integration's hub">
+      Log into your Teamtailor account. To access the *Integration Hub*, select the **Settings** option in the top-right corner.
+      <Frame>
+         ![navigate to settings](/images/teamtailor/assessment-or-background-check/0f5ddaa3aceb519d244f1bacd0f03f9b5135bbce4315993a2472e93217def40a-create_a_partner_1.png)
+      </Frame>
+   </Step>
+
+   <Step title="Start creating the Integration Partner">
+      To add a new partner, click on the `CREATE A NEW PARTNER` button.
+      <Frame>
+         ![create a partner](/images/teamtailor/assessment-or-background-check/0b17226cdb027df25dd9bba9fd0b0ecc97fb2fb60f7a36244a3bc55dc3862c46-create_a_partner_2.png)
+      </Frame>
+   </Step>
+
+   <Step title="Fill out the form to create a partner app">
+      Complete the New Partner's form by filling out all the required fields:
+      
+      * **Partner's Name** - Enter the name of the integration partner.
+      * **Partner Base URL** - Enter the endpoint URL provided by StackOne that will be used to fetch the input field configurations with the list of packages and to send candidate test notifications.
+      ```plaintext
+      https://api.stackone.com/external-trigger/teamtailor
+      ```
+      <Frame>
+         ![new partner](/images/teamtailor/assessment-or-background-check/0f7b82b6b6ba2bdba1f15aa0677e6838a9cb8270cc995c0eca95287d277f2490-new_partner.png)
+      </Frame>
+
+      * **Category in marketplace** - The integration will be categorized and displayed under the chosen category, such as Assessments or Background Checks, on Teamtailor's Marketplace.
+      * **Additional options (Activation Form)** - Enter the following JSON into the activation form field:
+      <Frame>
+         ![Activation Form](/images/teamtailor/assessment-or-background-check/0aa6e654318c3dc39fd65964d51609d92b978d7ecc011a9422218d3dea886ebd-activation_form.png)
+      </Frame>
+
+      ```plaintext
+      {
+         "config":{
+            "fields":[
+               {
+                  "type":"infobox",
+                  "content":"<a href='/integration-configuration-concepts/ats/teamtailor-assessment-or-background-check'>Click</a> here to learn how to use this integration",
+                  "icon":"info"
+               },
+               {
+                  "id":"externalTriggerToken",
+                  "type":"password",
+                  "label":"External Trigger Token",
+                  "required":true,
+                  "description":"The token to be used to trigger the workflow externally"
+               }
+            ]
+         }
+      }
+      ```
+      <Note>
+         This **External Trigger Token** field will be visible to the user when enabling the integration from the Teamtailor Marketplace.
+      </Note>
+
+      After saving, the partner integration will be successfully created.
+   </Step>
+</Steps>
+
+
+### To obtain the credentials for partner integration
+
+<Steps>
+   <Step title="Find your Integration credentials">
+      Next to your partner Integration's name on the Grid, you will find the Integration ID.
+      <Frame>
+         <img src="/images/teamtailor/assessment-or-background-check/20cbc704994cabb08d5470f3879cf4f835fd930c9486df63a86b1726a3758dab-Integration_hub_grid.png" alt="Integration hub" style={{ maxHeight: '500px', width: 'auto' }} />
+      </Frame>
+
+      By clicking on `Show Details`, you will be able to access the **API Key**.
+      <Frame>
+         <img src="/images/teamtailor/assessment-or-background-check/f762c6a11af0f8a1cc446d8fed106db773eed52dff6aacb7a77e7a58e387434d-show_details.png" alt="Api Key" style={{ maxHeight: '500px', width: 'auto' }} />
+      </Frame>
+   </Step>
+</Steps>
+
+## StackOne Configuration
+
+<Steps>
+   <Step title="Navigate to enable the Teamtailor at StackOne">
+      Go to the ATS category on the _Integrations_ page and activate Teamtailor
+      
+      <Frame>
+         ![To Enable Teamtailor](/images/teamtailor/assessment-or-background-check/teamtailor-partner-api.png)
+      </Frame>
+   </Step>
+
+   <Step title="Enable and Configure Teamtailor in StackOne">
+      Fill out the necessary fields in the **Teamtailor - Configuration** modal:
+
+      * **Authentication Type**: Select either `Public + Partner API` or `Partner API` to integrate with Teamtailor (for Assessment/Background Check integration).
+      <DifferenceBetweenPublicAndPartnerAPI />
+      <Note>
+        - If you select `Public + Partner API`, the hiring team's data will be included in the webhook notification.<br />
+        - If you select `Partner API`, the hiring team's data will not be included in the webhook notification.
+      </Note>
+      * **Partner Category**: Select the category that corresponds to your integration on Teamtailor's Marketplace page. For instance, if your integration is listed under the Assessments category, please select **Assessment** from the dropdown menu.
+      * **Package's List Endpoint URL** - Implement and provide an endpoint to StackOne that StackOne will use to retrieve the list of packages when the recruiter wants to send a test to a candidate.
+    
+      Implement the following POST endpoint:
+      ```bash
+      curl --location 'https://your-domain.com/<route-to-the-post-endpoint>' \
+      --header 'Content-Type: application/json' \
+      --header 'x-stackone-signature: string' \
+      --header 'Authorization: Basic <base64-encoded-api-key>' \
+      --data '{
+          "job_id": "49201091",
+          "account_id": "456551489512493412",
+          "provider": "teamtailor"
+      }'
+      ```
+
+      The expected response of the POST endpoint (list of packages). Refer to:
+      - [List Assessments Packages](/ats/api-reference/assessments/packages/list-assessments-packages)
+      - [List Background Check Packages](/ats/api-reference/background-checks/packages/list-background-check-packages)
+
+      Enter the endpoint into the designated field:
+      ```plaintext
+      https://your-domain.com/<route-to-the-post-endpoint>
+      ```
+
+      * **Partner Integration ID**: You can find the Integration ID next to the Integration Name under **Settings > Integrations Hub** in Teamtailor.
+      * **Partner Integration API Key**: The API key can be found in the Integration details under **Settings > Integrations Hub** in Teamtailor.
+
+      <Info>
+         To get Partner Integration ID & API Key, [check this](#to-obtain-the-credentials-for-partner-integration)
+      </Info>
+
+      * **Package ID** - If you do not have the Package's List Endpoint URL, you can specify a particular package ID that will be visible to the recruiter when they wish to send the test to the candidate.
+
+      <DifferenceBetweenListEndpointAndStaticIdOfPackage
+         providerName="Teamtailor"
+         dynamicPackageImageAtProviderUI="/images/teamtailor/assessment-or-background-check/teamtailor_dynamic_package.png"
+         staticPackageImageAtProviderUI="/images/teamtailor/assessment-or-background-check/teamtailor_static_package.png"
+      />
+
+      <Frame>
+         ![Teamtailor Configuration Model](/images/teamtailor/assessment-or-background-check/teamtailor_configuration_model_new.png)
+      </Frame>
+
+      Click on the `Confirm` or `Save Changes` button to enable your Partner APIs, allowing end-users to link their accounts through the Hub.
+   </Step>
+
+   <Step title="Add a Webhook">
+      Navigate to the _Webhooks_ page, click on `Add webhook` and fill out the form:
+
+      - **Name:** Enter your webhook with a recognisable name.
+      - **URL:** Enter the URL where the webhook will send the notification of the enable events.
+
+      <Frame>
+         ![Add Webhook form](/images/teamtailor/assessment-or-background-check/teamtailor_add_webhook_form.png)
+      </Frame>
+
+      Enable webhook events from the `Events` tab for Assessment & Background Check, such as `Assessments Order` & `Background Check Order`.
+      <Frame>
+         ![Select webhook events](/images/teamtailor/assessment-or-background-check/teamtailor_add_webhook.png)
+      </Frame>
+   </Step>
+</Steps>
+
+
+## ATS User Enablement
+
+Navigate to the _Accounts_ page or the StackOne Connector Hub to link your Teamtailor account with StackOne.
+<Frame>
+  <img className='rounded-md' style={{ margin: '0 auto', border: '1px solid #efefef' }} alt="Link Teamtailor account" src="/images/teamtailor/assessment-or-background-check/teamtailor_add_link_account.png" />
+</Frame>
+
+Users will get the **External Trigger Token** that is required to enable the integration from the Teamtailor Marketplace.
+<Frame>
+   ![Teamtailor User view of External-trigger](/images/teamtailor/assessment-or-background-check/teamtailor-custom-view-external-trigger.png)
+</Frame>
+
+<Note>
+   Follow the [Teamtailor Assessment or Background Check](/integration-configuration-concepts/ats/teamtailor-assessment-or-background-check) guide regarding how to enable the Teamtailor integration from the Marketplace.
+</Note>
+
+
+## ATS User Experience
+
+### Send the test to the Candidate from Teamtailor
+   <Frame caption="Test your integration with StackOne using your Teamtailor Sandbox" >
+      <video
+         controls
+         className="w-full aspect-video"
+         src="https://cdn.stackone.com/public/teamtailor_assess_bg_check_.mov"
+      />
+   </Frame>
+
+   <Note>
+      Follow the [Teamtailor Assessment or Background Check](/integration-configuration-concepts/ats/teamtailor-assessment-or-background-check) guide regarding how to send the test from Teamtailor.
+   </Note>
+
+### User will see after test has been sent
+   When a user sends an assessment or background check to a candidate, they will see a success message in the candidate application pop-up.
+   <Frame>
+      ![Teamtailor sent test view](/images/teamtailor/assessment-or-background-check/Teamtailor-sent-test-view.png)
+   </Frame>
+
+
+## ATS User Experience Customization
+
+<Steps>
+  <Step title="To Update the result via unified api">
+   	Utilize the following endpoints to update the results:
+      - [Assessment Update Result](/ats/api-reference/assessments/results/update-assessments-result)
+      - [Background Check Update Result](/ats/api-reference/background-checks/results/update-background-check-result)
+
+   	Utilize the following endpoint to get metadata to update the result of the assessment or background check:
+      - [Connector Meta Information](https://docs.stackone.com/platform/api-reference/connectors/get-connector-meta-information-legacy) with the provider key `teamtailor` for model `assessments/results.update` or `background_checks/results.update`
+
+#### User sees the updated results with different conditions of the assessment/background check in Teamtailor
+   |                                                                                                                                                                                                                       |
+   | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | When the result status `completed` without any other details    <br/> ![Update result with result status completed only](/images/teamtailor/assessment-or-background-check/teamtailor_result_status_completed.png)    |
+   | When the result status `failed` without any other details       <br/> ![Update result with result status failed only](/images/teamtailor/assessment-or-background-check/teamtailor_result_status_failed.png)          |
+   | When the result `completed` with all data except Score          <br/> ![completed without score](/images/teamtailor/assessment-or-background-check/teamtailor_result_completed_without_score_with_other_details.png)  |
+   | When the result `failed` with all data except Score             <br/> ![failed without score](/images/teamtailor/assessment-or-background-check/teamtailor_result_failed_without_score_with_other_details.png)        |
+   | When the result `completed` with all details                    <br/> ![completed without score](/images/teamtailor/assessment-or-background-check/teamtailor_result_completed_with_score.png)                        |
+   | When the result `failed` with all details                       <br/> ![failed without score](/images/teamtailor/assessment-or-background-check/teamtailor_result_failed_with_score.png)                              |
+   | When the result not included Result URL                         <br/> ![without result URL](/images/teamtailor/assessment-or-background-check/teamtailor_result_without_result_url.png)                               |
+   | When the result not included Attachments URL                    <br/> ![without attachments URL](/images/teamtailor/assessment-or-background-check/teamtailor_result_without_attachments.png)                         |
+   | When the result included multiple Attachments URL               <br/> ![multiple attachments URL](/images/teamtailor/assessment-or-background-check/teamtailor_result_with_multiple_attachments.png)                  |
+
+  </Step>
+</Steps>
+
+
+## Testing Checklist
+
+✅  **Provider Setup:**
+      - Logged-in with Admin account.
+      - Valid StackOne URL.
+      - Integration partner app is published to the Teamtailor's marketplace under your selected category.
+      - Teamtailor's marketplace activation form of your integration app having an input field to enter `External Trigger Token`.
+
+✅  **StackOne Configuration:**
+      - Selected `Public + Partner API` or `Partner API` as Authentication Type.
+      - Package's List Endpoint URL is correct.
+      - Enable Teamtailor in StackOne Configuration model with the List Packages endpoint.
+      - Package's List Endpoint response is expected according to the following endpoint's response:
+      	- [List Assessments Packages](/ats/api-reference/assessments/packages/list-assessments-packages)
+        - [List Background Check Packages](/ats/api-reference/background-checks/packages/list-background-check-packages)
+
+✅  **ATS User Activation:**
+			- Enter `External Trigger Token` to the marketplace app to enable the integration partner app.
+			- Once the app is enabled from the marketplace, the app should be visible in the Integration list under the Candidate's application; navigate to `More` (the three-dot menu).
+
+✅  **Create a Webhook:**
+			- Added a webhook for Teamtailor and enabled it with the events such as: `Assessment Order` or `Background Check Order`
+			- Valid webhook URL to receive assessment/background check notifications.
+
+✅  **ATS User Experience:**
+			- The integration app is visible in the Integration list under the candidate’s application; navigate to `More` (the three-dot menu).
+			- A list of packages is visible in the dropdown field on the prompt when you click the integration from the list.
+			- Select a package and send the webhook. A green check will appear if the notification has been sent, or an error will appear if not.
+
+✅  **Update Result:**
+			- Success response from the update result endpoint.
+        - Updated result details to Teamtailor's UI.
+
+
+## Troubleshooting
+
+<div className="troubleshooting-table">
+| Symptom                                                         																					| Likely cause                                                                      																																																																										| Fix                                                                                                                                                                                                                                                                                                                |
+| --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Unable to add new Integration partner app.                       																					| **•** Teamtailor Partnership is not active. <br/><br/> **•** Logged-in account is not an Admin account. 																																																															| **•** Contact Teamtailor support for partnership status. <br/><br/> **•** Log in with an Admin account.                                                                                                                                                                                                            |
+| Integration partner app not visible in Teamtailor Marketplace.   																					| Partnership app might be published but not approved                               																																																																										| Contact Teamtailor support for partnership status.                                                                                                                                                                                                                                                                 |
+| Getting `Failed to fetch config from partner: Unable to fetch the partner config` error on the pop-up.    | **•** Package's List Endpoint URL or Static Package ID is missing from StackOne Configuration. <br/><br/> **•** Invalid response getting from the Package's List Endpoint URL. <br/><br/> **•** Invalid Package's List Endpoint URL. 	| **•** Add Static Package ID if you don't have Package's List Endpoint URL. <br/><br/> **•** Response format should be expected as mentioned in the [StackOne Configuration](#stackone-configuration). <br/><br/> **•** Check Package's List Endpoint URL implementation at your end. <br/><br/> **•** Verify CORS. |
+| External Trigger Token field is not visible at StackOne Connector Hub. 																		| **•** Selected Authentication Type is incorrect. 																																																																																											| Select Authentication Type `Public + Partner API` or `Partner API` instead.                                                                                                                                                                                                                                        |
+| User unable to activate integration app.                            																			| Invalid External Trigger Token.                                                 																																																																											| Ensure to copy & add valid External Trigger Token                                                                                                                                                                                                                                                                  |
+| Test notification is not received.                               																					| **•** Invalid webhook URL. <br/><br/> **•** Incorrect webhook events are enabled.                                                                                                                                                    	| **•** Verify webhook URL. <br/><br/> **•** Enable expected events as mentioned in the [StackOne Configuration](#stackone-configuration).                                                                                                                                                                  				 |
+| Test notification not included the job's hiring team.            																					| Different Authentication Type instead of `Public + Partner API`.                   																																																																										| Select Authentication Type `Public + Partner API` instead.                                                                                                                                                                                                                                                         |
+| Unable to update result.                                         																					| Invalid payload format.                                                                                                                                                                                                              	| Check [Connector Meta API](https://docs.stackone.com/platform/api-reference/connectors/get-connector-meta-information-legacy) endpoint for payload format.                                                                                                                                                                                                                                                              |
+| Result URL or Attachment's URL showing error when opened.        																					| Added result URL can be expired or is private.                                																																																																												| Ensure to add public or signed URLs; verify CORS and expiry.                                                                                                                                                                                                                                                       |
+</div>
+
+For persistent issues, contact StackOne support with detailed error logs and configuration information.

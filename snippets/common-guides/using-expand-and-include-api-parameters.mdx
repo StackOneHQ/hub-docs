@@ -1,0 +1,38 @@
+
+## Overview
+
+While getting familiar with <Tooltip tip="Unified API - A Unified API is an application programming interface (API) that gives developers access to information from diverse sources via a single interface">Unified API</Tooltip>, you want to extend API functionality. StackOne API allows joining data from different objects into one combined response.
+
+The StackOne implementation adds advanced <Tooltip tip="Query Parameters - A defined set of parameters attached to the end of a URL; begins with '?'">query parameters</Tooltip>, `include` or `expand`, to obtain the required information.
+
+## Example scenario
+
+Let's imagine an example:
+
+1. You've acquired a [list of your available Accounts](https://docs.stackone.com/platform/api-reference/accounts/list-accounts) (account `id`)
+
+2. Then you've retrieved a [list of employees](/hris/api-reference/employees/list-employees) for a specific `x-account-id` and selected one particular employee by specifying the resource`id` in the path
+
+3. Next you want to [get all available information of that employee](/hris/api-reference/employees/get-employee)
+
+At this point, you're getting basic info, such as name, gender, birthday, email, etc. However, you may be missing information documented in the API reference such as `avatar_url` or additional information about the `work_location` and `employment`. This is where the `include ` and `expand` parameters become handy.
+
+## Including optional params
+
+`include` and `expand` reserved keywords allow retrieving additional information about the employee. As an example, the usage of `include`=`avatar_url` and `expand`=`work_location` returns a link to the employee's avatar and details of work location.
+
+**Include**
+
+Include is meant to return additional fields not included by default for privacy or performance reasons. For example, the `avatar_url` field may require the hosting of the underlying image, which can slow down the response unnecessarily if you do not need it.
+
+**Expand**
+
+Expand, on the other hand, is used to expand objects (also called `models`) for which only the ID would otherwise be given and would therefore require a call to another resource to retrieve the underlying data (such as an employee's employment or work location details )
+
+<Frame>
+![Expand and Include API Parameters](/images/f3b8929-optional_api_params.gif)
+</Frame>
+
+## Supported parameter-value mapping
+
+The supported include and expand parameters are specific to the unified API endpoints. They can be seen within the individual endpoints in the API references (e.g., [List Employees](/hris/api-reference/employees/list-employees))

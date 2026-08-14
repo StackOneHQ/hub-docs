@@ -1,0 +1,140 @@
+---
+noindex: true
+title: HubSpot Webhook Configuration
+description: To successfully configure the webhook and send the event on action.
+---
+import IntegrationFooter from "/snippets/integration-footer.mdx";
+
+<Warning>
+  This guide assumes that you have administrative privileges for your HubSpot account.
+</Warning>
+
+## ✅ Prerequisites
+
+Make sure you have the following before you start:
+- A [HubSpot Developer Account](https://developers.hubspot.com)
+
+## Get Credentials
+<Steps>
+  <Step title="Log in to HubSpot Developer Account">
+  Log in to your HubSpot Developer Account at https://app.hubspot.com/login
+    <Frame>
+      ![Log In](/images/hubspot/image10.png)
+    </Frame>
+    
+  </Step>
+   <Step title="HubSpot OAuth App">
+   - Select **Apps** from the navigation panel.
+   - Click **Create App** to create a new app or select an existing app from the list.
+    <Frame>
+     ![App List](/images/hubspot/app-list.png)
+    </Frame>
+  </Step>
+   <Step title="Get the Developer API Key">
+      - Select **Keys** from the left sidebar.
+      - Click **Show** to view your existing key or **Generate New Key** to create one.
+      - Copy the key and store it securely.
+
+       <Note>       
+          Developer API key is required to subscribe `create` and `delete` events for `Contacts` and `Accounts`
+       </Note>
+ 
+    <Frame>
+      ![API Key](/images/hubspot/image9.png)
+    </Frame>
+    
+  </Step>
+</Steps>
+
+## Configure Webhooks
+<Steps>
+  <Step title="Navigate to Webhooks">
+     In your app dashboard, navigate to **Apps>Webhooks**.
+    <Frame>
+     ![Webhook Page](/images/hubspot/image4.png)
+    </Frame>
+  </Step>
+  <Step title="Set the Webhook URL">
+     - Add your `External Trigger URL` in the Target URL field.
+     <Note>This step is only required when configuring update events for Contacts and Accounts.
+For all other events (such as create and delete), webhook subscriptions are handled automatically via the Webhook Subscription API, and no manual configuration of the Target URL is needed. </Note>
+    <Frame>
+     ![Target URL](/images/hubspot/image5.png)
+    </Frame>
+     - Click **Save** to save the changes.
+     <Frame>
+     ![Save changes](/images/hubspot/image8.png)
+    </Frame>
+  </Step>
+  <Step title="Subscribe to Events">
+    - Click **Create Subscription**
+    - Select the object and event you want to subscribe to.
+      - `contact.propertyChange`
+      - `company.propertyChange`
+    - Select the field you want to trigger the `propertyChange` event on.
+    - Save subscription by clicking **Subscribe** button.
+
+     <Note> 
+       This step is only required when configuring *update* events for **contacts** and **accounts**.
+      </Note>
+   
+    <Frame>
+     ![Subscribe Event](/images/hubspot/image6.png)
+    </Frame>
+    - Activate the webhook by clicking the **Activate** button.
+    <Frame>
+     ![Activate Event](/images/hubspot/image7.png)
+    </Frame>
+  </Step>
+</Steps>
+
+## StackOne Webhooks Configurations
+<Steps>
+  <Step title="Log in to StackOne Dashboard">
+      Log in to your StackOne Dashboard at https://app.stackone.com/login and navigate to **Webhooks**
+    <Frame>
+     ![Webhooks page](/images/hubspot/image11.png)
+    </Frame>
+  </Step>
+  <Step title="Create Webhook">
+     - To create new webhook click on **Add Webhook** button. 
+     <Frame>
+     ![Add Webhook](/images/hubspot/image12.png)
+     </Frame>
+     - Enter Webhook **Name** and **URL** and click **Create**.
+    <Frame>
+     ![Create](/images/hubspot/image13.png)
+    </Frame>
+     - Click **Save** to save the changes.
+  </Step>
+  <Step title="Configure Events">
+    - Select Webhook from the list.
+    <Frame>
+     ![Select Webhook](/images/hubspot/image14.png)
+    </Frame>
+    - Go the **Events** tab. 
+    - To add a new event (such as Create, Update, or Delete), click the plus icon under the CRM catgory.
+    <Frame>
+     ![Add Event](/images/hubspot/image15.png)
+    </Frame>
+    - Select the event under the **HubSpot** integration and click on the *Confirm* button to save the details.
+    <Frame>
+     ![Confirm Event](/images/hubspot/image16.png)
+    </Frame>
+    - Save the webhook by clicking the **Save** button.
+    <Frame>
+     ![Confirm Event](/images/hubspot/image17.png)
+    </Frame>
+  </Step>
+</Steps>
+
+
+<IntegrationFooter />
+
+## Useful Links
+<Card title="API Reference" icon="link" href="https://developers.hubspot.com/docs/guides/api/app-management/webhooks">
+    https://developers.hubspot.com/docs/guides/api/app-management/webhooks
+</Card>
+<Card title="HubSpot Developer Portal" icon="link" href="https://developers.hubspot.com">
+    https://developers.hubspot.com
+</Card>
