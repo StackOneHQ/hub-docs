@@ -134,5 +134,4 @@ These apply when you download a Notion page with `GET /unified/documents/files/{
 
 ### Listing files and folders
 
-- **Nested listings of large page trees can take several minutes.** With `nested_items=true`, StackOne reads every page and block in the tree, and Notion allows about three requests per second per integration. A tree with hundreds of pages takes minutes, not seconds.
-- **Long requests need the heartbeat header.** A request that runs longer than about a minute times out unless you send `Prefer: heartbeat`, which keeps the connection open until the listing is ready.
+- **Nested listings of large page trees can take several minutes.** With `nested_items=true`, StackOne reads every page and block in the tree, and Notion allows about three requests per second per integration. Send `Prefer: heartbeat` so a listing that runs longer than about a minute doesn't time out.
