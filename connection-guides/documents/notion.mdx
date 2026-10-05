@@ -117,3 +117,22 @@ This integration has the following [DOCUMENTS Resources](https://docs.stackone.c
   <li>Files</li>
   <li>Folders</li>
 </ul>
+
+## Known limitations
+
+### Downloading pages
+
+These apply when you download a Notion page with `GET /unified/documents/files/{id}/download`.
+
+- **Downloads are always HTML.** StackOne builds an HTML page from the page's blocks. The `format` and `export_format` parameters have no effect.
+- **Sub-pages and inline databases show as links.** Each sub-page is a separate file. Download it on its own to get its content.
+- **Blocks that Notion's API doesn't return are left out.** Notion reports some block types, such as forms and buttons, as `unsupported` and returns no content for them.
+- **Some pages can't be downloaded.** Notion's API can't read every page type. When Notion rejects a page, for example one of type `external_object_instance_page`, the download returns an error.
+- **Meeting notes include the summary and the notes, not the transcript.**
+- **Long pages take longer.** Nested content needs one Notion request per block, and Notion allows about three requests per second per integration. A long page with many nested blocks can take a minute or more.
+- **Very large pages are cut off at about 5,000 blocks** at a single level of nesting.
+
+### Listing files and folders
+
+- **Nested listings of large page trees can take several minutes.** With `nested_items=true`, StackOne reads every page and block in the tree, and Notion allows about three requests per second per integration. A tree with hundreds of pages takes minutes, not seconds.
+- **Long requests need the heartbeat header.** A request that runs longer than about a minute times out unless you send `Prefer: heartbeat`, which keeps the connection open until the listing is ready.
