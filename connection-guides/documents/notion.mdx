@@ -126,7 +126,7 @@ These apply when you download a Notion page with `GET /unified/documents/files/{
 
 - **Downloads are always HTML.** StackOne builds an HTML page from the page's blocks. The `format` and `export_format` parameters have no effect.
 - **Sub-pages and inline databases show as links.** Each sub-page is a separate file. Download it on its own to get its content.
-- **Blocks that Notion's API doesn't return are left out.** Notion reports some block types, such as forms and buttons, as `unsupported` and returns no content for them.
+- **Blocks whose content Notion's API doesn't return are left out.** Notion reports some block types, such as forms and buttons, as `unsupported` and returns no content for them.
 - **Some pages can't be downloaded.** Notion's API can't read every page type. When Notion rejects a page, for example one of type `external_object_instance_page`, the download returns an error.
 - **Meeting notes include the summary and the notes, not the transcript.**
 - **Long pages take longer.** Nested content needs one Notion request per block, and Notion allows about three requests per second per integration. A long page with many nested blocks can take a minute or more.
