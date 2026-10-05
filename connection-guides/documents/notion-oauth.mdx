@@ -61,6 +61,10 @@ This integration has the following [DOCUMENTS Resources](https://docs.stackone.c
 
 ## Known limitations
 
+### Listing files and folders
+
+- **Nested listings of large page trees can take several minutes.** With `nested_items=true`, StackOne reads every page and block in the tree, and Notion allows about three requests per second per integration. Send `Prefer: heartbeat` so a listing that runs longer than about a minute doesn't time out.
+
 ### Downloading pages
 
 These apply when you download a Notion page with `GET /unified/documents/files/{id}/download`.
@@ -72,7 +76,3 @@ These apply when you download a Notion page with `GET /unified/documents/files/{
 - **Meeting notes include the summary and the notes, not the transcript.**
 - **Long pages take longer.** Nested content needs one Notion request per block, and Notion allows about three requests per second per integration. A long page with many nested blocks can take a minute or more.
 - **Very large pages are cut off at about 5,000 blocks** at a single level of nesting.
-
-### Listing files and folders
-
-- **Nested listings of large page trees can take several minutes.** With `nested_items=true`, StackOne reads every page and block in the tree, and Notion allows about three requests per second per integration. Send `Prefer: heartbeat` so a listing that runs longer than about a minute doesn't time out.
