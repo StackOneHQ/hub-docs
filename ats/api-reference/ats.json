@@ -273,7 +273,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -478,7 +478,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -726,7 +726,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -926,7 +926,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1229,7 +1229,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1445,7 +1445,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1647,7 +1647,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1881,7 +1881,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2185,7 +2185,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2433,7 +2433,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2712,7 +2712,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3029,7 +3029,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3243,7 +3243,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3478,7 +3478,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3687,7 +3687,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3991,7 +3991,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4239,7 +4239,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4432,7 +4432,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4830,7 +4830,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5139,7 +5139,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5387,7 +5387,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5707,7 +5707,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5912,7 +5912,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6149,7 +6149,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6349,7 +6349,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6652,7 +6652,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6866,7 +6866,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7101,7 +7101,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7386,7 +7386,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7691,7 +7691,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7975,7 +7975,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8280,7 +8280,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8564,7 +8564,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8869,7 +8869,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9164,7 +9164,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9403,7 +9403,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9699,7 +9699,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9939,7 +9939,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10234,7 +10234,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10473,7 +10473,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10776,7 +10776,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11015,7 +11015,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11217,7 +11217,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11428,7 +11428,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11775,7 +11775,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11980,7 +11980,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12283,7 +12283,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12545,7 +12545,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12745,7 +12745,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12979,7 +12979,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -13264,7 +13264,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -13503,7 +13503,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -13798,7 +13798,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -14037,7 +14037,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -14332,7 +14332,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -14571,7 +14571,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -14866,7 +14866,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15105,7 +15105,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15419,7 +15419,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15669,7 +15669,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15964,7 +15964,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16169,7 +16169,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16395,7 +16395,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16674,7 +16674,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16911,7 +16911,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17106,7 +17106,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17309,7 +17309,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17590,7 +17590,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17796,7 +17796,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -18021,7 +18021,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -18222,7 +18222,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -18413,7 +18413,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -18608,7 +18608,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -18811,7 +18811,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -19096,7 +19096,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -19335,7 +19335,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -19551,6 +19551,7 @@
           "type": {
             "description": "Type of the answer",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AnswerEnum"
@@ -19676,6 +19677,7 @@
           "interview_stage": {
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/InterviewStage"
@@ -19684,6 +19686,7 @@
           },
           "application_stage": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ApplicationStage"
@@ -19790,6 +19793,7 @@
           },
           "application_status": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ApplicationStatusEnum"
@@ -19818,6 +19822,7 @@
           },
           "candidate": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ApplicationCandidate"
@@ -19850,6 +19855,7 @@
           },
           "source": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Source"
@@ -19903,6 +19909,7 @@
           },
           "content_type": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AttachmentContentType"
@@ -20007,6 +20014,7 @@
           "actor": {
             "description": "The actor who made the change",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ChangesActor"
@@ -20016,6 +20024,7 @@
           "change_type": {
             "description": "The type of change that occurred to the application",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ApplicationChangeTypeEnum"
@@ -20059,6 +20068,7 @@
           },
           "application_status": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ApplicationStatusEnum"
@@ -20493,6 +20503,7 @@
           },
           "application_status": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ApplicationStatusEnum"
@@ -20521,6 +20532,7 @@
           },
           "source": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CreateSource"
@@ -20536,6 +20548,7 @@
           "candidate": {
             "description": "Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create a new candidate with the application.",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CreateCandidate"
@@ -20569,6 +20582,7 @@
           },
           "application": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/OrderApplicationApiModel"
@@ -20577,6 +20591,7 @@
           },
           "job": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/OrderJobApiModel"
@@ -20585,6 +20600,7 @@
           },
           "candidate": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/OrderCandidateApiModel"
@@ -20593,6 +20609,7 @@
           },
           "requester": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/OrderJobHiringTeamApiModel"
@@ -20607,6 +20624,7 @@
           },
           "package": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/OrderBackgroundCheckPackageApiModel"
@@ -20773,6 +20791,7 @@
           },
           "package": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/OrderPackageApiModel"
@@ -20781,6 +20800,7 @@
           },
           "application": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/OrderApplicationApiModel"
@@ -20789,6 +20809,7 @@
           },
           "job": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/OrderJobApiModel"
@@ -20797,6 +20818,7 @@
           },
           "candidate": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/OrderCandidateApiModel"
@@ -20805,6 +20827,7 @@
           },
           "requester": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/OrderJobHiringTeamApiModel"
@@ -20869,6 +20892,7 @@
           "job_status": {
             "description": "Status of the job",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AtsJobStatusEnum"
@@ -20968,6 +20992,7 @@
             "description": "Visibility of the note",
             "example": "public",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/NotesVisibilityEnum"
@@ -21001,6 +21026,7 @@
           },
           "offer_status": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/OfferStatusEnum"
@@ -21058,9 +21084,10 @@
             "description": "The category of the the document",
             "example": "templates, forms, backups, etc.",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
-                "$ref": "#/components/schemas/FileCategoryEnumApiModel"
+                "$ref": "#/components/schemas/AtsDocumentTypeEnum"
               }
             ]
           },
@@ -21102,6 +21129,7 @@
           "file_format": {
             "description": "The file format of the file",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/FileFormatEnum"
@@ -21122,6 +21150,7 @@
             "description": "The content type of the document",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AtsDocumentTypeEnum"
@@ -21226,6 +21255,7 @@
           "file_format": {
             "description": "The file format of the file",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/FileFormatEnum"
@@ -21253,6 +21283,7 @@
           "confidential": {
             "description": "The confidentiality level of the file to be uploaded",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ConfidentialEnumApiModel"
@@ -21266,6 +21297,7 @@
               "id": "550e8400-e29b-41d4-a716-446655440000"
             },
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AtsDocumentsUploadCategoryEnumApiModel"
@@ -21377,6 +21409,7 @@
           "job_status": {
             "description": "Status of the job",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AtsJobStatusEnum"
@@ -21761,6 +21794,7 @@
           },
           "application_status": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ApplicationStatusEnum"
@@ -21769,6 +21803,7 @@
           },
           "source": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CreateSource"
@@ -21816,6 +21851,7 @@
         "properties": {
           "score": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ScoreApiModel"
@@ -21844,6 +21880,7 @@
           },
           "result": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ResultEnum"
@@ -21865,6 +21902,7 @@
           },
           "candidate": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/UpdateResultCandidateApiModel"
@@ -22011,6 +22049,7 @@
         "properties": {
           "score": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ScoreApiModel"
@@ -22039,6 +22078,7 @@
           },
           "result": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ResultEnum"
@@ -22060,6 +22100,7 @@
           },
           "candidate": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/UpdateResultCandidateApiModel"
@@ -22118,6 +22159,7 @@
           "job_status": {
             "description": "Status of the job",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AtsJobStatusEnum"
@@ -22217,6 +22259,7 @@
             "description": "Visibility of the note",
             "example": "public",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/NotesVisibilityEnum"
@@ -22245,6 +22288,7 @@
           },
           "content_type": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AttachmentContentType"
@@ -22429,6 +22473,7 @@
           "data": {
             "description": "Error details",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/UnifiedError"
@@ -22863,6 +22908,7 @@
           "file_format": {
             "description": "The file format of the file",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/FileFormatEnum"
@@ -22883,6 +22929,7 @@
           "type": {
             "description": "Type of the answer",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AnswerEnum"
@@ -23179,6 +23226,7 @@
             "description": "The type of the custom field.",
             "example": "Dropdown",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CustomFieldTypeEnum"
@@ -23733,37 +23781,6 @@
                   "true",
                   "false"
                 ]
-              }
-            ],
-            "nullable": true
-          }
-        }
-      },
-      "FileCategoryEnumApiModel": {
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string",
-            "description": "The category of the file",
-            "nullable": true
-          },
-          "source_value": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "number"
-              },
-              {
-                "type": "boolean"
-              },
-              {
-                "type": "object"
-              },
-              {
-                "type": "array",
-                "items": {}
               }
             ],
             "nullable": true
@@ -25117,6 +25134,7 @@
           },
           "interview_stage": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/InterviewStage"
@@ -25125,6 +25143,7 @@
           },
           "interview_status": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/InterviewStatusEnum"
@@ -25248,6 +25267,7 @@
           },
           "type": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/InterviewTypeEnum"
@@ -25625,6 +25645,7 @@
           },
           "status": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/JobPostingStatusEnum"
@@ -25648,6 +25669,7 @@
               "html": "<p>This is an HTML description</p>"
             },
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/JobPostingContent"
@@ -25682,6 +25704,7 @@
           },
           "employment_type": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentTypeEnum"
@@ -25690,6 +25713,7 @@
           },
           "employment_contract_type": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentContractTypeEnum"
@@ -25937,6 +25961,7 @@
           },
           "type": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CompensationTypeEnum"
@@ -25945,6 +25970,7 @@
           },
           "pay_period": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PayPeriodEnum"
@@ -25953,6 +25979,7 @@
           },
           "pay_frequency": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PayFrequencyEnum"
@@ -26014,6 +26041,7 @@
           },
           "type": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AssessmentTypeEnum"
@@ -26243,6 +26271,7 @@
           "type": {
             "description": "The list type",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ListTypeEnum"
@@ -26433,6 +26462,7 @@
             "description": "Visibility of the note",
             "example": "public",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/NotesVisibilityEnum"
@@ -26658,6 +26688,7 @@
           },
           "offer_status": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/OfferStatusEnum"
@@ -26840,6 +26871,7 @@
           },
           "application_status": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ApplicationStatusEnum"
@@ -27126,6 +27158,7 @@
           },
           "condition_type": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ConditionTypeEnum"
@@ -27265,6 +27298,40 @@
           }
         }
       },
+      "PreconditionFailedDetails": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "The account status that blocked the request",
+            "enum": [
+              "suspended",
+              "expired",
+              "archived",
+              "error"
+            ],
+            "example": "suspended",
+            "x-speakeasy-unknown-values": "allow"
+          },
+          "expiresAt": {
+            "type": "string",
+            "description": "When the test account expired. Present when status is expired",
+            "format": "date-time",
+            "nullable": true
+          },
+          "statusReasons": {
+            "description": "Why the account is in an error state. Present when status is error",
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StatusReason"
+            }
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
       "PreconditionFailedResponse": {
         "type": "object",
         "properties": {
@@ -27276,19 +27343,41 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "Precondition failed"
+            "example": "Account is suspended and cannot process requests"
           },
           "timestamp": {
             "type": "string",
             "description": "Timestamp when the error occurred",
             "example": "2023-05-30T00:00:00.000Z",
             "format": "date-time"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Identifies which account status blocked the request",
+            "enum": [
+              "AccountSuspendedError",
+              "AccountExpiredError",
+              "AccountArchivedError",
+              "AccountErrorStatus"
+            ],
+            "example": "AccountSuspendedError",
+            "x-speakeasy-unknown-values": "allow"
+          },
+          "details": {
+            "nullable": true,
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PreconditionFailedDetails"
+              }
+            ]
           }
         },
         "required": [
           "statusCode",
           "message",
-          "timestamp"
+          "timestamp",
+          "errorCode"
         ]
       },
       "ProviderError": {
@@ -27375,6 +27464,7 @@
           },
           "type": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/QuestionsTypeEnum"
@@ -27409,6 +27499,7 @@
           },
           "parent_question": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ParentQuestion"
@@ -27719,6 +27810,7 @@
           },
           "rejected_reason_type": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/RejectedReasonTypeEnum"
@@ -27944,6 +28036,7 @@
           },
           "interview_stage": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/InterviewStage"
@@ -27952,6 +28045,7 @@
           },
           "interview_status": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/InterviewStatusEnum"
@@ -28329,6 +28423,26 @@
             "nullable": true
           }
         }
+      },
+      "StatusReason": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "timestamp"
+        ]
       },
       "Tag": {
         "type": "object",

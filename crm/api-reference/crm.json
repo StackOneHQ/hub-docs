@@ -216,7 +216,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -421,7 +421,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -658,7 +658,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -858,7 +858,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1142,7 +1142,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1381,7 +1381,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1665,7 +1665,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1904,7 +1904,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2188,7 +2188,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2493,7 +2493,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2735,6 +2735,7 @@
           "country": {
             "description": "The country code",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CountryEnum"
@@ -2744,6 +2745,7 @@
           "location_type": {
             "description": "The location type",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/LocationTypeEnum"
@@ -2848,6 +2850,7 @@
           "data": {
             "description": "Error details",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/UnifiedError"
@@ -3480,6 +3483,7 @@
             "description": "The type of the custom field.",
             "example": "Dropdown",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CustomFieldTypeEnum"
@@ -3807,6 +3811,7 @@
           "type": {
             "description": "The list type",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ListTypeEnum"
@@ -4015,6 +4020,40 @@
           "timestamp"
         ]
       },
+      "PreconditionFailedDetails": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "The account status that blocked the request",
+            "enum": [
+              "suspended",
+              "expired",
+              "archived",
+              "error"
+            ],
+            "example": "suspended",
+            "x-speakeasy-unknown-values": "allow"
+          },
+          "expiresAt": {
+            "type": "string",
+            "description": "When the test account expired. Present when status is expired",
+            "format": "date-time",
+            "nullable": true
+          },
+          "statusReasons": {
+            "description": "Why the account is in an error state. Present when status is error",
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StatusReason"
+            }
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
       "PreconditionFailedResponse": {
         "type": "object",
         "properties": {
@@ -4026,19 +4065,41 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "Precondition failed"
+            "example": "Account is suspended and cannot process requests"
           },
           "timestamp": {
             "type": "string",
             "description": "Timestamp when the error occurred",
             "example": "2023-05-30T00:00:00.000Z",
             "format": "date-time"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Identifies which account status blocked the request",
+            "enum": [
+              "AccountSuspendedError",
+              "AccountExpiredError",
+              "AccountArchivedError",
+              "AccountErrorStatus"
+            ],
+            "example": "AccountSuspendedError",
+            "x-speakeasy-unknown-values": "allow"
+          },
+          "details": {
+            "nullable": true,
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PreconditionFailedDetails"
+              }
+            ]
           }
         },
         "required": [
           "statusCode",
           "message",
-          "timestamp"
+          "timestamp",
+          "errorCode"
         ]
       },
       "ProviderError": {
@@ -4150,6 +4211,26 @@
         "required": [
           "statusCode",
           "message",
+          "timestamp"
+        ]
+      },
+      "StatusReason": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
           "timestamp"
         ]
       },
