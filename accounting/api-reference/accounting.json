@@ -205,7 +205,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -444,7 +444,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -736,7 +736,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -984,7 +984,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1277,7 +1277,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1525,7 +1525,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1728,7 +1728,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2021,7 +2021,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2235,7 +2235,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2470,7 +2470,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2625,6 +2625,7 @@
           "type": {
             "description": "Type of account",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AccountTypeEnum"
@@ -2655,6 +2656,7 @@
         "properties": {
           "data": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AccountingAccount"
@@ -2740,6 +2742,7 @@
           "base_currency": {
             "description": "Default currency for the company",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CurrencyEnum"
@@ -2765,6 +2768,7 @@
         "properties": {
           "data": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AccountingCompany"
@@ -2823,6 +2827,7 @@
           "status": {
             "description": "Status of the journal",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AccountingJournalStatusEnum"
@@ -2903,6 +2908,7 @@
           "currency_code": {
             "description": "Currency code for the journal and all lines",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CurrencyEnum"
@@ -2937,6 +2943,7 @@
         "properties": {
           "data": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AccountingJournal"
@@ -3079,6 +3086,7 @@
         "properties": {
           "data": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AccountingTaxRate"
@@ -3208,6 +3216,7 @@
           "data": {
             "description": "Error details",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/UnifiedError"
@@ -3637,6 +3646,7 @@
           "account_type": {
             "description": "Type of the account",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/AccountTypeEnum"
@@ -3652,6 +3662,7 @@
           "currency_code": {
             "description": "Currency code for this line",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CurrencyEnum"
@@ -3736,6 +3747,40 @@
           "timestamp"
         ]
       },
+      "PreconditionFailedDetails": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "The account status that blocked the request",
+            "enum": [
+              "suspended",
+              "expired",
+              "archived",
+              "error"
+            ],
+            "example": "suspended",
+            "x-speakeasy-unknown-values": "allow"
+          },
+          "expiresAt": {
+            "type": "string",
+            "description": "When the test account expired. Present when status is expired",
+            "format": "date-time",
+            "nullable": true
+          },
+          "statusReasons": {
+            "description": "Why the account is in an error state. Present when status is error",
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StatusReason"
+            }
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
       "PreconditionFailedResponse": {
         "type": "object",
         "properties": {
@@ -3747,19 +3792,41 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "Precondition failed"
+            "example": "Account is suspended and cannot process requests"
           },
           "timestamp": {
             "type": "string",
             "description": "Timestamp when the error occurred",
             "example": "2023-05-30T00:00:00.000Z",
             "format": "date-time"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Identifies which account status blocked the request",
+            "enum": [
+              "AccountSuspendedError",
+              "AccountExpiredError",
+              "AccountArchivedError",
+              "AccountErrorStatus"
+            ],
+            "example": "AccountSuspendedError",
+            "x-speakeasy-unknown-values": "allow"
+          },
+          "details": {
+            "nullable": true,
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PreconditionFailedDetails"
+              }
+            ]
           }
         },
         "required": [
           "statusCode",
           "message",
-          "timestamp"
+          "timestamp",
+          "errorCode"
         ]
       },
       "ProviderError": {
@@ -3871,6 +3938,26 @@
         "required": [
           "statusCode",
           "message",
+          "timestamp"
+        ]
+      },
+      "StatusReason": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
           "timestamp"
         ]
       },
