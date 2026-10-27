@@ -205,7 +205,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -444,7 +444,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -728,7 +728,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1033,7 +1033,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1349,7 +1349,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1558,7 +1558,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1806,7 +1806,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2006,7 +2006,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2208,7 +2208,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2523,7 +2523,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2770,7 +2770,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3099,7 +3099,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3313,7 +3313,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3559,7 +3559,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3768,7 +3768,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3970,7 +3970,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4163,7 +4163,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4356,7 +4356,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4754,7 +4754,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5047,7 +5047,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5295,7 +5295,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5580,7 +5580,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5819,7 +5819,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6111,7 +6111,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6325,7 +6325,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6560,7 +6560,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6762,7 +6762,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7076,7 +7076,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7335,7 +7335,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7631,7 +7631,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7881,7 +7881,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8184,7 +8184,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8398,7 +8398,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8644,7 +8644,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8853,7 +8853,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9138,7 +9138,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9435,7 +9435,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9732,7 +9732,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10029,7 +10029,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10326,7 +10326,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10623,7 +10623,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10862,7 +10862,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11088,7 +11088,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11314,7 +11314,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11540,7 +11540,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11766,7 +11766,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11992,7 +11992,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12276,7 +12276,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12515,7 +12515,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12799,7 +12799,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -13038,7 +13038,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -13341,7 +13341,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -13579,7 +13579,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -13883,7 +13883,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -14122,7 +14122,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -14442,7 +14442,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -14692,7 +14692,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -14999,7 +14999,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15237,7 +15237,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15522,7 +15522,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15762,7 +15762,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16077,7 +16077,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16316,7 +16316,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16639,7 +16639,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16937,7 +16937,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17176,7 +17176,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17468,7 +17468,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17682,7 +17682,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17917,7 +17917,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -18228,7 +18228,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -18487,7 +18487,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -18696,7 +18696,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -18999,7 +18999,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -19249,7 +19249,7 @@
             }
           },
           "412": {
-            "description": "Precondition failed: linked account belongs to a disabled integration.",
+            "description": "Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which.",
             "content": {
               "application/json": {
                 "schema": {
@@ -19479,6 +19479,7 @@
           "data": {
             "description": "Error details",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/UnifiedError"
@@ -19629,6 +19630,7 @@
           "type": {
             "description": "The type of clearing code",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ClearingCodeTypeEnum"
@@ -19892,6 +19894,7 @@
           "file_format": {
             "description": "The file format of the file",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/FileFormatEnum"
@@ -19925,6 +19928,7 @@
             "description": "The employment work schedule type (e.g., full-time, part-time)",
             "example": "full_time",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ContractTypeEnum"
@@ -20333,6 +20337,7 @@
             "description": "The time period over which the pay rate is calculated",
             "example": "monthly",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PayPeriodEnum"
@@ -20343,6 +20348,7 @@
             "description": "How often the employee is paid",
             "example": "hourly",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PayFrequencyEnum"
@@ -20365,6 +20371,7 @@
           "grade": {
             "description": "Represents the employee’s position within the organizational hierarchy.",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentGradeApiModel"
@@ -20376,6 +20383,7 @@
             "example": "permanent",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentTypeEnum"
@@ -20387,6 +20395,7 @@
             "example": "full_time",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentScheduleTypeEnum"
@@ -20396,6 +20405,7 @@
           "type": {
             "description": "The type of employment",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TypeApiModel"
@@ -20405,6 +20415,7 @@
           "contract_type": {
             "description": "The employment work schedule type",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ContractTypeApiModel"
@@ -20413,6 +20424,7 @@
           },
           "work_time": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/WorkTimeApiModel"
@@ -20492,6 +20504,7 @@
           "country": {
             "description": "The country code",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CountryCodeEnum"
@@ -20511,6 +20524,7 @@
             "description": "The ISO3166-2 sub division where the location is situated",
             "example": "GB-LIN",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ISO3166_2SubDivisionEnum"
@@ -20548,6 +20562,7 @@
             "description": "The time period over which the pay rate is calculated",
             "example": "monthly",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PayPeriodEnum"
@@ -20558,6 +20573,7 @@
             "description": "How often the employee is paid",
             "example": "hourly",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PayFrequencyEnum"
@@ -20587,6 +20603,7 @@
           "grade": {
             "description": "Represents the employee’s position within the organizational hierarchy.",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentGradeApiModel"
@@ -20598,6 +20615,7 @@
             "example": "permanent",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentTypeEnum"
@@ -20609,6 +20627,7 @@
             "example": "full_time",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentScheduleTypeEnum"
@@ -20618,6 +20637,7 @@
           "type": {
             "description": "The type of employment",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TypeApiModel"
@@ -20627,6 +20647,7 @@
           "contract_type": {
             "description": "The employment work schedule type",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ContractTypeApiModel"
@@ -20635,6 +20656,7 @@
           },
           "work_time": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/WorkTimeApiModel"
@@ -20673,6 +20695,7 @@
           "benefit_type": {
             "description": "The type of the benefit",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/BenefitsTypeEnum"
@@ -20973,6 +20996,7 @@
             "description": "The type of the custom field.",
             "example": "Dropdown",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CustomFieldTypeEnum"
@@ -21469,6 +21493,7 @@
             "example": "Testing the laws of motion",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/JobDescriptionApiModel"
@@ -21524,6 +21549,7 @@
             "description": "The employee gender",
             "example": "male",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/GenderEnum"
@@ -21534,6 +21560,7 @@
             "description": "The employee preferred language",
             "example": "en_US",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PreferredLanguageEnum"
@@ -21544,6 +21571,7 @@
             "description": "The employee ethnicity",
             "example": "white",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EthnicityEnum"
@@ -21568,6 +21596,7 @@
             "description": "The employee marital status",
             "example": "single",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/MaritalStatusEnum"
@@ -21578,6 +21607,7 @@
             "description": "The employee avatar",
             "example": "https://example.com/avatar.png",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Image"
@@ -21616,6 +21646,7 @@
             "example": "full_time",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentTypeEnum"
@@ -21627,6 +21658,7 @@
             "example": "full_time",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentScheduleTypeEnum"
@@ -21637,6 +21669,7 @@
             "description": "The employee employment status",
             "example": "active",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentStatusEnum"
@@ -21674,6 +21707,7 @@
           "home_location": {
             "description": "The employee home location",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/HRISLocation"
@@ -21683,6 +21717,7 @@
           "work_location": {
             "description": "The employee work location",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/HRISLocation"
@@ -21692,6 +21727,7 @@
           "company": {
             "description": "The employee company",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Company"
@@ -21740,6 +21776,7 @@
             "description": "The national identity number",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/NationalIdentityNumberApiModel"
@@ -21867,6 +21904,7 @@
             "description": "The time period over which the pay rate is calculated",
             "example": "monthly",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PayPeriodEnum"
@@ -21877,6 +21915,7 @@
             "description": "How often the employee is paid",
             "example": "hourly",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PayFrequencyEnum"
@@ -21906,6 +21945,7 @@
           "grade": {
             "description": "Represents the employee’s position within the organizational hierarchy.",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentGradeApiModel"
@@ -21917,6 +21957,7 @@
             "example": "permanent",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentTypeEnum"
@@ -21928,6 +21969,7 @@
             "example": "full_time",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentScheduleTypeEnum"
@@ -21937,6 +21979,7 @@
           "type": {
             "description": "The type of employment",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TypeApiModel"
@@ -21946,6 +21989,7 @@
           "contract_type": {
             "description": "The employment work schedule type",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ContractTypeApiModel"
@@ -21954,6 +21998,7 @@
           },
           "work_time": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/WorkTimeApiModel"
@@ -22026,6 +22071,7 @@
           "department": {
             "description": "The employee department",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/HRISGroup"
@@ -22036,6 +22082,7 @@
             "description": "The employee cost_center",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/HRISGroup"
@@ -22053,6 +22100,7 @@
           "division": {
             "description": "The employee division",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/HRISGroup"
@@ -22062,6 +22110,7 @@
           "job": {
             "description": "The job of employee",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentJobApiModel"
@@ -22131,6 +22180,7 @@
           "description": {
             "description": "The employee job description",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/JobDescriptionApiModel"
@@ -22181,6 +22231,7 @@
           "role": {
             "description": "The role of manager",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ManagerRoleApiModel"
@@ -22426,6 +22477,7 @@
           "language": {
             "description": "The language associated with this skill",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/LanguageEnum"
@@ -22435,6 +22487,7 @@
           "maximum_proficiency": {
             "description": "The proficiency level of the skill",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Proficiency"
@@ -22444,6 +22497,7 @@
           "minimum_proficiency": {
             "description": "The proficiency level of the skill",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Proficiency"
@@ -22470,6 +22524,7 @@
           "maximum_proficiency": {
             "description": "The proficiency level of the skill",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Proficiency"
@@ -22479,6 +22534,7 @@
           "minimum_proficiency": {
             "description": "The proficiency level of the skill",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Proficiency"
@@ -22581,6 +22637,7 @@
             "description": "The category of the file",
             "example": "templates, forms, backups, etc.",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/FileCategoryEnumApiModel"
@@ -22625,6 +22682,7 @@
           "file_format": {
             "description": "The file format of the file",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/FileFormatEnum"
@@ -24062,6 +24120,7 @@
           "country_code": {
             "description": "The country code where the bank is located",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CountryCodeEnum"
@@ -24071,6 +24130,7 @@
           "currency_code": {
             "description": "The currency code for the account",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CurrencyCodeEnum"
@@ -24086,6 +24146,7 @@
           "account_type": {
             "description": "The type of bank account",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/BankAccountTypeEnum"
@@ -24160,6 +24221,7 @@
           "benefit_type": {
             "description": "The type of the benefit",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/BenefitsTypeEnum"
@@ -24342,6 +24404,7 @@
           "type": {
             "description": "The type of the group",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/GroupTypeEnum"
@@ -24502,6 +24565,7 @@
             "description": "The employee gender",
             "example": "male",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/GenderEnum"
@@ -24512,6 +24576,7 @@
             "description": "The employee preferred language",
             "example": "eng",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PreferredLanguageEnum"
@@ -24522,6 +24587,7 @@
             "description": "The employee ethnicity",
             "example": "white",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EthnicityEnum"
@@ -24546,6 +24612,7 @@
             "description": "The employee marital status",
             "example": "single",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/MaritalStatusEnum"
@@ -24556,6 +24623,7 @@
             "description": "The employee avatar",
             "example": "https://example.com/avatar.png",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Image"
@@ -24581,6 +24649,7 @@
             "example": "permanent",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentTypeEnum"
@@ -24592,6 +24661,7 @@
             "example": "full_time",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentScheduleTypeEnum"
@@ -24602,6 +24672,7 @@
             "description": "The employee employment status",
             "example": "active",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentStatusEnum"
@@ -24648,6 +24719,7 @@
           "employment": {
             "description": "The employee employment",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CreateEmployeeEmploymentApiModel"
@@ -24680,6 +24752,7 @@
             "description": "The national identity number",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/NationalIdentityNumberApiModel"
@@ -24697,6 +24770,7 @@
           "home_location": {
             "description": "The employee home location",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CreateEmployeeLocationApiModel"
@@ -24706,6 +24780,7 @@
           "work_location": {
             "description": "The employee work location",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CreateEmployeeLocationApiModel"
@@ -24760,6 +24835,7 @@
             "description": "The time period over which the pay rate is calculated",
             "example": "monthly",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PayPeriodEnum"
@@ -24770,6 +24846,7 @@
             "description": "How often the employee is paid",
             "example": "hourly",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PayFrequencyEnum"
@@ -24799,6 +24876,7 @@
           "grade": {
             "description": "Represents the employee’s position within the organizational hierarchy.",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentGradeApiModel"
@@ -24810,6 +24888,7 @@
             "example": "permanent",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentTypeEnum"
@@ -24821,6 +24900,7 @@
             "example": "full_time",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentScheduleTypeEnum"
@@ -24830,6 +24910,7 @@
           "type": {
             "description": "The type of employment",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TypeApiModel"
@@ -24839,6 +24920,7 @@
           "contract_type": {
             "description": "The employment work schedule type",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ContractTypeApiModel"
@@ -24847,6 +24929,7 @@
           },
           "work_time": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/WorkTimeApiModel"
@@ -24888,6 +24971,7 @@
           "status": {
             "description": "The status of the time off request",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TimeOffStatusEnum"
@@ -24898,6 +24982,7 @@
             "description": "The type of the time off request",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TimeOffTypeEnum"
@@ -24960,6 +25045,7 @@
           },
           "reason": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Reason"
@@ -24988,6 +25074,7 @@
         "properties": {
           "document": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/File"
@@ -24997,6 +25084,7 @@
           "issued_by": {
             "description": "The country code of the issued by authority",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CountryCodeEnum"
@@ -25016,6 +25104,7 @@
           "type": {
             "example": "visa",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/WorkEligibilityTypeEnum"
@@ -25140,6 +25229,7 @@
             "description": "The type of the department group",
             "example": "department",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/DepartmentTypeEnum"
@@ -25291,6 +25381,7 @@
             "description": "The type of the division group",
             "example": "division",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/DivisionTypeEnum"
@@ -25372,6 +25463,7 @@
             "description": "The category of the the document",
             "example": "templates, forms, backups, etc.",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/HrisDocumentTypeEnum"
@@ -25416,6 +25508,7 @@
           "file_format": {
             "description": "The file format of the file",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/FileFormatEnum"
@@ -25436,6 +25529,7 @@
             "description": "The content type of the document",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/HrisDocumentTypeEnum"
@@ -25550,6 +25644,7 @@
           "file_format": {
             "description": "The file format of the file",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/FileFormatEnum"
@@ -25577,6 +25672,7 @@
           "confidential": {
             "description": "The confidentiality level of the file to be uploaded",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ConfidentialEnumApiModel"
@@ -25590,6 +25686,7 @@
               "id": "550e8400-e29b-41d4-a716-446655440000"
             },
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/HrisDocumentsUploadCategoryEnumApiModel"
@@ -25752,6 +25849,7 @@
           "type": {
             "description": "The type of the group",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/GroupTypeEnum"
@@ -25858,6 +25956,7 @@
           "status": {
             "description": "Status of the job",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/HrisJobStatusEnum"
@@ -26054,6 +26153,7 @@
           "country": {
             "description": "The country code",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CountryCodeEnum"
@@ -26064,6 +26164,7 @@
             "description": "The location type",
             "example": "work",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/LocationTypeEnum"
@@ -26190,6 +26291,7 @@
           "status": {
             "description": "The status of the shift",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ShiftStatusEnum"
@@ -26199,6 +26301,7 @@
           "approval_status": {
             "description": "The approval status of the shift",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ShiftApprovalStatusEnum"
@@ -26234,6 +26337,7 @@
         "properties": {
           "data": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/HrisShift"
@@ -26367,6 +26471,7 @@
             "description": "The type of the team group",
             "example": "team",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TeamTypeEnum"
@@ -26527,6 +26632,7 @@
             "description": "The employee gender",
             "example": "male",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/GenderEnum"
@@ -26537,6 +26643,7 @@
             "description": "The employee preferred language",
             "example": "eng",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PreferredLanguageEnum"
@@ -26547,6 +26654,7 @@
             "description": "The employee ethnicity",
             "example": "white",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EthnicityEnum"
@@ -26571,6 +26679,7 @@
             "description": "The employee marital status",
             "example": "single",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/MaritalStatusEnum"
@@ -26581,6 +26690,7 @@
             "description": "The employee avatar",
             "example": "https://example.com/avatar.png",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Image"
@@ -26606,6 +26716,7 @@
             "example": "permanent",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentTypeEnum"
@@ -26617,6 +26728,7 @@
             "example": "full_time",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentScheduleTypeEnum"
@@ -26627,6 +26739,7 @@
             "description": "The employee employment status",
             "example": "active",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentStatusEnum"
@@ -26664,6 +26777,7 @@
           "employment": {
             "description": "The employee employment",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CreateEmployeeEmploymentApiModel"
@@ -26696,6 +26810,7 @@
             "description": "The national identity number",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/NationalIdentityNumberApiModel"
@@ -26713,6 +26828,7 @@
           "home_location": {
             "description": "The employee home location",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CreateEmployeeLocationApiModel"
@@ -26722,6 +26838,7 @@
           "work_location": {
             "description": "The employee work location",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CreateEmployeeLocationApiModel"
@@ -26768,6 +26885,7 @@
             "description": "The time period over which the pay rate is calculated",
             "example": "monthly",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PayPeriodEnum"
@@ -26778,6 +26896,7 @@
             "description": "How often the employee is paid",
             "example": "hourly",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PayFrequencyEnum"
@@ -26807,6 +26926,7 @@
           "grade": {
             "description": "Represents the employee’s position within the organizational hierarchy.",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentGradeApiModel"
@@ -26818,6 +26938,7 @@
             "example": "permanent",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentTypeEnum"
@@ -26829,6 +26950,7 @@
             "example": "full_time",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmploymentScheduleTypeEnum"
@@ -26838,6 +26960,7 @@
           "type": {
             "description": "The type of employment",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TypeApiModel"
@@ -26847,6 +26970,7 @@
           "contract_type": {
             "description": "The employment work schedule type",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ContractTypeApiModel"
@@ -26855,6 +26979,7 @@
           },
           "work_time": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/WorkTimeApiModel"
@@ -27504,6 +27629,7 @@
             "description": "The manager role type (e.g., admin, viewer)",
             "example": "admin",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/RoleTypeEnum"
@@ -27566,6 +27692,7 @@
           },
           "type": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/NationalIdentityNumberTypeEnumApiModel"
@@ -27575,6 +27702,7 @@
           "country": {
             "description": "The country code",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CountryCodeEnum"
@@ -27962,6 +28090,7 @@
           "status": {
             "description": "Status of the position",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PositionStatusEnum"
@@ -28067,6 +28196,40 @@
           }
         }
       },
+      "PreconditionFailedDetails": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "The account status that blocked the request",
+            "enum": [
+              "suspended",
+              "expired",
+              "archived",
+              "error"
+            ],
+            "example": "suspended",
+            "x-speakeasy-unknown-values": "allow"
+          },
+          "expiresAt": {
+            "type": "string",
+            "description": "When the test account expired. Present when status is expired",
+            "format": "date-time",
+            "nullable": true
+          },
+          "statusReasons": {
+            "description": "Why the account is in an error state. Present when status is error",
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StatusReason"
+            }
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
       "PreconditionFailedResponse": {
         "type": "object",
         "properties": {
@@ -28078,19 +28241,41 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "Precondition failed"
+            "example": "Account is suspended and cannot process requests"
           },
           "timestamp": {
             "type": "string",
             "description": "Timestamp when the error occurred",
             "example": "2023-05-30T00:00:00.000Z",
             "format": "date-time"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Identifies which account status blocked the request",
+            "enum": [
+              "AccountSuspendedError",
+              "AccountExpiredError",
+              "AccountArchivedError",
+              "AccountErrorStatus"
+            ],
+            "example": "AccountSuspendedError",
+            "x-speakeasy-unknown-values": "allow"
+          },
+          "details": {
+            "nullable": true,
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PreconditionFailedDetails"
+              }
+            ]
           }
         },
         "required": [
           "statusCode",
           "message",
-          "timestamp"
+          "timestamp",
+          "errorCode"
         ]
       },
       "PreferredLanguageEnum": {
@@ -28743,6 +28928,26 @@
           }
         }
       },
+      "StatusReason": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "timestamp"
+        ]
+      },
       "Task": {
         "type": "object",
         "properties": {
@@ -28779,6 +28984,7 @@
           "type": {
             "description": "The type of the task",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TaskTypeEnum"
@@ -28788,6 +28994,7 @@
           "status": {
             "description": "The status of the task",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TaskStatusEnum"
@@ -28910,6 +29117,7 @@
         "properties": {
           "data": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Task"
@@ -29135,6 +29343,7 @@
           "status": {
             "description": "The status of the time entry",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TimeEntryStatusEnum"
@@ -29144,6 +29353,7 @@
           "labor_type": {
             "description": "The labor type associated with this time entry",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/LaborTypeApiModel"
@@ -29153,6 +29363,7 @@
           "location": {
             "description": "The location of the time entry",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Reference"
@@ -29301,6 +29512,7 @@
           "status": {
             "description": "The status of the time off request",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TimeOffStatusEnum"
@@ -29311,6 +29523,7 @@
             "description": "The type of the time off request",
             "deprecated": true,
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TimeOffTypeEnum"
@@ -29386,6 +29599,7 @@
           },
           "reason": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Reason"
@@ -29409,6 +29623,7 @@
           "policy": {
             "description": "The time off policy associated with Time Off",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TimeOffPolicies"
@@ -29483,6 +29698,7 @@
           "policy": {
             "description": "The time off policy associated with this balance",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TimeOffPolicies"
@@ -29505,6 +29721,7 @@
             "description": "The duration unit of the current balance",
             "example": "hours",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TimeOffBalanceUnitEnum"
@@ -29680,6 +29897,7 @@
           "type": {
             "description": "The type of this policy",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TimeOffPolicyTypeEnum"
@@ -29689,6 +29907,7 @@
           "duration_unit": {
             "description": "The duration unit of the current policy",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TimeOffBalanceUnitEnum"
@@ -29987,6 +30206,7 @@
             "description": "The type of employment (e.g., contractor, permanent)",
             "example": "permanent",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TypeEnum"
@@ -30171,6 +30391,7 @@
             "description": "The status to apply to this Task",
             "example": "blocked",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/TaskStatusEnum"
@@ -30197,6 +30418,7 @@
           "type": {
             "example": "visa",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/WorkEligibilityTypeEnum"
@@ -30210,6 +30432,7 @@
           },
           "document": {
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/File"
@@ -30231,6 +30454,7 @@
           "issued_by": {
             "description": "The country code of the issued by authority",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/CountryCodeEnum"
@@ -30346,6 +30570,7 @@
             "description": "The period of the work time",
             "example": "month",
             "nullable": true,
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/WorkTimeUnitEnum"
