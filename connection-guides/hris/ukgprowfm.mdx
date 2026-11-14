@@ -26,11 +26,23 @@ UKG Pro Workforce Management uses an OAuth LDAP (password-based) flow. You'll ne
     - **Client Secret**
   </Step>
 
-  <Step title="Prepare a username and password">
-    Use a dedicated integration user where possible. Make sure you have:
-    
+  <Step title="Prepare a dedicated integration user">
+    Use a dedicated integration user with manager-level permissions. StackOne creates and manages time-off requests on behalf of your employees, which UKG treats as a manager action. Make sure the user has:
+
     - **Username**
     - **Password**
+
+    Grant the integration user:
+
+    - A manager Function Access Profile that allows managing employee time-off requests (create and edit).
+    - A Manager Role with an employee group (Hyperfind) covering every employee you want to manage time-off for. Employees outside this scope are rejected.
+    - Data access to those same employees.
+
+    If time-off requests should be approved automatically instead of left pending, enable Auto Approval on the relevant time-off request subtype.
+
+    <Note>
+      The exact profile, role, and access-point names vary by UKG tenant and version. Ask your UKG admin to grant the integration user manager-level time-off permissions covering the employees in scope.
+    </Note>
   </Step>
 </Steps>
 
